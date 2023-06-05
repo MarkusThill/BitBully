@@ -1,14 +1,14 @@
+#include "version.h"
 #include <string>
 
 #define SPIELER1 true
 #define SPIELER2 false
-#define HASHSIZE (4194304LL /2LL) //Beliebige Zweierpotenz. Maximal: 2^25   //Bei NICHT perfekter Stufe kann key auch auf 32 Bit gesetzt werden
+#define HASHSIZE (4194304LL /2LL) //Beliebige Zweierpotenz. Maximal: 2^25
 #define LHASHSIZE (HASHSIZE / 8LL)
 #define DRHASHSIZE 4096LL
-#define EXACT 1
+#define EXACT 1 // TODO: Enum...
 #define UPPER 2
 #define LOWER 3
-
 
 const short int ZugBewertung[42] =
         {7, 9, 11, 10, 8, 6,
@@ -459,7 +459,6 @@ uint64_t *FeldData2;
 short *Win;
 short MaxInstance;
 short InstanceVoll;
-//short rueck;
 short Hoehe[7];
 
 int book[34287];

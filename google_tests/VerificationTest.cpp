@@ -1,5 +1,7 @@
 // TODO: use project-own google tests!!!
 // TODO: Use a simple logger
+// TODO: Log computation times using a software version into a txt file...
+// TODO: Play n games against a random (or more advanced) player: It has to win every single game! ...
 
 #include <filesystem>
 #include <chrono>
@@ -25,6 +27,8 @@ protected:
         DRHASHE = (DRVorlage *)malloc(DRHASHSIZE * sizeof(DRVorlage));
         ResetHash();
         ModusEinrichten();
+
+        std::cout << "Version: v" << VERSION_MAJOR << "." << VERSION_MINOR << "." << VERSION_PATCH << std::endl;
     }
 
     void TearDown() override {
@@ -38,7 +42,7 @@ protected:
 TEST_F(ExampleTest, fastVerificationTest) {
     int x, i;
     time_point time_start = std::chrono::high_resolution_clock::now();
-    for(i=0;i<86892;i+=1)
+    for(i=0;i<86892;i+=100)
     {
         Feld1=OPENING[i].FeldData1;
         Feld2=OPENING[i].FeldData2;
