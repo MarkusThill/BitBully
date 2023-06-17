@@ -21,9 +21,8 @@ protected:
         c4.Reset(); //entleert das Spielfeld. Die Variablen m_fieldP1 und m_fieldP2 werden auf 0 gesetzt.
         c4.BuchLaden("../../book.dat");  //Die Er�ffnungsdatenbank wird direkt zu beginn aus der Datei eingelesen
         c4.BuchLaden2("../../data8ply.dat");
-        c4.setMaxInstance(
-                100);  //Der Standardwert fÜr die Schwierigkeitsstufe wird gesetzt. Die Schwierigkeitsstufe ergibt sich aus (m_maxSearchDepth-2)/2
-        c4.Modus = 0;         //Da noch kein Spielmodus ausgew�hlt wurde
+        c4.setMaxInstance(100);  //Der Standardwert fÜr die Schwierigkeitsstufe wird gesetzt. Die Schwierigkeitsstufe ergibt sich aus (m_maxSearchDepth-2)/2
+        //c4.Modus = 0;         //Da noch kein Spielmodus ausgew�hlt wurde
         c4.initHash();
         c4.ResetHash();
         c4.ModusEinrichten();
@@ -41,10 +40,37 @@ protected:
     Connect4 c4;
 };
 
-TEST_F(ExampleTest, fastVerificationTest) {
-    int x, i;
+TEST_F(ExampleTest, randomOpponentTest) {
+    srand(time(NULL));
+    for(auto i=0UL;i<100;i++) {
+        c4.Reset();
+        c4.setFeld(0LL, 0LL);
+        c4.ResetHash();
+        c4.HoeheErmitteln();
+        c4.setDepthTie();
+        c4.setMaxInstance(100);
+        c4.ModusEinrichten();
+
+
+        int winner = 0;
+        while(!c4.isGameOver()) {
+            int randColumn = rand() % 7;
+            while(c4.isColumnFull(randColumn)) randColumn = rand() % 7;
+
+            std::cout << std::endl << c4.toString() << std::endl;
+            winner = c4.ComputerAnziehender(randColumn);
+        }
+
+        //std::cout << std::endl << c4.toString() << std::endl;
+        //std::cout<< "Game over" << std::endl;
+        ASSERT_EQ(winner, 2);
+    }
+
+}
+
+TEST_F(ExampleTest, fastVerificationTest) {;
     time_point time_start = std::chrono::high_resolution_clock::now();
-    for (i = 0; i < 86892; i += 100) {
+    for (auto i = 0; i < 86892; i += 100) {
         auto entry = c4.getOpening(i);
         c4.setFeld(entry.m_positionP1, entry.m_positionP2);
         c4.ResetHash();
@@ -52,12 +78,12 @@ TEST_F(ExampleTest, fastVerificationTest) {
 
         c4.setDepthTie();
         c4.setMaxInstance(100);
-        x = c4.WurzelMethodeComputerAnziehender(0, -9999, 9999, c4.HoeheErmitteln());
-        EXPECT_FALSE(x == 1000 && entry.m_value != 2);
-        EXPECT_FALSE(x == -1000 && entry.m_value != 1);
-        EXPECT_FALSE(x == 0 && entry.m_value != 0);
-        EXPECT_FALSE(x != -1000 && x != 1000 && x != 0);
-        std::cout << "Done with " << i << std::endl;
+        auto [x, _] = c4.WurzelMethodeComputerAnziehender(0, -9999, 9999, c4.HoeheErmitteln());
+        EXPECT_FALSE(x == 1000 && entry.m_value != 2) << "For position: " << i;
+        EXPECT_FALSE(x == -1000 && entry.m_value != 1) << "For position: " << i;
+        EXPECT_FALSE(x == 0 && entry.m_value != 0) << "For position: " << i;
+        EXPECT_FALSE(x != -1000 && x != 1000 && x != 0) << "For position: " << i;
+        if(i % 1000 == 0) std::cout << "Done with " << i << std::endl;
     }
     time_point time_end = std::chrono::high_resolution_clock::now();
 

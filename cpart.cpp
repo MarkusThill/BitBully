@@ -136,6 +136,9 @@ private:
     short m_maxSearchDepth;
     short m_depthTie;
 
+    bool GameOver = false;
+    int Modus;
+
     int m_openingBook8Ply[BOOK_SIZE_8PLY + 1];
     struct OpeningBookElement {
         uint64_t m_positionP1;
@@ -157,6 +160,15 @@ private:
 
 
 public:
+
+    bool isGameOver() {
+        return GameOver;
+    }
+
+    bool isColumnFull(int column) {
+        return m_columnHeight[column] == 6;
+    }
+
     bool setMaxInstance(short maxInstance) {
         m_maxSearchDepth = maxInstance;
         return true; // TODO: What to return?
@@ -335,9 +347,6 @@ public:
         return (!(Feld1Gespiegelt & m_fieldP2) && !(Feld2Gespiegelt & m_fieldP1));
     }
 
-    bool GameOver = false;
-    int Modus;
-
     void ModusEinrichten() {
         /*Es wird, je nachdem was f?r ein Sender ?bergeben wird, einer der Vier Modi eingerichtet.
     Es gibt die Modi Spieler-Spieler, Computer-Spieler, Spieler-Computer, Netzwerkspiel.*/
@@ -350,28 +359,28 @@ public:
             m_maxSearchDepth++;
     }
 
-    void ComputerAnziehender(int spalte) {
+    int  ComputerAnziehender(int spalte) {
         /*Wird ausgef?hrt, wenn der Spieler auf ein Shape geklcikt hat und es sich um
     ein Computer-Mensch Spiel handelt. Es wird zun?chst gepr?ft, ob die Spalte, in die
     der Spieler gesetzt hat noch nicht voll ist. Dann wird der Stein f?r den Spieler gestezt
     und der Computer berechnet einen g?ltigen Zug. Die Berechnungs-Zeit wird gesoppt und ausgegeben!!!*/
         int x;
         if (GameOver) //Falls das Spiel bereits vorbei ist, soll der Spieler keinen Zug mehr machen d?rfen
-            return;
+            return -1;
         if (m_columnHeight[spalte] < 6 && Modus == 2) {
             SteinSetzen(spalte, m_cPlayer1);
             if (Gewinnstellung1(spalte, m_columnHeight[spalte] - 1))  //Falls der Spieler mit seinem Zug gewonnen hat
             {
-                std::cout << "Sie Haben das Spiel gewonnen!!!";
+                //std::cout << "Sie Haben das Spiel gewonnen!!!";
                 GameOver = true;
-                return;
+                return 1;
             }
 
             if ((m_fieldP1 | m_fieldP2) == 0x3FFFFFFFFFFLL)  //Falls das Spielfeld Voll ist
             {
-                std::cout << "Das Spiel endet Unentschieden!!!";
+                //std::cout << "Das Spiel endet Unentschieden!!!";
                 GameOver = true; //Damit keienr der beiden einen Stein mehr setzen kann
-                return;
+                return 0;
             }
             if (SpielBeenden2()) //Es wird vor dem Zug des Computers bereits geschaut, ob er gewinnen kann, wodurch dann nachher ein weiterer Zug des Spielers verhindert werden kann
                 GameOver = true;        //Wird auf true gesetzt, da bei Gewinn das Spiel vorbei ist und der Spieler keine weiteren Z?ge machen k?nnen soll
@@ -384,15 +393,17 @@ public:
                 m_depthTie = 42 - BrettCount();
                 m_maxSearchDepth = 100;
                 HoeheErmitteln();
-                x = WurzelMethodeComputerAnziehender(0, -9999, 9999, HoeheErmitteln());
+                auto [value, x] = WurzelMethodeComputerAnziehender(0, -9999, 9999, HoeheErmitteln());
                 SteinSetzen(x, m_cPlayer2);
             }
 
-            std::cout << "Sie sind an der Reihe!!!";
+            //std::cout << "Sie sind an der Reihe!!!";
             if (GameOver) {
-                std::cout << "Sie haben das Spiel leider verloren!!!";
+                //std::cout << "Sie haben das Spiel leider verloren!!!";
+                return 2;
             }
         }
+        return 0;
     }
 
     std::string toString() {
@@ -7779,11 +7790,10 @@ public:
 	return xret;
 }
 #else
-
-    short WurzelMethodeComputerAnziehender(short instance, short alpha, short beta, uint64_t ZKey) {
+    std::tuple<short, short> WurzelMethodeComputerAnziehender(short instance, short alpha, short beta, uint64_t ZKey) {
         short x, y = 0, rueck, xret, moves[8];
         if (SpielBeenden2())
-            return -123;
+            return {1000, SpielBeendenStellung(m_cPlayer2)};
         gMoves2(moves);
         if (istSymmetrisch()) {
             short tmp[8];
@@ -7791,7 +7801,6 @@ public:
                 if (moves[x] < 4)
                     tmp[y++] = moves[x];
             }
-            //tmp[y] = -1;
             for (x = 0; x < y; x++)
                 moves[x] = tmp[x];
             moves[x] = -1;
@@ -7807,9 +7816,9 @@ public:
                 xret = moves[x];
             }
             if (rueck == 1000)
-                return 1000;
+                return {1000, xret};
         }
-        return alpha;
+        return {alpha, xret};
     }
 
 #endif
