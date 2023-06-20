@@ -4,8 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 #cmake_policy(SET CMP0091 NEW)
 
-# set(PROJECT_SOURCES ../libGlobal/utilsTRT.cpp)
-set(PROJECT_TESTS VerificationTest.cpp)
+set(PROJECT_SOURCES 4inarow.cpp)
+set(PROJECT_TESTS VerificationTest.cpp )
 
 IF (WIN32)
     message("Hallo, Windows!")
@@ -116,3 +116,4 @@ add_executable(Google_Tests_run ${PROJECT_TESTS} ${PROJECT_SOURCES})
 
 target_link_libraries(Google_Tests_run ${PROJECT_LIBS}) #stdc++fs
 
+#target_compile_options(Google_Tests_run PRIVATE "-masm=intel")
