@@ -64,6 +64,7 @@ int64 hashkey;
 double start;
 int *playnow;
 char *status;
+int gt_values[7];
 
 #ifdef HISTORY
 int32 redhistory[64];
@@ -183,7 +184,6 @@ int search(POSITION *p, double time, char out[255], int searchwin, int theoretic
 	float knodes;
 	int64 allmoves,move;
 	int forced = 0;
-	int values[7];
 	int64 columns[7] = {COLUMN1, COLUMN2, COLUMN3, COLUMN4, COLUMN5, COLUMN6, COLUMN7};
 	char str[256],str2[256];
 	int absvalue, dolearn=0;
@@ -229,12 +229,13 @@ int search(POSITION *p, double time, char out[255], int searchwin, int theoretic
 	if(allmoves & (redthreat|yellowthreat))
 		forced = 1;
 
-
-	// clear hashtable
-    // TODO by MARKUS THILL: I think we do not have to reset the hash table every time, to speed up things...
+    // Markus Thill: Added #ifdef
+#ifdef CLEAR_HASH
+    // clear hashtable
 	memset(ht, 0, (HASHSIZE_F+HASHITER)*sizeof(HASHENTRY));
 	// clear threat hashtable
 	memset(threatht, 0 , THREATHASHSIZE*sizeof(HASHENTRY));
+#endif
 
 	// read in learn file
 	//readlearnfile();
@@ -270,25 +271,25 @@ int search(POSITION *p, double time, char out[255], int searchwin, int theoretic
 
 //	fp = fopen("theoretic.txt","w");
 
-	// initialize values array to zero for game-theoretic search
+	// initialize gt_values array to zero for game-theoretic search
 	for(i=0;i<7;i++)
-		values[i] = 0;
+        gt_values[i] = 0;
 
 	// now initialize instant winners for game-theoretic search
 	// i have to use -MATE because the display of the game-theoretic
-	// values flips the values from win to loss and vice versa
+	// gt_values flips the gt_values from win to loss and vice versa
 	for(i=0;i<7;i++)
 		{
 		move = allmoves & columns[i];
 		if(p->color == YELLOW)
 			{
 			if(move & yellowthreat)
-				values[i] = -MATE;
+                gt_values[i] = -MATE;
 			}
 		else
 			{
 			if(move & redthreat)
-				values[i] = -MATE;
+                gt_values[i] = -MATE;
 			}
 		}
 
@@ -306,15 +307,13 @@ int search(POSITION *p, double time, char out[255], int searchwin, int theoretic
 				move = allmoves & columns[i];
 				if(move == 0) 
 					{
-					values[i] = -1;
+                        gt_values[i] = -1;
 					continue;
 					}
 
-				
-
 				// if we already concluded that a certain move is a win or a loss,
 				// then don't search it again!
-				if(abs(values[i])>300)
+				if(abs(gt_values[i]) > 300)
 					continue;
 				
 				domove(p, &move);
@@ -325,20 +324,20 @@ int search(POSITION *p, double time, char out[255], int searchwin, int theoretic
 				hashkey = absolutehashkey(p);
 				realdepth = 0;
 				startdepth = bitcount(p->yellow|p->red);
-				//values[i] = negamax(p,depth, -MATE, MATE);
-				values[i] = windowsearch(p, depth-1, values[i]);
-				//fprintf(fp,"result: %i",values[i]);
+				//gt_values[i] = negamax(p,depth, -MATE, MATE);
+				gt_values[i] = windowsearch(p, depth - 1, gt_values[i]);
+				//fprintf(fp,"result: %i",gt_values[i]);
 				undomove(p, &move);
 				}
 			sprintf(str,"depth %i:",depth);
 			for(i=0;i<7;i++)
 				{
 				sprintf(str2," ? ");
-				if(values[i] > 300)
+				if(gt_values[i] > 300)
 					sprintf(str2," loss ");
-				if(values[i] < -300)
+				if(gt_values[i] < -300)
 					sprintf(str2," win ");
-				if(values[i] == -1)
+				if(gt_values[i] == -1)
 					sprintf(str2," - ");
 				
 				strcat(str,str2);
@@ -378,7 +377,7 @@ int search(POSITION *p, double time, char out[255], int searchwin, int theoretic
 					sprintf(status,"depth %i/%i time %.2fs: win found: %i", depth, maxdepth, t,column);
 				}
 			else
-				sprintf(status,"depth %i/%i move %i value %i nodes %I64i time %.2f hash %.1f %.1fkN/s", depth, maxdepth, column, value,nodes,t,(float)(100*hashhits)/((float)(hashhits+hashmisses)),knodes);
+				sprintf(status,"depth %i/%i move %i value %i nodes %lu time %.2f hash %.1f %.1fkN/s", depth, maxdepth, column, value,nodes,t,(float)(100*hashhits)/((float)(hashhits+hashmisses)),knodes);
 			
 			logtofile(depth, value, bestmovecolumn);
 			//fflush(fp);
@@ -399,15 +398,15 @@ int search(POSITION *p, double time, char out[255], int searchwin, int theoretic
 		}
 	if(theoretic)
 		{
-		sprintf(str,"done:",depth);
+		sprintf(str,"done: %d",depth);
 		for(i=0;i<7;i++)
 			{
 			sprintf(str2," = ");
-			if(values[i] > 300)
+			if(gt_values[i] > 300)
 				sprintf(str2," loss ");
-			if(values[i] < -300)
+			if(gt_values[i] < -300)
 				sprintf(str2," win ");
-			if(values[i] == -1)
+			if(gt_values[i] == -1)
 				sprintf(str2," - ");
 			
 			strcat(str,str2);
@@ -517,7 +516,7 @@ void logtofile(int depth, int value, int move)
 	t /= CLOCKS_PER_SEC;
 	fp = fopen("4inarow.txt","a");
 
-	fprintf(fp,"\ndepth %i/%i move %i value %i nodes %I64i time %.2f", 
+	fprintf(fp,"\ndepth %i/%i move %i value %i nodes %lu time %.2f",
 		depth, maxdepth,move , value,nodes,t);
 	fclose(fp);
 	}
@@ -1621,7 +1620,7 @@ int printboardtofile(POSITION *p, FILE *fp)
 	// 2 10 18 26 34 42 50
 	// 1  9 17 25 33 41 49
 	// 0  8 16 24 32 40 48
-	fprintf(fp,"\ny=%I64i, r=%I64i \n",p->yellow, p->red);
+	fprintf(fp,"\ny=%lu, r=%lu \n",p->yellow, p->red);
 	for(i=5;i>=0;i--)
 		{
 		for(j=0;j<COLUMNS;j++)

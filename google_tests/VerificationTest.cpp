@@ -145,9 +145,9 @@ TEST_F(ExampleTest, doenerTest) {
     originalboard [3][2] = 1;
     originalboard [3][3] = -1;
     originalboard [3][4] = 1;
-    originalboard [1][0] = -1;
-    originalboard [1][1] = 1;
-    originalboard [1][2] = -1;
+    originalboard [3][5] = -1;
+    //originalboard [1][1] = 1;
+    //originalboard [1][2] = -1;
 
     int playnow = 0;
     auto bestmove = getcomputermove(color, &playnow);
@@ -157,8 +157,4 @@ TEST_F(ExampleTest, doenerTest) {
 
     extern int64 hashhits, hashmisses;
     std::cout << "hashhits: " << hashhits << ", hashmisses: " << hashmisses << std::endl;
-
-
-    bestmove = getcomputermove(color, &playnow);
-    std::cout << std::endl << "hashhits: " << hashhits << ", hashmisses: " << hashmisses << std::endl;
 }
