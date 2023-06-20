@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 #cmake_policy(SET CMP0091 NEW)
 
-set(PROJECT_SOURCES 4inarow.cpp)
+set(PROJECT_SOURCES ../4inarow.cpp)
 set(PROJECT_TESTS VerificationTest.cpp )
 
 IF (WIN32)

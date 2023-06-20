@@ -1,5 +1,5 @@
 // TODO: use project-own google tests!!!
-// TODO: Use a simple logger
+// TODO: Use a simple logger. Use glog of google...
 // TODO: Log computation times using a software version into a txt file...
 // TODO: Play n games against a random (or more advanced) player: It has to win every single game! ...
 
@@ -135,6 +135,7 @@ TEST_F(ExampleTest, doenerTest) {
     searchwin = 0;
     setlevel(leveltime[levell]);
      */
+
     levell = GAMETHEORETIC;
     gametheoretic=1;
     searchwin=0;
@@ -145,11 +146,13 @@ TEST_F(ExampleTest, doenerTest) {
     originalboard [3][2] = 1;
     originalboard [3][3] = -1;
     originalboard [3][4] = 1;
-    originalboard [3][5] = -1;
-    //originalboard [1][1] = 1;
-    //originalboard [1][2] = -1;
+    originalboard [1][0] = -1;
+    originalboard [1][1] = 1;
+    originalboard [1][2] = -1;
+    /*originalboard [0][0] = 1;
+    originalboard [4][0] = -1;*/
 
-    int playnow = 0;
+    int playnow = 0; // playnow:
     auto bestmove = getcomputermove(color, &playnow);
     std::cout << "best move:" << bestmove << std::endl;
 
@@ -157,4 +160,9 @@ TEST_F(ExampleTest, doenerTest) {
 
     extern int64 hashhits, hashmisses;
     std::cout << "hashhits: " << hashhits << ", hashmisses: " << hashmisses << std::endl;
+
+    extern int gt_values[7];
+    for(int gt_value : gt_values) {
+        std::cout << gt_value << " | ";
+    }
 }
