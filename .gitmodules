@@ -1,0 +1,3 @@
+[submodule "connect4"]
+	path = connect4
+	url = git@github.com:PascalPons/connect4.git
