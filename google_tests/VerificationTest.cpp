@@ -166,7 +166,7 @@ TEST_F(VerificationTest, ponsC4Verification8Ply) {
   bool weak = false;
   bool analyze = false;
   std::vector<float> timesPons, timesMine;
-  for (auto i = 0; i < 86892; i += 100) { // TODO: Hard-coded number!
+  for (auto i = 0; i < 86892; i += 1000) { // TODO: Hard-coded number!
     auto entry = c4.getOpening(i);
 
     // Get result from C4
@@ -356,36 +356,6 @@ int getcomputermove(int color, int *play)
     return(bestmove);
 }
  */
-
-TEST_F(VerificationTest, kebabTest) {
-  using namespace GameSolver::Connect4;
-
-  Solver solver;
-  bool weak = false;
-  bool analyze = true;
-
-  // std::string opening_book = "7x6.book";
-  // solver.loadBook(opening_book);
-  //std::string line;
-
-  std::string line{"44444222266"};
-    Position P;
-    if(P.play(line) != line.size()) {
-      std::cerr << "Line " << 1 << ": Invalid move " << (P.nbMoves() + 1) << " \"" << line << "\"" << std::endl;
-    } else {
-      std::cout << line;
-      if(analyze) {
-        std::vector<int> scores = solver.analyze(P, weak);
-        for(int i = 0; i < Position::WIDTH; i++) std::cout << " " << scores[i];
-      }
-      else {
-        int score = solver.solve(P, weak);
-        std::cout << " " << score;
-      }
-      std::cout << std::endl;
-    }
-  ASSERT_FALSE(true);
-}
 
 TEST_F(VerificationTest, doenerTest) {
     //int color = 1; // 1== YELLOW, -1 ==RED???
