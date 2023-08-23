@@ -2,9 +2,13 @@
 project(google_tests)
 set(CMAKE_CXX_STANDARD 17)
 
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+endif ()
+
 #cmake_policy(SET CMP0091 NEW)
 
-set(PROJECT_SOURCES ../4inarow.cpp)
+set(PROJECT_SOURCES ../Agent4InARow.cpp)
 set(PROJECT_TESTS VerificationTest.cpp )
 
 IF (WIN32)
@@ -51,6 +55,7 @@ ELSE ()
     find_library(GMOCK_LIB NAMES gmock)
     find_library(GTEST_MAIN_LIB NAMES gtest_main)
     find_library(GMOCK_MAIN_LIB NAMES gmock_main)
+    find_library(PONS_C4 NAMES ponsc4)
 
     # add extra include directories
     include_directories(SYSTEM .)
@@ -83,7 +88,7 @@ ELSE ()
     endif ()
 
     # pthread is required for gtest/gmock
-    set(PROJECT_LIBS gtest_main gmock_main gtest gmock pthread) #  gtest_main: only required, if no main.cpp is used
+    set(PROJECT_LIBS gtest_main gmock_main gtest gmock pthread ponsc4) #  gtest_main: only required, if no main.cpp is used
 
     #if (ONNX_LIB AND USE_ONNX_RUNTIME)
     #    message("onnxruntime library was found: ${ONNX_LIB}")
@@ -113,6 +118,8 @@ add_executable(Google_Tests_run ${PROJECT_TESTS} ${PROJECT_SOURCES})
 
 #set_property(TARGET Google_Tests_run PROPERTY
 #        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
+#list(APPEND PROJECT_LIBS pons_c4)
 
 target_link_libraries(Google_Tests_run ${PROJECT_LIBS}) #stdc++fs
 

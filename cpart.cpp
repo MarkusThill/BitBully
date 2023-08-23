@@ -3,6 +3,10 @@
 #include <cstdint>
 #include <fstream>
 #include <iostream>
+#include <array>
+#include <vector>
+#include <tuple>
+#include <algorithm>
 
 #define HASHSIZE (4194304LL / 2LL) //Beliebige Zweierpotenz. Maximal: 2^25
 #define LHASHSIZE (HASHSIZE / 8LL)
@@ -14,6 +18,9 @@
 class Connect4 {
 
 private:
+    static constexpr int32_t P_EMPTY = 0;
+    static constexpr int32_t P_RED = 1;
+    static constexpr int32_t P_YELLOW = 2;
     const bool m_cPlayer1 = true;
     const bool m_cPlayer2 = !m_cPlayer1;
 
@@ -129,6 +136,7 @@ private:
                                             18446744073709551611ULL, 18446744073709551613ULL, 18446744073709551614ULL};
 
     constexpr static size_t N_COLUMNS = 7UL;
+  constexpr static size_t N_ROWS = 6UL;
     constexpr static size_t BOOK_SIZE_8PLY = 34286UL;
 
     uint64_t m_fieldP1, m_fieldP2;
@@ -143,7 +151,7 @@ private:
     struct OpeningBookElement {
         uint64_t m_positionP1;
         uint64_t m_positionP2;
-        short m_value;                     // TODO: WARUM UM ALLES IN DER WELT NEHME ICH HIER SHORT, WENN BYTE DOCH VÖLLIG AUSREICHT??
+        short m_value;
     } *m_pOpeningBook8Ply_2;
 
     struct TranspositionTableElement {
@@ -161,7 +169,12 @@ private:
 
 public:
 
-    bool isGameOver() {
+  // TODO: Implement == operator
+  bool equals(const Connect4& c4) const {
+        return m_fieldP1 == c4.m_fieldP1 && m_fieldP2 == m_fieldP2;
+  }
+
+    [[deprecated]] bool isGameOver() {
         return GameOver;
     }
 
@@ -359,11 +372,7 @@ public:
             m_maxSearchDepth++;
     }
 
-    int  ComputerAnziehender(int spalte) {
-        /*Wird ausgef?hrt, wenn der Spieler auf ein Shape geklcikt hat und es sich um
-    ein Computer-Mensch Spiel handelt. Es wird zun?chst gepr?ft, ob die Spalte, in die
-    der Spieler gesetzt hat noch nicht voll ist. Dann wird der Stein f?r den Spieler gestezt
-    und der Computer berechnet einen g?ltigen Zug. Die Berechnungs-Zeit wird gesoppt und ausgegeben!!!*/
+    /*int  ComputerAnziehender(int spalte) {
         int x;
         if (GameOver) //Falls das Spiel bereits vorbei ist, soll der Spieler keinen Zug mehr machen d?rfen
             return -1;
@@ -404,6 +413,86 @@ public:
             }
         }
         return 0;
+    }*/
+
+    // TODO: Make also a static function for this...
+    auto toArray() {
+      std::array<std::array<int32_t,6>,7> board;
+      for (int r = 5; r >= 0; r--) {
+        for (int c = 0; c < 7; c++) {
+          if (m_fieldP1 & m_cMasks[c][r]) {
+            board[c][r] = P_RED;
+          } else if (m_fieldP2 & m_cMasks[c][r]) {
+            board[c][r] = P_YELLOW;
+          } else {
+            board[c][r] = P_EMPTY;
+          }
+        }
+      }
+      return board;
+    }
+
+    auto toMoveSequence() {
+      std::vector<int32_t> sequence;
+      sequence.reserve(N_COLUMNS * N_ROWS);
+      auto board = toArray();
+      std::array<int32_t, N_COLUMNS> colHeight{};
+      for(auto i=0;i<N_COLUMNS;++i) {
+        colHeight[i] = m_columnHeight[i];
+      }
+      if(!toMoveSequence(board, colHeight,BrettCount() % 2 == 0 ? P_YELLOW : P_RED,sequence)) {
+        sequence = {};
+      }
+      //std::reverse(sequence.begin(), sequence.end());
+      return sequence;
+    }
+
+    static bool toMoveSequence(std::array<std::array<int32_t, N_ROWS>, N_COLUMNS>& board,
+                               std::array<int32_t, N_COLUMNS> colHeight,
+                               int32_t pToMove, // TODO: enum class
+                               std::vector<int32_t> &sequence) {
+      if ( std::all_of(colHeight.begin(), colHeight.end(), [](auto i){return i == 0;}) ) {
+        return true;
+      }
+
+      // Iterate through columns: First try to remove stones, which set free a stone of the other player
+      // This reduces the risk of ending up in a situation, where the stones of one player are "locked"
+      // beneath the stones of another player
+      auto pOther = (pToMove == P_YELLOW ? P_RED : P_YELLOW);
+      std::array<bool, N_COLUMNS> alreadyTried{};
+      for(size_t i=0UL;i<colHeight.size();++i) {
+        if(colHeight.at(i) <= 1) continue;
+
+        alreadyTried[i] = (board[i][colHeight[i]-1] == pOther && board[i][colHeight[i]-2] == pToMove);
+        if(alreadyTried[i]) {
+          board[i][colHeight[i]-1] = P_EMPTY;
+          colHeight[i]--;
+          auto success = toMoveSequence(board, colHeight, pOther, sequence);
+          colHeight[i]++;
+          board[i][colHeight[i]-1] = pOther;
+          if(success) {
+            sequence.push_back(i);
+            return success;
+          }
+        }
+      }
+
+      // Now try all other options...
+      for(size_t i=0UL;i<colHeight.size();++i) {
+        if(colHeight.at(i) < 1) continue;
+        if(!alreadyTried[i] && board[i][colHeight[i]-1] == pOther) {
+          board[i][colHeight[i]-1] = P_EMPTY;
+          colHeight[i]--;
+          auto success = toMoveSequence(board, colHeight, pOther, sequence);
+          colHeight[i]++;
+          board[i][colHeight[i]-1] = pOther;
+          if(success) {
+            sequence.push_back(i);
+            return success;
+          }
+        }
+      }
+      return false;
     }
 
     std::string toString() {
@@ -412,9 +501,9 @@ public:
         for (int r = 5; r >= 0; r--) {
             for (int c = 0; c < 7; c++) {
                 if (m_fieldP1 & m_cMasks[c][r]) {
-                    ss << "x";
-                } else if (m_fieldP2 & m_cMasks[c][r]) {
                     ss << "o";
+                } else if (m_fieldP2 & m_cMasks[c][r]) {
+                    ss << "x";
                 } else {
                     ss << ".";
                 }
@@ -2732,6 +2821,9 @@ public:
         return false;
     }
 
+    int getHeight(int column) {
+        return m_columnHeight[column];
+    }
 
     int SpielBeendenStellung(bool spieler) {
         /*Überprüft, ob der übergebene Spieler gewinnen könnte. Wenn er gewinnen
