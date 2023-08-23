@@ -144,9 +144,6 @@ private:
     short m_maxSearchDepth;
     short m_depthTie;
 
-    bool GameOver = false;
-    int Modus;
-
     int m_openingBook8Ply[BOOK_SIZE_8PLY + 1];
     struct OpeningBookElement {
         uint64_t m_positionP1;
@@ -165,18 +162,12 @@ private:
         short value;
     } *DRHASHE;
 
-
-
 public:
 
   // TODO: Implement == operator
   bool equals(const Connect4& c4) const {
         return m_fieldP1 == c4.m_fieldP1 && m_fieldP2 == m_fieldP2;
   }
-
-    [[deprecated]] bool isGameOver() {
-        return GameOver;
-    }
 
     bool isColumnFull(int column) {
         return m_columnHeight[column] == 6;
@@ -306,6 +297,7 @@ public:
 
     int BrettCount() {
         /*Zählt die Steine, die auf dem Spielfeld gesetzt wurden und gibt die Anzahl zurück*/
+        // TODO: constexpr for loop?
         return (m_columnHeight[0] + m_columnHeight[1] + m_columnHeight[2] + m_columnHeight[3] + m_columnHeight[4] + m_columnHeight[5] + m_columnHeight[6]);
     }
 
@@ -360,9 +352,8 @@ public:
         return (!(Feld1Gespiegelt & m_fieldP2) && !(Feld2Gespiegelt & m_fieldP1));
     }
 
+    /*
     void ModusEinrichten() {
-        /*Es wird, je nachdem was f?r ein Sender ?bergeben wird, einer der Vier Modi eingerichtet.
-    Es gibt die Modi Spieler-Spieler, Computer-Spieler, Spieler-Computer, Netzwerkspiel.*/
         Reset();        //Das Spielfeld wird zur?ckgesetzt.
         GameOver = false;
 
@@ -371,6 +362,7 @@ public:
         if (m_maxSearchDepth % 2 == 1)
             m_maxSearchDepth++;
     }
+     */
 
     /*int  ComputerAnziehender(int spalte) {
         int x;

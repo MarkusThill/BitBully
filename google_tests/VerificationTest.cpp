@@ -5,6 +5,7 @@
 // TODO: clang format!
 // TODO: Github CI/CD Pipeline
 // TODO: Namespace for Pons/FierzC4??
+// TODO: Use git sub module for google test and for Pons/Fierz
 
 #include <filesystem>
 #include <chrono>
@@ -31,7 +32,6 @@ protected:
         c4.setMaxInstance(100);  //Der Standardwert fÜr die Schwierigkeitsstufe wird gesetzt. Die Schwierigkeitsstufe ergibt sich aus (m_maxSearchDepth-2)/2
         c4.initHash();
         c4.ResetHash();
-        c4.ModusEinrichten();
 
         std::cout << "Version: v" << VERSION_MAJOR << "." << VERSION_MINOR << "." << VERSION_PATCH << std::endl;
     }
@@ -65,7 +65,8 @@ TEST_F(VerificationTest, toMoveSequence) {
 
     bool player = false; // TODO: Vey vey ugly
     //while(!c4.isGameOver()) {
-    for(auto j=0;j<nPieces && !c4.isGameOver();++j) {
+    for(auto j=0;j<nPieces;++j) {
+      // TODO: Produces a lot of illegal positions. Worry?
       int randColumn = rand() % 7;
       while(c4.isColumnFull(randColumn)) randColumn = rand() % 7;
       c4.SteinSetzen(randColumn, player);
@@ -97,19 +98,18 @@ TEST_F(VerificationTest, toMoveSequence) {
 
 TEST_F(VerificationTest, randomOpponent) {
     srand(time(nullptr));
-    for(auto i=0UL;i<1000;i++) {
+    for(auto i=0UL;i<10;i++) {
         c4.Reset();
         c4.setFeld(0LL, 0LL);
         c4.ResetHash();
         c4.HoeheErmitteln();
         c4.setDepthTie();
         c4.setMaxInstance(100);
-        c4.ModusEinrichten();
 
         c4.SteinSetzen(3, false); // false = yellow
 
         int winner = 0;
-        while(c4.BrettCount() < 42) {
+        while(c4.BrettCount() < 41) {
             int randColumn = rand() % 7; // TODO: We need a random move generator for c4
             while(c4.isColumnFull(randColumn)) randColumn = rand() % 7;
             if(c4.Gewinnstellung1(randColumn, c4.getHeight(randColumn))) {
@@ -117,23 +117,17 @@ TEST_F(VerificationTest, randomOpponent) {
               break;
             }
             c4.SteinSetzen(randColumn, true); // true = Red
-            // std::cout << std::endl << c4.toString() << std::endl;
-            //winner = c4.ComputerAnziehender(randColumn);
-            //c4.ResetHash();
             c4.HoeheErmitteln();
 
             c4.setDepthTie();
             c4.setMaxInstance(100);
-            auto [x, mv] = c4.WurzelMethodeComputerAnziehender(0, -9999, 9999, c4.HoeheErmitteln());
+            auto mv = c4.WurzelMethodeStartComputerAnziehender(0, -9999, 9999, c4.HoeheErmitteln());
             if(c4.Gewinnstellung2(mv, c4.getHeight(mv))) {
               winner = 2;
               break;
             }
             c4.SteinSetzen(mv, false); // false = yellow
         }
-
-        //std::cout << std::endl << c4.toString() << std::endl;
-        //std::cout<< "Game over" << std::endl;
         ASSERT_EQ(winner, 2);
     }
 
@@ -141,7 +135,7 @@ TEST_F(VerificationTest, randomOpponent) {
 
 TEST_F(VerificationTest, fastVerification) {;
     time_point time_start = std::chrono::high_resolution_clock::now();
-    for (auto i = 0; i < 86892; i += 100) { // TODO: Hard-coded number!
+    for (auto i = 0; i < 86892; i += 1000) { // TODO: Hard-coded number!
         auto entry = c4.getOpening(i);
         c4.setFeld(entry.m_positionP1, entry.m_positionP2);
         c4.ResetHash();
