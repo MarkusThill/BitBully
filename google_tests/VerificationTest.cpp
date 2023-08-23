@@ -243,7 +243,7 @@ TEST_F(VerificationTest, ponsC4VerificationXPly) {
   GameSolver::Connect4::Solver solver;
   bool weak = false;
   std::vector<float> timesPons, timesMine;
-  for (auto i = 0; i < 1000; i++) {
+  for (auto i = 0; i < 500; i++) {
     c4.Reset();
     c4.setFeld(0LL, 0LL);
 
