@@ -4183,7 +4183,6 @@ das übergebene Loch setzen würde*/
     return false;
   }
 
-
   auto getBoard() {
     return std::tuple<uint64_t, uint64_t>{m_fieldP2, m_fieldP1};
   }
@@ -11327,30 +11326,30 @@ ist.# Wenn ja, dann wird ein true zurückgeben, wenn nicht dann ein false*/
 #if false
                                                                                                                             short WurzelMethodeComputerAnziehender(short instance, short alpha, short beta, uint64_t ZKey)
 {
-	short x, y=0, rueck,xret, moves[8];
+	short x, y=0, rueck,xret, bMoves[8];
 	if(SpielBeenden2())
 			return SpielBeendenStellung(m_cPlayer2);
-	gMoves2(moves);
+	gMoves2(bMoves);
 	if(istSymmetrisch()) {
         short tmp[8];
-		for(x=0;moves[x] != -1;x++) {
-			if(moves[x] <4)
-				tmp[y++] = moves[x];
+		for(x=0;bMoves[x] != -1;x++) {
+			if(bMoves[x] <4)
+				tmp[y++] = bMoves[x];
 		}
 		for(x=0;x<y;x++)
-			moves[x] = tmp[x];
-		moves[x] = -1;
+			bMoves[x] = tmp[x];
+		bMoves[x] = -1;
 	}
 
-	for(x=0;moves[x]>-1;x++)
+	for(x=0;bMoves[x]>-1;x++)
     {
-		SteinSetzen(moves[x],m_cPlayer2);
-		rueck=SpielBaum1Generate(instance+1,alpha,beta,ZKey^m_cZobristKeys[1][moves[x]*6+m_columnHeight[moves[x]]-1], symMoeglich());
-		SteinLoeschen(moves[x],m_cPlayer2);
+		SteinSetzen(bMoves[x],m_cPlayer2);
+		rueck=SpielBaum1Generate(instance+1,alpha,beta,ZKey^m_cZobristKeys[1][bMoves[x]*6+m_columnHeight[bMoves[x]]-1], symMoeglich());
+		SteinLoeschen(bMoves[x],m_cPlayer2);
 		if(rueck>alpha)
         {
             alpha=rueck;
-            xret=moves[x];
+            xret=bMoves[x];
 		}
 		if(rueck == 1000)
         	return xret;

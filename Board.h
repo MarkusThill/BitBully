@@ -17,53 +17,33 @@ public:
   enum Player { P_EMPTY = 0, P_YELLOW = 1, P_RED = 2 };
   static const size_t N_VALID_BOARD_VALUES = 3; // P_EMPTY, P_YELLOW, P_RED
   using TBitBoard = uint64_t;
+  using TMovesCounter = int;
   using THeight = int;
   using THeightsArray = std::array<THeight, N_COLUMNS>;
   using TBoardArray = std::array<std::array<int32_t, N_ROWS>, N_COLUMNS>;
 
-  struct BitBoard {
-    TBitBoard bbYellow, bbRed;
-  } m_board;
-
   bool setBoard(const TBoardArray &board);
-
-  bool setBoard(TBitBoard bbYellow, TBitBoard bbRed);
-
-  inline bool setBoard(BitBoard bb) { return setBoard(bb.bbYellow, bb.bbRed); }
-
-  void setBoardFast(TBitBoard bbYellow, TBitBoard bbRed);
-
-  void setBoardFast(BitBoard bb);
 
   static THeightsArray getColumnHeights(const TBitBoard &bbYellow,
                                         const TBitBoard &bbRed);
 
-  inline static THeightsArray getColumnHeights(const BitBoard &bb) {
-    return getColumnHeights(bb.bbYellow, bb.bbRed);
-  }
-
   static TBoardArray toArray(const TBitBoard &bbYellow, const TBitBoard &bbRed);
 
-  static inline TBoardArray toArray(const BitBoard &bb) {
-    return toArray(bb.bbYellow, bb.bbRed);
-  }
-
-  inline TBoardArray toArray() { return toArray(m_board); }
-
-  inline auto toBitBoard() { return m_board; }
+  TBoardArray toArray();
 
   static bool isValid(const TBoardArray &board);
-
-  bool hasWinYellow();
-
-  bool hasWinRed();
 
   bool playMove(int column);
 
   bool hasWin();
 
 private:
-  THeightsArray m_columnHeight;
+  /* Having a bitboard that contains all stones and another one representing the
+   * current active player has the advantage that we do not have to do any
+   * branching to figure out which player's turn it is. After each move we
+   * simply apply an XOR-operation to switch players. */
+  TBitBoard m_bAll, m_bActive;
+  TMovesCounter m_movesLeft;
 
   // Private Functions
 private:

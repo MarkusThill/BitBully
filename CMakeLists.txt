@@ -8,7 +8,7 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 endif ()
 
 set(BB_PROJECT_INCS .)
-set(BB_PROJECT_FILES BitBully.cpp Board.cpp BoardCheckWins.cpp)
+set(BB_PROJECT_FILES BitBully.cpp Board.cpp)
 
 include_directories(SYSTEM .)
 

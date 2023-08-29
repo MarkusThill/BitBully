@@ -4,7 +4,7 @@
 
 namespace BitBully {
 
-Board::Board() : m_board{UINT64_C(0), UINT64_C(0)}, m_columnHeight{0} {}
+Board::Board() : {}
 
 bool Board::setBoard(const TBoardArray &board) {
   if (!isValid(board)) {
@@ -25,35 +25,10 @@ bool Board::setBoard(const TBoardArray &board) {
       }
     }
   }
-  m_board.bbYellow = bbYellow;
-  m_board.bbRed = bbRed;
-  m_columnHeight = getColumnHeights(m_board);
 
+  // TODO:
+  // ... set private members
   return true;
-}
-
-void Board::setBoardFast(TBitBoard bbYellow, TBitBoard bbRed) {
-  m_board = {bbYellow, bbRed};
-  m_columnHeight = getColumnHeights(m_board);
-}
-
-void Board::setBoardFast(Board::BitBoard bb) {
-  m_board = bb;
-  m_columnHeight = getColumnHeights(bb);
-}
-
-bool Board::setBoard(TBitBoard bbYellow, TBitBoard bbRed) {
-  Board bb;
-  bb.m_board.bbYellow = bbYellow;
-  bb.m_board.bbRed = bbRed;
-  bb.m_columnHeight = getColumnHeights(bbYellow, bbRed);
-
-  if (!isValid(bb.toArray())) {
-    return false;
-  }
-
-  *this = bb;
-  return false;
 }
 
 Board::THeightsArray Board::getColumnHeights(const Board::TBitBoard &bbYellow,
@@ -104,7 +79,7 @@ bool Board::isValid(const Board::TBoardArray &board) {
         columnComplete = true; // rest of column should be empty
       } else {
         if (columnComplete)
-          return false; // Unexpected yellow/red stone
+          return false; // Unexpected bYellow/red stone
       }
       valCounts[val]++;
     }
@@ -125,20 +100,15 @@ void Board::playMoveFast(int column) {
 }
 
 bool Board::playMove(int column) {
-  auto &h = m_columnHeight;
   if (column < 0 || column >= N_COLUMNS)
     return false;
-  if (h[column] >= N_ROWS)
-    return false;
-  THeight odd = (h[0] ^ h[1] ^ h[2] ^ h[3] ^ h[4] ^ h[5] ^ h[6]) & 1;
-  auto mask = getMask(column, h[column]);
-  if (odd) {
-    m_board.bbRed ^= mask;
-  } else {
-    m_board.bbYellow ^= mask;
-  }
-  h[column]++;
+
+  // Check, if column full...
+  // get column bit mask
+  // which board to set? bYellow or red?
   return true;
 }
+
+bool Board::hasWin() { return false; }
 
 } // namespace BitBully

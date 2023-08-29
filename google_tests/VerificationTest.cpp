@@ -106,7 +106,7 @@ TEST_F(VerificationTest, randomOpponent) {
     c4.setDepthTie();
     c4.setMaxInstance(100);
 
-    c4.SteinSetzen(3, false); // false = yellow
+    c4.SteinSetzen(3, false); // false = bYellow
 
     int winner = 0;
     while (c4.BrettCount() < 41) {
@@ -129,7 +129,7 @@ TEST_F(VerificationTest, randomOpponent) {
         winner = 2;
         break;
       }
-      c4.SteinSetzen(mv, false); // false = yellow
+      c4.SteinSetzen(mv, false); // false = bYellow
     }
     ASSERT_EQ(winner, 2);
   }
