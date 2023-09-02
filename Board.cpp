@@ -151,18 +151,17 @@ Board::TBitBoard Board::winningPositions(TBitBoard x) {
   // Vertical wins are fairly simple:
   TBitBoard wins = (x << 1) & (x << 2) & (x << 3);
 
-  for (auto bOff = COLUMN_BIT_OFFSET - 1; bOff <= COLUMN_BIT_OFFSET + 1;
-       ++bOff) {
+  for (auto b = COLUMN_BIT_OFFSET - 1; b <= COLUMN_BIT_OFFSET + 1; ++b) {
     // tokens shifted by 1 & 2 positions left, up-left and down-left (this
     // avoids some redundant computations below):
-    auto tmp = (x << bOff) & (x << 2 * bOff);
-    wins |= tmp & (x << 3 * bOff); // A = bcd
-    wins |= tmp & (x >> bOff);     // B = bcd
+    auto tmp = (x << b) & (x << 2 * b);
+    wins |= tmp & (x << 3 * b); // A = bcd
+    wins |= tmp & (x >> b);     // B = bcd
 
     // tokens shifted by 1 & 2 positions right, up-right and down-right:
-    tmp = (x >> bOff) & (x >> 2 * bOff);
-    wins |= tmp & (x << bOff);     // C = abd
-    wins |= tmp & (x >> 3 * bOff); // D = abc
+    tmp = (x >> b) & (x >> 2 * b);
+    wins |= tmp & (x << b);     // C = abd
+    wins |= tmp & (x >> 3 * b); // D = abc
   }
 
   return wins & BB_ALL_LEGAL_TOKENS;
@@ -189,6 +188,26 @@ Board::TBoardArray Board::toArray() {
     }
   }
   return board;
+}
+
+std::string Board::toString() {
+  std::stringstream ss;
+  ss << "\n  ";
+  auto arr = toArray();
+  for (int r = N_ROWS - 1; r >= 0; r--) {
+    for (int c = 0; c < N_COLUMNS; c++) {
+      if (arr[c][r] == P_RED) {
+        ss << "O  ";
+      } else if (arr[c][r] == P_YELLOW) {
+        ss << "X  ";
+      } else {
+        assert(arr[c][r] == P_EMPTY);
+        ss << "_  ";
+      }
+    }
+    ss << "\n  ";
+  }
+  return ss.str();
 }
 
 } // namespace BitBully

@@ -103,25 +103,7 @@ public:
 
   bool hasWin();
 
-  std::string toString() {
-    // TODO: Clean up. Messy. Magic numbers, etc...
-    std::stringstream ss;
-    ss << "\n";
-    auto arr = toArray();
-    for (int r = 5; r >= 0; r--) {
-      for (int c = 0; c < 7; c++) {
-        if (arr[c][r] == P_RED) {
-          ss << "o";
-        } else if (arr[c][r] == P_YELLOW) {
-          ss << "x";
-        } else {
-          ss << ".";
-        }
-      }
-      ss << "\n";
-    }
-    return ss.str();
-  }
+  std::string toString();
 
   inline TMovesCounter movesLeft() { return m_movesLeft; }
 
