@@ -7,6 +7,11 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 endif ()
 
+# Make sure that asserts only are evaluated in Debug-mode:
+if (NOT ${CMAKE_BUILD_TYPE} MATCHES "Debug")
+    add_compile_definitions(NDEBUG)
+endif ()
+
 set(BB_PROJECT_INCS .)
 set(BB_PROJECT_FILES BitBully.cpp Board.cpp)
 
