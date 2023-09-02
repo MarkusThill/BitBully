@@ -105,55 +105,6 @@ bool Board::isLegalMove(int column) {
   return !(m_bAll & columnMask & BB_TOP_ROW);
 }
 
-/*Board::TBitBoard Board::winningPositions(TBitBoard x) {
-  // Vertical wins are fairly simple:
-  TBitBoard wins = (x << 1) & (x << 2) & (x << 3);
-
-  // ====================================================================
-  // Horizontal Wins (move tokens by +-9 bits)
-  // tokens shifted by 1 & 2 columns to the left (this avoids some redundant
-  // computations below):
-  auto tmp = (x << COLUMN_BIT_OFFSET) & (x << 2 * COLUMN_BIT_OFFSET);
-  wins |= tmp & (x << 3 * COLUMN_BIT_OFFSET); // A = bcd
-  wins |= tmp & (x >> COLUMN_BIT_OFFSET);     // B = bcd
-
-  // tokens shifted by 1 & 2 columns to the right:
-  tmp = (x >> COLUMN_BIT_OFFSET) & (x >> 2 * COLUMN_BIT_OFFSET);
-  wins |= tmp & (x << COLUMN_BIT_OFFSET);     // C = abd
-  wins |= tmp & (x >> 3 * COLUMN_BIT_OFFSET); // D = abc
-  // ====================================================================
-
-  // ====================================================================
-  // Diagonal Wins 1: bottom-left to top-right (move tokens by +-8 bits)
-  // tokens shifted 1 & 2 positions towards the bottom-left:
-  constexpr auto DIAG_OFFSET1 = COLUMN_BIT_OFFSET - 1;
-  tmp = (x << DIAG_OFFSET1) & (x << 2 * DIAG_OFFSET1);
-  wins |= tmp & (x << 3 * DIAG_OFFSET1); // A = bcd
-  wins |= tmp & (x >> DIAG_OFFSET1);     // B = bcd
-
-  // tokens shifted by 1 & 2 positions towards the top-right:
-  tmp = (x >> DIAG_OFFSET1) & (x >> 2 * DIAG_OFFSET1);
-  wins |= tmp & (x << DIAG_OFFSET1);     // C = abd
-  wins |= tmp & (x >> 3 * DIAG_OFFSET1); // D = abc
-
-  // TODO: Not checked..
-  // ====================================================================
-  // Diagonal Wins 2: bottom-left to top-right (move tokens by +-8 bits)
-  // tokens shifted 1 & 2 positions towards the top-left:
-  constexpr auto DIAG_OFFSET2 = COLUMN_BIT_OFFSET + 1;
-  tmp = (x << DIAG_OFFSET2) & (x << 2 * DIAG_OFFSET2);
-  wins |= tmp & (x << 3 * DIAG_OFFSET2); // A = bcd
-  wins |= tmp & (x >> DIAG_OFFSET2);     // B = bcd
-
-  // tokens shifted by 1 & 2 positions towards the bottom-right:
-  tmp = (x >> DIAG_OFFSET2) & (x >> 2 * DIAG_OFFSET2);
-  wins |= tmp & (x << DIAG_OFFSET2);     // C = abd
-  wins |= tmp & (x >> 3 * DIAG_OFFSET2); // D = abc
-
-  return wins & BB_ALL_LEGAL_TOKENS;
-}
- */
-
 /*
  * Simplified case: Position x is a nibble (4 bit): x = abcd
  *
