@@ -23,19 +23,10 @@ public:
     assert(uint64_t_popcnt(moves) <= Board::N_COLUMNS);
     assert(uint64_t_popcnt(moves) > 0);
 
-    /*
-    std::vector<int> app{0, 1, 2, 3, 4, 5, 6};
-    assert(uint64_t_popcnt(moves) == b.isLegalMove(0) + b.isLegalMove(1) +
-                                         b.isLegalMove(2) + b.isLegalMove(3) +
-                                         b.isLegalMove(4) + b.isLegalMove(5) +
-                                         b.isLegalMove(6));
-                                         */
-    
     int value = -(1 << 10);
     while (moves && alpha < beta) {
       auto mvMask = moves - UINT64_C(1);
 
-      // auto newB = b;
       auto mv = ~mvMask & moves;
       assert(uint64_t_popcnt(mv) == 1);
 
@@ -46,17 +37,6 @@ public:
       moves &= mvMask;
     }
 
-    /*
-    value = -(1 << 17);
-    for (int i = 0; i < 7 && alpha < beta; ++i) {
-      if (b.isLegalMove(i)) {
-        auto newB = b;
-        assert(newB.playMove(i));
-        value = std::max(value, -negamax(newB, -beta, -alpha));
-        alpha = std::max(alpha, value);
-      }
-    }
-*/
     return value;
   }
 };
