@@ -167,8 +167,13 @@ Board::TBitBoard Board::winningPositions(TBitBoard x) {
   return wins & BB_ALL_LEGAL_TOKENS;
 }
 
-bool Board::hasWin() {
+bool Board::canWin() {
   return winningPositions(m_bActive) & (m_bAll + BB_BOTTOM_ROW);
+}
+
+bool Board::hasWon() {
+  // TODO: Check, if a player has exactly 4 stones in a row!
+  throw std::logic_error(__FUNCTION__);
 }
 
 Board::TBitBoard Board::generateMoves() {

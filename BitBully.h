@@ -10,7 +10,7 @@ class BitBully {
 public:
   int negamax(Board b, int alpha, int beta) {
     assert(alpha < beta);
-    if (b.hasWin()) {
+    if (b.canWin()) {
       return (b.movesLeft() + 1) / 2;
     }
 

@@ -132,7 +132,7 @@ public:
 
   bool playMove(int column);
 
-  bool hasWin();
+  bool canWin();
 
   std::string toString();
 
@@ -181,6 +181,7 @@ private:
     auto mvMask = (m_bAll + BB_BOTTOM_ROW) & columnMask;
     playMoveFastBB(mvMask);
   }
+  bool hasWon();
 };
 
 } // namespace BitBully

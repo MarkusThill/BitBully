@@ -24,7 +24,7 @@ protected:
   }
 };
 
-TEST_F(BoardTest, hasWin) {
+TEST_F(BoardTest, canWin) {
   using B = BitBully::Board;
   using time_point =
       std::chrono::time_point<std::chrono::high_resolution_clock>;
@@ -42,7 +42,7 @@ TEST_F(BoardTest, hasWin) {
       time1 += d;
 
       tstart = std::chrono::high_resolution_clock::now();
-      auto result2 = b.hasWin();
+      auto result2 = b.canWin();
       tend = std::chrono::high_resolution_clock::now();
       d = float(duration(tend - tstart).count());
       time2 += d;
