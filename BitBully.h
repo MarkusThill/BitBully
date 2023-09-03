@@ -11,7 +11,7 @@ public:
   int negamax(Board b, int alpha, int beta) {
     assert(alpha < beta);
     if (b.canWin()) {
-      return (b.movesLeft() + 1) / 2;
+      return (b.movesLeft() + 1) / 2; // TODO: b.movesLeft() suffices I think
     }
 
     if (!b.movesLeft()) {

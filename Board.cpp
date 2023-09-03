@@ -135,7 +135,8 @@ bool Board::isLegalMove(int column) {
  * A, B, C and, D. We have to check all 4 of them. However, in order to win, the
  * target position has to be empty and reachable. This has to be checked
  * subsequently.
- * TODO: inspired by John Tromp and Pascal Pons
+ * TODO: inspired by John Tromp:
+ * https://github.com/gamesolver/fhourstones/blob/master/Game.c
  */
 /* [ *,  *,  *,  *,  *,  *,  *]
  * [ *,  *,  *,  *,  *,  *,  *]
