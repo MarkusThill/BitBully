@@ -30,8 +30,7 @@ public:
       auto mv = ~mvMask & moves;
       assert(uint64_t_popcnt(mv) == 1);
 
-      value =
-          std::max(value, -negamax(b.playMoveFastonCopy(mv), -beta, -alpha));
+      value = std::max(value, -negamax(b.playMoveOnCopy(mv), -beta, -alpha));
       alpha = std::max(alpha, value);
 
       moves &= mvMask;

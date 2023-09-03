@@ -83,7 +83,7 @@ public:
     m_movesLeft--;
   }
 
-  Board inline playMoveFastonCopy(TBitBoard mv) {
+  Board inline playMoveOnCopy(TBitBoard mv) {
     Board b = *this;
     b.playMoveFastBB(mv);
     return b;
