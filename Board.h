@@ -69,9 +69,40 @@ public:
   static const size_t N_VALID_BOARD_VALUES = 3; // P_EMPTY, P_YELLOW, P_RED
   using TBitBoard = uint64_t;
   using TMovesCounter = int;
-  using THeight = int;
-  using THeightsArray = std::array<THeight, N_COLUMNS>;
   using TBoardArray = std::array<std::array<int32_t, N_ROWS>, N_COLUMNS>;
+
+  void inline playMoveFastBB(TBitBoard mv) {
+    assert(mv != BB_EMPTY); // TODO: Only in Debug mode
+    assert((mv & BB_ILLEGAL) == BB_EMPTY);
+    assert((m_bAll & mv) == BB_EMPTY);
+    m_bActive ^= m_bAll; // Already, switch player
+
+    // However, move is performed for current player (assuming, above switch is
+    // not yet performed)
+    m_bAll ^= mv; // bitwise xor and bitwise or are equivalent here
+    m_movesLeft--;
+  }
+
+  Board inline playMoveFastonCopy(TBitBoard mv) {
+    Board b = *this;
+    b.playMoveFastBB(mv);
+    return b;
+  }
+
+  TBitBoard generateMoves();
+
+  static constexpr int popCountBoard(uint64_t x) {
+    int count = 0;
+    while (x) {
+      count += static_cast<int>(x & 1);
+      x >>= 1;
+    }
+    return count;
+  }
+
+  int popCountBoard();
+
+  bool isLegalMove(int column);
 
 private:
   /* [ *,  *,  *,  *,  *,  *,  *]
@@ -126,7 +157,6 @@ private:
   TMovesCounter m_movesLeft;
 
   static TBitBoard winningPositions(TBitBoard x);
-  bool isLegalMove(int column);
 
   auto static inline constexpr getColumnMask(int column) {
     assert(column >= 0 && column < N_COLUMNS);
@@ -140,15 +170,6 @@ private:
     return UINT64_C(1) << (column * COLUMN_BIT_OFFSET + row);
   }
 
-  static constexpr int popCountBoard(uint64_t x) {
-    int count = 0;
-    while (x) {
-      count += static_cast<int>(x & 1);
-      x >>= 1;
-    }
-    return count;
-  }
-
   static inline constexpr Player opponent(Player p) {
     return static_cast<Player>(3 - p);
   }
@@ -159,17 +180,6 @@ private:
     assert(uint64_t_popcnt(columnMask) == N_ROWS);
     auto mvMask = (m_bAll + BB_BOTTOM_ROW) & columnMask;
     playMoveFastBB(mvMask);
-  }
-
-  void inline playMoveFastBB(TBitBoard mv) {
-    assert(mv != BB_EMPTY); // TODO: Only in Debug mode
-    assert((mv & BB_ILLEGAL) == BB_EMPTY);
-    m_bActive ^= m_bAll; // Already, switch player
-
-    // However, move is performed for current player (assuming, above switch is
-    // not yet performed)
-    m_bAll ^= mv; // bitwise xor and bitwise or are equivalent here
-    m_movesLeft--;
   }
 };
 

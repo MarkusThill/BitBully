@@ -7,7 +7,7 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 endif ()
 
 #cmake_policy(SET CMP0091 NEW)
-set(PROJECT_TESTS BoardTest.cpp VerificationTest.cpp)
+set(PROJECT_TESTS BoardTest.cpp VerificationTest.cpp BitBullyTest.cpp)
 
 IF (WIN32)
     message("Hallo, Windows!")

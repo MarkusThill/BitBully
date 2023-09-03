@@ -171,6 +171,10 @@ bool Board::hasWin() {
   return winningPositions(m_bActive) & (m_bAll + BB_BOTTOM_ROW);
 }
 
+Board::TBitBoard Board::generateMoves() {
+  return (m_bAll + BB_BOTTOM_ROW) & BB_ALL_LEGAL_TOKENS;
+}
+
 Board::TBoardArray Board::toArray() {
   TBoardArray board{0};
   auto activePlayer = (m_movesLeft & 1 ? P_RED : P_YELLOW);
@@ -209,5 +213,6 @@ std::string Board::toString() {
   }
   return ss.str();
 }
+int Board::popCountBoard() { return uint64_t_popcnt(m_bAll); }
 
 } // namespace BitBully

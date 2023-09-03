@@ -31,7 +31,7 @@ TEST_F(BoardTest, hasWin) {
   using duration = std::chrono::duration<float>;
   float time1 = 0.0F, time2 = 0.0F;
   uint64_t counter = UINT64_C(0);
-  for (auto i = 0; i < 5000000; i++) {
+  for (auto i = 0; i < 50000000; i++) {
     B b;
     GameSolver::Connect4::Position P;
     for (auto j = 0; j < 42; ++j) { // TODO: We need a random board generator...
@@ -53,12 +53,12 @@ TEST_F(BoardTest, hasWin) {
       while (!P.canPlay(randColumn))
         randColumn = rand() % 7;
 
+      ASSERT_TRUE(b.playMove(randColumn));
+      P.playCol(randColumn);
+
       if (P.isWinningMove(randColumn)) {
         break;
       }
-
-      ASSERT_TRUE(b.playMove(randColumn));
-      P.playCol(randColumn);
     }
   }
 
@@ -99,7 +99,6 @@ TEST_F(BoardTest, toString) {
   ASSERT_EQ(b.toArray(), arr);
   ASSERT_EQ(b.movesLeft(), 11);
   std::cout << b.toString();
-
 }
 
 TEST_F(BoardTest, setBoard1) { ASSERT_TRUE(false); }
