@@ -40,7 +40,7 @@ TEST_F(BitBullyTest, test1) {
     GameSolver::Connect4::Position P;
     std::cout << std::endl << "MoveSequence:";
     int j;
-    for (j = 0; j < 24; ++j) { // TODO: We need a random board generator...
+    for (j = 0; j < 20; ++j) { // TODO: We need a random board generator...
       int randColumn = rand() % 7;
       while (!P.canPlay(randColumn))
         randColumn = rand() % 7;
@@ -53,7 +53,7 @@ TEST_F(BitBullyTest, test1) {
       std::cout << (randColumn + 1);
     }
 
-    if (j != 24)
+    if (j != 20)
       continue;
 
     std::cout << b.toString();
