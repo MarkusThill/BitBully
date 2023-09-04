@@ -2,6 +2,7 @@
 #include <array>
 #include <cassert>
 #include <iostream>
+#include <map>
 
 namespace BitBully {
 
@@ -168,6 +169,30 @@ Board::TBitBoard Board::winningPositions(TBitBoard x) {
   return wins & BB_ALL_LEGAL_TOKENS;
 }
 
+Board::TBitBoard Board::findThreats() {
+
+  auto threats = winningPositions(m_bActive) & ~m_bAll;
+  // TODO: The pop couting function seems to matter a lot
+  int curNumThreats = uint64_t_popcnt(threats); // TODO: even/odd
+  auto threatMoves = UINT64_C(0);
+  auto moves = generateMoves();
+  while (moves) {
+    auto mvMask = moves - UINT64_C(1);
+    auto mv = ~mvMask & moves;
+
+    // TODO: What is happending here. Explain in detail, not to forget....
+    threats = winningPositions(m_bActive ^ mv) & ~(m_bAll ^ mv);
+    int numThreats = uint64_t_popcnt(threats); // TODO: even/odd
+    if (numThreats > curNumThreats) {
+      threatMoves ^= mv;
+    }
+
+    moves ^= mv;
+  }
+
+  return threatMoves;
+}
+
 bool Board::canWin() {
   return winningPositions(m_bActive) & (m_bAll + BB_BOTTOM_ROW);
 }
@@ -219,6 +244,15 @@ std::string Board::toString() {
   }
   return ss.str();
 }
+
 int Board::popCountBoard() { return uint64_t_popcnt(m_bAll); }
+
+Board Board::mirror() {
+  Board mB;
+  mB.m_movesLeft = m_movesLeft;
+  mB.m_bActive = mirrorBitBoard(m_bActive);
+  mB.m_bAll = mirrorBitBoard(m_bAll);
+  return mB;
+}
 
 } // namespace BitBully

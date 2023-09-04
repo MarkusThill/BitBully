@@ -11,9 +11,9 @@ public:
   static constexpr int LOG_2_SIZE = 20;
 
   struct Entry {
-    enum NodeType { EXACT, LOWER, UPPER };
+    enum NodeType { NONE = 0, EXACT = 1, LOWER = 2, UPPER = 3 };
     Board b;
-    NodeType flag;
+    NodeType flag{NONE};
     int value;
   };
 

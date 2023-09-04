@@ -5,8 +5,10 @@
 #include <cassert>
 #include <cstddef>
 #include <cstdint>
+#include <map>
 #include <sstream>
 
+// TODO: Move function definitions to .cpp file!
 // TODO: Measure the time differences. Is it really worth the hassle here???
 /*
  * // https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
@@ -31,7 +33,9 @@ c = (T)(v * ((T)~(T)0/255)) >> (sizeof(T) - 1) * CHAR_BIT; // count
 
 namespace BitBully {
 
+#ifndef CHAR_BIT
 constexpr int CHAR_BIT = 8;
+#endif
 
 static constexpr uint64_t getMask(std::initializer_list<int> bits) {
   uint64_t bb{UINT64_C(0)};
@@ -175,6 +179,10 @@ public:
 
   inline TMovesCounter movesLeft() { return m_movesLeft; }
 
+  Board mirror();
+
+  Board::TBitBoard findThreats();
+
 private:
   /* Having a bitboard that contains all stones and another one representing the
    * current active player has the advantage that we do not have to do any
@@ -201,6 +209,23 @@ private:
            (UINT64_C(1) << (column * COLUMN_BIT_OFFSET));
   }
 
+  auto static constexpr mirrorBitBoard(TBitBoard x) {
+    // move left-most column to right-most and vice versa:
+    x ^= ((x & getColumnMask(0)) >> 6 * COLUMN_BIT_OFFSET);
+    x ^= ((x & getColumnMask(6)) << 6 * COLUMN_BIT_OFFSET);
+
+    // Same with columns 1 & 5...
+    x ^= ((x & getColumnMask(1)) >> 4 * COLUMN_BIT_OFFSET);
+    x ^= ((x & getColumnMask(5)) << 4 * COLUMN_BIT_OFFSET);
+
+    // Same with columns 2 & 4
+    x ^= ((x & getColumnMask(2)) >> 2 * COLUMN_BIT_OFFSET);
+    x ^= ((x & getColumnMask(4)) << 2 * COLUMN_BIT_OFFSET);
+
+    // column 3 stays where it is...
+    return x;
+  }
+
   static inline constexpr uint64_t getMaskColRow(int column, int row) {
     assert(column >= 0 && column < N_COLUMNS);
     assert(row >= 0 && row < N_ROWS);
@@ -218,6 +243,7 @@ private:
     auto mvMask = (m_bAll + BB_BOTTOM_ROW) & columnMask;
     playMoveFastBB(mvMask);
   }
+
   bool hasWon();
 };
 
