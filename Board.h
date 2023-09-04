@@ -104,16 +104,28 @@ public:
 
   bool isLegalMove(int column);
 
-  uint64_t hash() {
-    uint64_t x = (m_bActive ^ (m_bActive >> 30)) * UINT64_C(0xbf58476d1ce4e5b9);
-    x ^= (m_bAll ^ (m_bAll >> 27)) * UINT64_C(0x94d049bb133111eb);
+  uint64_t hash(uint64_t x) {
+    x = (x ^ (x >> 30)) * UINT64_C(0xbf58476d1ce4e5b9);
+    x = (x ^ (x >> 27)) * UINT64_C(0x94d049bb133111eb);
     x = x ^ (x >> 31);
     return x;
   }
 
+  uint64_t hash() { return hash(m_bActive) ^ hash(m_bAll); }
+
+  static TBitBoard nextMove(TBitBoard allMoves) {
+    for (auto p : BB_MOVES_PRIO_LIST) {
+      TBitBoard pvMv = allMoves & p;
+      if (pvMv) {
+        return pvMv;
+      }
+    }
+    return allMoves;
+  }
+
   bool operator==(const Board &b) {
     bool equal = (b.m_bAll == m_bAll && b.m_bActive == m_bActive);
-    
+
     // Assert that if board is equal that also movesLeft are equal
     assert(equal && (b.m_movesLeft == m_movesLeft) || !equal);
     return equal;
@@ -137,6 +149,16 @@ private:
   static constexpr TBitBoard BB_ILLEGAL = illegalBitMask();
   static constexpr TBitBoard BB_ALL_LEGAL_TOKENS = ~BB_ILLEGAL;
   static constexpr TBitBoard BB_EMPTY{UINT64_C(0)};
+  static constexpr TBitBoard BB_MOVES_PRIO1 = getMask({29, 30});
+  static constexpr TBitBoard BB_MOVES_PRIO2 = getMask({31, 21, 20, 28, 38, 39});
+  static constexpr TBitBoard BB_MOVES_PRIO3 = getMask({40, 32, 22, 19, 27, 37});
+  static constexpr TBitBoard BB_MOVES_PRIO4 = getMask({47, 48, 11, 12});
+  static constexpr TBitBoard BB_MOVES_PRIO5 =
+      getMask({49, 41, 23, 13, 10, 18, 36, 46});
+  static constexpr TBitBoard BB_MOVES_PRIO6 = getMask({45, 50, 14, 9});
+  static constexpr auto BB_MOVES_PRIO_LIST = {BB_MOVES_PRIO1, BB_MOVES_PRIO2,
+                                              BB_MOVES_PRIO3, BB_MOVES_PRIO4,
+                                              BB_MOVES_PRIO5, BB_MOVES_PRIO6};
 
 public:
   bool setBoard(const TBoardArray &board);

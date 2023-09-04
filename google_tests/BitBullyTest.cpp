@@ -58,12 +58,23 @@ TEST_F(BitBullyTest, test1) {
 
     // std::cout << b.toString();
 
+    auto tstart = std::chrono::high_resolution_clock::now();
     int scorePons = solver.solve(P, false);
-    int scoreMine = bb.negamax(b, -100000, 100000);
+    auto tend = std::chrono::high_resolution_clock::now();
+    auto d = float(duration(tend - tstart).count());
+    time1 += d;
+
+    tstart = std::chrono::high_resolution_clock::now();
+    int scoreMine = bb.negamax(b, -100000, 100000, 0);
+    tend = std::chrono::high_resolution_clock::now();
+    d = float(duration(tend - tstart).count());
+    time2 += d;
+
     // std::cout << "Pons: " << scorePons << " Mine: " << scoreMine <<
     // std::endl;
     ASSERT_EQ(scorePons, scoreMine)
         << "Error: " << b.toString() << "Pons: " << scorePons
         << " Mine: " << scoreMine << std::endl;
   }
+  std::cout << "Time Pons: " << time1 << ". Time Mine: " << time2 << std::endl;
 }

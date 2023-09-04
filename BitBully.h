@@ -17,7 +17,7 @@ public:
 
   BitBully() : transpositionTable{USE_TRANSPOSITION_TABLE ? 19 : 0} {};
 
-  int negamax(Board b, int alpha, int beta) {
+  int negamax(Board b, int alpha, int beta, int depth) {
     assert(alpha < beta);
     if (b.canWin()) {
       return (b.movesLeft() + 1) / 2; // TODO: b.movesLeft() suffices I think
@@ -55,15 +55,18 @@ public:
 
     int value = -(1 << 10);
     while (moves && alpha < beta) {
-      auto mvMask = moves - UINT64_C(1);
+      auto nextMv = b.nextMove(moves);
 
-      auto mv = ~mvMask & moves;
+      auto mvMask = nextMv - UINT64_C(1);
+
+      auto mv = ~mvMask & nextMv;
       assert(uint64_t_popcnt(mv) == 1);
 
-      value = std::max(value, -negamax(b.playMoveOnCopy(mv), -beta, -alpha));
+      value = std::max(
+          value, -negamax(b.playMoveOnCopy(mv), -beta, -alpha, depth + 1));
       alpha = std::max(alpha, value);
 
-      moves &= mvMask;
+      moves &= ~mv;
     }
 
     if constexpr (USE_TRANSPOSITION_TABLE) {
