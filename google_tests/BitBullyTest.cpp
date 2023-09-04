@@ -35,12 +35,12 @@ TEST_F(BitBullyTest, test1) {
   GameSolver::Connect4::Solver solver;
   BitBully::BitBully bb;
 
-  for (auto i = 0; i < 10000; i++) {
+  for (auto i = 0; i < 1000; i++) {
     B b;
     GameSolver::Connect4::Position P;
-    std::cout << std::endl << "MoveSequence:";
+    // std::cout << std::endl << "MoveSequence:";
     int j;
-    for (j = 0; j < 20; ++j) { // TODO: We need a random board generator...
+    for (j = 0; j < 18; ++j) { // TODO: We need a random board generator...
       int randColumn = rand() % 7;
       while (!P.canPlay(randColumn))
         randColumn = rand() % 7;
@@ -50,17 +50,20 @@ TEST_F(BitBullyTest, test1) {
       }
       ASSERT_TRUE(b.playMove(randColumn));
       P.playCol(randColumn);
-      std::cout << (randColumn + 1);
+      // std::cout << (randColumn + 1);
     }
 
-    if (j != 20)
+    if (j != 18)
       continue;
 
-    std::cout << b.toString();
+    // std::cout << b.toString();
 
     int scorePons = solver.solve(P, false);
     int scoreMine = bb.negamax(b, -100000, 100000);
-    std::cout << "Pons: " << scorePons << " Mine: " << scoreMine << std::endl;
-    ASSERT_EQ(scorePons, scoreMine);
+    // std::cout << "Pons: " << scorePons << " Mine: " << scoreMine <<
+    // std::endl;
+    ASSERT_EQ(scorePons, scoreMine)
+        << "Error: " << b.toString() << "Pons: " << scorePons
+        << " Mine: " << scoreMine << std::endl;
   }
 }

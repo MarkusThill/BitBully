@@ -104,6 +104,21 @@ public:
 
   bool isLegalMove(int column);
 
+  uint64_t hash() {
+    uint64_t x = (m_bActive ^ (m_bActive >> 30)) * UINT64_C(0xbf58476d1ce4e5b9);
+    x ^= (m_bAll ^ (m_bAll >> 27)) * UINT64_C(0x94d049bb133111eb);
+    x = x ^ (x >> 31);
+    return x;
+  }
+
+  bool operator==(const Board &b) {
+    bool equal = (b.m_bAll == m_bAll && b.m_bActive == m_bActive);
+    
+    // Assert that if board is equal that also movesLeft are equal
+    assert(equal && (b.m_movesLeft == m_movesLeft) || !equal);
+    return equal;
+  }
+
 private:
   /* [ *,  *,  *,  *,  *,  *,  *]
    * [ *,  *,  *,  *,  *,  *,  *]

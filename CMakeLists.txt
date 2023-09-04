@@ -13,7 +13,7 @@ if (NOT ${CMAKE_BUILD_TYPE} MATCHES "Debug")
 endif ()
 
 set(BB_PROJECT_INCS .)
-set(BB_PROJECT_FILES BitBully.cpp Board.cpp)
+set(BB_PROJECT_FILES BitBully.cpp Board.cpp TranspositionTable.cpp)
 
 include_directories(SYSTEM .)
 
