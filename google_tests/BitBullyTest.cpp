@@ -65,7 +65,8 @@ TEST_F(BitBullyTest, test1) {
     time1 += d;
 
     tstart = std::chrono::high_resolution_clock::now();
-    int scoreMine = bb.negamax(b, -100000, 100000, 0);
+    // int scoreMine = bb.negamax(b, -100000, 100000, 0);
+    int scoreMine = bb.mtdf(b, 1);
     tend = std::chrono::high_resolution_clock::now();
     d = float(duration(tend - tstart).count());
     time2 += d;
@@ -119,8 +120,8 @@ TEST_F(BitBullyTest, test2) {
     time1 += d;
 
     tstart = std::chrono::high_resolution_clock::now();
-    int scoreMine = bb.negamax(b, -100000, 100000, 0);
-    // int scoreMine = bb.solve(b);
+    // int scoreMine = bb.negamax(b, -100000, 100000, 0);
+    int scoreMine = bb.mtdf(b, 1);
     tend = std::chrono::high_resolution_clock::now();
     d = float(duration(tend - tstart).count());
     time2 += d;

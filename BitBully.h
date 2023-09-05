@@ -17,25 +17,26 @@ public:
 
   BitBully() : transpositionTable{USE_TRANSPOSITION_TABLE ? 18 : 0} {};
 
-  // TODO: Seems to bring a lot!!!!
-  // Try mtdf algorithm
-  int solve(Board P) {
-    int min = -(P.movesLeft()) / 2;
-    int max = (P.movesLeft() + 1) / 2;
+  // TODO: firstGuess is a parameter which could be tuned!
+  int mtdf(Board b, int firstGuess) {
+    // MTD(f) algorithm by Aske Plaat: Plaat, Aske; Jonathan Schaeffer; Wim
+    // Pijls; Arie de Bruin (November 1996). "Best-first Fixed-depth Minimax
+    // Algorithms". Artificial Intelligence. 87 (1–2): 255–293.
+    // doi:10.1016/0004-3702(95)00126-3
+    auto g = firstGuess;
+    int upperBound = 100000;
+    int lowerBound = -100000;
 
-    while (min < max) { // iteratively narrow the min-max exploration window
-      int med = min + (max - min) / 2;
-      if (med <= 0 && min / 2 < med)
-        med = min / 2;
-      else if (med >= 0 && max / 2 > med)
-        med = max / 2;
-      int r = negamax(P, med, med + 1, 0);
-      if (r <= med)
-        max = r;
-      else
-        min = r;
+    while (lowerBound < upperBound) {
+      auto beta = std::max(g, lowerBound + 1);
+      g = negamax(b, beta - 1, beta, 0);
+      if (g < beta) {
+        upperBound = g;
+      } else {
+        lowerBound = g;
+      }
     }
-    return min;
+    return g;
   }
 
   int negamax(Board b, int alpha, int beta, int depth) {
