@@ -90,9 +90,10 @@ public:
     int value = -(1 << 10);
     // TODO: distinguish between even and odd threads. Prefer odd threats...
     while (moves && alpha < beta) {
-      auto nextMv = (threats ? b.nextMove(threats) : b.nextMove(moves));
-      auto mvMask = nextMv - UINT64_C(1);
-      auto mv = ~mvMask & nextMv;
+      auto mv = (threats ? b.nextMove(threats) : b.nextMove(moves));
+
+      // auto mvMask = nextMv - UINT64_C(1);
+      // auto mv = ~mvMask & nextMv;
       assert(uint64_t_popcnt(mv) == 1);
       auto moveValue = -negamax(b.playMoveOnCopy(mv), -beta, -alpha, depth + 1);
       value = std::max(value, moveValue);

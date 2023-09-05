@@ -108,23 +108,25 @@ public:
 
   bool isLegalMove(int column);
 
-  uint64_t hash(uint64_t x) {
+  static inline uint64_t hash(uint64_t x) {
     x = (x ^ (x >> 30)) * UINT64_C(0xbf58476d1ce4e5b9);
     x = (x ^ (x >> 27)) * UINT64_C(0x94d049bb133111eb);
     x = x ^ (x >> 31);
     return x;
   }
 
-  uint64_t hash() { return hash(m_bActive) ^ hash(m_bAll); }
+  inline uint64_t hash() { return hash(m_bActive) ^ hash(m_bAll); }
 
   static TBitBoard nextMove(TBitBoard allMoves) {
     for (auto p : BB_MOVES_PRIO_LIST) {
       TBitBoard pvMv = allMoves & p;
       if (pvMv) {
-        return pvMv;
+        allMoves = pvMv;
+        break;
       }
     }
-    return allMoves;
+    auto mvMask = allMoves - UINT64_C(1);
+    return ~mvMask & allMoves;
   }
 
   bool operator==(const Board &b) {
@@ -134,6 +136,10 @@ public:
     assert(equal && (b.m_movesLeft == m_movesLeft) || !equal);
     return equal;
   }
+
+  TBitBoard movesUnderOwnThreats();
+
+  // std::pair<unsigned long, unsigned long> findOddEvenThreats();
 
 private:
   /* [ *,  *,  *,  *,  *,  *,  *]
@@ -207,6 +213,15 @@ private:
     assert(column >= 0 && column < N_COLUMNS);
     return (UINT64_C(1) << (column * COLUMN_BIT_OFFSET + N_ROWS)) -
            (UINT64_C(1) << (column * COLUMN_BIT_OFFSET));
+  }
+
+  auto static inline constexpr getRowMask(int row) {
+    assert(row >= 0 && row < N_ROWS);
+    TBitBoard mask{0};
+    for (int i = 0; i < N_COLUMNS; ++i) {
+      mask |= (UINT64_C(1) << (i * COLUMN_BIT_OFFSET + row));
+    }
+    return mask;
   }
 
   auto static constexpr mirrorBitBoard(TBitBoard x) {
