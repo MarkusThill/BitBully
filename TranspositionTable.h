@@ -18,13 +18,11 @@ public:
   };
 
   TranspositionTable(int log_2_size = LOG_2_SIZE) {
-    tableSize = 1 << log_2_size;
+    tableSize = UINT64_C(1) << log_2_size;
     table = std::make_unique<Entry[]>(tableSize);
   }
 
-  Entry *get(Board b) { // TODO: pass by reference ???
-    return &table[b.hash() & (tableSize - 1)];
-  }
+  Entry *get(Board b) { return &table[b.hash() & (tableSize - 1)]; }
 
 private:
   std::unique_ptr<Entry[]> table;

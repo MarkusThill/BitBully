@@ -104,7 +104,7 @@ public:
     return count;
   }
 
-  int popCountBoard();
+  inline auto popCountBoard() const { return uint64_t_popcnt(m_bAll); }
 
   bool isLegalMove(int column);
 
@@ -115,7 +115,7 @@ public:
     return x;
   }
 
-  inline uint64_t hash() { return hash(m_bActive) ^ hash(m_bAll); }
+  inline uint64_t hash() const { return hash(m_bActive) ^ hash(m_bAll); }
 
   static TBitBoard nextMove(TBitBoard allMoves) {
     for (auto p : BB_MOVES_PRIO_LIST) {
@@ -125,8 +125,7 @@ public:
         break;
       }
     }
-    auto mvMask = allMoves - UINT64_C(1);
-    return ~mvMask & allMoves;
+    return lsb(allMoves);
   }
 
   bool operator==(const Board &b) {
@@ -137,7 +136,7 @@ public:
     return equal;
   }
 
-  TBitBoard movesUnderOwnThreats();
+  // TBitBoard movesUnderOwnThreats(TBitBoard moves);
 
   // std::pair<unsigned long, unsigned long> findOddEvenThreats();
 
@@ -145,12 +144,12 @@ private:
   /* [ *,  *,  *,  *,  *,  *,  *]
    * [ *,  *,  *,  *,  *,  *,  *]
    * [ *,  *,  *,  *,  *,  *,  *]
-   * [59, 50, 41, 32, 23, 14,  5],
-   * [58, 49, 40, 31, 22, 13,  4],
-   * [57, 48, 39, 30, 21, 12,  3],
-   * [56, 47, 38, 29, 20, 11,  2],
-   * [55, 46, 37, 28, 19, 10,  1],
-   * [54, 45, 36, 27, 18,  9,  0]
+   * [ 5, 14, 23, 32, 41, 50, 59],
+   * [ 4, 13, 22, 31, 40, 49, 58],
+   * [ 3, 12, 21, 30, 39, 48, 57],
+   * [ 2, 11, 20, 29, 38, 47, 56],
+   * [ 1, 10, 19, 28, 37, 46, 55],
+   * [ 0,  9, 18, 27, 36, 45, 54]
    */
   static constexpr auto BOTTOM_ROW_BITS = {54, 45, 36, 27, 18, 9, 0};
   static constexpr TBitBoard BB_BOTTOM_ROW = getMask(BOTTOM_ROW_BITS);
@@ -185,9 +184,43 @@ public:
 
   inline TMovesCounter movesLeft() { return m_movesLeft; }
 
-  Board mirror();
+  Board mirror() const;
 
-  Board::TBitBoard findThreats();
+  Board::TBitBoard findThreats(TBitBoard moves);
+
+  static inline TBitBoard lsb(TBitBoard x) {
+    auto mvMask = x - UINT64_C(1);
+    return ~mvMask & x;
+  }
+
+  // TODO: Adapt...
+  TBitBoard generateNonLosingMoves() {
+    // Mostly inspired by Pascal's Code
+    // This function might return an empty bitboard. In this case, the active
+    // player will lose, since all possible moves will lead to a defeat.
+    TBitBoard moves = generateMoves();
+    TBitBoard threats = winningPositions(m_bActive ^ m_bAll, true);
+    TBitBoard directThreats = threats & moves;
+    if (directThreats) {
+      // no way we can neutralize more than one direct threat...
+      moves = directThreats & (directThreats - 1) ? UINT64_C(0) : directThreats;
+    }
+
+    // No token under an opponents threat.
+    return moves & ~(threats >> 1);
+  }
+
+  TBitBoard removeMovesUnderOwnThreats(TBitBoard moves) {
+    // TODO: There is a possibility that this does not work
+    TBitBoard ownThreats = winningPositions(m_bActive, false);
+    return moves & ~(ownThreats >> 1);
+  }
+
+  TBitBoard doubleThreat(TBitBoard moves) {
+    TBitBoard ownThreats = winningPositions(m_bActive, false);
+    TBitBoard otherThreats = winningPositions(m_bActive ^ m_bAll, true);
+    return moves & (ownThreats >> 1) & (ownThreats >> 2) & ~(otherThreats >> 1);
+  }
 
 private:
   /* Having a bitboard that contains all stones and another one representing the
@@ -197,20 +230,21 @@ private:
   /* [ *,  *,  *,  *,  *,  *,  *]
    * [ *,  *,  *,  *,  *,  *,  *]
    * [ *,  *,  *,  *,  *,  *,  *]
-   * [59, 50, 41, 32, 23, 14,  5],
-   * [58, 49, 40, 31, 22, 13,  4],
-   * [57, 48, 39, 30, 21, 12,  3],
-   * [56, 47, 38, 29, 20, 11,  2],
-   * [55, 46, 37, 28, 19, 10,  1],
-   * [54, 45, 36, 27, 18,  9,  0]
+   * [ 5, 14, 23, 32, 41, 50, 59],
+   * [ 4, 13, 22, 31, 40, 49, 58],
+   * [ 3, 12, 21, 30, 39, 48, 57],
+   * [ 2, 11, 20, 29, 38, 47, 56],
+   * [ 1, 10, 19, 28, 37, 46, 55],
+   * [ 0,  9, 18, 27, 36, 45, 54]
    */
   TBitBoard m_bAll, m_bActive; // TODO: rename to m_bAllTokens, m_bActivePTokens
   TMovesCounter m_movesLeft;
 
-  static TBitBoard winningPositions(TBitBoard x);
+  static TBitBoard winningPositions(TBitBoard x, bool verticals);
 
   auto static inline constexpr getColumnMask(int column) {
     assert(column >= 0 && column < N_COLUMNS);
+    // auto rc = N_COLUMNS - column - 1;
     return (UINT64_C(1) << (column * COLUMN_BIT_OFFSET + N_ROWS)) -
            (UINT64_C(1) << (column * COLUMN_BIT_OFFSET));
   }
@@ -224,21 +258,35 @@ private:
     return mask;
   }
 
+  /* [ *,  *,  *,  *,  *,  *,  *]
+   * [ *,  *,  *,  *,  *,  *,  *]
+   * [ *,  *,  *,  *,  *,  *,  *]
+   * [ 5, 14, 23, 32, 41, 50, 59],
+   * [ 4, 13, 22, 31, 40, 49, 58],
+   * [ 3, 12, 21, 30, 39, 48, 57],
+   * [ 2, 11, 20, 29, 38, 47, 56],
+   * [ 1, 10, 19, 28, 37, 46, 55],
+   * [ 0,  9, 18, 27, 36, 45, 54]
+   */
   auto static constexpr mirrorBitBoard(TBitBoard x) {
+    // TODO: It should be possible to do it in x only (using XORS). But,
+    // premature optimization is the root of all evil. Try this later.
+    // TODO: Any difference using XOR instead of OR? (probably not)...
+    TBitBoard y{UINT64_C(0)};
     // move left-most column to right-most and vice versa:
-    x ^= ((x & getColumnMask(0)) >> 6 * COLUMN_BIT_OFFSET);
-    x ^= ((x & getColumnMask(6)) << 6 * COLUMN_BIT_OFFSET);
+    y |= ((x & getColumnMask(6)) >> 6 * COLUMN_BIT_OFFSET);
+    y |= ((x & getColumnMask(0)) << 6 * COLUMN_BIT_OFFSET);
 
     // Same with columns 1 & 5...
-    x ^= ((x & getColumnMask(1)) >> 4 * COLUMN_BIT_OFFSET);
-    x ^= ((x & getColumnMask(5)) << 4 * COLUMN_BIT_OFFSET);
+    y |= ((x & getColumnMask(5)) >> 4 * COLUMN_BIT_OFFSET);
+    y |= ((x & getColumnMask(1)) << 4 * COLUMN_BIT_OFFSET);
 
     // Same with columns 2 & 4
-    x ^= ((x & getColumnMask(2)) >> 2 * COLUMN_BIT_OFFSET);
-    x ^= ((x & getColumnMask(4)) << 2 * COLUMN_BIT_OFFSET);
+    y |= ((x & getColumnMask(4)) >> 2 * COLUMN_BIT_OFFSET);
+    y |= ((x & getColumnMask(2)) << 2 * COLUMN_BIT_OFFSET);
 
     // column 3 stays where it is...
-    return x;
+    return y | (x & getColumnMask(3));
   }
 
   static inline constexpr uint64_t getMaskColRow(int column, int row) {
