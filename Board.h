@@ -211,12 +211,6 @@ public:
     return moves & ~(threats >> 1);
   }
 
-  TBitBoard removeMovesUnderOwnThreats(TBitBoard moves) {
-    // TODO: There is a possibility that this does not work
-    TBitBoard ownThreats = winningPositions(m_bActive, false);
-    return moves & ~(ownThreats >> 1);
-  }
-
   TBitBoard doubleThreat(TBitBoard moves) {
     TBitBoard ownThreats = winningPositions(m_bActive, false);
     TBitBoard otherThreats = winningPositions(m_bActive ^ m_bAll, true);
