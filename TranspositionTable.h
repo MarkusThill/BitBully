@@ -12,7 +12,7 @@ public:
 
   struct Entry {
     enum NodeType { NONE = 0, EXACT = 1, LOWER = 2, UPPER = 3 };
-    Board b;
+    Board b{};
     NodeType flag{NONE};
     int value;
   };
@@ -22,7 +22,7 @@ public:
     table = std::make_unique<Entry[]>(tableSize);
   }
 
-  Entry *get(Board b) { return &table[b.hash() & (tableSize - 1)]; }
+  inline Entry *get(Board b) { return &table[b.hash() & (tableSize - 1)]; }
 
 private:
   std::unique_ptr<Entry[]> table;

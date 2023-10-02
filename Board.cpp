@@ -189,7 +189,32 @@ Board::TBitBoard Board::findThreats(TBitBoard moves) {
     // It seems that all kind of threats (immediate and indirect threats) are
     // beneficial for the move ordering!
     threats = winningPositions(m_bActive ^ mv, true) & ~(m_bAll ^ mv);
+
+    if (uint64_t_popcnt(threats & (moves ^ mv)) > 1)
+      return mv; // at least 2 immediate threats
+
     auto numThreats = uint64_t_popcnt(threats);
+    if (numThreats > curNumThreats) {
+      threatMoves ^= mv;
+    }
+    moves ^= mv;
+  }
+
+  return threatMoves;
+}
+
+Board::TBitBoard Board::findOddThreats(TBitBoard moves) {
+  constexpr auto ODD_ROWS = getRowMask(2) | getRowMask(4);
+  auto threats = winningPositions(m_bActive, true) & ~m_bAll;
+
+  // TODO: The pop couting function seems to matter a lot
+  auto curNumThreats = uint64_t_popcnt(threats & ODD_ROWS);
+  auto threatMoves = UINT64_C(0);
+  while (moves) {
+    auto mv = lsb(moves);
+
+    threats = winningPositions(m_bActive ^ mv, true) & ~(m_bAll ^ mv);
+    auto numThreats = uint64_t_popcnt(threats & ODD_ROWS);
     if (numThreats > curNumThreats) {
       threatMoves ^= mv;
     }

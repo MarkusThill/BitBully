@@ -140,6 +140,8 @@ public:
 
   // std::pair<unsigned long, unsigned long> findOddEvenThreats();
 
+  TBitBoard findOddThreats(TBitBoard moves);
+
 private:
   /* [ *,  *,  *,  *,  *,  *,  *]
    * [ *,  *,  *,  *,  *,  *,  *]
@@ -193,7 +195,6 @@ public:
     return ~mvMask & x;
   }
 
-  // TODO: Adapt...
   TBitBoard generateNonLosingMoves() {
     // Mostly inspired by Pascal's Code
     // This function might return an empty bitboard. In this case, the active
