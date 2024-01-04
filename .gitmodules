@@ -1,7 +1,6 @@
 [submodule "connect4"]
 	path = thirdParty/ponsC4
-	url = https://github.com/PascalPons/connect4.git
-	# url = git@github.com:PascalPons/connect4.git
+	url = git@github.com:PascalPons/connect4.git
 [submodule "thirdParty/googletest"]
 	path = thirdParty/googletest
 	url = https://github.com/google/googletest.git
