@@ -13,13 +13,13 @@ set(TP_PROJECT_FILES fierzC4/4inarow.cpp fierzC4/Agent4InARow.cpp)
 set(gtest_force_shared_crt on)
 
 add_subdirectory(googletest)
-add_subdirectory(ponsC4)
+add_subdirectory(connect4)
 
 set(TP_PROJECT_LIBS
         gtest
         gmock
         ponsc4
-        ) # gmock_main, gtest_main: Only, if no own main.cpp is provided for the Google Tests
+) # gmock_main, gtest_main: Only, if no own main.cpp is provided for the Google Tests
 
 include_directories(.
         ${gtest_SOURCE_DIR}/include
