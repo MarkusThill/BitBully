@@ -12,6 +12,12 @@ if (NOT ${CMAKE_BUILD_TYPE} MATCHES "Debug")
     add_compile_definitions(NDEBUG)
 endif ()
 
+# Added for windows (msvc)
+if(POLICY CMP0091)
+    cmake_policy(SET CMP0091 NEW)
+endif()
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
 set(BB_PROJECT_INCS .)
 set(BB_PROJECT_FILES BitBully.cpp Board.cpp TranspositionTable.cpp)
 
