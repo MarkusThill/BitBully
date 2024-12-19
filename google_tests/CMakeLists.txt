@@ -20,6 +20,7 @@ message("Hallo, rest of world!")
 set(PROJECT_LIBS BitBully third_party gtest_main gmock_main gtest gmock)  #  gtest_main: only required, if no main.cpp is used
 
 # 'Google_Tests_run' is the target name
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
 add_executable(Google_Tests_run ${PROJECT_TESTS} ${PROJECT_SOURCES})
 
 target_link_libraries(Google_Tests_run ${PROJECT_LIBS}) #stdc++fs
