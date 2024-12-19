@@ -17,7 +17,7 @@ IF (WIN32)
     if(POLICY CMP0091)
         cmake_policy(SET CMP0091 NEW)
     endif()
-    set_property(TARGET Google_Tests_run PROPERTY
+    set_property(TARGET third_party PROPERTY
             MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 ENDIF ()
 
