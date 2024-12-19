@@ -7,6 +7,7 @@
 #include <cstring>
 #include <algorithm>
 #include <memory>
+#include <vector>
 
 //#define EVALOFF
 //#define WINSEARCH
