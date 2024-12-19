@@ -11,8 +11,8 @@ set(PROJECT_TESTS BoardTest.cpp VerificationTest.cpp BitBullyTest.cpp)
 
 IF (WIN32)
     message("Hallo, Windows!")
-    set(gtest_force_shared_crt on) # This is important on Windows...
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT") # Only works for msvc
+    #set(gtest_force_shared_crt on) # This is important on Windows...
+    #set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT") # Only works for msvc
 ENDIF ()
 
 message("Hallo, rest of world!")

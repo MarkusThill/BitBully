@@ -10,7 +10,7 @@ set(TP_PROJECT_INCS .)
 set(TP_PROJECT_FILES fierzC4/4inarow.cpp fierzC4/Agent4InARow.cpp)
 
 # Do the following; Otherwise we get strange compile-time errors
-set(gtest_force_shared_crt on)
+# set(gtest_force_shared_crt on)
 
 add_subdirectory(googletest)
 add_subdirectory(connect4)
