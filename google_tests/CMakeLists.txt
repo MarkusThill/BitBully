@@ -12,6 +12,13 @@ set(PROJECT_TESTS BoardTest.cpp VerificationTest.cpp BitBullyTest.cpp)
 IF (WIN32)
     message("Hallo, Windows!")
     set(gtest_force_shared_crt on) # This is important on Windows...
+
+    # Added for windows (msvc)
+    if(POLICY CMP0091)
+        cmake_policy(SET CMP0091 NEW)
+    endif()
+    set_property(TARGET Google_Tests_run PROPERTY
+            MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 ENDIF ()
 
 message("Hallo, rest of world!")
