@@ -28,6 +28,7 @@ include_directories(.
         ${gmock_SOURCE_DIR})
 
 if (WIN32)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
     add_library(third_party INTERFACE)
     target_link_libraries(third_party INTERFACE ${TP_PROJECT_LIBS})
 else ()
