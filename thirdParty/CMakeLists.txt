@@ -2,6 +2,8 @@ project(third_party)
 set(CMAKE_CXX_STANDARD 17)
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+elseif (MSVC)
+    set(CMAKE_CXX_FLAGS_RELEASE "/O2")
 endif ()
 
 find_library(PONS_C4 NAMES ponsc4)
