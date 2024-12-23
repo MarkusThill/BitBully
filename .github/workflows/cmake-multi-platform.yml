@@ -83,4 +83,5 @@ jobs:
       run: |
         ls
         cd google_tests
+        ls
         gtest_run --gtest_output=xml:report.xml
