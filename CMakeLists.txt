@@ -21,7 +21,7 @@ endif()
 IF (WIN32)
     message("Hallo, Windows!")
     # set(gtest_force_shared_crt on) # This is important on Windows...
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT") # Only works for msvc
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT") # How to make /MD work? Only works for msvc
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 ENDIF ()
 
@@ -37,5 +37,3 @@ target_link_libraries(BitBully ${BB_PROJECT_LIBS})
 
 add_subdirectory(thirdParty)
 add_subdirectory(google_tests)
-
-# add_executable(BitBully main.cpp)

@@ -23,8 +23,8 @@ message("Hallo, rest of world!")
 set(PROJECT_LIBS BitBully third_party gtest_main gmock_main gtest gmock)  #  gtest_main: only required, if no main.cpp is used
 
 # 'Google_Tests_run' is the target name
-add_executable(Google_Tests_run ${PROJECT_TESTS} ${PROJECT_SOURCES})
+add_executable(gtest_run ${PROJECT_TESTS} ${PROJECT_SOURCES})
 
-target_link_libraries(Google_Tests_run ${PROJECT_LIBS}) #stdc++fs
+target_link_libraries(gtest_run ${PROJECT_LIBS}) #stdc++fs
 
 #target_compile_options(Google_Tests_run PRIVATE "-masm=intel")
