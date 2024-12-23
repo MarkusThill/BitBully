@@ -82,4 +82,4 @@ jobs:
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
       run: |
         ls
-        ./google_tests/gtest_run --gtest_output=xml:report.xml
+        google_tests/gtest_run --gtest_output=xml:report.xml
