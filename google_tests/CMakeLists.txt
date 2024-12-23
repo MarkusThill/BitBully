@@ -28,3 +28,13 @@ add_executable(gtest_run ${PROJECT_TESTS} ${PROJECT_SOURCES})
 target_link_libraries(gtest_run ${PROJECT_LIBS}) #stdc++fs
 
 #target_compile_options(Google_Tests_run PRIVATE "-masm=intel")
+
+# Get Targets in ${CMAKE_CURRENT_SOURCE_DIR}
+get_property(current_targets DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY BUILDSYSTEM_TARGETS)
+message("Current targets: ${current_targets}")
+foreach(TARGET ${current_targets})
+    set_target_properties(${TARGET} PROPERTIES
+            RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_BINARY_DIR}/google_tests/$<0:>
+            LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/google_tests/$<0:>
+            ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/google_tests/$<0:>)
+endforeach()

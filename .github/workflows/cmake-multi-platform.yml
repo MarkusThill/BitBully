@@ -82,7 +82,7 @@ jobs:
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
       run: |
         ls
+        ls google_tests/
         echo "${{ runner.os }}"
-        if [ "${{ runner.os }}" == "Linux" ]; then google_tests/gtest_run --gtest_output=xml:report.xml; fi
-        if [ "${{ runner.os }}" == "Windows" ]; google_tests/Release/gtest_run --gtest_output=xml:report.xml; fi
+        google_tests/gtest_run
         
