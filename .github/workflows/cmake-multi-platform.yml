@@ -80,4 +80,6 @@ jobs:
 
     - name: GoogleTest
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
-      run: ./gtest_run --gtest_output=xml:report.xml
+      run: |
+        ls
+        ./gtest_run --gtest_output=xml:report.xml
