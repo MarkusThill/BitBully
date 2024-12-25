@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+    # Add later again:
+    # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Werror -Wconversion -Wsign-conversion -Wshadow -Wfloat-equal -Wnon-virtual-dtor -Wold-style-cast -fsanitize=address,undefined,leak -flto")
 elseif (MSVC)
     set(CMAKE_CXX_FLAGS_RELEASE "/O2")
 endif ()
