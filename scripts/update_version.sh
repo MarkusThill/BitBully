@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the new version from Commitizen
-NEW_VERSION=$(cz version)
+NEW_VERSION=$(cat version.txt)
 
 # Extract major, minor, and patch versions
 IFS='.' read -r MAJOR MINOR PATCH <<< "$NEW_VERSION"
