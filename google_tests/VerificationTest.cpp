@@ -8,38 +8,39 @@
 // TODO: Namespace for Pons/FierzC4??
 // TODO: Use git sub module for google test and for Pons/Fierz
 
-#include "Solver.hpp"
-#include "cpart.cpp"
-#include "gtest/gtest.h"
 #include <chrono>
 #include <filesystem>
 #include <iostream>
 #include <numeric>
+
+#include "Solver.hpp"
+#include "cpart.cpp"
+#include "gtest/gtest.h"
 
 using time_point = std::chrono::time_point<std::chrono::high_resolution_clock>;
 using duration = std::chrono::duration<float>;
 namespace fs = std::filesystem;
 
 class VerificationTest : public ::testing::Test {
-
-protected:
+ protected:
   void SetUp() override {
     GTEST_SKIP() << "Skipping all tests in this file for now";
 
     // TODO: We need a constructor
-    c4.Reset(); // entleert das Spielfeld. Die Variablen m_fieldP1 und m_fieldP2
-                // werden auf 0 gesetzt.
-    c4.BuchLaden("../../book.dat"); // Die Er�ffnungsdatenbank wird direkt zu
-                                    // beginn aus der Datei eingelesen
+    c4.Reset();  // entleert das Spielfeld. Die Variablen m_fieldP1 und
+                 // m_fieldP2 werden auf 0 gesetzt.
+    c4.BuchLaden("../../book.dat");  // Die Er�ffnungsdatenbank wird direkt zu
+                                     // beginn aus der Datei eingelesen
     c4.BuchLaden2("../../data8ply.dat");
     c4.setMaxInstance(
-        100); // Der Standardwert fÜr die Schwierigkeitsstufe wird gesetzt. Die
-              // Schwierigkeitsstufe ergibt sich aus (m_maxSearchDepth-2)/2
+        100);  // Der Standardwert fÜr die Schwierigkeitsstufe wird gesetzt. Die
+               // Schwierigkeitsstufe ergibt sich aus (m_maxSearchDepth-2)/2
     c4.initHash();
     c4.ResetHash();
 
-    std::cout << "Version: v" << VERSION_MAJOR << "." << VERSION_MINOR << "."
-              << VERSION_PATCH << std::endl;
+    std::cout << "Version: v" << PROJECT_MAJOR_VERSION << "."
+              << PROJECT_MINOR_VERSION << "." << PROJECT_PATCH_VERSION
+              << std::endl;
   }
 
   void TearDown() override {}
@@ -66,13 +67,12 @@ TEST_F(VerificationTest, toMoveSequence) {
 
     auto nPieces = rand() % 42;
 
-    bool player = false; // TODO: Vey vey ugly
+    bool player = false;  // TODO: Vey vey ugly
     // while(!c4.isGameOver()) {
     for (auto j = 0; j < nPieces; ++j) {
       // TODO: Produces a lot of illegal positions. Worry?
       int randColumn = rand() % 7;
-      while (c4.isColumnFull(randColumn))
-        randColumn = rand() % 7;
+      while (c4.isColumnFull(randColumn)) randColumn = rand() % 7;
       c4.SteinSetzen(randColumn, player);
       player = !player;
     }
@@ -85,7 +85,7 @@ TEST_F(VerificationTest, toMoveSequence) {
     c4New.HoeheErmitteln();
     c4New.setDepthTie();
     c4New.setMaxInstance(100);
-    player = false; // TODO: Vey vey ugly
+    player = false;  // TODO: Vey vey ugly
     for (auto m : moveSequence) {
       c4New.SteinSetzen(m, player);
       player = !player;
@@ -108,19 +108,18 @@ TEST_F(VerificationTest, randomOpponent) {
     c4.setDepthTie();
     c4.setMaxInstance(100);
 
-    c4.SteinSetzen(3, false); // false = bYellow
+    c4.SteinSetzen(3, false);  // false = bYellow
 
     int winner = 0;
     while (c4.BrettCount() < 41) {
       int randColumn =
-          rand() % 7; // TODO: We need a random move generator for c4
-      while (c4.isColumnFull(randColumn))
-        randColumn = rand() % 7;
+          rand() % 7;  // TODO: We need a random move generator for c4
+      while (c4.isColumnFull(randColumn)) randColumn = rand() % 7;
       if (c4.Gewinnstellung1(randColumn, c4.getHeight(randColumn))) {
         winner = 1;
         break;
       }
-      c4.SteinSetzen(randColumn, true); // true = Red
+      c4.SteinSetzen(randColumn, true);  // true = Red
       c4.HoeheErmitteln();
 
       c4.setDepthTie();
@@ -131,7 +130,7 @@ TEST_F(VerificationTest, randomOpponent) {
         winner = 2;
         break;
       }
-      c4.SteinSetzen(mv, false); // false = bYellow
+      c4.SteinSetzen(mv, false);  // false = bYellow
     }
     ASSERT_EQ(winner, 2);
   }
@@ -140,7 +139,7 @@ TEST_F(VerificationTest, randomOpponent) {
 TEST_F(VerificationTest, fastVerification) {
   ;
   time_point time_start = std::chrono::high_resolution_clock::now();
-  for (auto i = 0; i < 86892; i += 50000) { // TODO: Hard-coded number!
+  for (auto i = 0; i < 86892; i += 50000) {  // TODO: Hard-coded number!
     auto entry = c4.getOpening(i);
     c4.setFeld(entry.m_positionP1, entry.m_positionP2);
     c4.ResetHash();
@@ -154,8 +153,7 @@ TEST_F(VerificationTest, fastVerification) {
     EXPECT_FALSE(x == -1000 && entry.m_value != 1) << "For position: " << i;
     EXPECT_FALSE(x == 0 && entry.m_value != 0) << "For position: " << i;
     EXPECT_FALSE(x != -1000 && x != 1000 && x != 0) << "For position: " << i;
-    if (i % 1000 == 0)
-      std::cout << "Done with " << i << std::endl;
+    if (i % 1000 == 0) std::cout << "Done with " << i << std::endl;
   }
   time_point time_end = std::chrono::high_resolution_clock::now();
 
@@ -165,7 +163,6 @@ TEST_F(VerificationTest, fastVerification) {
 }
 
 TEST_F(VerificationTest, ponsC4Verification8Ply) {
-
   time_point time_start = std::chrono::high_resolution_clock::now();
 
   // Pons C4 Setup
@@ -174,12 +171,12 @@ TEST_F(VerificationTest, ponsC4Verification8Ply) {
   bool weak = false;
   bool analyze = false;
   std::vector<float> timesPons, timesMine;
-  for (auto i = 0; i < 86892; i += 50000) { // TODO: Hard-coded number!
+  for (auto i = 0; i < 86892; i += 50000) {  // TODO: Hard-coded number!
     auto entry = c4.getOpening(i);
 
     // Get result from C4
     c4.setFeld(entry.m_positionP1, entry.m_positionP2);
-    c4.ResetHash(); // TODO: necessary?
+    c4.ResetHash();  // TODO: necessary?
     c4.HoeheErmitteln();
     c4.setDepthTie();
     c4.setMaxInstance(100);
@@ -217,7 +214,7 @@ TEST_F(VerificationTest, ponsC4Verification8Ply) {
           std::cout << std::endl;
         }*/
     // std::cout << "Running Pons: " << std::endl;
-    solver.reset(); // TODO: necessary/helpful?
+    solver.reset();  // TODO: necessary/helpful?
     tstart = std::chrono::high_resolution_clock::now();
     int score = solver.solve(P, weak);
     tend = std::chrono::high_resolution_clock::now();
@@ -235,8 +232,7 @@ TEST_F(VerificationTest, ponsC4Verification8Ply) {
     EXPECT_FALSE(x == -1000 && entry.m_value != 1) << "For position: " << i;
     EXPECT_FALSE(x == 0 && entry.m_value != 0) << "For position: " << i;
     EXPECT_FALSE(x != -1000 && x != 1000 && x != 0) << "For position: " << i;
-    if (i % 1000 == 0)
-      std::cout << "Done with " << i << std::endl;
+    if (i % 1000 == 0) std::cout << "Done with " << i << std::endl;
   }
   time_point time_end = std::chrono::high_resolution_clock::now();
 
@@ -251,7 +247,6 @@ TEST_F(VerificationTest, ponsC4Verification8Ply) {
 }
 
 TEST_F(VerificationTest, ponsC4VerificationXPly) {
-
   time_point time_start = std::chrono::high_resolution_clock::now();
   // using namespace GameSolver::Connect4;
   GameSolver::Connect4::Solver solver;
@@ -266,10 +261,10 @@ TEST_F(VerificationTest, ponsC4VerificationXPly) {
     bool player = false;
     std::vector<int> moveSequence;
     int j;
-    for (j = 0; j < nPieces; ++j) { // TODO: We need a random board generator...
+    for (j = 0; j < nPieces;
+         ++j) {  // TODO: We need a random board generator...
       int randColumn = rand() % 7;
-      while (c4.isColumnFull(randColumn))
-        randColumn = rand() % 7;
+      while (c4.isColumnFull(randColumn)) randColumn = rand() % 7;
       if (player && c4.Gewinnstellung1(randColumn, c4.getHeight(randColumn)))
         break;
       if (!player && c4.Gewinnstellung2(randColumn, c4.getHeight(randColumn)))
@@ -278,10 +273,8 @@ TEST_F(VerificationTest, ponsC4VerificationXPly) {
       player = !player;
       moveSequence.push_back(randColumn);
     }
-    if (j != nPieces)
-      continue;
-    if (c4.SpielBeenden2())
-      continue;
+    if (j != nPieces) continue;
+    if (c4.SpielBeenden2()) continue;
 
     ASSERT_EQ(moveSequence.size(), nPieces);
 
@@ -303,7 +296,7 @@ TEST_F(VerificationTest, ponsC4VerificationXPly) {
       P.playCol(mv);
     }
 
-    solver.reset(); // TODO: necessary/helpful?
+    solver.reset();  // TODO: necessary/helpful?
     tstart = std::chrono::high_resolution_clock::now();
     int score = solver.solve(P, weak);
     tend = std::chrono::high_resolution_clock::now();
@@ -444,8 +437,7 @@ TEST_F(VerificationTest, genGetColumnHeights) {
     int j;
     for (j = 0; j < nPieces; ++j) {
       int randColumn = rand() % 7;
-      while (c4.isColumnFull(randColumn))
-        randColumn = rand() % 7;
+      while (c4.isColumnFull(randColumn)) randColumn = rand() % 7;
       if (player && c4.Gewinnstellung1(randColumn, c4.getHeight(randColumn)))
         break;
       if (!player && c4.Gewinnstellung2(randColumn, c4.getHeight(randColumn)))
@@ -454,10 +446,8 @@ TEST_F(VerificationTest, genGetColumnHeights) {
       player = !player;
       moveSequence.push_back(randColumn);
     }
-    if (j != nPieces)
-      continue;
-    if (c4.SpielBeenden2())
-      continue;
+    if (j != nPieces) continue;
+    if (c4.SpielBeenden2()) continue;
 
     std::stringstream ss;
     for (int c = 0; c < 7; c++) {
@@ -490,8 +480,7 @@ TEST_F(VerificationTest, genSetBoard) {
     int j;
     for (j = 0; j < nPieces; ++j) {
       int randColumn = rand() % 7;
-      while (c4.isColumnFull(randColumn))
-        randColumn = rand() % 7;
+      while (c4.isColumnFull(randColumn)) randColumn = rand() % 7;
       if (player && c4.Gewinnstellung1(randColumn, c4.getHeight(randColumn)))
         break;
       if (!player && c4.Gewinnstellung2(randColumn, c4.getHeight(randColumn)))
@@ -500,10 +489,8 @@ TEST_F(VerificationTest, genSetBoard) {
       player = !player;
       moveSequence.push_back(randColumn);
     }
-    if (j != nPieces)
-      continue;
-    if (c4.SpielBeenden2())
-      continue;
+    if (j != nPieces) continue;
+    if (c4.SpielBeenden2()) continue;
 
     auto b = c4.toArray();
     std::stringstream ss;
@@ -512,12 +499,10 @@ TEST_F(VerificationTest, genSetBoard) {
       ss << "{";
       for (auto r = 0; r < 6; r++) {
         ss << (b[c][r] > 0 ? 3 - b[c][r] : 0);
-        if (r < 5)
-          ss << ", ";
+        if (r < 5) ss << ", ";
       }
       ss << "}";
-      if (c < 6)
-        ss << ", //\n";
+      if (c < 6) ss << ", //\n";
     }
     ss << "}};";
     std::cout << ss.str() << std::endl;
@@ -545,8 +530,7 @@ TEST_F(VerificationTest, genhasWinYellow) {
     int j;
     for (j = 0; j < nPieces; ++j) {
       int randColumn = rand() % 7;
-      while (c4.isColumnFull(randColumn))
-        randColumn = rand() % 7;
+      while (c4.isColumnFull(randColumn)) randColumn = rand() % 7;
       if (player && c4.Gewinnstellung1(randColumn, c4.getHeight(randColumn)))
         break;
       if (!player && c4.Gewinnstellung2(randColumn, c4.getHeight(randColumn))) {
@@ -559,8 +543,7 @@ TEST_F(VerificationTest, genhasWinYellow) {
     }
     // if (j != nPieces)
     //   continue;
-    if (!c4.SpielBeenden2())
-      continue;
+    if (!c4.SpielBeenden2()) continue;
 
     auto b = c4.toArray();
     std::stringstream ss;
@@ -569,12 +552,10 @@ TEST_F(VerificationTest, genhasWinYellow) {
       ss << "{";
       for (auto r = 0; r < 6; r++) {
         ss << (b[c][r] > 0 ? 3 - b[c][r] : 0);
-        if (r < 5)
-          ss << ", ";
+        if (r < 5) ss << ", ";
       }
       ss << "}";
-      if (c < 6)
-        ss << ", //\n";
+      if (c < 6) ss << ", //\n";
     }
     ss << "}};";
     std::cout << ss.str() << std::endl;
