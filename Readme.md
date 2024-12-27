@@ -35,7 +35,11 @@ source venv/bin/activate
 ## Install Dependencies
 
 ```bash
-pip install commitizen
+pip install -e .[dev,ci]
+```
+
+```bash
+pre-commit install --hook-type commit-msg --hook-type pre-push
 ```
 
 ## Commitizen

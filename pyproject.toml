@@ -25,12 +25,13 @@ dev = [
     "build",
     "twine",
     "readme_renderer[md]",
-    "keyrings.alt"
+    "keyrings.alt",
+    "pre-commit"
 ]
 
 ci = [
     "pytest", # For testing
-    "flake8", # For linting
+    "ruff", # For linting
 ]
 
 [build-system]
