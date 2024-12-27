@@ -37,7 +37,7 @@ TEST_F(BoardTest, getMask) {
     auto mask = BitBully::getMask(input);
     EXPECT_EQ(mask, expected) << "Failed for input: {" << [&input]() {
       std::ostringstream oss;
-      for (int i : input) oss << i << " ";
+      for (const int i : input) oss << i << " ";
       return oss.str();
     }() << "}";
   }
