@@ -1,4 +1,4 @@
 [tool.commitizen]
-version = "0.0.6" # Current version managed by Commitizen
+version = "0.0.7" # Current version managed by Commitizen
 version_files = ["version.h", "version.txt"] # Optional: if cz can directly bump it
 pre_bump_hooks = "./scripts/update_version.sh"
