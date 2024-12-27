@@ -1,4 +1,39 @@
+[project]
+name = "bitbully"
+version = "0.0.7"
+description = "A fast Connect-4 Solver for Python & C++"
+authors = [
+    { name = "Markus Thill", email = "markus.thill@github.com" }
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+dependencies = []  # Add Python dependencies required for your project
+
+[project.optional-dependencies]
+# Specify optional dependency groups
+dev = [
+    "commitizen", # Required for versioning
+    "pre-commit", # For managing Git hooks (optional)
+]
+
+ci = [
+    "pytest", # For testing
+    "flake8", # For linting
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+include = ["my_package*"]  # package names should match these glob patterns (["*"] by default)
+exclude = ["my_package.tests*"]  # exclude packages matching these glob patterns (empty by default)
+namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
+
 [tool.commitizen]
 version = "0.0.7" # Current version managed by Commitizen
 version_files = ["version.h", "version.txt"] # Optional: if cz can directly bump it
 pre_bump_hooks = "./scripts/update_version.sh"
+tag_format = "v$version"  # Tag format (e.g., v1.0.0)
+changelog_file = "CHANGELOG.md"  # File to store changelog (if needed)

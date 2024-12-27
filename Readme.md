@@ -5,7 +5,7 @@ gcc 13.1.0
 
 # Development (Debian-based Systems)
 
-## Commitizen
+## Install Python 3
 
 ```bash
 sudo apt install python3.11
@@ -38,8 +38,12 @@ source venv/bin/activate
 pip install commitizen
 ```
 
+## Commitizen
+
 ## Bump Version
 
 ```bash
+cz bump --dry-run # first perform a dry run
+cz bump
 git push origin tag x.x.x
 ```
