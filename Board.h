@@ -36,18 +36,22 @@ namespace BitBully {
 constexpr int CHAR_BIT = 8;
 #endif
 
-static constexpr uint64_t getMask(std::initializer_list<int> bits) {
+static constexpr uint64_t getMask(const std::initializer_list<int> bits) {
   uint64_t bb{UINT64_C(0)};
   for (const auto i : bits) {
+    // return 0, if index is out of range (0-63)
+    if (i < 0 || i >= 64) {
+      return UINT64_C(0);
+    }
     bb |= (UINT64_C(1) << i);
   }
   return bb;
 }
 
 static constexpr bool isIllegalBit(int bitIdx) {
-  constexpr int COLUMN_BIT_OFFSET = 9; // TODO: redundant in class below. Fix??
-  constexpr int N_ROWS = 6;            // TODO: redundant in class below. Fix??
-  constexpr int COLUMNS = 7;           // TODO: redundant in class below. Fix??
+  constexpr int COLUMN_BIT_OFFSET = 9;  // TODO: redundant in class below. Fix??
+  constexpr int N_ROWS = 6;             // TODO: redundant in class below. Fix??
+  constexpr int COLUMNS = 7;            // TODO: redundant in class below. Fix??
   return bitIdx >= COLUMN_BIT_OFFSET * COLUMNS ||
          (bitIdx % COLUMN_BIT_OFFSET) / N_ROWS;
 }
@@ -63,13 +67,13 @@ static constexpr uint64_t illegalBitMask() {
 class Board {
   friend class BoardTest;
 
-public:
+ public:
   Board();
   static constexpr int N_COLUMNS = 7;
   static constexpr int N_ROWS = 6;
   static constexpr int COLUMN_BIT_OFFSET = 9;
   enum Player { P_EMPTY = 0, P_YELLOW = 1, P_RED = 2 };
-  static constexpr size_t N_VALID_BOARD_VALUES = 3; // P_EMPTY, P_YELLOW, P_RED
+  static constexpr size_t N_VALID_BOARD_VALUES = 3;  // P_EMPTY, P_YELLOW, P_RED
   using TBitBoard = uint64_t;
   using TMovesCounter = int;
   using TBoardArray = std::array<std::array<int32_t, N_ROWS>, N_COLUMNS>;
@@ -78,11 +82,11 @@ public:
     assert(mv != BB_EMPTY);
     assert((mv & BB_ILLEGAL) == BB_EMPTY);
     assert((m_bAll & mv) == BB_EMPTY);
-    m_bActive ^= m_bAll; // Already, switch player
+    m_bActive ^= m_bAll;  // Already, switch player
 
     // However, move is performed for current player (assuming, above switch is
     // not yet performed)
-    m_bAll ^= mv; // bitwise xor and bitwise or are equivalent here
+    m_bAll ^= mv;  // bitwise xor and bitwise or are equivalent here
     m_movesLeft--;
   }
 
@@ -107,19 +111,18 @@ public:
 
   bool isLegalMove(int column);
 
-  static inline uint64_t hash(uint64_t x) {
+  static uint64_t hash(uint64_t x) {
     x = (x ^ (x >> 30)) * UINT64_C(0xbf58476d1ce4e5b9);
     x = (x ^ (x >> 27)) * UINT64_C(0x94d049bb133111eb);
     x = x ^ (x >> 31);
     return x;
   }
 
-  inline uint64_t hash() const { return hash(m_bActive) ^ hash(m_bAll); }
+  uint64_t hash() const { return hash(m_bActive) ^ hash(m_bAll); }
 
   static TBitBoard nextMove(TBitBoard allMoves) {
     for (auto p : BB_MOVES_PRIO_LIST) {
-      TBitBoard pvMv = allMoves & p;
-      if (pvMv) {
+      if (const TBitBoard pvMv = allMoves & p) {
         allMoves = pvMv;
         break;
       }
@@ -127,8 +130,8 @@ public:
     return lsb(allMoves);
   }
 
-  bool operator==(const Board &b) {
-    bool equal = (b.m_bAll == m_bAll && b.m_bActive == m_bActive);
+  bool operator==(const Board &b) const {
+    const bool equal = (b.m_bAll == m_bAll && b.m_bActive == m_bActive);
 
     // Assert that if board is equal that also movesLeft are equal
     assert(equal && (b.m_movesLeft == m_movesLeft) || !equal);
@@ -141,7 +144,7 @@ public:
 
   TBitBoard findOddThreats(TBitBoard moves);
 
-private:
+ private:
   /* [ *,  *,  *,  *,  *,  *,  *]
    * [ *,  *,  *,  *,  *,  *,  *]
    * [ *,  *,  *,  *,  *,  *,  *]
@@ -170,7 +173,7 @@ private:
                                               BB_MOVES_PRIO3, BB_MOVES_PRIO4,
                                               BB_MOVES_PRIO5, BB_MOVES_PRIO6};
 
-public:
+ public:
   bool setBoard(const TBoardArray &board);
 
   TBoardArray toArray();
@@ -216,7 +219,7 @@ public:
     return moves & (ownThreats >> 1) & (ownThreats >> 2) & ~(otherThreats >> 1);
   }
 
-private:
+ private:
   /* Having a bitboard that contains all stones and another one representing the
    * current active player has the advantage that we do not have to do any
    * branching to figure out which player's turn it is. After each move we
@@ -231,7 +234,8 @@ private:
    * [ 1, 10, 19, 28, 37, 46, 55],
    * [ 0,  9, 18, 27, 36, 45, 54]
    */
-  TBitBoard m_bAll, m_bActive; // TODO: rename to m_bAllTokens, m_bActivePTokens
+  TBitBoard m_bAll,
+      m_bActive;  // TODO: rename to m_bAllTokens, m_bActivePTokens
   TMovesCounter m_movesLeft;
 
   static TBitBoard winningPositions(TBitBoard x, bool verticals);
@@ -304,6 +308,6 @@ private:
   bool hasWon();
 };
 
-} // namespace BitBully
+}  // namespace BitBully
 
-#endif // XBITBULLY__BOARD_H_
+#endif  // XBITBULLY__BOARD_H_
