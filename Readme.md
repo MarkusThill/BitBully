@@ -25,14 +25,21 @@ sudo update-alternatives --config python
 sudo update-alternatives --config python3
 ```
 
-Install `pipx`:
+## Install & Activate virtualenv
 
 ```bash
-sudo apt install pipx
+python3 -m venv venv
+source venv/bin/activate
 ```
 
-Install commitizen:
+## Install Dependencies
 
 ```bash
-python -m pipx install commitizen
+pip install commitizen
+```
+
+## Bump Version
+
+```bash
+git push origin tag x.x.x
 ```
