@@ -1,12 +1,20 @@
 [project]
 name = "bitbully"
-version = "0.0.7"
+version = "0.0.8"
 description = "A fast Connect-4 Solver for Python & C++"
 authors = [
-    { name = "Markus Thill", email = "markus.thill@github.com" }
+    { name = "Markus Thill" }
+]
+maintainers = [
+    { name = "Markus Thill" }
 ]
 readme = "README.md"
 license = { file = "LICENSE" }
+keywords = ["egg", "bacon", "sausage", "tomatoes", "Lobster Thermidor"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python"
+]
 dependencies = []  # Add Python dependencies required for your project
 
 [project.optional-dependencies]
@@ -14,6 +22,10 @@ dependencies = []  # Add Python dependencies required for your project
 dev = [
     "commitizen", # Required for versioning
     "pre-commit", # For managing Git hooks (optional)
+    "build",
+    "twine",
+    "readme_renderer[md]",
+    "keyrings.alt"
 ]
 
 ci = [
@@ -25,15 +37,18 @@ ci = [
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+package-dir = { "" = "src" }
+
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)
-include = ["my_package*"]  # package names should match these glob patterns (["*"] by default)
-exclude = ["my_package.tests*"]  # exclude packages matching these glob patterns (empty by default)
+include = ["bitbully*"]  # package names should match these glob patterns (["*"] by default)
+exclude = ["bitbully.tests*"]  # exclude packages matching these glob patterns (empty by default)
 namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 
 [tool.commitizen]
 version = "0.0.8" # Current version managed by Commitizen
-version_files = ["version.h", "version.txt"] # Optional: if cz can directly bump it
+version_files = ["version.h", "version.txt", "src/bitbully/__init__.py"] # if cz can directly bump it
 pre_bump_hooks = "./scripts/update_version.sh"
 tag_format = "v$version"  # Tag format (e.g., v1.0.0)
 changelog_file = "CHANGELOG.md"  # File to store changelog (if needed)
