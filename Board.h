@@ -9,7 +9,6 @@
 #include <sstream>
 
 // TODO: Move function definitions to .cpp file!
-// TODO: Measure the time differences. Is it really worth the hassle here???
 /*
  * // https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
  * A generalization of the best bit counting method to integers of bit-widths
@@ -66,17 +65,17 @@ class Board {
 
 public:
   Board();
-  static const int N_COLUMNS = 7;
-  static const int N_ROWS = 6;
-  static const int COLUMN_BIT_OFFSET = 9;
+  static constexpr int N_COLUMNS = 7;
+  static constexpr int N_ROWS = 6;
+  static constexpr int COLUMN_BIT_OFFSET = 9;
   enum Player { P_EMPTY = 0, P_YELLOW = 1, P_RED = 2 };
-  static const size_t N_VALID_BOARD_VALUES = 3; // P_EMPTY, P_YELLOW, P_RED
+  static constexpr size_t N_VALID_BOARD_VALUES = 3; // P_EMPTY, P_YELLOW, P_RED
   using TBitBoard = uint64_t;
   using TMovesCounter = int;
   using TBoardArray = std::array<std::array<int32_t, N_ROWS>, N_COLUMNS>;
 
   void inline playMoveFastBB(TBitBoard mv) {
-    assert(mv != BB_EMPTY); // TODO: Only in Debug mode
+    assert(mv != BB_EMPTY);
     assert((mv & BB_ILLEGAL) == BB_EMPTY);
     assert((m_bAll & mv) == BB_EMPTY);
     m_bActive ^= m_bAll; // Already, switch player

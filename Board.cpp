@@ -7,11 +7,10 @@
 namespace BitBully {
 
 Board::Board()
-    : m_bActive{BB_EMPTY}, //
-      m_bAll{BB_EMPTY},    //
+    : m_bAll{BB_EMPTY},
+      m_bActive{BB_EMPTY},
       m_movesLeft{N_COLUMNS * N_ROWS} {
-  // TODO: where to put some general asserts???
-  // Some asserts that will be turned off in Release mode
+  // asserts will be turned off in Release mode
   assert(uint64_t_popcnt(BB_ALL_LEGAL_TOKENS) == N_COLUMNS * N_ROWS);
   assert(uint64_t_popcnt(BB_ILLEGAL) ==
          CHAR_BIT * sizeof(TBitBoard) - N_COLUMNS * N_ROWS);
