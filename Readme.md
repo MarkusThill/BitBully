@@ -42,6 +42,12 @@ pip install -e .[dev,ci]
 pre-commit install --hook-type commit-msg --hook-type pre-push
 ```
 
+You can run pre-commit before a commit with:
+
+```bash
+pre-commit run
+```
+
 ## Commitizen
 
 ### Bump Version
