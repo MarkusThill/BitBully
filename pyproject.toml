@@ -1,6 +1,6 @@
 [project]
 name = "bitbully"
-version = "0.0.9"
+version = "0.0.10"
 description = "A fast Connect-4 Solver for Python & C++"
 authors = [
     { name = "Markus Thill" }
@@ -49,7 +49,7 @@ namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 [tool.commitizen]
 name = "cz_conventional_commits"
 version_scheme = "semver"
-version = "0.0.9" # Current version managed by Commitizen
+version = "0.0.10" # Current version managed by Commitizen
 version_files = ["pyproject.toml", "version.h", "version.txt", "src/bitbully/__init__.py"] # if cz can directly bump it
 pre_bump_hooks = "./scripts/update_version.sh"
 tag_format = "v$version"  # Tag format (e.g., v1.0.0)

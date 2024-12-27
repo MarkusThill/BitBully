@@ -29,6 +29,12 @@
 - adjusted cmake files for msvc
 - added missing include in third-party lib
 
+## v0.0.10 (2024-12-27)
+
+### Fix
+
+- added pyproject.toml to commitizen version_files
+
 ## v0.0.9 (2024-12-27)
 
 ### Fix
