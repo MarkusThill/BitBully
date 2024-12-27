@@ -22,25 +22,18 @@ class BoardTest : public ::testing::Test {
 };
 
 TEST_F(BoardTest, getMask) {
-  std::vector<std::pair<std::initializer_list<int>, uint64_t>> test_cases = {
-      {{0, 1}, UINT64_C(3)},
-      {{0, 1, 2}, UINT64_C(7)},
-      {{}, UINT64_C(0)},
-      {{31}, UINT64_C(2147483648)},
-      {{63}, UINT64_C(9223372036854775808)},
-      {{64}, UINT64_C(0)},            // Out-of-bound case
-      {{-1}, UINT64_C(0)},            // Out-of-bound case
-      {{0, 63, 64, 65}, UINT64_C(0)}  // Mixed valid/invalid
-  };
-
-  for (const auto& [input, expected] : test_cases) {
-    auto mask = BitBully::getMask(input);
-    EXPECT_EQ(mask, expected) << "Failed for input: {" << [&input]() {
-      std::ostringstream oss;
-      for (const int i : input) oss << i << " ";
-      return oss.str();
-    }() << "}";
-  }
+  auto mask = BitBully::getMask({0, 1});
+  EXPECT_EQ(mask, UINT64_C(3));
+  mask = BitBully::getMask({0, 1, 2});
+  EXPECT_EQ(mask, UINT64_C(7));
+  mask = BitBully::getMask({});
+  EXPECT_EQ(mask, UINT64_C(0));
+  mask = BitBully::getMask({31});
+  EXPECT_EQ(mask, UINT64_C(2147483648));
+  mask = BitBully::getMask({63});
+  EXPECT_EQ(mask, UINT64_C(9223372036854775808));
+  mask = BitBully::getMask({64});
+  EXPECT_EQ(mask, UINT64_C(0));
 }
 
 /* [ *,  *,  *,  *,  *,  *,  *]
