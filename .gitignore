@@ -163,3 +163,11 @@
 /cmake-build-debug-1921686848/.cmake/api/v1/reply/toolchains-v1-ee5ca47e57a615ee224c.json
 /cmake-build-release-1921686848/.cmake/api/v1/reply/toolchains-v1-ee5ca47e57a615ee224c.json
 /.idea/.gitignore
+build/
+dist/
+_build/
+_generate/
+*.so
+*.py[cod]
+*.egg-info
+*env*

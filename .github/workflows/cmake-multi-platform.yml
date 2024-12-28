@@ -105,7 +105,6 @@ jobs:
       - name: Build
         # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
         run: |
-          # ls /home/runner/work/BitBully/BitBully/thirdParty/ponsC4
           cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }} --target gtest_run
 
       - name: Test
@@ -121,4 +120,8 @@ jobs:
           ls google_tests/
           echo "${{ runner.os }}"
           google_tests/gtest_run --gtest_output=xml:report.xml
-        
+
+      - name: Build PyBind11 Lib
+        # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
+        run: |
+          cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }} --target bitbully
