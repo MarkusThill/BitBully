@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(BitBully VERSION 1.0)
 
+
 set(CMAKE_CXX_STANDARD 17)
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
@@ -17,9 +18,9 @@ if (NOT ${CMAKE_BUILD_TYPE} MATCHES "Debug")
 endif ()
 
 # Added for windows (msvc)
-if(POLICY CMP0091)
+if (POLICY CMP0091)
     cmake_policy(SET CMP0091 NEW)
-endif()
+endif ()
 IF (WIN32)
     message("Hallo, Windows!")
     # set(gtest_force_shared_crt on) # This is important on Windows...
@@ -39,3 +40,10 @@ target_link_libraries(BitBully ${BB_PROJECT_LIBS})
 
 add_subdirectory(thirdParty)
 add_subdirectory(google_tests)
+
+# https://pybind11.readthedocs.io/en/stable/basics.html
+# https://pybind11.readthedocs.io/en/stable/compiling.html#compiling
+# https://pybind11.readthedocs.io/en/stable/compiling.html#cmake
+add_subdirectory(thirdParty/pybind11)
+pybind11_add_module(example example.cpp)
+install(TARGETS example DESTINATION .)

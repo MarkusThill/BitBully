@@ -4,3 +4,7 @@
 [submodule "thirdParty/connect4"]
 	path = thirdParty/connect4
 	url = https://github.com/MarkusThill/connect4.git
+[submodule "thirdParty/pybind11"]
+	path = thirdParty/pybind11
+	url = git@github.com:pybind/pybind11.git
+	branch = stable
