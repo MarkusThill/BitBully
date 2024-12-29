@@ -26,8 +26,7 @@ if(WIN32)
   message("Hallo, Windows!")
   # set(gtest_force_shared_crt on) # This is important on Windows...
   set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT") # How to make
-                                                                # /MD work? Only
-                                                                # works for msvc
+  # /MD work? Only works for msvc
   set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
 
@@ -47,5 +46,5 @@ add_subdirectory(google_tests)
 # https://pybind11.readthedocs.io/en/stable/compiling.html#compiling
 # https://pybind11.readthedocs.io/en/stable/compiling.html#cmake
 add_subdirectory(thirdParty/pybind11)
-pybind11_add_module(bitbully example.cpp)
-install(TARGETS bitbully DESTINATION .)
+pybind11_add_module(example example.cpp)
+install(TARGETS example DESTINATION .)

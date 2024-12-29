@@ -36,11 +36,20 @@ ci = [
 ]
 
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=42", "wheel", "cibuildwheel", "cmake>=3.15", "pybind11"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
+include-package-data = true  # Include additional non-Python files (e.g., libraries)
+
+# [tool.setuptools.package-data]
+# bitbully = [
+#    "*.so",
+#    "*.dll"
+#    "libs/windows/*.dll",
+#    "libs/macos/*.dylib",
+#]
 
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)

@@ -1,0 +1,2 @@
+graft thirdParty
+global-include CMakeLists.txt *.cmake *.cpp *.h
