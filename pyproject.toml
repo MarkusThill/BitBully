@@ -36,7 +36,7 @@ ci = [
 ]
 
 [build-system]
-requires = ["setuptools>=42", "wheel", "cibuildwheel", "cmake>=3.15", "pybind11"]
+requires = ["setuptools>=42", "wheel", "cibuildwheel", "cmake>=3.15", "scikit-build", "pybind11"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
@@ -50,6 +50,11 @@ include-package-data = true  # Include additional non-Python files (e.g., librar
 #    "libs/windows/*.dll",
 #    "libs/macos/*.dylib",
 #]
+
+# https://cibuildwheel.pypa.io/en/stable/options/#build-skip
+[tool.cibuildwheel]
+build = "cp310-* cp311-*"  # Only build for Python 3.10 and 3.11 (currently)
+skip = "pp*"         # Skip PyPy builds
 
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)
