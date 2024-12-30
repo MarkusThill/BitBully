@@ -73,4 +73,5 @@ jobs:
 
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
+          verbose: true
           repository-url: https://test.pypi.org/legacy/ # TODO: comment this line, once you want to push to the real pypi
