@@ -10,6 +10,7 @@ maintainers = [
     { name = "Markus Thill" }
 ]
 readme = "README.md"
+requires-python = ">=3.10"
 license = { file = "LICENSE" }
 keywords = ["connect-4", "solver", "perfect-playing", "opening book", "tree-search"]
 classifiers = [
@@ -18,6 +19,10 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
 ]
 dependencies = []  # Add Python dependencies required for your project
+
+[project.urls]
+Homepage = "https://github.com/MarkusThill/BitBully"
+Issues = "https://github.com/MarkusThill/BitBully/issues"
 
 [project.optional-dependencies]
 # Specify optional dependency groups

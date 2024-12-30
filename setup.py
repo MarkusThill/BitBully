@@ -10,7 +10,6 @@ class CMakeBuildExtension(build_ext):
         # Get the extension's build directory
         extdir = os.path.abspath(os.path.dirname(self.get_ext_fullpath(ext.name)))
         cfg = "Debug" if self.debug else "Release"
-        print("Schalom: ", cfg)
         cmake_args = [
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
             f"-DPYTHON_EXECUTABLE={sys.executable}",
@@ -38,9 +37,9 @@ class CMakeExtension(Extension):
 
 
 setup(
-    name="bitbully",
-    version="0.0.12",
-    packages=["bitbully"],
+    # name="bitbully",
+    # version="0.0.12",  # already defined in the pyproject.toml (might get rid of it here)
+    # packages=["bitbully"],
     ext_modules=[CMakeExtension("bitbully.example")],
     cmdclass={"build_ext": CMakeBuildExtension},
     zip_safe=False,
