@@ -4,6 +4,7 @@
 // #define CLAIMDRAW
 // #define CLAIMWIN
 // #define PROBCUT
+#pragma once
 
 #include <algorithm>
 #include <cstdio>
