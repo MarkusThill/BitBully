@@ -39,7 +39,7 @@ class CMakeExtension(Extension):
 
 setup(
     name="bitbully",
-    version="0.0.11",
+    version="0.0.12",
     packages=["bitbully"],
     ext_modules=[CMakeExtension("bitbully.example")],
     cmdclass={"build_ext": CMakeBuildExtension},
