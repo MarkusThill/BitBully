@@ -54,7 +54,7 @@ include-package-data = true  # Include additional non-Python files (e.g., librar
 
 # https://cibuildwheel.pypa.io/en/stable/options/#build-skip
 [tool.cibuildwheel]
-build = "cp310-* cp311-*"  # Only build for Python 3.10 and 3.11 (currently)
+build = "cp310-* cp311-* cp312-*"  # Only build for Python 3.10 and 3.11 (currently)
 skip = "pp* *win32*"         # Skip PyPy builds
 
 [tool.setuptools.packages.find]
