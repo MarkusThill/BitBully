@@ -1,3 +1,10 @@
+## v0.0.13 (2024-12-30)
+
+### Fix
+
+- minor cleanups
+- manually bumped version in setup.py
+
 ## v0.0.12 (2024-12-30)
 
 ### Fix
