@@ -4,19 +4,20 @@
 #ifndef BITBULLY__BITBULLY_H_
 #define BITBULLY__BITBULLY_H_
 
-#include "Board.h"
-#include "TranspositionTable.h"
 #include <iostream>
 #include <numeric>
 #include <vector>
 
+#include "Board.h"
+#include "TranspositionTable.h"
+
 namespace BitBully {
 class BitBully {
-private:
+ private:
   static bool constexpr USE_TRANSPOSITION_TABLE = true;
   static auto constexpr DEFAULT_LOG_TRANSPOSITION_SIZE = 22;
 
-public:
+ public:
   TranspositionTable transpositionTable;
 
   BitBully()
@@ -93,15 +94,14 @@ public:
     // lower bound of score as opponent cannot win next move:
     int min = -b.movesLeft() / 2;
     if (alpha < min) {
-      alpha = min; // is no need to keep alpha below our max possible score
-      if (alpha >= beta)
-        return alpha;
+      alpha = min;  // is no need to keep alpha below our max possible score
+      if (alpha >= beta) return alpha;
     }
     int max = (b.movesLeft() - 1) / 2;
     if (beta > max) {
-      beta = max; // there is no need to keep beta above our max possible score.
-      if (alpha >= beta)
-        return beta;
+      beta =
+          max;  // there is no need to keep beta above our max possible score.
+      if (alpha >= beta) return beta;
     }
 
     if (!b.movesLeft()) {
@@ -128,7 +128,7 @@ public:
             beta = std::min(beta, ttEntry->value);
           }
           if (alpha >= beta) {
-            return ttEntry->value; //
+            return ttEntry->value;  //
           }
         }
       } else if (depth < 22 && b.movesLeft() % 2) {
@@ -222,9 +222,7 @@ public:
     }*/
 
     if constexpr (USE_TRANSPOSITION_TABLE) {
-
-      if (!ttEntry)
-        return value;
+      if (!ttEntry) return value;
       assert(ttEntry != nullptr);
       // Do not allow high-depth nodes to override low-depth nodes (low-depth
       // nodes achieve higher cut-offs): Does not help!
@@ -248,6 +246,6 @@ public:
     return value;
   }
 };
-} // namespace BitBully
+}  // namespace BitBully
 
-#endif // BITBULLY__BITBULLY_H_
+#endif  // BITBULLY__BITBULLY_H_

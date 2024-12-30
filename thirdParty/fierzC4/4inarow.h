@@ -12,7 +12,7 @@
 #define COLUMNS 7
 #define MAXDEPTH 42
 #define FOURROW 69
-#define HASHSIZE_F    0x800000 // 32MB
+#define HASHSIZE_F 0x800000  // 32MB
 #define HASHSIZEAND 0x7FFFFF
 #define HASHITER 4
 #define THREATHASHSIZE 0x80000
@@ -35,17 +35,17 @@
 #define COLUMN6 0x3F0000000000L
 #define COLUMN7 0x3F000000000000L
 
-#define ROW1    0x01010101010101L
-#define ROW2    0x02020202020202L
-#define ROW3    0x04040404040404L
-#define ROW4    0x08080808080808L
-#define ROW5    0x10101010101010L
-#define ROW6    0x20202020202020L
-#define ROW7    0x40404040404040L
+#define ROW1 0x01010101010101L
+#define ROW2 0x02020202020202L
+#define ROW3 0x04040404040404L
+#define ROW4 0x08080808080808L
+#define ROW5 0x10101010101010L
+#define ROW6 0x20202020202020L
+#define ROW7 0x40404040404040L
 
-#define BOARD   0x3F3F3F3F3F3F3FL
+#define BOARD 0x3F3F3F3F3F3F3FL
 
-#define ODDROWS  0x15151515151515L
+#define ODDROWS 0x15151515151515L
 #define EVENROWS 0x2A2A2A2A2A2A2AL
 
 #define ENDGAMEWIN 100
@@ -61,28 +61,29 @@ typedef u_int64_t int64;
 typedef u_int64_t MOVE;
 
 typedef struct {
-    int64 yellow;
-    int64 red;
-    int color;
+  int64 yellow;
+  int64 red;
+  int color;
 } POSITION;
 
 typedef struct {
-    int n;
-    int64 fourrow[16];
+  int n;
+  int64 fourrow[16];
 } MOVEINFO;
 
 typedef struct {
-    int32 key;                    //32
-    int value: 12;                //44
-    unsigned int valuetype: 2;    //46
-    unsigned int depth: 8;        //54		// 14 bits = 16'000 for "effort"
-    unsigned int best: 4;        //58
-    unsigned int effort: 6;        // padding to 64
+  int32 key;                   // 32
+  int value : 12;              // 44
+  unsigned int valuetype : 2;  // 46
+  unsigned int depth : 8;      // 54		// 14 bits = 16'000 for "effort"
+  unsigned int best : 4;       // 58
+  unsigned int effort : 6;     // padding to 64
 } HASHENTRY;
 
-//int findmove(int board[7][6],int color,double maxtime, char out[255], int *play, int sw, int rl, int usebook, int gt, int dumb);
-int findmove(int board[7][6], int color, double maxtime, char *out, int *play, int sw, int rl, int usebook, int gt,
-             int evaltype);
+// int findmove(int board[7][6],int color,double maxtime, char out[255], int
+// *play, int sw, int rl, int usebook, int gt, int dumb);
+int findmove(int board[7][6], int color, double maxtime, char *out, int *play,
+             int sw, int rl, int usebook, int gt, int evaltype);
 
 int64 absolutehashkey(POSITION *p);
 
@@ -104,7 +105,8 @@ int fourinarow_newgame(POSITION *p);
 
 int fourinarow_printboard(POSITION *p);
 
-int iidnegamax(POSITION *p, int depth, int alpha, int beta, int *returnbestindex);
+int iidnegamax(POSITION *p, int depth, int alpha, int beta,
+               int *returnbestindex);
 
 int init(void);
 
@@ -130,13 +132,16 @@ int printmove(MOVE *m);
 
 void readlearnfile(void);
 
-int retrieve(POSITION *p, int depth, int *alpha, int *beta, int *value, int *bestindex);
+int retrieve(POSITION *p, int depth, int *alpha, int *beta, int *value,
+             int *bestindex);
 
-int search(POSITION *p, double time, char out[255], int searchwin, int theoretic);
+int search(POSITION *p, double time, char out[255], int searchwin,
+           int theoretic);
 
 void setthreats(POSITION *p);
 
-void store(POSITION *p, int depth, int alpha, int beta, int bestvalue, int bestindex/*, int32 effort*/);
+void store(POSITION *p, int depth, int alpha, int beta, int bestvalue,
+           int bestindex /*, int32 effort*/);
 
 int stupidevaluation(POSITION *p);
 
@@ -149,4 +154,3 @@ int threatretrieve(int64 yt, int64 rt, int *value);
 void undomove(POSITION *p, MOVE *m);
 
 int windowsearch(POSITION *p, int depth, int guess);
-

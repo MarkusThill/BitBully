@@ -1,4 +1,5 @@
 #include "Board.h"
+
 #include <array>
 #include <cassert>
 #include <iostream>
@@ -7,9 +8,7 @@
 namespace BitBully {
 
 Board::Board()
-    : m_bAll{BB_EMPTY},
-      m_bActive{BB_EMPTY},
-      m_movesLeft{N_COLUMNS * N_ROWS} {
+    : m_bAll{BB_EMPTY}, m_bActive{BB_EMPTY}, m_movesLeft{N_COLUMNS * N_ROWS} {
   // asserts will be turned off in Release mode
   assert(uint64_t_popcnt(BB_ALL_LEGAL_TOKENS) == N_COLUMNS * N_ROWS);
   assert(uint64_t_popcnt(BB_ILLEGAL) ==
@@ -59,10 +58,9 @@ bool Board::isValid(const Board::TBoardArray &board) {
       if (val != P_RED && val != P_YELLOW && val != P_EMPTY) {
         return false;
       } else if (val == P_EMPTY) {
-        columnComplete = true; // rest of column should be empty
+        columnComplete = true;  // rest of column should be empty
       } else {
-        if (columnComplete)
-          return false; // Unexpected bYellow/red stone
+        if (columnComplete) return false;  // Unexpected bYellow/red stone
       }
       valCounts[val]++;
     }
@@ -90,8 +88,7 @@ bool Board::isValid(const Board::TBoardArray &board) {
  */
 bool Board::playMove(int column) {
   // Check, if column full...
-  if (!isLegalMove(column))
-    return false;
+  if (!isLegalMove(column)) return false;
 
   playMoveFast(column);
 
@@ -99,8 +96,7 @@ bool Board::playMove(int column) {
 }
 
 bool Board::isLegalMove(int column) {
-  if (column < 0 || column >= N_COLUMNS)
-    return false;
+  if (column < 0 || column >= N_COLUMNS) return false;
 
   TBitBoard columnMask = getColumnMask(column);
   columnMask -= (UINT64_C(1) << (column * COLUMN_BIT_OFFSET));
@@ -159,20 +155,19 @@ Board::TBitBoard Board::winningPositions(TBitBoard x, bool verticals) {
     // tokens shifted by 1 & 2 positions left, up-left and down-left (this
     // avoids some redundant computations below):
     auto tmp = (x << b) & (x << 2 * b);
-    wins |= tmp & (x << 3 * b); // A = bcd
-    wins |= tmp & (x >> b);     // B = bcd
+    wins |= tmp & (x << 3 * b);  // A = bcd
+    wins |= tmp & (x >> b);      // B = bcd
 
     // tokens shifted by 1 & 2 positions right, up-right and down-right:
     tmp = (x >> b) & (x >> 2 * b);
-    wins |= tmp & (x << b);     // C = abd
-    wins |= tmp & (x >> 3 * b); // D = abc
+    wins |= tmp & (x << b);      // C = abd
+    wins |= tmp & (x >> 3 * b);  // D = abc
   }
 
   return wins & BB_ALL_LEGAL_TOKENS;
 }
 
 Board::TBitBoard Board::findThreats(TBitBoard moves) {
-
   auto threats = winningPositions(m_bActive, true) & ~m_bAll;
 
   // TODO: The pop couting function seems to matter a lot
@@ -190,7 +185,7 @@ Board::TBitBoard Board::findThreats(TBitBoard moves) {
     threats = winningPositions(m_bActive ^ mv, true) & ~(m_bAll ^ mv);
 
     if (uint64_t_popcnt(threats & (moves ^ mv)) > 1)
-      return mv; // at least 2 immediate threats
+      return mv;  // at least 2 immediate threats
 
     auto numThreats = uint64_t_popcnt(threats);
     if (numThreats > curNumThreats) {
@@ -326,4 +321,4 @@ Board Board::mirror() const {
   return mB;
 }
 
-} // namespace BitBully
+}  // namespace BitBully

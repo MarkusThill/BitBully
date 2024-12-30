@@ -14,12 +14,8 @@
 #include "gtest/gtest.h"
 
 class BitBullyTest : public ::testing::Test {
-
-protected:
-  void SetUp() override
-  {
-    GTEST_SKIP() << "Skipping this file for now";
-  }
+ protected:
+  void SetUp() override { GTEST_SKIP() << "Skipping this file for now"; }
 
   void TearDown() override {}
 
@@ -43,10 +39,9 @@ TEST_F(BitBullyTest, test1) {
     GameSolver::Connect4::Position P;
     // std::cout << std::endl << "MoveSequence:";
     int j;
-    for (j = 0; j < 16; ++j) { // TODO: We need a random board generator...
+    for (j = 0; j < 16; ++j) {  // TODO: We need a random board generator...
       int randColumn = rand() % 7;
-      while (!P.canPlay(randColumn))
-        randColumn = rand() % 7;
+      while (!P.canPlay(randColumn)) randColumn = rand() % 7;
 
       if (P.isWinningMove(randColumn)) {
         break;
@@ -56,8 +51,7 @@ TEST_F(BitBullyTest, test1) {
       // std::cout << (randColumn + 1);
     }
 
-    if (j != 16)
-      continue;
+    if (j != 16) continue;
 
     // std::cout << b.toString();
 
@@ -99,10 +93,9 @@ TEST_F(BitBullyTest, test2) {
     GameSolver::Connect4::Position P;
     // std::cout << std::endl << "MoveSequence:";
     int j;
-    for (j = 0; j < 12; ++j) { // TODO: We need a random board generator...
+    for (j = 0; j < 12; ++j) {  // TODO: We need a random board generator...
       int randColumn = rand() % 7;
-      while (!P.canPlay(randColumn))
-        randColumn = rand() % 7;
+      while (!P.canPlay(randColumn)) randColumn = rand() % 7;
 
       if (P.isWinningMove(randColumn)) {
         break;
@@ -112,8 +105,7 @@ TEST_F(BitBullyTest, test2) {
       // std::cout << (randColumn + 1);
     }
 
-    if (j != 12)
-      continue;
+    if (j != 12) continue;
 
     // std::cout << b.toString();
 
@@ -153,10 +145,9 @@ TEST_F(BitBullyTest, test3) {
     GameSolver::Connect4::Position P;
     // std::cout << std::endl << "MoveSequence:";
     int j;
-    for (j = 0; j < 12; ++j) { // TODO: We need a random board generator...
+    for (j = 0; j < 12; ++j) {  // TODO: We need a random board generator...
       int randColumn = rand() % 7;
-      while (!P.canPlay(randColumn))
-        randColumn = rand() % 7;
+      while (!P.canPlay(randColumn)) randColumn = rand() % 7;
 
       if (P.isWinningMove(randColumn)) {
         break;
@@ -166,8 +157,7 @@ TEST_F(BitBullyTest, test3) {
       // std::cout << (randColumn + 1);
     }
 
-    if (j != 12)
-      continue;
+    if (j != 12) continue;
 
     // std::cout << b.toString();
 

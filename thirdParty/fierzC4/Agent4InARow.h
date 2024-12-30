@@ -1,11 +1,11 @@
 #ifndef BITBULLY_AGENT4INAROW_H
 #define BITBULLY_AGENT4INAROW_H
 
+#include <algorithm>
 #include <cstdio>
 #include <cstdlib>
-#include <ctime>
 #include <cstring>
-#include <algorithm>
+#include <ctime>
 #include <memory>
 #include <vector>
 
@@ -23,7 +23,7 @@
 #define COLUMNS 7
 #define MAXDEPTH 42
 #define FOURROW 69
-#define HASHSIZE_F    0x800000 // 32MB
+#define HASHSIZE_F 0x800000  // 32MB
 #define HASHSIZEAND 0x7FFFFF
 #define HASHITER 4
 #define THREATHASHSIZE 0x80000
@@ -46,17 +46,17 @@
 #define COLUMN6 0x3F0000000000L
 #define COLUMN7 0x3F000000000000L
 
-#define ROW1    0x01010101010101L
-#define ROW2    0x02020202020202L
-#define ROW3    0x04040404040404L
-#define ROW4    0x08080808080808L
-#define ROW5    0x10101010101010L
-#define ROW6    0x20202020202020L
-#define ROW7    0x40404040404040L
+#define ROW1 0x01010101010101L
+#define ROW2 0x02020202020202L
+#define ROW3 0x04040404040404L
+#define ROW4 0x08080808080808L
+#define ROW5 0x10101010101010L
+#define ROW6 0x20202020202020L
+#define ROW7 0x40404040404040L
 
-#define BOARD   0x3F3F3F3F3F3F3FL
+#define BOARD 0x3F3F3F3F3F3F3FL
 
-#define ODDROWS  0x15151515151515L
+#define ODDROWS 0x15151515151515L
 #define EVENROWS 0x2A2A2A2A2A2A2AL
 
 #define ENDGAMEWIN 100
@@ -66,7 +66,6 @@
 #define EVAL_DUMB 2
 
 class Agent4InARow {
-
   typedef unsigned int int32;
 
   typedef u_int64_t int64;
@@ -85,60 +84,68 @@ class Agent4InARow {
   } MOVEINFO;
 
   typedef struct {
-    int32 key;                    //32
-    int value: 12;                //44
-    unsigned int valuetype: 2;    //46
-    unsigned int depth: 8;        //54		// 14 bits = 16'000 for "effort"
-    unsigned int best: 4;        //58
-    unsigned int effort: 6;        // padding to 64
+    int32 key;                   // 32
+    int value : 12;              // 44
+    unsigned int valuetype : 2;  // 46
+    unsigned int depth : 8;      // 54		// 14 bits = 16'000 for "effort"
+    unsigned int best : 4;       // 58
+    unsigned int effort : 6;     // padding to 64
   } HASHENTRY;
 
-// 4inarowBB.c:
-//
-// a bitboard based 4inarow program
-// 2002 Martin Fierz
-//
-// implemented:		- bitboard architecture using 64-bit integers (seems reasonably fast)
-//					- hashtable
-//					- move ordering:	- static from center to edge
-//										- hash move
-//										- killer move
-//					- check for a move which wins first instead of calculating moves, and recognize forced moves
-//					- added a very simplistic evaluation
-//					- threats are updated incrementally
-//					- zobrist hashkey is updated incrementally
-//					- implemented recursive threat eval
-//					- implemented IID
-//					- implemented multiple hashprobes
-//					- using windowed search
-//					- hash threats for more speed
+  // 4inarowBB.c:
+  //
+  // a bitboard based 4inarow program
+  // 2002 Martin Fierz
+  //
+  // implemented:		- bitboard architecture using 64-bit integers
+  // (seems reasonably fast)
+  //					- hashtable
+  //					- move ordering:	- static from
+  // center to edge
+  //										-
+  // hash move
+  //										-
+  // killer move
+  //					- check for a move which wins first
+  // instead of calculating moves, and recognize forced moves
+  //					- added a very simplistic evaluation
+  //					- threats are updated incrementally
+  //					- zobrist hashkey is updated
+  // incrementally
+  //					- implemented recursive threat eval
+  //					- implemented IID
+  //					- implemented multiple hashprobes
+  //					- using windowed search
+  //					- hash threats for more speed
 
-// benchmarks:	- with 4M entries in hashtable, 4inarowBB solves 4inarow in 5.4 hours.
-//				- with 4M entries in HT, it takes 617s to see that after 4-3 6 is best move (with value +100)
-//				- with 32M entries, it takes 3.4 (12185s) hours to solve 4inarow
+  // benchmarks:	- with 4M entries in hashtable, 4inarowBB solves 4inarow
+  // in 5.4 hours.
+  //				- with 4M entries in HT, it takes 617s to see
+  // that after 4-3 6 is best move (with value +100)
+  //				- with 32M entries, it takes 3.4 (12185s) hours
+  // to solve 4inarow
 
+  // TODO: learning
 
-// TODO: learning
+  // typedef unsigned int (*funcptr)();  // funcptr is synonym for "pointer
+  //  	to function returning int"
+  /*typedef INT (WINAPI* PROC1)(int *board, int color, double maxtime, char
+  str[1024], int *playnow, int info, int unused, struct CBmove *move); typedef
+  INT (WINAPI* PROC3)(char str[255]); typedef unsigned int (WINAPI*
+  PROC4)(void); typedef unsigned int (WINAPI* PROC7)(int key); typedef INT
+  (WINAPI* PROC6)(int *board, int color, int from, int to, struct CBmove *move);
+  typedef INT (WINAPI* COMMANDPROC)(char command[256], char reply[1024]);
+  //enginecommand PROC1 getmove=0,getmove1=0,getmove2=0; COMMANDPROC
+  enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
-//typedef unsigned int (*funcptr)();  // funcptr is synonym for "pointer
-// 	to function returning int"
-/*typedef INT (WINAPI* PROC1)(int *board, int color, double maxtime, char str[1024], int *playnow, int info, int unused, struct CBmove *move);
-typedef INT (WINAPI* PROC3)(char str[255]);
-typedef unsigned int (WINAPI* PROC4)(void);
-typedef unsigned int (WINAPI* PROC7)(int key);
-typedef INT (WINAPI* PROC6)(int *board, int color, int from, int to, struct CBmove *move);
-typedef INT (WINAPI* COMMANDPROC)(char command[256], char reply[1024]); //enginecommand
-PROC1 getmove=0,getmove1=0,getmove2=0;
-COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
+  //#define min(X,Y) (((X) < (Y)) ? (X) : (Y))
+  //#define max(X,Y) (((X) > (Y)) ? (X) : (Y))
 
-//#define min(X,Y) (((X) < (Y)) ? (X) : (Y))
-//#define max(X,Y) (((X) > (Y)) ? (X) : (Y))
-
-  typedef int(Agent4InARow::*proc1)(POSITION *p);
+  typedef int (Agent4InARow::*proc1)(POSITION *p);
 
   proc1 eval = 0;
 
-// globals
+  // globals
   int64 nodes;
   int realdepth;
   int maxdepth;
@@ -160,18 +167,19 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
   int32 historycount;
 #endif
 
-// 5 13 21 29 37 45 53
-// 4 12 20 28 36 44 52
-// 3 11 19 27 35 43 51
-// 2 10 18 26 34 42 50
-// 1  9 17 25 33 41 49
-// 0  8 16 24 32 40 48
+  // 5 13 21 29 37 45 53
+  // 4 12 20 28 36 44 52
+  // 3 11 19 27 35 43 51
+  // 2 10 18 26 34 42 50
+  // 1  9 17 25 33 41 49
+  // 0  8 16 24 32 40 48
 
   MOVE killer[MAXDEPTH];
 
   MOVEINFO moveinfo[64];
 
-  int64 fourrow[FOURROW]; // FOURROW = 69; these are bitmasks for possible 4-in-a-row's
+  int64 fourrow[FOURROW];  // FOURROW = 69; these are bitmasks for possible
+                           // 4-in-a-row's
 
   int64 hashxors[3][64];
 
@@ -180,11 +188,19 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
   FILE *fp;
 
-  int isinit = 0; //MT: removed static
+  int isinit = 0;  // MT: removed static
 
   // Added by Markus:
-  //levell = GAMETHEORETIC;
-  enum levels { BEGINNER, INTERMEDIATE, EXPERT, MASTER, INFLEVEL, GAMETHEORETIC, SEARCHWIN } levell;
+  // levell = GAMETHEORETIC;
+  enum levels {
+    BEGINNER,
+    INTERMEDIATE,
+    EXPERT,
+    MASTER,
+    INFLEVEL,
+    GAMETHEORETIC,
+    SEARCHWIN
+  } levell;
   double maxtime;
   int level;
   int leveltime[7] = {0, 8, 30, 300, 8600000, 86000000, 86000000};
@@ -194,20 +210,18 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
   int usethebook = 1;
 
-
-// search engine below
+  // search engine below
  public:
-
   Agent4InARow() {
     ht = std::make_unique<HASHENTRY[]>(HASHSIZE_F + HASHITER);
     threatht = std::make_unique<HASHENTRY[]>(THREATHASHSIZE);
 
     level = leveltime[GAMETHEORETIC];
-    maxtime = ((double) level) / 10.0;
+    maxtime = ((double)level) / 10.0;
   }
 
   int getColorToMoveFromBoard(int board[7][6]) {
-    int sum=0;
+    int sum = 0;
     for (auto i = 0UL; i < 7; ++i) {
       for (auto j = 0UL; j < 6; ++j) {
         sum += board[i][j];
@@ -220,7 +234,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
   std::vector<int> getGTvalues() {
     std::vector<int> p;
-    for(const auto& gt : gt_values) {
+    for (const auto &gt : gt_values) {
       p.emplace_back(gt);
     }
     return p;
@@ -228,21 +242,14 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
   inline int findmove(int board[7][6], char *out) {
     int color = getColorToMoveFromBoard(board);
-    int playnow = 0; // TODO: What is this?
-    int randomize = 0; // How does this affect the results?
-    return findmove(board, color, maxtime, out, &playnow, searchwin, randomize, usethebook, gametheoretic, evaltype);
+    int playnow = 0;    // TODO: What is this?
+    int randomize = 0;  // How does this affect the results?
+    return findmove(board, color, maxtime, out, &playnow, searchwin, randomize,
+                    usethebook, gametheoretic, evaltype);
   }
 
-  int findmove(int board[7][6],
-               int color,
-               double maxtime,
-               char *out,
-               int *play,
-               int sw,
-               int rl,
-               int usebook,
-               int gt,
-               int evaltype) {
+  int findmove(int board[7][6], int color, double maxtime, char *out, int *play,
+               int sw, int rl, int usebook, int gt, int evaltype) {
     // findmove is the entry point to 4inarow.c
     // we transform the array board to a bitboard, and call search()
     POSITION p;
@@ -255,13 +262,17 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
     // select eval:
     switch (evaltype) {
-      case EVAL_SMART:eval = &Agent4InARow::evaluation;
+      case EVAL_SMART:
+        eval = &Agent4InARow::evaluation;
         break;
-      case EVAL_AVERAGE:eval = &Agent4InARow::dumbevaluation;
+      case EVAL_AVERAGE:
+        eval = &Agent4InARow::dumbevaluation;
         break;
-      case EVAL_DUMB:eval = &Agent4InARow::stupidevaluation;
+      case EVAL_DUMB:
+        eval = &Agent4InARow::stupidevaluation;
         break;
-      default:eval = &Agent4InARow::evaluation;
+      default:
+        eval = &Agent4InARow::evaluation;
     }
 
     move = search(&p, maxtime, out, sw, gt);
@@ -269,7 +280,6 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
   }
 
   void boardtobitboard(int b[7][6], int color, POSITION *p) {
-
     // initialize the fourrows bitboard
     // board representation:
     //
@@ -293,20 +303,20 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     p->yellow = 0L;
     for (i = 0; i < 7; i++) {
       for (j = 0; j < 6; j++) {
-        if (b[i][j] == 1)
-          p->yellow |= (one << (8 * i + (j)));
-        if (b[i][j] == -1)
-          p->red |= (one << (8 * i + (j)));
+        if (b[i][j] == 1) p->yellow |= (one << (8 * i + (j)));
+        if (b[i][j] == -1) p->red |= (one << (8 * i + (j)));
       }
     }
     printf("\ndone");
   }
 
-  int search(POSITION *p, double time, char out[255], int searchwin, int theoretic) {
-    // search in position p, with iterative deepening, until run out of time in seconds
+  int search(POSITION *p, double time, char out[255], int searchwin,
+             int theoretic) {
+    // search in position p, with iterative deepening, until run out of time in
+    // seconds
     int depth;
     int value;
-    //double start;
+    // double start;
     double t;
     int i;
     int remainingmoves;
@@ -314,33 +324,35 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     float knodes;
     int64 allmoves, move;
     int forced = 0;
-    int64 columns[7] = {COLUMN1, COLUMN2, COLUMN3, COLUMN4, COLUMN5, COLUMN6, COLUMN7};
+    int64 columns[7] = {COLUMN1, COLUMN2, COLUMN3, COLUMN4,
+                        COLUMN5, COLUMN6, COLUMN7};
     char str[256], str2[256];
     int absvalue, dolearn = 0;
-    //fp = fopen("4inarow.txt","w");
-    // if there is only one move, play it immediately
-
-
+    // fp = fopen("4inarow.txt","w");
+    //  if there is only one move, play it immediately
 
     allmoves = ((p->red | p->yellow) << 1);
     allmoves |= ROW1;
-    allmoves ^= (p->red | p->yellow);    // now allmoves contains the bitboard of possible moves
+    allmoves ^=
+        (p->red |
+         p->yellow);  // now allmoves contains the bitboard of possible moves
     allmoves &= BOARD;
 
     // set threats: yellowthreat and redthreat are updated
     setthreats(p);
 
     // if there is only one move, play it:
-    if (bitcount(allmoves) == 1)
-      forced = 1;
+    if (bitcount(allmoves) == 1) forced = 1;
 
     // TODO: if all moves lose, then 4 in a row won't play any more
     // => need to do something so that it detects whether all open
     // moves are threats of the opponent, and then play one at random.
-    if ((((allmoves << 1) & yellowthreat) == (allmoves << 1)) && (p->color == RED)) {
+    if ((((allmoves << 1) & yellowthreat) == (allmoves << 1)) &&
+        (p->color == RED)) {
       forced = 1;
     }
-    if ((((allmoves << 1) & redthreat) == (allmoves << 1)) && (p->color == YELLOW)) {
+    if ((((allmoves << 1) & redthreat) == (allmoves << 1)) &&
+        (p->color == YELLOW)) {
       forced = 1;
     }
 
@@ -353,27 +365,24 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     // if there is an open threat of the opponent, set
     // forced to 1 and break in the iterative deepening loop
 
-    if (allmoves & (redthreat | yellowthreat))
-      forced = 1;
+    if (allmoves & (redthreat | yellowthreat)) forced = 1;
 
-    // Markus Thill: Added #ifdef
+      // Markus Thill: Added #ifdef
 #ifdef CLEAR_HASH
     // clear hashtable
-    memset(ht, 0, (HASHSIZE_F+HASHITER)*sizeof(HASHENTRY));
+    memset(ht, 0, (HASHSIZE_F + HASHITER) * sizeof(HASHENTRY));
     // clear threat hashtable
-    memset(threatht, 0 , THREATHASHSIZE*sizeof(HASHENTRY));
+    memset(threatht, 0, THREATHASHSIZE * sizeof(HASHENTRY));
 #endif
 
     // read in learn file
-    //readlearnfile();
-
+    // readlearnfile();
 
 #ifdef HISTORY
-    for(i=0;i<64;i++)
-        {
-        redhistory[i] = 0;
-        yellowhistory[i] = 0;
-        }
+    for (i = 0; i < 64; i++) {
+      redhistory[i] = 0;
+      yellowhistory[i] = 0;
+    }
     historycount = 0;
 #endif
 
@@ -387,20 +396,17 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     hashkey = absolutehashkey(p);
     value = 0;
 
-
     // how many moves are left?
     remainingmoves = MAXDEPTH - bitcount(p->red | p->yellow);
 
     fp = fopen("4inarow.txt", "a");
-    if (fp != NULL)
-      printboardtofile(p, fp);
+    if (fp != NULL) printboardtofile(p, fp);
     fclose(fp);
 
-//	fp = fopen("theoretic.txt","w");
+    //	fp = fopen("theoretic.txt","w");
 
     // initialize gt_values array to zero for game-theoretic search
-    for (i = 0; i < 7; i++)
-      gt_values[i] = 0;
+    for (i = 0; i < 7; i++) gt_values[i] = 0;
 
     // now initialize instant winners for game-theoretic search
     // i have to use -MATE because the display of the game-theoretic
@@ -408,18 +414,16 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     for (i = 0; i < 7; i++) {
       move = allmoves & columns[i];
       if (p->color == YELLOW) {
-        if (move & yellowthreat)
-          gt_values[i] = -MATE;
+        if (move & yellowthreat) gt_values[i] = -MATE;
       } else {
-        if (move & redthreat)
-          gt_values[i] = -MATE;
+        if (move & redthreat) gt_values[i] = -MATE;
       }
     }
 
     for (depth = 1; depth <= remainingmoves; depth += 2) {
       if (theoretic) {
-        //fprintf(fp,"\n---------\ndepth%i\n----------\n",depth);
-        // make a movelist
+        // fprintf(fp,"\n---------\ndepth%i\n----------\n",depth);
+        //  make a movelist
 
         // the allmoves bitboard was computed earlier
         for (i = 0; i < 7; i++) {
@@ -431,31 +435,27 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
           // if we already concluded that a certain move is a win or a loss,
           // then don't search it again!
-          if (abs(gt_values[i]) > 300)
-            continue;
+          if (abs(gt_values[i]) > 300) continue;
 
           domove(p, &move);
-          //fprintf(fp,"\nsearching move %i",i);
-          //printboardtofile(p,fp);
-          // set threats:
+          // fprintf(fp,"\nsearching move %i",i);
+          // printboardtofile(p,fp);
+          //  set threats:
           setthreats(p);
           hashkey = absolutehashkey(p);
           realdepth = 0;
           startdepth = bitcount(p->yellow | p->red);
-          //gt_values[i] = negamax(p,depth, -MATE, MATE);
+          // gt_values[i] = negamax(p,depth, -MATE, MATE);
           gt_values[i] = windowsearch(p, depth - 1, gt_values[i]);
-          //fprintf(fp,"result: %i",gt_values[i]);
+          // fprintf(fp,"result: %i",gt_values[i]);
           undomove(p, &move);
         }
         sprintf(str, "depth %i:", depth);
         for (i = 0; i < 7; i++) {
           sprintf(str2, " ? ");
-          if (gt_values[i] > 300)
-            sprintf(str2, " loss ");
-          if (gt_values[i] < -300)
-            sprintf(str2, " win ");
-          if (gt_values[i] == -1)
-            sprintf(str2, " - ");
+          if (gt_values[i] > 300) sprintf(str2, " loss ");
+          if (gt_values[i] < -300) sprintf(str2, " win ");
+          if (gt_values[i] == -1) sprintf(str2, " - ");
 
           strcat(str, str2);
         }
@@ -475,7 +475,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
         column = movetocolumn(bestmove);
 
         bestmovecolumn = column;
-        //printmove(&bestmove);
+        // printmove(&bestmove);
         knodes = 0;
 
         if (t > 0) {
@@ -484,48 +484,38 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
         }
         if (searchwin) {
           if (value <= 300)
-            sprintf(status, "depth %i/%i time %.2fs: no win found", depth, maxdepth, t);
+            sprintf(status, "depth %i/%i time %.2fs: no win found", depth,
+                    maxdepth, t);
           else
-            sprintf(status, "depth %i/%i time %.2fs: win found: %i", depth, maxdepth, t, column);
+            sprintf(status, "depth %i/%i time %.2fs: win found: %i", depth,
+                    maxdepth, t, column);
         } else
           sprintf(status,
-                  "depth %i/%i move %i value %i nodes %lu time %.2f hash %.1f %.1fkN/s",
-                  depth,
-                  maxdepth,
-                  column,
-                  value,
-                  nodes,
-                  t,
-                  (float) (100 * hashhits) / ((float) (hashhits + hashmisses)),
+                  "depth %i/%i move %i value %i nodes %lu time %.2f hash %.1f "
+                  "%.1fkN/s",
+                  depth, maxdepth, column, value, nodes, t,
+                  (float)(100 * hashhits) / ((float)(hashhits + hashmisses)),
                   knodes);
 
         logtofile(depth, value, bestmovecolumn);
-        //fflush(fp);
+        // fflush(fp);
 #ifndef WINSEARCH
-        if (t > time && time != 0)
-          break;
+        if (t > time && time != 0) break;
 #endif
-        if (abs(value) > 300)
-          break;
-        if (*playnow)
-          break;
+        if (abs(value) > 300) break;
+        if (*playnow) break;
         // make instant level into a depth 1 search level
-        if (time == 0 && depth > 1)
-          break;
-        if (forced)
-          break;
+        if (time == 0 && depth > 1) break;
+        if (forced) break;
       }
     }
     if (theoretic) {
       sprintf(str, "done: %d", depth);
       for (i = 0; i < 7; i++) {
         sprintf(str2, " = ");
-        if (gt_values[i] > 300)
-          sprintf(str2, " loss ");
-        if (gt_values[i] < -300)
-          sprintf(str2, " win ");
-        if (gt_values[i] == -1)
-          sprintf(str2, " - ");
+        if (gt_values[i] > 300) sprintf(str2, " loss ");
+        if (gt_values[i] < -300) sprintf(str2, " win ");
+        if (gt_values[i] == -1) sprintf(str2, " - ");
 
         strcat(str, str2);
       }
@@ -543,8 +533,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
       dolearn = 1;
     }
 
-    if (absvalue > 900 && absvalue < 991)
-      dolearn = 1;
+    if (absvalue > 900 && absvalue < 991) dolearn = 1;
 
     if (dolearn == 1) {
       fp = fopen("c4.lrn", "a+b");
@@ -565,8 +554,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     POSITION q;
     int value;
     fp = fopen("c4.lrn", "rb");
-    if (fp == NULL)
-      return;
+    if (fp == NULL) return;
     fp2 = fopen("learn.txt", "w");
     while (!feof(fp)) {
       size_t x = fread(&q.yellow, sizeof(int64), 1, fp);
@@ -575,8 +563,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
       hashkey = absolutehashkey(&q);
       store(&q, 42, -MATE, MATE, value, 0);
       q.color = YELLOW;
-      if (bitcount(q.yellow) > bitcount(q.red))
-        q.color = RED;
+      if (bitcount(q.yellow) > bitcount(q.red)) q.color = RED;
       printboardtofile(&q, fp2);
       fprintf(fp2, "value = %i\n\n", value);
     }
@@ -599,20 +586,13 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
   int movetocolumn(MOVE m) {
     int column = 11;
-    if (m & COLUMN1)
-      column = 1;
-    if (m & COLUMN2)
-      column = 2;
-    if (m & COLUMN3)
-      column = 3;
-    if (m & COLUMN4)
-      column = 4;
-    if (m & COLUMN5)
-      column = 5;
-    if (m & COLUMN6)
-      column = 6;
-    if (m & COLUMN7)
-      column = 7;
+    if (m & COLUMN1) column = 1;
+    if (m & COLUMN2) column = 2;
+    if (m & COLUMN3) column = 3;
+    if (m & COLUMN4) column = 4;
+    if (m & COLUMN5) column = 5;
+    if (m & COLUMN6) column = 6;
+    if (m & COLUMN7) column = 7;
     return column;
   }
 
@@ -623,7 +603,8 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     t /= CLOCKS_PER_SEC;
     fp = fopen("4inarow.txt", "a");
 
-    fprintf(fp, "\ndepth %i/%i move %i value %i nodes %lu time %.2f", depth, maxdepth, move, value, nodes, t);
+    fprintf(fp, "\ndepth %i/%i move %i value %i nodes %lu time %.2f", depth,
+            maxdepth, move, value, nodes, t);
     fclose(fp);
   }
 
@@ -677,15 +658,12 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     MOVE m[COLUMNS];
 
     nodes++;
-    if ((*playnow) != 0)
-      return 0;
+    if ((*playnow) != 0) return 0;
 
-    if (realdepth > maxdepth)
-      maxdepth = realdepth;
+    if (realdepth > maxdepth) maxdepth = realdepth;
 
     // is board full?
-    if (realdepth + startdepth == 42)
-      return 0;
+    if (realdepth + startdepth == 42) return 0;
 
     // hashlookup
     if (depth > 0) {
@@ -696,20 +674,20 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     // a quick check whether we win:
     allmoves = ((p->red | p->yellow) << 1);
     allmoves |= ROW1;
-    allmoves ^= (p->red | p->yellow);    // now allmoves contains the bitboard of possible moves
+    allmoves ^=
+        (p->red |
+         p->yellow);  // now allmoves contains the bitboard of possible moves
     if (allmoves & (yellowthreat | redthreat)) {
       isforced = 1;
       if (p->color == YELLOW) {
         if (allmoves & yellowthreat) {
-          if (realdepth == 0)
-            bestmove = allmoves & yellowthreat;
+          if (realdepth == 0) bestmove = allmoves & yellowthreat;
           return MATE - realdepth;
         }
       }
       if (p->color == RED) {
         if (allmoves & redthreat) {
-          if (realdepth == 0)
-            bestmove = allmoves & redthreat;
+          if (realdepth == 0) bestmove = allmoves & redthreat;
           return MATE - realdepth;
         }
       }
@@ -761,18 +739,18 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     }
     m[n] = allmoves & COLUMN1;
     if (m[n]) {
-      //ordervalues[n] = moveinfo[lsb(m[n])].n;
+      // ordervalues[n] = moveinfo[lsb(m[n])].n;
       n++;
     }
     m[n] = allmoves & COLUMN7;
     if (m[n]) {
-      //ordervalues[n] = moveinfo[lsb(m[n])].n;
+      // ordervalues[n] = moveinfo[lsb(m[n])].n;
       n++;
     }
 
-    //printboard(p);
-    //printmove(&allmoves);
-    //getch();
+    // printboard(p);
+    // printmove(&allmoves);
+    // getch();
 
     /*for(i=0;i<n;i++)
 
@@ -799,15 +777,16 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
             }
         }*/
 
-    // depth return condition: if depth < zero we return, unless there are open threats!!
+    // depth return condition: if depth < zero we return, unless there are open
+    // threats!!
     if (depth <= 0) {
-      if (!isforced)
-        return (this->*eval)(p);
+      if (!isforced) return (this->*eval)(p);
     }
     isforced = 0;
 
-    // check win using threats; at the same time, order moves to front if they are forced
-    // remember the fact that a move is forced in the boolean "isforced"
+    // check win using threats; at the same time, order moves to front if they
+    // are forced remember the fact that a move is forced in the boolean
+    // "isforced"
     if (p->color == YELLOW) {
       for (i = 0; i < n; i++) {
         if (m[i] & redthreat) {
@@ -815,7 +794,8 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
           isforced = 1;
         }
 #ifdef HISTORY
-        ordervalues[i] += ((32*yellowhistory[lsb(m[i])])/(historycount+1));
+        ordervalues[i] +=
+            ((32 * yellowhistory[lsb(m[i])]) / (historycount + 1));
 #endif
       }
     } else {
@@ -825,34 +805,29 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
           isforced = 1;
         }
 #ifdef HISTORY
-        ordervalues[i] += ((32*redhistory[lsb(m[i])])/(historycount+1));
+        ordervalues[i] += ((32 * redhistory[lsb(m[i])]) / (historycount + 1));
 #endif
       }
     }
 
 #ifdef CLAIMDRAW
     // check if we can claim a draw:
-    if(realdepth+startdepth >=20 && ! ( (yellowthreat|redthreat)&(~(p->yellow|p->red)) ) )
-        {
-        if(claimdraw(p))
-            return 0;
-        }
+    if (realdepth + startdepth >= 20 &&
+        !((yellowthreat | redthreat) & (~(p->yellow | p->red)))) {
+      if (claimdraw(p)) return 0;
+    }
 #endif
 
 #ifdef CLAIMWIN
-    if(realdepth+startdepth >=36 && ! ( (yellowthreat|redthreat)&(~(p->yellow|p->red)) ) )
-        {
-        if(bitcount((p->red|p->yellow)&ROW6)==6)
-            return 4*evaluation(p);
-        }
+    if (realdepth + startdepth >= 36 &&
+        !((yellowthreat | redthreat) & (~(p->yellow | p->red)))) {
+      if (bitcount((p->red | p->yellow) & ROW6) == 6) return 4 * evaluation(p);
+    }
 #endif
-
-
 
     // order movelist:
     // hashmove
-    if (lastbestindex != -1)
-      ordervalues[lastbestindex] += 256;
+    if (lastbestindex != -1) ordervalues[lastbestindex] += 256;
     // killer move
     for (i = 0; i < n; i++) {
       if (m[i] == killer[realdepth]) {
@@ -883,7 +858,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
       // update threats:
       moveindex = lsb(m[index]);
-      if (p->color == RED) // look for new yellow threats
+      if (p->color == RED)  // look for new yellow threats
       {
         for (j = 0; j < moveinfo[moveindex].n; j++) {
           if (!(moveinfo[moveindex].fourrow[j] & p->red)) {
@@ -903,7 +878,8 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
       }
 
       realdepth++;
-      hashkey ^= hashxors[p->color ^ CHANGECOLOR][moveindex]; // hotspot - 10% of negamax time
+      hashkey ^= hashxors[p->color ^ CHANGECOLOR]
+                         [moveindex];  // hotspot - 10% of negamax time
 
       value = -negamax(p, depth - 1, -beta, -alpha);
 
@@ -920,47 +896,40 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
         bestindex = index;
 #ifdef HISTORY
         // update history table
-        if(p->color == YELLOW)
-            {
-            yellowhistory[moveindex]+=(1<<(depth/2));
-            historycount+=(1<<(depth/2));
-            }
-        else
-            {
-            redhistory[moveindex]+=(1<<(depth/2));
-            historycount+=(1<<(depth/2));
-            }
+        if (p->color == YELLOW) {
+          yellowhistory[moveindex] += (1 << (depth / 2));
+          historycount += (1 << (depth / 2));
+        } else {
+          redhistory[moveindex] += (1 << (depth / 2));
+          historycount += (1 << (depth / 2));
+        }
 #endif
         break;
       }
 
       if (value > alpha) {
         alpha = value;
-        //bestvalue = value;
+        // bestvalue = value;
         bestindex = index;
       }
 
       bestvalue = std::max(bestvalue, value);
 
       if (isforced) {
-        //bestvalue = max(bestvalue,alpha);
+        // bestvalue = max(bestvalue,alpha);
         break;
       }
     }
 
-    // why am i doing this? this is basically making 4inarow do a fail-hard alpha-beta
-    // do i really want this?
-    // bestvalue = max(bestvalue, alpha);
+    // why am i doing this? this is basically making 4inarow do a fail-hard
+    // alpha-beta do i really want this? bestvalue = max(bestvalue, alpha);
 
     /*if(bestvalue < alpha)
         {
         printboard(p);
-        printf("\nbestvalue = %i, alpha = %i, beta = %i", bestvalue, alpha, beta);
-        printf("\nn = %i, value = %i",n, value);
-        getch();
+        printf("\nbestvalue = %i, alpha = %i, beta = %i", bestvalue, alpha,
+       beta); printf("\nn = %i, value = %i",n, value); getch();
         }*/
-
-
 
     // store position in hashtable
     if (depth > 0)
@@ -969,13 +938,13 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     // set killer move
     killer[realdepth] = m[bestindex];
 
-    if (realdepth == 0)
-      bestmove = m[bestindex];
+    if (realdepth == 0) bestmove = m[bestindex];
 
     return bestvalue;
   }
 
-  void store(POSITION *p, int depth, int alpha, int beta, int bestvalue, int bestindex/*, int32 effort*/) {
+  void store(POSITION *p, int depth, int alpha, int beta, int bestvalue,
+             int bestindex /*, int32 effort*/) {
     unsigned int index;
     HASHENTRY he;
     int i = 0;
@@ -988,17 +957,15 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     he.best = bestindex;
     he.value = bestvalue;
     he.depth = depth;
-    he.key = (int32) (hashkey >> 32);
+    he.key = (int32)(hashkey >> 32);
     he.valuetype = EXACT_F;
-    if (bestvalue >= beta)
-      he.valuetype = LOWER_F;
-    if (bestvalue <= alpha)
-      he.valuetype = UPPER_F;
+    if (bestvalue >= beta) he.valuetype = LOWER_F;
+    if (bestvalue <= alpha) he.valuetype = UPPER_F;
 
     // find place to write
     while (i < HASHITER) {
-
-      if (ht[index + i].key == 0 || ht[index + i].key == (int32) (hashkey >> 32)) {
+      if (ht[index + i].key == 0 ||
+          ht[index + i].key == (int32)(hashkey >> 32)) {
         // update or empty entry
         ht[index + i] = he;
         return;
@@ -1014,32 +981,31 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
       i++;
     }
 
-
     // if we drop out here, that's because we couldn't find a place to write!
     // overwrite the least valuable entry:
-    //if(depth < lowestdepth+14)
+    // if(depth < lowestdepth+14)
     ht[lowestindex] = he;
-
   }
 
-  int retrieve(POSITION *p, int depth, int *alpha, int *beta, int *value, int *bestindex) {
+  int retrieve(POSITION *p, int depth, int *alpha, int *beta, int *value,
+               int *bestindex) {
     unsigned int index;
     int i = 0;
     // get index to write to:
-    //index = hashkey%HASHSIZE;
+    // index = hashkey%HASHSIZE;
     index = hashkey & HASHSIZEAND;
     *bestindex = -1;
 
     while (i < HASHITER) {
-      if (ht[index + i].key == (int32) (hashkey >> 32)) // super-hotspot: 30% of program!
+      if (ht[index + i].key ==
+          (int32)(hashkey >> 32))  // super-hotspot: 30% of program!
       {
         hashhits++;
         // we found the position
         *bestindex = ht[index + i].best;
 
         // enough depth to do something?
-        if (ht[index + i].depth < depth)
-          return 0;
+        if (ht[index + i].depth < depth) return 0;
 
         // yes!
         if (ht[index + i].valuetype == EXACT_F) {
@@ -1091,7 +1057,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     index = key % THREATHASHSIZE;
 
     he.value = value;
-    he.key = (int32) (key >> 32);
+    he.key = (int32)(key >> 32);
 
     threatht[index] = he;
   }
@@ -1108,7 +1074,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
     index = key % THREATHASHSIZE;
 
-    if (threatht[index].key == (int32) (key >> 32)) {
+    if (threatht[index].key == (int32)(key >> 32)) {
       *value = threatht[index].value;
       return 1;
     }
@@ -1121,11 +1087,10 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     // sides in. if yes, it returns 1, else 0.
     int i;
 
-    // we start at the highest horizontal rows, which should lead to a rather quick
-    // return 0 in most cases.
+    // we start at the highest horizontal rows, which should lead to a rather
+    // quick return 0 in most cases.
     for (i = 47; i >= 0; i--) {
-      if (!((p->yellow & fourrow[i]) && (p->red & fourrow[i])))
-        return 0;
+      if (!((p->yellow & fourrow[i]) && (p->red & fourrow[i]))) return 0;
     }
     return 1;
   }
@@ -1195,8 +1160,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
       threatstore(yt | dt, rt | dt, value);
     }
 
-    if (randomize)
-      value += ((rand() % 9) - 5);
+    if (randomize) value += ((rand() % 9) - 5);
 
     return p->color == YELLOW ? value : -value;
   }
@@ -1211,10 +1175,9 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     int64 giveup;
     int bestvalue;
 
-//	POSITION p;
+    //	POSITION p;
 
-    if (allthreats == 0)
-      return 0;
+    if (allthreats == 0) return 0;
     // board representation:
     //
     //
@@ -1225,9 +1188,9 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     // 1  9 17 25 33 41 49
     // 0  8 16 24 32 40 48
 
-    //if(threatretrieve(yt|dt,rt|dt,&bestvalue))
+    // if(threatretrieve(yt|dt,rt|dt,&bestvalue))
     //	return bestvalue;
-    // get threatmask: this masks off the part of the board above threats.
+    //  get threatmask: this masks off the part of the board above threats.
     for (i = 0; i < 3; i++) {
       threatmask |= ((threatmask << 1) & BOARD);
     }
@@ -1240,15 +1203,17 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     // 1  9 17 25 33  T 49
     // 0  8 16 24 32 40 48
 
-    // now, all squares which are not in the threatmask or two below can be played
-    playablesquares = ~((threatmask | (threatmask >> 1) | (threatmask >> 2)) & BOARD);
+    // now, all squares which are not in the threatmask or two below can be
+    // played
+    playablesquares =
+        ~((threatmask | (threatmask >> 1) | (threatmask >> 2)) & BOARD);
 
-    // if the number of playable squares is odd, then yellow has an advantage, because
-    // he can play the last square below all threats
+    // if the number of playable squares is odd, then yellow has an advantage,
+    // because he can play the last square below all threats
     if ((bitcount(playablesquares) - 22) & 1) {
       // red must give up a threat
       if (!(rt & (~threatmask))) {
-        //printf("!rt ");
+        // printf("!rt ");
         return ENDGAMEWIN;
       } else {
         // iterate over all red threats that can be given up, call
@@ -1259,10 +1224,10 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
         bestvalue = MATE;
         tmpthreat = rt & (~threatmask);
         while (tmpthreat) {
-          giveup = (tmpthreat & (tmpthreat - 1)) ^ tmpthreat; // least significant bit
+          giveup = (tmpthreat & (tmpthreat - 1)) ^
+                   tmpthreat;  // least significant bit
           bestvalue = std::min(bestvalue, threatevaluate(yt, rt ^ giveup, dt));
-          if (bestvalue == -ENDGAMEWIN)
-            return bestvalue;
+          if (bestvalue == -ENDGAMEWIN) return bestvalue;
           tmpthreat = tmpthreat & (tmpthreat - 1);
         }
         return bestvalue;
@@ -1270,7 +1235,7 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     } else {
       // yellow must give up a threat
       if (!(yt & (~threatmask))) {
-        //printf("!yt ");
+        // printf("!yt ");
         return -ENDGAMEWIN;
       } else {
         // iterate over all yellow threats that can be given up, and
@@ -1279,14 +1244,13 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
         bestvalue = -MATE;
         tmpthreat = yt & (~threatmask);
         while (tmpthreat) {
-          giveup = (tmpthreat & (tmpthreat - 1)) ^ tmpthreat; // least significant bit
+          giveup = (tmpthreat & (tmpthreat - 1)) ^
+                   tmpthreat;  // least significant bit
           bestvalue = std::max(bestvalue, threatevaluate(yt ^ giveup, rt, dt));
-          if (bestvalue == ENDGAMEWIN)
-            return bestvalue;
+          if (bestvalue == ENDGAMEWIN) return bestvalue;
           tmpthreat = tmpthreat & (tmpthreat - 1);
         }
         return bestvalue;
-
       }
     }
     return 0;
@@ -1325,58 +1289,54 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
     return (c);
   }
 
+  /*int msb32(int32 x)
+          {
+          // most significant bit for 32-bit numbers
+          __asm
+                  {
+                  mov eax, -1
+                  bsr eax, dword ptr x
+                  }
+          }*/
 
-/*int msb32(int32 x)
-	{
-	// most significant bit for 32-bit numbers
-	__asm
-		{
-		mov eax, -1
-		bsr eax, dword ptr x
-		}
-	}*/
-
-/*
-int lsb(int64 a) {
-
-  __asm volatile {
-		mov eax, 0
-		bsf edx, dword ptr a
-		jnz l1
-		bsf edx, dword ptr a+4
-		mov eax, 32
-		jnz l1
-		mov edx, -32
-l1:		add eax, edx
-  }
-}*/
-
+  /*
   int lsb(int64 a) {
-    return ffsl(a);
-  }
 
-/*  old version, 4inarow works with it
-int lsb(int64 a) {
+    __asm volatile {
+                  mov eax, 0
+                  bsf edx, dword ptr a
+                  jnz l1
+                  bsf edx, dword ptr a+4
+                  mov eax, 32
+                  jnz l1
+                  mov edx, -32
+  l1:		add eax, edx
+    }
+  }*/
 
-  __asm {
-        bsf     edx, dword ptr a
-        mov     eax, 63
-        jnz     l1
-        bsf     edx, dword ptr a+4
-        mov     eax, 31
-        jnz     l1
-        mov     edx, -33
-  l1:   sub     eax, edx
+  int lsb(int64 a) { return ffsl(a); }
+
+  /*  old version, 4inarow works with it
+  int lsb(int64 a) {
+
+    __asm {
+          bsf     edx, dword ptr a
+          mov     eax, 63
+          jnz     l1
+          bsf     edx, dword ptr a+4
+          mov     eax, 31
+          jnz     l1
+          mov     edx, -33
+    l1:   sub     eax, edx
+    }
   }
-}
-*/
+  */
 
   int64 myrand(void) {
     // returns a 64bit random number
     int64 a = 0;
     int i;
-    for (i = 0; i < 6; i++)
-      a += ((int64) rand()) << 8 * i;
+    for (i = 0; i < 6; i++) a += ((int64)rand()) << 8 * i;
     return a;
   }
 
@@ -1399,9 +1359,7 @@ int lsb(int64 a) {
     return key;
   }
 
-
-// search engine above
-
+  // search engine above
 
   int init(void) {
     int i, j;
@@ -1409,11 +1367,9 @@ int lsb(int64 a) {
     int64 one = 1L;
     MOVE m;
     int index;
-//	int val;
+    //	int val;
 
-
-    if (isinit)
-      return 0;
+    if (isinit) return 0;
     // initialize the fourrows bitboard masks:
     // board representation:
     //
@@ -1426,9 +1382,8 @@ int lsb(int64 a) {
     // 0  8 16 24 32 40 48
     // diagonal one (12)
 
-
     fp = fopen("4inarow.txt", "w");
-    //fprintf(fp,"\ninitialization!");
+    // fprintf(fp,"\ninitialization!");
     fclose(fp);
 
     for (i = 0; i < COLUMNS - 3; i++) {
@@ -1483,8 +1438,7 @@ int lsb(int64 a) {
     for (i = 0; i < 64; i++) {
       m = one << i;
       // check if this is a legal move at all
-      if (!(m & BOARD))
-        continue;
+      if (!(m & BOARD)) continue;
 
       n = 0;
       index = lsb(m);
@@ -1505,7 +1459,8 @@ int lsb(int64 a) {
             moveinfo[index].fourrow[n] = fourrow[j];
             n++;
           } else {
-            // it is a vertical row - use only if m is the third stone in the row
+            // it is a vertical row - use only if m is the third stone in the
+            // row
             if ((fourrow[j] & (m << 1)) && (fourrow[j] & (m >> 2))) {
               moveinfo[index].fourrow[n] = fourrow[j];
               n++;
@@ -1518,8 +1473,7 @@ int lsb(int64 a) {
 
     // initialize hashxors
     for (i = 0; i < 3; i++) {
-      for (j = 0; j < 64; j++)
-        hashxors[i][j] = myrand();
+      for (j = 0; j < 64; j++) hashxors[i][j] = myrand();
     }
 
     isinit = 1;
@@ -1540,8 +1494,7 @@ int lsb(int64 a) {
     // so the move to be done is just move++;
     move++;
     // is this column full?
-    if (move == 64)
-      return 0;
+    if (move == 64) return 0;
     // not full, generate move
     *m = move << (8 * column);
     return 1;
@@ -1552,8 +1505,8 @@ int lsb(int64 a) {
     p->color = YELLOW;
     p->yellow = 0;
     p->red = 0;
-//	yellowthreat = 0;
-//	redthreat = 0;
+    //	yellowthreat = 0;
+    //	redthreat = 0;
     return 1;
   }
 
@@ -1573,12 +1526,9 @@ int lsb(int64 a) {
     printf("\n");
     for (i = 5; i >= 0; i--) {
       for (j = 0; j < COLUMNS; j++) {
-        if ((p->red) & (one << (i + 8 * j)))
-          printf(" x ");
-        if ((p->yellow) & (one << (i + 8 * j)))
-          printf(" o ");
-        if ((~occupied) & (one << (i + 8 * j)))
-          printf(" . ");
+        if ((p->red) & (one << (i + 8 * j))) printf(" x ");
+        if ((p->yellow) & (one << (i + 8 * j))) printf(" o ");
+        if ((~occupied) & (one << (i + 8 * j))) printf(" . ");
       }
       printf("\n");
     }
@@ -1602,12 +1552,9 @@ int lsb(int64 a) {
     fprintf(fp, "\ny=%lu, r=%lu \n", p->yellow, p->red);
     for (i = 5; i >= 0; i--) {
       for (j = 0; j < COLUMNS; j++) {
-        if ((p->red) & (one << (i + 8 * j)))
-          fprintf(fp, " x ");
-        if ((p->yellow) & (one << (i + 8 * j)))
-          fprintf(fp, " o ");
-        if ((~occupied) & (one << (i + 8 * j)))
-          fprintf(fp, " . ");
+        if ((p->red) & (one << (i + 8 * j))) fprintf(fp, " x ");
+        if ((p->yellow) & (one << (i + 8 * j))) fprintf(fp, " o ");
+        if ((~occupied) & (one << (i + 8 * j))) fprintf(fp, " . ");
       }
       fprintf(fp, "\n");
     }
@@ -1640,7 +1587,6 @@ int lsb(int64 a) {
     printf("\n");
     return 1;
   }
-
 };
 
-#endif //BITBULLY_AGENT4INAROW_H
+#endif  // BITBULLY_AGENT4INAROW_H

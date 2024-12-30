@@ -1,13 +1,14 @@
 #ifndef BITBULLY__TRANSPOSITIONTABLE_H_
 #define BITBULLY__TRANSPOSITIONTABLE_H_
 
-#include "Board.h"
 #include <memory>
+
+#include "Board.h"
 
 namespace BitBully {
 
 class TranspositionTable {
-public:
+ public:
   static constexpr int LOG_2_SIZE = 20;
 
   struct Entry {
@@ -24,11 +25,11 @@ public:
 
   inline Entry *get(Board b) { return &table[b.hash() & (tableSize - 1)]; }
 
-private:
+ private:
   std::unique_ptr<Entry[]> table;
   size_t tableSize;
 };
 
-} // namespace BitBully
+}  // namespace BitBully
 
-#endif // BITBULLY__TRANSPOSITIONTABLE_H_
+#endif  // BITBULLY__TRANSPOSITIONTABLE_H_
