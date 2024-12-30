@@ -48,6 +48,7 @@ jobs:
           name: cibw-sdist
           path: dist/*.tar.gz
 
+  # https://cibuildwheel.pypa.io/en/stable/deliver-to-pypi/
   upload_pypi:
     needs: [ build_wheels, build_sdist ]
     runs-on: ubuntu-latest

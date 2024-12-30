@@ -37,7 +37,7 @@ ci = [
 ]
 
 [build-system]
-requires = ["setuptools>=42", "wheel", "cibuildwheel", "cmake>=3.15", "scikit-build", "pybind11"]
+requires = ["build", "setuptools>=42", "wheel", "cibuildwheel", "cmake>=3.15", "scikit-build", "pybind11"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
