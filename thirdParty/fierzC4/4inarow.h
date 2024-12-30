@@ -1,9 +1,15 @@
-//#define EVALOFF
-//#define WINSEARCH
-//#define WINDOWSEARCH
-//#define CLAIMDRAW
-//#define CLAIMWIN
-//#define PROBCUT
+// #define EVALOFF
+// #define WINSEARCH
+// #define WINDOWSEARCH
+// #define CLAIMDRAW
+// #define CLAIMWIN
+// #define PROBCUT
+
+#include <algorithm>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
 
 #define RED 1
 #define YELLOW 2
