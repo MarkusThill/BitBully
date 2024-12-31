@@ -167,6 +167,23 @@ Board::TBitBoard Board::winningPositions(TBitBoard x, bool verticals) {
   return wins & BB_ALL_LEGAL_TOKENS;
 }
 
+MoveList Board::sortMoves(TBitBoard moves) {
+  MoveList mvList;
+
+  while (moves) {
+    const auto mv = nextMove(moves);
+    assert(uint64_t_popcnt(mv) == 1);
+    const auto threats =
+        winningPositions(m_bActive ^ mv, true) & ~(m_bAll ^ mv);
+    const auto numThreats = static_cast<int>(uint64_t_popcnt(threats));
+
+    mvList.insert(mv, numThreats);
+
+    moves ^= mv;
+  }
+  return mvList;
+}
+
 Board::TBitBoard Board::findThreats(TBitBoard moves) {
   auto threats = winningPositions(m_bActive, true) & ~m_bAll;
 
@@ -259,7 +276,7 @@ std::pair<unsigned long, unsigned long> Board::findOddEvenThreats() {
 }
  */
 
-bool Board::canWin() {
+bool Board::canWin() const {
   return winningPositions(m_bActive, true) & (m_bAll + BB_BOTTOM_ROW);
 }
 

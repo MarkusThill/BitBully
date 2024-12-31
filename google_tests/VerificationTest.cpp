@@ -1,12 +1,7 @@
-// TODO: use project-own google tests!!! Use git sub module!!!
 // TODO: Use a simple logger. Use glog of google...
 // TODO: Log computation times using a software version into a txt file...
 // TODO: Play n games against a random (or more advanced) player: It has to win
 // every single game! ...
-// TODO: clang format!
-// TODO: Github CI/CD Pipeline
-// TODO: Namespace for Pons/FierzC4??
-// TODO: Use git sub module for google test and for Pons/Fierz
 
 #include <chrono>
 #include <filesystem>
@@ -171,7 +166,7 @@ TEST_F(VerificationTest, ponsC4Verification8Ply) {
   bool weak = false;
   bool analyze = false;
   std::vector<float> timesPons, timesMine;
-  for (auto i = 0; i < 86892; i += 50000) {  // TODO: Hard-coded number!
+  for (auto i = 0; i < 86892; i += 500) {  // TODO: Hard-coded number!
     auto entry = c4.getOpening(i);
 
     // Get result from C4
@@ -252,11 +247,11 @@ TEST_F(VerificationTest, ponsC4VerificationXPly) {
   GameSolver::Connect4::Solver solver;
   bool weak = false;
   std::vector<float> timesPons, timesMine;
-  for (auto i = 0; i < 2; i++) {
+  for (auto i = 0; i < 200; i++) {
     c4.Reset();
     c4.setFeld(0LL, 0LL);
 
-    auto nPieces = (rand() % 10) * 2 + 8;
+    auto nPieces = 10;  // (rand() % 10) * 2 + 8;
 
     bool player = false;
     std::vector<int> moveSequence;

@@ -15,7 +15,9 @@
 
 class BitBullyTest : public ::testing::Test {
  protected:
-  void SetUp() override { GTEST_SKIP() << "Skipping this file for now"; }
+  void SetUp() override {
+    // GTEST_SKIP() << "Skipping this file for now";
+  }
 
   void TearDown() override {}
 
@@ -24,7 +26,7 @@ class BitBullyTest : public ::testing::Test {
   }
 };
 
-TEST_F(BitBullyTest, test1) {
+TEST_F(BitBullyTest, comparePonsBitbully) {
   using B = BitBully::Board;
   using time_point =
       std::chrono::time_point<std::chrono::high_resolution_clock>;
@@ -34,7 +36,7 @@ TEST_F(BitBullyTest, test1) {
   GameSolver::Connect4::Solver solver;
   BitBully::BitBully bb;
 
-  for (auto i = 0; i < 5 * 1; i++) {
+  for (auto i = 0; i < 50 * 1; i++) {
     B b;
     GameSolver::Connect4::Position P;
     // std::cout << std::endl << "MoveSequence:";
@@ -88,7 +90,7 @@ TEST_F(BitBullyTest, test2) {
   GameSolver::Connect4::Solver solver;
   BitBully::BitBully bb;
 
-  for (auto i = 0; i < 5 * 1; i++) {
+  for (auto i = 0; i < 5 * 0.5; i++) {
     B b;
     GameSolver::Connect4::Position P;
     // std::cout << std::endl << "MoveSequence:";
@@ -116,8 +118,8 @@ TEST_F(BitBullyTest, test2) {
     time1 += d;
 
     tstart = std::chrono::high_resolution_clock::now();
-    // int scoreMine = bb.negamax(b, -100000, 100000, 0);
-    int scoreMine = bb.mtdf(b, 0);
+    int scoreMine = bb.negamax(b, -100000, 100000, 0);
+    // int scoreMine = bb.mtdf(b, 0);
     tend = std::chrono::high_resolution_clock::now();
     d = float(duration(tend - tstart).count());
     time2 += d;
@@ -132,7 +134,7 @@ TEST_F(BitBullyTest, test2) {
             << "; Diff: " << time1 - time2 << std::endl;
 }
 
-TEST_F(BitBullyTest, test3) {
+TEST_F(BitBullyTest, comparePonsBitbullyTime) {
   using B = BitBully::Board;
   using duration = std::chrono::duration<float>;
   float time1 = 0.0F, time2 = 0.0F;
@@ -140,7 +142,9 @@ TEST_F(BitBullyTest, test3) {
   GameSolver::Connect4::Solver solver;
   BitBully::BitBully bb;
 
-  for (auto i = 0; i < 5 * 1; i++) {
+  srand(42);
+
+  for (auto i = 0; i < 5 * 0.5; i++) {
     B b;
     GameSolver::Connect4::Position P;
     // std::cout << std::endl << "MoveSequence:";
@@ -158,35 +162,41 @@ TEST_F(BitBullyTest, test3) {
     }
 
     if (j != 12) continue;
+    if (P.canWinNext()) continue;
 
     // std::cout << b.toString();
-
-    auto tstart = std::chrono::high_resolution_clock::now();
-    int scorePons = solver.solve(P, false);
-    auto tend = std::chrono::high_resolution_clock::now();
-    auto d1 = float(duration(tend - tstart).count());
-    time1 += d1;
     // std::cout << "Pons: " << d1 * 1000 << "ms ; ";
-    if (i % 100 == 0) {
-      bb.resetTranspositionTable();
-      std::cout << "Reset transposition table" << std::endl;
-    }
+    // if (i % 100 == 0) {
+    //  bb.resetTranspositionTable();
+    //  std::cout << "Reset transposition table" << std::endl;
+    //}
 
-    tstart = std::chrono::high_resolution_clock::now();
+    // bb.resetTranspositionTable();
+    auto tstart = std::chrono::high_resolution_clock::now();
     // int scoreMine = bb.negamax(b, -100000, 100000, 0);
     int scoreMine = bb.mtdf(b, 0);
-    // int scoreMine = bb.iterativeDeepening(b);
+    //  int scoreMine = bb.iterativeDeepening(b);
     // int scoreMine = bb.nullWindow(b);
-    tend = std::chrono::high_resolution_clock::now();
+    auto tend = std::chrono::high_resolution_clock::now();
     auto d2 = float(duration(tend - tstart).count());
     time2 += d2;
-    // std::cout << " Mine: " << d2 * 1000 << "ms ; Diff: " << (d2 - d1) * 1000
-    //           << " ms. Percent: " << (d2 - d1) / d2 * 100.0 << " %"
-    //           << std::endl;
+
+    tstart = std::chrono::high_resolution_clock::now();
+    int scorePons = solver.solve(P, false);
+    tend = std::chrono::high_resolution_clock::now();
+    auto d1 = float(duration(tend - tstart).count());
+    time1 += d1;
+
     std::cout << "Time Pons: " << time1 << ". Time Mine: " << time2
               << "; Diff: " << time2 - time1
               << " sec. Percent: " << (time2 - time1) / time2 * 100.0 << " %"
               << std::endl;
+
+    std::cout << "Node Count Pons: " << solver.getNodeCount() << ", "
+              << "Mine: " << bb.getNodeCounter() << " Percent: "
+              << double(bb.getNodeCounter() - solver.getNodeCount()) /
+                     bb.getNodeCounter() * 100.0
+              << " %" << std::endl;
 
     // std::cout << "Pons: " << scorePons << " Mine: " << scoreMine <<
     // std::endl;

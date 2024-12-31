@@ -8,6 +8,8 @@
 #include <map>
 #include <sstream>
 
+#include "MoveList.h"
+
 // TODO: Move function definitions to .cpp file!
 /*
  * // https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel
@@ -118,10 +120,16 @@ class Board {
     return x;
   }
 
-  uint64_t hash() const { return hash(m_bActive) ^ hash(m_bAll); }
+  uint64_t uid() const {
+    // the resulting 64-bit integer is a unique identifier for each board
+    // Can be used to store a position in a transposition table
+    return m_bActive + m_bAll;
+  }
+
+  uint64_t hash() const { return hash(hash(m_bActive) ^ (hash(m_bAll) << 1)); }
 
   static TBitBoard nextMove(TBitBoard allMoves) {
-    for (auto p : BB_MOVES_PRIO_LIST) {
+    for (const auto p : BB_MOVES_PRIO_LIST) {
       if (const TBitBoard pvMv = allMoves & p) {
         allMoves = pvMv;
         break;
@@ -138,9 +146,7 @@ class Board {
     return equal;
   }
 
-  // TBitBoard movesUnderOwnThreats(TBitBoard moves);
-
-  // std::pair<unsigned long, unsigned long> findOddEvenThreats();
+  bool operator!=(const Board &b) const { return !(b == *this); }
 
   TBitBoard findOddThreats(TBitBoard moves);
 
@@ -162,7 +168,11 @@ class Board {
   static constexpr TBitBoard BB_ILLEGAL = illegalBitMask();
   static constexpr TBitBoard BB_ALL_LEGAL_TOKENS = ~BB_ILLEGAL;
   static constexpr TBitBoard BB_EMPTY{UINT64_C(0)};
+
+  // These two center fields generally are the most promising ones:
   static constexpr TBitBoard BB_MOVES_PRIO1 = getMask({29, 30});
+
+  // After {29, 30}, we should consider these moves, and so on:
   static constexpr TBitBoard BB_MOVES_PRIO2 = getMask({31, 21, 20, 28, 38, 39});
   static constexpr TBitBoard BB_MOVES_PRIO3 = getMask({40, 32, 22, 19, 27, 37});
   static constexpr TBitBoard BB_MOVES_PRIO4 = getMask({47, 48, 11, 12});
@@ -182,15 +192,17 @@ class Board {
 
   bool playMove(int column);
 
-  bool canWin();
+  bool canWin() const;
 
   std::string toString();
 
-  inline TMovesCounter movesLeft() { return m_movesLeft; }
+  inline TMovesCounter movesLeft() const { return m_movesLeft; }
 
   Board mirror() const;
 
-  Board::TBitBoard findThreats(TBitBoard moves);
+  MoveList sortMoves(TBitBoard moves);
+
+  TBitBoard findThreats(TBitBoard moves);
 
   static inline TBitBoard lsb(TBitBoard x) {
     auto mvMask = x - UINT64_C(1);

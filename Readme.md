@@ -1,3 +1,14 @@
+# BitBully: A fast and perfect-playing Connect-4 Agent for Python 3 & C/C++
+
+Generally, a lot of ideas were taken from the great Connect-4 Solver that Pascal Pons developed:
+
+- [http://blog.gamesolver.org/](http://blog.gamesolver.org/)
+- [https://github.com/PascalPons/connect4](https://github.com/PascalPons/connect4)
+
+The board logic was inspired by:
+
+- https://tromp.github.io/c4/Connect4.java
+
 # Compiler
 
 The code was compiled with:
@@ -56,6 +67,12 @@ pre-commit run
 cz bump --dry-run # first perform a dry run
 cz bump
 git push origin tag x.x.x
+```
+
+### Push commit and tag atomically
+
+```bash
+git push --atomic origin master v0.0.14
 ```
 
 ### Commit types
