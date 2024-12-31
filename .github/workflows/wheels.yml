@@ -6,7 +6,7 @@ jobs:
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 10 # Consider increasing timeout
+    timeout-minutes: 15 # Consider increasing timeout
     strategy:
       fail-fast: false
       matrix:
