@@ -59,8 +59,8 @@ include-package-data = true  # Include additional non-Python files (e.g., librar
 
 # https://cibuildwheel.pypa.io/en/stable/options/#build-skip
 [tool.cibuildwheel]
-build = "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-* pp310-*"
-skip = "*win32*"         # Skip PyPy builds
+build = "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-* pp39-* pp310-*"
+skip = "*win32* cp38-macosx_arm64*"
 
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)
