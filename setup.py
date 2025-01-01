@@ -38,7 +38,7 @@ class CMakeExtension(Extension):
 
 setup(
     # name="bitbully",
-    # version="0.0.15",  # already defined in the pyproject.toml (might get rid of it here)
+    # version="0.0.16",  # already defined in the pyproject.toml (might get rid of it here)
     # packages=["bitbully"],
     ext_modules=[CMakeExtension("bitbully.example")],
     cmdclass={"build_ext": CMakeBuildExtension},

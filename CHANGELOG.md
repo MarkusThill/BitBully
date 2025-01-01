@@ -1,3 +1,10 @@
+## v0.0.16 (2025-01-01)
+
+### Fix
+
+- updated version.h
+- fixed update_version script
+
 ## v0.0.15 (2025-01-01)
 
 ### Fix
