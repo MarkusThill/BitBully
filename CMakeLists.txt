@@ -31,9 +31,9 @@ if (WIN32)
 endif ()
 
 set(BB_PROJECT_INCS .)
-set(BB_PROJECT_FILES BitBully.cpp Board.cpp TranspositionTable.cpp MoveList.cpp)
+set(BB_PROJECT_FILES src/BitBully.cpp src/Board.cpp src/TranspositionTable.cpp src/MoveList.cpp)
 
-include_directories(SYSTEM .)
+include_directories(SYSTEM . src)
 
 add_library(cppBitBully STATIC ${BB_PROJECT_FILES})
 target_include_directories(cppBitBully PUBLIC ${BB_PROJECT_INCS})
@@ -46,5 +46,6 @@ add_subdirectory(google_tests)
 # https://pybind11.readthedocs.io/en/stable/compiling.html#compiling
 # https://pybind11.readthedocs.io/en/stable/compiling.html#cmake
 add_subdirectory(thirdParty/pybind11)
-pybind11_add_module(example example.cpp)
+pybind11_add_module(example src/example.cpp)
+target_link_libraries(example PUBLIC cppBitBully)
 install(TARGETS example DESTINATION .)
