@@ -3,6 +3,12 @@ project(BitBully VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 
+# Why -fPIC?
+# -Independent Code allows the shared library to be loaded at any memory address without modification.
+# Static libraries not built with -fPIC embed absolute addresses, which cause issues when linking into shared objects.
+set(CMAKE_POSITION_INDEPENDENT_CODE ON) # -fPIC flag
+
+
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3")
     # Add later again: set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra
