@@ -1,3 +1,17 @@
+## v0.0.15 (2025-01-01)
+
+### Fix
+
+- add bindings for bitbully to example
+
+### Refactor
+
+- moved cpp src files
+
+### Perf
+
+- optimzed some code
+
 ## v0.0.14 (2024-12-30)
 
 ### Fix
