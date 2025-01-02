@@ -2,11 +2,11 @@
 
 #include "BitBully.h"
 
-int add(int i, int j) { return i + j; }
+int add(const int i, const int j) { return i + j; }
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(example, m) {
+PYBIND11_MODULE(bitbully_core, m) {
   m.doc() = "pybind11 example plugin";  // optional module docstring
   m.def("add", &add, "A function that adds two numbers");
 

@@ -26,7 +26,7 @@ class CMakeBuildExtension(build_ext):
         )
         # Run the build
         subprocess.check_call(
-            ["cmake", "--build", ".", "--target", "example"], cwd=self.build_temp
+            ["cmake", "--build", ".", "--target", "bitbully_core"], cwd=self.build_temp
         )
 
 
@@ -40,7 +40,7 @@ setup(
     # name="bitbully",
     # version="0.0.16",  # already defined in the pyproject.toml (might get rid of it here)
     # packages=["bitbully"],
-    ext_modules=[CMakeExtension("bitbully.example")],
+    ext_modules=[CMakeExtension("bitbully.bitbully_core")],
     cmdclass={"build_ext": CMakeBuildExtension},
     zip_safe=False,
 )

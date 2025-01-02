@@ -52,6 +52,6 @@ add_subdirectory(google_tests)
 # https://pybind11.readthedocs.io/en/stable/compiling.html#compiling
 # https://pybind11.readthedocs.io/en/stable/compiling.html#cmake
 add_subdirectory(thirdParty/pybind11)
-pybind11_add_module(example src/example.cpp)
-target_link_libraries(example PUBLIC cppBitBully)
-install(TARGETS example DESTINATION .)
+pybind11_add_module(bitbully_core src/bitbully_core.cpp)
+target_link_libraries(bitbully_core PUBLIC cppBitBully)
+install(TARGETS bitbully_core DESTINATION .)

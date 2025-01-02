@@ -1,6 +1,3 @@
-// Remove hasWin()/canWin() and move generateMoves to the top and decide if we
-// terminate...
-
 #ifndef BITBULLY__BITBULLY_H_
 #define BITBULLY__BITBULLY_H_
 
@@ -86,12 +83,10 @@ class BitBully {
 
     // It appears as if this check is not necessary. Below we check, if we have
     // any non-losing moves left. If not, we return with a negative score.
+    // TODO: move this outside negamax:
     if (!depth && b.canWin()) {
       return (b.movesLeft() + 1) / 2;
     }
-
-    assert(uint64_t_popcnt(moves) <= Board::N_COLUMNS);
-    assert(uint64_t_popcnt(moves) > 0);
 
     if (alpha >= (b.movesLeft() + 1) / 2) {
       // We cannot get better than this (alpha) anymore (with every additional
@@ -121,6 +116,9 @@ class BitBully {
     if (!moves) {
       return -b.movesLeft() / 2;
     }
+
+    assert(uint64_t_popcnt(moves) <= Board::N_COLUMNS);
+    assert(uint64_t_popcnt(moves) > 0);
 
     if (depth < 20 && b.doubleThreat(moves)) {
       return (b.movesLeft() - 1) / 2;
