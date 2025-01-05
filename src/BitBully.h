@@ -78,6 +78,7 @@ class BitBully {
   void resetNodeCounter() { nodeCounter = 0ULL; }
 
   int negamax(Board b, int alpha, int beta, int depth) {
+    // In many aspects inspired by Pascal's code
     assert(alpha < beta);
     nodeCounter++;
 

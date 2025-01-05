@@ -204,8 +204,8 @@ class Board {
 
   TBitBoard findThreats(TBitBoard moves);
 
-  static inline TBitBoard lsb(TBitBoard x) {
-    auto mvMask = x - UINT64_C(1);
+  static inline TBitBoard lsb(const TBitBoard x) {
+    const auto mvMask = x - UINT64_C(1);
     return ~mvMask & x;
   }
 
@@ -299,13 +299,13 @@ class Board {
     return y | (x & getColumnMask(3));
   }
 
-  static inline constexpr uint64_t getMaskColRow(int column, int row) {
+  static constexpr uint64_t getMaskColRow(int column, int row) {
     assert(column >= 0 && column < N_COLUMNS);
     assert(row >= 0 && row < N_ROWS);
     return UINT64_C(1) << (column * COLUMN_BIT_OFFSET + row);
   }
 
-  static inline constexpr Player opponent(Player p) {
+  static constexpr Player opponent(Player p) {
     return static_cast<Player>(3 - p);
   }
 

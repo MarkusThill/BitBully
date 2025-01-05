@@ -47,7 +47,7 @@ bool Board::setBoard(const TBoardArray &board) {
   return true;
 }
 
-bool Board::isValid(const Board::TBoardArray &board) {
+bool Board::isValid(const TBoardArray &board) {
   // Counter for P_YELLOW, P_RED and P_EMPTY
   std::array<int, N_VALID_BOARD_VALUES> valCounts = {0UL};
   for (auto c = TBoardArray::size_type(0); c < N_COLUMNS; ++c) {
@@ -167,15 +167,35 @@ Board::TBitBoard Board::winningPositions(TBitBoard x, bool verticals) {
   return wins & BB_ALL_LEGAL_TOKENS;
 }
 
+/*
+ * [ *,  *,  *,  *,  *,  *,  *]
+ * [ *,  *,  *,  *,  *,  *,  *]
+ * [ *,  *,  *,  *,  *,  *,  *]
+ * [ 5, 14, 23, 32, 41, 50, 59],
+ * [ 4, 13, 22, 31, 40, 49, 58],
+ * [ 3, 12, 21, 30, 39, 48, 57],
+ * [ 2, 11, 20, 29, 38, 47, 56],
+ * [ 1, 10, 19, 28, 37, 46, 55],
+ * [ 0,  9, 18, 27, 36, 45, 54]
+ */
 MoveList Board::sortMoves(TBitBoard moves) {
   MoveList mvList;
 
+  // own threats
+  const TBitBoard ownThreats = winningPositions(m_bActive, false);
+
   while (moves) {
-    const auto mv = nextMove(moves);
+    const auto mv = nextMove(moves);  // TODO: mot yet efficient enough
     assert(uint64_t_popcnt(mv) == 1);
+
+    // How many threats (indirect & direct) will I have after this move?
     const auto threats =
         winningPositions(m_bActive ^ mv, true) & ~(m_bAll ^ mv);
-    const auto numThreats = static_cast<int>(uint64_t_popcnt(threats));
+    auto numThreats = static_cast<int>(uint64_t_popcnt(threats));
+
+    // Usually, try to avoid moving under own threat since opponent will
+    // neutralize it...
+    if (ownThreats & (mv << 1)) numThreats--;
 
     mvList.insert(mv, numThreats);
 
