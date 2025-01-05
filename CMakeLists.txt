@@ -46,7 +46,7 @@ target_include_directories(cppBitBully PUBLIC ${BB_PROJECT_INCS})
 target_link_libraries(cppBitBully ${BB_PROJECT_LIBS})
 
 add_subdirectory(thirdParty)
-add_subdirectory(google_tests)
+add_subdirectory(gtests)
 
 # https://pybind11.readthedocs.io/en/stable/basics.html
 # https://pybind11.readthedocs.io/en/stable/compiling.html#compiling

@@ -50,7 +50,7 @@ static constexpr uint64_t getMask(const std::initializer_list<int> bits) {
   return bb;
 }
 
-static constexpr bool isIllegalBit(int bitIdx) {
+static constexpr bool isIllegalBit(const int bitIdx) {
   constexpr int COLUMN_BIT_OFFSET = 9;  // TODO: redundant in class below. Fix??
   constexpr int N_ROWS = 6;             // TODO: redundant in class below. Fix??
   constexpr int COLUMNS = 7;            // TODO: redundant in class below. Fix??
