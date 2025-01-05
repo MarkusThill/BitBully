@@ -1,0 +1,47 @@
+name: Generate Doxygen Documentation
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the branch you want to trigger the workflow
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  generate-docs:
+    name: Generate and Deploy Doxygen Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Check out the repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      # Step 2: Set up Doxygen
+      - name: Install Doxygen
+        run: |
+          export DOXY_VERSION=1.13.1
+          echo "Installing doxgen v$DOXY_VERSION"
+          sudo apt-get update && sudo apt-get install -y graphviz
+          mkdir doxygen-installer
+          wget "https://www.doxygen.nl/files/doxygen-${DOXY_VERSION}.linux.bin.tar.gz"
+          mv "doxygen-${DOXY_VERSION}.linux.bin.tar.gz" doxygen-installer
+          cd doxygen-installer
+          gunzip "doxygen-${DOXY_VERSION}.linux.bin.tar.gz"
+          tar xf "doxygen-${DOXY_VERSION}.linux.bin.tar"
+          cd "doxygen-${DOXY_VERSION}"
+          ls -laht
+          sudo make install
+
+      # Step 3: Generate Documentation
+      - name: Generate Doxygen Documentation
+        run: doxygen Doxyfile
+
+      # Step 4: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        # if: startsWith(github.ref, 'refs/tags/')  # Only execute on new tags
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/html
