@@ -9,12 +9,12 @@
 #include <memory>
 #include <vector>
 
-//#define EVALOFF
-//#define WINSEARCH
-//#define WINDOWSEARCH
-//#define CLAIMDRAW
-//#define CLAIMWIN
-//#define PROBCUT
+// #define EVALOFF
+// #define WINSEARCH
+// #define WINDOWSEARCH
+// #define CLAIMDRAW
+// #define CLAIMWIN
+// #define PROBCUT
 
 #define RED 1
 #define YELLOW 2
@@ -65,6 +65,7 @@
 #define EVAL_AVERAGE 1
 #define EVAL_DUMB 2
 
+namespace Solver4InARow {
 class Agent4InARow {
   typedef unsigned int int32;
 
@@ -138,8 +139,8 @@ class Agent4InARow {
   //enginecommand PROC1 getmove=0,getmove1=0,getmove2=0; COMMANDPROC
   enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
-  //#define min(X,Y) (((X) < (Y)) ? (X) : (Y))
-  //#define max(X,Y) (((X) > (Y)) ? (X) : (Y))
+  // #define min(X,Y) (((X) < (Y)) ? (X) : (Y))
+  // #define max(X,Y) (((X) > (Y)) ? (X) : (Y))
 
   typedef int (Agent4InARow::*proc1)(POSITION *p);
 
@@ -179,7 +180,7 @@ class Agent4InARow {
   MOVEINFO moveinfo[64];
 
   int64 fourrow[FOURROW];  // FOURROW = 69; these are bitmasks for possible
-                           // 4-in-a-row's
+  // 4-in-a-row's
 
   int64 hashxors[3][64];
 
@@ -1588,5 +1589,6 @@ class Agent4InARow {
     return 1;
   }
 };
+}  // namespace Solver4InARow
 
 #endif  // BITBULLY_AGENT4INAROW_H

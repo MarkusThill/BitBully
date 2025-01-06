@@ -44,8 +44,8 @@ CBmove *move); typedef INT (WINAPI* COMMANDPROC)(char command[256], char
 reply[1024]); //enginecommand PROC1 getmove=0,getmove1=0,getmove2=0;
 COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 
-//#define min(X,Y) (((X) < (Y)) ? (X) : (Y))
-//#define max(X,Y) (((X) > (Y)) ? (X) : (Y))
+// #define min(X,Y) (((X) < (Y)) ? (X) : (Y))
+// #define max(X,Y) (((X) > (Y)) ? (X) : (Y))
 
 #include "4inarow.h"
 
@@ -54,6 +54,8 @@ COMMANDPROC enginecommandtmp=0,enginecommand1=0, enginecommand2=0;*/
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+
+namespace Solver4InARow {
 
 typedef int (*proc1)(POSITION *p);
 
@@ -1441,3 +1443,4 @@ int printmove(MOVE *m) {
   printf("\n");
   return 1;
 }
+}  // namespace Solver4InARow

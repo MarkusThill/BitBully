@@ -8,3 +8,6 @@
 	path = thirdParty/pybind11
 	url = git@github.com:pybind/pybind11.git
 	branch = stable
+[submodule "thirdParty/doxygen-awesome-css"]
+	path = thirdParty/doxygen-awesome-css
+	url = https://github.com/jothepro/doxygen-awesome-css.git

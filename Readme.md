@@ -1,5 +1,23 @@
 # BitBully: A fast and perfect-playing Connect-4 Agent for Python 3 & C/C++
 
+<h1 align="center">
+<img src="bitbully-logo-full.png" alt="bitbully-logo-full.png" width="400" >
+</h1><br>
+
+![Python](https://img.shields.io/badge/language-Python-blue.svg)
+![Python](https://img.shields.io/badge/language-C++-yellow.svg)
+[![Python](https://img.shields.io/pypi/pyversions/bitbully.svg)](https://badge.fury.io/py/bitbully)
+![Docs](https://img.shields.io/badge/docs-online-brightgreen)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+![PyPI - Version](https://img.shields.io/pypi/v/bitbully)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/bitbully)
+![PyPI - License](https://img.shields.io/pypi/l/bitbully)
+![Coveralls](https://coveralls.io/repos/github/OWNER/REPO/badge.svg)
+![Wheels](https://github.com/MarkusThill/BitBully/actions/workflows/wheels.yml/badge.svg)
+![Doxygen](https://github.com/MarkusThill/BitBully/actions/workflows/doxygen.yml/badge.svg)
+![Doxygen](https://github.com/MarkusThill/BitBully/actions/workflows/cmake-multi-platform.yml/badge.svg)
+![Buy Me a Coffee](https://img.shields.io/badge/support-Buy_Me_A_Coffee-orange)
+
 Generally, a lot of ideas were taken from the great Connect-4 Solver that Pascal Pons developed:
 
 - [http://blog.gamesolver.org/](http://blog.gamesolver.org/)

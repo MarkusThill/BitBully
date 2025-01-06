@@ -61,6 +61,8 @@
 #define EVAL_AVERAGE 1
 #define EVAL_DUMB 2
 
+namespace Solver4InARow {
+
 typedef unsigned int int32;
 
 typedef u_int64_t int64;
@@ -161,3 +163,4 @@ int threatretrieve(int64 yt, int64 rt, int *value);
 void undomove(POSITION *p, MOVE *m);
 
 int windowsearch(POSITION *p, int depth, int guess);
+}  // namespace Solver4InARow

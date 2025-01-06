@@ -9,6 +9,10 @@ namespace BitBully {
 
 class TranspositionTable {
  public:
+  // hash tables of size 2^n allow fast modulo operations since
+  // x mod 2^n = x & (2^n - 1)
+  // TODO: compute the effect of the hash table size on the long-term perf. of
+  // the BitBully solver
   static constexpr int LOG_2_SIZE = 20;
 
   struct Entry {
