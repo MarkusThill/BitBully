@@ -4,6 +4,8 @@
 <img src="bitbully-logo-full.png" alt="bitbully-logo-full.png" width="400" >
 </h1><br>
 
+![GitHub Repo stars](https://img.shields.io/github/stars/MarkusThill/BitBully)
+![GitHub forks](https://img.shields.io/github/forks/MarkusThill/BitBully)
 ![Python](https://img.shields.io/badge/language-Python-blue.svg)
 ![Python](https://img.shields.io/badge/language-C++-yellow.svg)
 [![Python](https://img.shields.io/pypi/pyversions/bitbully.svg)](https://badge.fury.io/py/bitbully)
@@ -26,6 +28,12 @@ Generally, a lot of ideas were taken from the great Connect-4 Solver that Pascal
 The board logic was inspired by:
 
 - https://tromp.github.io/c4/Connect4.java
+
+# GitHub Snake
+
+<h1 align="center">
+<img src="https://raw.githubusercontent.com/MarkusThill/snk/refs/heads/manual-run-output/only-svg/github-contribution-grid-snake.svg" alt="https://raw.githubusercontent.com/MarkusThill/snk/refs/heads/manual-run-output/only-svg/github-contribution-grid-snake.svg" width="90%" >
+</h1><br>
 
 # Compiler
 
