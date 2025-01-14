@@ -30,6 +30,8 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def(py::init<>())  // Default constructor
       .def("playMoveFastBB", &BitBully::Board::playMoveFastBB,
            "Play a move on the board (bitboard representation)", py::arg("mv"))
+      .def("canWin", &BitBully::Board::canWin,
+           "Check, if current player can win.")
       // overload cast probably not necessary, since there is only one function
       // with that name:
       .def("playMove", py::overload_cast<int>(&BitBully::Board::playMove),
