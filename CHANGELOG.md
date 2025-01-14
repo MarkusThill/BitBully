@@ -1,3 +1,23 @@
+## v0.0.17 (2025-01-15)
+
+### Fix
+
+- minimal build for now
+- added new copy button to doxy config
+- adapted logo
+- added a github badge
+- add logo
+- added more modern doxygen theme
+- fixed cmake build in github workflow
+- add doxygen support
+- updated connect4 formatting
+- removed snake casing from google test dir
+- avoid moving under own threats
+
+### Refactor
+
+- renamed example to bitbully_core
+
 ## v0.0.16 (2025-01-01)
 
 ### Fix
