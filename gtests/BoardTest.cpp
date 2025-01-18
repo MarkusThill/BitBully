@@ -1,12 +1,11 @@
 // Opening Book and transposition table could be the same table?
-// TODO: use project-own google tests!!! Use git sub module!!!
 // TODO: Simple neural net for move ordering? input board, output: 7-dim vector
 // TODO: Use a simple logger. Use glog of google...
 // TODO: Log computation times using a software version into a txt file...
 // TODO: Play n games against a random (or more advanced) player: It has to win
 // every single game! ...
-// TODO: Github CI/CD Pipeline
-// TODO: Namespace for Pons/FierzC4??
+
+#include <random>  // For C++11/C++17 random library
 
 #include "Board.h"
 #include "Solver.hpp"
@@ -67,13 +66,20 @@ TEST_F(BoardTest, canWin) {
   using time_point =
       std::chrono::time_point<std::chrono::high_resolution_clock>;
   using duration = std::chrono::duration<float>;
+
+  // Create a random number generator
+  std::random_device rd;   // Seed source
+  std::mt19937 gen(rd());  // Mersenne Twister RNG seeded with rd()
+
+  // Define a uniform distribution
+  std::uniform_int_distribution<> distrib(0, B::N_COLUMNS - 1);
+
   float time1 = 0.0F, time2 = 0.0F;
   uint64_t counter = UINT64_C(0);
-  for (auto i = 0; i < 5000; i++) {
+  for (auto i = 0; i < 10000; i++) {
     B b;
     GameSolver::Connect4::Position P;
-    for (auto j = 0; j < 42; ++j) {
-      // TODO: We need a random board generator...
+    for (auto j = 0; j < B::N_COLUMNS * B::N_ROWS; ++j) {
       time_point tstart = std::chrono::high_resolution_clock::now();
       auto result1 = P.canWinNext();
       time_point tend = std::chrono::high_resolution_clock::now();
@@ -88,8 +94,8 @@ TEST_F(BoardTest, canWin) {
 
       ASSERT_EQ(result1, result2);
       counter++;
-      int randColumn = rand() % 7;
-      while (!P.canPlay(randColumn)) randColumn = rand() % 7;
+      int randColumn = distrib(gen);
+      while (!P.canPlay(randColumn)) randColumn = distrib(gen);
 
       ASSERT_TRUE(b.playMove(randColumn));
       P.playCol(randColumn);
@@ -104,6 +110,73 @@ TEST_F(BoardTest, canWin) {
   std::cout << "Pos./s Pons: " << static_cast<double>(counter) / time1
             << ". Pos./s Mine: " << static_cast<double>(counter) / time2
             << std::endl;
+}
+
+TEST_F(BoardTest, canWin2) {
+  using B = BitBully::Board;
+
+  // Create a random number generator
+  std::random_device rd;   // Seed source
+  std::mt19937 gen(rd());  // Mersenne Twister RNG seeded with rd()
+
+  // Define a uniform distribution
+  std::uniform_int_distribution<> distrib(0, B::N_COLUMNS - 1);
+
+  for (auto i = 0; i < 5000; i++) {
+    B b;
+    GameSolver::Connect4::Position P;
+    for (auto j = 0; j < B::N_COLUMNS * B::N_ROWS; ++j) {
+      // TODO: We need a random board generator...
+      const auto canWin = b.canWin();
+
+      for (int x = 0; x < B::N_COLUMNS && canWin; ++x) {
+        if (b.isLegalMove(x)) {
+          ASSERT_EQ(P.isWinningMove(x), b.canWin(x));
+        }
+      }
+
+      int randColumn = distrib(gen);
+      while (!P.canPlay(randColumn)) randColumn = distrib(gen);
+
+      ASSERT_TRUE(b.playMove(randColumn)) << randColumn;
+      P.playCol(randColumn);
+
+      if (P.isWinningMove(randColumn)) {
+        break;
+      }
+    }
+  }
+}
+
+TEST_F(BoardTest, hasWon) {
+  using B = BitBully::Board;
+
+  // Create a random number generator
+  std::random_device rd;   // Seed source
+  std::mt19937 gen(rd());  // Mersenne Twister RNG seeded with rd()
+
+  // Define a uniform distribution
+  std::uniform_int_distribution<> distrib(0, B::N_COLUMNS - 1);
+
+  for (auto i = 0; i < 10000; i++) {
+    B b;
+    for (auto j = 0; j < B::N_COLUMNS * B::N_ROWS; ++j) {
+      const auto canWin = b.canWin();
+      for (int x = 0; x < B::N_COLUMNS && canWin; ++x) {
+        if (b.canWin(x)) {
+          ASSERT_TRUE(b.playMove(x));
+          ASSERT_TRUE(b.hasWin()) << b.toString();
+          break;
+        }
+      }
+      if (canWin) break;
+
+      ASSERT_FALSE(b.hasWin()) << b.toString();
+
+      int randColumn = distrib(gen);
+      while (!b.playMove(randColumn)) randColumn = distrib(gen);
+    }
+  }
 }
 
 TEST_F(BoardTest, toString) {

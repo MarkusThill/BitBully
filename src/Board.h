@@ -80,19 +80,19 @@ class Board {
   using TMovesCounter = int;
   using TBoardArray = std::array<std::array<int32_t, N_ROWS>, N_COLUMNS>;
 
-  void inline playMoveFastBB(TBitBoard mv) {
+  void inline playMoveFastBB(const TBitBoard mv) {
     assert(mv != BB_EMPTY);
     assert((mv & BB_ILLEGAL) == BB_EMPTY);
     assert((m_bAll & mv) == BB_EMPTY);
-    m_bActive ^= m_bAll;  // Already, switch player
+    m_bActivePTokens ^= m_bAllTokens;  // Already, switch player
 
     // However, move is performed for current player (assuming, above switch is
     // not yet performed)
-    m_bAll ^= mv;  // bitwise xor and bitwise or are equivalent here
+    m_bAllTokens ^= mv;  // bitwise xor and bitwise or are equivalent here
     m_movesLeft--;
   }
 
-  Board inline playMoveOnCopy(TBitBoard mv) {
+  Board inline playMoveOnCopy(const TBitBoard mv) {
     Board b = *this;
     b.playMoveFastBB(mv);
     return b;
@@ -109,9 +109,9 @@ class Board {
     return count;
   }
 
-  inline auto popCountBoard() const { return uint64_t_popcnt(m_bAll); }
+  inline auto popCountBoard() const { return uint64_t_popcnt(m_bAllTokens); }
 
-  bool isLegalMove(int column);
+  bool isLegalMove(int column) const;
 
   static uint64_t hash(uint64_t x) {
     x = (x ^ (x >> 30)) * UINT64_C(0xbf58476d1ce4e5b9);
@@ -123,10 +123,12 @@ class Board {
   uint64_t uid() const {
     // the resulting 64-bit integer is a unique identifier for each board
     // Can be used to store a position in a transposition table
-    return m_bActive + m_bAll;
+    return m_bActivePTokens + m_bAllTokens;
   }
 
-  uint64_t hash() const { return hash(hash(m_bActive) ^ (hash(m_bAll) << 1)); }
+  uint64_t hash() const {
+    return hash(hash(m_bActivePTokens) ^ (hash(m_bAllTokens) << 1));
+  }
 
   static TBitBoard nextMove(TBitBoard allMoves) {
     for (const auto p : BB_MOVES_PRIO_LIST) {
@@ -139,7 +141,8 @@ class Board {
   }
 
   bool operator==(const Board &b) const {
-    const bool equal = (b.m_bAll == m_bAll && b.m_bActive == m_bActive);
+    const bool equal = (b.m_bAllTokens == m_bAllTokens &&
+                        b.m_bActivePTokens == m_bActivePTokens);
 
     // Assert that if board is equal that also movesLeft are equal
     assert(equal && (b.m_movesLeft == m_movesLeft) || !equal);
@@ -149,6 +152,58 @@ class Board {
   bool operator!=(const Board &b) const { return !(b == *this); }
 
   TBitBoard findOddThreats(TBitBoard moves);
+
+  bool setBoard(const TBoardArray &board);
+
+  TBoardArray toArray();
+
+  static bool isValid(const TBoardArray &board);
+
+  bool playMove(int column);
+
+  bool canWin() const;
+
+  bool canWin(int column) const;
+
+  bool hasWin() const;
+
+  std::string toString();
+
+  inline TMovesCounter movesLeft() const { return m_movesLeft; }
+
+  Board mirror() const;
+
+  MoveList sortMoves(TBitBoard moves) const;
+
+  TBitBoard findThreats(TBitBoard moves);
+
+  static inline TBitBoard lsb(const TBitBoard x) {
+    const auto mvMask = x - UINT64_C(1);
+    return ~mvMask & x;
+  }
+
+  TBitBoard generateNonLosingMoves() {
+    // Mostly inspired by Pascal's Code
+    // This function might return an empty bitboard. In this case, the active
+    // player will lose, since all possible moves will lead to a defeat.
+    TBitBoard moves = generateMoves();
+    const TBitBoard threats =
+        winningPositions(m_bActivePTokens ^ m_bAllTokens, true);
+    if (const TBitBoard directThreats = threats & moves) {
+      // no way we can neutralize more than one direct threat...
+      moves = directThreats & (directThreats - 1) ? UINT64_C(0) : directThreats;
+    }
+
+    // No token under an opponent's threat.
+    return moves & ~(threats >> 1);
+  }
+
+  TBitBoard doubleThreat(const TBitBoard moves) {
+    const TBitBoard ownThreats = winningPositions(m_bActivePTokens, false);
+    const TBitBoard otherThreats =
+        winningPositions(m_bActivePTokens ^ m_bAllTokens, true);
+    return moves & (ownThreats >> 1) & (ownThreats >> 2) & ~(otherThreats >> 1);
+  }
 
  private:
   /* [ *,  *,  *,  *,  *,  *,  *]
@@ -183,55 +238,6 @@ class Board {
                                               BB_MOVES_PRIO3, BB_MOVES_PRIO4,
                                               BB_MOVES_PRIO5, BB_MOVES_PRIO6};
 
- public:
-  bool setBoard(const TBoardArray &board);
-
-  TBoardArray toArray();
-
-  static bool isValid(const TBoardArray &board);
-
-  bool playMove(int column);
-
-  bool canWin() const;
-
-  std::string toString();
-
-  inline TMovesCounter movesLeft() const { return m_movesLeft; }
-
-  Board mirror() const;
-
-  MoveList sortMoves(TBitBoard moves);
-
-  TBitBoard findThreats(TBitBoard moves);
-
-  static inline TBitBoard lsb(const TBitBoard x) {
-    const auto mvMask = x - UINT64_C(1);
-    return ~mvMask & x;
-  }
-
-  TBitBoard generateNonLosingMoves() {
-    // Mostly inspired by Pascal's Code
-    // This function might return an empty bitboard. In this case, the active
-    // player will lose, since all possible moves will lead to a defeat.
-    TBitBoard moves = generateMoves();
-    TBitBoard threats = winningPositions(m_bActive ^ m_bAll, true);
-    TBitBoard directThreats = threats & moves;
-    if (directThreats) {
-      // no way we can neutralize more than one direct threat...
-      moves = directThreats & (directThreats - 1) ? UINT64_C(0) : directThreats;
-    }
-
-    // No token under an opponents threat.
-    return moves & ~(threats >> 1);
-  }
-
-  TBitBoard doubleThreat(TBitBoard moves) {
-    TBitBoard ownThreats = winningPositions(m_bActive, false);
-    TBitBoard otherThreats = winningPositions(m_bActive ^ m_bAll, true);
-    return moves & (ownThreats >> 1) & (ownThreats >> 2) & ~(otherThreats >> 1);
-  }
-
- private:
   /* Having a bitboard that contains all stones and another one representing the
    * current active player has the advantage that we do not have to do any
    * branching to figure out which player's turn it is. After each move we
@@ -246,20 +252,18 @@ class Board {
    * [ 1, 10, 19, 28, 37, 46, 55],
    * [ 0,  9, 18, 27, 36, 45, 54]
    */
-  TBitBoard m_bAll,
-      m_bActive;  // TODO: rename to m_bAllTokens, m_bActivePTokens
+  TBitBoard m_bAllTokens, m_bActivePTokens;
   TMovesCounter m_movesLeft;
 
   static TBitBoard winningPositions(TBitBoard x, bool verticals);
 
-  auto static inline constexpr getColumnMask(int column) {
+  auto static inline constexpr getColumnMask(const int column) {
     assert(column >= 0 && column < N_COLUMNS);
-    // auto rc = N_COLUMNS - column - 1;
     return (UINT64_C(1) << (column * COLUMN_BIT_OFFSET + N_ROWS)) -
            (UINT64_C(1) << (column * COLUMN_BIT_OFFSET));
   }
 
-  auto static inline constexpr getRowMask(int row) {
+  auto static inline constexpr getRowMask(const int row) {
     assert(row >= 0 && row < N_ROWS);
     TBitBoard mask{0};
     for (int i = 0; i < N_COLUMNS; ++i) {
@@ -278,7 +282,7 @@ class Board {
    * [ 1, 10, 19, 28, 37, 46, 55],
    * [ 0,  9, 18, 27, 36, 45, 54]
    */
-  auto static constexpr mirrorBitBoard(TBitBoard x) {
+  auto static constexpr mirrorBitBoard(const TBitBoard x) {
     // TODO: It should be possible to do it in x only (using XORS). But,
     // premature optimization is the root of all evil. Try this later.
     // TODO: Any difference using XOR instead of OR? (probably not)...
@@ -299,7 +303,7 @@ class Board {
     return y | (x & getColumnMask(3));
   }
 
-  static constexpr uint64_t getMaskColRow(int column, int row) {
+  static constexpr uint64_t getMaskColRow(const int column, const int row) {
     assert(column >= 0 && column < N_COLUMNS);
     assert(row >= 0 && row < N_ROWS);
     return UINT64_C(1) << (column * COLUMN_BIT_OFFSET + row);
@@ -309,15 +313,13 @@ class Board {
     return static_cast<Player>(3 - p);
   }
 
-  void inline playMoveFast(int column) {
+  void inline playMoveFast(const int column) {
     assert(column >= 0 && column < N_COLUMNS);
-    TBitBoard columnMask = getColumnMask(column);
+    const TBitBoard columnMask = getColumnMask(column);
     assert(uint64_t_popcnt(columnMask) == N_ROWS);
-    auto mvMask = (m_bAll + BB_BOTTOM_ROW) & columnMask;
+    const auto mvMask = (m_bAllTokens + BB_BOTTOM_ROW) & columnMask;
     playMoveFastBB(mvMask);
   }
-
-  bool hasWon();
 };
 
 }  // namespace BitBully

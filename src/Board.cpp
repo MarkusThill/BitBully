@@ -3,12 +3,13 @@
 #include <array>
 #include <cassert>
 #include <iostream>
-#include <map>
 
 namespace BitBully {
 
 Board::Board()
-    : m_bAll{BB_EMPTY}, m_bActive{BB_EMPTY}, m_movesLeft{N_COLUMNS * N_ROWS} {
+    : m_bAllTokens{BB_EMPTY},
+      m_bActivePTokens{BB_EMPTY},
+      m_movesLeft{N_COLUMNS * N_ROWS} {
   // asserts will be turned off in Release mode
   assert(uint64_t_popcnt(BB_ALL_LEGAL_TOKENS) == N_COLUMNS * N_ROWS);
   assert(uint64_t_popcnt(BB_ILLEGAL) ==
@@ -41,8 +42,8 @@ bool Board::setBoard(const TBoardArray &board) {
       N_COLUMNS * N_ROWS - static_cast<int>(uint64_t_popcnt(allTokens));
 
   // if m_movesLeft is odd that means that its players RED turn
-  m_bActive = yellowTokens ^ (m_movesLeft & 1 ? allTokens : BB_EMPTY);
-  m_bAll = allTokens;
+  m_bActivePTokens = yellowTokens ^ (m_movesLeft & 1 ? allTokens : BB_EMPTY);
+  m_bAllTokens = allTokens;
 
   return true;
 }
@@ -50,14 +51,15 @@ bool Board::setBoard(const TBoardArray &board) {
 bool Board::isValid(const TBoardArray &board) {
   // Counter for P_YELLOW, P_RED and P_EMPTY
   std::array<int, N_VALID_BOARD_VALUES> valCounts = {0UL};
-  for (auto c = TBoardArray::size_type(0); c < N_COLUMNS; ++c) {
+  for (auto c = static_cast<TBoardArray::size_type>(0); c < N_COLUMNS; ++c) {
     bool columnComplete = false;
-    for (auto r = TBoardArray::size_type(0); r < N_ROWS; ++r) {
-      auto val = board[c][r];
+    for (auto r = static_cast<TBoardArray::size_type>(0); r < N_ROWS; ++r) {
+      const auto val = board[c][r];
       // There are only 3 options for a cell:
       if (val != P_RED && val != P_YELLOW && val != P_EMPTY) {
         return false;
-      } else if (val == P_EMPTY) {
+      }
+      if (val == P_EMPTY) {
         columnComplete = true;  // rest of column should be empty
       } else {
         if (columnComplete) return false;  // Unexpected bYellow/red stone
@@ -66,9 +68,9 @@ bool Board::isValid(const TBoardArray &board) {
     }
   }
 
-  // Yellow cannot have less pieces than Red:
-  auto diff = valCounts[P_YELLOW] - valCounts[P_RED];
-  if (diff < 0 || diff > 1) {
+  // Yellow cannot have fewer pieces than Red:
+  if (const auto diff = valCounts[P_YELLOW] - valCounts[P_RED];
+      diff < 0 || diff > 1) {
     return false;
   }
 
@@ -86,7 +88,7 @@ bool Board::isValid(const TBoardArray &board) {
  * [ 1, 10, 19, 28, 37, 46, 55],
  * [ 0,  9, 18, 27, 36, 45, 54]
  */
-bool Board::playMove(int column) {
+bool Board::playMove(const int column) {
   // Check, if column full...
   if (!isLegalMove(column)) return false;
 
@@ -95,12 +97,12 @@ bool Board::playMove(int column) {
   return true;
 }
 
-bool Board::isLegalMove(int column) {
+bool Board::isLegalMove(const int column) const {
   if (column < 0 || column >= N_COLUMNS) return false;
 
   TBitBoard columnMask = getColumnMask(column);
   columnMask -= (UINT64_C(1) << (column * COLUMN_BIT_OFFSET));
-  return !(m_bAll & columnMask & BB_TOP_ROW);
+  return !(m_bAllTokens & columnMask & BB_TOP_ROW);
 }
 
 /*
@@ -115,11 +117,11 @@ bool Board::isLegalMove(int column) {
  * 0 1 0 0 | 0 0 0 0
  * 0 1 0 1 | 0 0 0 0
  * 0 1 1 0 | 0 0 0 0
- * 0 1 1 1 | 0 0 0 0  < A = bcd
+ * 0 1 1 1 | 1 0 0 0  < A = bcd
  * 1 0 0 0 | 0 0 0 0
  * 1 0 0 1 | 0 0 0 0
  * 1 0 1 0 | 0 0 0 0
- * 1 0 1 1 | 0 0 0 0  < B = acd
+ * 1 0 1 1 | 0 1 0 0  < B = acd
  * 1 1 0 0 | 0 0 0 0
  * 1 1 0 1 | 0 0 1 0  < C = abd
  * 1 1 1 0 | 0 0 0 1  < D = abc
@@ -147,7 +149,8 @@ bool Board::isLegalMove(int column) {
  * [ 1, 10, 19, 28, 37, 46, 55],
  * [ 0,  9, 18, 27, 36, 45, 54]
  */
-Board::TBitBoard Board::winningPositions(TBitBoard x, bool verticals) {
+Board::TBitBoard Board::winningPositions(const TBitBoard x,
+                                         const bool verticals) {
   // Vertical wins are fairly simple:
   TBitBoard wins = verticals ? (x << 1) & (x << 2) & (x << 3) : UINT64_C(0);
 
@@ -178,19 +181,50 @@ Board::TBitBoard Board::winningPositions(TBitBoard x, bool verticals) {
  * [ 1, 10, 19, 28, 37, 46, 55],
  * [ 0,  9, 18, 27, 36, 45, 54]
  */
-MoveList Board::sortMoves(TBitBoard moves) {
+bool Board::hasWin() const {
+  // Vertical win:
+  const auto y = m_bActivePTokens ^ m_bAllTokens;
+  auto x = y & (y << 2);
+  if (x & (x << 1)) return true;
+
+  // Horizontal win:
+  x = y & (y << 2 * COLUMN_BIT_OFFSET);
+  if (x & (x << COLUMN_BIT_OFFSET)) return true;
+
+  // Diagonal-1 win:
+  x = y & (y << 2 * (COLUMN_BIT_OFFSET - 1));
+  if (x & (x << (COLUMN_BIT_OFFSET - 1))) return true;
+
+  // Diagonal-2 win:
+  x = y & (y << 2 * (COLUMN_BIT_OFFSET + 1));
+  if (x & (x << (COLUMN_BIT_OFFSET + 1))) return true;
+  return false;
+}
+
+/*
+ * [ *,  *,  *,  *,  *,  *,  *]
+ * [ *,  *,  *,  *,  *,  *,  *]
+ * [ *,  *,  *,  *,  *,  *,  *]
+ * [ 5, 14, 23, 32, 41, 50, 59],
+ * [ 4, 13, 22, 31, 40, 49, 58],
+ * [ 3, 12, 21, 30, 39, 48, 57],
+ * [ 2, 11, 20, 29, 38, 47, 56],
+ * [ 1, 10, 19, 28, 37, 46, 55],
+ * [ 0,  9, 18, 27, 36, 45, 54]
+ */
+MoveList Board::sortMoves(TBitBoard moves) const {
   MoveList mvList;
 
   // own threats
-  const TBitBoard ownThreats = winningPositions(m_bActive, false);
+  const TBitBoard ownThreats = winningPositions(m_bActivePTokens, false);
 
   while (moves) {
-    const auto mv = nextMove(moves);  // TODO: mot yet efficient enough
+    const auto mv = nextMove(moves);  // TODO: not yet efficient enough
     assert(uint64_t_popcnt(mv) == 1);
 
     // How many threats (indirect & direct) will I have after this move?
     const auto threats =
-        winningPositions(m_bActive ^ mv, true) & ~(m_bAll ^ mv);
+        winningPositions(m_bActivePTokens ^ mv, true) & ~(m_bAllTokens ^ mv);
     auto numThreats = static_cast<int>(uint64_t_popcnt(threats));
 
     // Usually, try to avoid moving under own threat since opponent will
@@ -205,7 +239,7 @@ MoveList Board::sortMoves(TBitBoard moves) {
 }
 
 Board::TBitBoard Board::findThreats(TBitBoard moves) {
-  auto threats = winningPositions(m_bActive, true) & ~m_bAll;
+  auto threats = winningPositions(m_bActivePTokens, true) & ~m_bAllTokens;
 
   // TODO: The pop couting function seems to matter a lot
   auto curNumThreats = uint64_t_popcnt(threats);
@@ -219,13 +253,14 @@ Board::TBitBoard Board::findThreats(TBitBoard moves) {
     // only select those positions as threats, which are still empty.
     // It seems that all kind of threats (immediate and indirect threats) are
     // beneficial for the move ordering!
-    threats = winningPositions(m_bActive ^ mv, true) & ~(m_bAll ^ mv);
+    threats =
+        winningPositions(m_bActivePTokens ^ mv, true) & ~(m_bAllTokens ^ mv);
 
     if (uint64_t_popcnt(threats & (moves ^ mv)) > 1)
       return mv;  // at least 2 immediate threats
 
-    auto numThreats = uint64_t_popcnt(threats);
-    if (numThreats > curNumThreats) {
+    if (const auto numThreats = uint64_t_popcnt(threats);
+        numThreats > curNumThreats) {
       threatMoves ^= mv;
     }
     moves ^= mv;
@@ -236,17 +271,18 @@ Board::TBitBoard Board::findThreats(TBitBoard moves) {
 
 Board::TBitBoard Board::findOddThreats(TBitBoard moves) {
   constexpr auto ODD_ROWS = getRowMask(2) | getRowMask(4);
-  auto threats = winningPositions(m_bActive, true) & ~m_bAll;
+  auto threats = winningPositions(m_bActivePTokens, true) & ~m_bAllTokens;
 
   // TODO: The pop couting function seems to matter a lot
-  auto curNumThreats = uint64_t_popcnt(threats & ODD_ROWS);
+  const auto curNumThreats = uint64_t_popcnt(threats & ODD_ROWS);
   auto threatMoves = UINT64_C(0);
   while (moves) {
-    auto mv = lsb(moves);
+    const auto mv = lsb(moves);
 
-    threats = winningPositions(m_bActive ^ mv, true) & ~(m_bAll ^ mv);
-    auto numThreats = uint64_t_popcnt(threats & ODD_ROWS);
-    if (numThreats > curNumThreats) {
+    threats =
+        winningPositions(m_bActivePTokens ^ mv, true) & ~(m_bAllTokens ^ mv);
+    if (const auto numThreats = uint64_t_popcnt(threats & ODD_ROWS);
+        numThreats > curNumThreats) {
       threatMoves ^= mv;
     }
     moves ^= mv;
@@ -297,28 +333,29 @@ std::pair<unsigned long, unsigned long> Board::findOddEvenThreats() {
  */
 
 bool Board::canWin() const {
-  return winningPositions(m_bActive, true) & (m_bAll + BB_BOTTOM_ROW);
+  return winningPositions(m_bActivePTokens, true) &
+         (m_bAllTokens + BB_BOTTOM_ROW);
 }
 
-bool Board::hasWon() {
-  // TODO: Check, if a player has exactly 4 stones in a row!
-  throw std::logic_error(__FUNCTION__);
+bool Board::canWin(int column) const {
+  return isLegalMove(column) &&
+         (winningPositions(m_bActivePTokens, true) &
+          (m_bAllTokens + BB_BOTTOM_ROW) & getColumnMask(column));
 }
 
 Board::TBitBoard Board::generateMoves() {
-  return (m_bAll + BB_BOTTOM_ROW) & BB_ALL_LEGAL_TOKENS;
+  return (m_bAllTokens + BB_BOTTOM_ROW) & BB_ALL_LEGAL_TOKENS;
 }
 
 Board::TBoardArray Board::toArray() {
   TBoardArray board{0};
-  auto activePlayer = (m_movesLeft & 1 ? P_RED : P_YELLOW);
-  auto inactivePlayer = opponent(activePlayer);
+  const auto activePlayer = (m_movesLeft & 1 ? P_RED : P_YELLOW);
+  const auto inactivePlayer = opponent(activePlayer);
   for (auto c = 0; c < N_COLUMNS; ++c) {
     for (auto r = 0; r < N_ROWS; ++r) {
-      auto mask = getMaskColRow(c, r);
-      if (m_bActive & mask) {
+      if (const auto mask = getMaskColRow(c, r); m_bActivePTokens & mask) {
         board[c][r] = activePlayer;
-      } else if (m_bAll & mask) {
+      } else if (m_bAllTokens & mask) {
         board[c][r] = inactivePlayer;
       } else {
         board[c][r] = P_EMPTY;
@@ -331,7 +368,7 @@ Board::TBoardArray Board::toArray() {
 std::string Board::toString() {
   std::stringstream ss;
   ss << "\n  ";
-  auto arr = toArray();
+  const auto arr = toArray();
   for (int r = N_ROWS - 1; r >= 0; r--) {
     for (int c = 0; c < N_COLUMNS; c++) {
       if (arr[c][r] == P_RED) {
@@ -351,8 +388,8 @@ std::string Board::toString() {
 Board Board::mirror() const {
   Board mB;
   mB.m_movesLeft = m_movesLeft;
-  mB.m_bActive = mirrorBitBoard(m_bActive);
-  mB.m_bAll = mirrorBitBoard(m_bAll);
+  mB.m_bActivePTokens = mirrorBitBoard(m_bActivePTokens);
+  mB.m_bAllTokens = mirrorBitBoard(m_bAllTokens);
   assert(uint64_t_popcnt(mB.m_bActive) == uint64_t_popcnt(m_bActive));
   assert(uint64_t_popcnt(mB.m_bAll) == uint64_t_popcnt(m_bAll));
   return mB;
