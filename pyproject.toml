@@ -36,6 +36,11 @@ dev = [
     "pre-commit"
 ]
 
+gui = [
+    "matplotlib",
+    "ipywidgets"
+]
+
 ci = [
     "pytest", # For testing
     "ruff", # For linting
@@ -49,7 +54,9 @@ build-backend = "setuptools.build_meta"
 package-dir = { "" = "src" }
 include-package-data = true  # Include additional non-Python files (e.g., libraries)
 
-# [tool.setuptools.package-data]
+[tool.setuptools.package-data]
+"bitbully" = ["assets/*"]
+
 # bitbully = [
 #    "*.so",
 #    "*.dll"

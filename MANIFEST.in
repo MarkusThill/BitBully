@@ -1,2 +1,3 @@
 graft thirdParty
 global-include CMakeLists.txt *.cmake *.cpp *.h
+recursive-include src/bitbully/assets *
