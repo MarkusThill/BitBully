@@ -1,3 +1,10 @@
+## v0.0.18 (2025-01-18)
+
+### Fix
+
+- added c4 gui for notebooks
+- cleanup in board class
+
 ## v0.0.17 (2025-01-15)
 
 ### Fix
