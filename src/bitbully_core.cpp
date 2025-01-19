@@ -1,4 +1,8 @@
-#include <../thirdParty/pybind11/include/pybind11/pybind11.h>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+
+#include <array>
+#include <vector>
 
 #include "BitBully.h"
 
