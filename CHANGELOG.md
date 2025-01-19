@@ -1,3 +1,11 @@
+## v0.0.19 (2025-01-19)
+
+### Fix
+
+- improve the readme
+- add stl support to pybind module
+- added haswin bindings and a new setboard function
+
 ## v0.0.18 (2025-01-18)
 
 ### Fix
