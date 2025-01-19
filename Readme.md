@@ -264,4 +264,3 @@ Pascal Pons and John Tromp. Their work has been invaluable in shaping this effor
 <h1 align="center">
 <img src="https://raw.githubusercontent.com/MarkusThill/snk/refs/heads/manual-run-output/only-svg/github-contribution-grid-snake.svg" alt="https://raw.githubusercontent.com/MarkusThill/snk/refs/heads/manual-run-output/only-svg/github-contribution-grid-snake.svg" width="90%" >
 </h1><br>
-
