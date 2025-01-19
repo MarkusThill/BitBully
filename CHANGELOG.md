@@ -1,3 +1,9 @@
+## v0.0.20 (2025-01-19)
+
+### Fix
+
+- corrected win detection in jupyter gui
+
 ## v0.0.19 (2025-01-19)
 
 ### Fix
