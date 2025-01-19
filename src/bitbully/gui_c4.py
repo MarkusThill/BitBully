@@ -6,7 +6,7 @@ from ipywidgets import widgets
 from IPython.display import Javascript, display, clear_output
 from ipywidgets import Button, VBox, HBox, Output, Layout
 from ipywidgets import AppLayout
-import bitbully.bitbully_core as exp
+from bitbully import bitbully_core
 import importlib.resources
 
 
@@ -31,47 +31,20 @@ class GuiC4:
 
         # Avoid adding handlers multiple times
         self.m_logger.propagate = False
-        with (
-            importlib.resources.files("bitbully")
-            .joinpath("assets/empty.png")
-            .open("rb") as file
-        ):
+        assets_pth = importlib.resources.files("bitbully").joinpath("assets")
+        with assets_pth.joinpath("empty.png").open("rb") as file:
             png_empty = plt.imread(file, format=None)
-        with (
-            importlib.resources.files("bitbully")
-            .joinpath("assets/empty_m.png")
-            .open("rb") as file
-        ):
+        with assets_pth.joinpath("empty_m.png").open("rb") as file:
             png_empty_m = plt.imread(file, format=None)
-        with (
-            importlib.resources.files("bitbully")
-            .joinpath("assets/empty_r.png")
-            .open("rb") as file
-        ):
+        with assets_pth.joinpath("empty_r.png").open("rb") as file:
             png_empty_r = plt.imread(file, format=None)
-        with (
-            importlib.resources.files("bitbully")
-            .joinpath("assets/red.png")
-            .open("rb") as file
-        ):
+        with assets_pth.joinpath("red.png").open("rb") as file:
             png_red = plt.imread(file, format=None)
-        with (
-            importlib.resources.files("bitbully")
-            .joinpath("assets/red_m.png")
-            .open("rb") as file
-        ):
+        with assets_pth.joinpath("red_m.png").open("rb") as file:
             png_red_m = plt.imread(file, format=None)
-        with (
-            importlib.resources.files("bitbully")
-            .joinpath("assets/yellow.png")
-            .open("rb") as file
-        ):
+        with assets_pth.joinpath("yellow.png").open("rb") as file:
             png_yellow = plt.imread(file, format=None)
-        with (
-            importlib.resources.files("bitbully")
-            .joinpath("assets/yellow_m.png")
-            .open("rb") as file
-        ):
+        with assets_pth.joinpath("yellow_m.png").open("rb") as file:
             png_yellow_m = plt.imread(file, format=None)
         self.m_png = {
             0: {"plain": png_empty, "corner": png_empty_m, "underline": png_empty_r},
@@ -80,7 +53,6 @@ class GuiC4:
         }
 
         self.m_n_row, self.m_n_col = 6, 7
-        # self.m_board = np.zeros( (7,6) )
 
         # TODO: probably not needed:
         self.m_height = np.zeros(7, dtype=np.int32)
@@ -109,12 +81,14 @@ class GuiC4:
         # Redo list
         self.m_redolist = []
 
-        self.m_board = exp.Board()
+        # Gameover flag:
+        self.m_gameover = False
 
     def reset(self):
         self.m_movelist = []
         self.m_redolist = []
         self.m_height = np.zeros(7, dtype=np.int32)
+        self.m_gameover = False
 
         for im in self.ims:
             im.set_data(self.m_png[0]["plain"])
@@ -236,10 +210,12 @@ class GuiC4:
         for button in self.m_insert_buttons:
             button.disabled = True
 
-        if not self.m_board.playMove(col):
+        board = bitbully_core.Board()
+        board.setBoard([mv[1] for mv in self.m_movelist])
+        if self.m_gameover or not board.playMove(col):
+            self.update_insert_buttons()
+            self.is_busy = False
             return
-
-        self.check_winner()
 
         try:
             # Get player
@@ -252,6 +228,8 @@ class GuiC4:
             # redo a move again
             if reset_redo_list:
                 self.m_redolist = []
+
+            self.check_winner(board)
 
         except Exception as e:
             self.m_logger.error(f"Error: {e}")
@@ -294,6 +272,8 @@ class GuiC4:
                 self.m_fig.canvas.blit(self.ims[img_idx].get_clip_box())
                 self.m_fig.canvas.flush_events()
 
+            self.m_gameover = False
+
         except Exception as e:
             self.m_logger.error(f"Error: {e}")
             raise
@@ -306,13 +286,15 @@ class GuiC4:
 
     def update_insert_buttons(self):
         for button, col in zip(self.m_insert_buttons, range(self.m_n_col)):
-            button.disabled = bool(self.m_height[col] >= self.m_n_row)
+            button.disabled = (
+                bool(self.m_height[col] >= self.m_n_row) or self.m_gameover
+            )
 
         #
         self.m_control_buttons["undo"].disabled = len(self.m_movelist) < 1
-
-        #
         self.m_control_buttons["redo"].disabled = len(self.m_redolist) < 1
+        self.m_control_buttons["move"].disabled = self.m_gameover
+        self.m_control_buttons["evaluate"].disabled = self.m_gameover
 
     def get_img_idx(self, col, row):
         """
@@ -451,16 +433,17 @@ class GuiC4:
             right_sidebar=None,
         )
 
-    def check_winner(self):
+    def check_winner(self, board):
         """
-        Placeholder for checking winner logic.
+        Check for Win or draw.
         """
-        # self.m_logger.debug("Checking for winner...")
-        # Add your Connect-4 winner checking logic here
-        # self.popup("Checking for winner...")
-        # print("Hubert!")
-        if self.m_board.canWin():
-            self.popup("Game over!")
+        if board.hasWin():
+            winner = "Yellow" if board.movesLeft() % 2 else "Red"
+            self.popup(f"Game over! {winner} wins!")
+            self.m_gameover = True
+        if board.movesLeft() == 0:
+            self.popup("Game over! Draw!")
+            self.m_gameover = True
 
     def destroy(self):
         plt.close(self.m_fig)
