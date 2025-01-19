@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <map>
 #include <sstream>
+#include <vector>
 
 #include "MoveList.h"
 
@@ -154,6 +155,8 @@ class Board {
   TBitBoard findOddThreats(TBitBoard moves);
 
   bool setBoard(const TBoardArray &board);
+
+  bool setBoard(const std::vector<int> &moveSequence);
 
   TBoardArray toArray();
 

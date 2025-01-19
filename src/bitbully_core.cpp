@@ -2,13 +2,12 @@
 
 #include "BitBully.h"
 
-int add(const int i, const int j) { return i + j; }
-
 namespace py = pybind11;
+using B = BitBully::Board;
 
 PYBIND11_MODULE(bitbully_core, m) {
-  m.doc() = "pybind11 example plugin";  // optional module docstring
-  m.def("add", &add, "A function that adds two numbers");
+  m.doc() =
+      "Bitbully is a fast Connect-4 solver.";  // optional module docstring
 
   py::class_<BitBully::BitBully>(m, "BitBully")
       .def(py::init<>())  // Expose the default constructor
@@ -26,46 +25,49 @@ PYBIND11_MODULE(bitbully_core, m) {
 
   // Expose the Board class
   // TODO: Check functions.... Many not necessary and some might be missing
-  py::class_<BitBully::Board>(m, "Board")
+  py::class_<B>(m, "Board")
       .def(py::init<>())  // Default constructor
-      .def("playMoveFastBB", &BitBully::Board::playMoveFastBB,
+      .def("playMoveFastBB", &B::playMoveFastBB,
            "Play a move on the board (bitboard representation)", py::arg("mv"))
-      .def("canWin",
-           py::overload_cast<int>(&BitBully::Board::canWin, py::const_),
+      .def("canWin", py::overload_cast<int>(&B::canWin, py::const_),
            "Check, if current player can win by moving into column.",
            py::arg("column"))
-      .def("canWin", py::overload_cast<>(&BitBully::Board::canWin, py::const_),
+      .def("canWin", py::overload_cast<>(&B::canWin, py::const_),
            "Check, if current player can win with the next move.")
-      .def("playMove", py::overload_cast<int>(&BitBully::Board::playMove),
+      .def("hash", py::overload_cast<>(&B::hash, py::const_),
+           "Hash the current position and return hash value.")
+      .def("hasWin", &B::hasWin,
+           "Check, if the player who performed the last move has a winning "
+           "position (4 in a row).")
+      .def("playMove", py::overload_cast<int>(&B::playMove),
            "Play a move by column index", py::arg("column"))
-      .def("playMoveOnCopy", &BitBully::Board::playMoveOnCopy,
+      .def("playMoveOnCopy", &B::playMoveOnCopy,
            "Play a move on a copy of the board and return the new board",
            py::arg("mv"))
-      .def("generateMoves", &BitBully::Board::generateMoves,
-           "Generate possible moves")
-      .def("isLegalMove", &BitBully::Board::isLegalMove,
-           "Check if a move is legal", py::arg("column"))
-      .def("toString", &BitBully::Board::toString,
+      .def("generateMoves", &B::generateMoves, "Generate possible moves")
+      .def("isLegalMove", &B::isLegalMove, "Check if a move is legal",
+           py::arg("column"))
+      .def("toString", &B::toString,
            "Return a string representation of the board")
-      .def("movesLeft", &BitBully::Board::movesLeft,
-           "Get the number of moves left")
-      .def("mirror", &BitBully::Board::mirror, "Get the mirrored board")
-      .def("sortMoves", &BitBully::Board::sortMoves,
-           "Sort moves based on priority", py::arg("moves"))
-      .def("findThreats", &BitBully::Board::findThreats,
-           "Find threats on the board", py::arg("moves"))
-      .def("generateNonLosingMoves", &BitBully::Board::generateNonLosingMoves,
+      .def("movesLeft", &B::movesLeft, "Get the number of moves left")
+      .def("mirror", &B::mirror, "Get the mirrored board")
+      .def("sortMoves", &B::sortMoves, "Sort moves based on priority",
+           py::arg("moves"))
+      .def("findThreats", &B::findThreats, "Find threats on the board",
+           py::arg("moves"))
+      .def("generateNonLosingMoves", &B::generateNonLosingMoves,
            "Generate non-losing moves")
-      .def("doubleThreat", &BitBully::Board::doubleThreat,
-           "Find double threats", py::arg("moves"))
-      .def("toArray", &BitBully::Board::toArray,
+      .def("doubleThreat", &B::doubleThreat, "Find double threats",
+           py::arg("moves"))
+      .def("toArray", &B::toArray,
            "Convert the board to a 2D array representation")
-      .def("setBoard", &BitBully::Board::setBoard,
-           "Set the board using a 2D array", py::arg("board"))
-      .def("uid", &BitBully::Board::uid,
-           "Get the unique identifier for the board")
-      .def("__eq__", &BitBully::Board::operator==,
-           "Check if two boards are equal")
-      .def("__ne__", &BitBully::Board::operator!=,
-           "Check if two boards are not equal");
+      .def("setBoard", py::overload_cast<const std::vector<int>&>(&B::setBoard),
+           "Set the board using a 2D array", py::arg("moveSequence"))
+      .def("setBoard", py::overload_cast<const B::TBoardArray&>(&B::setBoard),
+           "Set the board using a 2D array", py::arg("moveSequence"))
+      .def_static("isValid", &B::isValid, "Check, if a board is a valid one.",
+                  py::arg("board"))
+      .def("uid", &B::uid, "Get the unique identifier for the board")
+      .def("__eq__", &B::operator==, "Check if two boards are equal")
+      .def("__ne__", &B::operator!=, "Check if two boards are not equal");
 }

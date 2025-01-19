@@ -35,6 +35,76 @@ TEST_F(BoardTest, getMask) {
   EXPECT_EQ(mask, UINT64_C(0));
 }
 
+TEST_F(BoardTest, setBoard) {
+  using B = BitBully::Board;
+
+  // Empty board
+  ASSERT_TRUE(B().setBoard(std::vector<int>{}));
+
+  // First row
+  ASSERT_TRUE(B().setBoard(std::vector{0, 1, 2, 3, 4, 5, 6}));
+
+  // Fill one column
+  ASSERT_TRUE(B().setBoard(std::vector(6, 3)));
+
+  // Column index too large
+  ASSERT_FALSE(B().setBoard(std::vector{0, 1, 7, 2}));
+
+  // negative column index
+  ASSERT_FALSE(B().setBoard(std::vector{0, 1, -1, 2}));
+
+  // Too many moves into one column
+  ASSERT_FALSE(B().setBoard(std::vector(7, 3)));
+
+  // Move Sequence 1:
+  auto b = B();
+  ASSERT_TRUE(b.setBoard(std::vector{0, 1, 2, 3, 4, 5, 6}));
+
+  B::TBoardArray arr = {{{1, 0, 0, 0, 0, 0},  //
+                         {2, 0, 0, 0, 0, 0},  //
+                         {1, 0, 0, 0, 0, 0},  //
+                         {2, 0, 0, 0, 0, 0},  //
+                         {1, 0, 0, 0, 0, 0},  //
+                         {2, 0, 0, 0, 0, 0},  //
+                         {1, 0, 0, 0, 0, 0}}};
+
+  auto bExpected = B();
+  ASSERT_TRUE(bExpected.setBoard(arr));
+  ASSERT_TRUE(bExpected == b);
+
+  // Move Sequence 2:
+  b = B();
+  ASSERT_TRUE(b.setBoard(std::vector(6, 6)));
+
+  arr = {{{0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {1, 2, 1, 2, 1, 2}}};
+
+  bExpected = B();
+  ASSERT_TRUE(bExpected.setBoard(arr));
+  ASSERT_TRUE(bExpected == b);
+
+  // Move Sequence 3:
+  b = B();
+  ASSERT_FALSE(b.setBoard(std::vector(7, 6)));
+
+  arr = {{{0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0}}};
+
+  bExpected = B();
+  ASSERT_TRUE(bExpected.setBoard(arr));
+  ASSERT_TRUE(bExpected == b);
+}
+
 /* [ *,  *,  *,  *,  *,  *,  *]
  * [ *,  *,  *,  *,  *,  *,  *]
  * [ *,  *,  *,  *,  *,  *,  *]
