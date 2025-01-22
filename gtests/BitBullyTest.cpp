@@ -28,20 +28,14 @@ class BitBullyTest : public ::testing::Test {
 
 TEST_F(BitBullyTest, comparePonsBitbully) {
   using B = BitBully::Board;
-  using time_point =
-      std::chrono::time_point<std::chrono::high_resolution_clock>;
-  using duration = std::chrono::duration<float>;
-  float time1 = 0.0F, time2 = 0.0F;
-
   GameSolver::Connect4::Solver solver;
   BitBully::BitBully bb;
 
-  for (auto i = 0; i < 50 * 1; i++) {
+  for (auto i = 0; i < 50; i++) {
     B b;
     GameSolver::Connect4::Position P;
-    // std::cout << std::endl << "MoveSequence:";
     int j;
-    for (j = 0; j < 16; ++j) {  // TODO: We need a random board generator...
+    for (j = 0; j < 15; ++j) {  // TODO: We need a random board generator...
       int randColumn = rand() % 7;
       while (!P.canPlay(randColumn)) randColumn = rand() % 7;
 
@@ -50,34 +44,21 @@ TEST_F(BitBullyTest, comparePonsBitbully) {
       }
       ASSERT_TRUE(b.playMove(randColumn));
       P.playCol(randColumn);
-      // std::cout << (randColumn + 1);
     }
 
-    if (j != 16) continue;
+    if (j != 15) continue;
 
-    // std::cout << b.toString();
-
-    auto tstart = std::chrono::high_resolution_clock::now();
     int scorePons = solver.solve(P, false);
-    auto tend = std::chrono::high_resolution_clock::now();
-    auto d = float(duration(tend - tstart).count());
-    time1 += d;
-
-    tstart = std::chrono::high_resolution_clock::now();
-    // int scoreMine = bb.negamax(b, -100000, 100000, 0);
     int scoreMine = bb.mtdf(b, 0);
-    tend = std::chrono::high_resolution_clock::now();
-    d = float(duration(tend - tstart).count());
-    time2 += d;
 
-    // std::cout << "Pons: " << scorePons << " Mine: " << scoreMine <<
-    // std::endl;
+    auto scoresMine = bb.scoreMoves(b);
+    auto scoresPons = solver.analyze(P, false);
+    ASSERT_EQ(scoresMine, scoresPons) << b.toString();
+
     ASSERT_EQ(scorePons, scoreMine)
         << "Error: " << b.toString() << "Pons: " << scorePons
         << " Mine: " << scoreMine << std::endl;
   }
-  std::cout << "Time Pons: " << time1 << ". Time Mine: " << time2
-            << "; Diff: " << time1 - time2 << std::endl;
 }
 
 TEST_F(BitBullyTest, test2) {
@@ -104,7 +85,6 @@ TEST_F(BitBullyTest, test2) {
       }
       ASSERT_TRUE(b.playMove(randColumn));
       P.playCol(randColumn);
-      // std::cout << (randColumn + 1);
     }
 
     if (j != 12) continue;
@@ -164,18 +144,9 @@ TEST_F(BitBullyTest, comparePonsBitbullyTime) {
     if (j != 12) continue;
     if (P.canWinNext()) continue;
 
-    // std::cout << b.toString();
-    // std::cout << "Pons: " << d1 * 1000 << "ms ; ";
-    // if (i % 100 == 0) {
-    //  bb.resetTranspositionTable();
-    //  std::cout << "Reset transposition table" << std::endl;
-    //}
-
     // bb.resetTranspositionTable();
     auto tstart = std::chrono::high_resolution_clock::now();
-    // int scoreMine = bb.negamax(b, -100000, 100000, 0);
     int scoreMine = bb.mtdf(b, 0);
-    //  int scoreMine = bb.iterativeDeepening(b);
     // int scoreMine = bb.nullWindow(b);
     auto tend = std::chrono::high_resolution_clock::now();
     auto d2 = float(duration(tend - tstart).count());

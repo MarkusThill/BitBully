@@ -247,6 +247,22 @@ class BitBully {
     }
     return value;
   }
+
+  auto scoreMoves(const Board &b) {
+    std::vector scores(Board::N_COLUMNS, -1000);
+    for (int col = 0; col < scores.size(); col++) {
+      if (auto afterB = b; afterB.playMove(col)) {
+        if (afterB.hasWin()) {
+          scores[col] = (afterB.movesLeft()) / 2 + 1;
+          continue;
+        }
+        // TODO: Get first guess from hash table if possible
+        scores[col] = -mtdf(afterB, !col ? 0 : scores.at(col - 1));
+      }
+    }
+
+    return scores;
+  }
 };
 }  // namespace BitBully
 

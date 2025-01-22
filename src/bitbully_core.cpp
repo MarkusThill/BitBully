@@ -19,6 +19,11 @@ PYBIND11_MODULE(bitbully_core, m) {
            py::arg("board"), py::arg("first_guess"))
       .def("nullWindow", &BitBully::BitBully::nullWindow, "Null-window search",
            py::arg("board"))
+      .def("negamax", &BitBully::BitBully::negamax, "negamax search",
+           py::arg("board"), py::arg("alpha"), py::arg("beta"),
+           py::arg("depth"))
+      .def("scoreMoves", &BitBully::BitBully::scoreMoves, "evaluate all moves",
+           py::arg("board"))
       .def("resetTranspositionTable",
            &BitBully::BitBully::resetTranspositionTable,
            "Reset the transposition table")
