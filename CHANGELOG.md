@@ -1,3 +1,9 @@
+## v0.0.22 (2025-01-25)
+
+### Fix
+
+- add fundamental opening book support
+
 ## v0.0.21 (2025-01-22)
 
 ### Fix
