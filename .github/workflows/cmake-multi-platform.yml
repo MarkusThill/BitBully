@@ -119,8 +119,7 @@ jobs:
           ls
           ls gtests/
           echo "${{ runner.os }}"
-          cd gtests
-          gtest_run --gtest_output=xml:report.xml
+          gtests/gtest_run --gtest_output=xml:report.xml
 
       - name: Build PyBind11 Lib
         # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).

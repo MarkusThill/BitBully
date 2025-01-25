@@ -13,8 +13,7 @@ class OpeningBookTest : public ::testing::Test {
 };
 
 TEST_F(OpeningBookTest, init8Ply) {
-  auto bookPath =
-      std::filesystem::path("../../src/bitbully/assets/book_8ply.dat");
+  auto bookPath = std::filesystem::path("../src/bitbully/assets/book_8ply.dat");
   const BitBully::OpeningBook ob(bookPath, true, false);
 
   ASSERT_EQ(ob.getBookSize(), 34'286);
@@ -47,7 +46,7 @@ TEST_F(OpeningBookTest, init8Ply) {
 
 TEST_F(OpeningBookTest, init12Ply) {
   auto bookPath =
-      std::filesystem::path("../../src/bitbully/assets/book_12ply.dat");
+      std::filesystem::path("../src/bitbully/assets/book_12ply.dat");
   const BitBully::OpeningBook ob(bookPath, false, false);
 
   ASSERT_EQ(ob.getBookSize(), 1'735'945);
@@ -87,8 +86,8 @@ TEST_F(OpeningBookTest, init12Ply) {
 }
 
 TEST_F(OpeningBookTest, init12PlyDistance) {
-  auto bookPath = std::filesystem::path(
-      "../../src/bitbully/assets/book_12ply_distances.dat");
+  auto bookPath =
+      std::filesystem::path("../src/bitbully/assets/book_12ply_distances.dat");
   BitBully::OpeningBook ob(bookPath, false, true);
 
   ASSERT_EQ(ob.getBookSize(), 4'200'899);
