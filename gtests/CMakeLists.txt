@@ -9,7 +9,8 @@ elseif (MSVC)
 endif ()
 
 # cmake_policy(SET CMP0091 NEW)
-set(PROJECT_TESTS BoardTest.cpp VerificationTest.cpp BitBullyTest.cpp)
+set(PROJECT_TESTS BoardTest.cpp VerificationTest.cpp BitBullyTest.cpp
+        OpeningBookTests.cpp)
 
 if (WIN32)
     message("Hallo, Windows!")

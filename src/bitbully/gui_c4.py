@@ -84,6 +84,9 @@ class GuiC4:
         # Gameover flag:
         self.m_gameover = False
 
+        # C4 agent
+        self.bitbully_agent = bitbully_core.BitBully()
+
     def reset(self):
         self.m_movelist = []
         self.m_redolist = []
@@ -142,10 +145,21 @@ class GuiC4:
         self.m_control_buttons["redo"] = button
 
         button = Button(description="🕹️", tooltip="Computer Move", layout=btn_layout)
+        button.on_click(lambda b: self.computer_move())
         self.m_control_buttons["move"] = button
 
         button = Button(description="📊", tooltip="Evaluate Board", layout=btn_layout)
         self.m_control_buttons["evaluate"] = button
+
+    def computer_move(self):
+        self.is_busy = True
+        self.update_insert_buttons()
+        b = bitbully_core.Board()
+        assert b.setBoard([mv[1] for mv in self.m_movelist])
+        move_scores = self.bitbully_agent.scoreMoves(b)
+        print(move_scores)
+        self.is_busy = False
+        self.insert_token(np.argmax(move_scores))
 
     def create_board(self):
         self.output = Output()
@@ -235,11 +249,10 @@ class GuiC4:
             self.m_logger.error(f"Error: {e}")
             raise
         finally:
-            # Re-enable all buttons (if columns not full)
-            self.update_insert_buttons()
-
             time.sleep(0.5)  # debounce button
+            # Re-enable all buttons (if columns not full)
             self.is_busy = False
+            self.update_insert_buttons()
 
     def redo_move(self):
         if len(self.m_redolist) < 1:
@@ -279,22 +292,27 @@ class GuiC4:
             raise
         finally:
             # Re-enable all buttons (if columns not full)
+            self.is_busy = False
             self.update_insert_buttons()
 
             time.sleep(0.5)  # debounce button
-            self.is_busy = False
 
     def update_insert_buttons(self):
         for button, col in zip(self.m_insert_buttons, range(self.m_n_col)):
             button.disabled = (
-                bool(self.m_height[col] >= self.m_n_row) or self.m_gameover
+                bool(self.m_height[col] >= self.m_n_row)
+                or self.m_gameover
+                or self.is_busy
             )
 
-        #
-        self.m_control_buttons["undo"].disabled = len(self.m_movelist) < 1
-        self.m_control_buttons["redo"].disabled = len(self.m_redolist) < 1
-        self.m_control_buttons["move"].disabled = self.m_gameover
-        self.m_control_buttons["evaluate"].disabled = self.m_gameover
+        self.m_control_buttons["undo"].disabled = (
+            len(self.m_movelist) < 1 or self.is_busy
+        )
+        self.m_control_buttons["redo"].disabled = (
+            len(self.m_redolist) < 1 or self.is_busy
+        )
+        self.m_control_buttons["move"].disabled = self.m_gameover or self.is_busy
+        self.m_control_buttons["evaluate"].disabled = self.m_gameover or self.is_busy
 
     def get_img_idx(self, col, row):
         """

@@ -1,5 +1,10 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
+exclude: |
+  (?x)  # Enable verbose regex for better readability
+  (src/bitbully/assets/book_12ply\.dat
+   |src/bitbully/assets/other_file\.dat
+   |src/bitbully/assets/book_12ply_distances\.dat)
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
@@ -8,6 +13,7 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
+        args: [ '--maxkb=500' ]
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v4.1.0
     hooks:

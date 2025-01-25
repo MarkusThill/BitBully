@@ -84,7 +84,7 @@ class Board {
   void inline playMoveFastBB(const TBitBoard mv) {
     assert(mv != BB_EMPTY);
     assert((mv & BB_ILLEGAL) == BB_EMPTY);
-    assert((m_bAll & mv) == BB_EMPTY);
+    assert((m_bAllTokens & mv) == BB_EMPTY);
     m_bActivePTokens ^= m_bAllTokens;  // Already, switch player
 
     // However, move is performed for current player (assuming, above switch is

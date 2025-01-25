@@ -37,7 +37,7 @@ if (WIN32)
 endif ()
 
 set(BB_PROJECT_INCS .)
-set(BB_PROJECT_FILES src/BitBully.cpp src/Board.cpp src/TranspositionTable.cpp src/MoveList.cpp)
+set(BB_PROJECT_FILES src/BitBully.cpp src/Board.cpp src/TranspositionTable.cpp src/MoveList.cpp src/OpeningBook.cpp)
 
 include_directories(SYSTEM . src)
 

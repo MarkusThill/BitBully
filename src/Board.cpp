@@ -400,8 +400,9 @@ Board Board::mirror() const {
   mB.m_movesLeft = m_movesLeft;
   mB.m_bActivePTokens = mirrorBitBoard(m_bActivePTokens);
   mB.m_bAllTokens = mirrorBitBoard(m_bAllTokens);
-  assert(uint64_t_popcnt(mB.m_bActive) == uint64_t_popcnt(m_bActive));
-  assert(uint64_t_popcnt(mB.m_bAll) == uint64_t_popcnt(m_bAll));
+  assert(uint64_t_popcnt(mB.m_bActivePTokens) ==
+         uint64_t_popcnt(m_bActivePTokens));
+  assert(uint64_t_popcnt(mB.m_bAllTokens) == uint64_t_popcnt(m_bAllTokens));
   return mB;
 }
 
