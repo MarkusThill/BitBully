@@ -1,3 +1,9 @@
+## v0.0.23 (2025-01-26)
+
+### Fix
+
+- added some tests for the opening books
+
 ## v0.0.22 (2025-01-25)
 
 ### Fix
