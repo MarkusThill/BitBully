@@ -5,7 +5,9 @@
 #include <cassert>
 #include <cstddef>
 #include <cstdint>
+#include <iostream>
 #include <map>
+#include <random>
 #include <sstream>
 #include <vector>
 
@@ -61,7 +63,7 @@ static constexpr bool isIllegalBit(const int bitIdx) {
 
 static constexpr uint64_t illegalBitMask() {
   uint64_t bb{UINT64_C(0)};
-  for (auto i = 0; i < CHAR_BIT * sizeof(uint64_t); ++i) {
+  for (size_t i = 0; i < CHAR_BIT * sizeof(uint64_t); ++i) {
     bb ^= (isIllegalBit(i) ? UINT64_C(1) << i : UINT64_C(0));
   }
   return bb;
@@ -174,6 +176,10 @@ class Board {
 
   inline TMovesCounter movesLeft() const { return m_movesLeft; }
 
+  inline TMovesCounter countTokens() const {
+    return N_ROWS * N_COLUMNS - m_movesLeft;
+  }
+
   Board mirror() const;
 
   MoveList sortMoves(TBitBoard moves) const;
@@ -206,6 +212,56 @@ class Board {
     const TBitBoard otherThreats =
         winningPositions(m_bActivePTokens ^ m_bAllTokens, true);
     return moves & (ownThreats >> 1) & (ownThreats >> 2) & ~(otherThreats >> 1);
+  }
+
+  /* [ *,  *,  *,  *,  *,  *,  *]
+   * [ *,  *,  *,  *,  *,  *,  *]
+   * [ *,  *,  *,  *,  *,  *,  *]
+   * [ 5, 14, 23, 32, 41, 50, 59],
+   * [ 4, 13, 22, 31, 40, 49, 58],
+   * [ 3, 12, 21, 30, 39, 48, 57],
+   * [ 2, 11, 20, 29, 38, 47, 56],
+   * [ 1, 10, 19, 28, 37, 46, 55],
+   * [ 0,  9, 18, 27, 36, 45, 54]
+   */
+  [[nodiscard]] int toHuffman() const {
+    // This function is only defined for positions with an even number of tokens
+    // and for positions with less or equal than 12 tokens.
+    if (m_movesLeft < 30 || m_movesLeft & 1) {
+      return 0;
+    }
+    int huff = INT64_C(0);
+
+    for (int i = 0; i < N_COLUMNS; ++i) {
+      auto all = m_bAllTokens;
+      auto active = m_bActivePTokens;
+      all >>= (i * COLUMN_BIT_OFFSET);
+      active >>= (i * COLUMN_BIT_OFFSET);
+      for (int j = 0; j < N_ROWS && (all & 1); j++) {
+        huff <<= 2;  // we will insert 2 bits for yellow or red
+        huff |= (active & 1) ? 2 : 3;  // yellow-> 10b, red -> 11b
+        all >>= 1;
+        active >>= 1;
+      }
+      huff <<= 1;  // insert 0 to indicate the end of the column
+    }
+    // length until here (for 12-ply position): 12*2+7 = 31
+    return huff << 1;  // add one 0-bit to fill up to a full byte
+  }
+
+  static std::pair<Board, std::vector<int>> randomBoard(
+      const int nPly, const bool forbidDirectWin = true) {
+    if (nPly < 0 || nPly > N_COLUMNS * N_ROWS) {
+      return {};
+    }
+
+    auto [b, mvList] = randomBoardInternal(nPly);
+
+    while (mvList.size() != nPly || (forbidDirectWin && b.canWin())) {
+      std::tie(b, mvList) = randomBoardInternal(nPly);
+    }
+
+    return std::make_pair(std::move(b), std::move(mvList));
   }
 
  private:
@@ -322,6 +378,43 @@ class Board {
     assert(uint64_t_popcnt(columnMask) == N_ROWS);
     const auto mvMask = (m_bAllTokens + BB_BOTTOM_ROW) & columnMask;
     playMoveFastBB(mvMask);
+  }
+
+  static std::pair<Board, std::vector<int>> randomBoardInternal(
+      const int nPly) {
+    if (nPly < 0 || nPly > N_COLUMNS * N_ROWS) {
+      return {};
+    }
+    Board b;
+
+    // Create a random device to seed the random number generator
+    static std::random_device rd;
+
+    // Create a Mersenne Twister random number generator
+    static std::mt19937 gen(rd());
+
+    // Create a uniform integer distribution for the desired range
+    static std::uniform_int_distribution<> nextUniform(0, N_COLUMNS);
+
+    std::vector<int> mvSequence;
+    static constexpr int MAX_TRIES = 20;
+    for (int j = 0; j < nPly; ++j) {
+      int randColumn, tries = 0;
+      do {
+        randColumn = nextUniform(gen);
+        tries++;
+      } while (tries < MAX_TRIES &&
+               (!b.isLegalMove(randColumn) || b.canWin(randColumn)));
+      if (tries >= MAX_TRIES) {
+        return {};
+      }
+      b.playMove(randColumn);
+      mvSequence.emplace_back(randColumn);
+    }
+
+    assert(b.countTokens() == nPly);
+
+    return {std::move(b), std::move(mvSequence)};
   }
 };
 

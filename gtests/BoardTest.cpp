@@ -793,3 +793,64 @@ TEST_F(BoardTest, toArray2) {
   ASSERT_EQ(b.toArray(), arr);
   ASSERT_EQ(b.movesLeft(), 26);
 }
+
+TEST_F(BoardTest, toHuffman) {
+  using B = BitBully::Board;
+  B b;
+
+  // Board with 12 tokens
+  B::TBoardArray arr = {{{0, 0, 0, 0, 0, 0},  //
+                         {2, 1, 2, 1, 0, 0},  //
+                         {0, 0, 0, 0, 0, 0},  //
+                         {1, 2, 1, 2, 1, 0},  //
+                         {0, 0, 0, 0, 0, 0},  //
+                         {2, 1, 2, 0, 0, 0},  //
+                         {0, 0, 0, 0, 0, 0}}};
+
+  ASSERT_TRUE(b.setBoard(arr));
+  ASSERT_EQ(b.toArray(), arr);
+  ASSERT_EQ(b.movesLeft(), 30);
+  ASSERT_EQ(b.toHuffman(), 1998025176);
+
+  // Board with 8 tokens
+  arr = {{{1, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {2, 1, 2, 1, 2, 1},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {2, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0}}};
+
+  ASSERT_TRUE(b.setBoard(arr));
+  ASSERT_EQ(b.toArray(), arr);
+  ASSERT_EQ(b.movesLeft(), 34);
+  ASSERT_EQ(b.toHuffman(), 8877848);
+
+  // Board with 12 tokens
+  arr = {{{1, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {1, 1, 1, 2, 1, 0},  //
+          {2, 2, 1, 2, 2, 2}}};
+
+  ASSERT_TRUE(b.setBoard(arr));
+  ASSERT_EQ(b.toArray(), arr);
+  ASSERT_EQ(b.movesLeft(), 30);
+  ASSERT_EQ(b.toHuffman(), -2124988676);
+
+  // Board with 11 tokens (non-supported position)
+  arr = {{{1, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {1, 1, 1, 2, 1, 0},  //
+          {2, 2, 1, 2, 2, 0}}};
+
+  ASSERT_TRUE(b.setBoard(arr));
+  ASSERT_EQ(b.toArray(), arr);
+  ASSERT_EQ(b.movesLeft(), 31);
+  ASSERT_EQ(b.toHuffman(), 0);
+}

@@ -8,7 +8,6 @@ set(CMAKE_CXX_STANDARD 17)
 # Static libraries not built with -fPIC embed absolute addresses, which cause issues when linking into shared objects.
 set(CMAKE_POSITION_INDEPENDENT_CODE ON) # -fPIC flag
 
-
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3")
     # Add later again: set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra
@@ -44,6 +43,13 @@ include_directories(SYSTEM . src)
 add_library(cppBitBully STATIC ${BB_PROJECT_FILES})
 target_include_directories(cppBitBully PUBLIC ${BB_PROJECT_INCS})
 target_link_libraries(cppBitBully ${BB_PROJECT_LIBS})
+
+# Set compiler-specific warning flags (only for our own code)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_compile_options(cppBitBully PRIVATE -Wall -Wextra -Wpedantic)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_options(cppBitBully PRIVATE /W4)
+endif ()
 
 add_subdirectory(thirdParty)
 add_subdirectory(gtests)

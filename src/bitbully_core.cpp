@@ -35,7 +35,9 @@ PYBIND11_MODULE(bitbully_core, m) {
   // Expose the Board class
   // TODO: Check functions.... Many not necessary and some might be missing
   py::class_<B>(m, "Board")
-      .def(py::init<>())  // Default constructor
+      .def(py::init<>())              // Default constructor
+      .def("__str__", &B::toString)   // Override __str__ in Python
+      .def("__repr__", &B::toString)  // Override __repr__ in Python
       .def("playMoveFastBB", &B::playMoveFastBB,
            "Play a move on the board (bitboard representation)", py::arg("mv"))
       .def("canWin", py::overload_cast<int>(&B::canWin, py::const_),
@@ -59,6 +61,8 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("toString", &B::toString,
            "Return a string representation of the board")
       .def("movesLeft", &B::movesLeft, "Get the number of moves left")
+      .def("countTokens", &B::countTokens,
+           "Get the number of Tokens on the board")
       .def("mirror", &B::mirror, "Get the mirrored board")
       .def("sortMoves", &B::sortMoves, "Sort moves based on priority",
            py::arg("moves"))
