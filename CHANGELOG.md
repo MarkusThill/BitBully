@@ -1,3 +1,10 @@
+## v0.0.24 (2025-01-27)
+
+### Fix
+
+- added opening book to bitbully agent
+- more pedantic compile warnings
+
 ## v0.0.23 (2025-01-26)
 
 ### Fix
