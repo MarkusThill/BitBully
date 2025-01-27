@@ -2,9 +2,12 @@
 #include <pybind11/stl.h>
 
 #include <array>
+#include <filesystem>
 #include <vector>
 
 #include "BitBully.h"
+#include "Board.h"
+#include "OpeningBook.h"
 
 namespace py = pybind11;
 using B = BitBully::Board;
@@ -15,6 +18,7 @@ PYBIND11_MODULE(bitbully_core, m) {
 
   py::class_<BitBully::BitBully>(m, "BitBully")
       .def(py::init<>())  // Expose the default constructor
+      .def(py::init<std::filesystem::path>(), py::arg("openingBookPath"))
       .def("mtdf", &BitBully::BitBully::mtdf, "MTD(f) algorithm",
            py::arg("board"), py::arg("first_guess"))
       .def("nullWindow", &BitBully::BitBully::nullWindow, "Null-window search",
@@ -30,7 +34,11 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("getNodeCounter", &BitBully::BitBully::getNodeCounter,
            "Get the current node counter")
       .def("resetNodeCounter", &BitBully::BitBully::resetNodeCounter,
-           "Reset the node counter");
+           "Reset the node counter")
+      .def("isBookLoaded", &BitBully::BitBully::isBookLoaded,
+           "Check, if opening book is loaded")
+      .def("isBookLoaded", &BitBully::BitBully::isBookLoaded,
+           "Check, if opening book is loaded");
 
   // Expose the Board class
   // TODO: Check functions.... Many not necessary and some might be missing
@@ -83,4 +91,35 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("uid", &B::uid, "Get the unique identifier for the board")
       .def("__eq__", &B::operator==, "Check if two boards are equal")
       .def("__ne__", &B::operator!=, "Check if two boards are not equal");
+
+  // Expose OpeningBook:
+  py::class_<BitBully::OpeningBook>(m, "OpeningBook")
+      // Constructors
+      .def(py::init<const std::filesystem::path&, bool, bool>(),
+           py::arg("bookPath"), py::arg("is_8ply"), py::arg("with_distances"),
+           "Initialize an OpeningBook with explicit settings.")
+      .def(py::init<const std::filesystem::path&>(), py::arg("bookPath"),
+           "Initialize an OpeningBook by inferring database type from file "
+           "size.")
+
+      // Member functions
+      .def("init", &BitBully::OpeningBook::init, py::arg("bookPath"),
+           py::arg("is_8ply"), py::arg("with_distances"),
+           "Reinitialize the OpeningBook with new settings.")
+      .def("getEntry", &BitBully::OpeningBook::getEntry, py::arg("entryIdx"),
+           "Get an entry from the book by index.")
+      .def("getBookSize", &BitBully::OpeningBook::getBookSize,
+           "Get the size of the book.")
+      .def("getBoardValue", &BitBully::OpeningBook::getBoardValue,
+           py::arg("board"), "Get the value of a given board.")
+      .def("convertValue", &BitBully::OpeningBook::convertValue,
+           py::arg("value"), py::arg("board"),
+           "Convert a value to the internal scoring system.")
+      .def("getNPly", &BitBully::OpeningBook::getNPly,
+           "Get the ply depth of the book.")
+
+      // Static functions
+      .def_static("read_book", &BitBully::OpeningBook::read_book,
+                  py::arg("filename"), py::arg("with_distances") = true,
+                  py::arg("is_8ply") = false, "Read a book from a file.");
 }

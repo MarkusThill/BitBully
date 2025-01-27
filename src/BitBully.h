@@ -1,6 +1,7 @@
 #ifndef BITBULLY__BITBULLY_H_
 #define BITBULLY__BITBULLY_H_
 
+#include <filesystem>
 #include <iostream>
 #include <vector>
 
