@@ -6,6 +6,7 @@
 
 #include "Board.h"
 #include "MoveList.h"
+#include "OpeningBook.h"
 #include "TranspositionTable.h"
 
 namespace BitBully {
@@ -15,15 +16,33 @@ class BitBully {
   static bool constexpr USE_TRANSPOSITION_TABLE = true;
   static auto constexpr DEFAULT_LOG_TRANSPOSITION_SIZE = 22;
 
- public:
   TranspositionTable transpositionTable;
+  std::unique_ptr<OpeningBook> m_openingBook;
 
+ public:
   MoveList sortMoves(Board::TBitBoard moves);
 
-  BitBully()
+  explicit BitBully(const std::filesystem::path &bookPath = "")
       : nodeCounter{0},
         transpositionTable{
-            USE_TRANSPOSITION_TABLE ? DEFAULT_LOG_TRANSPOSITION_SIZE : 0} {};
+            USE_TRANSPOSITION_TABLE ? DEFAULT_LOG_TRANSPOSITION_SIZE : 0} {
+    loadBook(bookPath);  // will not do anything if path is empty
+  };
+
+  inline bool isBookLoaded() const { return m_openingBook != nullptr; }
+
+  inline void resetBook() { m_openingBook.reset(); }
+
+  inline bool loadBook(const std::filesystem::path &bookPath = "") {
+    if (isBookLoaded()) {
+      return false;
+    }
+    if (!bookPath.empty()) {
+      m_openingBook = std::make_unique<OpeningBook>(bookPath);
+    }
+    assert(isBookLoaded());
+    return !bookPath.empty();
+  }
 
   // TODO: firstGuess is a parameter which could be tuned!
   int mtdf(const Board &b, const int firstGuess) {
@@ -48,7 +67,7 @@ class BitBully {
   }
 
   // generally, appears to be slower than mtdf
-  int nullWindow(Board &b) {
+  int nullWindow(const Board &b) {
     int min = -b.movesLeft() / 2;
     int max = (b.movesLeft() + 1) / 2;
 
@@ -73,7 +92,7 @@ class BitBully {
         USE_TRANSPOSITION_TABLE ? DEFAULT_LOG_TRANSPOSITION_SIZE : 0};
   }
 
-  auto getNodeCounter() const { return nodeCounter; }
+  [[nodiscard]] auto getNodeCounter() const { return nodeCounter; }
 
   void resetNodeCounter() { nodeCounter = 0ULL; }
 
@@ -82,8 +101,13 @@ class BitBully {
     assert(alpha < beta);
     nodeCounter++;
 
-    // It appears as if this check is not necessary. Below we check, if we have
-    // any non-losing moves left. If not, we return with a negative score.
+    if (isBookLoaded() && b.countTokens() == m_openingBook->getNPly()) {
+      return m_openingBook->getBoardValue(b);
+    }
+
+    // It appears as if this check is not necessary. Below we check, if we
+    // have any non-losing moves left. If not, we return with a negative
+    // score.
     // TODO: move this outside negamax:
     if (!depth && b.canWin()) {
       return (b.movesLeft() + 1) / 2;

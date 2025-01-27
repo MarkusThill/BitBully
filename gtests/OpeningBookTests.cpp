@@ -1,7 +1,6 @@
 #include <BitBully.h>
 
 #include <Position.hpp>
-#include <climits>
 #include <filesystem>
 
 #include "OpeningBook.h"
@@ -14,7 +13,7 @@ class OpeningBookTest : public ::testing::Test {
   void TearDown() override {}
 
   template <typename T>
-  int sign(T value) {
+  static int sign(T value) {
     return (value > 0) - (value < 0);
   }
 
@@ -28,6 +27,8 @@ TEST_F(OpeningBookTest, init8Ply) {
   }
   ASSERT_TRUE(exists(bookPath));
   const BitBully::OpeningBook ob(bookPath, true, false);
+
+  ASSERT_EQ(ob.getNPly(), 8);
 
   ASSERT_EQ(ob.getBookSize(), 34'286);
 
@@ -73,6 +74,8 @@ TEST_F(OpeningBookTest, init12Ply) {
   }
   ASSERT_TRUE(exists(bookPath));
   const BitBully::OpeningBook ob(bookPath, false, false);
+
+  ASSERT_EQ(ob.getNPly(), 12);
 
   ASSERT_EQ(ob.getBookSize(), 1'735'945);
 
@@ -126,6 +129,8 @@ TEST_F(OpeningBookTest, init12PlyDistance) {
   }
   ASSERT_TRUE(exists(bookPath));
   BitBully::OpeningBook ob(bookPath, false, true);
+
+  ASSERT_EQ(ob.getNPly(), 12);
 
   ASSERT_EQ(ob.getBookSize(), 4'200'899);
 
@@ -187,6 +192,8 @@ TEST_F(OpeningBookTest, getBoardValue_8ply) {
   ASSERT_TRUE(exists(bookPath));
   const BitBully::OpeningBook ob(bookPath);
 
+  ASSERT_EQ(ob.getNPly(), 8);
+
   using B = BitBully::Board;
   B b;
 
@@ -213,6 +220,8 @@ TEST_F(OpeningBookTest, getBoardValue_12ply) {
   }
   ASSERT_TRUE(exists(bookPath));
   BitBully::OpeningBook ob(bookPath);
+
+  ASSERT_EQ(ob.getNPly(), 12);
 
   using B = BitBully::Board;
   B b;
@@ -268,6 +277,8 @@ TEST_F(OpeningBookTest, getBoardValue_12ply_dist) {
   }
   ASSERT_TRUE(exists(bookPath));
   BitBully::OpeningBook ob(bookPath);
+
+  ASSERT_EQ(ob.getNPly(), 12);
 
   using B = BitBully::Board;
   B b;
@@ -325,9 +336,13 @@ TEST_F(OpeningBookTest, getBoardValue_8ply_2) {
   ASSERT_TRUE(exists(bookPath));
   const BitBully::OpeningBook ob(bookPath);
 
+  ASSERT_EQ(ob.getNPly(), 8);
+
   using B = BitBully::Board;
 
   BitBully::BitBully bb;
+
+  ASSERT_FALSE(bb.isBookLoaded());
 
   for (auto i = 0; i < 25; ++i) {
     auto [b, mvSequence] = B::randomBoard(8);
@@ -352,9 +367,12 @@ TEST_F(OpeningBookTest, getBoardValue_12ply_dist_2) {
   ASSERT_TRUE(exists(bookPath));
   const BitBully::OpeningBook ob(bookPath);
 
+  ASSERT_EQ(ob.getNPly(), 12);
+
   using B = BitBully::Board;
 
   BitBully::BitBully bb;
+  ASSERT_FALSE(bb.isBookLoaded());
 
   for (auto i = 0; i < 100; ++i) {
     auto [b, mvSequence] = B::randomBoard(12);
@@ -384,9 +402,12 @@ TEST_F(OpeningBookTest, getBoardValue_12ply_2) {
   ASSERT_TRUE(exists(bookPath));
   const BitBully::OpeningBook ob(bookPath);
 
+  ASSERT_EQ(ob.getNPly(), 12);
+
   using B = BitBully::Board;
 
   BitBully::BitBully bb;
+  ASSERT_FALSE(bb.isBookLoaded());
 
   for (auto i = 0; i < 100; ++i) {
     auto [b, mvSequence] = B::randomBoard(12);

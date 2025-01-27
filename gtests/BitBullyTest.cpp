@@ -176,3 +176,45 @@ TEST_F(BitBullyTest, comparePonsBitbullyTime) {
         << " Mine: " << scoreMine << std::endl;
   }
 }
+
+TEST_F(BitBullyTest, mtdfWithBook) {
+  auto bookPath =
+      std::filesystem::path("../src/bitbully/assets/book_12ply_distances.dat");
+  if (!exists(bookPath)) {
+    bookPath = ".." / bookPath;
+  }
+  ASSERT_TRUE(exists(bookPath));
+
+  using B = BitBully::Board;
+
+  BitBully::BitBully bb(bookPath);
+  ASSERT_TRUE(bb.isBookLoaded());
+
+  const auto expectedValues = {
+      1,   // empty board
+      2,   // yellow plays (leftmost) column "a"
+      1,   // yellow plays column "b"
+      0,   // yellow plays column "c"
+      -1,  // yellow plays (center) column "d"
+      0,   // yellow plays column "e"
+      1,   // yellow plays column "f"
+      2    // yellow plays (rightmost) column "g"
+  };
+
+  // Start with -1, since we want to keep the first board empty
+  auto itExp = expectedValues.begin();
+  for (int i = -1; i < B::N_COLUMNS; ++i) {
+    bb.resetTranspositionTable();  // For fair comparison of times
+    B b;
+    b.playMove(i);
+    ASSERT_EQ(b.countTokens(), (i >= 0 ? 1 : 0));
+    using duration = std::chrono::duration<float>;
+    const auto tstart = std::chrono::high_resolution_clock::now();
+    const auto bitbullyValue = bb.mtdf(b, 0);
+    const auto tend = std::chrono::high_resolution_clock::now();
+    const auto d = float(duration(tend - tstart).count());
+    std::cout << b.toString() << "GTV: " << bitbullyValue << ". time: " << d
+              << "\n";
+    EXPECT_EQ(bitbullyValue, *itExp++);
+  }
+}

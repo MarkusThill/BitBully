@@ -26,6 +26,7 @@ class OpeningBook {
   bool m_withDistances{};
   bool m_is8ply{};
   std::filesystem::path m_bookPath;
+  int m_nPly;
 
   [[nodiscard]] value_t binarySearch(const key_t& huffmanCode) const {
     // one could also use: std::lower_bound()
@@ -96,6 +97,7 @@ class OpeningBook {
     this->m_is8ply = is_8ply;
     this->m_book = read_book(bookPath, with_distances, is_8ply);
     this->m_bookPath = bookPath;
+    this->m_nPly = (is_8ply ? 8 : 12);
 
     assert(!with_distances || is_8ply ||
            m_book.size() == 4'200'899);  // 12-ply with distances
@@ -156,6 +158,8 @@ class OpeningBook {
 
     return {huffman_position, score};
   }
+
+  int getNPly() const { return m_nPly; }
 
   static std::vector<std::tuple<key_t, value_t>> read_book(
       const std::filesystem::path& filename, const bool with_distances = true,
