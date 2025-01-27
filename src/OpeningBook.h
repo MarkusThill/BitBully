@@ -80,8 +80,10 @@ class OpeningBook {
                                   bookPath.string());
     }
 
+#ifndef NDEBUG
     // Infer database type from file size (if required)
     const auto fileSize = std::filesystem::file_size(bookPath);
+#endif
     if (is_8ply) {
       assert(fileSize == SIZE_8PLY_DB);  // 8-ply with distances
     } else if (with_distances) {
@@ -113,7 +115,7 @@ class OpeningBook {
   static std::tuple<key_t, int> readline(std::ifstream& file,
                                          const bool with_distances,
                                          const bool is_8ply) {
-    const size_t bytes_position = is_8ply ? 3 : 4;
+    const decltype(file.gcount()) bytes_position = is_8ply ? 3 : 4;
     char buffer[4] = {};  // Max buffer size for reading
     file.read(buffer, bytes_position);
 
@@ -124,7 +126,7 @@ class OpeningBook {
 
     // Convert the read bytes into an integer
     key_t huffman_position = 0;
-    for (size_t i = 0; i < bytes_position; ++i) {
+    for (decltype(file.gcount()) i = 0; i < bytes_position; ++i) {
       huffman_position =
           (huffman_position << 8) | static_cast<unsigned char>(buffer[i]);
     }

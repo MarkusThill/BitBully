@@ -85,12 +85,12 @@ import time
 board = bitbully_core.Board()
 board.playMove(3)  # Yellow plays a move in column 3 (center column)
 board.playMove(3)  # Red plays a move in column 3 (center column)
-print(board.toString())
+print(board)
 
 solver = bitbully_core.BitBully()
 start = time.time()
 score = solver.mtdf(board, first_guess=0)
-print(f"Time: {round(time.time() - start, 2)} sconds!")
+print(f"Time: {round(time.time() - start, 2)} seconds!")
 print(f"Best score: {score}")
 ```
 
@@ -116,7 +116,7 @@ board_array = np.array([
 board = bitbully_core.Board()
 assert board.setBoard(board_array), "Invalid board!"
 
-print(board.toString())
+print(board)
 
 # Solve the position
 solver = bitbully_core.BitBully()

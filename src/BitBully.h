@@ -250,7 +250,7 @@ class BitBully {
 
   auto scoreMoves(const Board &b) {
     std::vector scores(Board::N_COLUMNS, -1000);
-    for (int col = 0; col < scores.size(); col++) {
+    for (auto col = 0UL; col < scores.size(); col++) {
       if (auto afterB = b; afterB.playMove(col)) {
         if (afterB.hasWin()) {
           scores[col] = (afterB.movesLeft()) / 2 + 1;

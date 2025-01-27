@@ -148,7 +148,7 @@ class Board {
                         b.m_bActivePTokens == m_bActivePTokens);
 
     // Assert that if board is equal that also movesLeft are equal
-    assert(equal && (b.m_movesLeft == m_movesLeft) || !equal);
+    assert((equal && (b.m_movesLeft == m_movesLeft)) || !equal);
     return equal;
   }
 
@@ -257,7 +257,8 @@ class Board {
 
     auto [b, mvList] = randomBoardInternal(nPly);
 
-    while (mvList.size() != nPly || (forbidDirectWin && b.canWin())) {
+    while (mvList.size() != static_cast<decltype(mvList.size())>(nPly) ||
+           (forbidDirectWin && b.canWin())) {
       std::tie(b, mvList) = randomBoardInternal(nPly);
     }
 

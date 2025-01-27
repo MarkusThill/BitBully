@@ -315,14 +315,42 @@ TEST_F(OpeningBookTest, getBoardValue_12ply_dist) {
   ASSERT_EQ(ob.getBoardValue(b), BitBully::OpeningBook::NONE_VALUE);
 }
 
-TEST_F(OpeningBookTest, getBoardValue_12ply_dist2) {
+TEST_F(OpeningBookTest, getBoardValue_8ply_2) {
+  // Very similar (almost redundant) to getBoardValue_12ply_dist2
+  //  For now, keep like this
+  auto bookPath = std::filesystem::path("../src/bitbully/assets/book_8ply.dat");
+  if (!exists(bookPath)) {
+    bookPath = ".." / bookPath;
+  }
+  ASSERT_TRUE(exists(bookPath));
+  const BitBully::OpeningBook ob(bookPath);
+
+  using B = BitBully::Board;
+
+  BitBully::BitBully bb;
+
+  for (auto i = 0; i < 25; ++i) {
+    auto [b, mvSequence] = B::randomBoard(8);
+
+    ASSERT_EQ(b.countTokens(), 8);
+    ASSERT_FALSE(b.hasWin());
+
+    const auto bitbullyValue = bb.mtdf(b, 0);
+    const auto bookValue = ob.getBoardValue(b);
+
+    // only check sign
+    ASSERT_EQ(sign(bitbullyValue), sign(bookValue));
+  }
+}
+
+TEST_F(OpeningBookTest, getBoardValue_12ply_dist_2) {
   auto bookPath =
       std::filesystem::path("../src/bitbully/assets/book_12ply_distances.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
   ASSERT_TRUE(exists(bookPath));
-  BitBully::OpeningBook ob(bookPath);
+  const BitBully::OpeningBook ob(bookPath);
 
   using B = BitBully::Board;
 
@@ -342,5 +370,34 @@ TEST_F(OpeningBookTest, getBoardValue_12ply_dist2) {
 
     // Now check value
     ASSERT_EQ(bitbullyValue, bookValue);
+  }
+}
+
+TEST_F(OpeningBookTest, getBoardValue_12ply_2) {
+  // Very similar (almost redundant) to getBoardValue_12ply_dist2
+  //  For now, keep like this
+  auto bookPath =
+      std::filesystem::path("../src/bitbully/assets/book_12ply.dat");
+  if (!exists(bookPath)) {
+    bookPath = ".." / bookPath;
+  }
+  ASSERT_TRUE(exists(bookPath));
+  const BitBully::OpeningBook ob(bookPath);
+
+  using B = BitBully::Board;
+
+  BitBully::BitBully bb;
+
+  for (auto i = 0; i < 100; ++i) {
+    auto [b, mvSequence] = B::randomBoard(12);
+
+    ASSERT_EQ(b.countTokens(), 12);
+    ASSERT_FALSE(b.hasWin());
+
+    const auto bitbullyValue = bb.mtdf(b, 0);
+    const auto bookValue = ob.getBoardValue(b);
+
+    // only check sign
+    ASSERT_EQ(sign(bitbullyValue), sign(bookValue));
   }
 }
