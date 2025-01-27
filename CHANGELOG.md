@@ -1,3 +1,9 @@
+## v0.0.25 (2025-01-27)
+
+### Fix
+
+- exposed a few more functions to pybind11
+
 ## v0.0.24 (2025-01-27)
 
 ### Fix
