@@ -78,7 +78,8 @@ jobs:
   delete_artifacts:
     name: Delete unnecessary GitHub Artifacts
     runs-on: ubuntu-latest
-    needs: upload_pypi
+    needs: [ build_wheels, upload_pypi ]
+    if: always()  # Ensure this job always runs
     steps:
       - uses: geekyeggo/delete-artifact@v5
         with:
