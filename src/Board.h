@@ -160,7 +160,7 @@ class Board {
 
   bool setBoard(const std::vector<int> &moveSequence);
 
-  TBoardArray toArray();
+  TBoardArray toArray() const;
 
   static bool isValid(const TBoardArray &board);
 
@@ -172,7 +172,7 @@ class Board {
 
   bool hasWin() const;
 
-  std::string toString();
+  std::string toString() const;
 
   inline TMovesCounter movesLeft() const { return m_movesLeft; }
 

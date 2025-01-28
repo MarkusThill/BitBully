@@ -357,7 +357,7 @@ Board::TBitBoard Board::generateMoves() const {
   return (m_bAllTokens + BB_BOTTOM_ROW) & BB_ALL_LEGAL_TOKENS;
 }
 
-Board::TBoardArray Board::toArray() {
+Board::TBoardArray Board::toArray() const {
   TBoardArray board{0};
   const auto activePlayer = (m_movesLeft & 1 ? P_RED : P_YELLOW);
   const auto inactivePlayer = opponent(activePlayer);
@@ -375,7 +375,7 @@ Board::TBoardArray Board::toArray() {
   return board;
 }
 
-std::string Board::toString() {
+std::string Board::toString() const {
   std::stringstream ss;
   ss << "\n  ";
   const auto arr = toArray();

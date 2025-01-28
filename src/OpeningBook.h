@@ -219,6 +219,10 @@ class OpeningBook {
       if (m_is8ply && !b.generateNonLosingMoves()) {
         val = -1;
       }
+    } else if (val == NONE_VALUE) {
+      // This is a special case. Positions, where player 1 (yellow) can
+      // immediately win, are not encoded in the databases.
+      return (b.movesLeft() + 1) / 2;
     }
     assert(val != NONE_VALUE);
     return convertValue(val, b);

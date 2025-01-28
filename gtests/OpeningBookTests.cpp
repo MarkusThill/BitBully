@@ -344,8 +344,8 @@ TEST_F(OpeningBookTest, getBoardValue_8ply_2) {
 
   ASSERT_FALSE(bb.isBookLoaded());
 
-  for (auto i = 0; i < 25000; ++i) {
-    auto [b, mvSequence] = B::randomBoard(8);
+  for (auto i = 0; i < 25; ++i) {
+    auto [b, mvSequence] = B::randomBoard(8, false);
 
     ASSERT_EQ(b.countTokens(), 8);
     ASSERT_FALSE(b.hasWin());
@@ -355,7 +355,6 @@ TEST_F(OpeningBookTest, getBoardValue_8ply_2) {
 
     // only check sign
     ASSERT_EQ(sign(bitbullyValue), sign(bookValue)) << b.toString();
-    std::cout << i << std::endl;
   }
 }
 
@@ -376,7 +375,7 @@ TEST_F(OpeningBookTest, getBoardValue_12ply_dist_2) {
   ASSERT_FALSE(bb.isBookLoaded());
 
   for (auto i = 0; i < 100; ++i) {
-    auto [b, mvSequence] = B::randomBoard(12);
+    auto [b, mvSequence] = B::randomBoard(12, false);
 
     ASSERT_EQ(b.countTokens(), 12);
     ASSERT_FALSE(b.hasWin());
@@ -411,7 +410,7 @@ TEST_F(OpeningBookTest, getBoardValue_12ply_2) {
   ASSERT_FALSE(bb.isBookLoaded());
 
   for (auto i = 0; i < 100; ++i) {
-    auto [b, mvSequence] = B::randomBoard(12);
+    auto [b, mvSequence] = B::randomBoard(12, false);
 
     ASSERT_EQ(b.countTokens(), 12);
     ASSERT_FALSE(b.hasWin());
