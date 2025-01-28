@@ -344,7 +344,7 @@ TEST_F(OpeningBookTest, getBoardValue_8ply_2) {
 
   ASSERT_FALSE(bb.isBookLoaded());
 
-  for (auto i = 0; i < 25; ++i) {
+  for (auto i = 0; i < 25000; ++i) {
     auto [b, mvSequence] = B::randomBoard(8);
 
     ASSERT_EQ(b.countTokens(), 8);
@@ -354,7 +354,8 @@ TEST_F(OpeningBookTest, getBoardValue_8ply_2) {
     const auto bookValue = ob.getBoardValue(b);
 
     // only check sign
-    ASSERT_EQ(sign(bitbullyValue), sign(bookValue));
+    ASSERT_EQ(sign(bitbullyValue), sign(bookValue)) << b.toString();
+    std::cout << i << std::endl;
   }
 }
 

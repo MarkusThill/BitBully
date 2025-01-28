@@ -101,7 +101,7 @@ class Board {
     return b;
   }
 
-  TBitBoard generateMoves();
+  TBitBoard generateMoves() const;
 
   static constexpr int popCountBoard(uint64_t x) {
     int count = 0;
@@ -191,7 +191,7 @@ class Board {
     return ~mvMask & x;
   }
 
-  TBitBoard generateNonLosingMoves() {
+  TBitBoard generateNonLosingMoves() const {
     // Mostly inspired by Pascal's Code
     // This function might return an empty bitboard. In this case, the active
     // player will lose, since all possible moves will lead to a defeat.

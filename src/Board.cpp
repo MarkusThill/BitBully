@@ -353,7 +353,7 @@ bool Board::canWin(int column) const {
           (m_bAllTokens + BB_BOTTOM_ROW) & getColumnMask(column));
 }
 
-Board::TBitBoard Board::generateMoves() {
+Board::TBitBoard Board::generateMoves() const {
   return (m_bAllTokens + BB_BOTTOM_ROW) & BB_ALL_LEGAL_TOKENS;
 }
 

@@ -212,10 +212,15 @@ class OpeningBook {
     val = binarySearch(p);
     if (!m_withDistances && val == NONE_VALUE) {
       // # only for the 8-ply and 12-ply database without distances
-      val = 1;  // # if a position is not in the database, then this means that
-      // player 1 wins
+      val = 1;  // if a position is not in the database, then this means that
+                // player 1 wins
+      // Apparently, positions with 2 immediate threats for player Red are
+      // missing in the 8-ply database
+      if (m_is8ply && !b.generateNonLosingMoves()) {
+        val = -1;
+      }
     }
-
+    assert(val != NONE_VALUE);
     return convertValue(val, b);
   }
 };
