@@ -85,7 +85,10 @@ class GuiC4:
         self.m_gameover = False
 
         # C4 agent
-        self.bitbully_agent = bitbully_core.BitBully()
+        db_path = importlib.resources.files("bitbully").joinpath(
+            "assets/book_12ply_distances.dat"
+        )
+        self.bitbully_agent = bitbully_core.BitBully(db_path)
 
     def reset(self):
         self.m_movelist = []
@@ -157,7 +160,6 @@ class GuiC4:
         b = bitbully_core.Board()
         assert b.setBoard([mv[1] for mv in self.m_movelist])
         move_scores = self.bitbully_agent.scoreMoves(b)
-        print(move_scores)
         self.is_busy = False
         self.insert_token(np.argmax(move_scores))
 
