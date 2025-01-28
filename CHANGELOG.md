@@ -1,3 +1,9 @@
+## v0.0.27 (2025-01-28)
+
+### Fix
+
+- always delete artifacts, even if no tag is pushed
+
 ## v0.0.26 (2025-01-28)
 
 ### Fix
