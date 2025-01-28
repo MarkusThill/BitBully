@@ -1,3 +1,10 @@
+## v0.0.26 (2025-01-28)
+
+### Fix
+
+- handle edge cases in opening book access
+- added filesystem header for pybind11
+
 ## v0.0.25 (2025-01-27)
 
 ### Fix
