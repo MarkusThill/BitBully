@@ -74,7 +74,11 @@ This will automatically download and install the pre-built package, including th
 
 ## Usage
 
-### Python Library
+### BitBully Lib (recommended)
+
+tbd
+
+### BitBully Core (advanced)
 
 Use the `BitBully` and `Board` classes directly in Python:
 
@@ -83,8 +87,11 @@ from bitbully import bitbully_core
 import time
 
 board = bitbully_core.Board()
-board.playMove(3)  # Yellow plays a move in column 3 (center column)
-board.playMove(3)  # Red plays a move in column 3 (center column)
+
+# Yellow and red alternately play moves into column 3 (center column):
+for _ in range(6):
+    board.playMove(3)
+
 print(board)
 
 solver = bitbully_core.BitBully()
@@ -124,7 +131,53 @@ score = solver.mtdf(board, first_guess=0)
 print(f"Best score for the current board: {score}")
 ```
 
----
+Run the Bitbully solver with an opening book (here: 12-ply opening book with winning distances):
+
+```python
+from bitbully import bitbully_core as bbc
+import importlib.resources
+
+db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
+bitbully = bbc.BitBully(db_path)
+b = bbc.Board()  # Empty board
+bitbully.scoreMoves(b)  # expected result: [-2, -1, 0, 1, 0, -1, -2]
+```
+
+Generate a random board with `n` tokens:
+
+```python
+from bitbully import bitbully_core as bbc
+
+# Create a random board (and the move sequence that created it)
+b, move_list = bbc.Board.randomBoard(12, True)
+print(b)
+print(move_list)
+```
+
+### Further Usage Examples for BitBully Core
+
+Create all Positions with (up to) `n` tokens starting from Board `b`:
+
+```python
+from bitbully import bitbully_core as bbc
+
+b = bbc.Board()  # empty board
+board_list_3ply = b.allPositions(3, True)  # All positions with exactly 3 tokens
+len(board_list_3ply)  # should be 238 according to https://oeis.org/A212693
+```
+
+Find the game-theoretic value of a 12-ply position using an opening book:
+
+```python
+from bitbully import bitbully_core as bbc
+import importlib.resources
+
+db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
+ob = bbc.OpeningBook(db_path)
+b, move_list = bbc.Board.randomBoard(12, True)  # get a board without an immediate threat for Yellow
+assert ob.isInBook(b) or ob.isInBook(b.mirror())  # Either position `b` or its mirrored equivalent are in the DB
+ob.getBoardValue(b)  # Get game-theoretic value (also checks mirrored board)
+```
 
 ---
 

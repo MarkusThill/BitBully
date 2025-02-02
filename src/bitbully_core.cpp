@@ -93,8 +93,9 @@ PYBIND11_MODULE(bitbully_core, m) {
            "Set the board using a 2D array", py::arg("moveSequence"))
       .def_static("isValid", &B::isValid, "Check, if a board is a valid one.",
                   py::arg("board"))
-      .def_static("", &B::randomBoard, "Create a random board with n tokens.",
-                  py::arg("nPly"), py::arg("forbidDirectWin"))
+      .def_static("randomBoard", &B::randomBoard,
+                  "Create a random board with n tokens.", py::arg("nPly"),
+                  py::arg("forbidDirectWin"))
       .def("toHuffman", &B::toHuffman,
            "Encode position into a huffman-code compressed sequence.")
       .def("uid", &B::uid, "Get the unique identifier for the board")
@@ -123,7 +124,7 @@ PYBIND11_MODULE(bitbully_core, m) {
            "Get the size of the book.")
       .def("getBoardValue", &BitBully::OpeningBook::getBoardValue,
            py::arg("board"), "Get the value of a given board.")
-      .def("", &BitBully::OpeningBook::isInBook, py::arg("board"),
+      .def("isInBook", &BitBully::OpeningBook::isInBook, py::arg("board"),
            "Check, if the given board is in the opening book. Note, that "
            "usually boards are only present in one mirrored variant.")
       .def("convertValue", &BitBully::OpeningBook::convertValue,
