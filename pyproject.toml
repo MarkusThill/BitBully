@@ -69,6 +69,7 @@ include-package-data = true  # Include additional non-Python files (e.g., librar
 build = "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-* pp38-* pp39-* pp310-*"
 # build = "cp311-*" # TODO: Change back to above setting
 skip = "*win32* cp38-macosx_arm64*"
+environment = "MACOSX_DEPLOYMENT_TARGET=10.15"
 
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)
