@@ -1,6 +1,7 @@
 #include <BitBully.h>
 
 #include <Position.hpp>
+#include <algorithm>
 #include <filesystem>
 
 #include "OpeningBook.h"

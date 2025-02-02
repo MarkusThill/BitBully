@@ -5,6 +5,7 @@
 // TODO: Play n games against a random (or more advanced) player: It has to win
 // every single game! ...
 
+#include <numeric>
 #include <random>  // For C++11/C++17 random library
 
 #include "Board.h"
