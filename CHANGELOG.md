@@ -1,3 +1,9 @@
+## v0.0.31 (2025-02-02)
+
+### Fix
+
+- full cibuildwheel activated again
+
 ## v0.0.30 (2025-02-02)
 
 ### Fix
