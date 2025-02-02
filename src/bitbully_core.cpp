@@ -75,6 +75,10 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("mirror", &B::mirror, "Get the mirrored board")
       .def("sortMoves", &B::sortMoves, "Sort moves based on priority",
            py::arg("moves"))
+      .def("allPositions", &B::allPositions,
+           "Generate all positions that can be reached from the current board "
+           "with n tokens.",
+           py::arg("upToNPly"), py::arg("exactlyN"))
       .def("findThreats", &B::findThreats, "Find threats on the board",
            py::arg("moves"))
       .def("generateNonLosingMoves", &B::generateNonLosingMoves,
@@ -89,6 +93,10 @@ PYBIND11_MODULE(bitbully_core, m) {
            "Set the board using a 2D array", py::arg("moveSequence"))
       .def_static("isValid", &B::isValid, "Check, if a board is a valid one.",
                   py::arg("board"))
+      .def_static("", &B::randomBoard, "Create a random board with n tokens.",
+                  py::arg("nPly"), py::arg("forbidDirectWin"))
+      .def("toHuffman", &B::toHuffman,
+           "Encode position into a huffman-code compressed sequence.")
       .def("uid", &B::uid, "Get the unique identifier for the board")
       .def("__eq__", &B::operator==, "Check if two boards are equal")
       .def("__ne__", &B::operator!=, "Check if two boards are not equal");
@@ -109,10 +117,15 @@ PYBIND11_MODULE(bitbully_core, m) {
            "Reinitialize the OpeningBook with new settings.")
       .def("getEntry", &BitBully::OpeningBook::getEntry, py::arg("entryIdx"),
            "Get an entry from the book by index.")
+      .def("getBook", &BitBully::OpeningBook::getBook,
+           "Return the raw book table.")
       .def("getBookSize", &BitBully::OpeningBook::getBookSize,
            "Get the size of the book.")
       .def("getBoardValue", &BitBully::OpeningBook::getBoardValue,
            py::arg("board"), "Get the value of a given board.")
+      .def("", &BitBully::OpeningBook::isInBook, py::arg("board"),
+           "Check, if the given board is in the opening book. Note, that "
+           "usually boards are only present in one mirrored variant.")
       .def("convertValue", &BitBully::OpeningBook::convertValue,
            py::arg("value"), py::arg("board"),
            "Convert a value to the internal scoring system.")
@@ -120,7 +133,7 @@ PYBIND11_MODULE(bitbully_core, m) {
            "Get the ply depth of the book.")
 
       // Static functions
-      .def_static("read_book", &BitBully::OpeningBook::read_book,
+      .def_static("readBook", &BitBully::OpeningBook::readBook,
                   py::arg("filename"), py::arg("with_distances") = true,
                   py::arg("is_8ply") = false, "Read a book from a file.");
 }

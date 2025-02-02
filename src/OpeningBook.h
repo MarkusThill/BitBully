@@ -18,15 +18,19 @@ class OpeningBook {
  private:
   using key_t = int;
   using value_t = int8_t;
-  static constexpr size_t SIZE_8PLY_DB = 102'858;
-  static constexpr size_t SIZE_12PLY_DB = 6'943'780;
-  static constexpr size_t SIZE_12PLY_DB_WITH_DIST = 21'004'495;
+  static constexpr size_t SIZE_BYTES_8PLY_DB = 103'545;  // 102'858;
+  static constexpr size_t SIZE_BYTES_12PLY_DB = 6'943'780;
+  static constexpr size_t SIZE_BYTES_12PLY_DB_WITH_DIST = 21'004'495;
+
+  static constexpr size_t SIZE_8PLY_DB = 34'515;
+  static constexpr size_t SIZE_12PLY_DB = 1'735'945;
+  static constexpr size_t SIZE_12PLY_DB_WITH_DIST = 4'200'899;
 
   std::vector<std::tuple<key_t, value_t>> m_book;
   bool m_withDistances{};
   bool m_is8ply{};
   std::filesystem::path m_bookPath;
-  int m_nPly;
+  int m_nPly{};
 
   [[nodiscard]] value_t binarySearch(const key_t& huffmanCode) const {
     // one could also use: std::lower_bound()
@@ -65,11 +69,13 @@ class OpeningBook {
 
     const auto fileSize = std::filesystem::file_size(bookPath);
     // infer DB type from size:
-    const bool is8ply = (fileSize == SIZE_8PLY_DB);
-    const bool withDistances = (fileSize == SIZE_12PLY_DB_WITH_DIST);
+    const bool is8ply = (fileSize == SIZE_BYTES_8PLY_DB);
+    const bool withDistances = (fileSize == SIZE_BYTES_12PLY_DB_WITH_DIST);
 
     init(bookPath, is8ply, withDistances);
   }
+
+  auto getBook() const { return m_book; }
 
   void init(const std::filesystem::path& bookPath, const bool is_8ply,
             const bool with_distances) {
@@ -86,26 +92,28 @@ class OpeningBook {
     const auto fileSize = std::filesystem::file_size(bookPath);
 #endif
     if (is_8ply) {
-      assert(fileSize == SIZE_8PLY_DB);  // 8-ply with distances
+      assert(fileSize == SIZE_BYTES_8PLY_DB);  // 8-ply with distances
     } else if (with_distances) {
-      assert(fileSize == SIZE_12PLY_DB_WITH_DIST);  // 12-ply with distances
+      assert(fileSize ==
+             SIZE_BYTES_12PLY_DB_WITH_DIST);  // 12-ply with distances
     } else {
-      assert(fileSize == SIZE_12PLY_DB);  // 12-ply without distances
+      assert(fileSize == SIZE_BYTES_12PLY_DB);  // 12-ply without distances
     }
 
     this->m_withDistances = with_distances;
     this->m_is8ply = is_8ply;
-    this->m_book = read_book(bookPath, with_distances, is_8ply);
+    this->m_book = readBook(bookPath, with_distances, is_8ply);
     this->m_bookPath = bookPath;
     this->m_nPly = (is_8ply ? 8 : 12);
 
     assert(!with_distances || is_8ply ||
-           m_book.size() == 4'200'899);  // 12-ply with distances
+           m_book.size() == SIZE_12PLY_DB_WITH_DIST);  // 12-ply with distances
 
     assert(with_distances || is_8ply ||
-           m_book.size() == 1'735'945);  // 12-ply without distances
+           m_book.size() == SIZE_12PLY_DB);  // 12-ply without distances
 
-    assert(!is_8ply || m_book.size() == 34'286);  // 8-ply without distances
+    assert(!is_8ply ||
+           m_book.size() == SIZE_8PLY_DB);  // 8-ply without distances
   }
 
   [[nodiscard]] auto getEntry(const size_t entryIdx) const {
@@ -161,7 +169,7 @@ class OpeningBook {
 
   int getNPly() const { return m_nPly; }
 
-  static std::vector<std::tuple<key_t, value_t>> read_book(
+  static std::vector<std::tuple<key_t, value_t>> readBook(
       const std::filesystem::path& filename, const bool with_distances = true,
       const bool is_8ply = false) {
     std::vector<std::tuple<key_t, value_t>> book;  // To store the book entries
@@ -195,6 +203,11 @@ class OpeningBook {
     return sign(value) * (movesLeft / 2 + 1);
   }
 
+  [[nodiscard]] bool isInBook(const Board& b) const {
+    // Only check if exactly this position is in the book
+    return (binarySearch(b.toHuffman()) != NONE_VALUE);
+  }
+
   [[nodiscard]] int getBoardValue(const Board& b) const {
     if (!((m_is8ply && b.countTokens() == 8) || b.countTokens() == 12)) {
       return NONE_VALUE;
@@ -211,14 +224,16 @@ class OpeningBook {
     p = b.mirror().toHuffman();
     val = binarySearch(p);
     if (!m_withDistances && val == NONE_VALUE) {
-      // # only for the 8-ply and 12-ply database without distances
+      // only for the 8-ply and 12-ply database without distances
       val = 1;  // if a position is not in the database, then this means that
                 // player 1 wins
+
+      // obsolete:
       // Apparently, positions with 2 immediate threats for player Red are
       // missing in the 8-ply database
-      if (m_is8ply && !b.generateNonLosingMoves()) {
-        val = -1;
-      }
+      // if (m_is8ply && !b.generateNonLosingMoves()) {
+      //  val = -1;
+      //}
     } else if (val == NONE_VALUE) {
       // This is a special case. Positions, where player 1 (yellow) can
       // immediately win, are not encoded in the databases.

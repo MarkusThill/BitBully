@@ -854,3 +854,25 @@ TEST_F(BoardTest, toHuffman) {
   ASSERT_EQ(b.movesLeft(), 31);
   ASSERT_EQ(b.toHuffman(), 0);
 }
+
+TEST_F(BoardTest, allPositions) {
+  // https://oeis.org/A212693
+  const BitBully::Board b;  // empty board
+
+  const auto expected = {1,    7,     49,    238,    1120,
+                         4263, 16422, 54859, 184275, 558186};
+
+  std::vector<long> expectedCumsum(expected.size());
+
+  std::partial_sum(expected.begin(), expected.end(), expectedCumsum.begin());
+
+  int nPly = 0;
+  for (auto exp : expected) {
+    ASSERT_EQ(b.allPositions(nPly++, true).size(), exp);
+  }
+
+  nPly = 0;
+  for (auto exp : expectedCumsum) {
+    ASSERT_EQ(b.allPositions(nPly++, false).size(), exp);
+  }
+}

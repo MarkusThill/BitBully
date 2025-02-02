@@ -40,9 +40,9 @@ class BitBully {
     }
     if (!bookPath.empty()) {
       m_openingBook = std::make_unique<OpeningBook>(bookPath);
+      assert(isBookLoaded());
     }
-    assert(isBookLoaded());
-    return !bookPath.empty();
+    return isBookLoaded();
   }
 
   // TODO: firstGuess is a parameter which could be tuned!

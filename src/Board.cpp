@@ -358,7 +358,7 @@ Board::TBitBoard Board::generateMoves() const {
 }
 
 Board::TBoardArray Board::toArray() const {
-  TBoardArray board{0};
+  TBoardArray board{{0}};
   const auto activePlayer = (m_movesLeft & 1 ? P_RED : P_YELLOW);
   const auto inactivePlayer = opponent(activePlayer);
   for (auto c = 0; c < N_COLUMNS; ++c) {

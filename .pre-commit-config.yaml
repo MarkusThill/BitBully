@@ -3,7 +3,6 @@
 exclude: |
   (?x)  # Enable verbose regex for better readability
   (src/bitbully/assets/book_12ply\.dat
-   |src/bitbully/assets/other_file\.dat
    |src/bitbully/assets/book_12ply_distances\.dat)
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

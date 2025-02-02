@@ -95,13 +95,13 @@ class Board {
     m_movesLeft--;
   }
 
-  Board inline playMoveOnCopy(const TBitBoard mv) {
+  [[nodiscard]] Board inline playMoveOnCopy(const TBitBoard mv) const {
     Board b = *this;
     b.playMoveFastBB(mv);
     return b;
   }
 
-  TBitBoard generateMoves() const;
+  [[nodiscard]] TBitBoard generateMoves() const;
 
   static constexpr int popCountBoard(uint64_t x) {
     int count = 0;
@@ -112,9 +112,11 @@ class Board {
     return count;
   }
 
-  inline auto popCountBoard() const { return uint64_t_popcnt(m_bAllTokens); }
+  [[nodiscard]] inline auto popCountBoard() const {
+    return uint64_t_popcnt(m_bAllTokens);
+  }
 
-  bool isLegalMove(int column) const;
+  [[nodiscard]] bool isLegalMove(int column) const;
 
   static uint64_t hash(uint64_t x) {
     x = (x ^ (x >> 30)) * UINT64_C(0xbf58476d1ce4e5b9);
@@ -123,13 +125,13 @@ class Board {
     return x;
   }
 
-  uint64_t uid() const {
+  [[nodiscard]] uint64_t uid() const {
     // the resulting 64-bit integer is a unique identifier for each board
     // Can be used to store a position in a transposition table
     return m_bActivePTokens + m_bAllTokens;
   }
 
-  uint64_t hash() const {
+  [[nodiscard]] uint64_t hash() const {
     return hash(hash(m_bActivePTokens) ^ (hash(m_bAllTokens) << 1));
   }
 
@@ -160,29 +162,29 @@ class Board {
 
   bool setBoard(const std::vector<int> &moveSequence);
 
-  TBoardArray toArray() const;
+  [[nodiscard]] TBoardArray toArray() const;
 
   static bool isValid(const TBoardArray &board);
 
   bool playMove(int column);
 
-  bool canWin() const;
+  [[nodiscard]] bool canWin() const;
 
-  bool canWin(int column) const;
+  [[nodiscard]] bool canWin(int column) const;
 
-  bool hasWin() const;
+  [[nodiscard]] bool hasWin() const;
 
-  std::string toString() const;
+  [[nodiscard]] std::string toString() const;
 
-  inline TMovesCounter movesLeft() const { return m_movesLeft; }
+  [[nodiscard]] inline TMovesCounter movesLeft() const { return m_movesLeft; }
 
-  inline TMovesCounter countTokens() const {
+  [[nodiscard]] inline TMovesCounter countTokens() const {
     return N_ROWS * N_COLUMNS - m_movesLeft;
   }
 
-  Board mirror() const;
+  [[nodiscard]] Board mirror() const;
 
-  MoveList sortMoves(TBitBoard moves) const;
+  [[nodiscard]] MoveList sortMoves(TBitBoard moves) const;
 
   TBitBoard findThreats(TBitBoard moves);
 
@@ -191,7 +193,7 @@ class Board {
     return ~mvMask & x;
   }
 
-  TBitBoard generateNonLosingMoves() const {
+  [[nodiscard]] TBitBoard generateNonLosingMoves() const {
     // Mostly inspired by Pascal's Code
     // This function might return an empty bitboard. In this case, the active
     // player will lose, since all possible moves will lead to a defeat.
@@ -207,7 +209,7 @@ class Board {
     return moves & ~(threats >> 1);
   }
 
-  TBitBoard doubleThreat(const TBitBoard moves) {
+  [[nodiscard]] TBitBoard doubleThreat(const TBitBoard moves) const {
     const TBitBoard ownThreats = winningPositions(m_bActivePTokens, false);
     const TBitBoard otherThreats =
         winningPositions(m_bActivePTokens ^ m_bAllTokens, true);
@@ -262,7 +264,24 @@ class Board {
       std::tie(b, mvList) = randomBoardInternal(nPly);
     }
 
-    return std::make_pair(std::move(b), std::move(mvList));
+    return std::make_pair(b, std::move(mvList));
+  }
+
+  [[nodiscard]] std::vector<Board> allPositions(const int upToNPly,
+                                                bool exactlyN) const {
+    // https://oeis.org/A212693
+    std::map<uint64_t, Board> positions;
+    positions.insert({uid(), *this});  // add empty board
+    addAfterStates(positions, *this, upToNPly);
+
+    std::vector<Board> boardVector;
+    boardVector.reserve(positions.size());  // Optimize memory allocation
+
+    for (const auto &[key, board] : positions) {
+      if (!exactlyN || board.countTokens() == upToNPly)
+        boardVector.push_back(board);  // Copy each board into the vector
+    }
+    return boardVector;
   }
 
  private:
@@ -379,6 +398,29 @@ class Board {
     assert(uint64_t_popcnt(columnMask) == N_ROWS);
     const auto mvMask = (m_bAllTokens + BB_BOTTOM_ROW) & columnMask;
     playMoveFastBB(mvMask);
+  }
+
+  static void addAfterStates(std::map<uint64_t, Board> &boardCollection,
+                             const Board &b, const int nPly) {
+    if (b.countTokens() >= nPly) {
+      return;
+    }
+
+    auto moves = b.generateMoves();
+
+    while (moves) {
+      const auto mv = b.nextMove(moves);
+      assert(uint64_t_popcnt(mv) == 1);
+      if (auto newB = b.playMoveOnCopy(mv);
+          boardCollection.find(newB.uid()) == boardCollection.end() &&
+          !b.hasWin()) {
+        // We have not  reached this position yet
+        boardCollection.insert({newB.uid(), newB});
+        addAfterStates(boardCollection, newB, nPly);
+      }
+
+      moves ^= mv;
+    }
   }
 
   static std::pair<Board, std::vector<int>> randomBoardInternal(
