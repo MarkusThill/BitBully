@@ -1,3 +1,11 @@
+## v0.0.28 (2025-02-02)
+
+### Fix
+
+- issues with python bindings in bitbully_core
+- various issues with the 8-ply and 12-ply databases
+- let gui use opening book
+
 ## v0.0.27 (2025-01-28)
 
 ### Fix
