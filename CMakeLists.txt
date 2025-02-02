@@ -8,6 +8,10 @@ set(CMAKE_CXX_STANDARD 17)
 # Static libraries not built with -fPIC embed absolute addresses, which cause issues when linking into shared objects.
 set(CMAKE_POSITION_INDEPENDENT_CODE ON) # -fPIC flag
 
+# Needed for std::filesystem, etc.
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum macOS deployment target")
+
+
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3")
     # Add later again: set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra
