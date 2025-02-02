@@ -148,7 +148,7 @@ Generate a random board with `n` tokens:
 ```python
 from bitbully import bitbully_core as bbc
 
-# Create a random board (and the move sequence that created it)
+# Create a random board (and the move sequence that generated it)
 b, move_list = bbc.Board.randomBoard(12, True)
 print(b)
 print(move_list)
