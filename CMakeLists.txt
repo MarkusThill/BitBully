@@ -1,4 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
+
+# Needed for std::filesystem, etc.
+# Needs to be placed at the very top of the file:
+# https://cmake.org/cmake/help/latest/variable/CMAKE_OSX_DEPLOYMENT_TARGET.html
+if (APPLE)
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum macOS deployment target" FORCE)
+endif ()
+
 project(BitBully VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -7,9 +15,6 @@ set(CMAKE_CXX_STANDARD 17)
 # -Independent Code allows the shared library to be loaded at any memory address without modification.
 # Static libraries not built with -fPIC embed absolute addresses, which cause issues when linking into shared objects.
 set(CMAKE_POSITION_INDEPENDENT_CODE ON) # -fPIC flag
-
-# Needed for std::filesystem, etc.
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum macOS deployment target")
 
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
