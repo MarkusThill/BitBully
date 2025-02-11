@@ -1,3 +1,15 @@
+## v0.0.32 (2025-02-11)
+
+### Fix
+
+- remove fierz' legacy code
+- remove legacy code
+- add macos-13 to cmake github workflow
+- add macos-13 to cmake github workflow
+- adapted min macosx deployment target
+- increase timeout for build wheels
+- adapted min macosx deployment target
+
 ## v0.0.31 (2025-02-02)
 
 ### Fix
