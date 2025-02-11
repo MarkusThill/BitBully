@@ -67,6 +67,8 @@ endif ()
 add_subdirectory(thirdParty)
 add_subdirectory(gtests)
 
+# bitbully_core:
+# --------------
 # https://pybind11.readthedocs.io/en/stable/basics.html
 # https://pybind11.readthedocs.io/en/stable/compiling.html#compiling
 # https://pybind11.readthedocs.io/en/stable/compiling.html#cmake
@@ -74,3 +76,14 @@ add_subdirectory(thirdParty/pybind11)
 pybind11_add_module(bitbully_core src/bitbully_core.cpp)
 target_link_libraries(bitbully_core PUBLIC cppBitBully)
 install(TARGETS bitbully_core DESTINATION .)
+
+# bitbully:
+# ---------
+# Add a new executable target that compiles main.cpp and links cppBitBully
+add_executable(bitbully src/main.cpp)
+
+# Link the existing cppBitBully library to the new executable
+target_link_libraries(bitbully PRIVATE cppBitBully third_party)
+
+# Ensure it uses the same include directories as cppBitBully
+target_include_directories(bitbully PRIVATE ${BB_PROJECT_INCS})

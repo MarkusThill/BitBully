@@ -1,72 +1,94 @@
+#include <fstream>
+#include <iomanip>  // For setting precision
 #include <iostream>
+#include <numeric>
 #include <sstream>
 #include <string>
+#include <thirdParty/connect4/Solver.hpp>
+#include <tuple>
+#include <unordered_map>
+#include <vector>
 
-#include "cpart.cpp"
+#include "BitBully.h"
+#include "Board.h"
 
-void verify() {
-  int x, i;
-  for (i = 0; i < 86892; i += 7)  // 40
-  {
-    Feld1 = OPENING[i].m_positionP1;
-    Feld2 = OPENING[i].m_positionP2;
-    ResetHash();
-    HoeheErmitteln();
-    InstanceVoll = 42 - BrettCount();
-    MaxInstance = 100;
-    x = WurzelMethodeComputerAnziehender(0, -9999, 9999, HoeheErmitteln());
-    if (x == 1000 && OPENING[i].m_value != 2) {
-      std::cerr << "i=" << i << ", x=" << x
-                << ":  if(x==1000 && m_pOpeningBook8Ply_2[i].m_value!=2)"
-                << std::endl;
-      break;
-    } else if (x == -1000 && OPENING[i].m_value != 1) {
-      std::cerr << "i=" << i << ", x=" << x
-                << ": else if(x==-1000 && m_pOpeningBook8Ply_2[i].m_value!=1)"
-                << std::endl;
-      break;
-    } else if (x == 0 && OPENING[i].m_value != 0) {
-      std::cerr << "i=" << i << ", x=" << x
-                << ": else if(x==0 && m_pOpeningBook8Ply_2[i].m_value!=0)"
-                << std::endl;
-      break;
-    } else if (x != -1000 && x != 1000 && x != 0) {
-      std::cerr << "i=" << i << ", x=" << x
-                << ": else if(x!= -1000 && x!= 1000 && x!=0)" << std::endl;
-      break;
-    }
-    std::cout << "Done with " << i << std::endl;
+void writeToCSV(const std::vector<std::tuple<float, float>>& data,
+                const std::string& filename) {
+  std::ofstream file(filename);  // Open file for writing
+  if (!file.is_open()) {
+    std::cerr << "Error: Unable to open file " << filename << std::endl;
+    return;
   }
+
+  // Write header (optional)
+  file << "Bitbully,Pons-C4\n";
+
+  // Write data
+  for (const auto& [val1, val2] : data) {
+    file << std::fixed << std::setprecision(5)  // Control float precision
+         << val1 << "," << val2 << "\n";
+  }
+
+  file.close();
+  std::cout << "Data successfully written to " << filename << std::endl;
 }
 
 int main() {
-  Reset();  // entleert das Spielfeld. Die Variablen m_fieldP1 und m_fieldP2
-            // werden auf 0 gesetzt.
-  BuchLaden("../m_openingBook8Ply.dat");  // Die Er�ffnungsdatenbank wird direkt
-                                          // zu beginn aus der Datei eingelesen
-  BuchLaden2("../data8ply.dat");
-  MaxInstance =
-      100;  // Der Standardwert f�r die Schwierigkeitsstufe wird gesetzt. Die
-            // Schwierigkeitsstufe ergibt sich aus (m_maxSearchDepth-2)/2
-  Modus = 0;  // Da noch kein Spielmodus ausgew�hlt wurde
-  HASHE = (HASHEvorlage *)malloc(HASHSIZE * sizeof(HASHEvorlage));
-  LHASHE = (HASHEvorlage *)malloc(LHASHSIZE * sizeof(HASHEvorlage));
-  DRHASHE = (DRVorlage *)malloc(DRHASHSIZE * sizeof(DRVorlage));
-  ResetHash();
-  ModusEinrichten();
+  constexpr int nPly = 8;
+  constexpr int nRepeats = 1000;
+  const std::string filename = "../times_" + std::to_string(nPly) + "_ply.csv";
 
-  verify();
+  std::vector<std::tuple<float, float>> times = {};
 
-  /*
-  std::cout << toString() << std::endl;
-  ComputerAnziehender(2);
-  std::cout << toString() << std::endl;
-  ComputerAnziehender(5);
-  std::cout << toString() << std::endl;
-  ComputerAnziehender(4);
-  std::cout << toString() << std::endl;
-  ComputerAnziehender(2);
-  std::cout << toString() << std::endl;
-   */
+  using duration = std::chrono::duration<float>;
+
+  GameSolver::Connect4::Solver solverPons;
+  BitBully::BitBully bb;
+
+  for (auto i = 0; i < nRepeats; i++) {
+    auto [b, mvSequence] = BitBully::Board::randomBoard(nPly, true);
+
+    // Bitbully:
+    auto tStart = std::chrono::high_resolution_clock::now();
+    const int scoreBitbully = bb.mtdf(b, 0);
+    auto tEnd = std::chrono::high_resolution_clock::now();
+    auto timeBitbully = static_cast<float>(duration(tEnd - tStart).count());
+
+    // Pons-C4:
+    GameSolver::Connect4::Position P;
+    // Convert move sequence into a string representation:
+    auto mvSequenceStr =
+        std::accumulate(mvSequence.begin(), mvSequence.end(), std::string(""),
+                        [](const std::string& a, const int b) {
+                          return a + std::to_string(b + 1);
+                        });
+    if (P.play(mvSequenceStr) != b.countTokens()) {
+      std::cerr << "Error: (P.play(mvSequenceStr) != b.countTokens())";
+      exit(EXIT_FAILURE);
+    }
+    tStart = std::chrono::high_resolution_clock::now();
+    const int scorePons = solverPons.solve(P, false);
+    tEnd = std::chrono::high_resolution_clock::now();
+    auto timePons = static_cast<float>(duration(tEnd - tStart).count());
+    times.emplace_back(timeBitbully, timePons);
+
+    if (scorePons != scoreBitbully) {
+      std::cerr << "Error: " << b.toString() << "Pons: " << scorePons
+                << " Mine: " << scoreBitbully << std::endl;
+      exit(EXIT_FAILURE);
+    }
+
+    if (i % (nPly / 100 + 1) == 0) {
+      std::cout << "Done with " << i << " iterations" << std::endl;
+    }
+  }
+  writeToCSV(times, filename);
+
+  std::cout << "Node Count Pons: " << solverPons.getNodeCount() << ", "
+            << "Mine: " << bb.getNodeCounter() << " Percent: "
+            << static_cast<double>(bb.getNodeCounter() -
+                                   solverPons.getNodeCount()) /
+                   bb.getNodeCounter() * 100.0
+            << " %" << std::endl;
   return 0;
 }
