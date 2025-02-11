@@ -8,9 +8,6 @@ elseif (MSVC)
 endif ()
 
 find_library(PONS_C4 NAMES ponsc4)
-set(TP_PROJECT_INCS .)
-
-set(TP_PROJECT_FILES fierzC4/4inarow.cpp fierzC4/Agent4InARow.cpp)
 
 # Do the following; Otherwise we get strange compile-time errors
 # set(gtest_force_shared_crt on)
@@ -30,7 +27,6 @@ if (WIN32)
     add_library(third_party INTERFACE)
     target_link_libraries(third_party INTERFACE ${TP_PROJECT_LIBS})
 else ()
-    add_library(third_party STATIC ${TP_PROJECT_FILES})
-    target_include_directories(third_party PUBLIC ${TP_PROJECT_INCS})
-    target_link_libraries(third_party ${TP_PROJECT_LIBS})
+    add_library(third_party INTERFACE)
+    target_link_libraries(third_party INTERFACE ${TP_PROJECT_LIBS})
 endif ()
