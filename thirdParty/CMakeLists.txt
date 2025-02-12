@@ -24,9 +24,8 @@ include_directories(. ${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR}
 
 if (WIN32)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-    add_library(third_party INTERFACE)
-    target_link_libraries(third_party INTERFACE ${TP_PROJECT_LIBS})
 else ()
-    add_library(third_party INTERFACE)
-    target_link_libraries(third_party INTERFACE ${TP_PROJECT_LIBS})
+    # nothing to do yet...
 endif ()
+add_library(third_party INTERFACE)
+target_link_libraries(third_party INTERFACE ${TP_PROJECT_LIBS})

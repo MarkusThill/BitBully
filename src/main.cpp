@@ -20,7 +20,7 @@ void writeToCSV(const std::vector<std::tuple<float, float>>& data,
     return;
   }
 
-  // Write header (optional)
+  // Write header
   file << "Bitbully,Pons-C4\n";
 
   // Write data
@@ -33,16 +33,43 @@ void writeToCSV(const std::vector<std::tuple<float, float>>& data,
   std::cout << "Data successfully written to " << filename << std::endl;
 }
 
-int main() {
-  constexpr int nPly = 8;
-  constexpr int nRepeats = 1000;
-  const std::string filename = "../times_" + std::to_string(nPly) + "_ply.csv";
+std::unordered_map<std::string, std::string> parseArgs(
+    const int argc, const char* const argv[]) {
+  std::unordered_map<std::string, std::string> args;
+
+  for (int i = 1; i < argc; i += 2) {
+    if (i + 1 < argc) {
+      args[argv[i]] = argv[i + 1];
+    } else {
+      std::cerr << "Error: Missing value for argument " << argv[i] << std::endl;
+      exit(EXIT_FAILURE);
+    }
+  }
+
+  return args;
+}
+
+int main(const int argc, const char* const argv[]) {
+  // Default values
+  int nPly = 8;
+  int nRepeats = 1000;
+  std::string filename;
+
+  // Parse command-line arguments
+  auto args = parseArgs(argc, argv);
+  if (args.find("--nply") != args.end()) nPly = std::stoi(args["--nply"]);
+  if (args.find("--nrepeats") != args.end())
+    nRepeats = std::stoi(args["--nrepeats"]);
+  if (args.find("--filename") != args.end())
+    filename = args["--filename"];
+  else
+    filename = "../times_" + std::to_string(nPly) + "_ply.csv";
 
   std::vector<std::tuple<float, float>> times = {};
 
   using duration = std::chrono::duration<float>;
 
-  GameSolver::Connect4::Solver solverPons;
+  GameSolver::Connect4::Solver solverPonsC4;
   BitBully::BitBully bb;
 
   for (auto i = 0; i < nRepeats; i++) {
@@ -59,35 +86,35 @@ int main() {
     // Convert move sequence into a string representation:
     auto mvSequenceStr =
         std::accumulate(mvSequence.begin(), mvSequence.end(), std::string(""),
-                        [](const std::string& a, const int b) {
-                          return a + std::to_string(b + 1);
+                        [](const std::string& a, const int mv) {
+                          return a + std::to_string(mv + 1);
                         });
     if (P.play(mvSequenceStr) != b.countTokens()) {
       std::cerr << "Error: (P.play(mvSequenceStr) != b.countTokens())";
       exit(EXIT_FAILURE);
     }
     tStart = std::chrono::high_resolution_clock::now();
-    const int scorePons = solverPons.solve(P, false);
+    const int scorePonsC4 = solverPonsC4.solve(P, false);
     tEnd = std::chrono::high_resolution_clock::now();
-    auto timePons = static_cast<float>(duration(tEnd - tStart).count());
-    times.emplace_back(timeBitbully, timePons);
+    auto timePonsC4 = static_cast<float>(duration(tEnd - tStart).count());
+    times.emplace_back(timeBitbully, timePonsC4);
 
-    if (scorePons != scoreBitbully) {
-      std::cerr << "Error: " << b.toString() << "Pons: " << scorePons
-                << " Mine: " << scoreBitbully << std::endl;
+    if (scorePonsC4 != scoreBitbully) {
+      std::cerr << "Error: " << b.toString() << "Pons-C4: " << scorePonsC4
+                << " BitBully: " << scoreBitbully << std::endl;
       exit(EXIT_FAILURE);
     }
 
-    if (i % (nPly / 100 + 1) == 0) {
+    if (i % (nRepeats / 100 + 1) == 0) {
       std::cout << "Done with " << i << " iterations" << std::endl;
     }
   }
   writeToCSV(times, filename);
 
-  std::cout << "Node Count Pons: " << solverPons.getNodeCount() << ", "
-            << "Mine: " << bb.getNodeCounter() << " Percent: "
+  std::cout << "Node Count Pons-C4: " << solverPonsC4.getNodeCount() << ", "
+            << "BitBully: " << bb.getNodeCounter() << " Percent: "
             << static_cast<double>(bb.getNodeCounter() -
-                                   solverPons.getNodeCount()) /
+                                   solverPonsC4.getNodeCount()) /
                    bb.getNodeCounter() * 100.0
             << " %" << std::endl;
   return 0;
