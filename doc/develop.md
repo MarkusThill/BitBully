@@ -326,9 +326,6 @@ sudo make install
 
 ---
 
-These commands now cover additional workflows like managing Node.js and NPM, using Docker, handling Ruby and rbenv, and
-working with Jekyll. Let me know if you'd like further categorization or details.
-
 # GitHub Snake
 
 <h1 align="center">

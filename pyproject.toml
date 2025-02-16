@@ -44,6 +44,8 @@ gui = [
 ci = [
     "pytest", # For testing
     "ruff", # For linting
+    "mkdocs",
+    "mkdocs-material"
 ]
 
 [build-system]

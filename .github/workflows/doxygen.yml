@@ -4,8 +4,12 @@ on: [ push, pull_request ]
 
 jobs:
   generate-docs:
-    name: Generate and Deploy Doxygen Documentation
+    name: Generate and Deploy Doxygen/Mkdocs Documentation
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ "3.11" ]
 
     steps:
       # Step 1: Check out the repository
@@ -13,6 +17,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
 
       # Step 2: Set up Doxygen
       - name: Install Doxygen
@@ -34,10 +43,22 @@ jobs:
       - name: Generate Doxygen Documentation
         run: doxygen Doxyfile
 
-      # Step 4: Deploy to GitHub Pages
+      # Step 4: Install MkDocs
+      - name: Install MkDocs
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs
+          pip install mkdocs-material
+
+      # Step 5: Build MkDocs Documentation
+      - name: Build MkDocs Documentation
+        run: |
+          mkdocs build
+
+      # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        if: startsWith(github.ref, 'refs/tags/')  # Only execute on new tags
+        # if: startsWith(github.ref, 'refs/tags/')  # Only execute on new tags
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/html
+          publish_dir: site/
