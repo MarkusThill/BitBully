@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['load_0',['load',['../classGameSolver_1_1Connect4_1_1OpeningBook.html#abfb2e1be9ff994f402a28e3a0f96fed6',1,'GameSolver::Connect4::OpeningBook']]]
+];
