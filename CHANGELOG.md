@@ -1,3 +1,10 @@
+## v0.0.33 (2025-02-16)
+
+### Fix
+
+- command line tool for runtime comparisons
+- added several cmd line args for main
+
 ## v0.0.32 (2025-02-11)
 
 ### Fix
