@@ -1,3 +1,10 @@
+## v0.0.34 (2025-02-16)
+
+### Fix
+
+- for the first time push to main pypi
+- added mkdocs support
+
 ## v0.0.33 (2025-02-16)
 
 ### Fix
