@@ -1,3 +1,9 @@
+## v0.0.35 (2025-02-16)
+
+### Fix
+
+- increase build time for cibuildwheels
+
 ## v0.0.34 (2025-02-16)
 
 ### Fix
