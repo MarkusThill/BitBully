@@ -18,12 +18,13 @@ jobs:
         with:
           submodules: recursive
 
+      # Step 2: Set up Python
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
 
-      # Step 2: Set up Doxygen
+      # Step 3: Set up Doxygen
       - name: Install Doxygen
         run: |
           export DOXY_VERSION=1.13.1
@@ -39,23 +40,23 @@ jobs:
           ls -laht
           sudo make install
 
-      # Step 3: Generate Documentation
+      # Step 4: Generate Documentation
       - name: Generate Doxygen Documentation
         run: doxygen Doxyfile
 
-      # Step 4: Install MkDocs
+      # Step 5: Install MkDocs
       - name: Install MkDocs
         run: |
           python -m pip install --upgrade pip
           pip install mkdocs
           pip install mkdocs-material
 
-      # Step 5: Build MkDocs Documentation
+      # Step 6: Build MkDocs Documentation
       - name: Build MkDocs Documentation
         run: |
           mkdocs build
 
-      # Step 6: Deploy to GitHub Pages
+      # Step 7: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         # if: startsWith(github.ref, 'refs/tags/')  # Only execute on new tags
         uses: peaceiris/actions-gh-pages@v4

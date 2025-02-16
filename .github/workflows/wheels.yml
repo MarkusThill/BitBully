@@ -72,10 +72,16 @@ jobs:
           path: dist
           merge-multiple: true
 
+      # publish to test pypi first
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
           verbose: true
-          repository-url: https://test.pypi.org/legacy/ # TODO: comment this line, once you want to push to the real pypi
+          repository-url: https://test.pypi.org/legacy/
+
+      # publish to main PyPI
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          verbose: true
 
   delete_artifacts:
     name: Delete unnecessary GitHub Artifacts
