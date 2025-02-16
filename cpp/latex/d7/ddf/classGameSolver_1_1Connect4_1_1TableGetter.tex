@@ -1,0 +1,82 @@
+\doxysection{Game\+Solver\+::Connect4\+::Table\+Getter\texorpdfstring{$<$}{<} key\+\_\+t, value\+\_\+t \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classGameSolver_1_1Connect4_1_1TableGetter}{}\label{classGameSolver_1_1Connect4_1_1TableGetter}\index{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$@{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$}}
+
+
+{\ttfamily \#include $<$Transposition\+Table.\+hpp$>$}
+
+
+
+Inheritance diagram for Game\+Solver\+::Connect4\+::Table\+Getter\texorpdfstring{$<$}{<} key\+\_\+t, value\+\_\+t \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/d55/classGameSolver_1_1Connect4_1_1TableGetter__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual value\+\_\+t \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter_a51ade2db6ef83f743d8ef0b34333748f}{get}} (key\+\_\+t key) const =0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter_a3c3151be9523acba914a46bc8c99178a}{Opening\+Book}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class key\+\_\+t, class value\+\_\+t$>$\newline
+class Game\+Solver\+::\+Connect4\+::\+Table\+Getter$<$ key\+\_\+t, value\+\_\+t $>$}
+Abstrac interface for the Transposition Table get function 
+
+Definition at line \mbox{\hyperlink{TranspositionTable_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{TranspositionTable_8hpp_source}{Transposition\+Table.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1TableGetter_aa0624d918b689f36f3fd456fafb6cee0}\index{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$@{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$}!````~TableGetter@{\texorpdfstring{$\sim$}{\string~}TableGetter}}
+\index{````~TableGetter@{\texorpdfstring{$\sim$}{\string~}TableGetter}!GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$@{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TableGetter()}{\string~TableGetter()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1TableGetter_aa0624d918b689f36f3fd456fafb6cee0} 
+template$<$class key\+\_\+t, class value\+\_\+t$>$ \\
+virtual \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{Game\+Solver\+::\+Connect4\+::\+Table\+Getter}}$<$ key\+\_\+t, value\+\_\+t $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{Table\+Getter}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{TranspositionTable_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{TranspositionTable_8hpp_source}{Transposition\+Table.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1TableGetter_a51ade2db6ef83f743d8ef0b34333748f}\index{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$@{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$}!get@{get}}
+\index{get@{get}!GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$@{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1TableGetter_a51ade2db6ef83f743d8ef0b34333748f} 
+template$<$class key\+\_\+t, class value\+\_\+t$>$ \\
+virtual value\+\_\+t \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{Game\+Solver\+::\+Connect4\+::\+Table\+Getter}}$<$ key\+\_\+t, value\+\_\+t $>$\+::get (\begin{DoxyParamCaption}\item[{key\+\_\+t}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_a7e05429233ef4d5c5d8fbc9b3d7467bc}{Game\+Solver\+::\+Connect4\+::\+Transposition\+Table$<$ partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size $>$}}, and \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_a7e05429233ef4d5c5d8fbc9b3d7467bc}{Game\+Solver\+::\+Connect4\+::\+Transposition\+Table$<$ uint\+\_\+t$<$ Position\+::\+WIDTH \texorpdfstring{$\ast$}{*}(\+Position\+::\+HEIGHT+1) -\/ TABLE\+\_\+\+SIZE $>$, Position\+::position\+\_\+t, uint8\+\_\+t, TABLE\+\_\+\+SIZE $>$}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1TableGetter_a3c3151be9523acba914a46bc8c99178a}\index{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$@{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$}!OpeningBook@{OpeningBook}}
+\index{OpeningBook@{OpeningBook}!GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$@{GameSolver::Connect4::TableGetter$<$ key\_t, value\_t $>$}}
+\doxysubsubsection{\texorpdfstring{OpeningBook}{OpeningBook}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1TableGetter_a3c3151be9523acba914a46bc8c99178a} 
+template$<$class key\+\_\+t, class value\+\_\+t$>$ \\
+friend class \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook}{Opening\+Book}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{TranspositionTable_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{TranspositionTable_8hpp_source}{Transposition\+Table.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+third\+Party/connect4/Transposition\+Table.\+hpp\end{DoxyCompactItemize}

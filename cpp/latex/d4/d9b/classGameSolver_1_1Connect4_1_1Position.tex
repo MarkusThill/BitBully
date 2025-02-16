@@ -1,0 +1,329 @@
+\doxysection{Game\+Solver\+::Connect4\+::Position Class Reference}
+\hypertarget{classGameSolver_1_1Connect4_1_1Position}{}\label{classGameSolver_1_1Connect4_1_1Position}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+
+
+{\ttfamily \#include $<$Position.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a837369a649fc799a5efc8ec23c6d67e3}{position\+\_\+t}} = uint64\+\_\+t
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa}{play}} (position\+\_\+t move)
+\item 
+unsigned int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a4d9de52111823736ccbf6e4b4f706a95}{play}} (const std\+::string \&seq)
+\item 
+bool \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_afb530371990f81666f5989bce6340d92}{can\+Win\+Next}} () const
+\item 
+int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nb\+Moves}} () const
+\item 
+position\+\_\+t \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}{key}} () const
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a91b0b3336eef6036ec24578cfea8f235}{key3}} () const
+\item 
+position\+\_\+t \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a65529ce1a2f62d5732ecd69eef303cbb}{possible\+Non\+Losing\+Moves}} () const
+\item 
+int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_ad2feea243d7d6ce71e6a7318336dcf6d}{move\+Score}} (position\+\_\+t move) const
+\item 
+\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a40224933c03ae7866641bc09e2a67444}{Position}} ()
+\item 
+bool \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a370217c553a85bf306a30dd6ec517816}{can\+Play}} (int col) const
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a32b2aeb205f3e6bc2c1dd6d5e2d8efe6}{play\+Col}} (int col)
+\item 
+bool \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a41e50e20178f9123493b7ec043a1807e}{is\+Winning\+Move}} (int col) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr position\+\_\+t \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a48db8669a50b835f4f740ba511a03687}{column\+\_\+mask}} (int col)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a9bbdbe6e96c74922d143edc3305ab011}{WIDTH}} = 7
+\item 
+static constexpr int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a067d8eb63eb8c61bde5cdaf1f64b3ff6}{HEIGHT}} = 6
+\item 
+static constexpr int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a690bf5863c1404e932b8324efe10ed80}{MIN\+\_\+\+SCORE}} = -\/(WIDTH \texorpdfstring{$\ast$}{*} HEIGHT) / 2 + 3
+\item 
+static constexpr int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a704adf29757402897bc157f130d9fd4d}{MAX\+\_\+\+SCORE}} = (WIDTH \texorpdfstring{$\ast$}{*} HEIGHT + 1) / 2 -\/ 3
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class storing a Connect 4 position. Functions are relative to the current player to play. \doxylink{classGameSolver_1_1Connect4_1_1Position}{Position} containing alignment are not supported by this class.
+
+A binary bitboard representationis used. Each column is encoded on HEIGH+1 bits.
+
+Example of bit order to encode for a 7x6 board . . . . . . . 5 12 19 26 33 40 47 4 11 18 25 32 39 46 3 10 17 24 31 38 45 2 9 16 23 30 37 44 1 8 15 22 29 36 43 0 7 14 21 28 35 42
+
+\doxylink{classGameSolver_1_1Connect4_1_1Position}{Position} is stored as
+\begin{DoxyItemize}
+\item a bitboard "{}mask"{} with 1 on any color stones
+\item a bitboard "{}current\+\_\+player"{} with 1 on stones of current player
+\end{DoxyItemize}
+
+"{}current\+\_\+player"{} bitboard can be transformed into a compact and non ambiguous key by adding an extra bit on top of the last non empty cell of each column. This allow to identify all the empty cells whithout needing "{}mask"{} bitboard
+
+current\+\_\+player "{}x"{} = 1, opponent "{}o"{} = 0 board position mask key bottom 0000000 0000000 0000000 0000000 ....... 0000000 0000000 0001000 0000000 ...o... 0000000 0001000 0010000 0000000 ..xx... 0011000 0011000 0011000 0000000 ..ox... 0001000 0011000 0001100 0000000 ..oox.. 0000100 0011100 0000110 0000000 ..oxxo. 0001100 0011110 1101101 1111111
+
+current\+\_\+player "{}o"{} = 1, opponent "{}x"{} = 0 board position mask key bottom 0000000 0000000 0001000 0000000 ...x... 0000000 0001000 0000000 0000000 ...o... 0001000 0001000 0011000 0000000 ..xx... 0000000 0011000 0000000 0000000 ..ox... 0010000 0011000 0010100 0000000 ..oox.. 0011000 0011100 0011010 0000000 ..oxxo. 0010010 0011110 1110011 1111111
+
+key is an unique representation of a board key = position + mask + bottom in practice, as bottom is constant, key = position + mask is also a non-\/ambigous representation of the position. Generate a bitmask containing one for the bottom slot of each colum must be defined outside of the class definition to be available at compile time for bottom\+\_\+mask 
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a837369a649fc799a5efc8ec23c6d67e3}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!position\_t@{position\_t}}
+\index{position\_t@{position\_t}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{position\_t}{position\_t}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a837369a649fc799a5efc8ec23c6d67e3} 
+using Game\+Solver\+::\+Connect4\+::\+Position\+::position\+\_\+t = uint64\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a40224933c03ae7866641bc09e2a67444}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!Position@{Position}}
+\index{Position@{Position}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{Position()}{Position()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a40224933c03ae7866641bc09e2a67444} 
+Game\+Solver\+::\+Connect4\+::\+Position\+::\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor, build an empty position. 
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00231}{231}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a370217c553a85bf306a30dd6ec517816}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!canPlay@{canPlay}}
+\index{canPlay@{canPlay}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{canPlay()}{canPlay()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a370217c553a85bf306a30dd6ec517816} 
+bool Game\+Solver\+::\+Connect4\+::\+Position\+::can\+Play (\begin{DoxyParamCaption}\item[{int}]{col}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Indicates whether a column is playable. 
+\begin{DoxyParams}{Parameters}
+{\em col} & 0-\/based index of column to play \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the column is playable, false if the column is already full. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00239}{239}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_afb530371990f81666f5989bce6340d92}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!canWinNext@{canWinNext}}
+\index{canWinNext@{canWinNext}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{canWinNext()}{canWinNext()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_afb530371990f81666f5989bce6340d92} 
+bool Game\+Solver\+::\+Connect4\+::\+Position\+::can\+Win\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+return true if current player can win next move 
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00147}{147}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a48db8669a50b835f4f740ba511a03687}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!column\_mask@{column\_mask}}
+\index{column\_mask@{column\_mask}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{column\_mask()}{column\_mask()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a48db8669a50b835f4f740ba511a03687} 
+static constexpr position\+\_\+t Game\+Solver\+::\+Connect4\+::\+Position\+::column\+\_\+mask (\begin{DoxyParamCaption}\item[{int}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00378}{378}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a41e50e20178f9123493b7ec043a1807e}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!isWinningMove@{isWinningMove}}
+\index{isWinningMove@{isWinningMove}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{isWinningMove()}{isWinningMove()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a41e50e20178f9123493b7ec043a1807e} 
+bool Game\+Solver\+::\+Connect4\+::\+Position\+::is\+Winning\+Move (\begin{DoxyParamCaption}\item[{int}]{col}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Indicates whether the current player wins by playing a given column. This function should never be called on a non-\/playable column. 
+\begin{DoxyParams}{Parameters}
+{\em col} & 0-\/based index of a playable column. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if current player makes an alignment by playing the corresponding column col. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00259}{259}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!key@{key}}
+\index{key@{key}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{key()}{key()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f} 
+position\+\_\+t Game\+Solver\+::\+Connect4\+::\+Position\+::key (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+a compact representation of a position on WIDTH\texorpdfstring{$\ast$}{*}(HEIGHT+1) bits. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00157}{157}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a91b0b3336eef6036ec24578cfea8f235}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!key3@{key3}}
+\index{key3@{key3}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{key3()}{key3()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a91b0b3336eef6036ec24578cfea8f235} 
+uint64\+\_\+t Game\+Solver\+::\+Connect4\+::\+Position\+::key3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Build a symetric base 3 key. Two symetric positions will have the same key.
+
+This key is a base 3 representation of the sequence of played moves column per column, from bottom to top. The 3 digits are top\+\_\+of\+\_\+colum(0), current\+\_\+player(1), opponent(2).
+
+example\+: game "{}45"{} where player one played colum 4, then player two played column 5 has a representation in base 3 digits \+: 0 0 0 1 0 2 0 0 0 or \+: 3\texorpdfstring{$\ast$}{*}3\texorpdfstring{$^\wedge$}{\string^}3 + 1\texorpdfstring{$\ast$}{*}3\texorpdfstring{$^\wedge$}{\string^}5
+
+The symetric key is the mimimum key of the two keys built iterating columns from left to righ or right to left.
+
+as the last digit is always 0, we omit it and a base 3 key uses N = (nb\+Moves + nb\+Colums -\/ 1) base 3 digits or N\texorpdfstring{$\ast$}{*}log2(3) bits. 
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00176}{176}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_ad2feea243d7d6ce71e6a7318336dcf6d}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!moveScore@{moveScore}}
+\index{moveScore@{moveScore}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{moveScore()}{moveScore()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_ad2feea243d7d6ce71e6a7318336dcf6d} 
+int Game\+Solver\+::\+Connect4\+::\+Position\+::move\+Score (\begin{DoxyParamCaption}\item[{position\+\_\+t}]{move}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Score a possible move.
+
+
+\begin{DoxyParams}{Parameters}
+{\em move,a} & possible move given in a bitmap format.\\
+\hline
+\end{DoxyParams}
+The score we are using is the number of winning spots the current player has after playing the move. 
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00224}{224}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!nbMoves@{nbMoves}}
+\index{nbMoves@{nbMoves}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{nbMoves()}{nbMoves()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0} 
+int Game\+Solver\+::\+Connect4\+::\+Position\+::nb\+Moves (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+number of moves played from the beginning of the game. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00152}{152}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a4d9de52111823736ccbf6e4b4f706a95}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!play@{play}}
+\index{play@{play}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a4d9de52111823736ccbf6e4b4f706a95} 
+unsigned int Game\+Solver\+::\+Connect4\+::\+Position\+::play (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{seq}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00133}{133}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!play@{play}}
+\index{play@{play}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa} 
+void Game\+Solver\+::\+Connect4\+::\+Position\+::play (\begin{DoxyParamCaption}\item[{position\+\_\+t}]{move}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Plays a possible move given by its bitmap representation
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & a possible move given by its bitmap representation only one bit of the bitmap should be set to 1 the move should be a valid possible move for the current player \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00113}{113}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a32b2aeb205f3e6bc2c1dd6d5e2d8efe6}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!playCol@{playCol}}
+\index{playCol@{playCol}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{playCol()}{playCol()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a32b2aeb205f3e6bc2c1dd6d5e2d8efe6} 
+void Game\+Solver\+::\+Connect4\+::\+Position\+::play\+Col (\begin{DoxyParamCaption}\item[{int}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Plays a playable column. This function should not be called on a non-\/playable column or a column making an alignment.
+
+
+\begin{DoxyParams}{Parameters}
+{\em col} & 0-\/based index of a playable column. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00248}{248}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a65529ce1a2f62d5732ecd69eef303cbb}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!possibleNonLosingMoves@{possibleNonLosingMoves}}
+\index{possibleNonLosingMoves@{possibleNonLosingMoves}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{possibleNonLosingMoves()}{possibleNonLosingMoves()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a65529ce1a2f62d5732ecd69eef303cbb} 
+position\+\_\+t Game\+Solver\+::\+Connect4\+::\+Position\+::possible\+Non\+Losing\+Moves (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return a bitmap of all the possible next moves the do not lose in one turn. A losing move is a move leaving the possibility for the opponent to win directly.
+
+Warning this function is intended to test position where you cannot win in one turn If you have a winning move, this function can miss it and prefer to prevent the opponent to make an alignment. 
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00200}{200}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a067d8eb63eb8c61bde5cdaf1f64b3ff6}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!HEIGHT@{HEIGHT}}
+\index{HEIGHT@{HEIGHT}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{HEIGHT}{HEIGHT}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a067d8eb63eb8c61bde5cdaf1f64b3ff6} 
+int Game\+Solver\+::\+Connect4\+::\+Position\+::\+HEIGHT = 6\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a704adf29757402897bc157f130d9fd4d}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!MAX\_SCORE@{MAX\_SCORE}}
+\index{MAX\_SCORE@{MAX\_SCORE}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{MAX\_SCORE}{MAX\_SCORE}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a704adf29757402897bc157f130d9fd4d} 
+int Game\+Solver\+::\+Connect4\+::\+Position\+::\+MAX\+\_\+\+SCORE = (WIDTH \texorpdfstring{$\ast$}{*} HEIGHT + 1) / 2 -\/ 3\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a690bf5863c1404e932b8324efe10ed80}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!MIN\_SCORE@{MIN\_SCORE}}
+\index{MIN\_SCORE@{MIN\_SCORE}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{MIN\_SCORE}{MIN\_SCORE}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a690bf5863c1404e932b8324efe10ed80} 
+int Game\+Solver\+::\+Connect4\+::\+Position\+::\+MIN\+\_\+\+SCORE = -\/(WIDTH \texorpdfstring{$\ast$}{*} HEIGHT) / 2 + 3\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00099}{99}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Position_a9bbdbe6e96c74922d143edc3305ab011}\index{GameSolver::Connect4::Position@{GameSolver::Connect4::Position}!WIDTH@{WIDTH}}
+\index{WIDTH@{WIDTH}!GameSolver::Connect4::Position@{GameSolver::Connect4::Position}}
+\doxysubsubsection{\texorpdfstring{WIDTH}{WIDTH}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Position_a9bbdbe6e96c74922d143edc3305ab011} 
+int Game\+Solver\+::\+Connect4\+::\+Position\+::\+WIDTH = 7\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{Position_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{Position_8hpp_source}{Position.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+third\+Party/connect4/Position.\+hpp\end{DoxyCompactItemize}

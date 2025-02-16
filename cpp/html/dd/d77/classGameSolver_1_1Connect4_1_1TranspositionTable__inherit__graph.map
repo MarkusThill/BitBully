@@ -1,0 +1,5 @@
+<map id="GameSolver::Connect4::TranspositionTable&lt; partial_key_t, key_t, value_t, log_size &gt;" name="GameSolver::Connect4::TranspositionTable&lt; partial_key_t, key_t, value_t, log_size &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,108,176,177"/>
+<area shape="rect" id="Node000002" href="$d7/ddf/classGameSolver_1_1Connect4_1_1TableGetter.html" title=" " alt="" coords="5,5,176,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,74,93,108,88,108,88,74"/>
+</map>

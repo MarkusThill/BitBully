@@ -1,0 +1,178 @@
+\doxysection{Opening\+Book.\+hpp}
+\hypertarget{OpeningBook_8hpp_source}{}\label{OpeningBook_8hpp_source}\index{thirdParty/connect4/OpeningBook.hpp@{thirdParty/connect4/OpeningBook.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00002}00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Connect4\ Game\ Solver\ <http://connect4.gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00003}00003\ \textcolor{comment}{\ *\ Copyright\ (C)\ 2017-\/2019\ Pascal\ Pons\ <contact@gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00004}00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00005}00005\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00006}00006\ \textcolor{comment}{\ *\ modify\ it\ under\ the\ terms\ of\ the\ GNU\ Affero\ General\ Public\ License\ as}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00007}00007\ \textcolor{comment}{\ *\ published\ by\ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00008}00008\ \textcolor{comment}{\ *\ License,\ or\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00010}00010\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00011}00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00012}00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00013}00013\ \textcolor{comment}{\ *\ GNU\ Affero\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00015}00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ Affero\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00016}00016\ \textcolor{comment}{\ *\ along\ with\ Connect4\ Game\ Solver.\ If\ not,\ see\ <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00017}00017\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#ifndef\ OPENING\_BOOK\_HPP}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#define\ OPENING\_BOOK\_HPP}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}Position.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}TranspositionTable.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00027}00027\ \textcolor{keyword}{namespace\ }GameSolver\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00028}00028\ \textcolor{keyword}{namespace\ }Connect4\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00030}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook}{00030}}\ \textcolor{keyword}{class\ }OpeningBook\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00031}00031\ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{TableGetter<Position::position\_t,\ uint8\_t>}}\ *T;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00032}00032\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00033}00033\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00034}00034\ \ \ \textcolor{keywordtype}{int}\ depth;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00036}00036\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ partial\_key\_t>}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00037}00037\ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{TableGetter<Position::position\_t,\ uint8\_t>}}*\ initTranspositionTable(\textcolor{keywordtype}{int}\ log\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{switch}(log\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{case}\ 21:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00040}00040\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable<partial\_key\_t,\ Position::position\_t,\ uint8\_t,\ 21>}}();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{case}\ 22:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00042}00042\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable<partial\_key\_t,\ Position::position\_t,\ uint8\_t,\ 22>}}();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{case}\ 23:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00044}00044\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable<partial\_key\_t,\ Position::position\_t,\ uint8\_t,\ 23>}}();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{case}\ 24:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00046}00046\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable<partial\_key\_t,\ Position::position\_t,\ uint8\_t,\ 24>}}();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{case}\ 25:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00048}00048\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable<partial\_key\_t,\ Position::position\_t,\ uint8\_t,\ 25>}}();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{case}\ 26:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00050}00050\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable<partial\_key\_t,\ Position::position\_t,\ uint8\_t,\ 26>}}();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{case}\ 27:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00052}00052\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable<partial\_key\_t,\ Position::position\_t,\ uint8\_t,\ 27>}}();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00054}00054\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unimplemented\ OpeningBook\ size:\ "{}}\ <<\ log\_size\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00055}00055\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00057}00057\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00059}00059\ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{TableGetter<Position::position\_t,\ uint8\_t>}}*\ initTranspositionTable(\textcolor{keywordtype}{int}\ partial\_key\_bytes,\ \textcolor{keywordtype}{int}\ log\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{switch}(partial\_key\_bytes)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00062}00062\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ initTranspositionTable<uint8\_t>(log\_size);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00064}00064\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ initTranspositionTable<uint16\_t>(log\_size);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00066}00066\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ initTranspositionTable<uint32\_t>(log\_size);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00068}00068\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Invalid\ internal\ key\ size:\ "{}}\ <<\ partial\_key\_bytes\ <<\ \textcolor{stringliteral}{"{}\ bytes"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00069}00069\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00071}00071\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00073}00073\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00074}00074\ \ \ OpeningBook(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)\ :\ T\{0\},\ width\{width\},\ height\{height\},\ depth\{\ -\/1\}\ \{\}\ \textcolor{comment}{//\ Empty\ opening\ book}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00076}00076\ \ \ OpeningBook(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{int}\ depth,\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{TableGetter<Position::position\_t,\ uint8\_t>}}*\ T)\ :\ T\{T\},\ width\{width\},\ height\{height\},\ depth\{depth\}\ \{\}\ \textcolor{comment}{//\ Empty\ opening\ book}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00088}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook_abfb2e1be9ff994f402a28e3a0f96fed6}{00088}}\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook_abfb2e1be9ff994f402a28e3a0f96fed6}{load}}(std::string\ filename)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00089}00089\ \ \ \ \ depth\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{delete}\ T;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00091}00091\ \ \ \ \ std::ifstream\ ifs(filename,\ std::ios::binary);\ \textcolor{comment}{//\ open\ file}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{if}(ifs.fail())\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00094}00094\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ load\ opening\ book:\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00095}00095\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00096}00096\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ std::cerr\ <<\ \textcolor{stringliteral}{"{}Loading\ opening\ book\ from\ file:\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}.\ "{}};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{char}\ \_width,\ \_height,\ \_depth,\ value\_bytes,\ partial\_key\_bytes,\ log\_size;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00100}00100\ \ \ \ \ ifs.read(\&\_width,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{if}(ifs.fail()\ ||\ \_width\ !=\ width)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00102}00102\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ load\ opening\ book:\ invalid\ width\ (found:\ "{}}\ <<\ int(\_width)\ <<\ \textcolor{stringliteral}{"{},\ expected:\ "{}}\ <<\ width\ <<\ \textcolor{stringliteral}{"{})"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00103}00103\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00106}00106\ \ \ \ \ ifs.read(\&\_height,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{if}(ifs.fail()\ ||\ \_height\ !=\ height)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00108}00108\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ load\ opening\ book:\ invalid\ height(found:\ "{}}\ <<\ int(\_height)\ <<\ \textcolor{stringliteral}{"{},\ expected:\ "{}}\ <<\ height\ <<\ \textcolor{stringliteral}{"{})"{}}\ \ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00109}00109\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00112}00112\ \ \ \ \ ifs.read(\&\_depth,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{if}(ifs.fail()\ ||\ \_depth\ >\ width\ *\ height)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00114}00114\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ load\ opening\ book:\ invalid\ depth\ (found:\ "{}}\ <<\ int(\_depth)\ <<\ \textcolor{stringliteral}{"{})"{}}\ \ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00115}00115\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00118}00118\ \ \ \ \ ifs.read(\&partial\_key\_bytes,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}(ifs.fail()\ ||\ partial\_key\_bytes\ >\ 8)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00120}00120\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ load\ opening\ book:\ invalid\ internal\ key\ size(found:\ "{}}\ <<\ int(partial\_key\_bytes)\ <<\ \textcolor{stringliteral}{"{})"{}}\ \ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00121}00121\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00124}00124\ \ \ \ \ ifs.read(\&value\_bytes,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordflow}{if}(ifs.fail()\ ||\ value\_bytes\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00126}00126\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ load\ opening\ book:\ invalid\ value\ size\ (found:\ "{}}\ <<\ int(value\_bytes)\ <<\ \textcolor{stringliteral}{"{},\ expected:\ 1)"{}}\ \ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00127}00127\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00128}00128\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00130}00130\ \ \ \ \ ifs.read(\&log\_size,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{if}(ifs.fail()\ ||\ log\_size\ >\ 40)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00132}00132\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ load\ opening\ book:\ invalid\ log2(size)(found:\ "{}}\ <<\ int(log\_size)\ <<\ \textcolor{stringliteral}{"{})"{}}\ \ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00133}00133\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{if}((T\ =\ initTranspositionTable(partial\_key\_bytes,\ log\_size)))\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00137}00137\ \ \ \ \ \ \ ifs.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(T-\/>getKeys()),\ T-\/>getSize()\ *\ partial\_key\_bytes);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00138}00138\ \ \ \ \ \ \ ifs.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(T-\/>getValues()),\ T-\/>getSize()\ *\ value\_bytes);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00139}00139\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ifs.fail())\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00140}00140\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ load\ data\ from\ opening\ book"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00142}00142\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00143}00143\ \ \ \ \ \ \ depth\ =\ \_depth;\ \textcolor{comment}{//\ set\ it\ in\ case\ of\ success\ only,\ keep\ -\/1\ in\ case\ of\ failure}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00144}00144\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}done"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00145}00145\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{else}\ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ initialize\ opening\ book"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00147}00147\ \ \ \ \ ifs.close();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00148}00148\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00150}00150\ \ \ \textcolor{keywordtype}{void}\ save(\textcolor{keyword}{const}\ std::string\ output\_file)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00151}00151\ \ \ \ \ std::ofstream\ ofs(output\_file,\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00152}00152\ \ \ \ \ \textcolor{keywordtype}{char}\ tmp;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00153}00153\ \ \ \ \ tmp\ =\ width;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00154}00154\ \ \ \ \ ofs.write(\&tmp,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00155}00155\ \ \ \ \ tmp\ =\ height;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00156}00156\ \ \ \ \ ofs.write(\&tmp,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00157}00157\ \ \ \ \ tmp\ =\ depth;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00158}00158\ \ \ \ \ ofs.write(\&tmp,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00159}00159\ \ \ \ \ tmp\ =\ T-\/>getKeySize();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00160}00160\ \ \ \ \ ofs.write(\&tmp,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00161}00161\ \ \ \ \ tmp\ =\ T-\/>getValueSize();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00162}00162\ \ \ \ \ ofs.write(\&tmp,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00163}00163\ \ \ \ \ tmp\ =\ log2(T-\/>getSize());}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00164}00164\ \ \ \ \ ofs.write(\&tmp,\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00166}00166\ \ \ \ \ ofs.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(T-\/>getKeys()),\ T-\/>getSize()\ *\ T-\/>getKeySize());}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00167}00167\ \ \ \ \ ofs.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(T-\/>getValues()),\ T-\/>getSize()\ *\ T-\/>getValueSize());}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00168}00168\ \ \ \ \ ofs.close();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00169}00169\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00171}00171\ \ \ \textcolor{keywordtype}{int}\ get(\textcolor{keyword}{const}\ Position\ \&P)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{if}(P.nbMoves()\ >\ depth)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00173}00173\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ T-\/>get(P.key3());}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00174}00174\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00176}00176\ \ \ \string~OpeningBook()\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00177}00177\ \ \ \ \ \textcolor{keyword}{delete}\ T;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00178}00178\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00179}00179\ \};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00181}00181\ \}\ \textcolor{comment}{//\ namespace\ Connect4}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00182}00182\ \}\ \textcolor{comment}{//\ namespace\ GameSolver}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8hpp_source_l00183}00183\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

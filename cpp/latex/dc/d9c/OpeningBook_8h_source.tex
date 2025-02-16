@@ -1,0 +1,255 @@
+\doxysection{Opening\+Book.\+h}
+\hypertarget{OpeningBook_8h_source}{}\label{OpeningBook_8h_source}\index{src/OpeningBook.h@{src/OpeningBook.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ OPENINGBOOK\_H}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ OPENINGBOOK\_H}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <Board.h>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00014}00014\ \textcolor{keyword}{namespace\ }BitBully\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00016}00016\ \textcolor{comment}{//\ TODO:\ guess\ database\ type\ from\ size\ of\ file!}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00017}\mbox{\hyperlink{classBitBully_1_1OpeningBook}{00017}}\ \textcolor{keyword}{class\ }OpeningBook\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00018}00018\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00019}00019\ \ \ \textcolor{keyword}{using\ }key\_t\ =\ int;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00020}00020\ \ \ \textcolor{keyword}{using\ }value\_t\ =\ int8\_t;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00021}00021\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ SIZE\_BYTES\_8PLY\_DB\ =\ 103'545;\ \ \textcolor{comment}{//\ 102'858;}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00022}00022\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ SIZE\_BYTES\_12PLY\_DB\ =\ 6'943'780;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00023}00023\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ SIZE\_BYTES\_12PLY\_DB\_WITH\_DIST\ =\ 21'004'495;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00025}00025\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ SIZE\_8PLY\_DB\ =\ 34'515;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00026}00026\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ SIZE\_12PLY\_DB\ =\ 1'735'945;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00027}00027\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ SIZE\_12PLY\_DB\_WITH\_DIST\ =\ 4'200'899;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00029}00029\ \ \ std::vector<std::tuple<key\_t,\ value\_t>>\ m\_book;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00030}00030\ \ \ \textcolor{keywordtype}{bool}\ m\_withDistances\{\};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00031}00031\ \ \ \textcolor{keywordtype}{bool}\ m\_is8ply\{\};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00032}00032\ \ \ std::filesystem::path\ m\_bookPath;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00033}00033\ \ \ \textcolor{keywordtype}{int}\ m\_nPly\{\};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00035}00035\ \ \ [[nodiscard]]\ value\_t\ binarySearch(\textcolor{keyword}{const}\ key\_t\&\ huffmanCode)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ one\ could\ also\ use:\ std::lower\_bound()}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{int}\ l\ =\ 0;\ \ \textcolor{comment}{//\ dont\ use\ size\_t\ to\ prevent\ undesired\ underflows}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ m\_book.size()\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{while}\ (r\ >=\ l)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00040}00040\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mid\ =\ (l\ +\ r\ +\ 1)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00041}00041\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ m\_book.at(mid);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00042}00042\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::get<0>(p)\ ==\ huffmanCode)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<1>(p);\ \ \textcolor{comment}{//\ Found!\ return\ the\ value\ for\ this\ position}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00044}00044\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00045}00045\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::get<0>(p)\ >\ huffmanCode)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ r\ =\ mid\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00047}00047\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \textcolor{comment}{//\ p\ <\ huffmanCode}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ l\ =\ mid\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00049}00049\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Nothing\ found:}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{return}\ std::numeric\_limits<value\_t>::min();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00054}00054\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00056}00056\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00057}00057\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ NONE\_VALUE\ =\ std::numeric\_limits<value\_t>::min();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00059}00059\ \ \ \textcolor{keyword}{explicit}\ OpeningBook(\textcolor{keyword}{const}\ std::filesystem::path\&\ bookPath,}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ is\_8ply,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ with\_distances)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00061}00061\ \ \ \ \ init(bookPath,\ is\_8ply,\ with\_distances);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00062}00062\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00064}00064\ \ \ \textcolor{keyword}{explicit}\ OpeningBook(\textcolor{keyword}{const}\ std::filesystem::path\&\ bookPath)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::filesystem::exists(bookPath))\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00066}00066\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Book\ file\ does\ not\ exist:\ "{}}\ +}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bookPath.string());}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ fileSize\ =\ std::filesystem::file\_size(bookPath);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ infer\ DB\ type\ from\ size:}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ is8ply\ =\ (fileSize\ ==\ SIZE\_BYTES\_8PLY\_DB);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ withDistances\ =\ (fileSize\ ==\ SIZE\_BYTES\_12PLY\_DB\_WITH\_DIST);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00075}00075\ \ \ \ \ init(bookPath,\ is8ply,\ withDistances);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00076}00076\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00078}00078\ \ \ \textcolor{keyword}{auto}\ getBook()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_book;\ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00080}00080\ \ \ \textcolor{keywordtype}{void}\ init(\textcolor{keyword}{const}\ std::filesystem::path\&\ bookPath,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ is\_8ply,}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ with\_distances)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00082}00082\ \ \ \ \ assert(!is\_8ply\ ||\ !with\_distances);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Validate\ the\ file}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::filesystem::exists(bookPath))\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00086}00086\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Book\ file\ does\ not\ exist:\ "{}}\ +}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bookPath.string());}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00090}00090\ \textcolor{preprocessor}{\#ifndef\ NDEBUG}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ Infer\ database\ type\ from\ file\ size\ (if\ required)}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00092}00092\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ fileSize\ =\ std::filesystem::file\_size(bookPath);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00093}00093\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_8ply)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00095}00095\ \ \ \ \ \ \ assert(fileSize\ ==\ SIZE\_BYTES\_8PLY\_DB);\ \ \textcolor{comment}{//\ 8-\/ply\ with\ distances}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00096}00096\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (with\_distances)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00097}00097\ \ \ \ \ \ \ assert(fileSize\ ==}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ SIZE\_BYTES\_12PLY\_DB\_WITH\_DIST);\ \ \textcolor{comment}{//\ 12-\/ply\ with\ distances}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00099}00099\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00100}00100\ \ \ \ \ \ \ assert(fileSize\ ==\ SIZE\_BYTES\_12PLY\_DB);\ \ \textcolor{comment}{//\ 12-\/ply\ without\ distances}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00103}00103\ \ \ \ \ this-\/>m\_withDistances\ =\ with\_distances;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00104}00104\ \ \ \ \ this-\/>m\_is8ply\ =\ is\_8ply;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00105}00105\ \ \ \ \ this-\/>m\_book\ =\ readBook(bookPath,\ with\_distances,\ is\_8ply);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00106}00106\ \ \ \ \ this-\/>m\_bookPath\ =\ bookPath;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00107}00107\ \ \ \ \ this-\/>m\_nPly\ =\ (is\_8ply\ ?\ 8\ :\ 12);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00109}00109\ \ \ \ \ assert(!with\_distances\ ||\ is\_8ply\ ||}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ m\_book.size()\ ==\ SIZE\_12PLY\_DB\_WITH\_DIST);\ \ \textcolor{comment}{//\ 12-\/ply\ with\ distances}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00112}00112\ \ \ \ \ assert(with\_distances\ ||\ is\_8ply\ ||}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ m\_book.size()\ ==\ SIZE\_12PLY\_DB);\ \ \textcolor{comment}{//\ 12-\/ply\ without\ distances}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00115}00115\ \ \ \ \ assert(!is\_8ply\ ||}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ m\_book.size()\ ==\ SIZE\_8PLY\_DB);\ \ \textcolor{comment}{//\ 8-\/ply\ without\ distances}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00117}00117\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00119}00119\ \ \ [[nodiscard]]\ \textcolor{keyword}{auto}\ getEntry(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ entryIdx)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_book.at(entryIdx);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00121}00121\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00123}00123\ \ \ [[nodiscard]]\ \textcolor{keyword}{auto}\ getBookSize()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_book.size();\ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00125}00125\ \ \ \textcolor{keyword}{static}\ std::tuple<key\_t,\ int>\ readline(std::ifstream\&\ file,}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ with\_distances,}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ is\_8ply)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{decltype}(file.gcount())\ bytes\_position\ =\ is\_8ply\ ?\ 3\ :\ 4;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00129}00129\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[4]\ =\ \{\};\ \ \textcolor{comment}{//\ Max\ buffer\ size\ for\ reading}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00130}00130\ \ \ \ \ file.read(buffer,\ bytes\_position);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.gcount()\ !=\ bytes\_position)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00133}00133\ \ \ \ \ \ \ \textcolor{comment}{//\ EOF\ or\ read\ error}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00134}00134\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0\};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00135}00135\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00137}00137\ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ read\ bytes\ into\ an\ integer}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00138}00138\ \ \ \ \ key\_t\ huffman\_position\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{decltype}(file.gcount())\ i\ =\ 0;\ i\ <\ bytes\_position;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00140}00140\ \ \ \ \ \ \ huffman\_position\ =}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ (huffman\_position\ <<\ 8)\ |\ static\_cast<unsigned\ char>(buffer[i]);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00142}00142\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_8ply)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00145}00145\ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ signed\ interpretation\ for\ 4-\/byte\ numbers}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00146}00146\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (huffman\_position\ \&\ (1LL\ <<\ ((bytes\_position\ *\ 8)\ -\/\ 1)))\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00147}00147\ \ \ \ \ \ \ \ \ huffman\_position\ -\/=\ (1LL\ <<\ (bytes\_position\ *\ 8));}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00148}00148\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00151}00151\ \ \ \ \ value\_t\ score\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00152}00152\ \ \ \ \ \textcolor{keywordflow}{if}\ (with\_distances)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00153}00153\ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ one\ additional\ byte\ for\ the\ score}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00154}00154\ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ score\_byte;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00155}00155\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.read(\&score\_byte,\ 1))\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ score\ =\ \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(score\_byte);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00157}00157\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ EOF\ after\ reading\ huffman\_position}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0\};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00160}00160\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00161}00161\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00162}00162\ \ \ \ \ \ \ \textcolor{comment}{//\ Last\ 2\ bits\ indicate\ the\ score}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00163}00163\ \ \ \ \ \ \ score\ =\ (\textcolor{keyword}{static\_cast<}value\_t\textcolor{keyword}{>}(huffman\_position)\ \&\ 3)\ *\ -\/1;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00164}00164\ \ \ \ \ \ \ huffman\_position\ =\ huffman\_position\ \&\ \string~3;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00165}00165\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{return}\ \{huffman\_position,\ score\};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00168}00168\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00170}00170\ \ \ \textcolor{keywordtype}{int}\ getNPly()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_nPly;\ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00172}00172\ \ \ \textcolor{keyword}{static}\ std::vector<std::tuple<key\_t,\ value\_t>>\ readBook(}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00173}00173\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::filesystem::path\&\ filename,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ with\_distances\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00174}00174\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ is\_8ply\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00175}00175\ \ \ \ \ std::vector<std::tuple<key\_t,\ value\_t>>\ book;\ \ \textcolor{comment}{//\ To\ store\ the\ book\ entries}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00176}00176\ \ \ \ \ std::ifstream\ file(filename,\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00177}00177\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00178}00178\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ open\ file:\ "{}}\ <<\ filename.string()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00179}00179\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ book;\ \ \textcolor{comment}{//\ Return\ an\ empty\ book\ if\ the\ file\ can't\ be\ opened}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00180}00180\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00182}00182\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00183}00183\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ [position,\ score]\ =\ readline(file,\ with\_distances,\ is\_8ply);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00184}00184\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.eof())\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \textcolor{comment}{//\ End\ of\ file\ reached}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00186}00186\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00187}00187\ \ \ \ \ \ \ book.emplace\_back(position,\ score);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00188}00188\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00190}00190\ \ \ \ \ \textcolor{keywordflow}{return}\ book;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00191}00191\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00193}00193\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00194}00194\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ sign(T\ value)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00195}00195\ \ \ \ \ \textcolor{keywordflow}{return}\ (value\ >\ 0)\ -\/\ (value\ <\ 0);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00196}00196\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00198}00198\ \ \ \textcolor{keywordtype}{int}\ \textcolor{keyword}{inline}\ convertValue(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ value,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00199}00199\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_withDistances)\ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00201}00201\ \ \ \ \ \textcolor{comment}{//\ adjust\ value\ to\ our\ scoring\ system}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00202}00202\ \ \ \ \ \textcolor{keywordtype}{int}\ movesLeft\ =\ std::abs(value)\ -\/\ 100\ +\ b.movesLeft();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00203}00203\ \ \ \ \ \textcolor{keywordflow}{return}\ sign(value)\ *\ (movesLeft\ /\ 2\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00204}00204\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00206}00206\ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ isInBook(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00207}00207\ \ \ \ \ \textcolor{comment}{//\ Only\ check\ if\ exactly\ this\ position\ is\ in\ the\ book}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00208}00208\ \ \ \ \ \textcolor{keywordflow}{return}\ (binarySearch(b.toHuffman())\ !=\ NONE\_VALUE);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00209}00209\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00211}00211\ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ getBoardValue(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00212}00212\ \ \ \ \ \textcolor{keywordflow}{if}\ (!((m\_is8ply\ \&\&\ b.countTokens()\ ==\ 8)\ ||\ b.countTokens()\ ==\ 12))\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00213}00213\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NONE\_VALUE;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00214}00214\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00216}00216\ \ \ \ \ \textcolor{comment}{//\ \#\ first\ try\ this\ position}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00217}00217\ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ b.toHuffman();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00218}00218\ \ \ \ \ \textcolor{keywordtype}{int}\ val\ =\ binarySearch(p);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00219}00219\ \ \ \ \ \textcolor{keywordflow}{if}\ (val\ !=\ NONE\_VALUE)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00220}00220\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ convertValue(val,\ b);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00221}00221\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00223}00223\ \ \ \ \ \textcolor{comment}{//\ \#\ Did\ not\ find\ position.\ Look\ for\ the\ mirrored\ equivalent}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00224}00224\ \ \ \ \ p\ =\ b.mirror().toHuffman();}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00225}00225\ \ \ \ \ val\ =\ binarySearch(p);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00226}00226\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_withDistances\ \&\&\ val\ ==\ NONE\_VALUE)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00227}00227\ \ \ \ \ \ \ \textcolor{comment}{//\ only\ for\ the\ 8-\/ply\ and\ 12-\/ply\ database\ without\ distances}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00228}00228\ \ \ \ \ \ \ val\ =\ 1;\ \ \textcolor{comment}{//\ if\ a\ position\ is\ not\ in\ the\ database,\ then\ this\ means\ that}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ player\ 1\ wins}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00231}00231\ \ \ \ \ \ \ \textcolor{comment}{//\ obsolete:}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00232}00232\ \ \ \ \ \ \ \textcolor{comment}{//\ Apparently,\ positions\ with\ 2\ immediate\ threats\ for\ player\ Red\ are}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00233}00233\ \ \ \ \ \ \ \textcolor{comment}{//\ missing\ in\ the\ 8-\/ply\ database}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00234}00234\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (m\_is8ply\ \&\&\ !b.generateNonLosingMoves())\ \{}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00235}00235\ \ \ \ \ \ \ \textcolor{comment}{//\ \ val\ =\ -\/1;}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00236}00236\ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00237}00237\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (val\ ==\ NONE\_VALUE)\ \{}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00238}00238\ \ \ \ \ \ \ \textcolor{comment}{//\ This\ is\ a\ special\ case.\ Positions,\ where\ player\ 1\ (yellow)\ can}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00239}00239\ \ \ \ \ \ \ \textcolor{comment}{//\ immediately\ win,\ are\ not\ encoded\ in\ the\ databases.}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00240}00240\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (b.movesLeft()\ +\ 1)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00241}00241\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00242}00242\ \ \ \ \ assert(val\ !=\ NONE\_VALUE);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00243}00243\ \ \ \ \ \textcolor{keywordflow}{return}\ convertValue(val,\ b);}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00244}00244\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00245}00245\ \};}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00247}00247\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{OpeningBook_8h_source_l00249}00249\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ OPENINGBOOK\_H}}
+
+\end{DoxyCode}

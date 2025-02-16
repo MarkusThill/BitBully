@@ -1,0 +1,201 @@
+\doxysection{Bit\+Bully\+::Opening\+Book Class Reference}
+\hypertarget{classBitBully_1_1OpeningBook}{}\label{classBitBully_1_1OpeningBook}\index{BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBitBully_1_1OpeningBook_afb6ac02ccf35560761a0df2a3d01a12b}{Opening\+Book}} (const std\+::filesystem\+::path \&book\+Path, const bool is\+\_\+8ply, const bool with\+\_\+distances)
+\item 
+\mbox{\hyperlink{classBitBully_1_1OpeningBook_aa3362b0f56d734786c670230dfcccb43}{Opening\+Book}} (const std\+::filesystem\+::path \&book\+Path)
+\item 
+auto \mbox{\hyperlink{classBitBully_1_1OpeningBook_a572d9d8fb625cab5423efa17759dea0a}{get\+Book}} () const
+\item 
+void \mbox{\hyperlink{classBitBully_1_1OpeningBook_ad5c80588e45a33ab50690392a764a64f}{init}} (const std\+::filesystem\+::path \&book\+Path, const bool is\+\_\+8ply, const bool with\+\_\+distances)
+\item 
+auto \mbox{\hyperlink{classBitBully_1_1OpeningBook_abf4b509b981991b67b8ef19321a2b034}{get\+Entry}} (const size\+\_\+t entry\+Idx) const
+\item 
+auto \mbox{\hyperlink{classBitBully_1_1OpeningBook_a5f089deddc734f0a83263d026b3d6c12}{get\+Book\+Size}} () const
+\item 
+int \mbox{\hyperlink{classBitBully_1_1OpeningBook_a07dfc5d82c5108918a438d7afaf78136}{get\+NPly}} () const
+\item 
+int \mbox{\hyperlink{classBitBully_1_1OpeningBook_a8d285671ab0cbd1e0625ac219d8dbcf0}{convert\+Value}} (const int value, const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b) const
+\item 
+bool \mbox{\hyperlink{classBitBully_1_1OpeningBook_ad7a4064632b3c7d9b0ff0be106d0a10c}{is\+In\+Book}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b) const
+\item 
+int \mbox{\hyperlink{classBitBully_1_1OpeningBook_ae1ebbea6e8f17a91990556d077c8d7a4}{get\+Board\+Value}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::tuple$<$ key\+\_\+t, int $>$ \mbox{\hyperlink{classBitBully_1_1OpeningBook_a37db8640da53e0f0bfbb55a116a84931}{readline}} (std\+::ifstream \&file, const bool with\+\_\+distances, const bool is\+\_\+8ply)
+\item 
+static std\+::vector$<$ std\+::tuple$<$ key\+\_\+t, value\+\_\+t $>$ $>$ \mbox{\hyperlink{classBitBully_1_1OpeningBook_a4c4d2b0a00e03a84c9a54fae6b9234dc}{read\+Book}} (const std\+::filesystem\+::path \&filename, const bool with\+\_\+distances=true, const bool is\+\_\+8ply=false)
+\item 
+{\footnotesize template$<$typename T$>$ }\\static int \mbox{\hyperlink{classBitBully_1_1OpeningBook_acf4c1f16463aab37e5f31eba5d299ad4}{sign}} (T value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr auto \mbox{\hyperlink{classBitBully_1_1OpeningBook_ac963c6db2a24b98dca8a0d39b2e445df}{NONE\+\_\+\+VALUE}} = std\+::numeric\+\_\+limits$<$value\+\_\+t$>$\+::min()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00017}{17}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBitBully_1_1OpeningBook_afb6ac02ccf35560761a0df2a3d01a12b}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!OpeningBook@{OpeningBook}}
+\index{OpeningBook@{OpeningBook}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{OpeningBook()}{OpeningBook()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_afb6ac02ccf35560761a0df2a3d01a12b} 
+Bit\+Bully\+::\+Opening\+Book\+::\+Opening\+Book (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{book\+Path}{, }\item[{const bool}]{is\+\_\+8ply}{, }\item[{const bool}]{with\+\_\+distances}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00059}{59}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_aa3362b0f56d734786c670230dfcccb43}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!OpeningBook@{OpeningBook}}
+\index{OpeningBook@{OpeningBook}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{OpeningBook()}{OpeningBook()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_aa3362b0f56d734786c670230dfcccb43} 
+Bit\+Bully\+::\+Opening\+Book\+::\+Opening\+Book (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{book\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00064}{64}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBitBully_1_1OpeningBook_a8d285671ab0cbd1e0625ac219d8dbcf0}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!convertValue@{convertValue}}
+\index{convertValue@{convertValue}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{convertValue()}{convertValue()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_a8d285671ab0cbd1e0625ac219d8dbcf0} 
+int Bit\+Bully\+::\+Opening\+Book\+::convert\+Value (\begin{DoxyParamCaption}\item[{const int}]{value}{, }\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00198}{198}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_ae1ebbea6e8f17a91990556d077c8d7a4}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!getBoardValue@{getBoardValue}}
+\index{getBoardValue@{getBoardValue}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{getBoardValue()}{getBoardValue()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_ae1ebbea6e8f17a91990556d077c8d7a4} 
+int Bit\+Bully\+::\+Opening\+Book\+::get\+Board\+Value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00211}{211}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_a572d9d8fb625cab5423efa17759dea0a}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!getBook@{getBook}}
+\index{getBook@{getBook}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{getBook()}{getBook()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_a572d9d8fb625cab5423efa17759dea0a} 
+auto Bit\+Bully\+::\+Opening\+Book\+::get\+Book (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00078}{78}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_a5f089deddc734f0a83263d026b3d6c12}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!getBookSize@{getBookSize}}
+\index{getBookSize@{getBookSize}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{getBookSize()}{getBookSize()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_a5f089deddc734f0a83263d026b3d6c12} 
+auto Bit\+Bully\+::\+Opening\+Book\+::get\+Book\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00123}{123}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_abf4b509b981991b67b8ef19321a2b034}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!getEntry@{getEntry}}
+\index{getEntry@{getEntry}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{getEntry()}{getEntry()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_abf4b509b981991b67b8ef19321a2b034} 
+auto Bit\+Bully\+::\+Opening\+Book\+::get\+Entry (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{entry\+Idx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00119}{119}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_a07dfc5d82c5108918a438d7afaf78136}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!getNPly@{getNPly}}
+\index{getNPly@{getNPly}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{getNPly()}{getNPly()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_a07dfc5d82c5108918a438d7afaf78136} 
+int Bit\+Bully\+::\+Opening\+Book\+::get\+NPly (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00170}{170}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_ad5c80588e45a33ab50690392a764a64f}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!init@{init}}
+\index{init@{init}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_ad5c80588e45a33ab50690392a764a64f} 
+void Bit\+Bully\+::\+Opening\+Book\+::init (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{book\+Path}{, }\item[{const bool}]{is\+\_\+8ply}{, }\item[{const bool}]{with\+\_\+distances}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00080}{80}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_ad7a4064632b3c7d9b0ff0be106d0a10c}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!isInBook@{isInBook}}
+\index{isInBook@{isInBook}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{isInBook()}{isInBook()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_ad7a4064632b3c7d9b0ff0be106d0a10c} 
+bool Bit\+Bully\+::\+Opening\+Book\+::is\+In\+Book (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00206}{206}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_a4c4d2b0a00e03a84c9a54fae6b9234dc}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!readBook@{readBook}}
+\index{readBook@{readBook}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{readBook()}{readBook()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_a4c4d2b0a00e03a84c9a54fae6b9234dc} 
+static std\+::vector$<$ std\+::tuple$<$ key\+\_\+t, value\+\_\+t $>$ $>$ Bit\+Bully\+::\+Opening\+Book\+::read\+Book (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{filename}{, }\item[{const bool}]{with\+\_\+distances}{ = {\ttfamily true}, }\item[{const bool}]{is\+\_\+8ply}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00172}{172}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_a37db8640da53e0f0bfbb55a116a84931}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!readline@{readline}}
+\index{readline@{readline}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{readline()}{readline()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_a37db8640da53e0f0bfbb55a116a84931} 
+static std\+::tuple$<$ key\+\_\+t, int $>$ Bit\+Bully\+::\+Opening\+Book\+::readline (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{file}{, }\item[{const bool}]{with\+\_\+distances}{, }\item[{const bool}]{is\+\_\+8ply}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00125}{125}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+\Hypertarget{classBitBully_1_1OpeningBook_acf4c1f16463aab37e5f31eba5d299ad4}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!sign@{sign}}
+\index{sign@{sign}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{sign()}{sign()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_acf4c1f16463aab37e5f31eba5d299ad4} 
+template$<$typename T$>$ \\
+static int Bit\+Bully\+::\+Opening\+Book\+::sign (\begin{DoxyParamCaption}\item[{T}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00194}{194}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBitBully_1_1OpeningBook_ac963c6db2a24b98dca8a0d39b2e445df}\index{BitBully::OpeningBook@{BitBully::OpeningBook}!NONE\_VALUE@{NONE\_VALUE}}
+\index{NONE\_VALUE@{NONE\_VALUE}!BitBully::OpeningBook@{BitBully::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{NONE\_VALUE}{NONE\_VALUE}}
+{\footnotesize\ttfamily \label{classBitBully_1_1OpeningBook_ac963c6db2a24b98dca8a0d39b2e445df} 
+auto Bit\+Bully\+::\+Opening\+Book\+::\+NONE\+\_\+\+VALUE = std\+::numeric\+\_\+limits$<$value\+\_\+t$>$\+::min()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8h_source_l00057}{57}} of file \mbox{\hyperlink{OpeningBook_8h_source}{Opening\+Book.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/Opening\+Book.\+h\end{DoxyCompactItemize}

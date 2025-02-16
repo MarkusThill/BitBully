@@ -1,0 +1,242 @@
+\doxysection{Position.\+hpp}
+\hypertarget{Position_8hpp_source}{}\label{Position_8hpp_source}\index{thirdParty/connect4/Position.hpp@{thirdParty/connect4/Position.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00002}00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Connect4\ Game\ Solver\ <http://connect4.gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00003}00003\ \textcolor{comment}{\ *\ Copyright\ (C)\ 2017-\/2019\ Pascal\ Pons\ <contact@gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00004}00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00005}00005\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00006}00006\ \textcolor{comment}{\ *\ modify\ it\ under\ the\ terms\ of\ the\ GNU\ Affero\ General\ Public\ License\ as}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00007}00007\ \textcolor{comment}{\ *\ published\ by\ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00008}00008\ \textcolor{comment}{\ *\ License,\ or\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00010}00010\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00011}00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00012}00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00013}00013\ \textcolor{comment}{\ *\ GNU\ Affero\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00015}00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ Affero\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00016}00016\ \textcolor{comment}{\ *\ along\ with\ Connect4\ Game\ Solver.\ If\ not,\ see\ <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00017}00017\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#ifndef\ POSITION\_HPP}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#define\ POSITION\_HPP}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00026}00026\ \textcolor{keyword}{namespace\ }GameSolver\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00027}00027\ \textcolor{keyword}{namespace\ }Connect4\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00084}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{00084}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a40224933c03ae7866641bc09e2a67444}{Position}}\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00085}00085\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00086}00086\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ WIDTH\ =\ 7;\ \ \textcolor{comment}{//\ width\ of\ the\ board}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00087}00087\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ HEIGHT\ =\ 6;\ \textcolor{comment}{//\ height\ of\ the\ board}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00089}00089\ \textcolor{preprocessor}{\#ifdef\ \_\_GNUC\_\_}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00090}00090\ \ \ \textcolor{comment}{//\ Board\ size\ is\ 64bits\ or\ 128\ bits\ depending\ on\ WIDTH\ and\ HEIGHT}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00091}00091\ \ \ \textcolor{keyword}{using\ }position\_t\ =\ \textcolor{keyword}{typename}\ std::conditional<WIDTH\ *(HEIGHT\ +\ 1)\ <=\ 64,}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t,\ \_\_int128>::type;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00093}00093\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00094}00094\ \ \ \textcolor{comment}{//\ \_\_int128\ is\ a\ g++\ non\ portable\ type.\ Use\ the\ following\ line\ limited\ to}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00095}00095\ \ \ \textcolor{comment}{//\ 64bits\ board\ for\ C++\ compatibility}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00096}00096\ \ \ \textcolor{keyword}{using\ }position\_t\ =\ uint64\_t;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00097}00097\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00099}00099\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ MIN\_SCORE\ =\ -\/(WIDTH\ *\ HEIGHT)\ /\ 2\ +\ 3;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00100}00100\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ MAX\_SCORE\ =\ (WIDTH\ *\ HEIGHT\ +\ 1)\ /\ 2\ -\/\ 3;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00102}00102\ \ \ \textcolor{keyword}{static\_assert}(WIDTH\ <\ 10,\ \textcolor{stringliteral}{"{}Board's\ width\ must\ be\ less\ than\ 10"{}});}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00103}00103\ \ \ \textcolor{keyword}{static\_assert}(WIDTH\ *\ (HEIGHT\ +\ 1)\ <=\ \textcolor{keyword}{sizeof}(position\_t)\ *\ 8,}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Board\ does\ not\ fit\ into\ position\_t\ bitmask"{}});}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00113}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa}{00113}}\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa}{play}}(position\_t\ move)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00114}00114\ \ \ \ \ current\_position\ \string^=\ mask;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00115}00115\ \ \ \ \ mask\ |=\ move;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00116}00116\ \ \ \ \ moves++;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00117}00117\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00119}00119\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00120}00120\ \textcolor{comment}{\ \ \ *\ Plays\ a\ sequence\ of\ successive\ played\ columns,\ mainly\ used\ to\ initilize\ a}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00121}00121\ \textcolor{comment}{\ \ \ *\ board.}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00122}00122\ \textcolor{comment}{\ \ \ *\ @param\ seq:\ a\ sequence\ of\ digits\ corresponding\ to\ the\ 1-\/based\ index\ of\ the}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00123}00123\ \textcolor{comment}{\ \ \ *\ column\ played.}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00124}00124\ \textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00125}00125\ \textcolor{comment}{\ \ \ *\ @return\ number\ of\ played\ moves.\ Processing\ will\ stop\ at\ first\ invalid\ move}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00126}00126\ \textcolor{comment}{\ \ \ *\ that\ can\ be:}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00127}00127\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ -\/\ invalid\ character\ (non\ digit,\ or\ digit\ >=\ WIDTH)}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00128}00128\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ -\/\ playing\ a\ colum\ the\ is\ already\ full}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00129}00129\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ \ \ -\/\ playing\ a\ column\ that\ makes\ an\ alignment\ (we\ only\ solve\ non).}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00130}00130\ \textcolor{comment}{\ \ \ *\ \ \ \ \ \ \ \ \ Caller\ can\ check\ if\ the\ move\ sequence\ was\ valid\ by\ comparing\ the}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00131}00131\ \textcolor{comment}{\ \ \ *\ number\ of\ processed\ moves\ to\ the\ length\ of\ the\ sequence.}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00132}00132\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00133}00133\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa}{play}}(\textcolor{keyword}{const}\ std::string\ \&seq)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00134}00134\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ seq.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00135}00135\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ seq[i]\ -\/\ \textcolor{charliteral}{'1'};}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00136}00136\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ <\ 0\ ||\ col\ >=\ Position::WIDTH\ ||\ !\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a370217c553a85bf306a30dd6ec517816}{canPlay}}(col)\ ||}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a41e50e20178f9123493b7ec043a1807e}{isWinningMove}}(col))}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;\ \textcolor{comment}{//\ invalid\ move}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00139}00139\ \ \ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a32b2aeb205f3e6bc2c1dd6d5e2d8efe6}{playCol}}(col);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00140}00140\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00141}00141\ \ \ \ \ \textcolor{keywordflow}{return}\ seq.size();}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00142}00142\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00147}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_afb530371990f81666f5989bce6340d92}{00147}}\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_afb530371990f81666f5989bce6340d92}{canWinNext}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ winning\_position()\ \&\ possible();\ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00152}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{00152}}\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ moves;\ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00157}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}{00157}}\ \ \ position\_t\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}{key}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ current\_position\ +\ mask;\ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00176}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a91b0b3336eef6036ec24578cfea8f235}{00176}}\ \ \ uint64\_t\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a91b0b3336eef6036ec24578cfea8f235}{key3}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00177}00177\ \ \ \ \ uint64\_t\ key\_forward\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Position::WIDTH;\ i++)}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00179}00179\ \ \ \ \ \ \ partialKey3(key\_forward,\ i);\ \textcolor{comment}{//\ compute\ key\ in\ increasing\ order\ of\ columns}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00181}00181\ \ \ \ \ uint64\_t\ key\_reverse\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00182}00182\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ Position::WIDTH;\ i-\/-\/;)}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00183}00183\ \ \ \ \ \ \ partialKey3(key\_reverse,\ i);\ \textcolor{comment}{//\ compute\ key\ in\ decreasing\ order\ of\ columns}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00185}00185\ \ \ \ \ \textcolor{keywordflow}{return}\ key\_forward\ <\ key\_reverse}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ key\_forward\ /\ 3}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ key\_reverse\ /\ 3;\ \textcolor{comment}{//\ take\ the\ smallest\ key\ and\ divide\ per\ 3\ as}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ last\ base3\ digit\ is\ always\ 0}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00189}00189\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00200}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a65529ce1a2f62d5732ecd69eef303cbb}{00200}}\ \ \ position\_t\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a65529ce1a2f62d5732ecd69eef303cbb}{possibleNonLosingMoves}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00201}00201\ \ \ \ \ assert(!\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_afb530371990f81666f5989bce6340d92}{canWinNext}}());}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00202}00202\ \ \ \ \ position\_t\ possible\_mask\ =\ possible();}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00203}00203\ \ \ \ \ position\_t\ opponent\_win\ =\ opponent\_winning\_position();}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00204}00204\ \ \ \ \ position\_t\ forced\_moves\ =\ possible\_mask\ \&\ opponent\_win;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00205}00205\ \ \ \ \ \textcolor{keywordflow}{if}\ (forced\_moves)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00206}00206\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (forced\_moves\ \&}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ (forced\_moves\ -\/\ 1))\ \textcolor{comment}{//\ check\ if\ there\ is\ more\ than\ one\ forced\ move}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ the\ opponnent\ has\ two\ winning\ moves\ and\ you\ cannot\ stop\ him}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00209}00209\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00210}00210\ \ \ \ \ \ \ \ \ possible\_mask\ =\ forced\_moves;\ \textcolor{comment}{//\ enforce\ to\ play\ the\ single\ forced\ move}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00211}00211\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00212}00212\ \ \ \ \ \textcolor{keywordflow}{return}\ possible\_mask\ \&}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \string~(opponent\_win\ >>\ 1);\ \textcolor{comment}{//\ avoid\ to\ play\ below\ an\ opponent\ winning\ spot}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00214}00214\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00224}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_ad2feea243d7d6ce71e6a7318336dcf6d}{00224}}\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_ad2feea243d7d6ce71e6a7318336dcf6d}{moveScore}}(position\_t\ move)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00225}00225\ \ \ \ \ \textcolor{keywordflow}{return}\ popcount(compute\_winning\_position(current\_position\ |\ move,\ mask));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00226}00226\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00231}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a40224933c03ae7866641bc09e2a67444}{00231}}\ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a40224933c03ae7866641bc09e2a67444}{Position}}()\ :\ current\_position\{0\},\ mask\{0\},\ moves\{0\}\ \{\}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00239}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a370217c553a85bf306a30dd6ec517816}{00239}}\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a370217c553a85bf306a30dd6ec517816}{canPlay}}(\textcolor{keywordtype}{int}\ col)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ (mask\ \&\ top\_mask\_col(col))\ ==\ 0;\ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00248}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a32b2aeb205f3e6bc2c1dd6d5e2d8efe6}{00248}}\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a32b2aeb205f3e6bc2c1dd6d5e2d8efe6}{playCol}}(\textcolor{keywordtype}{int}\ col)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00249}00249\ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa}{play}}((mask\ +\ bottom\_mask\_col(col))\ \&\ column\_mask(col));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00250}00250\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00259}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a41e50e20178f9123493b7ec043a1807e}{00259}}\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a41e50e20178f9123493b7ec043a1807e}{isWinningMove}}(\textcolor{keywordtype}{int}\ col)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00260}00260\ \ \ \ \ \textcolor{keywordflow}{return}\ winning\_position()\ \&\ possible()\ \&\ column\_mask(col);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00261}00261\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00263}00263\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00264}00264\ \ \ position\_t\ current\_position;\ \textcolor{comment}{//\ bitmap\ of\ the\ current\_player\ stones}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00265}00265\ \ \ position\_t\ mask;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bitmap\ of\ all\ the\ already\ palyed\ spots}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00266}00266\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ moves;\ \textcolor{comment}{//\ number\ of\ moves\ played\ since\ the\ beinning\ of\ the\ game.}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00271}00271\ \ \ \textcolor{keywordtype}{void}\ partialKey3(uint64\_t\ \&\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}{key}},\ \textcolor{keywordtype}{int}\ col)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00272}00272\ \ \ \ \ \textcolor{keywordflow}{for}\ (position\_t\ pos\ =\ UINT64\_C(1)\ <<\ (col\ *\ (Position::HEIGHT\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ pos\ \&\ mask;\ pos\ <<=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00274}00274\ \ \ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}{key}}\ *=\ 3;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00275}00275\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ \&\ current\_position)}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}{key}}\ +=\ 1;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00277}00277\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}{key}}\ +=\ 2;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00279}00279\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00280}00280\ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}{key}}\ *=\ 3;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00281}00281\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00286}00286\ \ \ position\_t\ winning\_position()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00287}00287\ \ \ \ \ \textcolor{keywordflow}{return}\ compute\_winning\_position(current\_position,\ mask);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00288}00288\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00293}00293\ \ \ position\_t\ opponent\_winning\_position()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00294}00294\ \ \ \ \ \textcolor{keywordflow}{return}\ compute\_winning\_position(current\_position\ \string^\ mask,\ mask);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00295}00295\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00301}00301\ \ \ position\_t\ possible()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ (mask\ +\ bottom\_mask)\ \&\ board\_mask;\ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00306}00306\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ popcount(position\_t\ m)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00307}00307\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00308}00308\ \ \ \ \ \textcolor{keywordflow}{for}\ (c\ =\ 0;\ m;\ c++)}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00309}00309\ \ \ \ \ \ \ m\ \&=\ m\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00310}00310\ \ \ \ \ \textcolor{keywordflow}{return}\ c;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00311}00311\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00319}00319\ \ \ \textcolor{keyword}{static}\ position\_t\ compute\_winning\_position(position\_t\ position,}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ position\_t\ mask)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00321}00321\ \ \ \ \ \textcolor{comment}{//\ vertical;}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00322}00322\ \ \ \ \ position\_t\ r\ =\ (position\ <<\ 1)\ \&\ (position\ <<\ 2)\ \&\ (position\ <<\ 3);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00324}00324\ \ \ \ \ \textcolor{comment}{//\ horizontal}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00325}00325\ \ \ \ \ position\_t\ p\ =\ (position\ <<\ (HEIGHT\ +\ 1))\ \&\ (position\ <<\ 2\ *\ (HEIGHT\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00326}00326\ \ \ \ \ r\ |=\ p\ \&\ (position\ <<\ 3\ *\ (HEIGHT\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00327}00327\ \ \ \ \ r\ |=\ p\ \&\ (position\ >>\ (HEIGHT\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00328}00328\ \ \ \ \ p\ =\ (position\ >>\ (HEIGHT\ +\ 1))\ \&\ (position\ >>\ 2\ *\ (HEIGHT\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00329}00329\ \ \ \ \ r\ |=\ p\ \&\ (position\ <<\ (HEIGHT\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00330}00330\ \ \ \ \ r\ |=\ p\ \&\ (position\ >>\ 3\ *\ (HEIGHT\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00332}00332\ \ \ \ \ \textcolor{comment}{//\ diagonal\ 1}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00333}00333\ \ \ \ \ p\ =\ (position\ <<\ HEIGHT)\ \&\ (position\ <<\ 2\ *\ HEIGHT);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00334}00334\ \ \ \ \ r\ |=\ p\ \&\ (position\ <<\ 3\ *\ HEIGHT);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00335}00335\ \ \ \ \ r\ |=\ p\ \&\ (position\ >>\ HEIGHT);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00336}00336\ \ \ \ \ p\ =\ (position\ >>\ HEIGHT)\ \&\ (position\ >>\ 2\ *\ HEIGHT);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00337}00337\ \ \ \ \ r\ |=\ p\ \&\ (position\ <<\ HEIGHT);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00338}00338\ \ \ \ \ r\ |=\ p\ \&\ (position\ >>\ 3\ *\ HEIGHT);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00340}00340\ \ \ \ \ \textcolor{comment}{//\ diagonal\ 2}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00341}00341\ \ \ \ \ p\ =\ (position\ <<\ (HEIGHT\ +\ 2))\ \&\ (position\ <<\ 2\ *\ (HEIGHT\ +\ 2));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00342}00342\ \ \ \ \ r\ |=\ p\ \&\ (position\ <<\ 3\ *\ (HEIGHT\ +\ 2));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00343}00343\ \ \ \ \ r\ |=\ p\ \&\ (position\ >>\ (HEIGHT\ +\ 2));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00344}00344\ \ \ \ \ p\ =\ (position\ >>\ (HEIGHT\ +\ 2))\ \&\ (position\ >>\ 2\ *\ (HEIGHT\ +\ 2));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00345}00345\ \ \ \ \ r\ |=\ p\ \&\ (position\ <<\ (HEIGHT\ +\ 2));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00346}00346\ \ \ \ \ r\ |=\ p\ \&\ (position\ >>\ 3\ *\ (HEIGHT\ +\ 2));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00348}00348\ \ \ \ \ \textcolor{keywordflow}{return}\ r\ \&\ (board\_mask\ \string^\ mask);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00349}00349\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00351}00351\ \ \ \textcolor{comment}{//\ Static\ bitmaps}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00352}00352\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{int}\ w\textcolor{keywordtype}{id}th,\ \textcolor{keywordtype}{int}\ height>\ \textcolor{keyword}{struct\ }bottom\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00353}00353\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ position\_t\ mask\ =}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00354}00354\ \ \ \ \ \ \ \ \ bottom<width\ -\/\ 1,\ height>::mask\ |\ position\_t(1)}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ (width\ -\/\ 1)\ *\ (height\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00356}00356\ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00357}00357\ \ \ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{int}\ height>\ \textcolor{keyword}{struct\ }bottom<0,\ height>\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00358}00358\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ position\_t\ mask\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00359}00359\ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00361}00361\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ position\_t\ bottom\_mask\ =\ bottom<WIDTH,\ HEIGHT>::mask;}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00362}00362\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ position\_t\ board\_mask\ =\ bottom\_mask\ *\ ((1LL\ <<\ HEIGHT)\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00364}00364\ \ \ \textcolor{comment}{//\ return\ a\ bitmask\ containg\ a\ single\ 1\ corresponding\ to\ the\ top\ cel\ of\ a}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00365}00365\ \ \ \textcolor{comment}{//\ given\ column}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00366}00366\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ position\_t\ top\_mask\_col(\textcolor{keywordtype}{int}\ col)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00367}00367\ \ \ \ \ \textcolor{keywordflow}{return}\ UINT64\_C(1)\ <<\ ((HEIGHT\ -\/\ 1)\ +\ col\ *\ (HEIGHT\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00368}00368\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00370}00370\ \ \ \textcolor{comment}{//\ return\ a\ bitmask\ containg\ a\ single\ 1\ corresponding\ to\ the\ bottom\ cell\ of\ a}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00371}00371\ \ \ \textcolor{comment}{//\ given\ column}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00372}00372\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ position\_t\ bottom\_mask\_col(\textcolor{keywordtype}{int}\ col)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00373}00373\ \ \ \ \ \textcolor{keywordflow}{return}\ UINT64\_C(1)\ <<\ col\ *\ (HEIGHT\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00374}00374\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00376}00376\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00377}00377\ \ \ \textcolor{comment}{//\ return\ a\ bitmask\ 1\ on\ all\ the\ cells\ of\ a\ given\ column}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00378}00378\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ position\_t\ column\_mask(\textcolor{keywordtype}{int}\ col)\ \{}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00379}00379\ \ \ \ \ \textcolor{keywordflow}{return}\ ((UINT64\_C(1)\ <<\ HEIGHT)\ -\/\ 1)\ <<\ col\ *\ (HEIGHT\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00380}00380\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00381}00381\ \};}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00383}00383\ \}\ \textcolor{comment}{//\ namespace\ Connect4}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00384}00384\ \}\ \textcolor{comment}{//\ namespace\ GameSolver}}
+\DoxyCodeLine{\Hypertarget{Position_8hpp_source_l00385}00385\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

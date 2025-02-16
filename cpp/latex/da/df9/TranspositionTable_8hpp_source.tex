@@ -1,0 +1,126 @@
+\doxysection{Transposition\+Table.\+hpp}
+\hypertarget{TranspositionTable_8hpp_source}{}\label{TranspositionTable_8hpp_source}\index{thirdParty/connect4/TranspositionTable.hpp@{thirdParty/connect4/TranspositionTable.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00002}00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Connect4\ Game\ Solver\ <http://connect4.gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00003}00003\ \textcolor{comment}{\ *\ Copyright\ (C)\ 2017-\/2019\ Pascal\ Pons\ <contact@gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00004}00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00005}00005\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00006}00006\ \textcolor{comment}{\ *\ modify\ it\ under\ the\ terms\ of\ the\ GNU\ Affero\ General\ Public\ License\ as}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00007}00007\ \textcolor{comment}{\ *\ published\ by\ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00008}00008\ \textcolor{comment}{\ *\ License,\ or\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00010}00010\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00011}00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00012}00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00013}00013\ \textcolor{comment}{\ *\ GNU\ Affero\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00015}00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ Affero\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00016}00016\ \textcolor{comment}{\ *\ along\ with\ Connect4\ Game\ Solver.\ If\ not,\ see\ <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00017}00017\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#ifndef\ TRANSPOSITION\_TABLE\_HPP}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#define\ TRANSPOSITION\_TABLE\_HPP}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00024}00024\ \textcolor{keyword}{namespace\ }GameSolver\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00025}00025\ \textcolor{keyword}{namespace\ }Connect4\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00030}00030\ \textcolor{keyword}{constexpr}\ uint64\_t\ med(uint64\_t\ min,\ uint64\_t\ max)\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00031}00031\ \ \ \textcolor{keywordflow}{return}\ (min\ +\ max)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00036}00036\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ has\_factor(uint64\_t\ n,\ uint64\_t\ min,\ uint64\_t\ max)\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00037}00037\ \ \ \textcolor{keywordflow}{return}\ min\ *\ min\ >\ n\ ?\ false\ :\ \textcolor{comment}{//\ do\ not\ search\ for\ factor\ above\ sqrt(n)}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ min\ +\ 1\ >=\ max\ ?\ n\ \%\ min\ ==\ 0\ :}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ has\_factor(n,\ min,\ med(min,\ max))\ ||\ has\_factor(n,\ med(min,\ max),\ max);}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00042}00042\ \textcolor{comment}{//\ return\ next\ prime\ number\ greater\ or\ equal\ to\ n.}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00043}00043\ \textcolor{comment}{//\ n\ must\ be\ >=\ 2}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00044}00044\ \textcolor{keyword}{constexpr}\ uint64\_t\ next\_prime(uint64\_t\ n)\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00045}00045\ \ \ \textcolor{keywordflow}{return}\ has\_factor(n,\ 2,\ n)\ ?\ next\_prime(n\ +\ 1)\ :\ n;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00048}00048\ \textcolor{comment}{//\ log2(1)\ =\ 0;\ log2(2)\ =\ 1;\ log2(3)\ =\ 1;\ log2(4)\ =\ 2;\ log2(8)\ =\ 3}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00049}00049\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ log2(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n)\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00050}00050\ \ \ \textcolor{keywordflow}{return}\ n\ <=\ 1\ ?\ 0\ :\ log2(n\ /\ 2)\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00056}00056\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ key\_t,\ \textcolor{keyword}{class}\ value\_t>}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00057}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{00057}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{TableGetter}}\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00058}00058\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00059}00059\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}*\ getKeys()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00060}00060\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}*\ getValues()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00061}00061\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ getSize()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00062}00062\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ getKeySize()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00063}00063\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ getValueSize()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00065}00065\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00066}00066\ \ \ \textcolor{keyword}{virtual}\ value\_t\ get(key\_t\ key)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00067}00067\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{\string~TableGetter}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00069}00069\ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }OpeningBook;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00070}00070\ \};}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00072}00072\ \textcolor{comment}{//\ uint\_t<S>\ is\ a\ template\ type\ providing\ an\ unsigned\ int\ able\ to\ fit\ interger\ of\ S\ bits.}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00073}00073\ \textcolor{comment}{//\ uint\_t<8>\ =\ uint8\_t\ and\ uint\_t<9>\ =\ uint\_16t}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00074}00074\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ S>\ \textcolor{keyword}{using\ }uint\_t\ =}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00075}00075\ \ \ \textcolor{keyword}{typename}\ std::conditional\ <\ S\ <=\ 8,\ uint\_least8\_t,}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00076}00076\ \ \ \textcolor{keyword}{typename}\ std::conditional\ <\ S\ <=\ 16,\ uint\_least16\_t,}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00077}00077\ \ \ \textcolor{keyword}{typename}\ std::conditional<S\ <=\ 32,\ uint\_least32\_t,}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00078}00078\ \ \ uint\_least64\_t>::type>::type\ >::type;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00093}00093\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ partial\_key\_t,\ \textcolor{keyword}{class}\ key\_t,\ \textcolor{keyword}{class}\ value\_t,\ \textcolor{keywordtype}{int}\ log\_size>}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00094}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{00094}}\ \textcolor{keyword}{class\ }TranspositionTable\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{TableGetter}}<key\_t,\ value\_t>\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00095}00095\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00096}00096\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\ =\ next\_prime(1\ <<\ log\_size);\ \textcolor{comment}{//\ size\ of\ the\ transition\ table.\ Have\ to\ be\ odd\ to\ be\ prime\ with\ 2\string^sizeof(key\_t)}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00097}00097\ \ \ partial\_key\_t\ *K;\ \ \ \ \ \textcolor{comment}{//\ Array\ to\ store\ truncated\ version\ of\ keys;}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00098}00098\ \ \ value\_t\ *V;\ \ \ \textcolor{comment}{//\ Array\ to\ store\ values;}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00100}00100\ \ \ \textcolor{keywordtype}{void}*\ getKeys()\textcolor{keyword}{\ \ \ \ override\ }\{\textcolor{keywordflow}{return}\ K;\}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00101}00101\ \ \ \textcolor{keywordtype}{void}*\ getValues()\textcolor{keyword}{\ \ override\ }\{\textcolor{keywordflow}{return}\ V;\}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00102}00102\ \ \ \textcolor{keywordtype}{size\_t}\ getSize()\textcolor{keyword}{\ \ \ override\ }\{\textcolor{keywordflow}{return}\ size;\}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00103}00103\ \ \ \textcolor{keywordtype}{int}\ getKeySize()\textcolor{keyword}{\ \ \ override\ }\{\textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(partial\_key\_t);\}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00104}00104\ \ \ \textcolor{keywordtype}{int}\ getValueSize()\textcolor{keyword}{\ override\ }\{\textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(value\_t);\}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00106}00106\ \ \ \textcolor{keywordtype}{size\_t}\ index(key\_t\ key)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{return}\ key\ \%\ size;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00108}00108\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00110}00110\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00111}00111\ \ \ TranspositionTable()\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00112}00112\ \ \ \ \ K\ =\ \textcolor{keyword}{new}\ partial\_key\_t[size];}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00113}00113\ \ \ \ \ V\ =\ \textcolor{keyword}{new}\ value\_t[size];}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00114}00114\ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_a196afbb8f16ce7e5cf3e225cbc31791f}{reset}}();}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00115}00115\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00117}00117\ \ \ \string~TranspositionTable()\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{delete}[]\ K;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00119}00119\ \ \ \ \ \textcolor{keyword}{delete}[]\ V;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00120}00120\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00125}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_a196afbb8f16ce7e5cf3e225cbc31791f}{00125}}\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_a196afbb8f16ce7e5cf3e225cbc31791f}{reset}}()\ \{\ \textcolor{comment}{//\ fill\ everything\ with\ 0,\ because\ 0\ value\ means\ missing\ data}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00126}00126\ \ \ \ \ memset(K,\ 0,\ size\ *\ \textcolor{keyword}{sizeof}(partial\_key\_t));}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00127}00127\ \ \ \ \ memset(V,\ 0,\ size\ *\ \textcolor{keyword}{sizeof}(value\_t));}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00128}00128\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00135}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_ae19ada6599df2c509e38e689883b19ae}{00135}}\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_ae19ada6599df2c509e38e689883b19ae}{put}}(key\_t\ key,\ value\_t\ value)\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00136}00136\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pos\ =\ index(key);}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00137}00137\ \ \ \ \ K[pos]\ =\ key;\ \textcolor{comment}{//\ key\ is\ possibly\ trucated\ as\ key\_t\ is\ possibly\ less\ than\ key\_size\ bits.}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00138}00138\ \ \ \ \ V[pos]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00139}00139\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00146}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_a7e05429233ef4d5c5d8fbc9b3d7467bc}{00146}}\ \ \ value\_t\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_a7e05429233ef4d5c5d8fbc9b3d7467bc}{get}}(key\_t\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00147}00147\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pos\ =\ index(key);}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{if}(K[pos]\ ==\ (partial\_key\_t)key)\ \textcolor{keywordflow}{return}\ V[pos];\ \textcolor{comment}{//\ need\ to\ cast\ to\ key\_t\ because\ key\ may\ be\ truncated\ due\ to\ size\ of\ key\_t}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00149}00149\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00150}00150\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00151}00151\ \};}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00153}00153\ \}\ \textcolor{comment}{//\ namespace\ Connect4}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00154}00154\ \}\ \textcolor{comment}{//\ namespace\ GameSolver}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8hpp_source_l00155}00155\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

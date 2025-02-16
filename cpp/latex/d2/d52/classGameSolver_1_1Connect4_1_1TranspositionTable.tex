@@ -1,0 +1,133 @@
+\doxysection{Game\+Solver\+::Connect4\+::Transposition\+Table\texorpdfstring{$<$}{<} partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classGameSolver_1_1Connect4_1_1TranspositionTable}{}\label{classGameSolver_1_1Connect4_1_1TranspositionTable}\index{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}}
+
+
+{\ttfamily \#include $<$Transposition\+Table.\+hpp$>$}
+
+
+
+Inheritance diagram for Game\+Solver\+::Connect4\+::Transposition\+Table\texorpdfstring{$<$}{<} partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{dd/d77/classGameSolver_1_1Connect4_1_1TranspositionTable__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Game\+Solver\+::Connect4\+::Transposition\+Table\texorpdfstring{$<$}{<} partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{d3/d54/classGameSolver_1_1Connect4_1_1TranspositionTable__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_a196afbb8f16ce7e5cf3e225cbc31791f}{reset}} ()
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_ae19ada6599df2c509e38e689883b19ae}{put}} (key\+\_\+t key, value\+\_\+t value)
+\item 
+value\+\_\+t \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable_a7e05429233ef4d5c5d8fbc9b3d7467bc}{get}} (key\+\_\+t key) const override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class partial\+\_\+key\+\_\+t, class key\+\_\+t, class value\+\_\+t, int log\+\_\+size$>$\newline
+class Game\+Solver\+::\+Connect4\+::\+Transposition\+Table$<$ partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size $>$}
+Transposition Table is a simple hash map with fixed storage size. In case of collision we keep the last entry and overide the previous one. We keep only part of the key to reduce storage, but no error is possible thanks to Chinese theorem.
+
+The number of stored entries is a power of two that is defined at compile time. We also define size of the entries and keys to allow optimization at compile time.
+
+key\+\_\+size\+: number of bits of the key value\+\_\+size\+: number of bits of the value log\+\_\+size\+: base 2 log of the size of the Transposition Table. The table will contain 2\texorpdfstring{$^\wedge$}{\string^}log\+\_\+size elements 
+
+Definition at line \mbox{\hyperlink{TranspositionTable_8hpp_source_l00094}{94}} of file \mbox{\hyperlink{TranspositionTable_8hpp_source}{Transposition\+Table.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1TranspositionTable_a5abb84bdc048ae3639f5cdb72c5719d7}\index{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}!TranspositionTable@{TranspositionTable}}
+\index{TranspositionTable@{TranspositionTable}!GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}}
+\doxysubsubsection{\texorpdfstring{TranspositionTable()}{TranspositionTable()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1TranspositionTable_a5abb84bdc048ae3639f5cdb72c5719d7} 
+template$<$class partial\+\_\+key\+\_\+t, class key\+\_\+t, class value\+\_\+t, int log\+\_\+size$>$ \\
+\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{Game\+Solver\+::\+Connect4\+::\+Transposition\+Table}}$<$ partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size $>$\+::\+Transposition\+Table (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{TranspositionTable_8hpp_source_l00111}{111}} of file \mbox{\hyperlink{TranspositionTable_8hpp_source}{Transposition\+Table.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1TranspositionTable_ad446aa1845a533e45bb5037e4989c14c}\index{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}!````~TranspositionTable@{\texorpdfstring{$\sim$}{\string~}TranspositionTable}}
+\index{````~TranspositionTable@{\texorpdfstring{$\sim$}{\string~}TranspositionTable}!GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TranspositionTable()}{\string~TranspositionTable()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1TranspositionTable_ad446aa1845a533e45bb5037e4989c14c} 
+template$<$class partial\+\_\+key\+\_\+t, class key\+\_\+t, class value\+\_\+t, int log\+\_\+size$>$ \\
+\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{Game\+Solver\+::\+Connect4\+::\+Transposition\+Table}}$<$ partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{Transposition\+Table}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{TranspositionTable_8hpp_source_l00117}{117}} of file \mbox{\hyperlink{TranspositionTable_8hpp_source}{Transposition\+Table.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1TranspositionTable_a7e05429233ef4d5c5d8fbc9b3d7467bc}\index{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}!get@{get}}
+\index{get@{get}!GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1TranspositionTable_a7e05429233ef4d5c5d8fbc9b3d7467bc} 
+template$<$class partial\+\_\+key\+\_\+t, class key\+\_\+t, class value\+\_\+t, int log\+\_\+size$>$ \\
+value\+\_\+t \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{Game\+Solver\+::\+Connect4\+::\+Transposition\+Table}}$<$ partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size $>$\+::get (\begin{DoxyParamCaption}\item[{key\+\_\+t}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Get the value of a key 
+\begin{DoxyParams}{Parameters}
+{\em key} & must be less than key\+\_\+size bits. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value\+\_\+size bits value associated with the key if present, 0 otherwise. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{Game\+Solver\+::\+Connect4\+::\+Table\+Getter$<$ key\+\_\+t, value\+\_\+t $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{TranspositionTable_8hpp_source_l00146}{146}} of file \mbox{\hyperlink{TranspositionTable_8hpp_source}{Transposition\+Table.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1TranspositionTable_ae19ada6599df2c509e38e689883b19ae}\index{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}!put@{put}}
+\index{put@{put}!GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1TranspositionTable_ae19ada6599df2c509e38e689883b19ae} 
+template$<$class partial\+\_\+key\+\_\+t, class key\+\_\+t, class value\+\_\+t, int log\+\_\+size$>$ \\
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{Game\+Solver\+::\+Connect4\+::\+Transposition\+Table}}$<$ partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size $>$\+::put (\begin{DoxyParamCaption}\item[{key\+\_\+t}]{key}{, }\item[{value\+\_\+t}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Store a value for a given key 
+\begin{DoxyParams}{Parameters}
+{\em key} & must be less than key\+\_\+size bits. \\
+\hline
+{\em value} & must be less than value\+\_\+size bits. null (0) value is used to encode missing data \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{TranspositionTable_8hpp_source_l00135}{135}} of file \mbox{\hyperlink{TranspositionTable_8hpp_source}{Transposition\+Table.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1TranspositionTable_a196afbb8f16ce7e5cf3e225cbc31791f}\index{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}!reset@{reset}}
+\index{reset@{reset}!GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$@{GameSolver::Connect4::TranspositionTable$<$ partial\_key\_t, key\_t, value\_t, log\_size $>$}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1TranspositionTable_a196afbb8f16ce7e5cf3e225cbc31791f} 
+template$<$class partial\+\_\+key\+\_\+t, class key\+\_\+t, class value\+\_\+t, int log\+\_\+size$>$ \\
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{Game\+Solver\+::\+Connect4\+::\+Transposition\+Table}}$<$ partial\+\_\+key\+\_\+t, key\+\_\+t, value\+\_\+t, log\+\_\+size $>$\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Empty the Transition Table. 
+
+Definition at line \mbox{\hyperlink{TranspositionTable_8hpp_source_l00125}{125}} of file \mbox{\hyperlink{TranspositionTable_8hpp_source}{Transposition\+Table.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+third\+Party/connect4/Transposition\+Table.\+hpp\end{DoxyCompactItemize}

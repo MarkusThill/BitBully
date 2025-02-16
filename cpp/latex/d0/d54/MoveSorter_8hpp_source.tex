@@ -1,0 +1,70 @@
+\doxysection{Move\+Sorter.\+hpp}
+\hypertarget{MoveSorter_8hpp_source}{}\label{MoveSorter_8hpp_source}\index{thirdParty/connect4/MoveSorter.hpp@{thirdParty/connect4/MoveSorter.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00002}00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Connect4\ Game\ Solver\ <http://connect4.gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00003}00003\ \textcolor{comment}{\ *\ Copyright\ (C)\ 2017-\/2019\ Pascal\ Pons\ <contact@gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00004}00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00005}00005\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00006}00006\ \textcolor{comment}{\ *\ modify\ it\ under\ the\ terms\ of\ the\ GNU\ Affero\ General\ Public\ License\ as}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00007}00007\ \textcolor{comment}{\ *\ published\ by\ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00008}00008\ \textcolor{comment}{\ *\ License,\ or\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00010}00010\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00011}00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00012}00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00013}00013\ \textcolor{comment}{\ *\ GNU\ Affero\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00015}00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ Affero\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00016}00016\ \textcolor{comment}{\ *\ along\ with\ Connect4\ Game\ Solver.\ If\ not,\ see\ <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00017}00017\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#ifndef\ MOVE\_SORTER\_HPP}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#define\ MOVE\_SORTER\_HPP}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}Position.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00024}00024\ \textcolor{keyword}{namespace\ }GameSolver\ \{}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00025}00025\ \textcolor{keyword}{namespace\ }Connect4\ \{}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00038}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter}{00038}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_ad41bb041bfc4f52ad8996a3cea049c08}{MoveSorter}}\ \{}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00039}00039\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00045}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a1db567c5fd4d9d248461f0f8f6444d11}{00045}}\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a1db567c5fd4d9d248461f0f8f6444d11}{add}}(\textcolor{keyword}{const}\ Position::position\_t\ move,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ score)\ \{}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\ =\ size++;}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{for}(;\ pos\ \&\&\ entries[pos\ -\/\ 1].score\ >\ score;\ -\/-\/pos)\ entries[pos]\ =\ entries[pos\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00048}00048\ \ \ \ \ entries[pos].move\ =\ move;}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00049}00049\ \ \ \ \ entries[pos].score\ =\ score;}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00050}00050\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00057}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a9883697b9438a7dacc05b050fc81291f}{00057}}\ \ \ Position::position\_t\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a9883697b9438a7dacc05b050fc81291f}{getNext}}()\ \{}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}(size)}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00059}00059\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ entries[-\/-\/size].move;}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00061}00061\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00062}00062\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00067}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a662bb710ea45ac02246b55bc07c911e2}{00067}}\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a662bb710ea45ac02246b55bc07c911e2}{reset}}()\ \{}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00068}00068\ \ \ \ \ size\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00069}00069\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00074}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_ad41bb041bfc4f52ad8996a3cea049c08}{00074}}\ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_ad41bb041bfc4f52ad8996a3cea049c08}{MoveSorter}}():\ size\{0\}\ \{}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00075}00075\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00077}00077\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00078}00078\ \ \ \textcolor{comment}{//\ number\ of\ stored\ moves}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00079}00079\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00081}00081\ \ \ \textcolor{comment}{//\ Contains\ size\ moves\ with\ their\ score\ ordered\ by\ score}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00082}00082\ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00083}00083\ \ \ \ \ Position::position\_t\ move;}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{int}\ score;}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00085}00085\ \ \ \}\ entries[Position::WIDTH];}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00086}00086\ \};}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00088}00088\ \}\ \textcolor{comment}{//\ namespace\ Connect4}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00089}00089\ \}\ \textcolor{comment}{//\ namespace\ GameSolver}}
+\DoxyCodeLine{\Hypertarget{MoveSorter_8hpp_source_l00090}00090\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

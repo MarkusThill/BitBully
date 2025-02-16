@@ -1,0 +1,105 @@
+\doxysection{Game\+Solver\+::Connect4\+::Move\+Sorter Class Reference}
+\hypertarget{classGameSolver_1_1Connect4_1_1MoveSorter}{}\label{classGameSolver_1_1Connect4_1_1MoveSorter}\index{GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}}
+
+
+{\ttfamily \#include $<$Move\+Sorter.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a1db567c5fd4d9d248461f0f8f6444d11}{add}} (const Position\+::position\+\_\+t move, const int score)
+\item 
+Position\+::position\+\_\+t \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a9883697b9438a7dacc05b050fc81291f}{get\+Next}} ()
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a662bb710ea45ac02246b55bc07c911e2}{reset}} ()
+\item 
+\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_ad41bb041bfc4f52ad8996a3cea049c08}{Move\+Sorter}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class helps sorting the next moves
+
+You have to add moves first with their score then you can get them back in decreasing score
+
+This class implement an insertion sort that is in practice very efficient for small number of move to sort (max is Position\+::\+WIDTH) and also efficient if the move are pushed in approximatively increasing order which can be acheived by using a simpler column ordering heuristic. 
+
+Definition at line \mbox{\hyperlink{MoveSorter_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{MoveSorter_8hpp_source}{Move\+Sorter.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1MoveSorter_ad41bb041bfc4f52ad8996a3cea049c08}\index{GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}!MoveSorter@{MoveSorter}}
+\index{MoveSorter@{MoveSorter}!GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}}
+\doxysubsubsection{\texorpdfstring{MoveSorter()}{MoveSorter()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1MoveSorter_ad41bb041bfc4f52ad8996a3cea049c08} 
+Game\+Solver\+::\+Connect4\+::\+Move\+Sorter\+::\+Move\+Sorter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Build an empty container 
+
+Definition at line \mbox{\hyperlink{MoveSorter_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{MoveSorter_8hpp_source}{Move\+Sorter.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1MoveSorter_a1db567c5fd4d9d248461f0f8f6444d11}\index{GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}!add@{add}}
+\index{add@{add}!GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1MoveSorter_a1db567c5fd4d9d248461f0f8f6444d11} 
+void Game\+Solver\+::\+Connect4\+::\+Move\+Sorter\+::add (\begin{DoxyParamCaption}\item[{const Position\+::position\+\_\+t}]{move}{, }\item[{const int}]{score}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Add a move in the container with its score. You cannot add more than Position\+::\+WIDTH moves 
+
+Definition at line \mbox{\hyperlink{MoveSorter_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{MoveSorter_8hpp_source}{Move\+Sorter.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1MoveSorter_a9883697b9438a7dacc05b050fc81291f}\index{GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}!getNext@{getNext}}
+\index{getNext@{getNext}!GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}}
+\doxysubsubsection{\texorpdfstring{getNext()}{getNext()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1MoveSorter_a9883697b9438a7dacc05b050fc81291f} 
+Position\+::position\+\_\+t Game\+Solver\+::\+Connect4\+::\+Move\+Sorter\+::get\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get next move \begin{DoxyReturn}{Returns}
+next remaining move with max score and remove it from the container. If no more move is available return 0 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{MoveSorter_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{MoveSorter_8hpp_source}{Move\+Sorter.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1MoveSorter_a662bb710ea45ac02246b55bc07c911e2}\index{GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}!reset@{reset}}
+\index{reset@{reset}!GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1MoveSorter_a662bb710ea45ac02246b55bc07c911e2} 
+void Game\+Solver\+::\+Connect4\+::\+Move\+Sorter\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+reset (empty) the container 
+
+Definition at line \mbox{\hyperlink{MoveSorter_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{MoveSorter_8hpp_source}{Move\+Sorter.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1MoveSorter_a88090a31c216765f7f59ddeefc8d2824}\index{GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}!move@{move}}
+\index{move@{move}!GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}}
+\doxysubsubsection{\texorpdfstring{move}{move}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1MoveSorter_a88090a31c216765f7f59ddeefc8d2824} 
+Position\+::position\+\_\+t Game\+Solver\+::\+Connect4\+::\+Move\+Sorter\+::move}
+
+
+
+Definition at line \mbox{\hyperlink{MoveSorter_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{MoveSorter_8hpp_source}{Move\+Sorter.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1MoveSorter_a4d0c21980a35e6ef72c4144ef19336e0}\index{GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}!score@{score}}
+\index{score@{score}!GameSolver::Connect4::MoveSorter@{GameSolver::Connect4::MoveSorter}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1MoveSorter_a4d0c21980a35e6ef72c4144ef19336e0} 
+int Game\+Solver\+::\+Connect4\+::\+Move\+Sorter\+::score}
+
+
+
+Definition at line \mbox{\hyperlink{MoveSorter_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{MoveSorter_8hpp_source}{Move\+Sorter.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+third\+Party/connect4/Move\+Sorter.\+hpp\end{DoxyCompactItemize}

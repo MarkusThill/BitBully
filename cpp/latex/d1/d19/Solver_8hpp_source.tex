@@ -1,0 +1,75 @@
+\doxysection{Solver.\+hpp}
+\hypertarget{Solver_8hpp_source}{}\label{Solver_8hpp_source}\index{thirdParty/connect4/Solver.hpp@{thirdParty/connect4/Solver.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00002}00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Connect4\ Game\ Solver\ <http://connect4.gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00003}00003\ \textcolor{comment}{\ *\ Copyright\ (C)\ 2017-\/2019\ Pascal\ Pons\ <contact@gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00004}00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00005}00005\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00006}00006\ \textcolor{comment}{\ *\ modify\ it\ under\ the\ terms\ of\ the\ GNU\ Affero\ General\ Public\ License\ as}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00007}00007\ \textcolor{comment}{\ *\ published\ by\ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00008}00008\ \textcolor{comment}{\ *\ License,\ or\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00010}00010\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00011}00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00012}00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00013}00013\ \textcolor{comment}{\ *\ GNU\ Affero\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00015}00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ Affero\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00016}00016\ \textcolor{comment}{\ *\ along\ with\ Connect4\ Game\ Solver.\ If\ not,\ see\ <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00017}00017\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#ifndef\ SOLVER\_HPP}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#define\ SOLVER\_HPP}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}Position.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}TranspositionTable.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}OpeningBook.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00028}00028\ \textcolor{keyword}{namespace\ }GameSolver\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00029}00029\ \textcolor{keyword}{namespace\ }Connect4\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00031}\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Solver}{00031}}\ \textcolor{keyword}{class\ }Solver\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00032}00032\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00033}00033\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ TABLE\_SIZE\ =\ 24;\ \textcolor{comment}{//\ store\ 2\string^TABLE\_SIZE\ elements\ in\ the\ transpositiontbale}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00034}00034\ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable}}\ <\ uint\_t\ <\ Position::WIDTH*(Position::HEIGHT\ +\ 1)\ -\/\ TABLE\_SIZE\ >,\ Position::position\_t,\ uint8\_t,\ TABLE\_SIZE\ >\ transTable;}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00035}00035\ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook}{OpeningBook}}\ book\{Position::WIDTH,\ Position::HEIGHT\};\ \textcolor{comment}{//\ opening\ book}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00036}00036\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ nodeCount;\ \textcolor{comment}{//\ counter\ of\ explored\ nodes.}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00037}00037\ \ \ \textcolor{keywordtype}{int}\ columnOrder[Position::WIDTH];\ \textcolor{comment}{//\ column\ exploration\ order}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00050}00050\ \ \ \textcolor{keywordtype}{int}\ negamax(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}\ \&P,\ \textcolor{keywordtype}{int}\ alpha,\ \textcolor{keywordtype}{int}\ beta);}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00052}00052\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00053}00053\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ INVALID\_MOVE\ =\ -\/1000;}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00055}00055\ \ \ \textcolor{comment}{//\ Returns\ the\ score\ of\ a\ position}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00056}00056\ \ \ \textcolor{keywordtype}{int}\ solve(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}\ \&P,\ \textcolor{keywordtype}{bool}\ weak\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00058}00058\ \ \ \textcolor{comment}{//\ Returns\ the\ score\ off\ all\ possible\ moves\ of\ a\ position\ as\ an\ array.}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00059}00059\ \ \ \textcolor{comment}{//\ Returns\ INVALID\_MOVE\ for\ unplayable\ columns}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00060}00060\ \ \ std::vector<int>\ analyze(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}\ \&P,\ \textcolor{keywordtype}{bool}\ weak\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00062}00062\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ getNodeCount()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{return}\ nodeCount;}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00064}00064\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00066}00066\ \ \ \textcolor{keywordtype}{void}\ reset()\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00067}00067\ \ \ \ \ nodeCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00068}00068\ \ \ \ \ transTable.reset();}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00069}00069\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00071}00071\ \ \ \textcolor{keywordtype}{void}\ loadBook(std::string\ book\_file)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00072}00072\ \ \ \ \ book.load(book\_file);}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00073}00073\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00075}00075\ \ \ Solver();\ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00076}00076\ \};}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00078}00078\ \}\ \textcolor{comment}{//\ namespace\ Connect4}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00079}00079\ \}\ \textcolor{comment}{//\ namespace\ GameSolver}}
+\DoxyCodeLine{\Hypertarget{Solver_8hpp_source_l00080}00080\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

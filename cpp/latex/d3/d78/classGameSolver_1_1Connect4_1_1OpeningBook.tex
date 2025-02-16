@@ -1,0 +1,103 @@
+\doxysection{Game\+Solver\+::Connect4\+::Opening\+Book Class Reference}
+\hypertarget{classGameSolver_1_1Connect4_1_1OpeningBook}{}\label{classGameSolver_1_1Connect4_1_1OpeningBook}\index{GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook_a262eabe5c4676dd2a3c9d7e9db86ae39}{Opening\+Book}} (int width, int height)
+\item 
+\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook_aee35b7a9836b7d406428b43d8a3b58c1}{Opening\+Book}} (int width, int height, int depth, \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{Table\+Getter}}$<$ Position\+::position\+\_\+t, uint8\+\_\+t $>$ \texorpdfstring{$\ast$}{*}T)
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook_abfb2e1be9ff994f402a28e3a0f96fed6}{load}} (std\+::string filename)
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook_a8049c7ab220da7eb3852338d34974bda}{save}} (const std\+::string output\+\_\+file) const
+\item 
+int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook_a8000acb3c011d7bf207c6a183010f0d0}{get}} (const \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}} \&P) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{OpeningBook_8hpp_source}{Opening\+Book.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1OpeningBook_a262eabe5c4676dd2a3c9d7e9db86ae39}\index{GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}!OpeningBook@{OpeningBook}}
+\index{OpeningBook@{OpeningBook}!GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{OpeningBook()}{OpeningBook()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1OpeningBook_a262eabe5c4676dd2a3c9d7e9db86ae39} 
+Game\+Solver\+::\+Connect4\+::\+Opening\+Book\+::\+Opening\+Book (\begin{DoxyParamCaption}\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{OpeningBook_8hpp_source}{Opening\+Book.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1OpeningBook_aee35b7a9836b7d406428b43d8a3b58c1}\index{GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}!OpeningBook@{OpeningBook}}
+\index{OpeningBook@{OpeningBook}!GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{OpeningBook()}{OpeningBook()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1OpeningBook_aee35b7a9836b7d406428b43d8a3b58c1} 
+Game\+Solver\+::\+Connect4\+::\+Opening\+Book\+::\+Opening\+Book (\begin{DoxyParamCaption}\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{int}]{depth}{, }\item[{\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TableGetter}{Table\+Getter}}$<$ Position\+::position\+\_\+t, uint8\+\_\+t $>$ \texorpdfstring{$\ast$}{*}}]{T}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{OpeningBook_8hpp_source}{Opening\+Book.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1OpeningBook_acbbe2f77ea91b227b126e406adb0949d}\index{GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}!````~OpeningBook@{\texorpdfstring{$\sim$}{\string~}OpeningBook}}
+\index{````~OpeningBook@{\texorpdfstring{$\sim$}{\string~}OpeningBook}!GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpeningBook()}{\string~OpeningBook()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1OpeningBook_acbbe2f77ea91b227b126e406adb0949d} 
+Game\+Solver\+::\+Connect4\+::\+Opening\+Book\+::\texorpdfstring{$\sim$}{\string~}\+Opening\+Book (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8hpp_source_l00176}{176}} of file \mbox{\hyperlink{OpeningBook_8hpp_source}{Opening\+Book.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1OpeningBook_a8000acb3c011d7bf207c6a183010f0d0}\index{GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}!get@{get}}
+\index{get@{get}!GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1OpeningBook_a8000acb3c011d7bf207c6a183010f0d0} 
+int Game\+Solver\+::\+Connect4\+::\+Opening\+Book\+::get (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}} \&}]{P}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8hpp_source_l00171}{171}} of file \mbox{\hyperlink{OpeningBook_8hpp_source}{Opening\+Book.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1OpeningBook_abfb2e1be9ff994f402a28e3a0f96fed6}\index{GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}!load@{load}}
+\index{load@{load}!GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1OpeningBook_abfb2e1be9ff994f402a28e3a0f96fed6} 
+void Game\+Solver\+::\+Connect4\+::\+Opening\+Book\+::load (\begin{DoxyParamCaption}\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Opening book file format\+:
+\begin{DoxyItemize}
+\item 1 byte\+: board width
+\item 1 byte\+: board height
+\item 1 byte\+: max stored position depth
+\item 1 byte\+: key size in bits
+\item 1 byte\+: value size in bits
+\item 1 byte\+: log\+\_\+size = log2(size). number of stored elements (size) is smallest prime number above 2\texorpdfstring{$^\wedge$}{\string^}(log\+\_\+size)
+\item size key elements
+\item size value elements 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{OpeningBook_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{OpeningBook_8hpp_source}{Opening\+Book.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1OpeningBook_a8049c7ab220da7eb3852338d34974bda}\index{GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}!save@{save}}
+\index{save@{save}!GameSolver::Connect4::OpeningBook@{GameSolver::Connect4::OpeningBook}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1OpeningBook_a8049c7ab220da7eb3852338d34974bda} 
+void Game\+Solver\+::\+Connect4\+::\+Opening\+Book\+::save (\begin{DoxyParamCaption}\item[{const std\+::string}]{output\+\_\+file}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{OpeningBook_8hpp_source_l00150}{150}} of file \mbox{\hyperlink{OpeningBook_8hpp_source}{Opening\+Book.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+third\+Party/connect4/Opening\+Book.\+hpp\end{DoxyCompactItemize}

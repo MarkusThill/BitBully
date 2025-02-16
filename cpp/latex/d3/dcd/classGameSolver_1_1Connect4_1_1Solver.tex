@@ -1,0 +1,112 @@
+\doxysection{Game\+Solver\+::Connect4\+::Solver Class Reference}
+\hypertarget{classGameSolver_1_1Connect4_1_1Solver}{}\label{classGameSolver_1_1Connect4_1_1Solver}\index{GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Solver_a82080ddd26439a05ebd02c68679594ad}{solve}} (const \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}} \&P, bool weak=false)
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Solver_a6617ef13b1c5267a2010b9326dedc868}{analyze}} (const \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}} \&P, bool weak=false)
+\item 
+unsigned long long \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Solver_a24571be916af0e9bef7c7a011c58e392}{get\+Node\+Count}} () const
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Solver_a87c22366529b52219c9fd934e40271cc}{reset}} ()
+\item 
+void \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Solver_a7a85de5e1a855286d982631d788796f9}{load\+Book}} (std\+::string book\+\_\+file)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Solver_a4d283c20cedf8ff7357481dea59bb286}{INVALID\+\_\+\+MOVE}} = -\/1000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Solver_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{Solver_8hpp_source}{Solver.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1Solver_ac53dbb325cf3c00019a82b96dbbd9fbe}\index{GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}!Solver@{Solver}}
+\index{Solver@{Solver}!GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}}
+\doxysubsubsection{\texorpdfstring{Solver()}{Solver()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Solver_ac53dbb325cf3c00019a82b96dbbd9fbe} 
+Game\+Solver\+::\+Connect4\+::\+Solver\+::\+Solver (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Solver_8cpp_source_l00143}{143}} of file \mbox{\hyperlink{Solver_8cpp_source}{Solver.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1Solver_a6617ef13b1c5267a2010b9326dedc868}\index{GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}!analyze@{analyze}}
+\index{analyze@{analyze}!GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}}
+\doxysubsubsection{\texorpdfstring{analyze()}{analyze()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Solver_a6617ef13b1c5267a2010b9326dedc868} 
+std\+::vector$<$ int $>$ Game\+Solver\+::\+Connect4\+::\+Solver\+::analyze (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}} \&}]{P}{, }\item[{bool}]{weak}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Solver_8cpp_source_l00128}{128}} of file \mbox{\hyperlink{Solver_8cpp_source}{Solver.\+cpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Solver_a24571be916af0e9bef7c7a011c58e392}\index{GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}!getNodeCount@{getNodeCount}}
+\index{getNodeCount@{getNodeCount}!GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}}
+\doxysubsubsection{\texorpdfstring{getNodeCount()}{getNodeCount()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Solver_a24571be916af0e9bef7c7a011c58e392} 
+unsigned long long Game\+Solver\+::\+Connect4\+::\+Solver\+::get\+Node\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{Solver_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{Solver_8hpp_source}{Solver.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Solver_a7a85de5e1a855286d982631d788796f9}\index{GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}!loadBook@{loadBook}}
+\index{loadBook@{loadBook}!GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}}
+\doxysubsubsection{\texorpdfstring{loadBook()}{loadBook()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Solver_a7a85de5e1a855286d982631d788796f9} 
+void Game\+Solver\+::\+Connect4\+::\+Solver\+::load\+Book (\begin{DoxyParamCaption}\item[{std\+::string}]{book\+\_\+file}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{Solver_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{Solver_8hpp_source}{Solver.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Solver_a87c22366529b52219c9fd934e40271cc}\index{GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}!reset@{reset}}
+\index{reset@{reset}!GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Solver_a87c22366529b52219c9fd934e40271cc} 
+void Game\+Solver\+::\+Connect4\+::\+Solver\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{Solver_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{Solver_8hpp_source}{Solver.\+hpp}}.
+
+\Hypertarget{classGameSolver_1_1Connect4_1_1Solver_a82080ddd26439a05ebd02c68679594ad}\index{GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}!solve@{solve}}
+\index{solve@{solve}!GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Solver_a82080ddd26439a05ebd02c68679594ad} 
+int Game\+Solver\+::\+Connect4\+::\+Solver\+::solve (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}} \&}]{P}{, }\item[{bool}]{weak}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Solver_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{Solver_8cpp_source}{Solver.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameSolver_1_1Connect4_1_1Solver_a4d283c20cedf8ff7357481dea59bb286}\index{GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}!INVALID\_MOVE@{INVALID\_MOVE}}
+\index{INVALID\_MOVE@{INVALID\_MOVE}!GameSolver::Connect4::Solver@{GameSolver::Connect4::Solver}}
+\doxysubsubsection{\texorpdfstring{INVALID\_MOVE}{INVALID\_MOVE}}
+{\footnotesize\ttfamily \label{classGameSolver_1_1Connect4_1_1Solver_a4d283c20cedf8ff7357481dea59bb286} 
+int Game\+Solver\+::\+Connect4\+::\+Solver\+::\+INVALID\+\_\+\+MOVE = -\/1000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{Solver_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{Solver_8hpp_source}{Solver.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+third\+Party/connect4/Solver.\+hpp\item 
+third\+Party/connect4/Solver.\+cpp\end{DoxyCompactItemize}

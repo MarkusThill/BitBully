@@ -1,0 +1,79 @@
+\doxysection{generator.\+cpp}
+\hypertarget{generator_8cpp_source}{}\label{generator_8cpp_source}\index{thirdParty/connect4/generator.cpp@{thirdParty/connect4/generator.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Position.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}OpeningBook.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00009}00009\ \textcolor{keyword}{using\ namespace\ }GameSolver::Connect4;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00011}00011\ std::unordered\_set<uint64\_t>\ visited;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00017}00017\ \textcolor{keywordtype}{void}\ explore(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}\ \&P,\ \textcolor{keywordtype}{char}*\ pos\_str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ depth)\ \{}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00018}00018\ \ \ uint64\_t\ key\ =\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a91b0b3336eef6036ec24578cfea8f235}{key3}}();}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00019}00019\ \ \ \textcolor{keywordflow}{if}(!visited.insert(key).second)}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ already\ explored\ position}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00022}00022\ \ \ \textcolor{keywordtype}{int}\ nb\_moves\ =\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}();}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00023}00023\ \ \ \textcolor{keywordflow}{if}(nb\_moves\ <=\ depth)}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00024}00024\ \ \ std::cout\ <<\ pos\_str\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00025}00025\ \ \ \textcolor{keywordflow}{if}(nb\_moves\ >=\ depth)\ \textcolor{keywordflow}{return};\ \ \textcolor{comment}{//\ do\ not\ explore\ at\ further\ depth}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00027}00027\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Position::WIDTH;\ i++)\ \textcolor{comment}{//\ explore\ all\ possible\ moves}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}(P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a370217c553a85bf306a30dd6ec517816}{canPlay}}(i)\ \&\&\ !P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a41e50e20178f9123493b7ec043a1807e}{isWinningMove}}(i))\ \{}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00029}00029\ \ \ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}\ P2(P);}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00030}00030\ \ \ \ \ \ \ P2.playCol(i);}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00031}00031\ \ \ \ \ \ \ pos\_str[nb\_moves]\ =\ \textcolor{charliteral}{'1'}\ +\ i;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00032}00032\ \ \ \ \ \ \ explore(P2,\ pos\_str,\ depth);}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00033}00033\ \ \ \ \ \ \ pos\_str[nb\_moves]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00043}00043\ \textcolor{keywordtype}{void}\ generate\_opening\_book()\ \{}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00044}00044\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ BOOK\_SIZE\ =\ 23;\ \textcolor{comment}{//\ store\ 2\string^BOOK\_SIZE\ positions\ in\ the\ book}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00045}00045\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DEPTH\ =\ 14;\ \ \ \ \ \textcolor{comment}{//\ max\ depth\ of\ every\ position\ to\ be\ stored}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00046}00046\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ LOG\_3\ =\ 1.58496250072;\ \textcolor{comment}{//\ log2(3)}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00047}00047\ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable}}<uint\_t<int((DEPTH\ +\ Position::WIDTH\ -\/1)\ *\ LOG\_3)\ +\ 1\ -\/\ BOOK\_SIZE>,\ Position::position\_t,\ uint8\_t,\ BOOK\_SIZE>\ *table\ =}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1TranspositionTable}{TranspositionTable}}<uint\_t<int((DEPTH\ +\ Position::WIDTH\ -\/1)\ *\ LOG\_3)\ +\ 1\ -\/\ BOOK\_SIZE>,\ Position::position\_t,\ uint8\_t,\ BOOK\_SIZE>();}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00050}00050\ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ count\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00051}00051\ \ \ \textcolor{keywordflow}{for}(std::string\ line;\ getline(std::cin,\ line);\ count++)\ \{}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{if}(line.length()\ ==\ 0)\ \textcolor{keywordflow}{break};\ \textcolor{comment}{//\ empty\ line\ =\ end\ of\ input}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00053}00053\ \ \ \ \ std::istringstream\ iss(line);}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00054}00054\ \ \ \ \ std::string\ pos;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00055}00055\ \ \ \ \ getline(iss,\ pos,\ \textcolor{charliteral}{'\ '});\ \textcolor{comment}{//\ read\ position\ before\ first\ space\ character}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{int}\ score;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00057}00057\ \ \ \ \ iss\ >>\ score;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}\ P;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{if}(iss.fail()\ ||\ !iss.eof()}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ ||\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa}{play}}(pos)\ !=\ pos.length()}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ ||\ score\ <\ Position::MIN\_SCORE\ ||\ score\ >\ Position::MAX\_SCORE)\ \{\ \ \textcolor{comment}{//\ a\ valid\ line\ is\ a\ position\ a\ space\ and\ a\ valid\ score}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00063}00063\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Invalid\ line\ (line\ ignored):\ "{}}\ <<\ line\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00064}00064\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00066}00066\ \ \ \ \ table-\/>put(P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a91b0b3336eef6036ec24578cfea8f235}{key3}}(),\ score\ -\/\ Position::MIN\_SCORE\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}(count\ \%\ 1000000\ ==\ 0)\ std::cerr\ <<\ count\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00068}00068\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00070}00070\ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1OpeningBook}{OpeningBook}}\ book\{Position::WIDTH,\ Position::HEIGHT,\ DEPTH,\ table\};}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00072}00072\ \ \ std::ostringstream\ book\_file;}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00073}00073\ \ \ book\_file\ <<\ Position::WIDTH\ <<\ \textcolor{stringliteral}{"{}x"{}}\ <<\ Position::HEIGHT\ <<\ \textcolor{stringliteral}{"{}.book"{}};}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00074}00074\ \ \ book.save(book\_file.str());}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00081}00081\ \textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}**\ argv)\ \{}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00082}00082\ \ \ \textcolor{keywordflow}{if}(argc\ >\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordtype}{int}\ depth\ =\ atoi(argv[1]);}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{char}\ pos\_str[depth\ +\ 1]\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00085}00085\ \ \ \ \ explore(\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}(),\ pos\_str,\ depth);}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00086}00086\ \ \ \}\ \textcolor{keywordflow}{else}\ generate\_opening\_book();}
+\DoxyCodeLine{\Hypertarget{generator_8cpp_source_l00087}00087\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,158 @@
+\doxysection{Bit\+Bully\+::Bit\+Bully Class Reference}
+\hypertarget{classBitBully_1_1BitBully}{}\label{classBitBully_1_1BitBully}\index{BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBitBully_1_1BitBully_a11720b8d30ac2784c77b646f44bf135a}\label{classBitBully_1_1BitBully_a11720b8d30ac2784c77b646f44bf135a} 
+\mbox{\hyperlink{classBitBully_1_1MoveList}{Move\+List}} {\bfseries sort\+Moves} (Board\+::\+TBit\+Board moves)
+\item 
+\mbox{\hyperlink{classBitBully_1_1BitBully_ab060d0975ab4cd7bc91e14c24ec807fe}{Bit\+Bully}} (const std\+::filesystem\+::path \&book\+Path="{}"{})
+\item 
+bool \mbox{\hyperlink{classBitBully_1_1BitBully_a1e12396b723b223a7c473baed2bd4954}{is\+Book\+Loaded}} () const
+\item 
+void \mbox{\hyperlink{classBitBully_1_1BitBully_afdc857dc3db5da0cb81e4b3b9eae4543}{reset\+Book}} ()
+\item 
+bool \mbox{\hyperlink{classBitBully_1_1BitBully_a0c19bf3d591e248963b8bfc8fceaa6c8}{load\+Book}} (const std\+::filesystem\+::path \&book\+Path="{}"{})
+\item 
+int \mbox{\hyperlink{classBitBully_1_1BitBully_ae462ded8c4a31264f73d7b1fcf71af2c}{mtdf}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b, const int first\+Guess)
+\item 
+int \mbox{\hyperlink{classBitBully_1_1BitBully_a89fb1ecf18c7f87270e5b2a5ef01aa4f}{null\+Window}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b)
+\item 
+void \mbox{\hyperlink{classBitBully_1_1BitBully_a87c2b73dedea279fdae57f4a012381d7}{reset\+Transposition\+Table}} ()
+\item 
+auto \mbox{\hyperlink{classBitBully_1_1BitBully_a9a87ef9afe101ddda6b3bb74764b3e02}{get\+Node\+Counter}} () const
+\item 
+void \mbox{\hyperlink{classBitBully_1_1BitBully_a4d03943682b98ae771ce1b79fc8da935}{reset\+Node\+Counter}} ()
+\item 
+int \mbox{\hyperlink{classBitBully_1_1BitBully_ae0264db0136dfeee0166067f1574341d}{negamax}} (\mbox{\hyperlink{classBitBully_1_1Board}{Board}} b, int alpha, int beta, int depth)
+\item 
+auto \mbox{\hyperlink{classBitBully_1_1BitBully_adcc1afa34c59c7f0998bf5f6679bbc24}{score\+Moves}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00014}{14}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBitBully_1_1BitBully_ab060d0975ab4cd7bc91e14c24ec807fe}\index{BitBully::BitBully@{BitBully::BitBully}!BitBully@{BitBully}}
+\index{BitBully@{BitBully}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{BitBully()}{BitBully()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_ab060d0975ab4cd7bc91e14c24ec807fe} 
+Bit\+Bully\+::\+Bit\+Bully\+::\+Bit\+Bully (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{book\+Path}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00026}{26}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBitBully_1_1BitBully_a9a87ef9afe101ddda6b3bb74764b3e02}\index{BitBully::BitBully@{BitBully::BitBully}!getNodeCounter@{getNodeCounter}}
+\index{getNodeCounter@{getNodeCounter}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{getNodeCounter()}{getNodeCounter()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_a9a87ef9afe101ddda6b3bb74764b3e02} 
+auto Bit\+Bully\+::\+Bit\+Bully\+::get\+Node\+Counter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00096}{96}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+\Hypertarget{classBitBully_1_1BitBully_a1e12396b723b223a7c473baed2bd4954}\index{BitBully::BitBully@{BitBully::BitBully}!isBookLoaded@{isBookLoaded}}
+\index{isBookLoaded@{isBookLoaded}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{isBookLoaded()}{isBookLoaded()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_a1e12396b723b223a7c473baed2bd4954} 
+bool Bit\+Bully\+::\+Bit\+Bully\+::is\+Book\+Loaded (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00033}{33}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+\Hypertarget{classBitBully_1_1BitBully_a0c19bf3d591e248963b8bfc8fceaa6c8}\index{BitBully::BitBully@{BitBully::BitBully}!loadBook@{loadBook}}
+\index{loadBook@{loadBook}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{loadBook()}{loadBook()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_a0c19bf3d591e248963b8bfc8fceaa6c8} 
+bool Bit\+Bully\+::\+Bit\+Bully\+::load\+Book (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{book\+Path}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00037}{37}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+\Hypertarget{classBitBully_1_1BitBully_ae462ded8c4a31264f73d7b1fcf71af2c}\index{BitBully::BitBully@{BitBully::BitBully}!mtdf@{mtdf}}
+\index{mtdf@{mtdf}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{mtdf()}{mtdf()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_ae462ded8c4a31264f73d7b1fcf71af2c} 
+int Bit\+Bully\+::\+Bit\+Bully\+::mtdf (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{, }\item[{const int}]{first\+Guess}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00049}{49}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+\Hypertarget{classBitBully_1_1BitBully_ae0264db0136dfeee0166067f1574341d}\index{BitBully::BitBully@{BitBully::BitBully}!negamax@{negamax}}
+\index{negamax@{negamax}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{negamax()}{negamax()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_ae0264db0136dfeee0166067f1574341d} 
+int Bit\+Bully\+::\+Bit\+Bully\+::negamax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBitBully_1_1Board}{Board}}}]{b}{, }\item[{int}]{alpha}{, }\item[{int}]{beta}{, }\item[{int}]{depth}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00100}{100}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+\Hypertarget{classBitBully_1_1BitBully_a89fb1ecf18c7f87270e5b2a5ef01aa4f}\index{BitBully::BitBully@{BitBully::BitBully}!nullWindow@{nullWindow}}
+\index{nullWindow@{nullWindow}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{nullWindow()}{nullWindow()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_a89fb1ecf18c7f87270e5b2a5ef01aa4f} 
+int Bit\+Bully\+::\+Bit\+Bully\+::null\+Window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00071}{71}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+\Hypertarget{classBitBully_1_1BitBully_afdc857dc3db5da0cb81e4b3b9eae4543}\index{BitBully::BitBully@{BitBully::BitBully}!resetBook@{resetBook}}
+\index{resetBook@{resetBook}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{resetBook()}{resetBook()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_afdc857dc3db5da0cb81e4b3b9eae4543} 
+void Bit\+Bully\+::\+Bit\+Bully\+::reset\+Book (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00035}{35}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+\Hypertarget{classBitBully_1_1BitBully_a4d03943682b98ae771ce1b79fc8da935}\index{BitBully::BitBully@{BitBully::BitBully}!resetNodeCounter@{resetNodeCounter}}
+\index{resetNodeCounter@{resetNodeCounter}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{resetNodeCounter()}{resetNodeCounter()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_a4d03943682b98ae771ce1b79fc8da935} 
+void Bit\+Bully\+::\+Bit\+Bully\+::reset\+Node\+Counter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00098}{98}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+\Hypertarget{classBitBully_1_1BitBully_a87c2b73dedea279fdae57f4a012381d7}\index{BitBully::BitBully@{BitBully::BitBully}!resetTranspositionTable@{resetTranspositionTable}}
+\index{resetTranspositionTable@{resetTranspositionTable}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{resetTranspositionTable()}{resetTranspositionTable()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_a87c2b73dedea279fdae57f4a012381d7} 
+void Bit\+Bully\+::\+Bit\+Bully\+::reset\+Transposition\+Table (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00091}{91}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+\Hypertarget{classBitBully_1_1BitBully_adcc1afa34c59c7f0998bf5f6679bbc24}\index{BitBully::BitBully@{BitBully::BitBully}!scoreMoves@{scoreMoves}}
+\index{scoreMoves@{scoreMoves}!BitBully::BitBully@{BitBully::BitBully}}
+\doxysubsubsection{\texorpdfstring{scoreMoves()}{scoreMoves()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_adcc1afa34c59c7f0998bf5f6679bbc24} 
+auto Bit\+Bully\+::\+Bit\+Bully\+::score\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{BitBully_8h_source_l00276}{276}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/Bit\+Bully.\+h\end{DoxyCompactItemize}

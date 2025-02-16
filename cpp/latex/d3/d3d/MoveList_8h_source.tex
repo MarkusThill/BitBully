@@ -1,0 +1,53 @@
+\doxysection{Move\+List.\+h}
+\hypertarget{MoveList_8h_source}{}\label{MoveList_8h_source}\index{src/MoveList.h@{src/MoveList.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ MOVELIST\_H}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ MOVELIST\_H}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00005}00005\ \textcolor{comment}{//\ TODO:\ Definitions\ into\ cpp\ file}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00006}00006\ \textcolor{keyword}{namespace\ }BitBully\ \{}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00008}00008\ \textcolor{comment}{//\ A\ simple\ priority\ queue.}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00009}\mbox{\hyperlink{classBitBully_1_1MoveList}{00009}}\ \textcolor{keyword}{class\ }MoveList\ \{}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00010}00010\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00011}00011\ \ \ \textcolor{comment}{//\ TODO:\ This\ is\ also\ defined\ in\ Board.h}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00012}00012\ \ \ \textcolor{keyword}{using\ }TBitBoard\ =\ uint64\_t;}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00014}00014\ \ \ \textcolor{comment}{//\ TODO:\ This\ also:}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00015}00015\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ N\_COLUMNS\ =\ 7;}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00017}00017\ \ \ \textcolor{keywordtype}{void}\ insert(\textcolor{keyword}{const}\ TBitBoard\ move,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ score)\ \{}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\ =\ size++;}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ pos\ \&\&\ m\_arrayPrioQueue[pos\ -\/\ 1].score\ >=\ score;\ -\/-\/pos)}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00020}00020\ \ \ \ \ \ \ m\_arrayPrioQueue[pos]\ =\ m\_arrayPrioQueue[pos\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00021}00021\ \ \ \ \ m\_arrayPrioQueue[pos].move\ =\ move;}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00022}00022\ \ \ \ \ m\_arrayPrioQueue[pos].score\ =\ score;}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00023}00023\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00025}00025\ \ \ \textcolor{keyword}{inline}\ TBitBoard\ pop()\ \{}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ size\ ?\ m\_arrayPrioQueue[-\/-\/size].move\ :\ UINT64\_C(0);}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00027}00027\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00029}00029\ \ \ \textcolor{keywordtype}{void}\ reset()\ \{\ size\ =\ 0;\ \}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00031}00031\ \ \ MoveList()\ :\ size\{0\},\ m\_arrayPrioQueue\{\}\ \{\}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00033}00033\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00034}00034\ \ \ \textcolor{comment}{//\ number\ of\ stored\ moves}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00035}00035\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00037}00037\ \ \ \textcolor{comment}{//\ An\ array-\/based\ priority\ queue\ containing\ a\ list\ of\ moves,\ where\ a\ higher}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00038}00038\ \ \ \textcolor{comment}{//\ score\ corresponds\ to\ a\ higher\ prio.\ In\ case\ two\ or\ more\ scores\ are\ equal,}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00039}00039\ \ \ \textcolor{comment}{//\ the\ FIFO\ principle\ holds}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00040}00040\ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00041}00041\ \ \ \ \ TBitBoard\ move;}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{int}\ score;}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00043}00043\ \ \ \}\ m\_arrayPrioQueue[N\_COLUMNS];}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00044}00044\ \};}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00045}00045\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{MoveList_8h_source_l00047}00047\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ MOVELIST\_H}}
+
+\end{DoxyCode}

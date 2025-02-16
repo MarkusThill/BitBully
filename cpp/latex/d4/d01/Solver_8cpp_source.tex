@@ -1,0 +1,144 @@
+\doxysection{Solver.\+cpp}
+\hypertarget{Solver_8cpp_source}{}\label{Solver_8cpp_source}\index{thirdParty/connect4/Solver.cpp@{thirdParty/connect4/Solver.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Connect4\ Game\ Solver\ <http://connect4.gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00003}00003\ \textcolor{comment}{\ *\ Copyright\ (C)\ 2017-\/2019\ Pascal\ Pons\ <contact@gamesolver.org>}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00004}00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00005}00005\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ free\ software:\ you\ can\ redistribute\ it\ and/or}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00006}00006\ \textcolor{comment}{\ *\ modify\ it\ under\ the\ terms\ of\ the\ GNU\ Affero\ General\ Public\ License\ as}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00007}00007\ \textcolor{comment}{\ *\ published\ by\ the\ Free\ Software\ Foundation,\ either\ version\ 3\ of\ the}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00008}00008\ \textcolor{comment}{\ *\ License,\ or\ (at\ your\ option)\ any\ later\ version.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00009}00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00010}00010\ \textcolor{comment}{\ *\ Connect4\ Game\ Solver\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00011}00011\ \textcolor{comment}{\ *\ but\ WITHOUT\ ANY\ WARRANTY;\ without\ even\ the\ implied\ warranty\ of}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00012}00012\ \textcolor{comment}{\ *\ MERCHANTABILITY\ or\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00013}00013\ \textcolor{comment}{\ *\ GNU\ Affero\ General\ Public\ License\ for\ more\ details.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00015}00015\ \textcolor{comment}{\ *\ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ Affero\ General\ Public\ License}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00016}00016\ \textcolor{comment}{\ *\ along\ with\ Connect4\ Game\ Solver.\ If\ not,\ see\ <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00017}00017\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}Solver.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}MoveSorter.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00023}00023\ \textcolor{keyword}{using\ namespace\ }GameSolver::Connect4;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00025}00025\ \textcolor{keyword}{namespace\ }GameSolver\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00026}00026\ \textcolor{keyword}{namespace\ }Connect4\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00039}00039\ \textcolor{keywordtype}{int}\ Solver::negamax(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}\ \&P,\ \textcolor{keywordtype}{int}\ alpha,\ \textcolor{keywordtype}{int}\ beta)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00040}00040\ \ \ assert(alpha\ <\ beta);}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00041}00041\ \ \ assert(!P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_afb530371990f81666f5989bce6340d92}{canWinNext}}());}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00043}00043\ \ \ nodeCount++;\ \textcolor{comment}{//\ increment\ counter\ of\ explored\ nodes}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00045}00045\ \ \ Position::position\_t\ possible\ =\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a65529ce1a2f62d5732ecd69eef303cbb}{possibleNonLosingMoves}}();}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00046}00046\ \ \ \textcolor{keywordflow}{if}(possible\ ==\ 0)\ \ \ \ \ \textcolor{comment}{//\ if\ no\ possible\ non\ losing\ move,\ opponent\ wins\ next\ move}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/(Position::WIDTH\ *\ Position::HEIGHT\ -\/\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}())\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00049}00049\ \ \ \textcolor{keywordflow}{if}(P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}()\ >=\ Position::WIDTH\ *\ Position::HEIGHT\ -\/\ 2)\ \textcolor{comment}{//\ check\ for\ draw\ game}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00052}00052\ \ \ \textcolor{keywordtype}{int}\ min\ =\ -\/(Position::WIDTH\ *\ Position::HEIGHT\ -\/\ 2\ -\/\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}())\ /\ 2;\ \textcolor{comment}{//\ lower\ bound\ of\ score\ as\ opponent\ cannot\ win\ next\ move}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00053}00053\ \ \ \textcolor{keywordflow}{if}(alpha\ <\ min)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00054}00054\ \ \ \ \ alpha\ =\ min;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ there\ is\ no\ need\ to\ keep\ alpha\ below\ our\ max\ possible\ score.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{if}(alpha\ >=\ beta)\ \textcolor{keywordflow}{return}\ alpha;\ \ \textcolor{comment}{//\ prune\ the\ exploration\ if\ the\ [alpha;beta]\ window\ is\ empty.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00056}00056\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00058}00058\ \ \ \textcolor{keywordtype}{int}\ max\ =\ (Position::WIDTH\ *\ Position::HEIGHT\ -\/\ 1\ -\/\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}())\ /\ 2;\ \ \textcolor{comment}{//\ upper\ bound\ of\ our\ score\ as\ we\ cannot\ win\ immediately}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00059}00059\ \ \ \textcolor{keywordflow}{if}(beta\ >\ max)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00060}00060\ \ \ \ \ beta\ =\ max;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ there\ is\ no\ need\ to\ keep\ beta\ above\ our\ max\ possible\ score.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{if}(alpha\ >=\ beta)\ \textcolor{keywordflow}{return}\ beta;\ \ \textcolor{comment}{//\ prune\ the\ exploration\ if\ the\ [alpha;beta]\ window\ is\ empty.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00062}00062\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00064}00064\ \ \ \textcolor{keyword}{const}\ Position::position\_t\ key\ =\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a25ac95ae8ab8aa9322f6174cf42c1a9f}{key}}();}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00065}00065\ \ \ \textcolor{keywordflow}{if}(\textcolor{keywordtype}{int}\ val\ =\ transTable.get(key))\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{if}(val\ >\ Position::MAX\_SCORE\ -\/\ Position::MIN\_SCORE\ +\ 1)\ \{\ \textcolor{comment}{//\ we\ have\ an\ lower\ bound}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00067}00067\ \ \ \ \ \ \ min\ =\ val\ +\ 2\ *\ Position::MIN\_SCORE\ -\/\ Position::MAX\_SCORE\ -\/\ 2;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00068}00068\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(alpha\ <\ min)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ alpha\ =\ min;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ there\ is\ no\ need\ to\ keep\ beta\ above\ our\ max\ possible\ score.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(alpha\ >=\ beta)\ \textcolor{keywordflow}{return}\ alpha;\ \ \textcolor{comment}{//\ prune\ the\ exploration\ if\ the\ [alpha;beta]\ window\ is\ empty.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00071}00071\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00072}00072\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ we\ have\ an\ upper\ bound}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00073}00073\ \ \ \ \ \ \ max\ =\ val\ +\ Position::MIN\_SCORE\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00074}00074\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(beta\ >\ max)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ beta\ =\ max;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ there\ is\ no\ need\ to\ keep\ beta\ above\ our\ max\ possible\ score.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(alpha\ >=\ beta)\ \textcolor{keywordflow}{return}\ beta;\ \ \textcolor{comment}{//\ prune\ the\ exploration\ if\ the\ [alpha;beta]\ window\ is\ empty.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00077}00077\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00079}00079\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00081}00081\ \ \ \textcolor{keywordflow}{if}(\textcolor{keywordtype}{int}\ val\ =\ book.get(P))\ \textcolor{keywordflow}{return}\ val\ +\ Position::MIN\_SCORE\ -\/\ 1;\ \textcolor{comment}{//\ look\ for\ solutions\ stored\ in\ opening\ book}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00083}00083\ \ \ MoveSorter\ moves;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00084}00084\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ Position::WIDTH;\ i-\/-\/;)}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{if}(Position::position\_t\ move\ =\ possible\ \&\ Position::column\_mask(columnOrder[i]))}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00086}00086\ \ \ \ \ \ \ moves.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a1db567c5fd4d9d248461f0f8f6444d11}{add}}(move,\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_ad2feea243d7d6ce71e6a7318336dcf6d}{moveScore}}(move));}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00088}00088\ \ \ \textcolor{keywordflow}{while}(Position::position\_t\ next\ =\ moves.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1MoveSorter_a9883697b9438a7dacc05b050fc81291f}{getNext}}())\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00089}00089\ \ \ \ \ Position\ P2(P);}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00090}00090\ \ \ \ \ P2.play(next);\ \ \textcolor{comment}{//\ It's\ opponent\ turn\ in\ P2\ position\ after\ current\ player\ plays\ x\ column.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordtype}{int}\ score\ =\ -\/negamax(P2,\ -\/beta,\ -\/alpha);\ \textcolor{comment}{//\ explore\ opponent's\ score\ within\ [-\/beta;-\/alpha]\ windows:}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ no\ need\ to\ have\ good\ precision\ for\ score\ better\ than\ beta\ (opponent's\ score\ worse\ than\ -\/beta)}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ no\ need\ to\ check\ for\ score\ worse\ than\ alpha\ (opponent's\ score\ worse\ better\ than\ -\/alpha)}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{if}(score\ >=\ beta)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00096}00096\ \ \ \ \ \ \ transTable.put(key,\ score\ +\ Position::MAX\_SCORE\ -\/\ 2\ *\ Position::MIN\_SCORE\ +\ 2);\ \textcolor{comment}{//\ save\ the\ lower\ bound\ of\ the\ position}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00097}00097\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ score;\ \ \textcolor{comment}{//\ prune\ the\ exploration\ if\ we\ find\ a\ possible\ move\ better\ than\ what\ we\ were\ looking\ for.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{if}(score\ >\ alpha)\ alpha\ =\ score;\ \textcolor{comment}{//\ reduce\ the\ [alpha;beta]\ window\ for\ next\ exploration,\ as\ we\ only}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{comment}{//\ need\ to\ search\ for\ a\ position\ that\ is\ better\ than\ the\ best\ so\ far.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00101}00101\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00103}00103\ \ \ transTable.put(key,\ alpha\ -\/\ Position::MIN\_SCORE\ +\ 1);\ \textcolor{comment}{//\ save\ the\ upper\ bound\ of\ the\ position}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00104}00104\ \ \ \textcolor{keywordflow}{return}\ alpha;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00107}00107\ \textcolor{keywordtype}{int}\ Solver::solve(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}\ \&P,\ \textcolor{keywordtype}{bool}\ weak)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00108}00108\ \ \ \textcolor{keywordflow}{if}(P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_afb530371990f81666f5989bce6340d92}{canWinNext}}())\ \textcolor{comment}{//\ check\ if\ win\ in\ one\ move\ as\ the\ Negamax\ function\ does\ not\ support\ this\ case.}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{return}\ (Position::WIDTH\ *\ Position::HEIGHT\ +\ 1\ -\/\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}())\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00110}00110\ \ \ \textcolor{keywordtype}{int}\ min\ =\ -\/(Position::WIDTH\ *\ Position::HEIGHT\ -\/\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}())\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00111}00111\ \ \ \textcolor{keywordtype}{int}\ max\ =\ (Position::WIDTH\ *\ Position::HEIGHT\ +\ 1\ -\/\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}())\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00112}00112\ \ \ \textcolor{keywordflow}{if}(weak)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00113}00113\ \ \ \ \ min\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00114}00114\ \ \ \ \ max\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00115}00115\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00117}00117\ \ \ \textcolor{keywordflow}{while}(min\ <\ max)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ iteratively\ narrow\ the\ min-\/max\ exploration\ window}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordtype}{int}\ med\ =\ min\ +\ (max\ -\/\ min)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}(med\ <=\ 0\ \&\&\ min\ /\ 2\ <\ med)\ med\ =\ min\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(med\ >=\ 0\ \&\&\ max\ /\ 2\ >\ med)\ med\ =\ max\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ negamax(P,\ med,\ med\ +\ 1);\ \ \ \textcolor{comment}{//\ use\ a\ null\ depth\ window\ to\ know\ if\ the\ actual\ score\ is\ greater\ or\ smaller\ than\ med}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{if}(r\ <=\ med)\ max\ =\ r;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{else}\ min\ =\ r;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00124}00124\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00125}00125\ \ \ \textcolor{keywordflow}{return}\ min;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00126}00126\ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00128}00128\ std::vector<int>\ Solver::analyze(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{Position}}\ \&P,\ \textcolor{keywordtype}{bool}\ weak)\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00129}00129\ \ \ std::vector<int>\ scores(Position::WIDTH,\ Solver::INVALID\_MOVE);}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00130}00130\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ Position::WIDTH;\ col++)}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{if}\ (P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a370217c553a85bf306a30dd6ec517816}{canPlay}}(col))\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00132}00132\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a41e50e20178f9123493b7ec043a1807e}{isWinningMove}}(col))\ scores[col]\ =\ (Position::WIDTH\ *\ Position::HEIGHT\ +\ 1\ -\/\ P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a54cbadf5b92b5eb819a6c3e6c4b2efa0}{nbMoves}}())\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00133}00133\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ Position\ P2(P);}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ P2.playCol(col);}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ scores[col]\ =\ -\/solve(P2,\ weak);}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00137}00137\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00138}00138\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00139}00139\ \ \ \textcolor{keywordflow}{return}\ scores;}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00140}00140\ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00142}00142\ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00143}00143\ Solver::Solver()\ :\ nodeCount\{0\}\ \{}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00144}00144\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Position::WIDTH;\ i++)\ \textcolor{comment}{//\ initialize\ the\ column\ exploration\ order,\ starting\ with\ center\ columns}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00145}00145\ \ \ \ \ columnOrder[i]\ =\ Position::WIDTH\ /\ 2\ +\ (1\ -\/\ 2\ *\ (i\ \%\ 2))\ *\ (i\ +\ 1)\ /\ 2;\ \textcolor{comment}{//\ example\ for\ WIDTH=7:\ columnOrder\ =\ \{3,\ 4,\ 2,\ 5,\ 1,\ 6,\ 0\}}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00146}00146\ \}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00148}00148\ \}\ \textcolor{comment}{//\ namespace\ Connect4}}
+\DoxyCodeLine{\Hypertarget{Solver_8cpp_source_l00149}00149\ \}\ \textcolor{comment}{//\ namespace\ GameSolver}}
+
+\end{DoxyCode}
