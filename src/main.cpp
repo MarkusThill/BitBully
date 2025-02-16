@@ -63,7 +63,8 @@ int main(const int argc, const char* const argv[]) {
   if (args.find("--filename") != args.end())
     filename = args["--filename"];
   else
-    filename = "../times_" + std::to_string(nPly) + "_ply.csv";
+    filename = "../times_" + std::to_string(nPly) + "_ply_" +
+               std::to_string(nRepeats) + "_pos.csv";
 
   std::vector<std::tuple<float, float>> times = {};
 
@@ -105,7 +106,7 @@ int main(const int argc, const char* const argv[]) {
       exit(EXIT_FAILURE);
     }
 
-    if (i % (nRepeats / 100 + 1) == 0) {
+    if (i % (std::max(nRepeats, 100) / 100) == 0) {
       std::cout << "Done with " << i << " iterations" << std::endl;
     }
   }
