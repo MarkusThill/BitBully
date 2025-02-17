@@ -1,6 +1,9 @@
 name: Generate Doxygen Documentation
 
-on: [ push, pull_request ]
+on:
+  push:
+    tags:
+      - "v*"  # Runs only on new tags starting with 'v'
 
 jobs:
   generate-docs:
