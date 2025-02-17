@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest ] # TODO: , windows-latest, macos-13, macos-latest
+        os: [ ubuntu-latest, windows-latest, macos-13, macos-latest ]
 
     steps:
       - uses: actions/checkout@v4
@@ -76,6 +76,7 @@ jobs:
           merge-multiple: true
 
       # publish to test pypi first
+      # deactivate when publishing to the main pypy
       #- uses: pypa/gh-action-pypi-publish@release/v1
       #  with:
       #    verbose: true
@@ -85,6 +86,9 @@ jobs:
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
           verbose: true
+          # attestations: false # Turn attestations off in case of issues
+
+
 
   delete_artifacts:
     name: Delete unnecessary GitHub Artifacts
