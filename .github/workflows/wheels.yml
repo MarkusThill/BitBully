@@ -76,10 +76,10 @@ jobs:
           merge-multiple: true
 
       # publish to test pypi first
-      - uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          verbose: true
-          repository-url: https://test.pypi.org/legacy/
+      #- uses: pypa/gh-action-pypi-publish@release/v1
+      #  with:
+      #    verbose: true
+      #    repository-url: https://test.pypi.org/legacy/
 
       # publish to main PyPI
       - uses: pypa/gh-action-pypi-publish@release/v1
