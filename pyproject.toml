@@ -33,19 +33,23 @@ dev = [
     "twine",
     "readme_renderer[md]",
     "keyrings.alt",
-    "pre-commit"
+    "pre-commit",
+    "pydoclint",
+    "mkdocs",
+    "mkdocstrings[python]",
+    "mkdocs-material",
+    "mypy"
 ]
 
 gui = [
     "matplotlib",
-    "ipywidgets"
+    "ipywidgets",
+    "ipympl"
 ]
 
 ci = [
     "pytest", # For testing
     "ruff", # For linting
-    "mkdocs",
-    "mkdocs-material"
 ]
 
 [build-system]
@@ -88,3 +92,55 @@ pre_bump_hooks = "./scripts/update_version.sh"
 tag_format = "v$version"  # Tag format (e.g., v1.0.0)
 changelog_file = "CHANGELOG.md"  # File to store changelog (if needed)
 update_changelog_on_bump = true
+
+[tool.pydoclint]
+style = "google"
+exclude = '\.git'
+allow-init-docstring = true
+
+[tool.ruff]
+line-length = 88
+include = ["pyproject.toml", "src/**/*.py", "scripts/**/*.py"]
+exclude = ["thirdParty/"]
+
+[tool.ruff.lint]
+preview = true
+
+external = [
+    "DOC", # pydoclint
+]
+
+select = [
+    "A",
+    "ANN", # Enforce type hints
+    "C", # Flags overly complex functions
+    "D", # Encourages proper documentation
+    "DOC", # Pydocstyle (docs best practices)
+    "E", # Enforces basic style (e.g., indentation, line breaks)
+    "F", # Detects undefined variables, imports, syntax errors
+    "G", # flake8-logging
+    "FURB", # Encourages f-strings (for Python 3.6+)
+    "I", # Ensures proper import sorting
+    "N", # Enforces consistent function/class naming
+    "NPY", # Best practices for NumPy usage (if applicable)
+    "PD", # pandas vet
+    "PERF",
+    "PIE", # Flags unnecessary lambda expressions, etc.
+    "PT", # Best practices for testing (if using pytest)
+    "PTH", # Encourages pathlib over os.path
+    "PGH", # pygrep
+    "PYI", # PyPI
+    "Q", # quotes
+    "RET", # Detects unnecessary return statements & refactors returns
+    "RUF", # General Ruff improvements
+    "UP", # Encourages modern Python syntax
+    "SIM", # Flags redundant expressions & improves readability
+    "W", # Enforces basic style (e.g., indentation, line breaks)
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+ignore_missing_imports = true
+disallow_untyped_defs = true

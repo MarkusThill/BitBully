@@ -5,3 +5,9 @@ nav:
   - Home: index.md
   - Python Docs: python.md
   - C++ Docs: cpp/html/index.html  # Link to Doxygen HTML docs
+  - API Reference:
+      - BitBully: python.md
+
+plugins:
+- search
+- mkdocstrings

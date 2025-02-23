@@ -5,6 +5,14 @@ exclude: |
   (src/bitbully/assets/book_12ply\.dat
    |src/bitbully/assets/book_12ply_distances\.dat)
 repos:
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: python
+        types_or: [ python, pyi ]
+        args: [ --install-types, --non-interactive ]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
