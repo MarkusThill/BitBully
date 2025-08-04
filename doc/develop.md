@@ -1,5 +1,20 @@
 # Development
 
+## Usual Push Procedure
+```bash
+mv dist/ dist.old # if applicable
+python -m build # local build should pass
+cibuildwheel --output-dir dist # now build for the other specified platforms
+twine check dist/* # Check package metadata in dist folder
+twine check dist/* --strict # Check package metadata in dist folder (strict)
+git add -u # or add whatever you want to commit
+pre-commit run # make sure that this passes
+git commit -m "fix|feat|docs|...: message" # commit using semantic versioning
+cz bump --dry-run
+cz bump
+git push --atomic origin master vx.x.x # make sure that you set the correct version
+```
+
 ## Compiler
 
 The code was compiled with:
@@ -171,14 +186,18 @@ pip install bitbully
 3. `git add <files>` – Stage specific files.
 4. `git commit -m "<message>"` – Commit changes with a message.
 5. `git commit --amend` – Modify the last commit.
+5. `git push --atomic origin master v<version>` –  Atomically pushes master branch and tags
 6. `git push` – Push changes to the remote repository.
-7. `git tag -l` – List tags.
+7. `git tag -l`, `git tag --list` – List tags.
 8. `git tag -d <tag>` – Delete a local tag.
 9. `git push origin --delete <tag>` – Delete a remote tag.
 10. `git diff` – Show differences between changes.
 11. `git fetch` – Fetch changes from the remote repository.
+11. `git fetch upstream` – Fetches changes from the upstream repository
 12. `git rebase <branch>` – Rebase the current branch.
 13. `git merge <branch>` – Merge a branch into the current branch.
+14. `git merge upstream/main` – Merge changes from upstream/main branch
+15. `git checkout <file>` – Revert changes in a specific file
 
 ### **Git Submodule Commands**
 
@@ -190,6 +209,11 @@ pip install bitbully
 ### **Formatting and Linting**
 
 1. `ruff format <file>` – Format Python code using Ruff.
+2. `ruff format .` – Format all files using Ruff
+3. `ruff check --fix` – Run Ruff checks and apply automatic fixes
+4. `ruff check --unsafe-fixes --fix` – Run Ruff checks with unsafe fixes
+5. `ruff format notebooks/*` – Format Jupyter notebook files
+6. `ruff clean` – Clean Ruff cache and temporary files
 2. `clang-format <file>` – Format C++ code using Clang-Format.
 
 ### **CMake Commands**
@@ -224,6 +248,8 @@ pip install bitbully
 
 1. `python -m build` – Build a Python package.
 2. `twine upload dist/*` – Upload the package to PyPI.
+3. `twine check dist/*` – Check package metadata in dist folder
+4. `twine check dist/* --strict` – Strictly check package metadata in dist fol
 3. `python -m build --wheel` – Build only the wheel package.
 4. `python -m build --sdist` – Build only the source distribution.
 5. `python -m build --platform-tag` – Add a specific platform tag to the build.
@@ -263,6 +289,7 @@ pip install bitbully
 4. `doxygen Doxyfile` – Generate Doxgen Docs based on configuration in `Doxyfile`
 5. `python3 -m http.server 8000 --directory docs/html/` – Serve documentation locally on port `8000`
 6. `doxygen -w html header.html footer.html style.css` – Generate template files for customizing Doxygen's output.
+7. `doxygen --version` - get version
 
 Installation script (used in `doxygen.yml`):
 
@@ -287,6 +314,10 @@ sudo make install
 2. `cat <file>` – View file contents.
 3. `pip show <package>` – Display package details.
 4. `sudo apt install <package>` – Install a package using APT.
+
+### **mkdocs**
+1. `pip install mkdocs-material mkdocstrings[python] pymdown-extensions` - mkdocs extensions
+2.
 
 ### **Node.js and NPM**
 

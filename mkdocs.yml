@@ -1,9 +1,11 @@
 site_name: BitBully Docs
 theme:
   name: material
+  features:
+    - content.code.copy
+    - content.code.annotate   # (optional) Enables annotation features for clarity
 nav:
   - Home: index.md
-  - Python Docs: python.md
   - C++ Docs: cpp/html/index.html  # Link to Doxygen HTML docs
   - API Reference:
       - BitBully: python.md

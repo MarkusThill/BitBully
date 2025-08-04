@@ -38,9 +38,11 @@ class GuiC4:
     Examples:
         Generally, you should this method to retreive and display the widget.
 
+        ```pycon
         >>> %matplotlib ipympl
         >>> c4gui = GuiC4()
         >>> display(c4gui.get_widget())
+        ```
 
     """
 
@@ -440,9 +442,11 @@ class GuiC4:
         Examples:
             Generally, you should this method to retreive and display the widget.
 
+            ```pycon
             >>> %matplotlib ipympl
             >>> c4gui = GuiC4()
             >>> display(c4gui.get_widget())
+            ```
 
         Returns:
             AppLayout: the widget.
