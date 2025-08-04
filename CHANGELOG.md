@@ -1,3 +1,11 @@
+## v0.0.40 (2025-08-04)
+
+### Fix
+
+- smaller changes in docs
+- added two jupyter notebooks
+- clean-up c4 widget
+
 ## v0.0.39 (2025-02-17)
 
 ### Fix

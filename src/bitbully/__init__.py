@@ -1,3 +1,3 @@
 """BitBully package: A fast Python-based Connect-4 solver."""
 
-__version__ = "0.0.39"
+__version__ = "0.0.40"
