@@ -16,9 +16,10 @@
 #include "gtest/gtest.h"
 
 #ifdef _WIN32  // Check if we're on a Windows platform
-    using Clock = std::chrono::steady_clock;  // Use steady_clock on Windows
+using Clock = std::chrono::steady_clock;  // Use steady_clock on Windows
 #else
-    using Clock = std::chrono::high_resolution_clock;  // Use high_resolution_clock on other platforms
+using Clock = std::chrono::high_resolution_clock;  // Use high_resolution_clock
+                                                   // on other platforms
 #endif
 
 class BitBullyTest : public ::testing::Test {
@@ -71,8 +72,7 @@ TEST_F(BitBullyTest, comparePonsBitbully) {
 
 TEST_F(BitBullyTest, test2) {
   using B = BitBully::Board;
-  using time_point =
-      std::chrono::time_point<Clock>;
+  using time_point = std::chrono::time_point<Clock>;
   using duration = std::chrono::duration<float>;
   float time1 = 0.0F, time2 = 0.0F;
 

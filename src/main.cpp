@@ -1,3 +1,4 @@
+#include <chrono>
 #include <fstream>
 #include <iomanip>  // For setting precision
 #include <iostream>
@@ -8,15 +9,15 @@
 #include <tuple>
 #include <unordered_map>
 #include <vector>
-#include <chrono>
 
 #include "BitBully.h"
 #include "Board.h"
 
 #ifdef _WIN32  // Check if we're on a Windows platform
-    using Clock = std::chrono::steady_clock;  // Use steady_clock on Windows
+using Clock = std::chrono::steady_clock;  // Use steady_clock on Windows
 #else
-    using Clock = std::chrono::high_resolution_clock;  // Use high_resolution_clock on other platforms
+using Clock = std::chrono::high_resolution_clock;  // Use high_resolution_clock
+                                                   // on other platforms
 #endif
 
 void writeToCSV(const std::vector<std::tuple<float, float>>& data,
