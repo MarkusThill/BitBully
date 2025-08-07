@@ -4,12 +4,13 @@ on:
   push:
     tags:
       - "v*"  # Runs only on new tags starting with 'v'
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 25 # Consider increasing timeout
+    timeout-minutes: 30 # Consider increasing timeout
     strategy:
       fail-fast: false
       matrix:
