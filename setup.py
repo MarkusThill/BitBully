@@ -70,7 +70,7 @@ class CMakeExtension(Extension):
 
 setup(
     # name="bitbully",
-    # version="0.0.42",  # already defined in the pyproject.toml
+    # version="0.0.43",  # already defined in the pyproject.toml
     # packages=["bitbully"],
     ext_modules=[CMakeExtension("bitbully.bitbully_core")],
     cmdclass={"build_ext": CMakeBuildExtension},
