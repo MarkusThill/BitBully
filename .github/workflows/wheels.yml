@@ -13,7 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-13, macos-latest, ubuntu-24.04-arm ]
+        # Add again, once repo is no longer private: ubuntu-24.04-arm
+        os: [ ubuntu-latest, windows-latest, macos-13, macos-latest ]
 
     steps:
       - uses: actions/checkout@v4
