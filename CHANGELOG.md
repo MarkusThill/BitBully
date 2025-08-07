@@ -1,3 +1,9 @@
+## v0.0.44 (2025-08-08)
+
+### Fix
+
+- addressed license issue
+
 ## v0.0.43 (2025-08-08)
 
 ### Fix
