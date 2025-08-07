@@ -7,8 +7,8 @@ var annotated_dup =
       [ "OpeningBook", "d2/d9f/classBitBully_1_1OpeningBook.html", null ],
       [ "TranspositionTable", "db/dc6/classBitBully_1_1TranspositionTable.html", "db/dc6/classBitBully_1_1TranspositionTable" ]
     ] ],
-    [ "bitbully", null, [
-      [ "gui_c4", null, [
+    [ "bitbully", "d4/dde/namespacebitbully.html", [
+      [ "gui_c4", "d5/d32/namespacebitbully_1_1gui__c4.html", [
         [ "GuiC4", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4" ]
       ] ]
     ] ],

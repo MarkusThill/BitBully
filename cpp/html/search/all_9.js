@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nbmoves_0',['nbMoves',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a54cbadf5b92b5eb819a6c3e6c4b2efa0',1,'GameSolver::Connect4::Position']]]
+  ['load_0',['load',['../d3/d78/classGameSolver_1_1Connect4_1_1OpeningBook.html#abfb2e1be9ff994f402a28e3a0f96fed6',1,'GameSolver::Connect4::OpeningBook']]]
 ];

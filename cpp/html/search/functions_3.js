@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iswinningmove_0',['isWinningMove',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a41e50e20178f9123493b7ec043a1807e',1,'GameSolver::Connect4::Position']]]
+  ['destroy_0',['destroy',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e',1,'bitbully::gui_c4::GuiC4']]]
 ];

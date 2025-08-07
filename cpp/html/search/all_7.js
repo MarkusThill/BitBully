@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['load_0',['load',['../d3/d78/classGameSolver_1_1Connect4_1_1OpeningBook.html#abfb2e1be9ff994f402a28e3a0f96fed6',1,'GameSolver::Connect4::OpeningBook']]]
+  ['iswinningmove_0',['isWinningMove',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a41e50e20178f9123493b7ec043a1807e',1,'GameSolver::Connect4::Position']]]
 ];

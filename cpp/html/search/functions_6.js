@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['movescore_0',['moveScore',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#ad2feea243d7d6ce71e6a7318336dcf6d',1,'GameSolver::Connect4::Position']]],
-  ['movesorter_1',['MoveSorter',['../d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html#ad41bb041bfc4f52ad8996a3cea049c08',1,'GameSolver::Connect4::MoveSorter']]]
+  ['key_0',['key',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a25ac95ae8ab8aa9322f6174cf42c1a9f',1,'GameSolver::Connect4::Position']]],
+  ['key3_1',['key3',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a91b0b3336eef6036ec24578cfea8f235',1,'GameSolver::Connect4::Position']]]
 ];
