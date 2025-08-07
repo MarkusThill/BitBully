@@ -1,3 +1,9 @@
+## v0.0.42 (2025-08-08)
+
+### Fix
+
+- addressed chrono issue under windows builds
+
 ## v0.0.41 (2025-08-07)
 
 ### Fix
