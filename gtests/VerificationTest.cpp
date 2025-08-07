@@ -3,7 +3,6 @@
 // TODO: Play n games against a random (or more advanced) player: It has to win
 // every single game! ...
 
-#include <chrono>
 #include <filesystem>
 #include <iostream>
 #include <numeric>
@@ -12,8 +11,6 @@
 #include "gtest/gtest.h"
 #include "version.h"
 
-using time_point = std::chrono::time_point<std::chrono::high_resolution_clock>;
-using duration = std::chrono::duration<float>;
 namespace fs = std::filesystem;
 
 class VerificationTest : public ::testing::Test {

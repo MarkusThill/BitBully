@@ -4,13 +4,19 @@
 // TODO: Log computation times using a software version into a txt file...
 // TODO: Play n games against a random (or more advanced) player: It has to win
 // every single game! ...
-
+#include <chrono>
 #include <numeric>
 #include <random>  // For C++11/C++17 random library
 
 #include "Board.h"
 #include "Solver.hpp"
 #include "gtest/gtest.h"
+
+#ifdef _WIN32  // Check if we're on a Windows platform
+    using Clock = std::chrono::steady_clock;  // Use steady_clock on Windows
+#else
+    using Clock = std::chrono::high_resolution_clock;  // Use high_resolution_clock on other platforms
+#endif
 
 class BoardTest : public ::testing::Test {
  protected:
@@ -135,7 +141,7 @@ TEST_F(BoardTest, isIllegalBit) {
 TEST_F(BoardTest, canWin) {
   using B = BitBully::Board;
   using time_point =
-      std::chrono::time_point<std::chrono::high_resolution_clock>;
+      std::chrono::time_point<Clock>;
   using duration = std::chrono::duration<float>;
 
   // Create a random number generator
@@ -151,15 +157,15 @@ TEST_F(BoardTest, canWin) {
     B b;
     GameSolver::Connect4::Position P;
     for (auto j = 0; j < B::N_COLUMNS * B::N_ROWS; ++j) {
-      time_point tstart = std::chrono::high_resolution_clock::now();
+      time_point tstart = Clock::now();
       auto result1 = P.canWinNext();
-      time_point tend = std::chrono::high_resolution_clock::now();
+      time_point tend = Clock::now();
       float d = duration(tend - tstart).count();
       time1 += d;
 
-      tstart = std::chrono::high_resolution_clock::now();
+      tstart = Clock::now();
       auto result2 = b.canWin();
-      tend = std::chrono::high_resolution_clock::now();
+      tend = Clock::now();
       d = duration(tend - tstart).count();
       time2 += d;
 

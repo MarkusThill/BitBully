@@ -8,10 +8,18 @@
 // TODO: Github CI/CD Pipeline
 // TODO: Namespace for Pons/FierzC4??
 
+#include <chrono>
+
 #include "BitBully.h"
 #include "Board.h"
 #include "Solver.hpp"
 #include "gtest/gtest.h"
+
+#ifdef _WIN32  // Check if we're on a Windows platform
+    using Clock = std::chrono::steady_clock;  // Use steady_clock on Windows
+#else
+    using Clock = std::chrono::high_resolution_clock;  // Use high_resolution_clock on other platforms
+#endif
 
 class BitBullyTest : public ::testing::Test {
  protected:
@@ -64,7 +72,7 @@ TEST_F(BitBullyTest, comparePonsBitbully) {
 TEST_F(BitBullyTest, test2) {
   using B = BitBully::Board;
   using time_point =
-      std::chrono::time_point<std::chrono::high_resolution_clock>;
+      std::chrono::time_point<Clock>;
   using duration = std::chrono::duration<float>;
   float time1 = 0.0F, time2 = 0.0F;
 
@@ -91,16 +99,16 @@ TEST_F(BitBullyTest, test2) {
 
     // std::cout << b.toString();
 
-    auto tstart = std::chrono::high_resolution_clock::now();
+    auto tstart = Clock::now();
     int scorePons = solver.solve(P, false);
-    auto tend = std::chrono::high_resolution_clock::now();
+    auto tend = Clock::now();
     auto d = float(duration(tend - tstart).count());
     time1 += d;
 
-    tstart = std::chrono::high_resolution_clock::now();
+    tstart = Clock::now();
     int scoreMine = bb.negamax(b, -100000, 100000, 0);
     // int scoreMine = bb.mtdf(b, 0);
-    tend = std::chrono::high_resolution_clock::now();
+    tend = Clock::now();
     d = float(duration(tend - tstart).count());
     time2 += d;
 
@@ -145,16 +153,16 @@ TEST_F(BitBullyTest, comparePonsBitbullyTime) {
     if (P.canWinNext()) continue;
 
     // bb.resetTranspositionTable();
-    auto tstart = std::chrono::high_resolution_clock::now();
+    auto tstart = Clock::now();
     int scoreMine = bb.mtdf(b, 0);
     // int scoreMine = bb.nullWindow(b);
-    auto tend = std::chrono::high_resolution_clock::now();
+    auto tend = Clock::now();
     auto d2 = float(duration(tend - tstart).count());
     time2 += d2;
 
-    tstart = std::chrono::high_resolution_clock::now();
+    tstart = Clock::now();
     int scorePons = solver.solve(P, false);
-    tend = std::chrono::high_resolution_clock::now();
+    tend = Clock::now();
     auto d1 = float(duration(tend - tstart).count());
     time1 += d1;
 
@@ -209,9 +217,9 @@ TEST_F(BitBullyTest, mtdfWithBook) {
     b.playMove(i);
     ASSERT_EQ(b.countTokens(), (i >= 0 ? 1 : 0));
     using duration = std::chrono::duration<float>;
-    const auto tstart = std::chrono::high_resolution_clock::now();
+    const auto tstart = Clock::now();
     const auto bitbullyValue = bb.mtdf(b, 0);
-    const auto tend = std::chrono::high_resolution_clock::now();
+    const auto tend = Clock::now();
     const auto d = float(duration(tend - tstart).count());
     std::cout << b.toString() << "GTV: " << bitbullyValue << ". time: " << d
               << "\n";

@@ -8,9 +8,16 @@
 #include <tuple>
 #include <unordered_map>
 #include <vector>
+#include <chrono>
 
 #include "BitBully.h"
 #include "Board.h"
+
+#ifdef _WIN32  // Check if we're on a Windows platform
+    using Clock = std::chrono::steady_clock;  // Use steady_clock on Windows
+#else
+    using Clock = std::chrono::high_resolution_clock;  // Use high_resolution_clock on other platforms
+#endif
 
 void writeToCSV(const std::vector<std::tuple<float, float>>& data,
                 const std::string& filename) {
@@ -77,9 +84,9 @@ int main(const int argc, const char* const argv[]) {
     auto [b, mvSequence] = BitBully::Board::randomBoard(nPly, true);
 
     // Bitbully:
-    auto tStart = std::chrono::high_resolution_clock::now();
+    auto tStart = Clock::now();
     const int scoreBitbully = bb.mtdf(b, 0);
-    auto tEnd = std::chrono::high_resolution_clock::now();
+    auto tEnd = Clock::now();
     auto timeBitbully = static_cast<float>(duration(tEnd - tStart).count());
 
     // Pons-C4:
@@ -94,9 +101,9 @@ int main(const int argc, const char* const argv[]) {
       std::cerr << "Error: (P.play(mvSequenceStr) != b.countTokens())";
       exit(EXIT_FAILURE);
     }
-    tStart = std::chrono::high_resolution_clock::now();
+    tStart = Clock::now();
     const int scorePonsC4 = solverPonsC4.solve(P, false);
-    tEnd = std::chrono::high_resolution_clock::now();
+    tEnd = Clock::now();
     auto timePonsC4 = static_cast<float>(duration(tEnd - tStart).count());
     times.emplace_back(timeBitbully, timePonsC4);
 
