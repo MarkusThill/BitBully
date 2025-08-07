@@ -1,3 +1,9 @@
+## v0.0.41 (2025-08-07)
+
+### Fix
+
+- cleanup setup.py for ruff and mypy
+
 ## v0.0.40 (2025-08-04)
 
 ### Fix
