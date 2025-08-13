@@ -1,3 +1,9 @@
+## v0.0.45 (2025-08-13)
+
+### Fix
+
+- make sure bitbully_core is created and added to wheel under windows
+
 ## v0.0.44 (2025-08-08)
 
 ### Fix
