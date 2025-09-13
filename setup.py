@@ -86,9 +86,7 @@ class CMakeBuildExtension(build_ext):
             Path(self.build_temp).mkdir(parents=True)
 
         # Run CMake
-        subprocess.check_call(
-            ["cmake", ext.sourcedir, *cmake_args], cwd=self.build_temp
-        )
+        subprocess.check_call(["cmake", ext.sourcedir, *cmake_args], cwd=self.build_temp)
         # Run the build
         subprocess.check_call(
             ["cmake", "--build", ".", "--target", "bitbully_core", *build_args],

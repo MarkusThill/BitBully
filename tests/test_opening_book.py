@@ -2,7 +2,7 @@
 
 import importlib.resources
 
-from bitbully import bitbully_core as bbc
+import bitbully.bitbully_core as bbc
 
 
 def test_12_ply_with_distance() -> None:
