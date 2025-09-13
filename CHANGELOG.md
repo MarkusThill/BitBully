@@ -1,3 +1,10 @@
+## v0.0.46 (2025-09-13)
+
+### Fix
+
+- remove support for python3.8 and 3.9
+- remove builds for python versions which reached eol
+
 ## v0.0.45 (2025-08-13)
 
 ### Fix
