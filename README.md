@@ -56,7 +56,7 @@ both developers and researchers.
 
 ### Prerequisites
 
-- **Python**: Version 3.8 or higher, PyPy 3.10 or higher
+- **Python**: Version 3.10 or higher, PyPy 3.10 or higher
 
 ---
 

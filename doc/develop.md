@@ -1,6 +1,7 @@
 # Development
 
 ## Usual Push Procedure
+
 ```bash
 mv dist/ dist.old # if applicable
 python -m build # local build should pass
@@ -13,12 +14,23 @@ git commit -m "fix|feat|docs|...: message" # commit using semantic versioning
 cz bump --dry-run
 cz bump
 git push --atomic origin master vx.x.x # make sure that you set the correct version
+# build will now be performed on GitHub Runners
 ```
 
 ## Compiler
 
 The code was compiled with:
 gcc 13.1.0
+
+### Configure gov-13 to match g++-13/gcc-13
+
+The version of gcov has to match our compiler version, in order to be able to produce coverage reports:
+
+```bash
+sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-11 50 # for compiler version 11
+sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-13 100 # for compiler version 13 (as we have here)
+sudo update-alternatives --config gcov
+```
 
 # Development (Debian-based Systems)
 
@@ -186,7 +198,7 @@ pip install bitbully
 3. `git add <files>` – Stage specific files.
 4. `git commit -m "<message>"` – Commit changes with a message.
 5. `git commit --amend` – Modify the last commit.
-5. `git push --atomic origin master v<version>` –  Atomically pushes master branch and tags
+5. `git push --atomic origin master v<version>` – Atomically pushes master branch and tags
 6. `git push` – Push changes to the remote repository.
 7. `git tag -l`, `git tag --list` – List tags.
 8. `git tag -d <tag>` – Delete a local tag.
@@ -316,6 +328,7 @@ sudo make install
 4. `sudo apt install <package>` – Install a package using APT.
 
 ### **mkdocs**
+
 1. `pip install mkdocs-material mkdocstrings[python] pymdown-extensions` - mkdocs extensions
 2.
 

@@ -10,7 +10,7 @@ maintainers = [
     { name = "Markus Thill" }
 ]
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 
 license = { file = "LICENSE" }
 
@@ -78,7 +78,7 @@ include-package-data = true  # Include additional non-Python files (e.g., librar
 build = "cp310-* cp311-* cp312-* cp313-* pp38-* pp39-* pp310-*"
 enable = ["pypy"]  # <-- required in cibuildwheel 3.x
 #build = "cp311-*" # TODO: Change back to above setting
-skip = "*win32* cp38-macosx_arm64*"
+skip = "*win32* cp38-macosx_arm64*" # TODO: probably can be removed
 environment = "MACOSX_DEPLOYMENT_TARGET=10.15"
 
 [tool.setuptools.packages.find]
