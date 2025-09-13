@@ -1,3 +1,9 @@
+## v0.0.47-a0 (2025-09-13)
+
+### Fix
+
+- allow fast builds with prereleases
+
 ## v0.0.46 (2025-09-13)
 
 ### Fix
