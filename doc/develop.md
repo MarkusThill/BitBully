@@ -2,6 +2,8 @@
 
 ## Usual Push Procedure
 
+If possible, also try the build on a windows-native machine since there are some subtle differences in the build process:
+
 ```bash
 mv dist/ dist.old # if applicable
 python -m build # local build should pass

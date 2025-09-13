@@ -1,7 +1,7 @@
 # BitBully: A fast and perfect-playing Connect-4 Agent for Python 3 & C/C++
 
 <h1 align="center">
-<img src="bitbully-logo-full.png" alt="bitbully-logo-full.png" width="400" >
+<img src="https://markusthill.github.io/assets/img/project_bitbully/bitbully-logo-full-800.webp" alt="bitbully-logo-full" width="400" >
 </h1><br>
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/MarkusThill/BitBully)
@@ -33,7 +33,6 @@ both developers and researchers.
 - [Build and Install](#build-and-install)
 - [Usage](#usage)
 - [Examples](#examples)
-- [Python API](#python-api)
 - [Testing and CI](#testing-and-ci)
 - [Contributing](#contributing)
 - [License](#license)
@@ -185,7 +184,7 @@ ob.getBoardValue(b)  # Get game-theoretic value (also checks mirrored board)
 
 ### Prerequisites
 
-- **Python**: Version 3.8 or higher
+- **Python**: Version 3.10 or higher
 - **CMake**: Version 3.15 or higher
 - **C++ Compiler**: A compiler supporting C++17 (e.g., GCC, Clang, MSVC)
 - **Python Development Headers**: Required for building the Python bindings
@@ -219,29 +218,9 @@ ob.getBoardValue(b)  # Get game-theoretic value (also checks mirrored board)
 
 ---
 
-## Python API (Detailed Docs will follow)
+## Python API Docs
 
-### `BitBully` Class
-
-- **`mtdf(board, first_guess)`**: Executes the MTD(f) algorithm.
-- **`nullWindow(board)`**: Performs a null-window search.
-- **`resetTranspositionTable()`**: Clears the transposition table.
-- **`getNodeCounter()`**: Returns the number of nodes evaluated.
-- **`resetNodeCounter()`**: Resets the node counter.
-
-### `Board` Class
-
-- **Game State Management**:
-    - `playMove(column)` / `playMoveFastBB(move)`
-    - `setBoard(array)` / `setBoard(move_sequence)`
-    - `generateMoves()` / `generateNonLosingMoves()`
-- **Analysis and Queries**:
-    - `canWin()` / `hasWin()`
-    - `findThreats(moves)` / `doubleThreat(moves)`
-- **Utilities**:
-    - `toString()` / `toArray()`
-    - `hash()` / `uid()`
-    - `mirror()`
+Please refer to the docs here: [https://markusthill.github.io/BitBully/](https://markusthill.github.io/BitBully/).
 
 ---
 
@@ -276,7 +255,7 @@ Contributions are welcome! Follow these steps:
    ```
 3. Install pre-commit hooks:
    ```
-   TODO
+   pre-commit install --hook-type commit-msg --hook-type pre-push
    ```
 3. Commit your changes:
    ```bash
