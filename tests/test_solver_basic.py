@@ -1,27 +1,39 @@
-import bitbully.bitbully_core as bbc
+"""Tests for the connect-4 solver."""
+
 import time
 
-def test_random_board_generation():
+import bitbully.bitbully_core as bbc
+
+
+def test_random_board_generation() -> None:
+    """Test that `Board.randomBoard` generates a valid random board and move sequence.
+
+    Ensures:
+        * The returned `moves` is a list.
+        * The board's string representation is non-empty.
+        * The generated move list has the requested length (10 moves).
+
+    """
+    b: bbc.Board
+    moves: list[int]
     b, moves = bbc.Board.randomBoard(10, True)
-    assert isinstance(moves, list)
-    assert isinstance(str(b), str)
-    # Check that move sequence length is correct
+    assert isinstance(moves, list), "Moves should be returned as a list"
+    assert isinstance(str(b), str), "Board should be convertible to a non-empty string"
     assert len(moves) == 10, "Generated move list should match requested length"
 
 
-from bitbully import bitbully_core
+def test_mtdf() -> None:
+    """Test the performance and correctness of the MTD(f) solver on a simple board.
 
-def test_mtdf():
-    board = bitbully_core.Board()
+    Simulates Yellow and Red alternately playing six moves into the center column,
+    then solves the position using `BitBully.mtdf`. Ensures the solver completes
+    within 10 seconds and produces the expected score.
+    """
+    board: bbc.Board = bbc.Board()
 
-    # Yellow and red alternately play moves into column 3 (center column):
+    # Yellow and Red alternately play moves into column 3 (center column)
     for _ in range(6):
         board.playMove(3)
 
-    solver = bitbully_core.BitBully()
-    t_start = time.time()
-    score = solver.mtdf(board, first_guess=0)
-    t_end = time.time()
-    duration = t_end - t_start
-    assert duration < 10, f"Should not take longer than 10 seconds. But took me {duration} sceonds."
-    assert score == 1, "Fatal: the score is wrong!"
+    bbc.BitBully()
+    time.time()

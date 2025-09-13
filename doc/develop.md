@@ -20,7 +20,7 @@ git push --atomic origin master vx.x.x # make sure that you set the correct vers
 # build will now be performed on GitHub Runners
 ```
 
-You can also build pre-release versions like this:
+You can also build pre-release versions like this.
 
 ```bash
 cz bump --prerelease alpha   # Creates 1.2.3a0 if current is 1.2.3
@@ -28,6 +28,8 @@ cz bump --prerelease beta
 cz bump --prerelease rc
 cz bump --prerelease rc --increment minor # To bump the minor version and start a pre-release
 ```
+
+In this case, after pushing to the repository, only a small build for Python3.11 is performed and the results wheels are pushed to Test-PyPI instead of the real PyPi.
 
 ## Compiler
 
