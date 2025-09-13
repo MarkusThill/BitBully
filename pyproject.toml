@@ -80,6 +80,8 @@ enable = ["pypy"]  # <-- required in cibuildwheel 3.x
 #build = "cp311-*" # TODO: Change back to above setting
 skip = "*win32* cp38-macosx_arm64*" # TODO: probably can be removed
 environment = "MACOSX_DEPLOYMENT_TARGET=10.15"
+test-requires = ["pytest", "numpy"]
+test-command = "pytest -v -ra {project}/tests"
 
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)

@@ -5,6 +5,7 @@
 If possible, also try the build on a windows-native machine since there are some subtle differences in the build process:
 
 ```bash
+pytest tests/ # ensure that tests run through
 mv dist/ dist.old # if applicable
 python -m build # local build should pass
 cibuildwheel --output-dir dist # now build for the other specified platforms
@@ -17,6 +18,15 @@ cz bump --dry-run
 cz bump
 git push --atomic origin master vx.x.x # make sure that you set the correct version
 # build will now be performed on GitHub Runners
+```
+
+You can also build pre-release versions like this:
+
+```bash
+cz bump --prerelease alpha   # Creates 1.2.3a0 if current is 1.2.3
+cz bump --prerelease beta
+cz bump --prerelease rc
+cz bump --prerelease rc --increment minor # To bump the minor version and start a pre-release
 ```
 
 ## Compiler
