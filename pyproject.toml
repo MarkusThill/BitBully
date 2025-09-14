@@ -77,10 +77,14 @@ include-package-data = true  # Include additional non-Python files (e.g., librar
 [tool.cibuildwheel]
 build = "cp310-* cp311-* cp312-* cp313-* pp38-* pp39-* pp310-* pp311-*"
 enable = ["pypy"]  # <-- required in cibuildwheel 3.x
-#build = "cp311-*" # TODO: Change back to above setting
-skip = "*win32* cp38-macosx_arm64*" # TODO: probably can be removed
+# build = "cp311-*" # TODO: Change back to above setting
+# skip = "*win32* cp38-macosx_arm64*" # TODO: probably can be removed
 environment = "MACOSX_DEPLOYMENT_TARGET=10.15"
-test-requires = ["pytest", "numpy"]
+# ----------------------------------------------------------------------------------------------------
+# on ubuntu runners, the latest numpy version is built from scratch, taking a lot of time (14.09.2025)
+# However, the versions should be updated from time to time.
+# ----------------------------------------------------------------------------------------------------
+test-requires = ["pytest", "numpy>=2.0,<2.3.0"]
 test-command = "pytest -v -ra {project}/tests"
 
 [tool.setuptools.packages.find]
