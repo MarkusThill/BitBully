@@ -345,7 +345,8 @@ sudo make install
 ### **mkdocs**
 
 1. `pip install mkdocs-material mkdocstrings[python] pymdown-extensions` - mkdocs extensions
-2.
+2. `mkdocs build`
+3. `mkdocs serve`
 
 ### **Node.js and NPM**
 
