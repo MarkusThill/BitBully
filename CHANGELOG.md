@@ -1,3 +1,9 @@
+## v0.0.50 (2025-09-14)
+
+### Fix
+
+- add accidentally removed win32-skips again
+
 ## v0.0.49 (2025-09-14)
 
 ### Fix
