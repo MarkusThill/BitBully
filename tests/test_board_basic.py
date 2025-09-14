@@ -1,6 +1,6 @@
 """Test basic board functionality."""
 
-import numpy as np
+import pytest
 
 import bitbully.bitbully_core as bbc
 
@@ -17,12 +17,17 @@ def test_empty_board_printable() -> None:
     assert s != "", "Printing an empty board should return a non-empty string"
 
 
+@pytest.mark.skip(
+    reason="Temporarily skipping since numpy is compilied from scratch " "on certain runners which takes forever."
+)
 def test_set_and_get_board() -> None:
     """Validate that a 7x6 NumPy array can be set on a Board instance.
 
     A single yellow token is placed in the center column, and
     `Board.setBoard` is expected to accept this valid configuration.
     """
+    import numpy as np
+
     arr: np.ndarray = np.zeros((7, 6), dtype=int)
     arr[3, 0] = 1  # Add a yellow token in the center column
     b: bbc.Board = bbc.Board()
