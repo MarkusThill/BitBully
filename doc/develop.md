@@ -82,6 +82,7 @@ pip install -e .[dev,ci]
 ```
 
 ```bash
+pre-commit install
 pre-commit install --hook-type commit-msg --hook-type pre-push
 ```
 
