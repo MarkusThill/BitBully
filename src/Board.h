@@ -145,7 +145,7 @@ class Board {
     return lsb(allMoves);
   }
 
-  bool operator==(const Board &b) const {
+  bool operator==(const Board& b) const {
     const bool equal = (b.m_bAllTokens == m_bAllTokens &&
                         b.m_bActivePTokens == m_bActivePTokens);
 
@@ -154,17 +154,17 @@ class Board {
     return equal;
   }
 
-  bool operator!=(const Board &b) const { return !(b == *this); }
+  bool operator!=(const Board& b) const { return !(b == *this); }
 
   TBitBoard findOddThreats(TBitBoard moves);
 
-  bool setBoard(const TBoardArray &board);
+  bool setBoard(const TBoardArray& board);
 
-  bool setBoard(const std::vector<int> &moveSequence);
+  bool setBoard(const std::vector<int>& moveSequence);
 
   [[nodiscard]] TBoardArray toArray() const;
 
-  static bool isValid(const TBoardArray &board);
+  static bool isValid(const TBoardArray& board);
 
   bool playMove(int column);
 
@@ -277,7 +277,7 @@ class Board {
     std::vector<Board> boardVector;
     boardVector.reserve(positions.size());  // Optimize memory allocation
 
-    for (const auto &[key, board] : positions) {
+    for (const auto& [key, board] : positions) {
       if (!exactlyN || board.countTokens() == upToNPly)
         boardVector.push_back(board);  // Copy each board into the vector
     }
@@ -400,8 +400,8 @@ class Board {
     playMoveFastBB(mvMask);
   }
 
-  static void addAfterStates(std::map<uint64_t, Board> &boardCollection,
-                             const Board &b, const int nPly) {
+  static void addAfterStates(std::map<uint64_t, Board>& boardCollection,
+                             const Board& b, const int nPly) {
     if (b.countTokens() >= nPly) {
       return;
     }

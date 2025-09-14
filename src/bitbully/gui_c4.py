@@ -12,7 +12,7 @@ import numpy.typing as npt
 from IPython.display import Javascript, clear_output, display
 from ipywidgets import AppLayout, Button, HBox, Layout, Output, VBox, widgets
 
-from bitbully import bitbully_core  # type: ignore[attr-defined]
+from bitbully import bitbully_core
 
 
 class GuiC4:
@@ -57,9 +57,7 @@ class GuiC4:
         ch.setLevel(logging.INFO)  # Set level for the handler
 
         # Create a formatter and add it to the handler
-        formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
+        formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
         ch.setFormatter(formatter)
 
         # Add the handler to the logger
@@ -114,9 +112,7 @@ class GuiC4:
         self.m_gameover = False
 
         # C4 agent
-        db_path = importlib.resources.files("bitbully").joinpath(
-            "assets/book_12ply_distances.dat"
-        )
+        db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
         self.bitbully_agent = bitbully_core.BitBully(db_path)
 
     def _reset(self) -> None:
@@ -132,7 +128,7 @@ class GuiC4:
         self.m_fig.canvas.flush_events()
         self._update_insert_buttons()
 
-    def _get_fig_size_px(self) -> npt.NDArray[np.float32]:
+    def _get_fig_size_px(self) -> npt.NDArray[np.float64]:
         # Get the size in inches
         size_in_inches = self.m_fig.get_size_inches()
         self.m_logger.debug("Figure size in inches: %f", size_in_inches)
@@ -205,9 +201,7 @@ class GuiC4:
                 ax.set_yticklabels([])
 
             fig.tight_layout()
-            plt.subplots_adjust(
-                wspace=0.05, hspace=0.05, left=0.0, right=1.0, top=1.0, bottom=0.0
-            )
+            plt.subplots_adjust(wspace=0.05, hspace=0.05, left=0.0, right=1.0, top=1.0, bottom=0.0)
             fig.suptitle("")
             fig.set_facecolor("darkgray")
             fig.canvas.toolbar_visible = False  # type: ignore[attr-defined]
@@ -315,18 +309,10 @@ class GuiC4:
 
     def _update_insert_buttons(self) -> None:
         for button, col in zip(self.m_insert_buttons, range(self.m_n_col)):
-            button.disabled = (
-                bool(self.m_height[col] >= self.m_n_row)
-                or self.m_gameover
-                or self.is_busy
-            )
+            button.disabled = bool(self.m_height[col] >= self.m_n_row) or self.m_gameover or self.is_busy
 
-        self.m_control_buttons["undo"].disabled = (
-            len(self.m_movelist) < 1 or self.is_busy
-        )
-        self.m_control_buttons["redo"].disabled = (
-            len(self.m_redolist) < 1 or self.is_busy
-        )
+        self.m_control_buttons["undo"].disabled = len(self.m_movelist) < 1 or self.is_busy
+        self.m_control_buttons["redo"].disabled = len(self.m_redolist) < 1 or self.is_busy
         self.m_control_buttons["move"].disabled = self.m_gameover or self.is_busy
         self.m_control_buttons["evaluate"].disabled = self.m_gameover or self.is_busy
 
@@ -390,9 +376,7 @@ class GuiC4:
         for col in range(self.m_n_col):
             button = Button(
                 description="⏬",
-                layout=Layout(
-                    width=f"{-3 + (fig_size_px[0] / self.m_n_col)}px", height="50px"
-                ),
+                layout=Layout(width=f"{-3 + (fig_size_px[0] / self.m_n_col)}px", height="50px"),
             )
             button.on_click(lambda b, col=col: self._insert_token(col))
             self.m_insert_buttons.append(button)
@@ -408,9 +392,7 @@ class GuiC4:
         textboxes = [
             widgets.Label(
                 value=chr(ord("a") + i),
-                layout=Layout(
-                    justify_content="center", align_items="center", width=width
-                ),
+                layout=Layout(justify_content="center", align_items="center", width=width),
             )
             for i in range(self.m_n_col)
         ]

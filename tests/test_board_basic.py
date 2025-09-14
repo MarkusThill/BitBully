@@ -1,8 +1,7 @@
 """Test basic board functionality."""
 
-import pytest
-
 import bitbully.bitbully_core as bbc
+import pytest
 
 
 def test_empty_board_printable() -> None:
@@ -18,7 +17,7 @@ def test_empty_board_printable() -> None:
 
 
 @pytest.mark.skip(
-    reason="Temporarily skipping since numpy is compilied from scratch " "on certain runners which takes forever."
+    reason="Temporarily skipping since numpy is compilied from scratch on certain runners which takes forever."
 )
 def test_set_and_get_board() -> None:
     """Validate that a 7x6 NumPy array can be set on a Board instance.

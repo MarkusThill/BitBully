@@ -27,7 +27,7 @@ class TranspositionTable {
     table = std::make_unique<Entry[]>(tableSize);
   }
 
-  inline Entry *get(const Board &b) {
+  inline Entry* get(const Board& b) {
     // Prefetching?:
     // size_t index = b.hash() & (tableSize - 1);
     // __builtin_prefetch(&table[index]);  // GCC/Clang prefetching

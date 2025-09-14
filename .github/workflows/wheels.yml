@@ -89,7 +89,7 @@ jobs:
 
       # Upload pre-releases to TestPyPI only
       - name: Publish to TestPyPI (pre-releases)
-        if: contains(github.ref, 'a') || contains(github.ref, 'b') || contains(github.ref, 'rc') || contains(github.ref, 'dev')
+        if: "contains(github.ref, '-')"   # Only run for tags like v1.0.0-rc1, v1.0.0-a2, etc.
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           verbose: true
@@ -97,7 +97,7 @@ jobs:
 
       # publish to main PyPI
       - name: Publish to PyPI (stable releases)
-        if: "!contains(github.ref, 'a') && !contains(github.ref, 'b') && !contains(github.ref, 'rc') && !contains(github.ref, 'dev')"
+        if: "!contains(github.ref, '-')"
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           verbose: true

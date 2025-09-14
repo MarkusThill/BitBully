@@ -18,7 +18,7 @@ Board::Board()
   assert(getRowMask(5) == getMask({5, 14, 23, 32, 41, 50, 59}));
 }
 
-bool Board::setBoard(const std::vector<int> &moveSequence) {
+bool Board::setBoard(const std::vector<int>& moveSequence) {
   Board b;  // First operate on copy
 
   for (const auto mv : moveSequence) {
@@ -28,7 +28,7 @@ bool Board::setBoard(const std::vector<int> &moveSequence) {
   return true;
 }
 
-bool Board::setBoard(const TBoardArray &board) {
+bool Board::setBoard(const TBoardArray& board) {
   if (!isValid(board)) {
     return false;
   }
@@ -58,7 +58,7 @@ bool Board::setBoard(const TBoardArray &board) {
   return true;
 }
 
-bool Board::isValid(const TBoardArray &board) {
+bool Board::isValid(const TBoardArray& board) {
   // Counter for P_YELLOW, P_RED and P_EMPTY
   std::array<int, N_VALID_BOARD_VALUES> valCounts = {0UL};
   for (auto c = static_cast<TBoardArray::size_type>(0); c < N_COLUMNS; ++c) {

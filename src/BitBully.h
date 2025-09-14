@@ -23,7 +23,7 @@ class BitBully {
  public:
   MoveList sortMoves(Board::TBitBoard moves);
 
-  explicit BitBully(const std::filesystem::path &bookPath = "")
+  explicit BitBully(const std::filesystem::path& bookPath = "")
       : nodeCounter{0},
         transpositionTable{
             USE_TRANSPOSITION_TABLE ? DEFAULT_LOG_TRANSPOSITION_SIZE : 0} {
@@ -34,7 +34,7 @@ class BitBully {
 
   inline void resetBook() { m_openingBook.reset(); }
 
-  inline bool loadBook(const std::filesystem::path &bookPath = "") {
+  inline bool loadBook(const std::filesystem::path& bookPath = "") {
     if (isBookLoaded()) {
       return false;
     }
@@ -46,7 +46,7 @@ class BitBully {
   }
 
   // TODO: firstGuess is a parameter which could be tuned!
-  int mtdf(const Board &b, const int firstGuess) {
+  int mtdf(const Board& b, const int firstGuess) {
     // MTD(f) algorithm by Aske Plaat: Plaat, Aske; Jonathan Schaeffer; Wim
     // Pijls; Arie de Bruin (November 1996). "Best-first Fixed-depth Minimax
     // Algorithms". Artificial Intelligence. 87 (1–2): 255–293.
@@ -68,7 +68,7 @@ class BitBully {
   }
 
   // generally, appears to be slower than mtdf
-  int nullWindow(const Board &b) {
+  int nullWindow(const Board& b) {
     int min = -b.movesLeft() / 2;
     int max = (b.movesLeft() + 1) / 2;
 
@@ -151,7 +151,7 @@ class BitBully {
     }
 
     // Transposition cutoff: TODO: Pretty ugly...
-    TranspositionTable::Entry *ttEntry = nullptr;
+    TranspositionTable::Entry* ttEntry = nullptr;
     if constexpr (USE_TRANSPOSITION_TABLE) {
       if (b.movesLeft() > 6 && b.movesLeft() % 2 == 0) {
         ttEntry = transpositionTable.get(b);
@@ -273,7 +273,7 @@ class BitBully {
     return value;
   }
 
-  auto scoreMoves(const Board &b) {
+  auto scoreMoves(const Board& b) {
     std::vector scores(Board::N_COLUMNS, -1000);
     for (auto col = 0UL; col < scores.size(); col++) {
       if (auto afterB = b; afterB.playMove(col)) {
