@@ -1,3 +1,9 @@
+## v0.0.49 (2025-09-14)
+
+### Fix
+
+- pinned numpy version for cibuildwheel tests
+
 ## v0.0.49-a0 (2025-09-14)
 
 ## v0.0.48 (2025-09-14)
