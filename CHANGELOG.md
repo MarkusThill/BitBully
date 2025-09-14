@@ -1,3 +1,9 @@
+## v0.0.53 (2025-09-14)
+
+### Fix
+
+- updated several dependencies
+
 ## v0.0.52 (2025-09-14)
 
 ### Fix
