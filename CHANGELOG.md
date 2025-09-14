@@ -1,3 +1,9 @@
+## v0.0.51 (2025-09-14)
+
+### Fix
+
+- loosen version requirement for numpy in cibuildwheel tests
+
 ## v0.0.50 (2025-09-14)
 
 ### Fix
