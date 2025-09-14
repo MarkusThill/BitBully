@@ -1,3 +1,9 @@
+## v0.0.52 (2025-09-14)
+
+### Fix
+
+- remove numpy from tests due to slow install on certain runners
+
 ## v0.0.51 (2025-09-14)
 
 ### Fix
