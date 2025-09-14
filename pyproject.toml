@@ -84,7 +84,7 @@ environment = "MACOSX_DEPLOYMENT_TARGET=10.15"
 # on ubuntu runners, the latest numpy version is built from scratch, taking a lot of time (14.09.2025)
 # However, the versions should be updated from time to time.
 # ----------------------------------------------------------------------------------------------------
-test-requires = ["pytest", "numpy>=2.0,<2.3.0"]
+test-requires = ["pytest", "numpy<2.3.0"]
 test-command = "pytest -v -ra {project}/tests"
 
 [tool.setuptools.packages.find]
