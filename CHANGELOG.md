@@ -1,3 +1,9 @@
+## v0.0.48 (2025-09-14)
+
+### Fix
+
+- change github workflow for pre-releases
+
 ## v0.0.47 (2025-09-14)
 
 ## v0.0.47-a4 (2025-09-13)
