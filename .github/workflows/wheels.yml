@@ -5,10 +5,6 @@ on:
     tags:
       - "v*"  # Runs only on new tags starting with 'v'
   workflow_dispatch:  # Allow manual triggering
-  workflow_run:
-    workflows: ["CMake on multiple platforms"]
-    types:
-      - completed
 
 jobs:
   build_wheels:
