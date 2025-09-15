@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     # 👇 For pre-release build only allow ubuntu and windows (macos is too expensive)
-    if: "!contains(github.ref, '-') || matrix.os == 'ubuntu-latest' || matrix.os == 'windows-latest'"
+    if: "!contains(github.ref, '-') || ${{  matrix.os }} == 'ubuntu-latest' || ${{  matrix.os }} == 'windows-latest'"
     runs-on: ${{ matrix.os }}
 
     strategy:
