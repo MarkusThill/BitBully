@@ -3,23 +3,7 @@
 import time
 
 import bitbully.bitbully_core as bbc
-
-
-def test_random_board_generation() -> None:
-    """Test that `Board.randomBoard` generates a valid random board and move sequence.
-
-    Ensures:
-        * The returned `moves` is a list.
-        * The board's string representation is non-empty.
-        * The generated move list has the requested length (10 moves).
-
-    """
-    b: bbc.Board
-    moves: list[int]
-    b, moves = bbc.Board.randomBoard(10, True)
-    assert isinstance(moves, list), "Moves should be returned as a list"
-    assert isinstance(str(b), str), "Board should be convertible to a non-empty string"
-    assert len(moves) == 10, "Generated move list should match requested length"
+import pytest
 
 
 def test_mtdf() -> None:
@@ -31,9 +15,36 @@ def test_mtdf() -> None:
     """
     board: bbc.Board = bbc.Board()
 
-    # Yellow and Red alternately play moves into column 3 (center column)
+    # Yellow and red alternately play moves into column 3 (center column):
     for _ in range(6):
         board.playMove(3)
 
-    bbc.BitBully()
-    time.time()
+    solver: bbc.BitBully = bbc.BitBully()
+    start = time.time()
+    score = solver.mtdf(board, first_guess=0)
+    print(f"Time: {round(time.time() - start, 2)} seconds!")
+    print(f"Best score: {score}")
+
+
+@pytest.mark.parametrize(
+    ("move_sequence", "expected_scores"),
+    [
+        ([3, 3, 3, 3, 3, 1, 1, 1, 1, 5, 5, 5, 5], [-2, -1, -2, -1, -2, -1, -2]),
+        ([3, 4, 1, 1, 0, 2, 2, 2], [-3, -3, 1, -4, 3, -2, -2]),
+        ([3, 3, 3, 3, 3, 3, 4, 2], [-2, -2, 2, -1000, -2, 1, -1]),
+    ],
+)
+def test_score_moves(move_sequence: list[int], expected_scores: list[int]) -> None:
+    """Test the scoreMoves function of BitBully for different board states.
+
+    Args:
+        move_sequence (list[int]): The sequence of moves to set up the board.
+        expected_scores (list[int]): The expected scores for each column after evaluation.
+    """
+    agent: bbc.BitBully = bbc.BitBully()
+    assert isinstance(agent, bbc.BitBully)
+    board: bbc.Board = bbc.Board()
+    assert board.setBoard(move_sequence)
+    scores: list[int] = agent.scoreMoves(board)
+    assert isinstance(scores, list)
+    assert scores == expected_scores

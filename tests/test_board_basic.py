@@ -43,3 +43,20 @@ def test_all_positions() -> None:
     b: bbc.Board = bbc.Board()  # Empty board
     board_list_3ply: list[bbc.Board] = b.allPositions(3, True)
     assert len(board_list_3ply) == 238, "Expected 238 positions for 3-ply search according to https://oeis.org/A212693"
+
+
+def test_random_board_generation() -> None:
+    """Test that `Board.randomBoard` generates a valid random board and move sequence.
+
+    Ensures:
+        * The returned `moves` is a list.
+        * The board's string representation is non-empty.
+        * The generated move list has the requested length (10 moves).
+
+    """
+    b: bbc.Board
+    moves: list[int]
+    b, moves = bbc.Board.randomBoard(10, True)
+    assert isinstance(moves, list), "Moves should be returned as a list"
+    assert isinstance(str(b), str), "Board should be convertible to a non-empty string"
+    assert len(moves) == 10, "Generated move list should match requested length"

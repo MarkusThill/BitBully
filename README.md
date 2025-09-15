@@ -32,7 +32,6 @@ both developers and researchers.
 - [Installation](#installation)
 - [Build and Install](#build-and-install)
 - [Usage](#usage)
-- [Examples](#examples)
 - [Testing and CI](#testing-and-ci)
 - [Contributing](#contributing)
 - [License](#license)
@@ -73,9 +72,14 @@ This will automatically download and install the pre-built package, including th
 
 ## Usage
 
+### Start with a simple Widget on Colab
+
+<a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/gameWidget.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 ### BitBully Lib (recommended)
 
 tbd
+Also add a simple Notebook with examples!
 
 ### BitBully Core (advanced)
 
@@ -127,7 +131,7 @@ print(board)
 # Solve the position
 solver = bitbully_core.BitBully()
 score = solver.mtdf(board, first_guess=0)
-print(f"Best score for the current board: {score}")
+print(f"Best score for the current board: {score}") # expected score: 1
 ```
 
 Run the Bitbully solver with an opening book (here: 12-ply opening book with winning distances):
