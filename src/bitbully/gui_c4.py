@@ -23,26 +23,29 @@ class GuiC4:
     provides the following main features:
 
     - Interactive Game Board: Presents a dynamic 6-row by 7-column
-      Connect-4 board with clickable board cells.
+        Connect-4 board with clickable board cells.
     - Matplotlib Integration: Utilizes Matplotlib figures
-      to render high-quality game visuals directly within Jupyter notebook environments.
+        to render high-quality game visuals directly within Jupyter notebook environments.
     - User Interaction: Captures and processes mouse clicks and button events, enabling
-      intuitive gameplay via either direct board interaction or button controls.
+        intuitive gameplay via either direct board interaction or button controls.
     - Undo/Redo Moves: Supports undo and redo functionalities, allowing users to
-      navigate through their move history during gameplay.
+        navigate through their move history during gameplay.
     - Automated Agent Moves: Incorporates BitBully, a Connect-4 backend engine, enabling
-      computer-generated moves and board evaluations.
+        computer-generated moves and board evaluations.
     - Game State Handling: Detects game-over scenarios, including win/draw conditions,
-      and provides immediate user feedback through popup alerts.
+        and provides immediate user feedback through popup alerts.
+
+    Attributes:
+        notify_output (widgets.Output): Output widget for notifications and popups.
 
     Examples:
-        Generally, you should this method to retreive and display the widget.
+            Generally, you should this method to retreive and display the widget.
 
-        ```pycon
-        >>> %matplotlib ipympl
-        >>> c4gui = GuiC4()
-        >>> display(c4gui.get_widget())
-        ```
+            ```pycon
+            >>> %matplotlib ipympl
+            >>> c4gui = GuiC4()
+            >>> display(c4gui.get_widget())
+            ```
 
     """
 
@@ -215,7 +218,7 @@ class GuiC4:
         self.m_fig = fig
         self.m_axs = axs
 
-    notify_output = widgets.Output()
+    notify_output: widgets.Output = widgets.Output()
     display(notify_output)
 
     @notify_output.capture()

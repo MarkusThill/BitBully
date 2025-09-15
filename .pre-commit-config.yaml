@@ -62,3 +62,8 @@ repos:
     hooks:
       - id: clang-format
         exclude: \.ipynb$
+  - repo: https://github.com/jsh9/pydoclint
+    rev: 0.7.3
+    hooks:
+      - id: pydoclint
+        args: [--style=google, --check-return-types=True]
