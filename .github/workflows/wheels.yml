@@ -5,9 +5,14 @@ on:
     tags:
       - "v*"  # Runs only on new tags starting with 'v'
   workflow_dispatch:  # Allow manual triggering
+  workflow_run:
+    workflows: ["CMake on multiple platforms"]
+    types:
+      - completed
 
 jobs:
   build_wheels:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 40 # Consider increasing timeout
@@ -31,7 +36,8 @@ jobs:
 
       # 👇 Pre-release build (only cp311-*)
       - name: Build wheels (for pre-release)
-        if: contains(github.ref, '-')   # Only run for tags like v1.0.0-rc1, v1.0.0-a2, etc.
+        # 👇 Only run for tags like v1.0.0-rc1, v1.0.0-a2, etc. Also, only build for ubuntu and windows
+        if: contains(github.ref, '-') && (matrix.os == 'ubuntu-latest' || matrix.os == 'windows-latest')
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           MACOSX_DEPLOYMENT_TARGET: "10.15"
