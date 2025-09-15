@@ -8,7 +8,6 @@ on:
 
 jobs:
   build_wheels:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 40 # Consider increasing timeout
