@@ -1,3 +1,9 @@
+## v0.0.54-a4 (2025-09-15)
+
+### Fix
+
+- cmake multi platform workflow
+
 ## v0.0.54-a3 (2025-09-15)
 
 ### Fix
