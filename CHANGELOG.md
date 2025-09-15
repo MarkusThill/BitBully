@@ -1,3 +1,51 @@
+## v0.0.54-a1 (2025-09-15)
+
+### Fix
+
+- do not build pre-releases for macos (expensive)
+- added pydoclint
+- added some docs on mkdocs
+- added badge to notebooks
+
+## v0.0.53 (2025-09-14)
+
+### Fix
+
+- updated several dependencies
+
+## v0.0.52 (2025-09-14)
+
+### Fix
+
+- remove numpy from tests due to slow install on certain runners
+
+## v0.0.51 (2025-09-14)
+
+### Fix
+
+- loosen version requirement for numpy in cibuildwheel tests
+
+## v0.0.50 (2025-09-14)
+
+### Fix
+
+- add accidentally removed win32-skips again
+
+## v0.0.49 (2025-09-14)
+
+### Fix
+
+- pinned numpy version for cibuildwheel tests
+
+## v0.0.54-a0 (2025-09-15)
+
+### Fix
+
+- do not build pre-releases for macos (expensive)
+- added pydoclint
+- added some docs on mkdocs
+- added badge to notebooks
+
 ## v0.0.53 (2025-09-14)
 
 ### Fix
