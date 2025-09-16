@@ -1,3 +1,9 @@
+## v0.0.54-a6 (2025-09-16)
+
+### Fix
+
+- added tests and removed irrelevant bindings
+
 ## v0.0.54-a5 (2025-09-15)
 
 ### Fix
