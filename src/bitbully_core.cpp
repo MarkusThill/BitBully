@@ -47,8 +47,9 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def(py::init<>())              // Default constructor
       .def("__str__", &B::toString)   // Override __str__ in Python
       .def("__repr__", &B::toString)  // Override __repr__ in Python
-      .def("playMoveFastBB", &B::playMoveFastBB,
-           "Play a move on the board (bitboard representation)", py::arg("mv"))
+      //.def("playMoveFastBB", &B::playMoveFastBB, // too specialized
+      //     "Play a move on the board (bitboard representation)",
+      //     py::arg("mv"))
       .def("canWin", py::overload_cast<int>(&B::canWin, py::const_),
            "Check, if current player can win by moving into column.",
            py::arg("column"))
@@ -61,10 +62,11 @@ PYBIND11_MODULE(bitbully_core, m) {
            "position (4 in a row).")
       .def("playMove", py::overload_cast<int>(&B::playMove),
            "Play a move by column index", py::arg("column"))
-      .def("playMoveOnCopy", &B::playMoveOnCopy,
-           "Play a move on a copy of the board and return the new board",
-           py::arg("mv"))
-      .def("generateMoves", &B::generateMoves, "Generate possible moves")
+      //.def("playMoveOnCopy", &B::playMoveOnCopy,
+      //     "Play a move on a copy of the board and return the new board",
+      //     py::arg("mv")) // move is a bitboard, not very useful in Python
+      // .def("generateMoves", &B::generateMoves, "Generate possible moves") //
+      // returns a bitset, not very useful in Python
       .def("isLegalMove", &B::isLegalMove, "Check if a move is legal",
            py::arg("column"))
       .def("toString", &B::toString,
@@ -72,9 +74,11 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("movesLeft", &B::movesLeft, "Get the number of moves left")
       .def("countTokens", &B::countTokens,
            "Get the number of Tokens on the board")
-      .def("mirror", &B::mirror, "Get the mirrored board")
-      .def("sortMoves", &B::sortMoves, "Sort moves based on priority",
-           py::arg("moves"))
+      .def("mirror", &B::mirror,
+           "Get the mirrored board (mirror around center column)")
+      //.def("sortMoves", &B::sortMoves, "Sort moves based on priority",
+      //     py::arg("moves")) // takes and returns a bitset, not very useful in
+      //     Python
       .def("allPositions", &B::allPositions,
            "Generate all positions that can be reached from the current board "
            "with n tokens.",
