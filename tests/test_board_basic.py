@@ -16,21 +16,16 @@ def test_empty_board_printable() -> None:
     assert s != "", "Printing an empty board should return a non-empty string"
 
 
-@pytest.mark.skip(
-    reason="Temporarily skipping since numpy is compilied from scratch on certain GitHub runners which takes forever."
-)
-def test_set_and_get_board() -> None:
-    """Validate that a 7x6 NumPy array can be set on a Board instance.
+def test_set_board() -> None:
+    """Validate that a 7x6 array can be set on a Board instance.
 
     A single yellow token is placed in the center column, and
     `Board.setBoard` is expected to accept this valid configuration.
     """
-    import numpy as np
-
-    arr: np.ndarray = np.zeros((7, 6), dtype=int)
-    arr[3, 0] = 1  # Add a yellow token in the center column
+    arr = [[0 for _ in range(6)] for _ in range(7)]
+    arr[3][0] = 1  # Add a yellow token in the center column
     b: bbc.Board = bbc.Board()
-    assert b.setBoard(arr), "Board.setBoard should accept a valid 7x6 array"
+    assert b.setBoard(arr), "Board.setBoard should accept a valid 7x6 list of lists"
 
 
 def test_all_positions() -> None:

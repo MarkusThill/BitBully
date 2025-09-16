@@ -104,15 +104,15 @@ print(f"Time: {round(time.time() - start, 2)} seconds!")
 print(f"Best score: {score}")
 ```
 
-You can initialize a board using a Numpy array with shape `(7, 6)` (columns first) and solve it:
+You can initialize a board using an array with shape `(7, 6)` (columns first) and solve it:
 
 ```python
-import numpy as np
 from bitbully import bitbully_core
 
-# Define a Connect-4 board as a Numpy array (7 columns x 6 rows)
+# Define a Connect-4 board as an array (7 columns x 6 rows)
+# You may also define the board using a numpy array if numpy is installed
 # 0 = Empty, 1 = Yellow, 2 = Red
-board_array = np.array([
+board_array = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -120,9 +120,9 @@ board_array = np.array([
     [0, 0, 0, 0, 0, 0],
     [2, 1, 2, 0, 0, 0],
     [0, 0, 0, 0, 0, 0]
-])
+]
 
-# Convert the Numpy array to the BitBully board
+# Convert the array to the BitBully board
 board = bitbully_core.Board()
 assert board.setBoard(board_array), "Invalid board!"
 
