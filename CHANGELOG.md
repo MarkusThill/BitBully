@@ -1,3 +1,10 @@
+## v0.0.54 (2025-09-17)
+
+### Fix
+
+- added some more tests for opening books
+- changed test to work without numpy
+
 ## v0.0.54-a6 (2025-09-16)
 
 ### Fix
