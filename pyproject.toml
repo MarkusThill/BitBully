@@ -110,7 +110,7 @@ allow-init-docstring = true
 
 [tool.ruff]
 line-length = 120
-include = ["pyproject.toml", "src/**/*.py", "scripts/**/*.py"]
+include = ["pyproject.toml", "src/**/*.py", "scripts/**/*.py", "tests/**/*.py"]
 exclude = ["thirdParty/"]
 
 [tool.ruff.format]

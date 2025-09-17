@@ -49,12 +49,14 @@ def test_random_board_generation() -> None:
         * The generated move list has the requested length (10 moves).
 
     """
-    b: bbc.Board
-    moves: list[int]
-    b, moves = bbc.Board.randomBoard(10, True)
-    assert isinstance(moves, list), "Moves should be returned as a list"
-    assert isinstance(str(b), str), "Board should be convertible to a non-empty string"
-    assert len(moves) == 10, "Generated move list should match requested length"
+    for _ in range(100):  # crreates 100 random boards to check for flakiness
+        b: bbc.Board
+        moves: list[int]
+        b, moves = bbc.Board.randomBoard(10, True)
+        assert isinstance(moves, list), "Moves should be returned as a list"
+        assert isinstance(str(b), str), "Board should be convertible to a non-empty string"
+        assert len(moves) == 10, "Generated move list should match requested length"
+        assert b.canWin() is False, "Random board should not have an immediate winning move"
 
 
 def test_can_win_1_basic() -> None:
@@ -431,3 +433,37 @@ def test_set_board_array_invalid() -> None:
         b.setBoard(invalid_board_4)
 
     assert not b.setBoard(invalid_board_5)
+
+
+def test_uid() -> None:
+    """Test the uid method for unique board identification."""
+    b: bbc.Board = bbc.Board()
+    assert b.uid() is not None, "UID should not be None"
+    assert isinstance(b.uid(), int), "UID should be an integer"
+
+    b1: bbc.Board = bbc.Board(b)
+
+    assert b.playMove(1)
+    assert b.uid() != 0, "UID should change after a move is played"
+
+    assert b != b1, "Boards with different states should not be equal"
+
+
+def test_copy_constructor() -> None:
+    """Test the copy constructor of the Board class."""
+    b1: bbc.Board = bbc.Board()
+    moves = [0, 1, 2, 3]
+    for move in moves:
+        b1.playMove(move)
+
+    b2: bbc.Board = bbc.Board(b1)  # Use copy constructor
+
+    assert b1 == b2, "Board created with copy constructor should be equal to the original"
+    assert b1.hash() == b2.hash(), "Hashes should be identical for boards created with copy constructor"
+    assert b1.uid() == b2.uid(), "UIDs should be identical for boards created with copy constructor"
+
+    b2.playMove(4)
+    assert b1 != b2, "Boards should not be equal after modifying the copy"
+    assert b1.hash() != b2.hash(), "Hashes should differ after modifying the copy"
+    assert b2.movesLeft() == b1.movesLeft() - 1, "Moves left should decrease after modifying the copy"
+    assert b2.countTokens() == b1.countTokens() + 1, "Token count should increase after modifying the copy"
