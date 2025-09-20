@@ -1,3 +1,13 @@
+## v0.0.55 (2025-09-20)
+
+### Fix
+
+- updated doxygen version
+
+### Refactor
+
+- renamed the core components
+
 ## v0.0.55-a2 (2025-09-20)
 
 ### Fix
