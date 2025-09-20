@@ -35,7 +35,7 @@ jobs:
       # Step 3: Set up Doxygen
       - name: Install Doxygen
         run: |
-          export DOXY_VERSION=1.13.1
+          export DOXY_VERSION=1.14.0
           echo "Installing doxgen v$DOXY_VERSION"
           sudo apt-get update && sudo apt-get install -y graphviz
           mkdir doxygen-installer
