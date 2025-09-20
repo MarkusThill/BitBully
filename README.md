@@ -98,9 +98,9 @@ for _ in range(6):
 print(board)
 
 solver = bitbully_core.BitBully()
-start = time.time()
+start = time.perf_counter()
 score = solver.mtdf(board, first_guess=0)
-print(f"Time: {round(time.time() - start, 2)} seconds!")
+print(f"Time: {round(time.perf_counter() - start, 2)} seconds!")
 print(f"Best score: {score}")
 ```
 

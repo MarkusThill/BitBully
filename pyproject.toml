@@ -40,7 +40,8 @@ dev = [
     "mkdocs",
     "mkdocstrings[python]",
     "mkdocs-material",
-    "mypy"
+    "mypy",
+    "pytest"
 ]
 
 gui = [
