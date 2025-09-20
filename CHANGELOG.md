@@ -1,3 +1,9 @@
+## v0.0.55-a2 (2025-09-20)
+
+### Fix
+
+- ensure that particular python version is installed under all os during build
+
 ## v0.0.55-a1 (2025-09-20)
 
 ### Fix
