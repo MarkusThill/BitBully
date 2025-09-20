@@ -20,6 +20,20 @@ git push --atomic origin master vx.x.x # make sure that you set the correct vers
 # build will now be performed on GitHub Runners
 ```
 
+In case you run into an error during `cibuildwheel`, like
+
+```
+CMake Error: The current CMakeCache.txt directory /project/build/temp.linux-x86_64-cpython-312/CMakeCache.txt is different than the directory /workspaces/BitBully/build/temp.linux-x86_64-cpython-312 where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+CMake Error: The source "/project/CMakeLists.txt" does not match the source "/workspaces/BitBully/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.
+```
+
+ it might help to clean up old builds:
+
+```bash
+rm -rf build/ dist/ src/bitbully/*.so src/bitbully/assets/*.so
+```
+
+
 You can also build pre-release versions like this.
 
 ```bash
