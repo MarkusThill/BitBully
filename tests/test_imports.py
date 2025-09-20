@@ -6,12 +6,12 @@ def test_import_bitbully_core() -> None:
 
     Ensures:
         * The module can be successfully imported.
-        * It defines the `Board` and `BitBully` classes, which are core
-          components required by the BitBully library.
+        * It defines the `Board` and `BitBullyCore` classes, which are core
+          components required by the BitBullyCore library.
 
     """
     import bitbully.bitbully_core as bbc  # Local import to test importability
 
-    assert hasattr(bbc, "Board"), "bitbully_core should provide Board"
-    assert hasattr(bbc, "BitBully"), "bitbully_core should provide BitBully"
-    assert hasattr(bbc, "OpeningBook"), "bitbully_core should provide OpeningBook"
+    assert hasattr(bbc, "BoardCore"), "bitbully_core should provide Board"
+    assert hasattr(bbc, "BitBullyCore"), "bitbully_core should provide BitBullyCore"
+    assert hasattr(bbc, "OpeningBookCore"), "bitbully_core should provide OpeningBookCore"

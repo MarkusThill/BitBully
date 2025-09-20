@@ -17,7 +17,7 @@ PYBIND11_MODULE(bitbully_core, m) {
   m.doc() =
       "Bitbully is a fast Connect-4 solver.";  // optional module docstring
 
-  py::class_<BitBully::BitBully>(m, "BitBully")
+  py::class_<BitBully::BitBully>(m, "BitBullyCore")
       .def(py::init<>())  // Expose the default constructor
       .def(py::init<std::filesystem::path>(), py::arg("openingBookPath"))
       .def("mtdf", &BitBully::BitBully::mtdf, "MTD(f) algorithm",
@@ -43,7 +43,7 @@ PYBIND11_MODULE(bitbully_core, m) {
 
   // Expose the Board class
   // TODO: Check functions.... Many not necessary and some might be missing
-  py::class_<B>(m, "Board")
+  py::class_<B>(m, "BoardCore")
       .def(py::init<>())              // Default constructor
       .def(py::init<const B&>())      // Copy-Konstruktor
       .def("__str__", &B::toString)   // Override __str__ in Python
@@ -106,7 +106,7 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("__ne__", &B::operator!=, "Check if two boards are not equal");
 
   // Expose OpeningBook:
-  py::class_<BitBully::OpeningBook>(m, "OpeningBook")
+  py::class_<BitBully::OpeningBook>(m, "OpeningBookCore")
       // Constructors
       .def(py::init<const std::filesystem::path&, bool, bool>(),
            py::arg("bookPath"), py::arg("is_8ply"), py::arg("with_distances"),

@@ -116,7 +116,7 @@ class GuiC4:
 
         # C4 agent
         db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
-        self.bitbully_agent = bitbully_core.BitBully(db_path)
+        self.bitbully_agent = bitbully_core.BitBullyCore(db_path)
 
     def _reset(self) -> None:
         self.m_movelist = []
@@ -177,7 +177,7 @@ class GuiC4:
     def _computer_move(self) -> None:
         self.is_busy = True
         self._update_insert_buttons()
-        b = bitbully_core.Board()
+        b = bitbully_core.BoardCore()
         assert b.setBoard([mv[1] for mv in self.m_movelist])
         move_scores = self.bitbully_agent.scoreMoves(b)
         self.is_busy = False
@@ -237,7 +237,7 @@ class GuiC4:
         for button in self.m_insert_buttons:
             button.disabled = True
 
-        board = bitbully_core.Board()
+        board = bitbully_core.BoardCore()
         board.setBoard([mv[1] for mv in self.m_movelist])
         if self.m_gameover or not board.playMove(col):
             self._update_insert_buttons()
@@ -474,7 +474,7 @@ class GuiC4:
             right_sidebar=None,
         )
 
-    def _check_winner(self, board: bitbully_core.Board) -> None:
+    def _check_winner(self, board: bitbully_core.BoardCore) -> None:
         """Check for Win or draw."""
         if board.hasWin():
             winner = "Yellow" if board.movesLeft() % 2 else "Red"

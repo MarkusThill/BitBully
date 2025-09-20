@@ -89,7 +89,7 @@ Use the `BitBully` and `Board` classes directly in Python:
 from bitbully import bitbully_core
 import time
 
-board = bitbully_core.Board()
+board = bitbully_core.BoardCore()
 
 # Yellow and red alternately play moves into column 3 (center column):
 for _ in range(6):
@@ -123,7 +123,7 @@ board_array = [
 ]
 
 # Convert the array to the BitBully board
-board = bitbully_core.Board()
+board = bitbully_core.BoardCore()
 assert board.setBoard(board_array), "Invalid board!"
 
 print(board)
@@ -142,7 +142,7 @@ import importlib.resources
 
 db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
 bitbully = bbc.BitBully(db_path)
-b = bbc.Board()  # Empty board
+b = bbc.BoardCore()  # Empty board
 bitbully.scoreMoves(b)  # expected result: [-2, -1, 0, 1, 0, -1, -2]
 ```
 
@@ -152,7 +152,7 @@ Generate a random board with `n` tokens:
 from bitbully import bitbully_core as bbc
 
 # Create a random board (and the move sequence that generated it)
-b, move_list = bbc.Board.randomBoard(12, True)
+b, move_list = bbc.BoardCore.randomBoard(12, True)
 print(b)
 print(move_list)
 ```
@@ -164,7 +164,7 @@ Create all Positions with (up to) `n` tokens starting from Board `b`:
 ```python
 from bitbully import bitbully_core as bbc
 
-b = bbc.Board()  # empty board
+b = bbc.BoardCore()  # empty board
 board_list_3ply = b.allPositions(3, True)  # All positions with exactly 3 tokens
 len(board_list_3ply)  # should be 238 according to https://oeis.org/A212693
 ```
@@ -176,8 +176,8 @@ from bitbully import bitbully_core as bbc
 import importlib.resources
 
 db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
-ob = bbc.OpeningBook(db_path)
-b, move_list = bbc.Board.randomBoard(12, True)  # get a board without an immediate threat for Yellow
+ob = bbc.OpeningBookCore(db_path)
+b, move_list = bbc.BoardCore.randomBoard(12, True)  # get a board without an immediate threat for Yellow
 assert ob.isInBook(b) or ob.isInBook(b.mirror())  # Either position `b` or its mirrored equivalent are in the DB
 ob.getBoardValue(b)  # Get game-theoretic value (also checks mirrored board)
 ```
