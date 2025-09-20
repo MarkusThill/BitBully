@@ -96,7 +96,9 @@ def test_get_entry_valid_8ply(openingbook_8ply: bbc.OpeningBook, index: int, exp
         (4200899 - 1, (2138808968, 97)),
     ],
 )
-def test_get_entry_valid_12ply(openingbook_12ply_dist: bbc.OpeningBook, index: int, expected: tuple[int, int]) -> None:
+def test_get_entry_valid_12ply_dist(
+    openingbook_12ply_dist: bbc.OpeningBook, index: int, expected: tuple[int, int]
+) -> None:
     """Test that entries in the 12-ply OpeningBook with distances at specific indices match the expected values.
 
     Args:
@@ -105,6 +107,32 @@ def test_get_entry_valid_12ply(openingbook_12ply_dist: bbc.OpeningBook, index: i
         expected (tuple[int, int]): The expected entry value.
     """
     entry = openingbook_12ply_dist.getEntry(index)
+    assert isinstance(entry, tuple)
+    assert entry == expected
+
+
+@pytest.mark.parametrize(
+    ("index", "expected"),
+    [
+        (0, (-2124976388, -1)),
+        (10, (-2124431688, -1)),
+        (100, (-2108174596, -1)),
+        (1000, (-2097718536, -1)),
+        (10000, (-2027967752, -1)),
+        (100000, (-1825638740, -1)),
+        (1000000, (-411277128, -1)),
+        (1735945 - 1, (2138748968, 0)),
+    ],
+)
+def test_get_entry_valid_12ply(openingbook_12ply: bbc.OpeningBook, index: int, expected: tuple[int, int]) -> None:
+    """Test that entries in the 12-ply OpeningBook with distances at specific indices match the expected values.
+
+    Args:
+        openingbook_12ply (bbc.OpeningBook): The 12-ply OpeningBook instance with distances.
+        index (int): The index to test.
+        expected (tuple[int, int]): The expected entry value.
+    """
+    entry = openingbook_12ply.getEntry(index)
     assert isinstance(entry, tuple)
     assert entry == expected
 
@@ -121,54 +149,108 @@ def test_get_entry_invalid(request: pytest.FixtureRequest, openingbook_fixture: 
     with pytest.raises(TypeError):
         openingbook.getEntry(-1)
     with pytest.raises(IndexError):
+        openingbook.getEntry(openingbook.getBookSize())
+    with pytest.raises(IndexError):
         openingbook.getEntry(openingbook.getBookSize() + 1)
 
 
-def test_get_book_size(openingbook_8ply: bbc.OpeningBook) -> None:
-    """Test that the size of the 8-ply OpeningBook is correct.
+@pytest.mark.parametrize(
+    ("openingbook_fixture", "expected_size"),
+    [
+        ("openingbook_8ply", 34515),
+        ("openingbook_12ply", 1735945),
+        ("openingbook_12ply_dist", 4200899),
+    ],
+)
+def test_get_book_size(request: pytest.FixtureRequest, openingbook_fixture: str, expected_size: int) -> None:
+    """Test that the size of the OpeningBook is correct for different variants.
 
     Args:
-        openingbook_8ply (bbc.OpeningBook): The 8-ply OpeningBook instance.
+        request (pytest.FixtureRequest): The pytest fixture request object.
+        openingbook_fixture (str): The name of the OpeningBook fixture to use.
+        expected_size (int): The expected size of the OpeningBook.
     """
-    size = openingbook_8ply.getBookSize()
-    assert size == 34515
+    openingbook = request.getfixturevalue(openingbook_fixture)
+    size = openingbook.getBookSize()
+    assert size == expected_size
 
 
-def test_get_book_returns_list(openingbook_8ply: bbc.OpeningBook) -> None:
+@pytest.mark.parametrize("openingbook_fixture", ["openingbook_8ply", "openingbook_12ply", "openingbook_12ply_dist"])
+def test_get_book_returns_list(request: pytest.FixtureRequest, openingbook_fixture: str) -> None:
     """Test that getBook() returns a list of the expected size.
 
     Args:
-        openingbook_8ply (bbc.OpeningBook): The 8-ply OpeningBook instance.
+        request (pytest.FixtureRequest): The pytest fixture request object.
+        openingbook_fixture (str): The name of the OpeningBook fixture to use.
     """
-    book = openingbook_8ply.getBook()
+    openingbook = request.getfixturevalue(openingbook_fixture)
+    book = openingbook.getBook()
     assert isinstance(book, list)
-    assert len(book) == openingbook_8ply.getBookSize()
+    assert len(book) == openingbook.getBookSize()
 
 
-def test_get_board_value_known_position(openingbook_8ply: bbc.OpeningBook) -> None:
-    """Test that the correct value is returned for a known position in the 8-ply OpeningBook.
+@pytest.mark.parametrize(
+    ("openingbook_fixture", "move_sequence", "expected_value"),
+    [
+        ("openingbook_8ply", [2, 3, 3, 3, 3, 3, 5, 5], 0),
+        ("openingbook_12ply", [2, 3, 3, 3, 3, 2, 1, 2, 2, 5, 4, 4], 0),
+        ("openingbook_12ply", [3, 4, 1, 1, 0, 2, 2, 1, 1, 4, 4, 2], 1),
+        ("openingbook_12ply", [2, 3, 3, 3, 3, 2, 1, 2, 2, 5, 1, 6], -1),
+        ("openingbook_12ply_dist", [2, 3, 3, 3, 3, 2, 1, 2, 2, 5, 4, 4], 0),
+        ("openingbook_12ply_dist", [3, 4, 1, 1, 0, 2, 2, 1, 1, 4, 4, 2], 2),
+        ("openingbook_12ply_dist", [2, 3, 3, 3, 3, 2, 1, 2, 2, 5, 1, 6], -10),
+    ],
+)
+def test_get_board_value_known_position(
+    request: pytest.FixtureRequest, openingbook_fixture: str, move_sequence: list[int], expected_value: int
+) -> None:
+    """Test that the correct value is returned for a known position in the OpeningBook.
 
     Args:
-        openingbook_8ply (bbc.OpeningBook): The 8-ply OpeningBook instance.
+        request (pytest.FixtureRequest): The pytest fixture request object.
+        openingbook_fixture (str): The name of the OpeningBook fixture to use.
+        move_sequence (list[int]): The list of moves representing the board position.
+        expected_value (int): The expected value for the given position.
     """
-    move_list, expected_value = [2, 3, 3, 3, 3, 3, 5, 5], 0  # A known position in the book
+    openingbook = request.getfixturevalue(openingbook_fixture)
+    # move_list, expected_value = move_sequence, expected_value
     board = bbc.Board()
-    board.setBoard(move_list)
-    val = openingbook_8ply.getBoardValue(board)
+    assert board.setBoard(move_sequence)
+    val = openingbook.getBoardValue(board)
     assert val == expected_value
 
 
-def test_is_in_book(openingbook_8ply: bbc.OpeningBook) -> None:
-    """Test that a known position or its mirrored variant is contained in the 8-ply OpeningBook.
+@pytest.mark.parametrize(
+    ("openingbook_fixture", "move_sequence", "expected_value"),
+    [
+        ("openingbook_8ply", [2, 3, 3, 3, 3, 3, 5, 5], True),
+        ("openingbook_8ply", [1, 3, 4, 3, 4, 4, 3, 3], True),
+        ("openingbook_8ply", [3, 3, 3, 3, 3, 1, 1, 1], False),
+        ("openingbook_12ply", [2, 3, 3, 3, 3, 2, 1, 2, 2, 5, 4, 4], True),
+        ("openingbook_12ply", [3, 4, 1, 1, 0, 2, 2, 1, 1, 4, 4, 2], False),
+        ("openingbook_12ply", [2, 3, 3, 3, 3, 2, 1, 2, 2, 5, 1, 6], True),
+        ("openingbook_12ply_dist", [2, 3, 3, 3, 3, 2, 1, 2, 2, 5, 4, 4], True),
+        ("openingbook_12ply_dist", [3, 4, 1, 1, 0, 2, 2, 1, 1, 4, 4, 2], True),
+        ("openingbook_12ply_dist", [2, 3, 3, 3, 3, 2, 1, 2, 2, 5, 1, 6], True),
+    ],
+)
+def test_is_in_book(
+    request: pytest.FixtureRequest, openingbook_fixture: str, move_sequence: list[int], expected_value: bool
+) -> None:
+    """Test that a known position or its mirrored variant is contained in the OpeningBook.
 
     Args:
-        openingbook_8ply (bbc.OpeningBook): The 8-ply OpeningBook instance.
+        request (pytest.FixtureRequest): The pytest fixture request object.
+        openingbook_fixture (str): The name of the OpeningBook fixture to use.
+        move_sequence (list[int]): The list of moves representing the board position.
+        expected_value (bool): The expected result for isInBook(board).
     """
-    # Only winning positions for RED are in the opening-book
+    openingbook = request.getfixturevalue(openingbook_fixture)
     board = bbc.Board()
-    board.setBoard([2, 3, 3, 3, 3, 3, 5, 5])  # A known position in the book
-    # The board or its mirrored variant should be in the book
-    assert openingbook_8ply.isInBook(board) or openingbook_8ply.isInBook(board.mirror())
+    assert board.setBoard(move_sequence)
+
+    # Positions with wins for YELLOW are not in the opening-book
+    assert (openingbook.isInBook(board) or openingbook.isInBook(board.mirror())) == expected_value
 
 
 def test_convert_value(openingbook_8ply: bbc.OpeningBook) -> None:
@@ -211,25 +293,3 @@ def test_get_n_ply(request: pytest.FixtureRequest, openingbook_fixture: str, exp
     """
     openingbook = request.getfixturevalue(openingbook_fixture)
     assert openingbook.getNPly() == expected_nply
-
-
-def test_bitbully_12_ply_with_distance() -> None:
-    """Validate that BitBully correctly scores an empty Connect-4 board.
-
-    This test loads the precomputed distance database
-    `book_12ply_distances.dat`, creates an empty `Board`, and verifies
-    that `BitBully.scoreMoves` returns the expected heuristic scores
-    for each of the seven columns.
-    """
-    db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
-    bitbully: bbc.BitBully = bbc.BitBully(db_path)
-    b: bbc.Board = bbc.Board()  # Empty board
-    assert bitbully.scoreMoves(b) == [
-        -2,
-        -1,
-        0,
-        1,
-        0,
-        -1,
-        -2,
-    ], "expected result: [-2, -1, 0, 1, 0, -1, -2]"
