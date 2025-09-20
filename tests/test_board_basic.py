@@ -457,12 +457,35 @@ def test_copy_constructor() -> None:
         b1.playMove(move)
 
     b2: bbc.Board = bbc.Board(b1)  # Use copy constructor
-
+    assert id(b1) != id(b2), "Copy should have a different memory address than the original"
     assert b1 == b2, "Board created with copy constructor should be equal to the original"
     assert b1.hash() == b2.hash(), "Hashes should be identical for boards created with copy constructor"
     assert b1.uid() == b2.uid(), "UIDs should be identical for boards created with copy constructor"
 
     b2.playMove(4)
+    assert id(b1) != id(b2), "Copy should have a different memory address than the original"
+    assert b1 != b2, "Boards should not be equal after modifying the copy"
+    assert b1.hash() != b2.hash(), "Hashes should differ after modifying the copy"
+    assert b2.movesLeft() == b1.movesLeft() - 1, "Moves left should decrease after modifying the copy"
+    assert b2.countTokens() == b1.countTokens() + 1, "Token count should increase after modifying the copy"
+
+
+def test_copy() -> None:
+    """Test the copy constructor of the Board class."""
+    b1: bbc.Board = bbc.Board()
+    moves = [0, 1, 2, 3]
+    for move in moves:
+        b1.playMove(move)
+
+    b2: bbc.Board = b1.copy()
+    assert id(b1) != id(b2), "Copy should have a different memory address than the original"
+
+    assert b1 == b2, "Board created with copy constructor should be equal to the original"
+    assert b1.hash() == b2.hash(), "Hashes should be identical for boards created with copy()"
+    assert b1.uid() == b2.uid(), "UIDs should be identical for boards created with copy()"
+
+    b2.playMove(4)
+    assert id(b1) != id(b2), "Copy should have a different memory address than the original"
     assert b1 != b2, "Boards should not be equal after modifying the copy"
     assert b1.hash() != b2.hash(), "Hashes should differ after modifying the copy"
     assert b2.movesLeft() == b1.movesLeft() - 1, "Moves left should decrease after modifying the copy"

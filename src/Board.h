@@ -101,6 +101,11 @@ class Board {
     return b;
   }
 
+  [[nodiscard]] Board inline copy() const {
+    Board b = *this;
+    return b;
+  }
+
   [[nodiscard]] TBitBoard generateMoves() const;
 
   static constexpr int popCountBoard(uint64_t x) {

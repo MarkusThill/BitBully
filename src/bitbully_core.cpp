@@ -53,6 +53,7 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("canWin", py::overload_cast<int>(&B::canWin, py::const_),
            "Check, if current player can win by moving into column.",
            py::arg("column"))
+      .def("copy", &B::copy, "Create a deep copy of the board.")
       .def("canWin", py::overload_cast<>(&B::canWin, py::const_),
            "Check, if current player can win with the next move.")
       .def("hash", py::overload_cast<>(&B::hash, py::const_),
