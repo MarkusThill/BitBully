@@ -43,7 +43,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.48</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.55-a0</span>
                         </div>
                     </td>
                 </tr>
@@ -172,15 +172,15 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:aec20e25605e7ad6f99259ac3c7cbcfe4" id="r_aec20e25605e7ad6f99259ac3c7cbcfe4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec20e25605e7ad6f99259ac3c7cbcfe4">notify_output</a> = widgets.Output()</td></tr>
-<tr class="separator:aec20e25605e7ad6f99259ac3c7cbcfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4903697246389f0141abd60a16aa6e6d" id="r_a4903697246389f0141abd60a16aa6e6d"><td class="memItemLeft" align="right" valign="top">widgets&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4903697246389f0141abd60a16aa6e6d">notify_output</a> = widgets.Output()</td></tr>
+<tr class="separator:a4903697246389f0141abd60a16aa6e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:aa354fc72f710ec515342c24e362d74c2" id="r_aa354fc72f710ec515342c24e362d74c2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa354fc72f710ec515342c24e362d74c2">_reset</a> (self)</td></tr>
 <tr class="separator:aa354fc72f710ec515342c24e362d74c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e94cc745ebd5d9a1a329d8052b37633" id="r_a3e94cc745ebd5d9a1a329d8052b37633"><td class="memItemLeft" align="right" valign="top">npt.NDArray[np.float32]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e94cc745ebd5d9a1a329d8052b37633">_get_fig_size_px</a> (self)</td></tr>
-<tr class="separator:a3e94cc745ebd5d9a1a329d8052b37633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaa9eef7994fd1c179c901c43001f4b8" id="r_abaa9eef7994fd1c179c901c43001f4b8"><td class="memItemLeft" align="right" valign="top">npt.NDArray[np.float64]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaa9eef7994fd1c179c901c43001f4b8">_get_fig_size_px</a> (self)</td></tr>
+<tr class="separator:abaa9eef7994fd1c179c901c43001f4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0a79f8bd3d42d0c072be6f227faf6e2" id="r_af0a79f8bd3d42d0c072be6f227faf6e2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0a79f8bd3d42d0c072be6f227faf6e2">_create_control_buttons</a> (self)</td></tr>
 <tr class="separator:af0a79f8bd3d42d0c072be6f227faf6e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8355f95b9b352f205abca15d2f25a3d" id="r_ab8355f95b9b352f205abca15d2f25a3d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8355f95b9b352f205abca15d2f25a3d">_computer_move</a> (self)</td></tr>
@@ -220,26 +220,29 @@ Matplotlib, IPython widgets, and a backend agent from the BitBully engine. It
 provides the following main features:
 
 - Interactive Game Board: Presents a dynamic 6-row by 7-column
-  Connect-4 board with clickable board cells.
+    Connect-4 board with clickable board cells.
 - Matplotlib Integration: Utilizes Matplotlib figures
-  to render high-quality game visuals directly within Jupyter notebook environments.
+    to render high-quality game visuals directly within Jupyter notebook environments.
 - User Interaction: Captures and processes mouse clicks and button events, enabling
-  intuitive gameplay via either direct board interaction or button controls.
+    intuitive gameplay via either direct board interaction or button controls.
 - Undo/Redo Moves: Supports undo and redo functionalities, allowing users to
-  navigate through their move history during gameplay.
+    navigate through their move history during gameplay.
 - Automated Agent Moves: Incorporates BitBully, a Connect-4 backend engine, enabling
-  computer-generated moves and board evaluations.
+    computer-generated moves and board evaluations.
 - Game State Handling: Detects game-over scenarios, including win/draw conditions,
-  and provides immediate user feedback through popup alerts.
+    and provides immediate user feedback through popup alerts.
+
+Attributes:
+    notify_output (widgets.Output): Output widget for notifications and popups.
 
 Examples:
-    Generally, you should this method to retreive and display the widget.
+        Generally, you should this method to retreive and display the widget.
 
-    ```pycon
-    &gt;&gt;&gt; %matplotlib ipympl
-    &gt;&gt;&gt; c4gui = GuiC4()
-    &gt;&gt;&gt; display(c4gui.get_widget())
-    ```
+        ```pycon
+        &gt;&gt;&gt; %matplotlib ipympl
+        &gt;&gt;&gt; c4gui = GuiC4()
+        &gt;&gt;&gt; display(c4gui.get_widget())
+        ```
 </pre> 
 <p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00018">18</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -258,7 +261,7 @@ Examples:
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Init the GuiC4 widget.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00049">49</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00052">52</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -290,7 +293,7 @@ Examples:
 </table>
 </div><div class="memdoc">
 <pre class="fragment">Check for Win or draw.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00492">492</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00477">477</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -317,7 +320,7 @@ Examples:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00178">178</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00177">177</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -344,7 +347,7 @@ Examples:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00187">187</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00186">186</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -371,7 +374,7 @@ Examples:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00383">383</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00372">372</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -402,7 +405,7 @@ Examples:
 Returns:
     HBox: A row of textboxes containing the columns labels 'a' to 'g'.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00400">400</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00387">387</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -429,12 +432,12 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00147">147</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00146">146</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
-<a id="a3e94cc745ebd5d9a1a329d8052b37633" name="a3e94cc745ebd5d9a1a329d8052b37633"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e94cc745ebd5d9a1a329d8052b37633">&#9670;&#160;</a></span>_get_fig_size_px()</h2>
+<a id="abaa9eef7994fd1c179c901c43001f4b8" name="abaa9eef7994fd1c179c901c43001f4b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaa9eef7994fd1c179c901c43001f4b8">&#9670;&#160;</a></span>_get_fig_size_px()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -443,7 +446,7 @@ Returns:
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"> npt.NDArray[np.float32] bitbully.gui_c4.GuiC4._get_fig_size_px </td>
+          <td class="memname"> npt.NDArray[np.float64] bitbully.gui_c4.GuiC4._get_fig_size_px </td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
           <td></td>
@@ -456,7 +459,7 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00135">135</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00134">134</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -500,7 +503,7 @@ Args:
 Returns:
     int: The corresponding image id (0-41).
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00333">333</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00322">322</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -536,7 +539,7 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00235">235</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00232">232</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -567,7 +570,7 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00232">232</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00229">229</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -602,7 +605,7 @@ Returns:
 Args:
     event (mpl.backend_bases.Event): A matplotlib mouse event.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00427">427</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00412">412</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -629,7 +632,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00347">347</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00336">336</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -660,7 +663,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00228">228</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00225">225</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -687,7 +690,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00273">273</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00270">270</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -714,7 +717,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00122">122</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00121">121</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -741,7 +744,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00279">279</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00276">276</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -768,7 +771,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00316">316</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00313">313</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -787,7 +790,7 @@ Args:
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Destroy and release the acquired resources.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00502">502</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00487">487</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -819,7 +822,7 @@ Examples:
 Returns:
     AppLayout: the widget.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00439">439</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00424">424</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -836,7 +839,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00120">120</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00119">119</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -852,7 +855,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00128">128</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00127">127</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -868,7 +871,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00091">91</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00092">92</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -884,7 +887,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00093">93</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00094">94</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -900,7 +903,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00222">222</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00219">219</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -916,7 +919,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00089">89</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00090">90</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -932,7 +935,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00148">148</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00147">147</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -948,7 +951,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00221">221</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00218">218</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -964,7 +967,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00114">114</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00115">115</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -980,7 +983,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00087">87</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00088">88</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -996,7 +999,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00240">240</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00237">237</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1012,7 +1015,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00052">52</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00055">55</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1028,7 +1031,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00108">108</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00109">109</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1044,7 +1047,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00084">84</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00085">85</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1060,7 +1063,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00084">84</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00085">85</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1081,7 +1084,7 @@ Returns:
 <div class="line">            2: {<span class="stringliteral">&quot;plain&quot;</span>: png_red, <span class="stringliteral">&quot;corner&quot;</span>: png_red_m},</div>
 <div class="line">        }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00078">78</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00079">79</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1097,12 +1100,12 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00111">111</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00112">112</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
-<a id="aec20e25605e7ad6f99259ac3c7cbcfe4" name="aec20e25605e7ad6f99259ac3c7cbcfe4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec20e25605e7ad6f99259ac3c7cbcfe4">&#9670;&#160;</a></span>notify_output</h2>
+<a id="a4903697246389f0141abd60a16aa6e6d" name="a4903697246389f0141abd60a16aa6e6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4903697246389f0141abd60a16aa6e6d">&#9670;&#160;</a></span>notify_output</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1111,7 +1114,7 @@ Returns:
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bitbully.gui_c4.GuiC4.notify_output = widgets.Output()</td>
+          <td class="memname">widgets bitbully.gui_c4.GuiC4.notify_output = widgets.Output()</td>
         </tr>
       </table>
   </td>
@@ -1121,7 +1124,7 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00224">224</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00221">221</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1137,7 +1140,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00188">188</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00187">187</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>

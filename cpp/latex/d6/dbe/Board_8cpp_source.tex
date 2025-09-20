@@ -22,7 +22,7 @@
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00018}00018\ \ \ assert(getRowMask(5)\ ==\ getMask(\{5,\ 14,\ 23,\ 32,\ 41,\ 50,\ 59\}));}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00019}00019\ \}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00020}00020\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00021}00021\ \textcolor{keywordtype}{bool}\ Board::setBoard(\textcolor{keyword}{const}\ std::vector<int>\ \&moveSequence)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00021}00021\ \textcolor{keywordtype}{bool}\ Board::setBoard(\textcolor{keyword}{const}\ std::vector<int>\&\ moveSequence)\ \{}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00022}00022\ \ \ Board\ b;\ \ \textcolor{comment}{//\ First\ operate\ on\ copy}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00023}00023\ }
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00024}00024\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mv\ :\ moveSequence)\ \{}
@@ -32,7 +32,7 @@
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00028}00028\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00029}00029\ \}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00030}00030\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00031}00031\ \textcolor{keywordtype}{bool}\ Board::setBoard(\textcolor{keyword}{const}\ TBoardArray\ \&board)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00031}00031\ \textcolor{keywordtype}{bool}\ Board::setBoard(\textcolor{keyword}{const}\ TBoardArray\&\ board)\ \{}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00032}00032\ \ \ \textcolor{keywordflow}{if}\ (!isValid(board))\ \{}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00034}00034\ \ \ \}}
@@ -62,7 +62,7 @@
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00058}00058\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00059}00059\ \}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00060}00060\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00061}00061\ \textcolor{keywordtype}{bool}\ Board::isValid(\textcolor{keyword}{const}\ TBoardArray\ \&board)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00061}00061\ \textcolor{keywordtype}{bool}\ Board::isValid(\textcolor{keyword}{const}\ TBoardArray\&\ board)\ \{}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00062}00062\ \ \ \textcolor{comment}{//\ Counter\ for\ P\_YELLOW,\ P\_RED\ and\ P\_EMPTY}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00063}00063\ \ \ std::array<int,\ N\_VALID\_BOARD\_VALUES>\ valCounts\ =\ \{0UL\};}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00064}00064\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ c\ =\ \textcolor{keyword}{static\_cast<}TBoardArray::size\_type\textcolor{keyword}{>}(0);\ c\ <\ N\_COLUMNS;\ ++c)\ \{}

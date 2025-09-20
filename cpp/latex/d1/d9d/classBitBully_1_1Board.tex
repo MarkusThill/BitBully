@@ -21,6 +21,8 @@ void \mbox{\hyperlink{classBitBully_1_1Board_ab40f8c0b6f381a446482f3fb4613ba7f}{
 \item 
 \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \mbox{\hyperlink{classBitBully_1_1Board_ae4ee7723f4a3733add08a89d279cdb5b}{play\+Move\+On\+Copy}} (const TBit\+Board mv) const
 \item 
+\mbox{\hyperlink{classBitBully_1_1Board}{Board}} \mbox{\hyperlink{classBitBully_1_1Board_a55efa3bbf52314250a60c7b0ece0dc90}{copy}} () const
+\item 
 TBit\+Board \mbox{\hyperlink{classBitBully_1_1Board_a2b30c95f435409dda26ec2aa0c167774}{generate\+Moves}} () const
 \item 
 auto \mbox{\hyperlink{classBitBully_1_1Board_a969f5f46a7727f9ade2e9ea31ba11399}{pop\+Count\+Board}} () const
@@ -179,7 +181,7 @@ std\+::vector$<$ \mbox{\hyperlink{classBitBully_1_1Board}{Board}} $>$ Bit\+Bully
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00270}{270}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00275}{275}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a31d1327bf9b59e6fff94d80443c7699e}\index{BitBully::Board@{BitBully::Board}!canWin@{canWin}}
 \index{canWin@{canWin}!BitBully::Board@{BitBully::Board}}
@@ -201,6 +203,16 @@ bool Bit\+Bully\+::\+Board\+::can\+Win (\begin{DoxyParamCaption}\item[{int}]{col
 
 Definition at line \mbox{\hyperlink{Board_8cpp_source_l00350}{350}} of file \mbox{\hyperlink{Board_8cpp_source}{Board.\+cpp}}.
 
+\Hypertarget{classBitBully_1_1Board_a55efa3bbf52314250a60c7b0ece0dc90}\index{BitBully::Board@{BitBully::Board}!copy@{copy}}
+\index{copy@{copy}!BitBully::Board@{BitBully::Board}}
+\doxysubsubsection{\texorpdfstring{copy()}{copy()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1Board_a55efa3bbf52314250a60c7b0ece0dc90} 
+\mbox{\hyperlink{classBitBully_1_1Board}{Board}} Bit\+Bully\+::\+Board\+::copy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Definition at line \mbox{\hyperlink{Board_8h_source_l00104}{104}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+
 \Hypertarget{classBitBully_1_1Board_a2041fa032b47cab0dba8639a2de17090}\index{BitBully::Board@{BitBully::Board}!countTokens@{countTokens}}
 \index{countTokens@{countTokens}!BitBully::Board@{BitBully::Board}}
 \doxysubsubsection{\texorpdfstring{countTokens()}{countTokens()}}
@@ -209,7 +221,7 @@ TMoves\+Counter Bit\+Bully\+::\+Board\+::count\+Tokens (\begin{DoxyParamCaption}
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00181}{181}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00186}{186}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a27969eddcd49d5644c812339aec41ae8}\index{BitBully::Board@{BitBully::Board}!doubleThreat@{doubleThreat}}
 \index{doubleThreat@{doubleThreat}!BitBully::Board@{BitBully::Board}}
@@ -219,7 +231,7 @@ TBit\+Board Bit\+Bully\+::\+Board\+::double\+Threat (\begin{DoxyParamCaption}\it
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00212}{212}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00217}{217}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a1cb7eb6673dabac4feb0d25af9d6580a}\index{BitBully::Board@{BitBully::Board}!findOddThreats@{findOddThreats}}
 \index{findOddThreats@{findOddThreats}!BitBully::Board@{BitBully::Board}}
@@ -259,7 +271,7 @@ TBit\+Board Bit\+Bully\+::\+Board\+::generate\+Non\+Losing\+Moves (\begin{DoxyPa
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00196}{196}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00201}{201}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_aa8fc65795d846bad582bdc26e2ad8768}\index{BitBully::Board@{BitBully::Board}!hash@{hash}}
 \index{hash@{hash}!BitBully::Board@{BitBully::Board}}
@@ -269,7 +281,7 @@ uint64\+\_\+t Bit\+Bully\+::\+Board\+::hash (\begin{DoxyParamCaption}{}{}\end{Do
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00134}{134}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00139}{139}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a304529c6848a6b38c552041d117a4924}\index{BitBully::Board@{BitBully::Board}!hash@{hash}}
 \index{hash@{hash}!BitBully::Board@{BitBully::Board}}
@@ -279,7 +291,7 @@ static uint64\+\_\+t Bit\+Bully\+::\+Board\+::hash (\begin{DoxyParamCaption}\ite
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00121}{121}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00126}{126}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a70a65d60487f33b5baf8d363f7ea3cb6}\index{BitBully::Board@{BitBully::Board}!hasWin@{hasWin}}
 \index{hasWin@{hasWin}!BitBully::Board@{BitBully::Board}}
@@ -319,7 +331,7 @@ static TBit\+Board Bit\+Bully\+::\+Board\+::lsb (\begin{DoxyParamCaption}\item[{
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00191}{191}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00196}{196}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a97357373ac0844cd2a7c07c87361131d}\index{BitBully::Board@{BitBully::Board}!mirror@{mirror}}
 \index{mirror@{mirror}!BitBully::Board@{BitBully::Board}}
@@ -339,7 +351,7 @@ TMoves\+Counter Bit\+Bully\+::\+Board\+::moves\+Left (\begin{DoxyParamCaption}{}
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00179}{179}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00184}{184}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a6ae4995235ad5092e1d7c38fcc990073}\index{BitBully::Board@{BitBully::Board}!nextMove@{nextMove}}
 \index{nextMove@{nextMove}!BitBully::Board@{BitBully::Board}}
@@ -349,7 +361,7 @@ static TBit\+Board Bit\+Bully\+::\+Board\+::next\+Move (\begin{DoxyParamCaption}
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00138}{138}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00143}{143}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a0460d3d7ed1cf5e2c5959153c76fb00d}\index{BitBully::Board@{BitBully::Board}!operator"!=@{operator"!=}}
 \index{operator"!=@{operator"!=}!BitBully::Board@{BitBully::Board}}
@@ -359,7 +371,7 @@ bool Bit\+Bully\+::\+Board\+::operator!= (\begin{DoxyParamCaption}\item[{const \
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00157}{157}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00162}{162}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a7fb22603ae5f3847c6f0101418dab501}\index{BitBully::Board@{BitBully::Board}!operator==@{operator==}}
 \index{operator==@{operator==}!BitBully::Board@{BitBully::Board}}
@@ -369,7 +381,7 @@ bool Bit\+Bully\+::\+Board\+::operator== (\begin{DoxyParamCaption}\item[{const \
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00148}{148}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00153}{153}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a361bc5b2dc8af6df258ab41159e69457}\index{BitBully::Board@{BitBully::Board}!playMove@{playMove}}
 \index{playMove@{playMove}!BitBully::Board@{BitBully::Board}}
@@ -409,7 +421,7 @@ auto Bit\+Bully\+::\+Board\+::pop\+Count\+Board (\begin{DoxyParamCaption}{}{}\en
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00115}{115}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00120}{120}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_aa06de3e9e8e077b5e0c6cf75c5a0bd81}\index{BitBully::Board@{BitBully::Board}!popCountBoard@{popCountBoard}}
 \index{popCountBoard@{popCountBoard}!BitBully::Board@{BitBully::Board}}
@@ -419,7 +431,7 @@ static constexpr int Bit\+Bully\+::\+Board\+::pop\+Count\+Board (\begin{DoxyPara
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00106}{106}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00111}{111}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_abf80eeae5659a6a93574573ad5ae41ed}\index{BitBully::Board@{BitBully::Board}!randomBoard@{randomBoard}}
 \index{randomBoard@{randomBoard}!BitBully::Board@{BitBully::Board}}
@@ -429,7 +441,7 @@ static std\+::pair$<$ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}, std\+::v
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00254}{254}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00259}{259}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a9a71192a965bd34a2046d202c2d4f80e}\index{BitBully::Board@{BitBully::Board}!setBoard@{setBoard}}
 \index{setBoard@{setBoard}!BitBully::Board@{BitBully::Board}}
@@ -479,7 +491,7 @@ int Bit\+Bully\+::\+Board\+::to\+Huffman (\begin{DoxyParamCaption}{}{}\end{DoxyP
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00229}{229}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00234}{234}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a99cd68cb2bb31588728ba7fa5fff3282}\index{BitBully::Board@{BitBully::Board}!toString@{toString}}
 \index{toString@{toString}!BitBully::Board@{BitBully::Board}}
@@ -499,7 +511,7 @@ uint64\+\_\+t Bit\+Bully\+::\+Board\+::uid (\begin{DoxyParamCaption}{}{}\end{Dox
 
 
 
-Definition at line \mbox{\hyperlink{Board_8h_source_l00128}{128}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+Definition at line \mbox{\hyperlink{Board_8h_source_l00133}{133}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 
 

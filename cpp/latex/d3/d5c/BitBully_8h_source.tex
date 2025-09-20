@@ -27,7 +27,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00023}00023\ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00024}00024\ \ \ \mbox{\hyperlink{classBitBully_1_1MoveList}{MoveList}}\ sortMoves(Board::TBitBoard\ moves);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00025}00025\ }
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00026}00026\ \ \ \textcolor{keyword}{explicit}\ BitBully(\textcolor{keyword}{const}\ std::filesystem::path\ \&bookPath\ =\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00026}00026\ \ \ \textcolor{keyword}{explicit}\ BitBully(\textcolor{keyword}{const}\ std::filesystem::path\&\ bookPath\ =\ \textcolor{stringliteral}{"{}"{}})}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00027}00027\ \ \ \ \ \ \ :\ nodeCounter\{0\},}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ transpositionTable\{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ USE\_TRANSPOSITION\_TABLE\ ?\ DEFAULT\_LOG\_TRANSPOSITION\_SIZE\ :\ 0\}\ \{}
@@ -38,7 +38,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00034}00034\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00035}00035\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ resetBook()\ \{\ m\_openingBook.reset();\ \}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00036}00036\ }
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00037}00037\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ loadBook(\textcolor{keyword}{const}\ std::filesystem::path\ \&bookPath\ =\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00037}00037\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ loadBook(\textcolor{keyword}{const}\ std::filesystem::path\&\ bookPath\ =\ \textcolor{stringliteral}{"{}"{}})\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (isBookLoaded())\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00039}00039\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00040}00040\ \ \ \ \ \}}
@@ -50,7 +50,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00046}00046\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00047}00047\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00048}00048\ \ \ \textcolor{comment}{//\ TODO:\ firstGuess\ is\ a\ parameter\ which\ could\ be\ tuned!}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00049}00049\ \ \ \textcolor{keywordtype}{int}\ mtdf(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\ \&b,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ firstGuess)\ \{}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00049}00049\ \ \ \textcolor{keywordtype}{int}\ mtdf(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ firstGuess)\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ MTD(f)\ algorithm\ by\ Aske\ Plaat:\ Plaat,\ Aske;\ Jonathan\ Schaeffer;\ Wim}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Pijls;\ Arie\ de\ Bruin\ (November\ 1996).\ "{}Best-\/first\ Fixed-\/depth\ Minimax}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Algorithms"{}.\ Artificial\ Intelligence.\ 87\ (1–2):\ 255–293.}}
@@ -72,7 +72,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00068}00068\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00069}00069\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00070}00070\ \ \ \textcolor{comment}{//\ generally,\ appears\ to\ be\ slower\ than\ mtdf}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00071}00071\ \ \ \textcolor{keywordtype}{int}\ nullWindow(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\ \&b)\ \{}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00071}00071\ \ \ \textcolor{keywordtype}{int}\ nullWindow(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b)\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ -\/b.movesLeft()\ /\ 2;}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ (b.movesLeft()\ +\ 1)\ /\ 2;}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00074}00074\ }
@@ -155,7 +155,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00151}00151\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00152}00152\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00153}00153\ \ \ \ \ \textcolor{comment}{//\ Transposition\ cutoff:\ TODO:\ Pretty\ ugly...}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00154}00154\ \ \ \ \ \mbox{\hyperlink{structBitBully_1_1TranspositionTable_1_1Entry}{TranspositionTable::Entry}}\ *ttEntry\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00154}00154\ \ \ \ \ \mbox{\hyperlink{structBitBully_1_1TranspositionTable_1_1Entry}{TranspositionTable::Entry}}*\ ttEntry\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00155}00155\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (USE\_TRANSPOSITION\_TABLE)\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00156}00156\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (b.movesLeft()\ >\ 6\ \&\&\ b.movesLeft()\ \%\ 2\ ==\ 0)\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ ttEntry\ =\ transpositionTable.get(b);}
@@ -277,7 +277,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00273}00273\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00274}00274\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00275}00275\ }
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00276}00276\ \ \ \textcolor{keyword}{auto}\ scoreMoves(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\ \&b)\ \{}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00276}00276\ \ \ \textcolor{keyword}{auto}\ scoreMoves(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b)\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00277}00277\ \ \ \ \ std::vector\ scores(Board::N\_COLUMNS,\ -\/1000);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00278}00278\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ col\ =\ 0UL;\ col\ <\ scores.size();\ col++)\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00279}00279\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ afterB\ =\ b;\ afterB.playMove(col))\ \{}

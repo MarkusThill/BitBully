@@ -43,7 +43,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.48</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.55-a0</span>
                         </div>
                     </td>
                 </tr>
@@ -135,7 +135,7 @@ $(function(){initNavTree('d6/dbe/Board_8cpp_source.html','../../'); initResizabl
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  assert(getRowMask(5) == getMask({5, 14, 23, 32, 41, 50, 59}));</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">bool</span> Board::setBoard(<span class="keyword">const</span> std::vector&lt;int&gt; &amp;moveSequence) {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">bool</span> Board::setBoard(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; moveSequence) {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  Board b;  <span class="comment">// First operate on copy</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> mv : moveSequence) {</div>
@@ -145,7 +145,7 @@ $(function(){initNavTree('d6/dbe/Board_8cpp_source.html','../../'); initResizabl
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">bool</span> Board::setBoard(<span class="keyword">const</span> TBoardArray &amp;board) {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">bool</span> Board::setBoard(<span class="keyword">const</span> TBoardArray&amp; board) {</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keywordflow">if</span> (!isValid(board)) {</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  }</div>
@@ -175,7 +175,7 @@ $(function(){initNavTree('d6/dbe/Board_8cpp_source.html','../../'); initResizabl
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">bool</span> Board::isValid(<span class="keyword">const</span> TBoardArray &amp;board) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">bool</span> Board::isValid(<span class="keyword">const</span> TBoardArray&amp; board) {</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="comment">// Counter for P_YELLOW, P_RED and P_EMPTY</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  std::array&lt;int, N_VALID_BOARD_VALUES&gt; valCounts = {0UL};</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> c = <span class="keyword">static_cast&lt;</span>TBoardArray::size_type<span class="keyword">&gt;</span>(0); c &lt; N_COLUMNS; ++c) {</div>
