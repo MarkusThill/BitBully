@@ -1,3 +1,11 @@
+## v0.0.55-a0 (2025-09-20)
+
+### Fix
+
+- updated cibuildwheel to 3.1.4 in github workflow
+- remove pypy build for old python versions 3.8 and 3.9
+- added copy function and tests to board class
+
 ## v0.0.54 (2025-09-17)
 
 ### Fix

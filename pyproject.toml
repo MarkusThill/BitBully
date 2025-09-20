@@ -1,7 +1,7 @@
 # https://packaging.python.org/en/latest/tutorials/packaging-projects/#creating-pyproject-toml
 [project]
 name = "bitbully"
-version = "0.0.54"
+version = "0.0.55-a0"
 description = "A fast Connect-4 Solver for Python & C++"
 authors = [
     { name = "Markus Thill" }
@@ -97,7 +97,7 @@ namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 [tool.commitizen]
 name = "cz_conventional_commits"
 version_scheme = "semver"
-version = "0.0.54" # Current version managed by Commitizen
+version = "0.0.55-a0" # Current version managed by Commitizen
 version_files = ["pyproject.toml", "src/version.h", "version.txt", "src/bitbully/__init__.py", "setup.py", "Doxyfile"] # if cz can directly bump it
 pre_bump_hooks = "./scripts/update_version.sh"
 tag_format = "v$version"  # Tag format (e.g., v1.0.0)
