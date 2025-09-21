@@ -6,9 +6,9 @@ import pathlib
 from importlib.abc import Traversable
 from typing import Literal, cast
 
-from board import Board
-
 from bitbully import bitbully_core
+
+from .board import Board
 
 
 class BitBully:
@@ -53,4 +53,4 @@ class BitBully:
         Returns:
             list[int]: A list of scores for each column (0-6).
         """
-        return cast(list[int], self.bitbully_agent.scoreMoves(board))
+        return cast(list[int], self.bitbully_agent.scoreMoves(board._board))

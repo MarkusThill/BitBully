@@ -27,7 +27,7 @@ class Board:
             board = Board("002233...")  # String
         """
         # TODO: The constructor does still not accept all types here. Fix that.
-        # self._board = bitbully_core.BoardCore(board)
+        self._board = bitbully_core.BoardCore()
 
     def __eq__(self, value: object) -> bool:
         """Checks equality between two Board instances.
