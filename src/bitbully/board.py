@@ -21,10 +21,21 @@ class Board:
                 - String: A move sequence of columns as string (e.g., "002233...")
                 - None for an empty board
 
-        Examples: (TODO: update examples)
+        Example:
+            Here we have an example:
+            ``` py
             board = Board()  # Empty board
-            board = Board([[0]*6 for _ in range(7)])  # empty board as 2D list
+
+            board = Board([[0] * 6 for _ in range(7)])  # empty board as 2D list
+            ```
+
+            It is possible to write some text inbetween the examples.
+
+        Example:
+            And here we have another example:
+            ``` py
             board = Board("002233...")  # String
+            ```
         """
         # TODO: The constructor does still not accept all types here. Fix that.
         self._board = bitbully_core.BoardCore()

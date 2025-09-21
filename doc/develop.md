@@ -45,6 +45,19 @@ cz bump --prerelease rc --increment minor # To bump the minor version and start 
 
 In this case, after pushing to the repository, only a small build for Python3.11 is performed and the results wheels are pushed to Test-PyPI instead of the real PyPi.
 
+### Generating Python Type Stubs for Pybind11 Modules
+
+To enable type checking with tools like `mypy` for Pybind11 compiled modules, you can generate a **`.pyi` stub file** using `pybind11-stubgen`. For example:
+
+```bash
+pip install pybind11-stubgen
+pybind11-stubgen bitbully.bitbully_core -o src/
+```
+
+Notes
+
+The generated .pyi file contains function and class signatures with type hints, which helps `mypy` and other type checkers.
+
 ## Compiler
 
 The code was compiled with:
