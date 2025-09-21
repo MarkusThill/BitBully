@@ -1,7 +1,8 @@
 """Test basic board functionality."""
 
-import bitbully.bitbully_core as bbc
 import pytest
+
+import bitbully.bitbully_core as bbc
 
 
 def test_empty_board_printable() -> None:

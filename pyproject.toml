@@ -65,7 +65,7 @@ package-dir = { "" = "src" }
 include-package-data = true  # Include additional non-Python files (e.g., libraries)
 
 [tool.setuptools.package-data]
-"bitbully" = ["assets/*"]
+"bitbully" = ["assets/*", "bitbully_core.pyi"]
 
 # bitbully = [
 #    "*.so",
@@ -112,7 +112,7 @@ allow-init-docstring = true
 [tool.ruff]
 line-length = 120
 include = ["pyproject.toml", "src/**/*.py", "scripts/**/*.py", "tests/**/*.py"]
-exclude = ["thirdParty/"]
+exclude = ["thirdParty/", "*.pyi"]
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -167,4 +167,4 @@ warn_redundant_casts = true
 warn_return_any = true
 warn_unreachable = true
 files = ["src/bitbully"]
-exclude = "tests/.*|thirdParty/.*"
+exclude = 'tests/.*|thirdParty/.*|\.pyi$'

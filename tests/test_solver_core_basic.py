@@ -2,8 +2,9 @@
 
 import time
 
-import bitbully.bitbully_core as bbc
 import pytest
+
+import bitbully.bitbully_core as bbc
 
 
 def test_mtdf() -> None:
