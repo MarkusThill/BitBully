@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['destroy_0',['destroy',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e',1,'bitbully::gui_c4::GuiC4']]]
+  ['canplay_0',['canPlay',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a370217c553a85bf306a30dd6ec517816',1,'GameSolver::Connect4::Position']]],
+  ['canwinnext_1',['canWinNext',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#afb530371990f81666f5989bce6340d92',1,'GameSolver::Connect4::Position']]],
+  ['connect_204_20game_20solver_2',['Connect 4 Game Solver',['..//home/runner/work/BitBully/BitBully/thirdParty/connect4/README.md#autotoc_md0',1,'']]]
 ];

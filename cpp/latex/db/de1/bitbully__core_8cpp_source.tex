@@ -21,7 +21,7 @@
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00017}00017\ \ \ m.doc()\ =}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00018}00018\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Bitbully\ is\ a\ fast\ Connect-\/4\ solver."{}};\ \ \textcolor{comment}{//\ optional\ module\ docstring}}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00020}00020\ \ \ py::class\_<BitBully::BitBully>(m,\ \textcolor{stringliteral}{"{}BitBully"{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00020}00020\ \ \ py::class\_<BitBully::BitBully>(m,\ \textcolor{stringliteral}{"{}BitBullyCore"{}})}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00021}00021\ \ \ \ \ \ \ .def(py::init<>())\ \ \textcolor{comment}{//\ Expose\ the\ default\ constructor}}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00022}00022\ \ \ \ \ \ \ .def(py::init<std::filesystem::path>(),\ py::arg(\textcolor{stringliteral}{"{}openingBookPath"{}}))}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00023}00023\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}mtdf"{}},\ \&BitBully::BitBully::mtdf,\ \textcolor{stringliteral}{"{}MTD(f)\ algorithm"{}},}
@@ -47,7 +47,7 @@
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00043}00043\ }
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00044}00044\ \ \ \textcolor{comment}{//\ Expose\ the\ Board\ class}}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00045}00045\ \ \ \textcolor{comment}{//\ TODO:\ Check\ functions....\ Many\ not\ necessary\ and\ some\ might\ be\ missing}}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00046}00046\ \ \ py::class\_<B>(m,\ \textcolor{stringliteral}{"{}Board"{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00046}00046\ \ \ py::class\_<B>(m,\ \textcolor{stringliteral}{"{}BoardCore"{}})}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00047}00047\ \ \ \ \ \ \ .def(py::init<>())\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Default\ constructor}}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00048}00048\ \ \ \ \ \ \ .def(py::init<const\ B\&>())\ \ \ \ \ \ \textcolor{comment}{//\ Copy-\/Konstruktor}}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00049}00049\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}\_\_str\_\_"{}},\ \&B::toString)\ \ \ \textcolor{comment}{//\ Override\ \_\_str\_\_\ in\ Python}}
@@ -110,7 +110,7 @@
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00106}00106\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}\_\_ne\_\_"{}},\ \&B::operator!=,\ \textcolor{stringliteral}{"{}Check\ if\ two\ boards\ are\ not\ equal"{}});}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00107}00107\ }
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00108}00108\ \ \ \textcolor{comment}{//\ Expose\ OpeningBook:}}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00109}00109\ \ \ py::class\_<BitBully::OpeningBook>(m,\ \textcolor{stringliteral}{"{}OpeningBook"{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00109}00109\ \ \ py::class\_<BitBully::OpeningBook>(m,\ \textcolor{stringliteral}{"{}OpeningBookCore"{}})}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00110}00110\ \ \ \ \ \ \ \textcolor{comment}{//\ Constructors}}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00111}00111\ \ \ \ \ \ \ .def(py::init<const\ std::filesystem::path\&,\ bool,\ bool>(),}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}bookPath"{}}),\ py::arg(\textcolor{stringliteral}{"{}is\_8ply"{}}),\ py::arg(\textcolor{stringliteral}{"{}with\_distances"{}}),}
