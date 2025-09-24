@@ -3,7 +3,7 @@
 import importlib
 import importlib.resources
 import pathlib
-from importlib.abc import Traversable
+from importlib.resources.abc import Traversable
 from typing import Literal, cast
 
 from bitbully import bitbully_core
