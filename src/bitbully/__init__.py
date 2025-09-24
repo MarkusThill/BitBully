@@ -1,3 +1,10 @@
-"""BitBully package: A fast Python-based Connect-4 solver."""
+"""BitBully package: A fast Python-based Connect-4 solver.
 
-__version__ = "0.0.55"
+Homepage: https://github.com/MarkusThill/BitBully
+"""
+
+from .bitbully import BitBully
+from .board import Board
+
+__all__: list[str] = ["BitBully", "Board"]
+__version__: str = "0.0.55"
