@@ -1,3 +1,14 @@
+## v0.0.56-a0 (2025-09-24)
+
+### Fix
+
+- deprecated warning
+- adapted import scheme for wrapper classes
+- updated docs a bit
+- removed unnecessary file
+- smaller fixes in wrapper classes
+- first draft of the bitbully wrapper classes
+
 ## v0.0.55 (2025-09-20)
 
 ### Fix
