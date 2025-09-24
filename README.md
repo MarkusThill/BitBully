@@ -83,7 +83,7 @@ Also add a simple Notebook with examples!
 
 ### BitBully Core (advanced)
 
-Use the `BitBully` and `Board` classes directly in Python:
+Use the `BitBullyCore` and `BoardCore` classes directly in Python:
 
 ```python
 from bitbully import bitbully_core
@@ -97,7 +97,7 @@ for _ in range(6):
 
 print(board)
 
-solver = bitbully_core.BitBully()
+solver = bitbully_core.BitBullyCore()
 start = time.perf_counter()
 score = solver.mtdf(board, first_guess=0)
 print(f"Time: {round(time.perf_counter() - start, 2)} seconds!")
@@ -122,14 +122,14 @@ board_array = [
     [0, 0, 0, 0, 0, 0]
 ]
 
-# Convert the array to the BitBully board
+# Convert the array to the BoardCore board
 board = bitbully_core.BoardCore()
 assert board.setBoard(board_array), "Invalid board!"
 
 print(board)
 
 # Solve the position
-solver = bitbully_core.BitBully()
+solver = bitbully_core.BitBullyCore()
 score = solver.mtdf(board, first_guess=0)
 print(f"Best score for the current board: {score}") # expected score: 1
 ```
@@ -141,7 +141,7 @@ from bitbully import bitbully_core as bbc
 import importlib.resources
 
 db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
-bitbully = bbc.BitBully(db_path)
+bitbully = bbc.BitBullyCore(db_path)
 b = bbc.BoardCore()  # Empty board
 bitbully.scoreMoves(b)  # expected result: [-2, -1, 0, 1, 0, -1, -2]
 ```
@@ -190,7 +190,7 @@ ob.getBoardValue(b)  # Get game-theoretic value (also checks mirrored board)
 
 - **Python**: Version 3.10 or higher
 - **CMake**: Version 3.15 or higher
-- **C++ Compiler**: A compiler supporting C++17 (e.g., GCC, Clang, MSVC)
+- **C++ Compiler**: A compiler supporting C++-17 (e.g., GCC, Clang, MSVC)
 - **Python Development Headers**: Required for building the Python bindings
 
 ### From Source
