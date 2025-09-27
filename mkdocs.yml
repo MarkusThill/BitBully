@@ -6,9 +6,12 @@ theme:
     - content.code.annotate   # (optional) Enables annotation features for clarity
 nav:
   - Home: index.md
-  - C++ Docs: cpp/html/index.html  # Link to Doxygen HTML docs
+  - Getting Started: getting_started.md
+  - User Guide: user_guide.md
   - API Reference:
-      - BitBully: python.md
+      - bitbully: python.md
+  - C++ Docs: cpp/html/index.html  # Link to Doxygen HTML docs
+
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -18,6 +21,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
 
 plugins:
 - search
