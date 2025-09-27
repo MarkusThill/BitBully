@@ -1,3 +1,15 @@
+## v0.0.56-a6 (2025-09-27)
+
+### Fix
+
+- added some additional cpp setboard methods
+
+## v0.0.56-a5 (2025-09-27)
+
+### Fix
+
+- added some additional cpp setboard methods
+
 ## v0.0.56-a4 (2025-09-27)
 
 ### Fix
