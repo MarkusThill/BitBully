@@ -82,6 +82,7 @@ class Board {
   using TBitBoard = uint64_t;
   using TMovesCounter = int;
   using TBoardArray = std::array<std::array<int32_t, N_ROWS>, N_COLUMNS>;
+  using TBoardArrayT = std::array<std::array<int32_t, N_COLUMNS>, N_ROWS>;
 
   void inline playMoveFastBB(const TBitBoard mv) {
     assert(mv != BB_EMPTY);
@@ -165,7 +166,11 @@ class Board {
 
   bool setBoard(const TBoardArray& board);
 
+  bool setBoard(const TBoardArrayT& board);
+
   bool setBoard(const std::vector<int>& moveSequence);
+
+  bool setBoard(const std::string& moveSequence);
 
   [[nodiscard]] TBoardArray toArray() const;
 
@@ -464,6 +469,8 @@ class Board {
 
     return {std::move(b), std::move(mvSequence)};
   }
+
+  static TBoardArray transpose(const TBoardArrayT& board);
 };
 
 }  // namespace BitBully

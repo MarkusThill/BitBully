@@ -1,5 +1,6 @@
 #include "Board.h"
 
+#include <algorithm>
 #include <array>
 #include <cassert>
 #include <iostream>
@@ -26,6 +27,36 @@ bool Board::setBoard(const std::vector<int>& moveSequence) {
   }
   *this = b;
   return true;
+}
+
+bool Board::setBoard(const std::string& moveSequence) {
+  for (const char c : moveSequence) {
+    if (c < '0' || c > '6') return false;
+  }
+
+  std::vector<int> moveSequenceInt;
+  moveSequenceInt.reserve(
+      moveSequence.size());  // optional, avoids reallocations
+  std::transform(moveSequence.begin(), moveSequence.end(),
+                 std::back_inserter(moveSequenceInt),
+                 [](const char c) { return c - '0'; });
+
+  return setBoard(moveSequenceInt);
+}
+
+Board::TBoardArray Board::transpose(const TBoardArrayT& board) {
+  TBoardArray result{};
+  for (std::size_t c = 0; c < N_COLUMNS; ++c) {
+    for (std::size_t r = 0; r < N_ROWS; ++r) {
+      result[c][N_ROWS - r - 1] = board[r][c];
+    }
+  }
+  return result;
+}
+
+bool Board::setBoard(const TBoardArrayT& boardT) {
+  const auto board = transpose(boardT);
+  return setBoard(board);
 }
 
 bool Board::setBoard(const TBoardArray& board) {

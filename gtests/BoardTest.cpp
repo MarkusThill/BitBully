@@ -113,6 +113,112 @@ TEST_F(BoardTest, setBoard) {
   ASSERT_TRUE(bExpected == b);
 }
 
+TEST_F(BoardTest, setBoardT) {
+  using B = BitBully::Board;
+  B b, bExpected;
+
+  B::TBoardArray arr = {{{2, 1, 2, 2, 2, 1},  //
+                         {2, 1, 1, 2, 1, 1},  //
+                         {1, 2, 2, 1, 1, 2},  //
+                         {1, 1, 2, 1, 2, 2},  //
+                         {1, 2, 2, 1, 1, 0},  //
+                         {2, 1, 1, 2, 2, 1},  //
+                         {2, 1, 1, 2, 1, 2}}};
+
+  B::TBoardArrayT arrT = {{
+      {1, 1, 2, 2, 0, 1, 2},  //
+      {2, 1, 1, 2, 1, 2, 1},  //
+      {2, 2, 1, 1, 1, 2, 2},  //
+      {2, 1, 2, 2, 2, 1, 1},  //
+      {1, 1, 2, 1, 2, 1, 1},  //
+      {2, 2, 1, 1, 1, 2, 2}   //
+  }};  //
+
+  ASSERT_TRUE(b.setBoard(arrT));
+  ASSERT_TRUE(bExpected.setBoard(arr));
+  ASSERT_EQ(b, bExpected);
+
+  //
+  ASSERT_TRUE(bExpected.setBoard(std::vector{3, 3, 3, 3, 3, 3}));
+  arrT = {{
+      {0, 0, 0, 2, 0, 0, 0},  //
+      {0, 0, 0, 1, 0, 0, 0},  //
+      {0, 0, 0, 2, 0, 0, 0},  //
+      {0, 0, 0, 1, 0, 0, 0},  //
+      {0, 0, 0, 2, 0, 0, 0},  //
+      {0, 0, 0, 1, 0, 0, 0}   //
+  }};
+  ASSERT_TRUE(b.setBoard(arrT));
+}
+
+TEST_F(BoardTest, setBoardString) {
+  using B = BitBully::Board;
+
+  const auto emptyBoard = B();
+
+  // Empty Move Sequence:
+  auto b = B();
+  ASSERT_TRUE(b.setBoard(""));
+  ASSERT_EQ(b.countTokens(), 0);
+  ASSERT_EQ(b.movesLeft(), 42);
+  ASSERT_EQ(b, emptyBoard);
+
+  B::TBoardArray arr = {{{1, 0, 0, 0, 0, 0},  //
+                         {2, 0, 0, 0, 0, 0},  //
+                         {1, 0, 0, 0, 0, 0},  //
+                         {2, 0, 0, 0, 0, 0},  //
+                         {1, 0, 0, 0, 0, 0},  //
+                         {2, 0, 0, 0, 0, 0},  //
+                         {1, 0, 0, 0, 0, 0}}};
+
+  // Accepted sequences
+  ASSERT_TRUE(b.setBoard("333333"));
+  ASSERT_TRUE(b.setBoard("000000"));
+  ASSERT_TRUE(b.setBoard("666666"));
+  ASSERT_TRUE(b.setBoard("012345601234560123456"));
+
+  // A valid sequence
+  auto bExpected = B();
+  ASSERT_TRUE(b.setBoard("0123456"));
+  ASSERT_TRUE(bExpected.setBoard(arr));
+  ASSERT_TRUE(bExpected == b);
+  ASSERT_EQ(bExpected, b);
+
+  // Out of bounds
+  ASSERT_FALSE(b.setBoard("1237012"));
+  ASSERT_TRUE(bExpected == b);
+  ASSERT_EQ(bExpected, b);
+
+  // Random chars
+  ASSERT_FALSE(b.setBoard("123a012"));
+  ASSERT_FALSE(b.setBoard("§123"));
+  ASSERT_FALSE(b.setBoard("12°3"));
+  ASSERT_FALSE(b.setBoard("-0123"));
+  ASSERT_FALSE(b.setBoard("-123"));
+  ASSERT_TRUE(bExpected == b);
+  ASSERT_EQ(bExpected, b);
+
+  // Exceeding height
+  ASSERT_FALSE(b.setBoard("0000000"));
+  ASSERT_FALSE(b.setBoard("0123456666666"));
+  ASSERT_TRUE(bExpected == b);
+  ASSERT_EQ(bExpected, b);
+
+  // Move 6 tokens into column 3
+  arr = {{{0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {1, 2, 1, 2, 1, 2},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0},  //
+          {0, 0, 0, 0, 0, 0}}};
+  bExpected = B();
+  ASSERT_TRUE(b.setBoard("333333"));
+  ASSERT_TRUE(bExpected.setBoard(arr));
+  ASSERT_TRUE(bExpected == b);
+  ASSERT_EQ(bExpected, b);
+}
+
 /* [ *,  *,  *,  *,  *,  *,  *]
  * [ *,  *,  *,  *,  *,  *,  *]
  * [ *,  *,  *,  *,  *,  *,  *]
