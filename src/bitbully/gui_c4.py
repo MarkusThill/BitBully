@@ -5,7 +5,7 @@ import logging
 import time
 from pathlib import Path
 
-import matplotlib as mpl
+import matplotlib.backend_bases as mpl_backend_bases
 import matplotlib.pyplot as plt
 import numpy as np
 import numpy.typing as npt
@@ -115,8 +115,12 @@ class GuiC4:
         self.m_gameover = False
 
         # C4 agent
-        db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
-        self.bitbully_agent = bitbully_core.BitBullyCore(db_path)
+        # db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
+        # self.bitbully_agent = bitbully_core.BitBullyCore(db_path)
+
+        resource = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
+        with importlib.resources.as_file(resource) as db_path:
+            self.bitbully_agent = bitbully_core.BitBullyCore(db_path)
 
     def _reset(self) -> None:
         self.m_movelist = []
@@ -409,13 +413,13 @@ class GuiC4:
             ),
         )
 
-    def _on_field_click(self, event: mpl.backend_bases.Event) -> None:
+    def _on_field_click(self, event: mpl_backend_bases.Event) -> None:
         """Based on the column where the click was detected, insert a token.
 
         Args:
-            event (mpl.backend_bases.Event): A matplotlib mouse event.
+            event (mpl_backend_bases.Event): A matplotlib mouse event.
         """
-        if isinstance(event, mpl.backend_bases.MouseEvent):
+        if isinstance(event, mpl_backend_bases.MouseEvent):
             ix, iy = event.xdata, event.ydata
             self.m_logger.debug("click (x,y): %d, %d", ix, iy)
             idx = np.where(self.m_axs == event.inaxes)[0][0] % self.m_n_col

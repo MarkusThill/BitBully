@@ -4,7 +4,7 @@ import importlib
 import importlib.resources
 import pathlib
 from importlib.resources.abc import Traversable
-from typing import Literal, cast
+from typing import Literal
 
 from bitbully import bitbully_core
 
@@ -53,4 +53,4 @@ class BitBully:
         Returns:
             list[int]: A list of scores for each column (0-6).
         """
-        return cast(list[int], self.bitbully_agent.scoreMoves(board._board))
+        return self.bitbully_agent.scoreMoves(board._board)

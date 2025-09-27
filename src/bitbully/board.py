@@ -197,11 +197,11 @@ class Board:
             return new_board
         return None
 
-    def set_board(self, board: list[list[int]] | list[int] | str) -> bool:
+    def set_board(self, board: list[list[int]] | list[int]) -> bool:
         """Sets (overrides) the board to a specific state.
 
         Args:
-            board (list[list[int]] | list[int] | str):
+            board (list[list[int]] | list[int]):
                 The new board state. Accepts:
                 - 2D array (list, tuple, numpy-array) with shape 7x6 or 6x7
                 - 1D sequence of ints: a move sequence of columns (e.g., [0, 0, 2, 2, 3, 3])
@@ -211,7 +211,7 @@ class Board:
             bool: True if the board was set successfully, False otherwise.
         """
         # TODO: also allow other types for `board`, e.g., numpy arrays and convert to a list of lists
-        if not isinstance(board, str):
+        if isinstance(board, list):
             return self._board.setBoard(board)
         return False
 
