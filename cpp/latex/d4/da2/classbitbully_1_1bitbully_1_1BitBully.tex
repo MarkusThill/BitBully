@@ -1,0 +1,104 @@
+\doxysection{bitbully.\+bitbully.\+Bit\+Bully Class Reference}
+\hypertarget{classbitbully_1_1bitbully_1_1BitBully}{}\label{classbitbully_1_1bitbully_1_1BitBully}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+None \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Literal\mbox{[}"{}default"{}, "{}8-\/ply"{}, "{}12-\/ply"{}, "{}12-\/ply-\/dist"{}\mbox{]}\texorpdfstring{$\vert$}{|}None opening\+\_\+book="{}default"{})
+\item 
+list\mbox{[}int\mbox{]} \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a4d30cb97c48c357a9a09d74eb3951847}{score\+\_\+next\+\_\+moves}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_aee369fd0d4e39cd10069382a8fcd58f5}{opening\+\_\+book\+\_\+type}} = opening\+\_\+book
+\item 
+\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_ad536ecdc61f3dcebf6f68c94d5bc30c6}{bitbully\+\_\+agent}} = bitbully\+\_\+core.\+Bit\+Bully\+Core(pathlib.\+Path(str(db\+\_\+path)))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}A Connect Four AI agent with opening book support.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00014}{14}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559} 
+ None bitbully.\+bitbully.\+Bit\+Bully.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Literal\mbox{[}"{}default"{}, "{}8-\/ply"{}, "{}12-\/ply"{}, "{}12-\/ply-\/dist"{}\mbox{]} \texorpdfstring{$\vert$}{|} None }]{opening\+\_\+book}{ = {\ttfamily "{}default"{}}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initializes the BitBully agent with the specified opening book.
+
+Args:
+    opening_book (Literal["default", "8-ply", "12-ply", "12-ply-dist"] | None):
+        The type of opening book to use. Options are:
+        - "default": Uses the default 12-ply distance-based opening book.
+        - "8-ply": Uses an 8-ply opening book.
+        - "12-ply": Uses a 12-ply opening book.
+        - "12-ply-dist": Uses a 12-ply distance-based opening book.
+        - None: No opening book will be used.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00017}{17}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a4d30cb97c48c357a9a09d74eb3951847}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!score\_next\_moves@{score\_next\_moves}}
+\index{score\_next\_moves@{score\_next\_moves}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{score\_next\_moves()}{score\_next\_moves()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a4d30cb97c48c357a9a09d74eb3951847} 
+ list\mbox{[}int\mbox{]} bitbully.\+bitbully.\+Bit\+Bully.\+score\+\_\+next\+\_\+moves (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Scores all possible moves for the given board state.
+
+Args:
+    board (Board):
+        The current board state.
+
+Returns:
+    list[int]: A list of scores for each column (0-6).
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00046}{46}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_ad536ecdc61f3dcebf6f68c94d5bc30c6}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!bitbully\_agent@{bitbully\_agent}}
+\index{bitbully\_agent@{bitbully\_agent}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{bitbully\_agent}{bitbully\_agent}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_ad536ecdc61f3dcebf6f68c94d5bc30c6} 
+bitbully.\+bitbully.\+Bit\+Bully.\+bitbully\+\_\+agent = bitbully\+\_\+core.\+Bit\+Bully\+Core(pathlib.\+Path(str(db\+\_\+path)))}
+
+
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00042}{42}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_aee369fd0d4e39cd10069382a8fcd58f5}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!opening\_book\_type@{opening\_book\_type}}
+\index{opening\_book\_type@{opening\_book\_type}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{opening\_book\_type}{opening\_book\_type}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_aee369fd0d4e39cd10069382a8fcd58f5} 
+bitbully.\+bitbully.\+Bit\+Bully.\+opening\+\_\+book\+\_\+type = opening\+\_\+book}
+
+
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00029}{29}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/bitbully/bitbully.\+py\end{DoxyCompactItemize}

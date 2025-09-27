@@ -1,7 +1,9 @@
 var hierarchy =
 [
     [ "BitBully::BitBully", "d9/d00/classBitBully_1_1BitBully.html", null ],
+    [ "bitbully.bitbully.BitBully", "d4/da2/classbitbully_1_1bitbully_1_1BitBully.html", null ],
     [ "BitBully::Board", "d1/d9d/classBitBully_1_1Board.html", null ],
+    [ "bitbully.board.Board", "d9/d83/classbitbully_1_1board_1_1Board.html", null ],
     [ "BitBully::TranspositionTable::Entry", "d9/df8/structBitBully_1_1TranspositionTable_1_1Entry.html", null ],
     [ "bitbully.gui_c4.GuiC4", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html", null ],
     [ "BitBully::MoveList", "d7/d3c/classBitBully_1_1MoveList.html", null ],
