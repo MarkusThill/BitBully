@@ -40,7 +40,6 @@ dev = [
     "mkdocs",
     "mkdocstrings[python]",
     "mkdocs-material",
-    "mypy",
     "pytest"
 ]
 
@@ -156,18 +155,18 @@ select = [
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.mypy]
-python_version = "3.10"
-ignore_missing_imports = true
-disallow_untyped_defs = true
-check_untyped_defs = true
-strict_optional = true
-warn_unused_ignores = true
-warn_redundant_casts = true
-warn_return_any = true
-warn_unreachable = true
-files = ["src/bitbully"]
-exclude = 'tests/.*|thirdParty/.*|\.pyi$'
+# [tool.mypy]
+# python_version = "3.10"
+# ignore_missing_imports = true
+# disallow_untyped_defs = true
+# check_untyped_defs = true
+# strict_optional = true
+# warn_unused_ignores = true
+# warn_redundant_casts = true
+# warn_return_any = true
+# warn_unreachable = true
+# files = ["src/bitbully"]
+# exclude = 'tests/.*|thirdParty/.*|\.pyi$'
 
 [tool.pyrefly]
 project-includes = ["src/bitbully"]
