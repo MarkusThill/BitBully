@@ -149,6 +149,47 @@ TEST_F(BoardTest, setBoardT) {
       {0, 0, 0, 1, 0, 0, 0}   //
   }};
   ASSERT_TRUE(b.setBoard(arrT));
+  ASSERT_EQ(b, bExpected);
+
+  //
+  ASSERT_TRUE(
+      bExpected.setBoard(std::vector{3, 3, 0, 0, 3, 3, 0, 0, 3, 3, 0, 0}));
+  arrT = {{
+      {2, 0, 0, 2, 0, 0, 0},  //
+      {1, 0, 0, 1, 0, 0, 0},  //
+      {2, 0, 0, 2, 0, 0, 0},  //
+      {1, 0, 0, 1, 0, 0, 0},  //
+      {2, 0, 0, 2, 0, 0, 0},  //
+      {1, 0, 0, 1, 0, 0, 0}   //
+  }};
+  ASSERT_TRUE(b.setBoard(arrT));
+  ASSERT_EQ(b, bExpected);
+
+  //
+  ASSERT_TRUE(bExpected.setBoard("330055330055330055"));
+  arrT = {{
+      {2, 0, 0, 2, 0, 2, 0},  //
+      {1, 0, 0, 1, 0, 1, 0},  //
+      {2, 0, 0, 2, 0, 2, 0},  //
+      {1, 0, 0, 1, 0, 1, 0},  //
+      {2, 0, 0, 2, 0, 2, 0},  //
+      {1, 0, 0, 1, 0, 1, 0}   //
+  }};
+  ASSERT_TRUE(b.setBoard(arrT));
+  ASSERT_EQ(b, bExpected);
+
+  //
+  ASSERT_TRUE(bExpected.setBoard("3300553300553300551211111"));
+  arrT = {{
+      {2, 1, 0, 2, 0, 2, 0},  //
+      {1, 2, 0, 1, 0, 1, 0},  //
+      {2, 1, 0, 2, 0, 2, 0},  //
+      {1, 2, 0, 1, 0, 1, 0},  //
+      {2, 1, 0, 2, 0, 2, 0},  //
+      {1, 1, 2, 1, 0, 1, 0}   //
+  }};
+  ASSERT_TRUE(b.setBoard(arrT));
+  ASSERT_EQ(b, bExpected);
 }
 
 TEST_F(BoardTest, setBoardString) {
