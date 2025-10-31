@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.56-a6</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.56-a7</span>
                         </div>
                     </td>
                 </tr>
@@ -156,7 +156,7 @@ $(function(){initNavTree('d3/d5c/BitBully_8h_source.html','../../',''); });
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  }</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="comment">// TODO: firstGuess is a parameter which could be tuned!</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keywordtype">int</span> mtdf(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a>&amp; b, <span class="keyword">const</span> <span class="keywordtype">int</span> firstGuess) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keywordtype">int</span> mtdf(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a>&amp; b, <span class="keyword">const</span> <span class="keywordtype">int</span> firstGuess) <span class="keyword">noexcept</span> {</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// MTD(f) algorithm by Aske Plaat: Plaat, Aske; Jonathan Schaeffer; Wim</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Pijls; Arie de Bruin (November 1996). &quot;Best-first Fixed-depth Minimax</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Algorithms&quot;. Artificial Intelligence. 87 (1–2): 255–293.</span></div>
@@ -178,7 +178,7 @@ $(function(){initNavTree('d3/d5c/BitBully_8h_source.html','../../',''); });
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  }</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="comment">// generally, appears to be slower than mtdf</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordtype">int</span> nullWindow(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a>&amp; b) {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordtype">int</span> nullWindow(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a>&amp; b) <span class="keyword">noexcept</span> {</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">int</span> min = -b.movesLeft() / 2;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">int</span> max = (b.movesLeft() + 1) / 2;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
@@ -207,7 +207,7 @@ $(function(){initNavTree('d3/d5c/BitBully_8h_source.html','../../',''); });
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keywordtype">void</span> resetNodeCounter() { nodeCounter = 0ULL; }</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keywordtype">int</span> negamax(<a class="code hl_class" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> b, <span class="keywordtype">int</span> alpha, <span class="keywordtype">int</span> beta, <span class="keywordtype">int</span> depth) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keywordtype">int</span> negamax(<a class="code hl_class" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> b, <span class="keywordtype">int</span> alpha, <span class="keywordtype">int</span> beta, <span class="keyword">const</span> <span class="keywordtype">int</span> depth) <span class="keyword">noexcept</span> {</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// In many aspects inspired by Pascal&#39;s code</span></div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    assert(alpha &lt; beta);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    nodeCounter++;</div>
@@ -386,7 +386,7 @@ $(function(){initNavTree('d3/d5c/BitBully_8h_source.html','../../',''); });
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>  <span class="keyword">auto</span> scoreMoves(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a>&amp; b) {</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    std::vector scores(Board::N_COLUMNS, -1000);</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> col = 0UL; col &lt; scores.size(); col++) {</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>      <span class="keywordflow">if</span> (<span class="keyword">auto</span> afterB = b; afterB.playMove(col)) {</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>      <span class="keywordflow">if</span> (<span class="keyword">auto</span> afterB = b; afterB.play(col)) {</div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        <span class="keywordflow">if</span> (afterB.hasWin()) {</div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>          scores[col] = (afterB.movesLeft()) / 2 + 1;</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>          <span class="keywordflow">continue</span>;</div>

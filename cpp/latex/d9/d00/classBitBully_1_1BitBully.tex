@@ -14,9 +14,9 @@ void \mbox{\hyperlink{classBitBully_1_1BitBully_afdc857dc3db5da0cb81e4b3b9eae454
 \item 
 bool \mbox{\hyperlink{classBitBully_1_1BitBully_a0c19bf3d591e248963b8bfc8fceaa6c8}{load\+Book}} (const std\+::filesystem\+::path \&book\+Path="{}"{})
 \item 
-int \mbox{\hyperlink{classBitBully_1_1BitBully_ae462ded8c4a31264f73d7b1fcf71af2c}{mtdf}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b, const int first\+Guess)
+int \mbox{\hyperlink{classBitBully_1_1BitBully_ae69036fc20f4638aa0c48a2cef76cf40}{mtdf}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b, const int first\+Guess) noexcept
 \item 
-int \mbox{\hyperlink{classBitBully_1_1BitBully_a89fb1ecf18c7f87270e5b2a5ef01aa4f}{null\+Window}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b)
+int \mbox{\hyperlink{classBitBully_1_1BitBully_ae3e9358bc9a00afb337ae81a4d675b74}{null\+Window}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b) noexcept
 \item 
 void \mbox{\hyperlink{classBitBully_1_1BitBully_a87c2b73dedea279fdae57f4a012381d7}{reset\+Transposition\+Table}} ()
 \item 
@@ -24,7 +24,7 @@ auto \mbox{\hyperlink{classBitBully_1_1BitBully_a9a87ef9afe101ddda6b3bb74764b3e0
 \item 
 void \mbox{\hyperlink{classBitBully_1_1BitBully_a4d03943682b98ae771ce1b79fc8da935}{reset\+Node\+Counter}} ()
 \item 
-int \mbox{\hyperlink{classBitBully_1_1BitBully_ae0264db0136dfeee0166067f1574341d}{negamax}} (\mbox{\hyperlink{classBitBully_1_1Board}{Board}} b, int alpha, int beta, int depth)
+int \mbox{\hyperlink{classBitBully_1_1BitBully_a4738fdab31621675ad328f6b4a0eafed}{negamax}} (\mbox{\hyperlink{classBitBully_1_1Board}{Board}} b, int alpha, int beta, const int depth) noexcept
 \item 
 auto \mbox{\hyperlink{classBitBully_1_1BitBully_adcc1afa34c59c7f0998bf5f6679bbc24}{score\+Moves}} (const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&b)
 \end{DoxyCompactItemize}
@@ -85,31 +85,31 @@ bool Bit\+Bully\+::\+Bit\+Bully\+::load\+Book (\begin{DoxyParamCaption}\item[{co
 
 Definition at line \mbox{\hyperlink{BitBully_8h_source_l00037}{37}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
 
-\Hypertarget{classBitBully_1_1BitBully_ae462ded8c4a31264f73d7b1fcf71af2c}\index{BitBully::BitBully@{BitBully::BitBully}!mtdf@{mtdf}}
+\Hypertarget{classBitBully_1_1BitBully_ae69036fc20f4638aa0c48a2cef76cf40}\index{BitBully::BitBully@{BitBully::BitBully}!mtdf@{mtdf}}
 \index{mtdf@{mtdf}!BitBully::BitBully@{BitBully::BitBully}}
 \doxysubsubsection{\texorpdfstring{mtdf()}{mtdf()}}
-{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_ae462ded8c4a31264f73d7b1fcf71af2c} 
-int Bit\+Bully\+::\+Bit\+Bully\+::mtdf (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{, }\item[{const int}]{first\+Guess}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_ae69036fc20f4638aa0c48a2cef76cf40} 
+int Bit\+Bully\+::\+Bit\+Bully\+::mtdf (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{, }\item[{const int}]{first\+Guess}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
 Definition at line \mbox{\hyperlink{BitBully_8h_source_l00049}{49}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
 
-\Hypertarget{classBitBully_1_1BitBully_ae0264db0136dfeee0166067f1574341d}\index{BitBully::BitBully@{BitBully::BitBully}!negamax@{negamax}}
+\Hypertarget{classBitBully_1_1BitBully_a4738fdab31621675ad328f6b4a0eafed}\index{BitBully::BitBully@{BitBully::BitBully}!negamax@{negamax}}
 \index{negamax@{negamax}!BitBully::BitBully@{BitBully::BitBully}}
 \doxysubsubsection{\texorpdfstring{negamax()}{negamax()}}
-{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_ae0264db0136dfeee0166067f1574341d} 
-int Bit\+Bully\+::\+Bit\+Bully\+::negamax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBitBully_1_1Board}{Board}}}]{b}{, }\item[{int}]{alpha}{, }\item[{int}]{beta}{, }\item[{int}]{depth}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_a4738fdab31621675ad328f6b4a0eafed} 
+int Bit\+Bully\+::\+Bit\+Bully\+::negamax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBitBully_1_1Board}{Board}}}]{b}{, }\item[{int}]{alpha}{, }\item[{int}]{beta}{, }\item[{const int}]{depth}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
 Definition at line \mbox{\hyperlink{BitBully_8h_source_l00100}{100}} of file \mbox{\hyperlink{BitBully_8h_source}{Bit\+Bully.\+h}}.
 
-\Hypertarget{classBitBully_1_1BitBully_a89fb1ecf18c7f87270e5b2a5ef01aa4f}\index{BitBully::BitBully@{BitBully::BitBully}!nullWindow@{nullWindow}}
+\Hypertarget{classBitBully_1_1BitBully_ae3e9358bc9a00afb337ae81a4d675b74}\index{BitBully::BitBully@{BitBully::BitBully}!nullWindow@{nullWindow}}
 \index{nullWindow@{nullWindow}!BitBully::BitBully@{BitBully::BitBully}}
 \doxysubsubsection{\texorpdfstring{nullWindow()}{nullWindow()}}
-{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_a89fb1ecf18c7f87270e5b2a5ef01aa4f} 
-int Bit\+Bully\+::\+Bit\+Bully\+::null\+Window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{classBitBully_1_1BitBully_ae3e9358bc9a00afb337ae81a4d675b74} 
+int Bit\+Bully\+::\+Bit\+Bully\+::null\+Window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBitBully_1_1Board}{Board}} \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 

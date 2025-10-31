@@ -4,46 +4,46 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00001}\mbox{\hyperlink{namespacebitbully_1_1bitbully}{00001}}\ \textcolor{stringliteral}{"{}"{}"{}BitBully:\ A\ Connect\ Four\ AI\ agent\ with\ opening\ book\ support."{}"{}"{}}}
 \DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00002}00002\ }
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00003}00003\ \textcolor{keyword}{import}\ importlib}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00004}00004\ \textcolor{keyword}{import}\ importlib.resources}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00005}00005\ \textcolor{keyword}{import}\ pathlib}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00006}00006\ \textcolor{keyword}{from}\ importlib.resources.abc\ \textcolor{keyword}{import}\ Traversable}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00007}00007\ \textcolor{keyword}{from}\ typing\ \textcolor{keyword}{import}\ Literal}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00009}00009\ \textcolor{keyword}{from}\ bitbully\ \textcolor{keyword}{import}\ bitbully\_core}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00010}00010\ }
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00011}00011\ \textcolor{keyword}{from}\ .board\ \textcolor{keyword}{import}\ Board}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00003}00003\ \textcolor{keyword}{from}\ importlib.resources\ \textcolor{keyword}{import}\ as\_file,\ files}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00005}00005\ \textcolor{comment}{\#\ from\ importlib.resources.abc\ import\ Traversable}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00006}00006\ \textcolor{keyword}{from}\ typing\ \textcolor{keyword}{import}\ Literal}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00008}00008\ \textcolor{keyword}{from}\ bitbully\ \textcolor{keyword}{import}\ bitbully\_core}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00010}00010\ \textcolor{keyword}{from}\ .board\ \textcolor{keyword}{import}\ Board}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00011}00011\ }
 \DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00012}00012\ }
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00013}00013\ }
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00014}\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully}{00014}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully}{BitBully}}:}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00015}00015\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}A\ Connect\ Four\ AI\ agent\ with\ opening\ book\ support."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00016}00016\ }
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00017}\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559}{00017}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559}{\_\_init\_\_}}(self,\ opening\_book:\ Literal[\textcolor{stringliteral}{"{}default"{}},\ \textcolor{stringliteral}{"{}8-\/ply"{}},\ \textcolor{stringliteral}{"{}12-\/ply"{}},\ \textcolor{stringliteral}{"{}12-\/ply-\/dist"{}}]\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{stringliteral}{"{}default"{}})\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Initializes\ the\ BitBully\ agent\ with\ the\ specified\ opening\ book.}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00019}00019\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ opening\_book\ (Literal["{}default"{},\ "{}8-\/ply"{},\ "{}12-\/ply"{},\ "{}12-\/ply-\/dist"{}]\ |\ None):}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ type\ of\ opening\ book\ to\ use.\ Options\ are:}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ "{}default"{}:\ Uses\ the\ default\ 12-\/ply\ distance-\/based\ opening\ book.}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ "{}8-\/ply"{}:\ Uses\ an\ 8-\/ply\ opening\ book.}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ "{}12-\/ply"{}:\ Uses\ a\ 12-\/ply\ opening\ book.}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ "{}12-\/ply-\/dist"{}:\ Uses\ a\ 12-\/ply\ distance-\/based\ opening\ book.}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ None:\ No\ opening\ book\ will\ be\ used.}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_aee369fd0d4e39cd10069382a8fcd58f5}{opening\_book\_type}}\ =\ opening\_book}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00030}00030\ }
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ db\_path:\ Traversable\ |\ str\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{keywordtype}{None}}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ opening\_book\ ==\ \textcolor{stringliteral}{"{}default"{}}:}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ importlib.resources.files(\textcolor{stringliteral}{"{}bitbully"{}}).joinpath(\textcolor{stringliteral}{"{}assets/book\_12ply\_distances.dat"{}})}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ opening\_book\ ==\ \textcolor{stringliteral}{"{}8-\/ply"{}}:}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ importlib.resources.files(\textcolor{stringliteral}{"{}bitbully"{}}).joinpath(\textcolor{stringliteral}{"{}assets/book\_8ply.dat"{}})}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ opening\_book\ ==\ \textcolor{stringliteral}{"{}12-\/ply"{}}:}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ importlib.resources.files(\textcolor{stringliteral}{"{}bitbully"{}}).joinpath(\textcolor{stringliteral}{"{}assets/book\_12ply.dat"{}})}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ opening\_book\ ==\ \textcolor{stringliteral}{"{}12-\/ply-\/dist"{}}:}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ importlib.resources.files(\textcolor{stringliteral}{"{}bitbully"{}}).joinpath(\textcolor{stringliteral}{"{}assets/book\_12ply\_distances.dat"{}})}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00040}00040\ }
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ db\_path:}
-\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_ad536ecdc61f3dcebf6f68c94d5bc30c6}{bitbully\_agent}}\ =\ bitbully\_core.BitBullyCore(pathlib.Path(str(db\_path)))}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00013}\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully}{00013}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully}{BitBully}}:}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00014}00014\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}A\ Connect\ Four\ AI\ agent\ with\ opening\ book\ support."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00016}\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559}{00016}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559}{\_\_init\_\_}}(self,\ opening\_book:\ Literal[\textcolor{stringliteral}{"{}default"{}},\ \textcolor{stringliteral}{"{}8-\/ply"{}},\ \textcolor{stringliteral}{"{}12-\/ply"{}},\ \textcolor{stringliteral}{"{}12-\/ply-\/dist"{}}]\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{stringliteral}{"{}default"{}})\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Initializes\ the\ BitBully\ agent\ with\ the\ specified\ opening\ book.}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00018}00018\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ opening\_book\ (Literal["{}default"{},\ "{}8-\/ply"{},\ "{}12-\/ply"{},\ "{}12-\/ply-\/dist"{}]\ |\ None):}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ type\ of\ opening\ book\ to\ use.\ Options\ are:}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ "{}default"{}:\ Uses\ the\ default\ 12-\/ply\ distance-\/based\ opening\ book.}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ "{}8-\/ply"{}:\ Uses\ an\ 8-\/ply\ opening\ book.}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ "{}12-\/ply"{}:\ Uses\ a\ 12-\/ply\ opening\ book.}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ "{}12-\/ply-\/dist"{}:\ Uses\ a\ 12-\/ply\ distance-\/based\ opening\ book.}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ None:\ No\ opening\ book\ will\ be\ used.}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_aee369fd0d4e39cd10069382a8fcd58f5}{opening\_book\_type}}\ =\ opening\_book}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ db\_path\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ opening\_book\ ==\ \textcolor{stringliteral}{"{}default"{}}:}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ files(\textcolor{stringliteral}{"{}bitbully"{}}).joinpath(\textcolor{stringliteral}{"{}assets/book\_12ply\_distances.dat"{}})}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ opening\_book\ ==\ \textcolor{stringliteral}{"{}8-\/ply"{}}:}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ files(\textcolor{stringliteral}{"{}bitbully"{}}).joinpath(\textcolor{stringliteral}{"{}assets/book\_8ply.dat"{}})}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ opening\_book\ ==\ \textcolor{stringliteral}{"{}12-\/ply"{}}:}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ files(\textcolor{stringliteral}{"{}bitbully"{}}).joinpath(\textcolor{stringliteral}{"{}assets/book\_12ply.dat"{}})}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ opening\_book\ ==\ \textcolor{stringliteral}{"{}12-\/ply-\/dist"{}}:}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ files(\textcolor{stringliteral}{"{}bitbully"{}}).joinpath(\textcolor{stringliteral}{"{}assets/book\_12ply\_distances.dat"{}})}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ db\_path:}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ as\_file(db\_path)\ \textcolor{keyword}{as}\ pth:}
+\DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_ad536ecdc61f3dcebf6f68c94d5bc30c6}{bitbully\_agent}}\ =\ bitbully\_core.BitBullyCore(pth)}
 \DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
 \DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_ad536ecdc61f3dcebf6f68c94d5bc30c6}{bitbully\_agent}}\ =\ bitbully\_core.BitBullyCore()}
 \DoxyCodeLine{\Hypertarget{bitbully_8py_source_l00045}00045\ }

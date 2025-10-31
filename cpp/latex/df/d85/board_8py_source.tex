@@ -7,33 +7,33 @@
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00003}00003\ \textcolor{keyword}{from}\ \_\_future\_\_\ \textcolor{keyword}{import}\ annotations\ \ \textcolor{comment}{\#\ for\ forward\ references\ in\ type\ hints\ (Python\ 3.7+)}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00004}00004\ }
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00005}00005\ \textcolor{keyword}{from}\ collections.abc\ \textcolor{keyword}{import}\ Sequence}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00006}00006\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00007}00007\ \textcolor{keyword}{from}\ bitbully\ \textcolor{keyword}{import}\ bitbully\_core}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00006}00006\ \textcolor{keyword}{from}\ typing\ \textcolor{keyword}{import}\ Any,\ cast}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00008}00008\ \textcolor{keyword}{from}\ bitbully\ \textcolor{keyword}{import}\ bitbully\_core}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00010}\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{00010}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00011}00011\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Represents\ the\ state\ of\ a\ Connect\ Four\ board.\ Mostly\ a\ thin\ wrapper\ around\ BoardCore."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00012}00012\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00013}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_acd1d3f007769e19801bc1cb102f37365}{00013}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_acd1d3f007769e19801bc1cb102f37365}{\_\_init\_\_}}(self,\ board:\ Sequence[Sequence[int]]\ |\ Sequence[int]\ |\ str\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{keywordtype}{None})\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Initializes\ a\ Board\ instance.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00015}00015\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Sequence[Sequence[int]]\ |\ Sequence[int]\ |\ str\ |\ None):}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Optional\ initial\ board\ state.\ Accepts:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ 2D\ array\ (list,\ tuple,\ numpy-\/array)\ with\ shape\ 7x6\ or\ 6x7}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ 1D\ sequence\ of\ ints:\ a\ move\ sequence\ of\ columns\ (e.g.,\ [0,\ 0,\ 2,\ 2,\ 3,\ 3])}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ String:\ A\ move\ sequence\ of\ columns\ as\ string\ (e.g.,\ "{}002233..."{})}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ None\ for\ an\ empty\ board}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00023}00023\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Here\ we\ have\ an\ example:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}\ py}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()\ \ \#\ Empty\ board}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00028}00028\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00011}\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00012}00012\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Represents\ the\ state\ of\ a\ Connect\ Four\ board.\ Mostly\ a\ thin\ wrapper\ around\ BoardCore."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00014}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a26f6bb8016db04d0ed10a8c05cfb87e6}{00014}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a26f6bb8016db04d0ed10a8c05cfb87e6}{\_\_init\_\_}}(self,\ init\_with:\ Sequence[Sequence[int]]\ |\ Sequence[int]\ |\ str\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{keywordtype}{None})\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Initializes\ a\ Board\ instance.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00016}00016\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ init\_with\ (Sequence[Sequence[int]]\ |\ Sequence[int]\ |\ str\ |\ None):}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Optional\ initial\ board\ state.\ Accepts:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ 2D\ array\ (list,\ tuple,\ numpy-\/array)\ with\ shape\ 7x6\ or\ 6x7}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ 1D\ sequence\ of\ ints:\ a\ move\ sequence\ of\ columns\ (e.g.,\ [0,\ 0,\ 2,\ 2,\ 3,\ 3])}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ String:\ A\ move\ sequence\ of\ columns\ as\ string\ (e.g.,\ "{}002233..."{})}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ None\ for\ an\ empty\ board}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00024}00024\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ You\ can\ initialize\ an\ empty\ board\ in\ multiple\ ways:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}\ py}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()\ \ \#\ Empty\ board}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board([[0]\ *\ 6\ for\ \_\ in\ range(7)])\ \ \#\ empty\ board\ as\ 2D\ list}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00031}00031\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ It\ is\ possible\ to\ write\ some\ text\ inbetween\ the\ examples.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ The\ recommended\ way\ to\ initialize\ an\ empty\ board\ is\ simply\ \`{}Board()\`{}.}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00033}00033\ \textcolor{stringliteral}{}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ And\ here\ we\ have\ another\ example:}}
@@ -41,220 +41,309 @@
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board("{}002233..."{})\ \ \#\ String}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TODO:\ The\ constructor\ does\ still\ not\ accept\ all\ types\ here.\ Fix\ that.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}\ =\ bitbully\_core.BoardCore()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00042}00042\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00043}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a14e3593ac443efa0acedf090e3671a7d}{00043}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a14e3593ac443efa0acedf090e3671a7d}{\_\_eq\_\_}}(self,\ value:\ object)\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ equality\ between\ two\ Board\ instances.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00045}00045\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ value\ (object):\ The\ other\ Board\ instance\ to\ compare\ against.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00048}00048\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ both\ boards\ are\ equal,\ False\ otherwise.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00051}00051\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ NotImplementedError:\ If\ the\ other\ value\ is\ not\ a\ Board\ instance.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ isinstance(value,\ Board):}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ NotImplementedError(\textcolor{stringliteral}{"{}Can\ only\ compare\ with\ another\ Board\ instance."{}})}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bool(self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}\ ==\ value.\_board)}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00058}00058\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00059}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_af95a367c9b9e977c07ee89189f1e6087}{00059}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_af95a367c9b9e977c07ee89189f1e6087}{\_\_ne\_\_}}(self,\ value:\ object)\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ inequality\ between\ two\ Board\ instances.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00061}00061\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ value\ (object):\ The\ other\ Board\ instance\ to\ compare\ against.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00064}00064\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ both\ boards\ are\ not\ equal,\ False\ otherwise.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a14e3593ac443efa0acedf090e3671a7d}{\_\_eq\_\_}}(value)}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00069}00069\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00070}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a685b273338fc40f86ce851d01632aeaf}{00070}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a685b273338fc40f86ce851d01632aeaf}{\_\_repr\_\_}}(self)\ -\/>\ str:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ string\ representation\ of\ the\ Board\ instance."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ f\textcolor{stringliteral}{"{}Board(\{self.\_board\})"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00073}00073\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00074}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a42903f41f41e423c133fd9ed842d2ed8}{00074}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a42903f41f41e423c133fd9ed842d2ed8}{all\_positions}}(self,\ up\_to\_n\_ply:\ int,\ exactly\_n:\ bool)\ -\/>\ list[Board]:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Finds\ all\ positions\ on\ the\ board\ up\ to\ a\ certain\ ply.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00076}00076\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00077}00077\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00078}00078\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ up\_to\_n\_ply\ (int):\ The\ maximum\ ply\ depth\ to\ search.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00079}00079\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ exactly\_n\ (bool):\ If\ True,\ only\ returns\ positions\ at\ exactly\ N\ ply.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00080}00080\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00081}00081\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00082}00082\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ list[Board]:\ A\ list\ of\ Board\ instances\ representing\ all\ positions.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TODO:\ Implement\ this\ method\ properly.\ Need\ to\ convert\ BoardCore\ instances\ to\ Board.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ self.\_board.all\_positions(up\_to\_n\_ply,\ exactly\_n)}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}()]}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00087}00087\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00088}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9514b7e3caa5c5d7c3bedd0268865fc1}{00088}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9514b7e3caa5c5d7c3bedd0268865fc1}{can\_win\_next}}(self,\ move:\ int\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{keywordtype}{None})\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ if\ the\ current\ player\ can\ win\ in\ the\ next\ move.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00090}00090\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ move\ (int\ |\ None):\ Optional\ column\ to\ check\ for\ an\ immediate\ win.\ If\ None,\ checks\ all\ columns.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00093}00093\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ current\ player\ can\ win\ next,\ False\ otherwise.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ move\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.canWin()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bool(self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.canWin(move))}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00100}00100\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00101}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0babec5f817efa063b5e89e035d79b4e}{00101}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0babec5f817efa063b5e89e035d79b4e}{copy}}(self)\ -\/>\ Board:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Creates\ a\ copy\ of\ the\ current\ Board\ instance.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00103}00103\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Board:\ A\ new\ Board\ instance\ that\ is\ a\ copy\ of\ the\ current\ one.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00107}00107\ \ \ \ \ \ \ \ \ new\_board\ =\ \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00108}00108\ \ \ \ \ \ \ \ \ new\_board.\_board\ =\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0babec5f817efa063b5e89e035d79b4e}{copy}}()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ new\_board}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00110}00110\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00111}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a357ea549197e657a8ea52dcca863b039}{00111}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a357ea549197e657a8ea52dcca863b039}{count\_tokens}}(self)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Counts\ the\ total\ number\ of\ tokens\ on\ the\ board.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00113}00113\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00114}00114\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00115}00115\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ total\ number\ of\ tokens.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00116}00116\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.countTokens()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00118}00118\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00119}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9defd7d2c76118045f0b133f0a43547e}{00119}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9defd7d2c76118045f0b133f0a43547e}{get\_legal\_moves}}(self)\ -\/>\ list[int]:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ list\ of\ legal\ moves\ (columns)\ that\ can\ be\ played.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00121}00121\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00122}00122\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00123}00123\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ list[int]:\ A\ list\ of\ column\ indices\ (0-\/6)\ where\ a\ move\ can\ be\ played.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00124}00124\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00125}00125\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ NotImplementedError:\ If\ the\ method\ is\ not\ implemented\ yet.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00127}00127\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ NotImplementedError(\textcolor{stringliteral}{"{}get\_legal\_moves\ is\ not\ implemented\ yet."{}})}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00129}00129\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00130}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae50b3749d5857b53f6d8d7fed35b3bf7}{00130}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae50b3749d5857b53f6d8d7fed35b3bf7}{has\_win}}(self)\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ if\ the\ current\ player\ has\ a\ winning\ position.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00132}00132\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00133}00133\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00134}00134\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ current\ player\ has\ a\ winning\ position\ (4-\/in-\/a-\/row),\ False\ otherwise.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00135}00135\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.hasWin()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00137}00137\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00138}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa56a2afaa85ded51091e20ae61b872ec}{00138}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa56a2afaa85ded51091e20ae61b872ec}{\_\_hash\_\_}}(self)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ hash\ of\ the\ Board\ instance\ for\ use\ in\ hash-\/based\ collections.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00140}00140\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00141}00141\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00142}00142\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ hash\ value\ of\ the\ Board\ instance.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00143}00143\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.hash()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00145}00145\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00146}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_af0547d9a280ddeaebe6bf563c8a0617a}{00146}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_af0547d9a280ddeaebe6bf563c8a0617a}{is\_legal\_move}}(self,\ move:\ int)\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ if\ a\ move\ (column)\ is\ legal.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00148}00148\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00149}00149\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00150}00150\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ move\ (int):\ The\ column\ index\ (0-\/6)\ to\ check.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00151}00151\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00152}00152\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00153}00153\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ move\ is\ legal,\ False\ otherwise.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00154}00154\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.isLegalMove(move)}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00156}00156\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00157}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa90638e1d8ff88b5eaedef40b6a6e30e}{00157}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa90638e1d8ff88b5eaedef40b6a6e30e}{mirror}}(self)\ -\/>\ Board:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ new\ Board\ instance\ that\ is\ the\ mirror\ image\ of\ the\ current\ board.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00159}00159\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00160}00160\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00161}00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Board:\ A\ new\ Board\ instance\ that\ is\ the\ mirror\ image.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00162}00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ new\_board\ =\ \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ new\_board.\_board\ =\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa90638e1d8ff88b5eaedef40b6a6e30e}{mirror}}()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ new\_board}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00166}00166\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00167}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aed729a7efcbf07f00e2a8773b875291d}{00167}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aed729a7efcbf07f00e2a8773b875291d}{moves\_left}}(self)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ the\ number\ of\ moves\ left\ until\ the\ board\ is\ full.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00169}00169\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00170}00170\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00171}00171\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ number\ of\ moves\ left\ (0-\/42).}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00172}00172\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.movesLeft()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00174}00174\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00175}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa0ed1799df049679cf001517852562fb}{00175}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa0ed1799df049679cf001517852562fb}{play\_move}}(self,\ move:\ int)\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00176}00176\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Plays\ a\ move\ (column)\ for\ the\ current\ player.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00177}00177\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00178}00178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ move\ (int):\ The\ column\ index\ (0-\/6)\ where\ the\ token\ should\ be\ placed.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00180}00180\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00181}00181\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00182}00182\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ move\ was\ played\ successfully,\ False\ if\ the\ move\ was\ illegal.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00183}00183\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.playMove(move)}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00185}00185\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00186}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a8852160ff039b23b63be04fbb64c2e32}{00186}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a8852160ff039b23b63be04fbb64c2e32}{play\_move\_on\_copy}}(self,\ move:\ int)\ -\/>\ Board\ |\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Plays\ a\ move\ on\ a\ copy\ of\ the\ current\ board\ and\ returns\ the\ new\ board.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}\ =\ bitbully\_core.BoardCore()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ init\_with\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9a88f1825c72b2f2aaf79a52afbb2d6f}{set\_board}}(init\_with)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00044}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a14e3593ac443efa0acedf090e3671a7d}{00044}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a14e3593ac443efa0acedf090e3671a7d}{\_\_eq\_\_}}(self,\ value:\ object)\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ equality\ between\ two\ Board\ instances.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00046}00046\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ value\ (object):\ The\ other\ Board\ instance\ to\ compare\ against.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00049}00049\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ both\ boards\ are\ equal,\ False\ otherwise.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00052}00052\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ NotImplementedError:\ If\ the\ other\ value\ is\ not\ a\ Board\ instance.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00055}00055\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ isinstance(value,\ Board):}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ NotImplementedError(\textcolor{stringliteral}{"{}Can\ only\ compare\ with\ another\ Board\ instance."{}})}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bool(self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}\ ==\ value.\_board)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00060}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_af95a367c9b9e977c07ee89189f1e6087}{00060}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_af95a367c9b9e977c07ee89189f1e6087}{\_\_ne\_\_}}(self,\ value:\ object)\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ inequality\ between\ two\ Board\ instances.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00062}00062\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ value\ (object):\ The\ other\ Board\ instance\ to\ compare\ against.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00065}00065\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ both\ boards\ are\ not\ equal,\ False\ otherwise.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a14e3593ac443efa0acedf090e3671a7d}{\_\_eq\_\_}}(value)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00071}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a685b273338fc40f86ce851d01632aeaf}{00071}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a685b273338fc40f86ce851d01632aeaf}{\_\_repr\_\_}}(self)\ -\/>\ str:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ string\ representation\ of\ the\ Board\ instance."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ f\textcolor{stringliteral}{"{}\{self.\_board\}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00075}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a42903f41f41e423c133fd9ed842d2ed8}{00075}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a42903f41f41e423c133fd9ed842d2ed8}{all\_positions}}(self,\ up\_to\_n\_ply:\ int,\ exactly\_n:\ bool)\ -\/>\ list[Board]:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Finds\ all\ positions\ on\ the\ board\ up\ to\ a\ certain\ ply.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00077}00077\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00078}00078\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00079}00079\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ up\_to\_n\_ply\ (int):\ The\ maximum\ ply\ depth\ to\ search.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00080}00080\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ exactly\_n\ (bool):\ If\ True,\ only\ returns\ positions\ at\ exactly\ N\ ply.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00081}00081\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00082}00082\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ list[Board]:\ A\ list\ of\ Board\ instances\ representing\ all\ positions.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TODO:\ Implement\ this\ method\ properly.\ Need\ to\ convert\ BoardCore\ instances\ to\ Board.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ return\ self.\_board.all\_positions(up\_to\_n\_ply,\ exactly\_n)}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}()]}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00089}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9514b7e3caa5c5d7c3bedd0268865fc1}{00089}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9514b7e3caa5c5d7c3bedd0268865fc1}{can\_win\_next}}(self,\ move:\ int\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{keywordtype}{None})\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ if\ the\ current\ player\ can\ win\ in\ the\ next\ move.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00091}00091\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ move\ (int\ |\ None):\ Optional\ column\ to\ check\ for\ an\ immediate\ win.\ If\ None,\ checks\ all\ columns.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00094}00094\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ current\ player\ can\ win\ next,\ False\ otherwise.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ move\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.canWin()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bool(self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.canWin(move))}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00102}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0babec5f817efa063b5e89e035d79b4e}{00102}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0babec5f817efa063b5e89e035d79b4e}{copy}}(self)\ -\/>\ Board:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Creates\ a\ copy\ of\ the\ current\ Board\ instance.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00104}00104\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Board:\ A\ new\ Board\ instance\ that\ is\ a\ copy\ of\ the\ current\ one.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00108}00108\ \ \ \ \ \ \ \ \ new\_board\ =\ \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ new\_board.\_board\ =\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0babec5f817efa063b5e89e035d79b4e}{copy}}()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ new\_board}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00112}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a357ea549197e657a8ea52dcca863b039}{00112}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a357ea549197e657a8ea52dcca863b039}{count\_tokens}}(self)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Counts\ the\ total\ number\ of\ tokens\ on\ the\ board.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00114}00114\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00115}00115\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00116}00116\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ total\ number\ of\ tokens.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00117}00117\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.countTokens()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00120}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9defd7d2c76118045f0b133f0a43547e}{00120}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9defd7d2c76118045f0b133f0a43547e}{get\_legal\_moves}}(self)\ -\/>\ list[int]:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ list\ of\ legal\ moves\ (columns)\ that\ can\ be\ played.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00122}00122\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00123}00123\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00124}00124\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ list[int]:\ A\ list\ of\ column\ indices\ (0-\/6)\ where\ a\ move\ can\ be\ played.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00125}00125\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00127}00127\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ NotImplementedError:\ If\ the\ method\ is\ not\ implemented\ yet.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ NotImplementedError(\textcolor{stringliteral}{"{}get\_legal\_moves\ is\ not\ implemented\ yet."{}})}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00131}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae50b3749d5857b53f6d8d7fed35b3bf7}{00131}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae50b3749d5857b53f6d8d7fed35b3bf7}{has\_win}}(self)\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ if\ the\ current\ player\ has\ a\ winning\ position.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00133}00133\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00134}00134\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00135}00135\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ current\ player\ has\ a\ winning\ position\ (4-\/in-\/a-\/row),\ False\ otherwise.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00136}00136\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.hasWin()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00139}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa56a2afaa85ded51091e20ae61b872ec}{00139}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa56a2afaa85ded51091e20ae61b872ec}{\_\_hash\_\_}}(self)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ hash\ of\ the\ Board\ instance\ for\ use\ in\ hash-\/based\ collections.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00141}00141\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00142}00142\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00143}00143\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ hash\ value\ of\ the\ Board\ instance.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00144}00144\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.hash()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00147}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_af0547d9a280ddeaebe6bf563c8a0617a}{00147}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_af0547d9a280ddeaebe6bf563c8a0617a}{is\_legal\_move}}(self,\ move:\ int)\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Checks\ if\ a\ move\ (column)\ is\ legal.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00149}00149\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00150}00150\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00151}00151\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ move\ (int):\ The\ column\ index\ (0-\/6)\ to\ check.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00152}00152\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00153}00153\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00154}00154\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ move\ is\ legal,\ False\ otherwise.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00155}00155\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.isLegalMove(move)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00158}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa90638e1d8ff88b5eaedef40b6a6e30e}{00158}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa90638e1d8ff88b5eaedef40b6a6e30e}{mirror}}(self)\ -\/>\ Board:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ new\ Board\ instance\ that\ is\ the\ mirror\ image\ of\ the\ current\ board.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00160}00160\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00161}00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00162}00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Board:\ A\ new\ Board\ instance\ that\ is\ the\ mirror\ image.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00163}00163\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ new\_board\ =\ \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ new\_board.\_board\ =\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa90638e1d8ff88b5eaedef40b6a6e30e}{mirror}}()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ new\_board}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00168}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aed729a7efcbf07f00e2a8773b875291d}{00168}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_aed729a7efcbf07f00e2a8773b875291d}{moves\_left}}(self)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ the\ number\ of\ moves\ left\ until\ the\ board\ is\ full.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00170}00170\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00171}00171\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00172}00172\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ number\ of\ moves\ left\ (0-\/42).}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00173}00173\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.movesLeft()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00176}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ac703e9fec40c4d9c60c314b33eb44bbd}{00176}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ac703e9fec40c4d9c60c314b33eb44bbd}{play}}(self,\ move:\ int\ |\ Sequence[int]\ |\ str)\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Plays\ one\ or\ more\ moves\ for\ the\ current\ player.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00178}00178\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ The\ method\ updates\ the\ internal\ board\ state\ by\ dropping\ tokens}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00180}00180\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ into\ the\ specified\ columns.\ Input\ can\ be:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00181}00181\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ a\ single\ integer\ (column\ index\ 0\ to\ 6),}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00182}00182\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ an\ iterable\ sequence\ of\ integers\ (e.g.,\ \`{}[3,\ 1,\ 3]\`{}\ or\ \`{}range(7)\`{}),}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00183}00183\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ or\ a\ string\ of\ digits\ (e.g.,\ \`{}"{}33333111"{}\`{})\ representing\ the\ move\ order.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00184}00184\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00185}00185\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00186}00186\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ move\ (int\ |\ Sequence[int]\ |\ str):}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00187}00187\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ column\ index\ or\ sequence\ of\ column\ indices\ where\ tokens\ should\ be\ placed.}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00188}00188\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00189}00189\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00190}00190\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ move\ (int):\ The\ column\ index\ (0-\/6)\ where\ the\ token\ should\ be\ placed.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00189}00189\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00190}00190\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ move\ was\ played\ successfully,\ False\ if\ the\ move\ was\ illegal.}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00191}00191\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00192}00192\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00193}00193\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Board\ |\ None:\ A\ new\ Board\ instance\ with\ the\ move\ played,\ or\ None\ if\ the\ move\ was\ illegal.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00194}00194\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ new\_board\ =\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0babec5f817efa063b5e89e035d79b4e}{copy}}()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ new\_board.play\_move(move):}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ new\_board}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00199}00199\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00200}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad1d1ee48992eaff6d72fed340893282f}{00200}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad1d1ee48992eaff6d72fed340893282f}{set\_board}}(self,\ board:\ list[list[int]]\ |\ list[int])\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Sets\ (overrides)\ the\ board\ to\ a\ specific\ state.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00192}00192\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00193}00193\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00194}00194\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Play\ a\ sequence\ of\ moves\ into\ the\ center\ column\ (column\ index\ 3):}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00195}00195\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00196}00196\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ bitbully\ as\ bb}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00197}00197\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00198}00198\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ bb.Board()}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00199}00199\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ board.play([3,\ 3,\ 3])\ \ \#\ returns\ True\ on\ successful\ move}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00200}00200\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00201}00201\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l00202}00202\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00203}00203\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00204}00204\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (list[list[int]]\ |\ list[int]):}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00205}00205\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ new\ board\ state.\ Accepts:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00206}00206\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ 2D\ array\ (list,\ tuple,\ numpy-\/array)\ with\ shape\ 7x6\ or\ 6x7}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00207}00207\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ 1D\ sequence\ of\ ints:\ a\ move\ sequence\ of\ columns\ (e.g.,\ [0,\ 0,\ 2,\ 2,\ 3,\ 3])}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00208}00208\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ String:\ A\ move\ sequence\ of\ columns\ as\ string\ (e.g.,\ "{}002233..."{})}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00209}00209\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00210}00210\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00211}00211\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ board\ was\ set\ successfully,\ False\ otherwise.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00212}00212\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00213}00213\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TODO:\ also\ allow\ other\ types\ for\ \`{}board`,\ e.g.,\ numpy\ arrays\ and\ convert\ to\ a\ list\ of\ lists}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00214}00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(board,\ list):}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.setBoard(board)}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00217}00217\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00218}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_adbc7e86e4081f3152024e2cad2a674a4}{00218}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_adbc7e86e4081f3152024e2cad2a674a4}{to\_array}}(self)\ -\/>\ list[list[int]]:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ the\ board\ state\ as\ a\ 2D\ array\ (list\ of\ lists).}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00220}00220\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00221}00221\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00222}00222\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ list[list[int]]:\ A\ 2D\ list\ representing\ the\ board\ state.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00223}00223\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.toArray()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00225}00225\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00226}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a3db1df514e7c6d510f2188ceb7419aca}{00226}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a3db1df514e7c6d510f2188ceb7419aca}{to\_string}}(self)\ -\/>\ str:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ string\ representation\ of\ the\ board\ to\ print\ on\ the\ command\ line.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00228}00228\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00229}00229\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00230}00230\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ str:\ A\ string\ representing\ the\ board\ (e.g.,\ "{}002233..."{}).}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00231}00231\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.toString()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00233}00233\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00234}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad06cd5ac21f137de6b80c9b4f8f89d3b}{00234}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad06cd5ac21f137de6b80c9b4f8f89d3b}{uid}}(self)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ unique\ identifier\ for\ the\ current\ board\ state.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00236}00236\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00237}00237\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00238}00238\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ A\ unique\ integer\ identifier\ for\ the\ board\ state.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00239}00239\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad06cd5ac21f137de6b80c9b4f8f89d3b}{uid}}()}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00241}00241\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00242}00242\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00243}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_adc7d83d53b91de5fdb00703468012786}{00243}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_adc7d83d53b91de5fdb00703468012786}{random\_board}}(n\_ply:\ int,\ forbid\_direct\_win:\ bool)\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Generates\ a\ random\ board\ state\ by\ playing\ a\ specified\ number\ of\ random\ moves.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00245}00245\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00246}00246\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00247}00247\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ n\_ply\ (int):\ The\ number\ of\ random\ moves\ to\ play\ on\ the\ board.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00248}00248\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ forbid\_direct\_win\ (bool):\ If\ True,\ the\ board\ will\ have\ a\ state\ that\ would\ result\ in\ an\ immediate\ win.}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00249}00249\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00250}00250\ \ \ \ \ \ \ \ \ bitbully\_core.BoardCore.randomBoard(n\_ply,\ forbid\_direct\_win)}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00251}00251\ }
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00252}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9b6f64ab6125ede62a0cf338fff99043}{00252}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9b6f64ab6125ede62a0cf338fff99043}{reset}}(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00253}00253\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Resets\ the\ board\ to\ an\ empty\ state."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{board_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}\ =\ bitbully\_core.BoardCore()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00203}00203\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Expected\ output:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00204}00204\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00205}00205\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00206}00206\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00207}00207\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00208}00208\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00209}00209\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ X\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00210}00210\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ O\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00211}00211\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ X\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00212}00212\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00213}00213\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00214}00214\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00215}00215\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Play\ a\ sequence\ of\ moves\ across\ all\ columns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00216}00216\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00217}00217\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ bitbully\ as\ bb}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00218}00218\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00219}00219\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ bb.Board()}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00220}00220\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ board.play(range(7))\ \ \#\ returns\ True\ on\ successful\ move}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00221}00221\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00222}00222\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00223}00223\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Expected\ output:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00224}00224\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}text}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00225}00225\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00226}00226\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00227}00227\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00228}00228\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00229}00229\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00230}00230\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ X\ \ O\ \ X\ \ O\ \ X\ \ O\ \ X}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00231}00231\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00232}00232\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00233}00233\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00234}00234\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Play\ a\ sequence\ using\ a\ string:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00235}00235\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00236}00236\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ bitbully\ as\ bb}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00237}00237\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00238}00238\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ bb.Board()}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00239}00239\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ board.play("{}33333111"{})\ \ \#\ returns\ True\ on\ successful\ move}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00240}00240\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00241}00241\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00242}00242\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Expected\ output:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00243}00243\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}text}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00244}00244\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00245}00245\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ X\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00246}00246\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ O\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00247}00247\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ O\ \ \_\ \ X\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00248}00248\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ X\ \ \_\ \ O\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00249}00249\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ O\ \ \_\ \ X\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00250}00250\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00251}00251\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Case\ 1:\ string\ -\/>\ pass\ through\ directly}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00253}00253\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(move,\ str):}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ac703e9fec40c4d9c60c314b33eb44bbd}{play}}(move)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Case\ 2:\ int\ -\/>\ pass\ through\ directly}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(move,\ int):}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ac703e9fec40c4d9c60c314b33eb44bbd}{play}}(move)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00260}00260\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ From\ here\ on,\ move\ is\ a\ Sequence[...]\ (but\ not\ str\ or\ int).}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00261}00261\ \ \ \ \ \ \ \ \ move\_list:\ list[int]\ =\ [int(v)\ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ cast(Sequence[Any],\ move)]}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ac703e9fec40c4d9c60c314b33eb44bbd}{play}}(move\_list)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00264}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a8852160ff039b23b63be04fbb64c2e32}{00264}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a8852160ff039b23b63be04fbb64c2e32}{play\_move\_on\_copy}}(self,\ move:\ int)\ -\/>\ Board\ |\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Plays\ a\ move\ on\ a\ copy\ of\ the\ current\ board\ and\ returns\ the\ new\ board.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00266}00266\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00267}00267\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00268}00268\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ move\ (int):\ The\ column\ index\ (0-\/6)\ where\ the\ token\ should\ be\ placed.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00269}00269\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00270}00270\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00271}00271\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Board\ |\ None:\ A\ new\ Board\ instance\ with\ the\ move\ played,\ or\ None\ if\ the\ move\ was\ illegal.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00272}00272\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00273}00273\ \ \ \ \ \ \ \ \ new\_board\ =\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0babec5f817efa063b5e89e035d79b4e}{copy}}()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ new\_board.play(move):}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ new\_board}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00278}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9a88f1825c72b2f2aaf79a52afbb2d6f}{00278}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9a88f1825c72b2f2aaf79a52afbb2d6f}{set\_board}}(self,\ board:\ Sequence[int]\ |\ Sequence[Sequence[int]]\ |\ str)\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00279}00279\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Sets\ (overrides)\ the\ board\ to\ a\ specific\ state.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00280}00280\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00281}00281\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00282}00282\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Sequence[int]\ |\ Sequence[Sequence[int]]\ |\ str):}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00283}00283\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ new\ board\ state.\ Accepts:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00284}00284\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ 2D\ array\ (list,\ tuple,\ numpy-\/array)\ with\ shape\ 7x6\ or\ 6x7}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00285}00285\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ 1D\ sequence\ of\ ints:\ a\ move\ sequence\ of\ columns\ (e.g.,\ [0,\ 0,\ 2,\ 2,\ 3,\ 3])}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00286}00286\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ String:\ A\ move\ sequence\ of\ columns\ as\ string\ (e.g.,\ "{}002233..."{})}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00287}00287\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00288}00288\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00289}00289\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ True\ if\ the\ board\ was\ set\ successfully,\ False\ otherwise.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00290}00290\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TODO:\ also\ allow\ other\ types\ for\ \`{}board`,\ e.g.,\ numpy\ arrays\ and\ convert\ to\ a\ list\ of\ lists}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(board,\ str):}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.setBoard(board)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ From\ here\ on,\ board\ is\ a\ Sequence[...]\ (but\ not\ str).}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Distinguish\ 2D\ vs\ 1D\ by\ inspecting\ the\ first\ element.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(board)\ >\ 0\ \textcolor{keywordflow}{and}\ isinstance(board[0],\ Sequence)\ \textcolor{keywordflow}{and}\ \textcolor{keywordflow}{not}\ isinstance(board[0],\ (str,\ bytes)):}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Case\ 2:\ 2D\ -\/>\ list[list[int]]}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Convert\ inner\ sequences\ to\ lists\ of\ ints}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ grid:\ list[list[int]]\ =\ [[int(v)\ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ row]\ \textcolor{keywordflow}{for}\ row\ \textcolor{keywordflow}{in}\ cast(Sequence[Sequence[Any]],\ board)]}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.setBoard(grid)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00303}00303\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Case\ 3:\ 1D\ -\/>\ list[int]}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00304}00304\ \ \ \ \ \ \ \ \ moves:\ list[int]\ =\ [int(v)\ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ cast(Sequence[Any],\ board)]}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00305}00305\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.setBoard(moves)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00307}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_adbc7e86e4081f3152024e2cad2a674a4}{00307}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_adbc7e86e4081f3152024e2cad2a674a4}{to\_array}}(self)\ -\/>\ list[list[int]]:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ the\ board\ state\ as\ a\ 2D\ array\ (list\ of\ lists).}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00309}00309\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00310}00310\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00311}00311\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ list[list[int]]:\ A\ 2D\ list\ representing\ the\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00312}00312\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00313}00313\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.toArray()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00315}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a3db1df514e7c6d510f2188ceb7419aca}{00315}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a3db1df514e7c6d510f2188ceb7419aca}{to\_string}}(self)\ -\/>\ str:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00316}00316\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ string\ representation\ of\ the\ board\ to\ print\ on\ the\ command\ line.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00317}00317\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00318}00318\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00319}00319\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ str:\ A\ string\ representing\ the\ board\ (e.g.,\ "{}002233..."{}).}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00320}00320\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.toString()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00323}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad06cd5ac21f137de6b80c9b4f8f89d3b}{00323}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad06cd5ac21f137de6b80c9b4f8f89d3b}{uid}}(self)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00324}00324\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ unique\ identifier\ for\ the\ current\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00325}00325\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00326}00326\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00327}00327\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ A\ unique\ integer\ identifier\ for\ the\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00328}00328\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00329}00329\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad06cd5ac21f137de6b80c9b4f8f89d3b}{uid}}()}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00331}00331\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00332}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_adc7d83d53b91de5fdb00703468012786}{00332}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_adc7d83d53b91de5fdb00703468012786}{random\_board}}(n\_ply:\ int,\ forbid\_direct\_win:\ bool)\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Generates\ a\ random\ board\ state\ by\ playing\ a\ specified\ number\ of\ random\ moves.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00334}00334\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00335}00335\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00336}00336\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ n\_ply\ (int):\ The\ number\ of\ random\ moves\ to\ play\ on\ the\ board.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00337}00337\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ forbid\_direct\_win\ (bool):\ If\ True,\ the\ board\ will\ have\ a\ state\ that\ would\ result\ in\ an\ immediate\ win.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00338}00338\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00339}00339\ \ \ \ \ \ \ \ \ bitbully\_core.BoardCore.randomBoard(n\_ply,\ forbid\_direct\_win)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00341}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9b6f64ab6125ede62a0cf338fff99043}{00341}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9b6f64ab6125ede62a0cf338fff99043}{reset}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00342}00342\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Resets\ the\ board\ to\ an\ empty\ state."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l00343}00343\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}\ =\ bitbully\_core.BoardCore()}
 
 \end{DoxyCode}
