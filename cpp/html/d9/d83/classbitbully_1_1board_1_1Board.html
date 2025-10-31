@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.56-a7</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.56</span>
                         </div>
                     </td>
                 </tr>
@@ -125,7 +125,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa90638e1d8ff88b5eaedef40b6a6e30e" id="r_aa90638e1d8ff88b5eaedef40b6a6e30e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa90638e1d8ff88b5eaedef40b6a6e30e">mirror</a> (self)</td></tr>
 <tr class="memitem:aed729a7efcbf07f00e2a8773b875291d" id="r_aed729a7efcbf07f00e2a8773b875291d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed729a7efcbf07f00e2a8773b875291d">moves_left</a> (self)</td></tr>
 <tr class="memitem:ac703e9fec40c4d9c60c314b33eb44bbd" id="r_ac703e9fec40c4d9c60c314b33eb44bbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac703e9fec40c4d9c60c314b33eb44bbd">play</a> (self, int|Sequence[int]|str move)</td></tr>
-<tr class="memitem:a8852160ff039b23b63be04fbb64c2e32" id="r_a8852160ff039b23b63be04fbb64c2e32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8852160ff039b23b63be04fbb64c2e32">play_move_on_copy</a> (self, int move)</td></tr>
 <tr class="memitem:a9a88f1825c72b2f2aaf79a52afbb2d6f" id="r_a9a88f1825c72b2f2aaf79a52afbb2d6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a88f1825c72b2f2aaf79a52afbb2d6f">set_board</a> (self, Sequence[int]|Sequence[Sequence[int]]|str board)</td></tr>
 <tr class="memitem:adbc7e86e4081f3152024e2cad2a674a4" id="r_adbc7e86e4081f3152024e2cad2a674a4"><td class="memItemLeft" align="right" valign="top">list[list[int]]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbc7e86e4081f3152024e2cad2a674a4">to_array</a> (self)</td></tr>
 <tr class="memitem:a3db1df514e7c6d510f2188ceb7419aca" id="r_a3db1df514e7c6d510f2188ceb7419aca"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3db1df514e7c6d510f2188ceb7419aca">to_string</a> (self)</td></tr>
@@ -174,17 +173,31 @@ Args:
 
 Example:
     You can initialize an empty board in multiple ways:
-    ``` py
-    board = Board()  # Empty board
-    board = Board([[0] * 6 for _ in range(7)])  # empty board as 2D list
+    ```python
+    import bitbully as bb
+
+    board = bb.Board()  # Empty board
+    board = bb.Board([[0] * 6 for _ in range(7)])  # also an empty board as 2D list
+    board
+    ```
+    Expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
     ```
 
 The recommended way to initialize an empty board is simply `Board()`.
 
 Example:
     And here we have another example:
-    ``` py
-    board = Board("002233...")  # String
+    ```python
+    import bitbully as bb
+
+    board = bb.Board("002233...")  # String
     ```
 </pre> 
 <p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00014">14</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
@@ -221,7 +234,7 @@ Returns:
 Raises:
     NotImplementedError: If the other value is not a Board instance.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00044">44</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00058">58</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -244,7 +257,7 @@ Raises:
 Returns:
     int: The hash value of the Board instance.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00139">139</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00153">153</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -274,7 +287,7 @@ Args:
 Returns:
     bool: True if both boards are not equal, False otherwise.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00060">60</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00074">74</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -293,7 +306,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Returns a string representation of the Board instance.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00071">71</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00085">85</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -329,7 +342,7 @@ Args:
 Returns:
     list[Board]: A list of Board instances representing all positions.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00075">75</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00089">89</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -359,7 +372,7 @@ Args:
 Returns:
     bool: True if the current player can win next, False otherwise.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00089">89</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00103">103</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -382,7 +395,7 @@ Returns:
 Returns:
     Board: A new Board instance that is a copy of the current one.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00102">102</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00116">116</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -405,7 +418,7 @@ Returns:
 Returns:
     int: The total number of tokens.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00112">112</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00126">126</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -431,7 +444,7 @@ Returns:
 Raises:
     NotImplementedError: If the method is not implemented yet.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00120">120</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00134">134</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -454,7 +467,7 @@ Raises:
 Returns:
     bool: True if the current player has a winning position (4-in-a-row), False otherwise.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00131">131</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00145">145</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -484,7 +497,7 @@ Args:
 Returns:
     bool: True if the move is legal, False otherwise.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00147">147</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00161">161</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -507,7 +520,7 @@ Returns:
 Returns:
     Board: A new Board instance that is the mirror image.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00158">158</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00172">172</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -530,7 +543,7 @@ Returns:
 Returns:
     int: The number of moves left (0-42).
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00168">168</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00182">182</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -581,12 +594,12 @@ Example:
     Expected output:
 
     ```
-      _  _  _  _  _  _  _
-      _  _  _  _  _  _  _
-      _  _  _  _  _  _  _
-      _  _  _  X  _  _  _
-      _  _  _  O  _  _  _
-      _  _  _  X  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  X  _  _  _
+    _  _  _  O  _  _  _
+    _  _  _  X  _  _  _
     ```
 
 Example:
@@ -627,37 +640,7 @@ Example:
     _  O  _  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00176">176</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
-
-</div>
-</div>
-<a id="a8852160ff039b23b63be04fbb64c2e32" name="a8852160ff039b23b63be04fbb64c2e32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8852160ff039b23b63be04fbb64c2e32">&#9670;&#160;</a></span>play_move_on_copy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"> <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> | None bitbully.board.Board.play_move_on_copy </td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>move</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<pre class="fragment">Plays a move on a copy of the current board and returns the new board.
-
-Args:
-    move (int): The column index (0-6) where the token should be placed.
-
-Returns:
-    Board | None: A new Board instance with the move played, or None if the move was illegal.
-</pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00264">264</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00190">190</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -840,7 +823,7 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00040">40</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00054">54</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>

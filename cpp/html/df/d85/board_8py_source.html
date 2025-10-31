@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.56-a7</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.56</span>
                         </div>
                     </td>
                 </tr>
@@ -135,286 +135,284 @@ $(function(){initNavTree('df/d85/board_8py_source.html','../../',''); });
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="stringliteral"></span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="stringliteral">        Example:</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="stringliteral">            You can initialize an empty board in multiple ways:</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="stringliteral">            ``` py</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="stringliteral">            board = Board()  # Empty board</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="stringliteral">            board = Board([[0] * 6 for _ in range(7)])  # empty board as 2D list</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="stringliteral">        The recommended way to initialize an empty board is simply `Board()`.</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="stringliteral">        Example:</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="stringliteral">            And here we have another example:</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="stringliteral">            ``` py</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="stringliteral">            board = Board(&quot;002233...&quot;)  # String</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a> = bitbully_core.BoardCore()</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span> init_with <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            self.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9a88f1825c72b2f2aaf79a52afbb2d6f">set_board</a>(init_with)</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="stringliteral">            import bitbully as bb</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="stringliteral">            board = bb.Board()  # Empty board</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="stringliteral">            board = bb.Board([[0] * 6 for _ in range(7)])  # also an empty board as 2D list</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="stringliteral">            board</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="stringliteral">            Expected output:</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="stringliteral">            ```text</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="stringliteral">        The recommended way to initialize an empty board is simply `Board()`.</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="stringliteral">            And here we have another example:</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="stringliteral">            import bitbully as bb</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="stringliteral">            board = bb.Board(&quot;002233...&quot;)  # String</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a> = bitbully_core.BoardCore()</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">if</span> init_with <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            self.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9a88f1825c72b2f2aaf79a52afbb2d6f">set_board</a>(init_with)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 </div>
-<div class="foldopen" id="foldopen00044" data-start="" data-end="">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">   44</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">__eq__</a>(self, value: object) -&gt; bool:</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="stringliteral">&quot;&quot;&quot;Checks equality between two Board instances.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="stringliteral">            value (object): The other Board instance to compare against.</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="stringliteral">            bool: True if both boards are equal, False otherwise.</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="stringliteral">        Raises:</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="stringliteral">            NotImplementedError: If the other value is not a Board instance.</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(value, Board):</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">raise</span> NotImplementedError(<span class="stringliteral">&quot;Can only compare with another Board instance.&quot;</span>)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> bool(self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a> == value._board)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="" data-end="">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">   58</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">__eq__</a>(self, value: object) -&gt; bool:</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="stringliteral">&quot;&quot;&quot;Checks equality between two Board instances.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral">            value (object): The other Board instance to compare against.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="stringliteral">            bool: True if both boards are equal, False otherwise.</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="stringliteral">        Raises:</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="stringliteral">            NotImplementedError: If the other value is not a Board instance.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(value, Board):</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">raise</span> NotImplementedError(<span class="stringliteral">&quot;Can only compare with another Board instance.&quot;</span>)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">return</span> bool(self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a> == value._board)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 </div>
-<div class="foldopen" id="foldopen00060" data-start="" data-end="">
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af95a367c9b9e977c07ee89189f1e6087">   60</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af95a367c9b9e977c07ee89189f1e6087">__ne__</a>(self, value: object) -&gt; bool:</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="stringliteral">&quot;&quot;&quot;Checks inequality between two Board instances.</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="stringliteral">            value (object): The other Board instance to compare against.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="stringliteral">            bool: True if both boards are not equal, False otherwise.</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">return</span> <span class="keywordflow">not</span> self.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">__eq__</a>(value)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="" data-end="">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af95a367c9b9e977c07ee89189f1e6087">   74</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af95a367c9b9e977c07ee89189f1e6087">__ne__</a>(self, value: object) -&gt; bool:</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="stringliteral">&quot;&quot;&quot;Checks inequality between two Board instances.</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="stringliteral">            value (object): The other Board instance to compare against.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="stringliteral">            bool: True if both boards are not equal, False otherwise.</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">return</span> <span class="keywordflow">not</span> self.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">__eq__</a>(value)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
 </div>
-<div class="foldopen" id="foldopen00071" data-start="" data-end="">
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a685b273338fc40f86ce851d01632aeaf">   71</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a685b273338fc40f86ce851d01632aeaf">__repr__</a>(self) -&gt; str:</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="stringliteral">&quot;&quot;&quot;Returns a string representation of the Board instance.&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">return</span> f<span class="stringliteral">&quot;{self._board}&quot;</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-</div>
-<div class="foldopen" id="foldopen00075" data-start="" data-end="">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a42903f41f41e423c133fd9ed842d2ed8">   75</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a42903f41f41e423c133fd9ed842d2ed8">all_positions</a>(self, up_to_n_ply: int, exactly_n: bool) -&gt; list[Board]:</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="stringliteral">&quot;&quot;&quot;Finds all positions on the board up to a certain ply.</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="stringliteral">            up_to_n_ply (int): The maximum ply depth to search.</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="stringliteral">            exactly_n (bool): If True, only returns positions at exactly N ply.</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="stringliteral">            list[Board]: A list of Board instances representing all positions.</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="comment"># TODO: Implement this method properly. Need to convert BoardCore instances to Board.</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment"># return self._board.all_positions(up_to_n_ply, exactly_n)</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">return</span> [<a class="code hl_class" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>()]</div>
+<div class="foldopen" id="foldopen00085" data-start="" data-end="">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a685b273338fc40f86ce851d01632aeaf">   85</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a685b273338fc40f86ce851d01632aeaf">__repr__</a>(self) -&gt; str:</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="stringliteral">&quot;&quot;&quot;Returns a string representation of the Board instance.&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">return</span> f<span class="stringliteral">&quot;{self._board}&quot;</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 </div>
 <div class="foldopen" id="foldopen00089" data-start="" data-end="">
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9514b7e3caa5c5d7c3bedd0268865fc1">   89</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9514b7e3caa5c5d7c3bedd0268865fc1">can_win_next</a>(self, move: int | <span class="keywordtype">None</span> = <span class="keywordtype">None</span>) -&gt; bool:</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="stringliteral">&quot;&quot;&quot;Checks if the current player can win in the next move.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a42903f41f41e423c133fd9ed842d2ed8">   89</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a42903f41f41e423c133fd9ed842d2ed8">all_positions</a>(self, up_to_n_ply: int, exactly_n: bool) -&gt; list[Board]:</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="stringliteral">&quot;&quot;&quot;Finds all positions on the board up to a certain ply.</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="stringliteral"></span> </div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="stringliteral">            move (int | None): Optional column to check for an immediate win. If None, checks all columns.</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="stringliteral">            bool: True if the current player can win next, False otherwise.</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">if</span> move <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.canWin()</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">return</span> bool(self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.canWin(move))</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="stringliteral">            up_to_n_ply (int): The maximum ply depth to search.</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="stringliteral">            exactly_n (bool): If True, only returns positions at exactly N ply.</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="stringliteral">            list[Board]: A list of Board instances representing all positions.</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="comment"># TODO: Implement this method properly. Need to convert BoardCore instances to Board.</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="comment"># return self._board.all_positions(up_to_n_ply, exactly_n)</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">return</span> [<a class="code hl_class" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>()]</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
 </div>
-<div class="foldopen" id="foldopen00102" data-start="" data-end="">
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">  102</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">copy</a>(self) -&gt; Board:</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="stringliteral">&quot;&quot;&quot;Creates a copy of the current Board instance.</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="stringliteral">            Board: A new Board instance that is a copy of the current one.</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        new_board = <a class="code hl_class" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>()</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        new_board._board = self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">copy</a>()</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordflow">return</span> new_board</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="foldopen" id="foldopen00103" data-start="" data-end="">
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9514b7e3caa5c5d7c3bedd0268865fc1">  103</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9514b7e3caa5c5d7c3bedd0268865fc1">can_win_next</a>(self, move: int | <span class="keywordtype">None</span> = <span class="keywordtype">None</span>) -&gt; bool:</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="stringliteral">&quot;&quot;&quot;Checks if the current player can win in the next move.</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="stringliteral">            move (int | None): Optional column to check for an immediate win. If None, checks all columns.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="stringliteral">            bool: True if the current player can win next, False otherwise.</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">if</span> move <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.canWin()</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">return</span> bool(self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.canWin(move))</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
 </div>
-<div class="foldopen" id="foldopen00112" data-start="" data-end="">
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a357ea549197e657a8ea52dcca863b039">  112</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a357ea549197e657a8ea52dcca863b039">count_tokens</a>(self) -&gt; int:</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="stringliteral">&quot;&quot;&quot;Counts the total number of tokens on the board.</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="stringliteral">            int: The total number of tokens.</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.countTokens()</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="foldopen" id="foldopen00116" data-start="" data-end="">
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">  116</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">copy</a>(self) -&gt; Board:</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="stringliteral">&quot;&quot;&quot;Creates a copy of the current Board instance.</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="stringliteral">            Board: A new Board instance that is a copy of the current one.</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        new_board = <a class="code hl_class" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>()</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        new_board._board = self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">copy</a>()</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">return</span> new_board</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
 </div>
-<div class="foldopen" id="foldopen00120" data-start="" data-end="">
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9defd7d2c76118045f0b133f0a43547e">  120</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9defd7d2c76118045f0b133f0a43547e">get_legal_moves</a>(self) -&gt; list[int]:</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="stringliteral">&quot;&quot;&quot;Returns a list of legal moves (columns) that can be played.</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="stringliteral">            list[int]: A list of column indices (0-6) where a move can be played.</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="stringliteral">        Raises:</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="stringliteral">            NotImplementedError: If the method is not implemented yet.</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordflow">raise</span> NotImplementedError(<span class="stringliteral">&quot;get_legal_moves is not implemented yet.&quot;</span>)</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="foldopen" id="foldopen00126" data-start="" data-end="">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a357ea549197e657a8ea52dcca863b039">  126</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a357ea549197e657a8ea52dcca863b039">count_tokens</a>(self) -&gt; int:</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="stringliteral">&quot;&quot;&quot;Counts the total number of tokens on the board.</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="stringliteral">            int: The total number of tokens.</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.countTokens()</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
 </div>
-<div class="foldopen" id="foldopen00131" data-start="" data-end="">
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae50b3749d5857b53f6d8d7fed35b3bf7">  131</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae50b3749d5857b53f6d8d7fed35b3bf7">has_win</a>(self) -&gt; bool:</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="stringliteral">&quot;&quot;&quot;Checks if the current player has a winning position.</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="stringliteral">            bool: True if the current player has a winning position (4-in-a-row), False otherwise.</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.hasWin()</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="foldopen" id="foldopen00134" data-start="" data-end="">
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9defd7d2c76118045f0b133f0a43547e">  134</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9defd7d2c76118045f0b133f0a43547e">get_legal_moves</a>(self) -&gt; list[int]:</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="stringliteral">&quot;&quot;&quot;Returns a list of legal moves (columns) that can be played.</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="stringliteral">            list[int]: A list of column indices (0-6) where a move can be played.</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="stringliteral">        Raises:</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="stringliteral">            NotImplementedError: If the method is not implemented yet.</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="keywordflow">raise</span> NotImplementedError(<span class="stringliteral">&quot;get_legal_moves is not implemented yet.&quot;</span>)</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
 </div>
-<div class="foldopen" id="foldopen00139" data-start="" data-end="">
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa56a2afaa85ded51091e20ae61b872ec">  139</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa56a2afaa85ded51091e20ae61b872ec">__hash__</a>(self) -&gt; int:</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="stringliteral">&quot;&quot;&quot;Returns a hash of the Board instance for use in hash-based collections.</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="stringliteral">            int: The hash value of the Board instance.</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.hash()</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="foldopen" id="foldopen00145" data-start="" data-end="">
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae50b3749d5857b53f6d8d7fed35b3bf7">  145</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae50b3749d5857b53f6d8d7fed35b3bf7">has_win</a>(self) -&gt; bool:</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="stringliteral">&quot;&quot;&quot;Checks if the current player has a winning position.</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="stringliteral">            bool: True if the current player has a winning position (4-in-a-row), False otherwise.</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.hasWin()</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
 </div>
-<div class="foldopen" id="foldopen00147" data-start="" data-end="">
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af0547d9a280ddeaebe6bf563c8a0617a">  147</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af0547d9a280ddeaebe6bf563c8a0617a">is_legal_move</a>(self, move: int) -&gt; bool:</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="stringliteral">&quot;&quot;&quot;Checks if a move (column) is legal.</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="stringliteral">            move (int): The column index (0-6) to check.</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="stringliteral">            bool: True if the move is legal, False otherwise.</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.isLegalMove(move)</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="foldopen" id="foldopen00153" data-start="" data-end="">
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa56a2afaa85ded51091e20ae61b872ec">  153</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa56a2afaa85ded51091e20ae61b872ec">__hash__</a>(self) -&gt; int:</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="stringliteral">&quot;&quot;&quot;Returns a hash of the Board instance for use in hash-based collections.</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="stringliteral">            int: The hash value of the Board instance.</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.hash()</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
 </div>
-<div class="foldopen" id="foldopen00158" data-start="" data-end="">
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e">  158</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e">mirror</a>(self) -&gt; Board:</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="stringliteral">&quot;&quot;&quot;Returns a new Board instance that is the mirror image of the current board.</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="stringliteral">            Board: A new Board instance that is the mirror image.</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        new_board = <a class="code hl_class" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>()</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        new_board._board = self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e">mirror</a>()</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <span class="keywordflow">return</span> new_board</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="foldopen" id="foldopen00161" data-start="" data-end="">
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af0547d9a280ddeaebe6bf563c8a0617a">  161</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af0547d9a280ddeaebe6bf563c8a0617a">is_legal_move</a>(self, move: int) -&gt; bool:</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="stringliteral">&quot;&quot;&quot;Checks if a move (column) is legal.</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="stringliteral">            move (int): The column index (0-6) to check.</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="stringliteral">            bool: True if the move is legal, False otherwise.</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.isLegalMove(move)</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
 </div>
-<div class="foldopen" id="foldopen00168" data-start="" data-end="">
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d">  168</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d">moves_left</a>(self) -&gt; int:</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="stringliteral">&quot;&quot;&quot;Returns the number of moves left until the board is full.</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="stringliteral">            int: The number of moves left (0-42).</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.movesLeft()</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="foldopen" id="foldopen00172" data-start="" data-end="">
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e">  172</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e">mirror</a>(self) -&gt; Board:</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <span class="stringliteral">&quot;&quot;&quot;Returns a new Board instance that is the mirror image of the current board.</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="stringliteral">            Board: A new Board instance that is the mirror image.</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        new_board = <a class="code hl_class" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>()</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        new_board._board = self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e">mirror</a>()</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordflow">return</span> new_board</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
 </div>
-<div class="foldopen" id="foldopen00176" data-start="" data-end="">
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">  176</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">play</a>(self, move: int | Sequence[int] | str) -&gt; bool:</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="stringliteral">&quot;&quot;&quot;Plays one or more moves for the current player.</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="stringliteral">        The method updates the internal board state by dropping tokens</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="stringliteral">        into the specified columns. Input can be:</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="stringliteral">        - a single integer (column index 0 to 6),</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="stringliteral">        - an iterable sequence of integers (e.g., `[3, 1, 3]` or `range(7)`),</span></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="stringliteral">        - or a string of digits (e.g., `&quot;33333111&quot;`) representing the move order.</span></div>
+<div class="foldopen" id="foldopen00182" data-start="" data-end="">
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d">  182</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d">moves_left</a>(self) -&gt; int:</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="stringliteral">&quot;&quot;&quot;Returns the number of moves left until the board is full.</span></div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="stringliteral">            move (int | Sequence[int] | str):</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="stringliteral">                The column index or sequence of column indices where tokens should be placed.</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="stringliteral">            bool: True if the move was played successfully, False if the move was illegal.</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="stringliteral">        Example:</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="stringliteral">            Play a sequence of moves into the center column (column index 3):</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="stringliteral">            ```python</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="stringliteral">            import bitbully as bb</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="stringliteral">            board = bb.Board()</span></div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="stringliteral">            assert board.play([3, 3, 3])  # returns True on successful move</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="stringliteral">            board</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="stringliteral">            Expected output:</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="stringliteral">              _  _  _  _  _  _  _</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="stringliteral">              _  _  _  _  _  _  _</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="stringliteral">              _  _  _  _  _  _  _</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="stringliteral">              _  _  _  X  _  _  _</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="stringliteral">              _  _  _  O  _  _  _</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="stringliteral">              _  _  _  X  _  _  _</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="stringliteral">        Example:</span></div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="stringliteral">            Play a sequence of moves across all columns:</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="stringliteral">            ```python</span></div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="stringliteral">            import bitbully as bb</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="stringliteral">            board = bb.Board()</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="stringliteral">            assert board.play(range(7))  # returns True on successful move</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="stringliteral">            board</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="stringliteral">            Expected output:</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="stringliteral">            ```text</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="stringliteral">            X  O  X  O  X  O  X</span></div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="stringliteral">        Example:</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="stringliteral">            Play a sequence using a string:</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="stringliteral">            ```python</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="stringliteral">            import bitbully as bb</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="stringliteral">            board = bb.Board()</span></div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="stringliteral">            assert board.play(&quot;33333111&quot;)  # returns True on successful move</span></div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="stringliteral">            board</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="stringliteral">            Expected output:</span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="stringliteral">            ```text</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="stringliteral">            _  _  _  X  _  _  _</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="stringliteral">            _  _  _  O  _  _  _</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="stringliteral">            _  O  _  X  _  _  _</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="stringliteral">            _  X  _  O  _  _  _</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="stringliteral">            _  O  _  X  _  _  _</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <span class="comment"># Case 1: string -&gt; pass through directly</span></div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="keywordflow">if</span> isinstance(move, str):</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>            <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">play</a>(move)</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="comment"># Case 2: int -&gt; pass through directly</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <span class="keywordflow">if</span> isinstance(move, int):</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">play</a>(move)</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="comment"># From here on, move is a Sequence[...] (but not str or int).</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        move_list: list[int] = [int(v) <span class="keywordflow">for</span> v <span class="keywordflow">in</span> cast(Sequence[Any], move)]</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">play</a>(move_list)</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="stringliteral">            int: The number of moves left (0-42).</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.movesLeft()</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
 </div>
-<div class="foldopen" id="foldopen00264" data-start="" data-end="">
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a8852160ff039b23b63be04fbb64c2e32">  264</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a8852160ff039b23b63be04fbb64c2e32">play_move_on_copy</a>(self, move: int) -&gt; Board | <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="stringliteral">&quot;&quot;&quot;Plays a move on a copy of the current board and returns the new board.</span></div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="stringliteral">            move (int): The column index (0-6) where the token should be placed.</span></div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="stringliteral">            Board | None: A new Board instance with the move played, or None if the move was illegal.</span></div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        new_board = self.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">copy</a>()</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="keywordflow">if</span> new_board.play(move):</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            <span class="keywordflow">return</span> new_board</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="foldopen" id="foldopen00190" data-start="" data-end="">
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">  190</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">play</a>(self, move: int | Sequence[int] | str) -&gt; bool:</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="stringliteral">&quot;&quot;&quot;Plays one or more moves for the current player.</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="stringliteral">        The method updates the internal board state by dropping tokens</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="stringliteral">        into the specified columns. Input can be:</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="stringliteral">        - a single integer (column index 0 to 6),</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="stringliteral">        - an iterable sequence of integers (e.g., `[3, 1, 3]` or `range(7)`),</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="stringliteral">        - or a string of digits (e.g., `&quot;33333111&quot;`) representing the move order.</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="stringliteral">            move (int | Sequence[int] | str):</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="stringliteral">                The column index or sequence of column indices where tokens should be placed.</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="stringliteral">            bool: True if the move was played successfully, False if the move was illegal.</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="stringliteral">            Play a sequence of moves into the center column (column index 3):</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="stringliteral">            import bitbully as bb</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="stringliteral">            board = bb.Board()</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="stringliteral">            assert board.play([3, 3, 3])  # returns True on successful move</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="stringliteral">            board</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="stringliteral">            Expected output:</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="stringliteral">            _  _  _  X  _  _  _</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="stringliteral">            _  _  _  O  _  _  _</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="stringliteral">            _  _  _  X  _  _  _</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="stringliteral">            Play a sequence of moves across all columns:</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="stringliteral">            import bitbully as bb</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="stringliteral">            board = bb.Board()</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="stringliteral">            assert board.play(range(7))  # returns True on successful move</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="stringliteral">            board</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="stringliteral">            Expected output:</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="stringliteral">            ```text</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span><span class="stringliteral">            X  O  X  O  X  O  X</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="stringliteral">            Play a sequence using a string:</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="stringliteral">            import bitbully as bb</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="stringliteral">            board = bb.Board()</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="stringliteral">            assert board.play(&quot;33333111&quot;)  # returns True on successful move</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="stringliteral">            board</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="stringliteral">            Expected output:</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="stringliteral">            ```text</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="stringliteral">            _  _  _  _  _  _  _</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="stringliteral">            _  _  _  X  _  _  _</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="stringliteral">            _  _  _  O  _  _  _</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="stringliteral">            _  O  _  X  _  _  _</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="stringliteral">            _  X  _  O  _  _  _</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="stringliteral">            _  O  _  X  _  _  _</span></div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        <span class="comment"># Case 1: string -&gt; pass through directly</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <span class="keywordflow">if</span> isinstance(move, str):</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>            <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">play</a>(move)</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="comment"># Case 2: int -&gt; pass through directly</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="keywordflow">if</span> isinstance(move, int):</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">play</a>(move)</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="comment"># From here on, move is a Sequence[...] (but not str or int).</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        move_list: list[int] = [int(v) <span class="keywordflow">for</span> v <span class="keywordflow">in</span> cast(Sequence[Any], move)]</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.<a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">play</a>(move_list)</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
 </div>
 <div class="foldopen" id="foldopen00278" data-start="" data-end="">
@@ -497,29 +495,28 @@ $(function(){initNavTree('df/d85/board_8py_source.html','../../',''); });
 </div>
 </div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html">bitbully.board.Board</a></div><div class="ttdef"><b>Definition</b> <a href="#l00011">board.py:11</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a0babec5f817efa063b5e89e035d79b4e"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">bitbully.board.Board.copy</a></div><div class="ttdeci">Board copy(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00102">board.py:102</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a14e3593ac443efa0acedf090e3671a7d"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">bitbully.board.Board.__eq__</a></div><div class="ttdeci">bool __eq__(self, object value)</div><div class="ttdef"><b>Definition</b> <a href="#l00044">board.py:44</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a0babec5f817efa063b5e89e035d79b4e"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">bitbully.board.Board.copy</a></div><div class="ttdeci">Board copy(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00116">board.py:116</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a14e3593ac443efa0acedf090e3671a7d"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">bitbully.board.Board.__eq__</a></div><div class="ttdeci">bool __eq__(self, object value)</div><div class="ttdef"><b>Definition</b> <a href="#l00058">board.py:58</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a26f6bb8016db04d0ed10a8c05cfb87e6"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a26f6bb8016db04d0ed10a8c05cfb87e6">bitbully.board.Board.__init__</a></div><div class="ttdeci">None __init__(self, Sequence[Sequence[int]]|Sequence[int]|str|None init_with=None)</div><div class="ttdef"><b>Definition</b> <a href="#l00014">board.py:14</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a357ea549197e657a8ea52dcca863b039"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a357ea549197e657a8ea52dcca863b039">bitbully.board.Board.count_tokens</a></div><div class="ttdeci">int count_tokens(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00112">board.py:112</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a357ea549197e657a8ea52dcca863b039"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a357ea549197e657a8ea52dcca863b039">bitbully.board.Board.count_tokens</a></div><div class="ttdeci">int count_tokens(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00126">board.py:126</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a3db1df514e7c6d510f2188ceb7419aca"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a3db1df514e7c6d510f2188ceb7419aca">bitbully.board.Board.to_string</a></div><div class="ttdeci">str to_string(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00315">board.py:315</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a42903f41f41e423c133fd9ed842d2ed8"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a42903f41f41e423c133fd9ed842d2ed8">bitbully.board.Board.all_positions</a></div><div class="ttdeci">list[Board] all_positions(self, int up_to_n_ply, bool exactly_n)</div><div class="ttdef"><b>Definition</b> <a href="#l00075">board.py:75</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a685b273338fc40f86ce851d01632aeaf"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a685b273338fc40f86ce851d01632aeaf">bitbully.board.Board.__repr__</a></div><div class="ttdeci">str __repr__(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00071">board.py:71</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a8852160ff039b23b63be04fbb64c2e32"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a8852160ff039b23b63be04fbb64c2e32">bitbully.board.Board.play_move_on_copy</a></div><div class="ttdeci">Board|None play_move_on_copy(self, int move)</div><div class="ttdef"><b>Definition</b> <a href="#l00264">board.py:264</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a9514b7e3caa5c5d7c3bedd0268865fc1"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9514b7e3caa5c5d7c3bedd0268865fc1">bitbully.board.Board.can_win_next</a></div><div class="ttdeci">bool can_win_next(self, int|None move=None)</div><div class="ttdef"><b>Definition</b> <a href="#l00089">board.py:89</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a42903f41f41e423c133fd9ed842d2ed8"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a42903f41f41e423c133fd9ed842d2ed8">bitbully.board.Board.all_positions</a></div><div class="ttdeci">list[Board] all_positions(self, int up_to_n_ply, bool exactly_n)</div><div class="ttdef"><b>Definition</b> <a href="#l00089">board.py:89</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a685b273338fc40f86ce851d01632aeaf"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a685b273338fc40f86ce851d01632aeaf">bitbully.board.Board.__repr__</a></div><div class="ttdeci">str __repr__(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00085">board.py:85</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a9514b7e3caa5c5d7c3bedd0268865fc1"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9514b7e3caa5c5d7c3bedd0268865fc1">bitbully.board.Board.can_win_next</a></div><div class="ttdeci">bool can_win_next(self, int|None move=None)</div><div class="ttdef"><b>Definition</b> <a href="#l00103">board.py:103</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a9a88f1825c72b2f2aaf79a52afbb2d6f"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9a88f1825c72b2f2aaf79a52afbb2d6f">bitbully.board.Board.set_board</a></div><div class="ttdeci">bool set_board(self, Sequence[int]|Sequence[Sequence[int]]|str board)</div><div class="ttdef"><b>Definition</b> <a href="#l00278">board.py:278</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a9b6f64ab6125ede62a0cf338fff99043"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9b6f64ab6125ede62a0cf338fff99043">bitbully.board.Board.reset</a></div><div class="ttdeci">None reset(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00341">board.py:341</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a9defd7d2c76118045f0b133f0a43547e"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9defd7d2c76118045f0b133f0a43547e">bitbully.board.Board.get_legal_moves</a></div><div class="ttdeci">list[int] get_legal_moves(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00120">board.py:120</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_aa56a2afaa85ded51091e20ae61b872ec"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa56a2afaa85ded51091e20ae61b872ec">bitbully.board.Board.__hash__</a></div><div class="ttdeci">int __hash__(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00139">board.py:139</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_aa90638e1d8ff88b5eaedef40b6a6e30e"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e">bitbully.board.Board.mirror</a></div><div class="ttdeci">Board mirror(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00158">board.py:158</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ac703e9fec40c4d9c60c314b33eb44bbd"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">bitbully.board.Board.play</a></div><div class="ttdeci">bool play(self, int|Sequence[int]|str move)</div><div class="ttdef"><b>Definition</b> <a href="#l00176">board.py:176</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a9defd7d2c76118045f0b133f0a43547e"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a9defd7d2c76118045f0b133f0a43547e">bitbully.board.Board.get_legal_moves</a></div><div class="ttdeci">list[int] get_legal_moves(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00134">board.py:134</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_aa56a2afaa85ded51091e20ae61b872ec"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa56a2afaa85ded51091e20ae61b872ec">bitbully.board.Board.__hash__</a></div><div class="ttdeci">int __hash__(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00153">board.py:153</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_aa90638e1d8ff88b5eaedef40b6a6e30e"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e">bitbully.board.Board.mirror</a></div><div class="ttdeci">Board mirror(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00172">board.py:172</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ac703e9fec40c4d9c60c314b33eb44bbd"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">bitbully.board.Board.play</a></div><div class="ttdeci">bool play(self, int|Sequence[int]|str move)</div><div class="ttdef"><b>Definition</b> <a href="#l00190">board.py:190</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ad06cd5ac21f137de6b80c9b4f8f89d3b"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad06cd5ac21f137de6b80c9b4f8f89d3b">bitbully.board.Board.uid</a></div><div class="ttdeci">int uid(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00323">board.py:323</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ad34abdcda492a98a5532c713d83f4f0b"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">bitbully.board.Board._board</a></div><div class="ttdeci">_board</div><div class="ttdef"><b>Definition</b> <a href="#l00040">board.py:40</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ad34abdcda492a98a5532c713d83f4f0b"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">bitbully.board.Board._board</a></div><div class="ttdeci">_board</div><div class="ttdef"><b>Definition</b> <a href="#l00054">board.py:54</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_adbc7e86e4081f3152024e2cad2a674a4"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#adbc7e86e4081f3152024e2cad2a674a4">bitbully.board.Board.to_array</a></div><div class="ttdeci">list[list[int]] to_array(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00307">board.py:307</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_adc7d83d53b91de5fdb00703468012786"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#adc7d83d53b91de5fdb00703468012786">bitbully.board.Board.random_board</a></div><div class="ttdeci">None random_board(int n_ply, bool forbid_direct_win)</div><div class="ttdef"><b>Definition</b> <a href="#l00332">board.py:332</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ae50b3749d5857b53f6d8d7fed35b3bf7"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae50b3749d5857b53f6d8d7fed35b3bf7">bitbully.board.Board.has_win</a></div><div class="ttdeci">bool has_win(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00131">board.py:131</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_aed729a7efcbf07f00e2a8773b875291d"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d">bitbully.board.Board.moves_left</a></div><div class="ttdeci">int moves_left(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00168">board.py:168</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_af0547d9a280ddeaebe6bf563c8a0617a"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af0547d9a280ddeaebe6bf563c8a0617a">bitbully.board.Board.is_legal_move</a></div><div class="ttdeci">bool is_legal_move(self, int move)</div><div class="ttdef"><b>Definition</b> <a href="#l00147">board.py:147</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_af95a367c9b9e977c07ee89189f1e6087"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af95a367c9b9e977c07ee89189f1e6087">bitbully.board.Board.__ne__</a></div><div class="ttdeci">bool __ne__(self, object value)</div><div class="ttdef"><b>Definition</b> <a href="#l00060">board.py:60</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ae50b3749d5857b53f6d8d7fed35b3bf7"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae50b3749d5857b53f6d8d7fed35b3bf7">bitbully.board.Board.has_win</a></div><div class="ttdeci">bool has_win(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00145">board.py:145</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_aed729a7efcbf07f00e2a8773b875291d"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d">bitbully.board.Board.moves_left</a></div><div class="ttdeci">int moves_left(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00182">board.py:182</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_af0547d9a280ddeaebe6bf563c8a0617a"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af0547d9a280ddeaebe6bf563c8a0617a">bitbully.board.Board.is_legal_move</a></div><div class="ttdeci">bool is_legal_move(self, int move)</div><div class="ttdef"><b>Definition</b> <a href="#l00161">board.py:161</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_af95a367c9b9e977c07ee89189f1e6087"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af95a367c9b9e977c07ee89189f1e6087">bitbully.board.Board.__ne__</a></div><div class="ttdeci">bool __ne__(self, object value)</div><div class="ttdef"><b>Definition</b> <a href="#l00074">board.py:74</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
