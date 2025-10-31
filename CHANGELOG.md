@@ -1,3 +1,9 @@
+## v0.0.56 (2025-10-31)
+
+### Fix
+
+- added a getting-started jupyter notebook
+
 ## v0.0.56-a7 (2025-10-31)
 
 ### Fix
