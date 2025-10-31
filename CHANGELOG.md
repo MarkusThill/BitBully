@@ -1,3 +1,10 @@
+## v0.0.56-a7 (2025-10-31)
+
+### Fix
+
+- added some own doc tests
+- added some additional play functions
+
 ## v0.0.56-a6 (2025-09-27)
 
 ### Fix
