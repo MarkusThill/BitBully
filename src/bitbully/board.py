@@ -24,17 +24,31 @@ class Board:
 
         Example:
             You can initialize an empty board in multiple ways:
-            ``` py
-            board = Board()  # Empty board
-            board = Board([[0] * 6 for _ in range(7)])  # empty board as 2D list
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()  # Empty board
+            board = bb.Board([[0] * 6 for _ in range(7)])  # also an empty board as 2D list
+            board
+            ```
+            Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
             ```
 
         The recommended way to initialize an empty board is simply `Board()`.
 
         Example:
             And here we have another example:
-            ``` py
-            board = Board("002233...")  # String
+            ```python
+            import bitbully as bb
+
+            board = bb.Board("002233...")  # String
             ```
         """
         self._board = bitbully_core.BoardCore()
@@ -203,12 +217,12 @@ class Board:
             Expected output:
 
             ```
-              _  _  _  _  _  _  _
-              _  _  _  _  _  _  _
-              _  _  _  _  _  _  _
-              _  _  _  X  _  _  _
-              _  _  _  O  _  _  _
-              _  _  _  X  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  _  _  X  _  _  _
             ```
 
         Example:
@@ -260,20 +274,6 @@ class Board:
         # From here on, move is a Sequence[...] (but not str or int).
         move_list: list[int] = [int(v) for v in cast(Sequence[Any], move)]
         return self._board.play(move_list)
-
-    def play_move_on_copy(self, move: int) -> Board | None:
-        """Plays a move on a copy of the current board and returns the new board.
-
-        Args:
-            move (int): The column index (0-6) where the token should be placed.
-
-        Returns:
-            Board | None: A new Board instance with the move played, or None if the move was illegal.
-        """
-        new_board = self.copy()
-        if new_board.play(move):
-            return new_board
-        return None
 
     def set_board(self, board: Sequence[int] | Sequence[Sequence[int]] | str) -> bool:
         """Sets (overrides) the board to a specific state.
