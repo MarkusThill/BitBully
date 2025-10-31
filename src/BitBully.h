@@ -46,7 +46,7 @@ class BitBully {
   }
 
   // TODO: firstGuess is a parameter which could be tuned!
-  int mtdf(const Board& b, const int firstGuess) {
+  int mtdf(const Board& b, const int firstGuess) noexcept {
     // MTD(f) algorithm by Aske Plaat: Plaat, Aske; Jonathan Schaeffer; Wim
     // Pijls; Arie de Bruin (November 1996). "Best-first Fixed-depth Minimax
     // Algorithms". Artificial Intelligence. 87 (1–2): 255–293.
@@ -68,7 +68,7 @@ class BitBully {
   }
 
   // generally, appears to be slower than mtdf
-  int nullWindow(const Board& b) {
+  int nullWindow(const Board& b) noexcept {
     int min = -b.movesLeft() / 2;
     int max = (b.movesLeft() + 1) / 2;
 
@@ -97,7 +97,7 @@ class BitBully {
 
   void resetNodeCounter() { nodeCounter = 0ULL; }
 
-  int negamax(Board b, int alpha, int beta, int depth) {
+  int negamax(Board b, int alpha, int beta, const int depth) noexcept {
     // In many aspects inspired by Pascal's code
     assert(alpha < beta);
     nodeCounter++;
@@ -276,7 +276,7 @@ class BitBully {
   auto scoreMoves(const Board& b) {
     std::vector scores(Board::N_COLUMNS, -1000);
     for (auto col = 0UL; col < scores.size(); col++) {
-      if (auto afterB = b; afterB.playMove(col)) {
+      if (auto afterB = b; afterB.play(col)) {
         if (afterB.hasWin()) {
           scores[col] = (afterB.movesLeft()) / 2 + 1;
           continue;

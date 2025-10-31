@@ -321,7 +321,7 @@ TEST_F(BoardTest, canWin) {
       int randColumn = distrib(gen);
       while (!P.canPlay(randColumn)) randColumn = distrib(gen);
 
-      ASSERT_TRUE(b.playMove(randColumn));
+      ASSERT_TRUE(b.play(randColumn));
       P.playCol(randColumn);
 
       if (P.isWinningMove(randColumn)) {
@@ -362,7 +362,7 @@ TEST_F(BoardTest, canWin2) {
       int randColumn = distrib(gen);
       while (!P.canPlay(randColumn)) randColumn = distrib(gen);
 
-      ASSERT_TRUE(b.playMove(randColumn)) << randColumn;
+      ASSERT_TRUE(b.play(randColumn)) << randColumn;
       P.playCol(randColumn);
 
       if (P.isWinningMove(randColumn)) {
@@ -388,7 +388,7 @@ TEST_F(BoardTest, hasWon) {
       const auto canWin = b.canWin();
       for (int x = 0; x < B::N_COLUMNS && canWin; ++x) {
         if (b.canWin(x)) {
-          ASSERT_TRUE(b.playMove(x));
+          ASSERT_TRUE(b.play(x));
           ASSERT_TRUE(b.hasWin()) << b.toString();
           break;
         }
@@ -398,7 +398,7 @@ TEST_F(BoardTest, hasWon) {
       ASSERT_FALSE(b.hasWin()) << b.toString();
 
       int randColumn = distrib(gen);
-      while (!b.playMove(randColumn)) randColumn = distrib(gen);
+      while (!b.play(randColumn)) randColumn = distrib(gen);
     }
   }
 }

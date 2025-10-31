@@ -51,7 +51,7 @@ TEST_F(BitBullyTest, comparePonsBitbully) {
       if (P.isWinningMove(randColumn)) {
         break;
       }
-      ASSERT_TRUE(b.playMove(randColumn));
+      ASSERT_TRUE(b.play(randColumn));
       P.playCol(randColumn);
     }
 
@@ -91,7 +91,7 @@ TEST_F(BitBullyTest, test2) {
       if (P.isWinningMove(randColumn)) {
         break;
       }
-      ASSERT_TRUE(b.playMove(randColumn));
+      ASSERT_TRUE(b.play(randColumn));
       P.playCol(randColumn);
     }
 
@@ -144,7 +144,7 @@ TEST_F(BitBullyTest, comparePonsBitbullyTime) {
       if (P.isWinningMove(randColumn)) {
         break;
       }
-      ASSERT_TRUE(b.playMove(randColumn));
+      ASSERT_TRUE(b.play(randColumn));
       P.playCol(randColumn);
       // std::cout << (randColumn + 1);
     }
@@ -214,7 +214,7 @@ TEST_F(BitBullyTest, mtdfWithBook) {
   for (int i = -1; i < B::N_COLUMNS; ++i) {
     bb.resetTranspositionTable();  // For fair comparison of times
     B b;
-    b.playMove(i);
+    b.play(i);
     ASSERT_EQ(b.countTokens(), (i >= 0 ? 1 : 0));
     using duration = std::chrono::duration<float>;
     const auto tstart = Clock::now();

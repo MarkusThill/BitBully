@@ -243,7 +243,7 @@ class GuiC4:
 
         board = bitbully_core.BoardCore()
         board.setBoard([mv[1] for mv in self.m_movelist])
-        if self.m_gameover or not board.playMove(col):
+        if self.m_gameover or not board.play(col):
             self._update_insert_buttons()
             self.is_busy = False
             return

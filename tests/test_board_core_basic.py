@@ -64,12 +64,12 @@ def test_can_win_1_basic() -> None:
     """Test that canWin method works."""
     b: bbc.BoardCore = bbc.BoardCore()
     assert not b.canWin(3), "Empty board should not have a winning move"
-    b.playMove(3)  # Yellow
-    b.playMove(2)  # Red
-    b.playMove(3)  # Yellow
-    b.playMove(2)  # Red
-    b.playMove(3)  # Yellow
-    b.playMove(4)  # Red
+    b.play(3)  # Yellow
+    b.play(2)  # Red
+    b.play(3)  # Yellow
+    b.play(2)  # Red
+    b.play(3)  # Yellow
+    b.play(4)  # Red
     print(b)
     assert b.canWin(3), "Yellow should be able to win by playing in column 3"
 
@@ -128,10 +128,10 @@ def test_hash() -> None:
     b2: bbc.BoardCore = bbc.BoardCore()
     moves = [3, 2, 3, 2, 3, 4]
     for move in moves:
-        assert b1.playMove(move)
-        assert b2.playMove(move)
+        assert b1.play(move)
+        assert b2.play(move)
         assert b1.hash() == b2.hash(), "Hashes should be identical for identical board states"
-    b1.playMove(1)
+    b1.play(1)
     assert b1.hash() != b2.hash(), "Hashes should differ after different moves"
 
 
@@ -151,8 +151,8 @@ def test_hash_reversed_moves() -> None:
     b2: bbc.BoardCore = bbc.BoardCore()
     moves = [0, 1, 2, 3, 3, 2, 1, 0]
     for m1, m2 in zip(moves, reversed(moves)):
-        assert b1.playMove(m1)
-        assert b2.playMove(m2)
+        assert b1.play(m1)
+        assert b2.play(m2)
 
     assert b1.hash() == b2.hash(), (
         f"Expected identical hashes for mirrored board states, but got:\n"
@@ -187,13 +187,13 @@ def test_has_win() -> None:
     """
     b: bbc.BoardCore = bbc.BoardCore()
     assert not b.hasWin(), "hasWin() should return False for an empty board (no player has 4 in a row)"
-    assert b.playMove(3)  # Yellow
-    assert b.playMove(2)  # Red
-    assert b.playMove(3)  # Yellow
-    assert b.playMove(2)  # Red
-    assert b.playMove(3)  # Yellow
-    assert b.playMove(4)  # Red
-    assert b.playMove(3)  # Yellow
+    assert b.play(3)  # Yellow
+    assert b.play(2)  # Red
+    assert b.play(3)  # Yellow
+    assert b.play(2)  # Red
+    assert b.play(3)  # Yellow
+    assert b.play(4)  # Red
+    assert b.play(3)  # Yellow
     assert b.hasWin(), f"hasWin() should return True when the last player to move has 4 in a row. Board state:\n{b}"
 
 
@@ -220,7 +220,7 @@ def test_has_win_param(move_sequence: list[int], expected_win_column: int, expec
     """
     b: bbc.BoardCore = bbc.BoardCore()
     assert b.setBoard(move_sequence)
-    assert b.playMove(expected_win_column)
+    assert b.play(expected_win_column)
     result: bool = b.hasWin()
     assert result == expected_win, (
         f"hasWin() returned {result} after playing column {expected_win_column}, expected {expected_win}.\nBoard:\n{b}"
@@ -230,11 +230,11 @@ def test_has_win_param(move_sequence: list[int], expected_win_column: int, expec
 def test_play_move_invalid() -> None:
     """Test that playMove correctly handles invalid moves."""
     b: bbc.BoardCore = bbc.BoardCore()
-    assert not b.playMove(-1), "playMove should return False for invalid negative column"
-    assert not b.playMove(7), "playMove should return False for invalid column greater than 6"
+    assert not b.play(-1), "playMove should return False for invalid negative column"
+    assert not b.play(7), "playMove should return False for invalid column greater than 6"
     for _ in range(6):
-        assert b.playMove(0), "playMove should succeed for valid moves in column 0"
-    assert not b.playMove(0), "playMove should return False when trying to play in a full column"
+        assert b.play(0), "playMove should succeed for valid moves in column 0"
+    assert not b.play(0), "playMove should return False when trying to play in a full column"
 
 
 def test_play_move_valid() -> None:
@@ -245,9 +245,9 @@ def test_play_move_valid() -> None:
     b: bbc.BoardCore = bbc.BoardCore()
     for col in range(7):
         for _ in range(6):
-            assert b.playMove(col), f"playMove should succeed for valid move in column {col}"
+            assert b.play(col), f"playMove should succeed for valid move in column {col}"
     for col in range(7):
-        assert not b.playMove(col), "playMove should return False when trying to play in a full column"
+        assert not b.play(col), "playMove should return False when trying to play in a full column"
 
 
 def test_is_legal_move() -> None:
@@ -261,7 +261,7 @@ def test_is_legal_move() -> None:
     assert not b.isLegalMove(7), "Column greater than 6 should not be legal"
     # Fill up column 0
     for _ in range(6):
-        assert b.playMove(0)
+        assert b.play(0)
     assert not b.isLegalMove(0), "Column 0 should not be legal when full"
 
 
@@ -271,16 +271,16 @@ def test_moves_left() -> None:
     # Empty board: 42 moves left (6 rows x 7 columns)
     assert b.movesLeft() == 42, f"Expected 42 moves left on empty board, got {b.movesLeft()}"
     # Play one move
-    b.playMove(0)
+    b.play(0)
     assert b.movesLeft() == 41, f"Expected 41 moves left after one move, got {b.movesLeft()}"
     # Fill up column 0
     for _ in range(5):
-        b.playMove(0)
+        b.play(0)
     assert b.movesLeft() == 36, f"Expected 36 moves left after filling column 0, got {b.movesLeft()}"
     # Fill up the rest of the board
     for col in range(1, 7):
         for _ in range(6):
-            b.playMove(col)
+            b.play(col)
     assert b.movesLeft() == 0, f"Expected 0 moves left on full board, got {b.movesLeft()}"
 
 
@@ -288,14 +288,14 @@ def test_count_tokens() -> None:
     """CountTokens should return the correct number of tokens on the board."""
     b: bbc.BoardCore = bbc.BoardCore()
     assert b.countTokens() == 0, f"Expected 0 tokens on empty board, got {b.countTokens()}"
-    b.playMove(0)
+    b.play(0)
     assert b.countTokens() == 1, f"Expected 1 token after one move, got {b.countTokens()}"
-    b.playMove(1)
-    b.playMove(2)
+    b.play(1)
+    b.play(2)
     assert b.countTokens() == 3, f"Expected 3 tokens after three moves, got {b.countTokens()}"
     # Fill up column 0
     for _ in range(5):
-        b.playMove(0)
+        b.play(0)
     assert b.countTokens() == 8, f"Expected 8 tokens after filling column 0, got {b.countTokens()}"
 
 
@@ -360,10 +360,10 @@ def test_equality() -> None:
     assert b1 == b2, "Two empty boards should be equal"
     moves = [0, 1, 2, 3]
     for move in moves:
-        b1.playMove(move)
-        b2.playMove(move)
+        b1.play(move)
+        b2.play(move)
     assert b1 == b2, "Boards with identical move sequences should be equal"
-    b2.playMove(4)
+    b2.play(4)
     assert b1 != b2, "Boards with different move sequences should not be equal"
     b3: bbc.BoardCore = bbc.BoardCore()
     assert b1 != b3, "Non-empty board should not equal empty board"
@@ -444,7 +444,7 @@ def test_uid() -> None:
 
     b1: bbc.BoardCore = bbc.BoardCore(b)
 
-    assert b.playMove(1)
+    assert b.play(1)
     assert b.uid() != 0, "UID should change after a move is played"
 
     assert b != b1, "Boards with different states should not be equal"
@@ -455,7 +455,7 @@ def test_copy_constructor() -> None:
     b1: bbc.BoardCore = bbc.BoardCore()
     moves = [0, 1, 2, 3]
     for move in moves:
-        b1.playMove(move)
+        b1.play(move)
 
     b2: bbc.BoardCore = bbc.BoardCore(b1)  # Use copy constructor
     assert id(b1) != id(b2), "Copy should have a different memory address than the original"
@@ -463,7 +463,7 @@ def test_copy_constructor() -> None:
     assert b1.hash() == b2.hash(), "Hashes should be identical for boards created with copy constructor"
     assert b1.uid() == b2.uid(), "UIDs should be identical for boards created with copy constructor"
 
-    b2.playMove(4)
+    b2.play(4)
     assert id(b1) != id(b2), "Copy should have a different memory address than the original"
     assert b1 != b2, "Boards should not be equal after modifying the copy"
     assert b1.hash() != b2.hash(), "Hashes should differ after modifying the copy"
@@ -476,7 +476,7 @@ def test_copy() -> None:
     b1: bbc.BoardCore = bbc.BoardCore()
     moves = [0, 1, 2, 3]
     for move in moves:
-        b1.playMove(move)
+        b1.play(move)
 
     b2: bbc.BoardCore = b1.copy()
     assert id(b1) != id(b2), "Copy should have a different memory address than the original"
@@ -485,7 +485,7 @@ def test_copy() -> None:
     assert b1.hash() == b2.hash(), "Hashes should be identical for boards created with copy()"
     assert b1.uid() == b2.uid(), "UIDs should be identical for boards created with copy()"
 
-    b2.playMove(4)
+    b2.play(4)
     assert id(b1) != id(b2), "Copy should have a different memory address than the original"
     assert b1 != b2, "Boards should not be equal after modifying the copy"
     assert b1.hash() != b2.hash(), "Hashes should differ after modifying the copy"

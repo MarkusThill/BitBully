@@ -181,7 +181,7 @@ class Board:
         Returns:
             bool: True if the move was played successfully, False if the move was illegal.
         """
-        return self._board.playMove(move)
+        return self._board.play(move)
 
     def play_move_on_copy(self, move: int) -> Board | None:
         """Plays a move on a copy of the current board and returns the new board.

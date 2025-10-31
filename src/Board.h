@@ -84,18 +84,6 @@ class Board {
   using TBoardArray = std::array<std::array<int32_t, N_ROWS>, N_COLUMNS>;
   using TBoardArrayT = std::array<std::array<int32_t, N_COLUMNS>, N_ROWS>;
 
-  void inline playMoveFastBB(const TBitBoard mv) {
-    assert(mv != BB_EMPTY);
-    assert((mv & BB_ILLEGAL) == BB_EMPTY);
-    assert((m_bAllTokens & mv) == BB_EMPTY);
-    m_bActivePTokens ^= m_bAllTokens;  // Already, switch player
-
-    // However, move is performed for current player (assuming, above switch is
-    // not yet performed)
-    m_bAllTokens ^= mv;  // bitwise xor and bitwise or are equivalent here
-    m_movesLeft--;
-  }
-
   [[nodiscard]] Board inline playMoveOnCopy(const TBitBoard mv) const {
     Board b = *this;
     b.playMoveFastBB(mv);
@@ -109,7 +97,7 @@ class Board {
 
   [[nodiscard]] TBitBoard generateMoves() const;
 
-  static constexpr int popCountBoard(uint64_t x) {
+  [[nodiscard]] static constexpr int popCountBoard(uint64_t x) {
     int count = 0;
     while (x) {
       count += static_cast<int>(x & 1);
@@ -124,7 +112,7 @@ class Board {
 
   [[nodiscard]] bool isLegalMove(int column) const;
 
-  static uint64_t hash(uint64_t x) {
+  [[nodiscard]] static uint64_t hash(uint64_t x) {
     x = (x ^ (x >> 30)) * UINT64_C(0xbf58476d1ce4e5b9);
     x = (x ^ (x >> 27)) * UINT64_C(0x94d049bb133111eb);
     x = x ^ (x >> 31);
@@ -141,7 +129,7 @@ class Board {
     return hash(hash(m_bActivePTokens) ^ (hash(m_bAllTokens) << 1));
   }
 
-  static TBitBoard nextMove(TBitBoard allMoves) {
+  [[nodiscard]] static TBitBoard nextMove(TBitBoard allMoves) {
     for (const auto p : BB_MOVES_PRIO_LIST) {
       if (const TBitBoard pvMv = allMoves & p) {
         allMoves = pvMv;
@@ -151,7 +139,7 @@ class Board {
     return lsb(allMoves);
   }
 
-  bool operator==(const Board& b) const {
+  [[nodiscard]] bool operator==(const Board& b) const {
     const bool equal = (b.m_bAllTokens == m_bAllTokens &&
                         b.m_bActivePTokens == m_bActivePTokens);
 
@@ -160,23 +148,25 @@ class Board {
     return equal;
   }
 
-  bool operator!=(const Board& b) const { return !(b == *this); }
+  [[nodiscard]] bool operator!=(const Board& b) const { return !(b == *this); }
 
-  TBitBoard findOddThreats(TBitBoard moves);
+  [[nodiscard]] TBitBoard findOddThreats(TBitBoard moves);
 
-  bool setBoard(const TBoardArray& board);
+  [[nodiscard]] bool setBoard(const TBoardArray& board);
 
-  bool setBoard(const TBoardArrayT& board);
+  [[nodiscard]] bool setBoard(const TBoardArrayT& board);
 
-  bool setBoard(const std::vector<int>& moveSequence);
+  [[nodiscard]] bool setBoard(const std::vector<int>& moveSequence);
 
-  bool setBoard(const std::string& moveSequence);
+  bool play(int column);
+  [[nodiscard]] bool play(const std::vector<int>& moveSequence);
+  [[nodiscard]] bool play(const std::string& moveSequence);
+
+  [[nodiscard]] bool setBoard(const std::string& moveSequence);
 
   [[nodiscard]] TBoardArray toArray() const;
 
-  static bool isValid(const TBoardArray& board);
-
-  bool playMove(int column);
+  [[nodiscard]] static bool isValid(const TBoardArray& board);
 
   [[nodiscard]] bool canWin() const;
 
@@ -402,6 +392,18 @@ class Board {
     return static_cast<Player>(3 - p);
   }
 
+  void inline playMoveFastBB(const TBitBoard mv) {
+    assert(mv != BB_EMPTY);
+    assert((mv & BB_ILLEGAL) == BB_EMPTY);
+    assert((m_bAllTokens & mv) == BB_EMPTY);
+    m_bActivePTokens ^= m_bAllTokens;  // Already, switch player
+
+    // However, move is performed for current player (assuming, above switch is
+    // not yet performed)
+    m_bAllTokens ^= mv;  // bitwise xor and bitwise or are equivalent here
+    m_movesLeft--;
+  }
+
   void inline playMoveFast(const int column) {
     assert(column >= 0 && column < N_COLUMNS);
     const TBitBoard columnMask = getColumnMask(column);
@@ -461,7 +463,7 @@ class Board {
       if (tries >= MAX_TRIES) {
         return {};
       }
-      b.playMove(randColumn);
+      b.play(randColumn);
       mvSequence.emplace_back(randColumn);
     }
 

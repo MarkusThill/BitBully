@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <array>
 #include <cassert>
-#include <iostream>
 
 namespace BitBully {
 
@@ -20,28 +19,25 @@ Board::Board()
 }
 
 bool Board::setBoard(const std::vector<int>& moveSequence) {
-  Board b;  // First operate on copy
+  Board b;  // First operate on fresh board
 
-  for (const auto mv : moveSequence) {
-    if (!b.playMove(mv)) return false;
+  if (!b.play(moveSequence)) {
+    return false;
   }
+
   *this = b;
   return true;
 }
 
 bool Board::setBoard(const std::string& moveSequence) {
-  for (const char c : moveSequence) {
-    if (c < '0' || c > '6') return false;
-  }
+  Board b;  // start with an empty board
 
-  std::vector<int> moveSequenceInt;
-  moveSequenceInt.reserve(
-      moveSequence.size());  // optional, avoids reallocations
-  std::transform(moveSequence.begin(), moveSequence.end(),
-                 std::back_inserter(moveSequenceInt),
-                 [](const char c) { return c - '0'; });
+  // attempt to play the move sequence
+  if (!b.play(moveSequence)) return false;
 
-  return setBoard(moveSequenceInt);
+  // only modify the current board on success
+  *this = b;
+  return true;
 }
 
 Board::TBoardArray Board::transpose(const TBoardArrayT& board) {
@@ -54,9 +50,9 @@ Board::TBoardArray Board::transpose(const TBoardArrayT& board) {
   return result;
 }
 
-bool Board::setBoard(const TBoardArrayT& boardT) {
-  const auto board = transpose(boardT);
-  return setBoard(board);
+bool Board::setBoard(const TBoardArrayT& board) {
+  const auto boardT = transpose(board);
+  return setBoard(boardT);
 }
 
 bool Board::setBoard(const TBoardArray& board) {
@@ -66,8 +62,8 @@ bool Board::setBoard(const TBoardArray& board) {
   TBitBoard allTokens{BB_EMPTY}, yellowTokens{BB_EMPTY};
   for (auto c = 0; c < N_COLUMNS; ++c) {
     for (auto r = 0; r < N_ROWS; ++r) {
-      auto val = board[c][r];
-      auto mask = getMaskColRow(c, r);
+      const auto val = board[c][r];
+      const auto mask = getMaskColRow(c, r);
       if (val == P_YELLOW) {
         yellowTokens ^= mask;
       } else if (val != P_RED) {
@@ -129,13 +125,37 @@ bool Board::isValid(const TBoardArray& board) {
  * [ 1, 10, 19, 28, 37, 46, 55],
  * [ 0,  9, 18, 27, 36, 45, 54]
  */
-bool Board::playMove(const int column) {
+bool Board::play(const int column) {
   // Check, if column full...
   if (!isLegalMove(column)) return false;
 
   playMoveFast(column);
 
   return true;
+}
+
+bool Board::play(const std::vector<int>& moveSequence) {
+  Board b = *this;  // First operate on copy
+
+  for (const auto mv : moveSequence) {
+    if (!b.play(mv)) return false;
+  }
+  *this = b;
+  return true;
+}
+
+bool Board::play(const std::string& moveSequence) {
+  for (const char c : moveSequence) {
+    if (c < '0' || c >= '0' + N_COLUMNS) return false;
+  }
+
+  std::vector<int> moveSequenceInt;
+  moveSequenceInt.reserve(
+      moveSequence.size());  // optional, avoids reallocations
+  std::transform(moveSequence.begin(), moveSequence.end(),
+                 std::back_inserter(moveSequenceInt),
+                 [](const char c) { return c - '0'; });
+  return play(moveSequenceInt);
 }
 
 bool Board::isLegalMove(const int column) const {

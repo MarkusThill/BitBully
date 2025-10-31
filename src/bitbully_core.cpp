@@ -48,8 +48,6 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def(py::init<const B&>())      // Copy-Konstruktor
       .def("__str__", &B::toString)   // Override __str__ in Python
       .def("__repr__", &B::toString)  // Override __repr__ in Python
-      .def("playMoveFastBB", &B::playMoveFastBB,
-           "Play a move on the board (bitboard representation)", py::arg("mv"))
       .def("canWin", py::overload_cast<int>(&B::canWin, py::const_),
            "Check, if current player can win by moving into column.",
            py::arg("column"))
@@ -61,8 +59,12 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("hasWin", &B::hasWin,
            "Check, if the player who performed the last move has a winning "
            "position (4 in a row).")
-      .def("playMove", py::overload_cast<int>(&B::playMove),
+      .def("play", py::overload_cast<int>(&B::play),
            "Play a move by column index", py::arg("column"))
+      .def("play", py::overload_cast<const std::vector<int>&>(&B::play),
+           "Play a sequence of moves by column index", py::arg("moveSequence"))
+      .def("play", py::overload_cast<const std::string&>(&B::play),
+           "Play a sequence of moves by column index", py::arg("moveSequence"))
       .def("playMoveOnCopy", &B::playMoveOnCopy,
            "Play a move on a copy of the board and return the new board",
            py::arg("mv"))

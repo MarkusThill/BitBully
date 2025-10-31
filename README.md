@@ -93,7 +93,7 @@ board = bitbully_core.BoardCore()
 
 # Yellow and red alternately play moves into column 3 (center column):
 for _ in range(6):
-    board.playMove(3)
+    board.play(3)
 
 print(board)
 

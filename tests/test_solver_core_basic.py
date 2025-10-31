@@ -18,7 +18,7 @@ def test_mtdf() -> None:
 
     # Yellow and red alternately play moves into column 3 (center column):
     for _ in range(6):
-        board.playMove(3)
+        board.play(3)
 
     solver: bbc.BitBullyCore = bbc.BitBullyCore()
     start = time.time()
