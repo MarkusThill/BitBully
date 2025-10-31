@@ -3,6 +3,7 @@
 from __future__ import annotations  # for forward references in type hints (Python 3.7+)
 
 from collections.abc import Sequence
+from typing import Any, cast
 
 from bitbully import bitbully_core
 
@@ -10,11 +11,11 @@ from bitbully import bitbully_core
 class Board:
     """Represents the state of a Connect Four board. Mostly a thin wrapper around BoardCore."""
 
-    def __init__(self, board: Sequence[Sequence[int]] | Sequence[int] | str | None = None) -> None:
+    def __init__(self, init_with: Sequence[Sequence[int]] | Sequence[int] | str | None = None) -> None:
         """Initializes a Board instance.
 
         Args:
-            board (Sequence[Sequence[int]] | Sequence[int] | str | None):
+            init_with (Sequence[Sequence[int]] | Sequence[int] | str | None):
                 Optional initial board state. Accepts:
                 - 2D array (list, tuple, numpy-array) with shape 7x6 or 6x7
                 - 1D sequence of ints: a move sequence of columns (e.g., [0, 0, 2, 2, 3, 3])
@@ -22,14 +23,13 @@ class Board:
                 - None for an empty board
 
         Example:
-            Here we have an example:
+            You can initialize an empty board in multiple ways:
             ``` py
             board = Board()  # Empty board
-
             board = Board([[0] * 6 for _ in range(7)])  # empty board as 2D list
             ```
 
-            It is possible to write some text inbetween the examples.
+        The recommended way to initialize an empty board is simply `Board()`.
 
         Example:
             And here we have another example:
@@ -37,8 +37,9 @@ class Board:
             board = Board("002233...")  # String
             ```
         """
-        # TODO: The constructor does still not accept all types here. Fix that.
         self._board = bitbully_core.BoardCore()
+        if init_with is not None:
+            self.set_board(init_with)
 
     def __eq__(self, value: object) -> bool:
         """Checks equality between two Board instances.
@@ -69,7 +70,7 @@ class Board:
 
     def __repr__(self) -> str:
         """Returns a string representation of the Board instance."""
-        return f"Board({self._board})"
+        return f"{self._board}"
 
     def all_positions(self, up_to_n_ply: int, exactly_n: bool) -> list[Board]:
         """Finds all positions on the board up to a certain ply.
@@ -172,16 +173,93 @@ class Board:
         """
         return self._board.movesLeft()
 
-    def play_move(self, move: int) -> bool:
-        """Plays a move (column) for the current player.
+    def play(self, move: int | Sequence[int] | str) -> bool:
+        """Plays one or more moves for the current player.
+
+        The method updates the internal board state by dropping tokens
+        into the specified columns. Input can be:
+        - a single integer (column index 0 to 6),
+        - an iterable sequence of integers (e.g., `[3, 1, 3]` or `range(7)`),
+        - or a string of digits (e.g., `"33333111"`) representing the move order.
 
         Args:
-            move (int): The column index (0-6) where the token should be placed.
+            move (int | Sequence[int] | str):
+                The column index or sequence of column indices where tokens should be placed.
 
         Returns:
             bool: True if the move was played successfully, False if the move was illegal.
+
+
+        Example:
+            Play a sequence of moves into the center column (column index 3):
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()
+            assert board.play([3, 3, 3])  # returns True on successful move
+            board
+            ```
+
+            Expected output:
+
+            ```
+              _  _  _  _  _  _  _
+              _  _  _  _  _  _  _
+              _  _  _  _  _  _  _
+              _  _  _  X  _  _  _
+              _  _  _  O  _  _  _
+              _  _  _  X  _  _  _
+            ```
+
+        Example:
+            Play a sequence of moves across all columns:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()
+            assert board.play(range(7))  # returns True on successful move
+            board
+            ```
+            Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            X  O  X  O  X  O  X
+            ```
+
+        Example:
+            Play a sequence using a string:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()
+            assert board.play("33333111")  # returns True on successful move
+            board
+            ```
+            Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  O  _  X  _  _  _
+            _  X  _  O  _  _  _
+            _  O  _  X  _  _  _
+            ```
         """
-        return self._board.play(move)
+        # Case 1: string -> pass through directly
+        if isinstance(move, str):
+            return self._board.play(move)
+
+        # Case 2: int -> pass through directly
+        if isinstance(move, int):
+            return self._board.play(move)
+
+        # From here on, move is a Sequence[...] (but not str or int).
+        move_list: list[int] = [int(v) for v in cast(Sequence[Any], move)]
+        return self._board.play(move_list)
 
     def play_move_on_copy(self, move: int) -> Board | None:
         """Plays a move on a copy of the current board and returns the new board.
@@ -193,15 +271,15 @@ class Board:
             Board | None: A new Board instance with the move played, or None if the move was illegal.
         """
         new_board = self.copy()
-        if new_board.play_move(move):
+        if new_board.play(move):
             return new_board
         return None
 
-    def set_board(self, board: list[list[int]] | list[int]) -> bool:
+    def set_board(self, board: Sequence[int] | Sequence[Sequence[int]] | str) -> bool:
         """Sets (overrides) the board to a specific state.
 
         Args:
-            board (list[list[int]] | list[int]):
+            board (Sequence[int] | Sequence[Sequence[int]] | str):
                 The new board state. Accepts:
                 - 2D array (list, tuple, numpy-array) with shape 7x6 or 6x7
                 - 1D sequence of ints: a move sequence of columns (e.g., [0, 0, 2, 2, 3, 3])
@@ -211,9 +289,20 @@ class Board:
             bool: True if the board was set successfully, False otherwise.
         """
         # TODO: also allow other types for `board`, e.g., numpy arrays and convert to a list of lists
-        if isinstance(board, list):
+        if isinstance(board, str):
             return self._board.setBoard(board)
-        return False
+
+        # From here on, board is a Sequence[...] (but not str).
+        # Distinguish 2D vs 1D by inspecting the first element.
+        if len(board) > 0 and isinstance(board[0], Sequence) and not isinstance(board[0], (str, bytes)):
+            # Case 2: 2D -> list[list[int]]
+            # Convert inner sequences to lists of ints
+            grid: list[list[int]] = [[int(v) for v in row] for row in cast(Sequence[Sequence[Any]], board)]
+            return self._board.setBoard(grid)
+
+        # Case 3: 1D -> list[int]
+        moves: list[int] = [int(v) for v in cast(Sequence[Any], board)]
+        return self._board.setBoard(moves)
 
     def to_array(self) -> list[list[int]]:
         """Returns the board state as a 2D array (list of lists).

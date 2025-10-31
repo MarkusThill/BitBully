@@ -2,6 +2,7 @@
 
 import os
 import typing
+from typing import Sequence
 
 import pybind11_stubgen.typing_ext
 
@@ -149,6 +150,10 @@ class BoardCore:
             ],
     ) -> bool:
         """Set the board using a 2D array"""
+
+    @typing.overload
+    def setBoard(self, moveSequence: str) -> bool:
+        """Set the board using a sequence as string"""
 
     def sortMoves(self, moves: int) -> ...:
         """Sort moves based on priority"""

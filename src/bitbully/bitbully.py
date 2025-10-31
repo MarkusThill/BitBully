@@ -1,9 +1,8 @@
 """BitBully: A Connect Four AI agent with opening book support."""
 
-import importlib
-import importlib.resources
-import pathlib
-from importlib.resources.abc import Traversable
+from importlib.resources import as_file, files
+
+# from importlib.resources.abc import Traversable
 from typing import Literal
 
 from bitbully import bitbully_core
@@ -28,18 +27,19 @@ class BitBully:
         """
         self.opening_book_type = opening_book
 
-        db_path: Traversable | str | None = None
+        db_path = None
         if opening_book == "default":
-            db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
+            db_path = files("bitbully").joinpath("assets/book_12ply_distances.dat")
         elif opening_book == "8-ply":
-            db_path = importlib.resources.files("bitbully").joinpath("assets/book_8ply.dat")
+            db_path = files("bitbully").joinpath("assets/book_8ply.dat")
         elif opening_book == "12-ply":
-            db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply.dat")
+            db_path = files("bitbully").joinpath("assets/book_12ply.dat")
         elif opening_book == "12-ply-dist":
-            db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
+            db_path = files("bitbully").joinpath("assets/book_12ply_distances.dat")
 
         if db_path:
-            self.bitbully_agent = bitbully_core.BitBullyCore(pathlib.Path(str(db_path)))
+            with as_file(db_path) as pth:
+                self.bitbully_agent = bitbully_core.BitBullyCore(pth)
         else:
             self.bitbully_agent = bitbully_core.BitBullyCore()
 

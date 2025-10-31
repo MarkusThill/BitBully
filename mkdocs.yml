@@ -4,6 +4,9 @@ theme:
   features:
     - content.code.copy
     - content.code.annotate   # (optional) Enables annotation features for clarity
+    - content.code.select
+  code_copy:
+    remove_prompts: true
 nav:
   - Home: index.md
   - Getting Started: getting_started.md
@@ -27,3 +30,7 @@ markdown_extensions:
 plugins:
 - search
 - mkdocstrings
+
+watch:
+- src/bitbully/
+- docs/
