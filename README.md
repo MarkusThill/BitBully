@@ -79,7 +79,6 @@ This will automatically download and install the pre-built package, including th
 ### BitBully Lib (recommended)
 
 tbd
-Also add a simple Notebook with examples!
 
 ### BitBully Core (advanced)
 
