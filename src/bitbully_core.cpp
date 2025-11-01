@@ -93,9 +93,11 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("toArray", &B::toArray,
            "Convert the board to a 2D array representation")
       .def("setBoard", py::overload_cast<const std::vector<int>&>(&B::setBoard),
-           "Set the board using a 2D array", py::arg("moveSequence"))
+           "Set the board using a list", py::arg("moveSequence"))
       .def("setBoard", py::overload_cast<const B::TBoardArray&>(&B::setBoard),
-           "Set the board using a 2D array", py::arg("moveSequence"))
+           "Set the board using a 2D array", py::arg("array"))
+      .def("setBoard", py::overload_cast<const B::TBoardArrayT&>(&B::setBoard),
+           "Set the board using a 2D array", py::arg("array"))
       .def("setBoard", py::overload_cast<const std::string&>(&B::setBoard),
            "Play a sequence of moves by column index", py::arg("moveSequence"))
       .def_static("isValid", &B::isValid, "Check, if a board is a valid one.",

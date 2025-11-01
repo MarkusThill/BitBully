@@ -152,6 +152,16 @@ class BoardCore:
         """Set the board using a 2D array"""
 
     @typing.overload
+    def setBoard(
+            self,
+            moveSequence: typing.Annotated[
+                list[typing.Annotated[list[int], pybind11_stubgen.typing_ext.FixedSize(7)]],
+                pybind11_stubgen.typing_ext.FixedSize(6),
+            ],
+    ) -> bool:
+        """Set the board using a 2D array"""
+
+    @typing.overload
     def setBoard(self, moveSequence: str) -> bool:
         """Set the board using a sequence as string"""
 
