@@ -1,3 +1,10 @@
+## v0.0.58-a0 (2025-11-16)
+
+### Fix
+
+- moved opening databases to external package
+- worked on docs and smaller fixes
+
 ## v0.0.57 (2025-11-01)
 
 ### Fix
