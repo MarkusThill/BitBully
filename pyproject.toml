@@ -20,7 +20,9 @@ classifiers = [
     "Programming Language :: C++",
     "Programming Language :: Python :: Implementation :: CPython",
 ]
-dependencies = []  # Add Python dependencies required for your project
+dependencies = [
+    "bitbully-databases" # in future, keep the version aligned with this project version
+]
 
 [project.urls]
 Homepage = "https://github.com/MarkusThill/BitBully"

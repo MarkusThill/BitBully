@@ -420,7 +420,7 @@ def test_set_board_array_invalid() -> None:
     invalid_board_1 = [[0 for _ in range(5)] for _ in range(7)]  # Too few rows
     invalid_board_2 = [[0 for _ in range(6)] for _ in range(6)]  # Too few columns
     invalid_board_3 = [[0 for _ in range(6)] for _ in range(8)]  # Too many rows
-    invalid_board_4 = [[0 for _ in range(7)] for _ in range(6)]  # Too many columns
+    invalid_board_4 = [[0 for _ in range(8)] for _ in range(6)]  # Too many columns
     invalid_board_5 = [[0 for _ in range(6)] for _ in range(7)]
     invalid_board_5[0][0] = 3  # Invalid token value
 

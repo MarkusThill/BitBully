@@ -1,7 +1,5 @@
 """BitBully: A Connect Four AI agent with opening book support."""
 
-from importlib.resources import as_file, files
-
 # from importlib.resources.abc import Traversable
 from typing import Literal
 
@@ -25,21 +23,15 @@ class BitBully:
                 - "12-ply-dist": Uses a 12-ply distance-based opening book.
                 - None: No opening book will be used.
         """
+        from pathlib import Path
+
+        import bitbully_databases as bbd
+
         self.opening_book_type = opening_book
 
-        db_path = None
-        if opening_book == "default":
-            db_path = files("bitbully").joinpath("assets/book_12ply_distances.dat")
-        elif opening_book == "8-ply":
-            db_path = files("bitbully").joinpath("assets/book_8ply.dat")
-        elif opening_book == "12-ply":
-            db_path = files("bitbully").joinpath("assets/book_12ply.dat")
-        elif opening_book == "12-ply-dist":
-            db_path = files("bitbully").joinpath("assets/book_12ply_distances.dat")
-
-        if db_path:
-            with as_file(db_path) as pth:
-                self.bitbully_agent = bitbully_core.BitBullyCore(pth)
+        if opening_book:
+            db_path = bbd.BitBullyDatabases.get_database_path(opening_book)
+            self.bitbully_agent = bitbully_core.BitBullyCore(Path(db_path))
         else:
             self.bitbully_agent = bitbully_core.BitBullyCore()
 

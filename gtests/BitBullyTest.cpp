@@ -187,7 +187,7 @@ TEST_F(BitBullyTest, comparePonsBitbullyTime) {
 
 TEST_F(BitBullyTest, mtdfWithBook) {
   auto bookPath =
-      std::filesystem::path("../src/bitbully/assets/book_12ply_distances.dat");
+      std::filesystem::path("../gtests/assets/book_12ply_distances.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }

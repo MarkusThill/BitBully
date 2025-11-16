@@ -1,7 +1,6 @@
 """Test the opening book functionality."""
 
-import importlib.resources
-
+import bitbully_databases as bbd
 import pytest
 
 import bitbully.bitbully_core as bbc
@@ -14,7 +13,7 @@ def openingbook_8ply() -> bbc.OpeningBookCore:
     Returns:
         bbc.OpeningBookCore: The 8-ply OpeningBookCore instance.
     """
-    db_path = importlib.resources.files("bitbully").joinpath("assets/book_8ply.dat")
+    db_path = bbd.BitBullyDatabases.get_database_path("8-ply")
     return bbc.OpeningBookCore(db_path, is_8ply=True, with_distances=False)
 
 
@@ -25,7 +24,7 @@ def openingbook_12ply() -> bbc.OpeningBookCore:
     Returns:
         bbc.OpeningBookCore: The 12-ply OpeningBookCore instance.
     """
-    db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply.dat")
+    db_path = bbd.BitBullyDatabases.get_database_path("12-ply")
     return bbc.OpeningBookCore(db_path, is_8ply=False, with_distances=False)
 
 
@@ -36,7 +35,7 @@ def openingbook_12ply_dist() -> bbc.OpeningBookCore:
     Returns:
         bbc.OpeningBookCore: The 12-ply OpeningBookCore instance with distances.
     """
-    db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
+    db_path = bbd.BitBullyDatabases.get_database_path("12-ply-dist")
     return bbc.OpeningBookCore(db_path, is_8ply=False, with_distances=True)
 
 
@@ -268,9 +267,7 @@ def test_convert_value(openingbook_8ply: bbc.OpeningBookCore) -> None:
 
 def test_read_book_static_8ply() -> None:
     """Test static reading of the 8-ply OpeningBookCore and check the size."""
-    import importlib.resources
-
-    db_path = importlib.resources.files("bitbully").joinpath("assets/book_8ply.dat")
+    db_path = bbd.BitBullyDatabases.get_database_path("8-ply")
     book = bbc.OpeningBookCore.readBook(db_path, with_distances=False, is_8ply=True)
     assert isinstance(book, list)
     assert len(book) == 34515

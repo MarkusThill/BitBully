@@ -116,7 +116,7 @@ class OpeningBookTest : public ::testing::Test {
 };
 
 TEST_F(OpeningBookTest, init8Ply) {
-  auto bookPath = std::filesystem::path("../src/bitbully/assets/book_8ply.dat");
+  auto bookPath = std::filesystem::path("../gtests/assets/book_8ply.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -162,8 +162,7 @@ TEST_F(OpeningBookTest, init8Ply) {
 }
 
 TEST_F(OpeningBookTest, init12Ply) {
-  auto bookPath =
-      std::filesystem::path("../src/bitbully/assets/book_12ply.dat");
+  auto bookPath = std::filesystem::path("../gtests/assets/book_12ply.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -218,7 +217,7 @@ TEST_F(OpeningBookTest, init12Ply) {
 
 TEST_F(OpeningBookTest, init12PlyDistance) {
   auto bookPath =
-      std::filesystem::path("../src/bitbully/assets/book_12ply_distances.dat");
+      std::filesystem::path("../gtests/assets/book_12ply_distances.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -280,7 +279,7 @@ TEST_F(OpeningBookTest, init12PlyDistance) {
 }
 
 TEST_F(OpeningBookTest, getBoardValue_8ply) {
-  auto bookPath = std::filesystem::path("../src/bitbully/assets/book_8ply.dat");
+  auto bookPath = std::filesystem::path("../gtests/assets/book_8ply.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -334,8 +333,7 @@ TEST_F(OpeningBookTest, getBoardValue_8ply) {
 }
 
 TEST_F(OpeningBookTest, getBoardValue_12ply) {
-  auto bookPath =
-      std::filesystem::path("../src/bitbully/assets/book_12ply.dat");
+  auto bookPath = std::filesystem::path("../gtests/assets/book_12ply.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -392,7 +390,7 @@ TEST_F(OpeningBookTest, getBoardValue_12ply) {
 
 TEST_F(OpeningBookTest, getBoardValue_12ply_dist) {
   auto bookPath =
-      std::filesystem::path("../src/bitbully/assets/book_12ply_distances.dat");
+      std::filesystem::path("../gtests/assets/book_12ply_distances.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -495,7 +493,7 @@ TEST_F(OpeningBookTest, getBoardValue_12ply_dist) {
 TEST_F(OpeningBookTest, getBoardValue_8ply_2) {
   // Very similar (almost redundant) to getBoardValue_12ply_dist2
   //  For now, keep like this...
-  auto bookPath = std::filesystem::path("../src/bitbully/assets/book_8ply.dat");
+  auto bookPath = std::filesystem::path("../gtests/assets/book_8ply.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -526,7 +524,7 @@ TEST_F(OpeningBookTest, getBoardValue_8ply_2) {
 
 TEST_F(OpeningBookTest, getBoardValue_12ply_dist_2) {
   auto bookPath =
-      std::filesystem::path("../src/bitbully/assets/book_12ply_distances.dat");
+      std::filesystem::path("../gtests/assets/book_12ply_distances.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -560,8 +558,7 @@ TEST_F(OpeningBookTest, getBoardValue_12ply_dist_2) {
 TEST_F(OpeningBookTest, getBoardValue_12ply_2) {
   // Very similar (almost redundant) to getBoardValue_12ply_dist2
   //  For now, keep like this
-  auto bookPath =
-      std::filesystem::path("../src/bitbully/assets/book_12ply.dat");
+  auto bookPath = std::filesystem::path("../gtests/assets/book_12ply.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -599,7 +596,7 @@ TEST_F(OpeningBookTest, checkCompleteness12PlyDist) {
   const auto positions = b.allPositions(12, true);
 
   auto bookPath =
-      std::filesystem::path("../src/bitbully/assets/book_12ply_distances.dat");
+      std::filesystem::path("../gtests/assets/book_12ply_distances.dat");
   if (!exists(bookPath)) {
     bookPath = ".." / bookPath;
   }
@@ -627,8 +624,8 @@ TEST_F(OpeningBookTest, incorrectPositions12PlyDist) {
   // We correct their values here:
   // This should NOT be in a test file... TODO:outsource this code
   GTEST_SKIP() << "Skipping this, since it is not a real test";
-  auto bookPath_ = std::filesystem::path(
-      "../../src/bitbully/assets/book_12ply_distances.dat");
+  auto bookPath_ =
+      std::filesystem::path("../gtests/assets/book_12ply_distances.dat");
   ASSERT_TRUE(exists(bookPath_));
   BitBully::OpeningBook ob(bookPath_);
 
@@ -729,7 +726,7 @@ TEST_F(OpeningBookTest, missingPositions8PlyDB) {
   // Lets add them to the database and write a new .dat database file.
   // This should NOT be in a test file... TODO:outsource this code
   GTEST_SKIP() << "Skipping this, since it is not a real test";
-  auto bookPath = std::filesystem::path("../../src/bitbully/assets/8.txt");
+  auto bookPath = std::filesystem::path("../gtests/assets/8.txt");
   std::vector<std::string> lines = readFileLines(bookPath);
   using B = BitBully::Board;
 
@@ -779,13 +776,12 @@ TEST_F(OpeningBookTest, missingPositions8PlyDB) {
   }
   std::cout << "Missing in .txt database: " << missing.size() << std::endl;
 
-  auto bookPath_ =
-      std::filesystem::path("../../src/bitbully/assets/book_8ply.dat");
+  auto bookPath_ = std::filesystem::path("../gtests/assets/book_8ply.dat");
   ASSERT_TRUE(exists(bookPath_));
   BitBully::OpeningBook ob(bookPath_);
 
-  BitBully::BitBully bb(std::filesystem::path(
-      "../../src/bitbully/assets/book_12ply_distances.dat"));
+  BitBully::BitBully bb(
+      std::filesystem::path("../gtests/assets/book_12ply_distances.dat"));
   ASSERT_TRUE(bb.isBookLoaded());
 
   auto book = ob.getBook();

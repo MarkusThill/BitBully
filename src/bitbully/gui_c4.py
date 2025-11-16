@@ -115,12 +115,11 @@ class GuiC4:
         self.m_gameover = False
 
         # C4 agent
-        # db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
-        # self.bitbully_agent = bitbully_core.BitBullyCore(db_path)
+        import bitbully_databases as bbd
 
-        resource = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
-        with importlib.resources.as_file(resource) as db_path:
-            self.bitbully_agent = bitbully_core.BitBullyCore(db_path)
+        # TODO: allow choosing opening book
+        db_path: str = bbd.BitBullyDatabases.get_database_path("12-ply-dist")
+        self.bitbully_agent = bitbully_core.BitBullyCore(Path(db_path))
 
     def _reset(self) -> None:
         self.m_movelist = []

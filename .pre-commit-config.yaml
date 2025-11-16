@@ -2,8 +2,8 @@
 # See https://pre-commit.com/hooks.html for more hooks
 exclude: |
   (?x)  # Enable verbose regex for better readability
-  (src/bitbully/assets/book_12ply\.dat
-   |src/bitbully/assets/book_12ply_distances\.dat)
+  (gtests/assets/book_12ply\.dat
+   |gtests/assets/book_12ply_distances\.dat)
 repos:
   - repo: https://github.com/facebook/pyrefly-pre-commit
     rev: 0.0.1
