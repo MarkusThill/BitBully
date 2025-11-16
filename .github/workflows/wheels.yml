@@ -17,7 +17,7 @@ jobs:
         # [ubuntu-latest, ubuntu-24.04-arm, windows-latest, windows-11-arm, macos-13, macos-latest]
         # Add again, once repo is no longer private: ubuntu-24.04-arm
         os: [ ubuntu-latest, windows-latest, macos-13, macos-latest ]
-        python-version: [3.11] # could also add more versions here, to test builds in different python versions
+        python-version: [3.12] # could also add more versions here, to test builds in different python versions
 
     steps:
       - uses: actions/checkout@v4
@@ -34,14 +34,14 @@ jobs:
         run: |
           python -m pip install build cibuildwheel==3.1.4
 
-      # 👇 Pre-release build (only cp311-*)
+      # 👇 Pre-release build (only cp312-*)
       - name: Build wheels (for pre-release)
         # 👇 Only run for tags like v1.0.0-rc1, v1.0.0-a2, etc. Also, only build for ubuntu and windows
         if: contains(github.ref, '-') && (matrix.os == 'ubuntu-latest' || matrix.os == 'windows-latest')
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           MACOSX_DEPLOYMENT_TARGET: "10.15"
-          CIBW_BUILD: cp311-*
+          CIBW_BUILD: cp312-*
 
       # 👇 Stable release build (use pyproject.toml)
       - name: Build wheels (regular)
