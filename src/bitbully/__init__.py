@@ -7,4 +7,4 @@ from .bitbully import BitBully
 from .board import Board
 
 __all__: list[str] = ["BitBully", "Board"]
-__version__: str = "0.0.58-a0"
+__version__: str = "0.0.58-a1"

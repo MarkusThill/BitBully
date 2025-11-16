@@ -1,3 +1,9 @@
+## v0.0.58-a1 (2025-11-16)
+
+### Fix
+
+- build pre-release wheels for python 3.12 from now
+
 ## v0.0.58-a0 (2025-11-16)
 
 ### Fix
