@@ -16,7 +16,7 @@ var classbitbully_1_1board_1_1Board =
     [ "moves_left", "d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d", null ],
     [ "play", "d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd", null ],
     [ "reset", "d9/d83/classbitbully_1_1board_1_1Board.html#a9b6f64ab6125ede62a0cf338fff99043", null ],
-    [ "set_board", "d9/d83/classbitbully_1_1board_1_1Board.html#a9a88f1825c72b2f2aaf79a52afbb2d6f", null ],
+    [ "reset_board", "d9/d83/classbitbully_1_1board_1_1Board.html#a3ec7505932466440fce1a9fbbd54355a", null ],
     [ "to_array", "d9/d83/classbitbully_1_1board_1_1Board.html#adbc7e86e4081f3152024e2cad2a674a4", null ],
     [ "to_string", "d9/d83/classbitbully_1_1board_1_1Board.html#a3db1df514e7c6d510f2188ceb7419aca", null ],
     [ "uid", "d9/d83/classbitbully_1_1board_1_1Board.html#ad06cd5ac21f137de6b80c9b4f8f89d3b", null ]

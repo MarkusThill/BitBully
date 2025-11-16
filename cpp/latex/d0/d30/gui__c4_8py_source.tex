@@ -119,385 +119,384 @@
 \DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00115}00115\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ =\ \textcolor{keyword}{False}}
 \DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00116}00116\ }
 \DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ C4\ agent}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ db\_path\ =\ importlib.resources.files("{}bitbully"{}).joinpath("{}assets/book\_12ply\_distances.dat"{})}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.bitbully\_agent\ =\ bitbully\_core.BitBullyCore(db\_path)}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00120}00120\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ resource\ =\ importlib.resources.files(\textcolor{stringliteral}{"{}bitbully"{}}).joinpath(\textcolor{stringliteral}{"{}assets/book\_12ply\_distances.dat"{}})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ importlib.resources.as\_file(resource)\ \textcolor{keyword}{as}\ db\_path:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aea8b03c17faca8b6ecc92d17d95dcce9}{bitbully\_agent}}\ =\ bitbully\_core.BitBullyCore(db\_path)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00124}00124\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{def\ }\_reset(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}\ =\ []}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00127}00127\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}}\ =\ []}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}\ =\ np.zeros(7,\ dtype=np.int32)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00129}00129\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00130}00130\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ im\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ im.set\_data(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[0][\textcolor{stringliteral}{"{}plain"{}}])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00133}00133\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.draw\_idle()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.flush\_events()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00137}00137\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00138}00138\ \ \ \ \ \textcolor{keyword}{def\ }\_get\_fig\_size\_px(self)\ -\/>\ npt.NDArray[np.float64]:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ the\ size\ in\ inches}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ size\_in\_inches\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.get\_size\_inches()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00141}00141\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Figure\ size\ in\ inches:\ \%f"{}},\ size\_in\_inches)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00142}00142\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ the\ DPI}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ dpi\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.dpi}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Figure\ DPI:\ \%d"{}},\ dpi)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00146}00146\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Convert\ to\ pixels}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ size\_in\_inches\ *\ dpi}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00149}00149\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00150}00150\ \ \ \ \ \textcolor{keyword}{def\ }\_create\_control\_buttons(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}\ =\ \{\}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00152}00152\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Create\ buttons\ for\ each\ column}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Figure\ size:\ "{}},\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}())}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00155}00155\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ fig\_size\_px\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ wh\ =\ f\textcolor{stringliteral}{"{}\{-\/3\ +\ (fig\_size\_px[1]\ /\ self.m\_n\_row)\}px"{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ btn\_layout\ =\ Layout(height=wh,\ width=wh)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00159}00159\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}🔄"{}},\ tooltip=\textcolor{stringliteral}{"{}Reset\ Game"{}},\ layout=btn\_layout)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa354fc72f710ec515342c24e362d74c2}{\_reset}}())}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00162}00162\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}reset"{}}]\ =\ button}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00163}00163\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}↩️"{}},\ tooltip=\textcolor{stringliteral}{"{}Undo\ Move"{}},\ layout=btn\_layout)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ button.disabled\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00166}00166\ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a184462427e34e80295413c7204c9dc9e}{\_undo\_move}}())}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00167}00167\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}undo"{}}]\ =\ button}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00168}00168\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00169}00169\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}↪️"{}},\ tooltip=\textcolor{stringliteral}{"{}Redo\ Move"{}},\ layout=btn\_layout)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00170}00170\ \ \ \ \ \ \ \ \ button.disabled\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00171}00171\ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a831570cdbbddbb6275c29ff4282992a3}{\_redo\_move}}())}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00172}00172\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}redo"{}}]\ =\ button}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00173}00173\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00174}00174\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}🕹️"{}},\ tooltip=\textcolor{stringliteral}{"{}Computer\ Move"{}},\ layout=btn\_layout)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00175}00175\ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ab8355f95b9b352f205abca15d2f25a3d}{\_computer\_move}}())}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00176}00176\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}move"{}}]\ =\ button}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00177}00177\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00178}00178\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}📊"{}},\ tooltip=\textcolor{stringliteral}{"{}Evaluate\ Board"{}},\ layout=btn\_layout)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00179}00179\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}evaluate"{}}]\ =\ button}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00180}00180\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00181}00181\ \ \ \ \ \textcolor{keyword}{def\ }\_computer\_move(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00182}00182\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00183}00183\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00184}00184\ \ \ \ \ \ \ \ \ b\ =\ bitbully\_core.BoardCore()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ b.setBoard([mv[1]\ \textcolor{keywordflow}{for}\ mv\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00186}00186\ \ \ \ \ \ \ \ \ move\_scores\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aea8b03c17faca8b6ecc92d17d95dcce9}{bitbully\_agent}}.scoreMoves(b)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00188}00188\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}{\_insert\_token}}(int(np.argmax(move\_scores)))}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00189}00189\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00190}00190\ \ \ \ \ \textcolor{keyword}{def\ }\_create\_board(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00191}00191\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}{output}}\ =\ Output()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00192}00192\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}{output}}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ fig,\ axs\ =\ plt.subplots(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ figsize=(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_addd687076c5ff95ffcd82f74f50423eb}{m\_board\_size}}\ /\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}}\ *\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_addd687076c5ff95ffcd82f74f50423eb}{m\_board\_size}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ),}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ axs\ =\ axs.flatten()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}\ =\ []}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ ax\ \textcolor{keywordflow}{in}\ axs:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}.append(ax.imshow(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[0][\textcolor{stringliteral}{"{}plain"{}}],\ animated=\textcolor{keyword}{True}))}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ax.axis(\textcolor{stringliteral}{"{}off"{}})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ax.set\_xticklabels([])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ax.set\_yticklabels([])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00209}00209\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ fig.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ plt.subplots\_adjust(wspace=0.05,\ hspace=0.05,\ left=0.0,\ right=1.0,\ top=1.0,\ bottom=0.0)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ fig.suptitle(\textcolor{stringliteral}{"{}"{}})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ fig.set\_facecolor(\textcolor{stringliteral}{"{}darkgray"{}})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.toolbar\_visible\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.resizable\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.toolbar\_visible\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.header\_visible\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.footer\_visible\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.capture\_scroll\ =\ \textcolor{keyword}{True}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ plt.show(block=\textcolor{keyword}{False})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00221}00221\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00222}00222\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}\ =\ fig}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00223}00223\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}\ =\ axs}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00224}00224\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00225}00225\ \ \ \ \ notify\_output:\ widgets.Output\ =\ widgets.Output()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00226}00226\ \ \ \ \ display(notify\_output)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00227}00227\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00228}00228\ \ \ \ \ \textcolor{preprocessor}{@notify\_output.capture()}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00229}00229\ \ \ \ \ \textcolor{keyword}{def\ }\_popup(self,\ text:\ str)\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00230}00230\ \ \ \ \ \ \ \ \ clear\_output()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00231}00231\ \ \ \ \ \ \ \ \ display(Javascript(f\textcolor{stringliteral}{"{}alert('\{text\}')"{}}))}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00232}00232\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00233}00233\ \ \ \ \ \textcolor{keyword}{def\ }\_is\_legal\_move(self,\ col:\ int)\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]\ >=\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00235}00235\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00236}00236\ \ \ \ \ \textcolor{keyword}{def\ }\_insert\_token(self,\ col:\ int,\ reset\_redo\_list:\ bool\ =\ \textcolor{keyword}{True})\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00237}00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00239}00239\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00240}00240\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00241}00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ button\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ button.disabled\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00243}00243\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00244}00244\ \ \ \ \ \ \ \ \ board\ =\ bitbully\_core.BoardCore()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00245}00245\ \ \ \ \ \ \ \ \ board.setBoard([mv[1]\ \textcolor{keywordflow}{for}\ mv\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00246}00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ \textcolor{keywordflow}{or}\ \textcolor{keywordflow}{not}\ board.play(col):}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00250}00250\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ player}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ player\ =\ 1\ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}\ \textcolor{keywordflow}{else}\ 3\ -\/\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}[-\/1][0]}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}.append((player,\ col,\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]))}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a7b29fac2ef412489b0eaccb21334e5c4}{\_paint\_token}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]\ +=\ 1}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00257}00257\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Usually,\ after\ a\ move\ is\ performed,\ there\ is\ no\ possibility\ to}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ redo\ a\ move\ again}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ reset\_redo\_list:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}}\ =\ []}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00262}00262\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aecc4c650c3ac6a52dcc3fe0b1d04b3f8}{\_check\_winner}}(board)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00264}00264\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.error(\textcolor{stringliteral}{"{}Error:\ \%s"{}},\ str(e))}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00268}00268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{finally}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ time.sleep(0.5)\ \ \textcolor{comment}{\#\ debounce\ button}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Re-\/enable\ all\ buttons\ (if\ columns\ not\ full)}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00273}00273\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00274}00274\ \ \ \ \ \textcolor{keyword}{def\ }\_redo\_move(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}})\ <\ 1:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00277}00277\ \ \ \ \ \ \ \ \ \_p,\ col,\ \_row\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}}.pop()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00278}00278\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}{\_insert\_token}}(col,\ reset\_redo\_list=\textcolor{keyword}{False})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00279}00279\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00280}00280\ \ \ \ \ \textcolor{keyword}{def\ }\_undo\_move(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00281}00281\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ <\ 1:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00283}00283\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00284}00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00286}00286\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00287}00287\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \_p,\ col,\ row\ =\ mv\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}.pop()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}}.append(mv)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00291}00291\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]\ -\/=\ 1}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ row\ ==\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00294}00294\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ img\_idx\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{\_get\_img\_idx}}(col,\ row)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00296}00296\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].set\_data(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[0][\textcolor{stringliteral}{"{}plain"{}}])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}[img\_idx].draw\_artist(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ >\ 0:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a7b29fac2ef412489b0eaccb21334e5c4}{\_paint\_token}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.blit(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].get\_clip\_box())}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.flush\_events()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00304}00304\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00306}00306\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00307}00307\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.error(\textcolor{stringliteral}{"{}Error:\ \%s"{}},\ str(e))}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00310}00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{finally}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Re-\/enable\ all\ buttons\ (if\ columns\ not\ full)}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00314}00314\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ time.sleep(0.5)\ \ \textcolor{comment}{\#\ debounce\ button}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00316}00316\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00317}00317\ \ \ \ \ \textcolor{keyword}{def\ }\_update\_insert\_buttons(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ button,\ col\ \textcolor{keywordflow}{in}\ zip(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}},\ range(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}})):}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ button.disabled\ =\ bool(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]\ >=\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}})\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00320}00320\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00321}00321\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}undo"{}}].disabled\ =\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ <\ 1\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00322}00322\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}redo"{}}].disabled\ =\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}})\ <\ 1\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00323}00323\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}move"{}}].disabled\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00324}00324\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}evaluate"{}}].disabled\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00325}00325\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00326}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{00326}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{\_get\_img\_idx}}(self,\ col:\ int,\ row:\ int)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00327}00327\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Translates\ a\ column\ and\ row\ ID\ into\ the\ corresponding\ image\ ID.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00328}00328\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00329}00329\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00330}00330\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ col\ (int):\ column\ (0-\/6)\ of\ the\ considered\ board\ cell.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00331}00331\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ row\ (int):\ row\ (0-\/5)\ of\ the\ considered\ board\ cell.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00332}00332\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00333}00333\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00334}00334\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ corresponding\ image\ id\ (0-\/41).}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00335}00335\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00336}00336\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Got\ column:\ \%d"{}},\ col)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00337}00337\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ col\ \%\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}}\ +\ (self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}}\ -\/\ row\ -\/\ 1)\ *\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00339}00339\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00340}00340\ \ \ \ \ \textcolor{keyword}{def\ }\_paint\_token(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ <\ 1:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00343}00343\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00344}00344\ \ \ \ \ \ \ \ \ p,\ col,\ row\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}[-\/1]}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00345}00345\ \ \ \ \ \ \ \ \ img\_idx\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{\_get\_img\_idx}}(col,\ row)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00346}00346\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Paint\ token:\ \%d"{}},\ img\_idx)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00347}00347\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00348}00348\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00349}00349\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ no\ need\ to\ reset\ background,\ since\ we\ anyhow\ overwrite\ it\ again}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.restore\_region(self.m\_background[img\_idx])}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00351}00351\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].set\_data(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[p][\textcolor{stringliteral}{"{}corner"{}}])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00352}00352\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00353}00353\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ see:\ https://matplotlib.org/3.4.3/Matplotlib.pdf}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00354}00354\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ 2.3.1\ Faster\ rendering\ by\ using\ blitting}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00355}00355\ \ \ \ \ \ \ \ \ blit\_boxes\ =\ []}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00356}00356\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}[img\_idx].draw\_artist(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00357}00357\ \ \ \ \ \ \ \ \ blit\_boxes.append(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].get\_clip\_box())}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00358}00358\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.blit()}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00359}00359\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00360}00360\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ >\ 1:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Remove\ the\ white\ corners\ for\ the\ second-\/to-\/last\ move}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TODO:\ redundant\ code\ above}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ p,\ col,\ row\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}[-\/2]}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ img\_idx\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{\_get\_img\_idx}}(col,\ row)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].set\_data(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[p][\textcolor{stringliteral}{"{}plain"{}}])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}[img\_idx].draw\_artist(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ blit\_boxes.append(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].get\_clip\_box())}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00368}00368\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00369}00369\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.blit(blit\_boxes[0])}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00370}00370\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00371}00371\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.restore\_region(self.m\_background[img\_idx])}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00372}00372\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.blit(self.ims[img\_idx].get\_clip\_box())}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00373}00373\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.draw\_idle()}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00374}00374\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.flush\_events()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00375}00375\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00376}00376\ \ \ \ \ \textcolor{keyword}{def\ }\_create\_buttons(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00377}00377\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Create\ buttons\ for\ each\ column}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00378}00378\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Figure\ size:\ "{}},\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}())}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00379}00379\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00380}00380\ \ \ \ \ \ \ \ \ fig\_size\_px\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00381}00381\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00382}00382\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}}\ =\ []}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00383}00383\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ col\ \textcolor{keywordflow}{in}\ range(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}}):}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ button\ =\ Button(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}⏬"{}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=f\textcolor{stringliteral}{"{}\{-\/3\ +\ (fig\_size\_px[0]\ /\ self.m\_n\_col)\}px"{}},\ height=\textcolor{stringliteral}{"{}50px"{}}),}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b,\ col=col:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}{\_insert\_token}}(col))}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}}.append(button)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00390}00390\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00391}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3dde63ddaf5ff642f60c9c4d8da942c9}{00391}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3dde63ddaf5ff642f60c9c4d8da942c9}{\_create\_column\_labels}}(self)\ -\/>\ HBox:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00392}00392\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Creates\ a\ row\ with\ the\ column\ labels\ 'a'\ to\ 'g'.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00393}00393\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00394}00394\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00395}00395\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ HBox:\ A\ row\ of\ textboxes\ containing\ the\ columns\ labels\ 'a'\ to\ 'g'.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00396}00396\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00397}00397\ \ \ \ \ \ \ \ \ fig\_size\_px\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00398}00398\ \ \ \ \ \ \ \ \ width\ =\ f\textcolor{stringliteral}{"{}\{-\/3\ +\ (fig\_size\_px[0]\ /\ self.m\_n\_col)\}px"{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00399}00399\ \ \ \ \ \ \ \ \ textboxes\ =\ [}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ widgets.Label(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value=chr(ord(\textcolor{stringliteral}{"{}a"{}})\ +\ i),}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(justify\_content=\textcolor{stringliteral}{"{}center"{}},\ align\_items=\textcolor{stringliteral}{"{}center"{}},\ width=width),}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00405}00405\ \ \ \ \ \ \ \ \ ]}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00406}00406\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ HBox(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ textboxes,}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}row\ wrap"{}},\ \ \textcolor{comment}{\#\ or\ "{}column"{}\ depending\ on\ your\ layout\ needs}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Left\ alignment}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Top\ alignment}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ ),}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00414}00414\ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00415}00415\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00416}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a30c2c5e0a13e6f49762f3abeda6b056b}{00416}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a30c2c5e0a13e6f49762f3abeda6b056b}{\_on\_field\_click}}(self,\ event:\ mpl\_backend\_bases.Event)\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00417}00417\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Based\ on\ the\ column\ where\ the\ click\ was\ detected,\ insert\ a\ token.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00418}00418\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00419}00419\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00420}00420\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ event\ (mpl\_backend\_bases.Event):\ A\ matplotlib\ mouse\ event.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00421}00421\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00422}00422\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(event,\ mpl\_backend\_bases.MouseEvent):}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ ix,\ iy\ =\ event.xdata,\ event.ydata}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}click\ (x,y):\ \%d,\ \%d"{}},\ ix,\ iy)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ idx\ =\ np.where(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}\ ==\ event.inaxes)[0][0]\ \%\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}{\_insert\_token}}(idx)}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00427}00427\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00428}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae1334fcc19604c05bd712359811a7f8d}{00428}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae1334fcc19604c05bd712359811a7f8d}{get\_widget}}(self)\ -\/>\ AppLayout:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00429}00429\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Get\ the\ widget.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00430}00430\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00431}00431\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Examples:}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00432}00432\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Generally,\ you\ should\ this\ method\ to\ retreive\ and\ display\ the\ widget.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00433}00433\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00434}00434\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}pycon}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00435}00435\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ >>>\ \%matplotlib\ ipympl}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00436}00436\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ >>>\ c4gui\ =\ GuiC4()}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00437}00437\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ >>>\ display(c4gui.get\_widget())}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00438}00438\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00439}00439\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00440}00440\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00441}00441\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ AppLayout:\ the\ widget.}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00442}00442\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00443}00443\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Arrange\ buttons\ in\ a\ row}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00444}00444\ \ \ \ \ \ \ \ \ insert\_button\_row\ =\ HBox(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}row\ wrap"{}},\ \ \textcolor{comment}{\#\ or\ "{}column"{}\ depending\ on\ your\ layout\ needs}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Left\ alignment}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Top\ alignment}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ ),}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00452}00452\ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00453}00453\ \ \ \ \ \ \ \ \ control\_buttons\_col\ =\ HBox(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ [VBox(list(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}.values()))],}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}row\ wrap"{}},\ \ \textcolor{comment}{\#\ or\ "{}column"{}\ depending\ on\ your\ layout\ needs}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}flex-\/end"{}},\ \ \textcolor{comment}{\#\ Left\ alignment}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Top\ alignment}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ ),}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00461}00461\ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00462}00462\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00463}00463\ \ \ \ \ \ \ \ \ tb\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3dde63ddaf5ff642f60c9c4d8da942c9}{\_create\_column\_labels}}()}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00464}00464\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00465}00465\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ AppLayout(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ header=\textcolor{keywordtype}{None},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ left\_sidebar=control\_buttons\_col,}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ center=VBox(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [insert\_button\_row,\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}{output}},\ tb],}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}column\ wrap"{}},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}flex-\/start"{}},\ \ \textcolor{comment}{\#\ Left\ alignment}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}flex-\/start"{}},\ \ \textcolor{comment}{\#\ Top\ alignment}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ),}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ ),}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ footer=\textcolor{keywordtype}{None},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ right\_sidebar=\textcolor{keywordtype}{None},}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00479}00479\ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00480}00480\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00481}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aecc4c650c3ac6a52dcc3fe0b1d04b3f8}{00481}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aecc4c650c3ac6a52dcc3fe0b1d04b3f8}{\_check\_winner}}(self,\ board:\ bitbully\_core.BoardCore)\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00482}00482\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Check\ for\ Win\ or\ draw."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00483}00483\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ board.hasWin():}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ winner\ =\ \textcolor{stringliteral}{"{}Yellow"{}}\ \textcolor{keywordflow}{if}\ board.movesLeft()\ \%\ 2\ \textcolor{keywordflow}{else}\ \textcolor{stringliteral}{"{}Red"{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a8066373c4f57497c4625040894034a3d}{\_popup}}(f\textcolor{stringliteral}{"{}Game\ over!\ \{winner\}\ wins!"{}})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00487}00487\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ board.movesLeft()\ ==\ 0:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a8066373c4f57497c4625040894034a3d}{\_popup}}(\textcolor{stringliteral}{"{}Game\ over!\ Draw!"{}})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ =\ \textcolor{keyword}{True}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00490}00490\ }
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00491}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a276722dae16ec33e096afb8f28d9721e}{00491}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a276722dae16ec33e096afb8f28d9721e}{destroy}}(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00492}00492\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Destroy\ and\ release\ the\ acquired\ resources."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00493}00493\ \ \ \ \ \ \ \ \ plt.close(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}})}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00494}00494\ \ \ \ \ \ \ \ \ del\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aea8b03c17faca8b6ecc92d17d95dcce9}{bitbully\_agent}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00495}00495\ \ \ \ \ \ \ \ \ del\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00496}00496\ \ \ \ \ \ \ \ \ del\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}}
-\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00497}00497\ \ \ \ \ \ \ \ \ del\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}{output}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{import}\ bitbully\_databases\ \textcolor{keyword}{as}\ bbd}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TODO:\ allow\ choosing\ opening\ book}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ db\_path:\ str\ =\ bbd.BitBullyDatabases.get\_database\_path(\textcolor{stringliteral}{"{}12-\/ply-\/dist"{}})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aea8b03c17faca8b6ecc92d17d95dcce9}{bitbully\_agent}}\ =\ bitbully\_core.BitBullyCore(Path(db\_path))}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00124}00124\ \ \ \ \ \textcolor{keyword}{def\ }\_reset(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00125}00125\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00127}00127\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}\ =\ np.zeros(7,\ dtype=np.int32)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ im\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ im.set\_data(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[0][\textcolor{stringliteral}{"{}plain"{}}])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.draw\_idle()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.flush\_events()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00137}00137\ \ \ \ \ \textcolor{keyword}{def\ }\_get\_fig\_size\_px(self)\ -\/>\ npt.NDArray[np.float64]:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ the\ size\ in\ inches}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ size\_in\_inches\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.get\_size\_inches()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Figure\ size\ in\ inches:\ \%f"{}},\ size\_in\_inches)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ the\ DPI}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ dpi\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.dpi}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Figure\ DPI:\ \%d"{}},\ dpi)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Convert\ to\ pixels}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ size\_in\_inches\ *\ dpi}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00149}00149\ \ \ \ \ \textcolor{keyword}{def\ }\_create\_control\_buttons(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}\ =\ \{\}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Create\ buttons\ for\ each\ column}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Figure\ size:\ "{}},\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}())}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ fig\_size\_px\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ wh\ =\ f\textcolor{stringliteral}{"{}\{-\/3\ +\ (fig\_size\_px[1]\ /\ self.m\_n\_row)\}px"{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ btn\_layout\ =\ Layout(height=wh,\ width=wh)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}🔄"{}},\ tooltip=\textcolor{stringliteral}{"{}Reset\ Game"{}},\ layout=btn\_layout)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa354fc72f710ec515342c24e362d74c2}{\_reset}}())}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}reset"{}}]\ =\ button}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}↩️"{}},\ tooltip=\textcolor{stringliteral}{"{}Undo\ Move"{}},\ layout=btn\_layout)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ button.disabled\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a184462427e34e80295413c7204c9dc9e}{\_undo\_move}}())}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00166}00166\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}undo"{}}]\ =\ button}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00168}00168\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}↪️"{}},\ tooltip=\textcolor{stringliteral}{"{}Redo\ Move"{}},\ layout=btn\_layout)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00169}00169\ \ \ \ \ \ \ \ \ button.disabled\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00170}00170\ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a831570cdbbddbb6275c29ff4282992a3}{\_redo\_move}}())}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00171}00171\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}redo"{}}]\ =\ button}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00173}00173\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}🕹️"{}},\ tooltip=\textcolor{stringliteral}{"{}Computer\ Move"{}},\ layout=btn\_layout)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00174}00174\ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ab8355f95b9b352f205abca15d2f25a3d}{\_computer\_move}}())}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00175}00175\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}move"{}}]\ =\ button}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00177}00177\ \ \ \ \ \ \ \ \ button\ =\ Button(description=\textcolor{stringliteral}{"{}📊"{}},\ tooltip=\textcolor{stringliteral}{"{}Evaluate\ Board"{}},\ layout=btn\_layout)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00178}00178\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}evaluate"{}}]\ =\ button}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00180}00180\ \ \ \ \ \textcolor{keyword}{def\ }\_computer\_move(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00181}00181\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00182}00182\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00183}00183\ \ \ \ \ \ \ \ \ b\ =\ bitbully\_core.BoardCore()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ b.setBoard([mv[1]\ \textcolor{keywordflow}{for}\ mv\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00185}00185\ \ \ \ \ \ \ \ \ move\_scores\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aea8b03c17faca8b6ecc92d17d95dcce9}{bitbully\_agent}}.scoreMoves(b)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00186}00186\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}{\_insert\_token}}(int(np.argmax(move\_scores)))}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00189}00189\ \ \ \ \ \textcolor{keyword}{def\ }\_create\_board(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00190}00190\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}{output}}\ =\ Output()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}{output}}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ fig,\ axs\ =\ plt.subplots(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ figsize=(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_addd687076c5ff95ffcd82f74f50423eb}{m\_board\_size}}\ /\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}}\ *\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_addd687076c5ff95ffcd82f74f50423eb}{m\_board\_size}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ axs\ =\ axs.flatten()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ ax\ \textcolor{keywordflow}{in}\ axs:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}.append(ax.imshow(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[0][\textcolor{stringliteral}{"{}plain"{}}],\ animated=\textcolor{keyword}{True}))}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ax.axis(\textcolor{stringliteral}{"{}off"{}})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ax.set\_xticklabels([])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ax.set\_yticklabels([])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ fig.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ plt.subplots\_adjust(wspace=0.05,\ hspace=0.05,\ left=0.0,\ right=1.0,\ top=1.0,\ bottom=0.0)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ fig.suptitle(\textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ fig.set\_facecolor(\textcolor{stringliteral}{"{}darkgray"{}})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.toolbar\_visible\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.resizable\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.toolbar\_visible\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.header\_visible\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.footer\_visible\ =\ \textcolor{keyword}{False}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ fig.canvas.capture\_scroll\ =\ \textcolor{keyword}{True}\ \ \textcolor{comment}{\#\ type:\ ignore[attr-\/defined]}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ plt.show(block=\textcolor{keyword}{False})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00221}00221\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}\ =\ fig}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00222}00222\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}\ =\ axs}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00224}00224\ \ \ \ \ notify\_output:\ widgets.Output\ =\ widgets.Output()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00225}00225\ \ \ \ \ display(notify\_output)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00227}00227\ \ \ \ \ \textcolor{preprocessor}{@notify\_output.capture()}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00228}00228\ \ \ \ \ \textcolor{keyword}{def\ }\_popup(self,\ text:\ str)\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00229}00229\ \ \ \ \ \ \ \ \ clear\_output()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00230}00230\ \ \ \ \ \ \ \ \ display(Javascript(f\textcolor{stringliteral}{"{}alert('\{text\}')"{}}))}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00232}00232\ \ \ \ \ \textcolor{keyword}{def\ }\_is\_legal\_move(self,\ col:\ int)\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00233}00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]\ >=\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00235}00235\ \ \ \ \ \textcolor{keyword}{def\ }\_insert\_token(self,\ col:\ int,\ reset\_redo\_list:\ bool\ =\ \textcolor{keyword}{True})\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00238}00238\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ button\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ button.disabled\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00243}00243\ \ \ \ \ \ \ \ \ board\ =\ bitbully\_core.BoardCore()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00244}00244\ \ \ \ \ \ \ \ \ board.setBoard([mv[1]\ \textcolor{keywordflow}{for}\ mv\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00245}00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ \textcolor{keywordflow}{or}\ \textcolor{keywordflow}{not}\ board.play(col):}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ player}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ player\ =\ 1\ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}\ \textcolor{keywordflow}{else}\ 3\ -\/\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}[-\/1][0]}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}.append((player,\ col,\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]))}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a7b29fac2ef412489b0eaccb21334e5c4}{\_paint\_token}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Usually,\ after\ a\ move\ is\ performed,\ there\ is\ no\ possibility\ to}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ redo\ a\ move\ again}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ reset\_redo\_list:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aecc4c650c3ac6a52dcc3fe0b1d04b3f8}{\_check\_winner}}(board)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.error(\textcolor{stringliteral}{"{}Error:\ \%s"{}},\ str(e))}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{finally}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ time.sleep(0.5)\ \ \textcolor{comment}{\#\ debounce\ button}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Re-\/enable\ all\ buttons\ (if\ columns\ not\ full)}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00273}00273\ \ \ \ \ \textcolor{keyword}{def\ }\_redo\_move(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}})\ <\ 1:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00276}00276\ \ \ \ \ \ \ \ \ \_p,\ col,\ \_row\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}}.pop()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00277}00277\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}{\_insert\_token}}(col,\ reset\_redo\_list=\textcolor{keyword}{False})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00279}00279\ \ \ \ \ \textcolor{keyword}{def\ }\_undo\_move(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ <\ 1:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00285}00285\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \_p,\ col,\ row\ =\ mv\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}.pop()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}}.append(mv)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]\ -\/=\ 1}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ row\ ==\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ img\_idx\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{\_get\_img\_idx}}(col,\ row)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].set\_data(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[0][\textcolor{stringliteral}{"{}plain"{}}])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}[img\_idx].draw\_artist(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a7b29fac2ef412489b0eaccb21334e5c4}{\_paint\_token}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.blit(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].get\_clip\_box())}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.flush\_events()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00306}00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.error(\textcolor{stringliteral}{"{}Error:\ \%s"{}},\ str(e))}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00309}00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{finally}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Re-\/enable\ all\ buttons\ (if\ columns\ not\ full)}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}{\_update\_insert\_buttons}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ time.sleep(0.5)\ \ \textcolor{comment}{\#\ debounce\ button}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00316}00316\ \ \ \ \ \textcolor{keyword}{def\ }\_update\_insert\_buttons(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00317}00317\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ button,\ col\ \textcolor{keywordflow}{in}\ zip(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}},\ range(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}})):}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ button.disabled\ =\ bool(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}{m\_height}}[col]\ >=\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}})\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00320}00320\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}undo"{}}].disabled\ =\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ <\ 1\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00321}00321\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}redo"{}}].disabled\ =\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}{m\_redolist}})\ <\ 1\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00322}00322\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}move"{}}].disabled\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00323}00323\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}[\textcolor{stringliteral}{"{}evaluate"{}}].disabled\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ \textcolor{keywordflow}{or}\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\_busy}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00325}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{00325}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{\_get\_img\_idx}}(self,\ col:\ int,\ row:\ int)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Translates\ a\ column\ and\ row\ ID\ into\ the\ corresponding\ image\ ID.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00327}00327\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00328}00328\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00329}00329\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ col\ (int):\ column\ (0-\/6)\ of\ the\ considered\ board\ cell.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00330}00330\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ row\ (int):\ row\ (0-\/5)\ of\ the\ considered\ board\ cell.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00331}00331\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00332}00332\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00333}00333\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ corresponding\ image\ id\ (0-\/41).}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00334}00334\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00335}00335\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Got\ column:\ \%d"{}},\ col)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ col\ \%\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}}\ +\ (self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}{m\_n\_row}}\ -\/\ row\ -\/\ 1)\ *\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00339}00339\ \ \ \ \ \textcolor{keyword}{def\ }\_paint\_token(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00340}00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ <\ 1:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00343}00343\ \ \ \ \ \ \ \ \ p,\ col,\ row\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}[-\/1]}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00344}00344\ \ \ \ \ \ \ \ \ img\_idx\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{\_get\_img\_idx}}(col,\ row)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00345}00345\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Paint\ token:\ \%d"{}},\ img\_idx)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00348}00348\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ no\ need\ to\ reset\ background,\ since\ we\ anyhow\ overwrite\ it\ again}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00349}00349\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.restore\_region(self.m\_background[img\_idx])}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00350}00350\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].set\_data(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[p][\textcolor{stringliteral}{"{}corner"{}}])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00352}00352\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ see:\ https://matplotlib.org/3.4.3/Matplotlib.pdf}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00353}00353\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \ \ \ \ \ 2.3.1\ Faster\ rendering\ by\ using\ blitting}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00354}00354\ \ \ \ \ \ \ \ \ blit\_boxes\ =\ []}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00355}00355\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}[img\_idx].draw\_artist(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00356}00356\ \ \ \ \ \ \ \ \ blit\_boxes.append(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].get\_clip\_box())}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.blit()}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00359}00359\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}})\ >\ 1:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Remove\ the\ white\ corners\ for\ the\ second-\/to-\/last\ move}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ TODO:\ redundant\ code\ above}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ p,\ col,\ row\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\_movelist}}[-\/2]}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ img\_idx\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}{\_get\_img\_idx}}(col,\ row)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].set\_data(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}{m\_png}}[p][\textcolor{stringliteral}{"{}plain"{}}])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}[img\_idx].draw\_artist(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ blit\_boxes.append(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}[img\_idx].get\_clip\_box())}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00368}00368\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.blit(blit\_boxes[0])}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00370}00370\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.restore\_region(self.m\_background[img\_idx])}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00371}00371\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.blit(self.ims[img\_idx].get\_clip\_box())}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00372}00372\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ self.m\_fig.canvas.draw\_idle()}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00373}00373\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}.canvas.flush\_events()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00375}00375\ \ \ \ \ \textcolor{keyword}{def\ }\_create\_buttons(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00376}00376\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Create\ buttons\ for\ each\ column}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00377}00377\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}Figure\ size:\ "{}},\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}())}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00379}00379\ \ \ \ \ \ \ \ \ fig\_size\_px\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00381}00381\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00382}00382\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ col\ \textcolor{keywordflow}{in}\ range(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}}):}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ button\ =\ Button(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}⏬"{}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=f\textcolor{stringliteral}{"{}\{-\/3\ +\ (fig\_size\_px[0]\ /\ self.m\_n\_col)\}px"{}},\ height=\textcolor{stringliteral}{"{}50px"{}}),}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ button.on\_click(\textcolor{keyword}{lambda}\ b,\ col=col:\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}{\_insert\_token}}(col))}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}}.append(button)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00390}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3dde63ddaf5ff642f60c9c4d8da942c9}{00390}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3dde63ddaf5ff642f60c9c4d8da942c9}{\_create\_column\_labels}}(self)\ -\/>\ HBox:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00391}00391\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Creates\ a\ row\ with\ the\ column\ labels\ 'a'\ to\ 'g'.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00392}00392\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00393}00393\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00394}00394\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ HBox:\ A\ row\ of\ textboxes\ containing\ the\ columns\ labels\ 'a'\ to\ 'g'.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00395}00395\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00396}00396\ \ \ \ \ \ \ \ \ fig\_size\_px\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\_get\_fig\_size\_px}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00397}00397\ \ \ \ \ \ \ \ \ width\ =\ f\textcolor{stringliteral}{"{}\{-\/3\ +\ (fig\_size\_px[0]\ /\ self.m\_n\_col)\}px"{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00398}00398\ \ \ \ \ \ \ \ \ textboxes\ =\ [}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ widgets.Label(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value=chr(ord(\textcolor{stringliteral}{"{}a"{}})\ +\ i),}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(justify\_content=\textcolor{stringliteral}{"{}center"{}},\ align\_items=\textcolor{stringliteral}{"{}center"{}},\ width=width),}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00404}00404\ \ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00405}00405\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ HBox(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ textboxes,}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}row\ wrap"{}},\ \ \textcolor{comment}{\#\ or\ "{}column"{}\ depending\ on\ your\ layout\ needs}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Left\ alignment}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Top\ alignment}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00413}00413\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00415}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a30c2c5e0a13e6f49762f3abeda6b056b}{00415}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a30c2c5e0a13e6f49762f3abeda6b056b}{\_on\_field\_click}}(self,\ event:\ mpl\_backend\_bases.Event)\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00416}00416\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Based\ on\ the\ column\ where\ the\ click\ was\ detected,\ insert\ a\ token.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00417}00417\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00418}00418\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00419}00419\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ event\ (mpl\_backend\_bases.Event):\ A\ matplotlib\ mouse\ event.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00420}00420\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00421}00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(event,\ mpl\_backend\_bases.MouseEvent):}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ ix,\ iy\ =\ event.xdata,\ event.ydata}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}{m\_logger}}.debug(\textcolor{stringliteral}{"{}click\ (x,y):\ \%d,\ \%d"{}},\ ix,\ iy)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ idx\ =\ np.where(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}\ ==\ event.inaxes)[0][0]\ \%\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}{m\_n\_col}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}{\_insert\_token}}(idx)}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00426}00426\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00427}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae1334fcc19604c05bd712359811a7f8d}{00427}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae1334fcc19604c05bd712359811a7f8d}{get\_widget}}(self)\ -\/>\ AppLayout:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00428}00428\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Get\ the\ widget.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00429}00429\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00430}00430\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Examples:}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00431}00431\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Generally,\ you\ should\ this\ method\ to\ retreive\ and\ display\ the\ widget.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00432}00432\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00433}00433\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}pycon}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00434}00434\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ >>>\ \%matplotlib\ ipympl}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00435}00435\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ >>>\ c4gui\ =\ GuiC4()}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00436}00436\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ >>>\ display(c4gui.get\_widget())}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00437}00437\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00438}00438\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00439}00439\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00440}00440\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ AppLayout:\ the\ widget.}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00441}00441\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00442}00442\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Arrange\ buttons\ in\ a\ row}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00443}00443\ \ \ \ \ \ \ \ \ insert\_button\_row\ =\ HBox(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}{m\_insert\_buttons}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}row\ wrap"{}},\ \ \textcolor{comment}{\#\ or\ "{}column"{}\ depending\ on\ your\ layout\ needs}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Left\ alignment}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Top\ alignment}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00451}00451\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00452}00452\ \ \ \ \ \ \ \ \ control\_buttons\_col\ =\ HBox(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ [VBox(list(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\_control\_buttons}}.values()))],}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}row\ wrap"{}},\ \ \textcolor{comment}{\#\ or\ "{}column"{}\ depending\ on\ your\ layout\ needs}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}flex-\/end"{}},\ \ \textcolor{comment}{\#\ Left\ alignment}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}center"{}},\ \ \textcolor{comment}{\#\ Top\ alignment}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00460}00460\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00462}00462\ \ \ \ \ \ \ \ \ tb\ =\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3dde63ddaf5ff642f60c9c4d8da942c9}{\_create\_column\_labels}}()}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00463}00463\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ AppLayout(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ header=\textcolor{keywordtype}{None},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ left\_sidebar=control\_buttons\_col,}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ center=VBox(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [insert\_button\_row,\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}{output}},\ tb],}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}column\ wrap"{}},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}flex-\/start"{}},\ \ \textcolor{comment}{\#\ Left\ alignment}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}flex-\/start"{}},\ \ \textcolor{comment}{\#\ Top\ alignment}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ footer=\textcolor{keywordtype}{None},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ right\_sidebar=\textcolor{keywordtype}{None},}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00478}00478\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00479}00479\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00480}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aecc4c650c3ac6a52dcc3fe0b1d04b3f8}{00480}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aecc4c650c3ac6a52dcc3fe0b1d04b3f8}{\_check\_winner}}(self,\ board:\ bitbully\_core.BoardCore)\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00481}00481\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Check\ for\ Win\ or\ draw."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00482}00482\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ board.hasWin():}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ winner\ =\ \textcolor{stringliteral}{"{}Yellow"{}}\ \textcolor{keywordflow}{if}\ board.movesLeft()\ \%\ 2\ \textcolor{keywordflow}{else}\ \textcolor{stringliteral}{"{}Red"{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a8066373c4f57497c4625040894034a3d}{\_popup}}(f\textcolor{stringliteral}{"{}Game\ over!\ \{winner\}\ wins!"{}})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00486}00486\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ board.movesLeft()\ ==\ 0:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a8066373c4f57497c4625040894034a3d}{\_popup}}(\textcolor{stringliteral}{"{}Game\ over!\ Draw!"{}})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\_gameover}}\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00489}00489\ }
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00490}\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a276722dae16ec33e096afb8f28d9721e}{00490}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a276722dae16ec33e096afb8f28d9721e}{destroy}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00491}00491\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Destroy\ and\ release\ the\ acquired\ resources."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00492}00492\ \ \ \ \ \ \ \ \ plt.close(self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}})}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00493}00493\ \ \ \ \ \ \ \ \ del\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aea8b03c17faca8b6ecc92d17d95dcce9}{bitbully\_agent}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00494}00494\ \ \ \ \ \ \ \ \ del\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}{m\_axs}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00495}00495\ \ \ \ \ \ \ \ \ del\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}{m\_fig}}}
+\DoxyCodeLine{\Hypertarget{gui__c4_8py_source_l00496}00496\ \ \ \ \ \ \ \ \ del\ self.\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}{output}}}
 
 \end{DoxyCode}

@@ -33,7 +33,7 @@ int \mbox{\hyperlink{classbitbully_1_1board_1_1Board_aed729a7efcbf07f00e2a8773b8
 \item 
 bool \mbox{\hyperlink{classbitbully_1_1board_1_1Board_ac703e9fec40c4d9c60c314b33eb44bbd}{play}} (self, int\texorpdfstring{$\vert$}{|}Sequence\mbox{[}int\mbox{]}\texorpdfstring{$\vert$}{|}str move)
 \item 
-bool \mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9a88f1825c72b2f2aaf79a52afbb2d6f}{set\+\_\+board}} (self, Sequence\mbox{[}int\mbox{]}\texorpdfstring{$\vert$}{|}Sequence\mbox{[}Sequence\mbox{[}int\mbox{]}\mbox{]}\texorpdfstring{$\vert$}{|}str board)
+bool \mbox{\hyperlink{classbitbully_1_1board_1_1Board_a3ec7505932466440fce1a9fbbd54355a}{reset\+\_\+board}} (self, Sequence\mbox{[}int\mbox{]}\texorpdfstring{$\vert$}{|}Sequence\mbox{[}Sequence\mbox{[}int\mbox{]}\mbox{]}\texorpdfstring{$\vert$}{|}str\texorpdfstring{$\vert$}{|}None board=None)
 \item 
 list\mbox{[}list\mbox{[}int\mbox{]}\mbox{]} \mbox{\hyperlink{classbitbully_1_1board_1_1Board_adbc7e86e4081f3152024e2cad2a674a4}{to\+\_\+array}} (self)
 \item 
@@ -79,16 +79,33 @@ Args:
         Optional initial board state. Accepts:
         - 2D array (list, tuple, numpy-array) with shape 7x6 or 6x7
         - 1D sequence of ints: a move sequence of columns (e.g., [0, 0, 2, 2, 3, 3])
-        - String: A move sequence of columns as string (e.g., "002233...")
+        - String: A move sequence of columns as string (e.g., "002233")
         - None for an empty board
+
+Raises:
+    ValueError: If the provided initial board state is invalid.
 
 Example:
     You can initialize an empty board in multiple ways:
     ```python
     import bitbully as bb
 
-    board = bb.Board()  # Empty board
-    board = bb.Board([[0] * 6 for _ in range(7)])  # also an empty board as 2D list
+    # Create an empty board using the default constructor.
+    board = bb.Board()  # Starts with no tokens placed.
+
+    # Alternatively, initialize the board explicitly from a 2D list.
+    # Each inner list represents a column (7 columns total, 6 rows each).
+    # A value of 0 indicates an empty cell; 1 and 2 would represent player tokens.
+    board = bb.Board([[0] * 6 for _ in range(7)])  # Equivalent to an empty board.
+
+    # You can also set up a specific board position manually using a 6 x 7 layout,
+    # where each inner list represents a row instead of a column.
+    # (Both layouts are accepted by BitBully for convenience.)
+    # For more complex examples using 2D arrays, see the examples below.
+    board = bb.Board([[0] * 7 for _ in range(6)])  # Also equivalent to an empty board.
+
+    # Display the board in text form.
+    # The __repr__ method shows the current state (useful for debugging or interactive use).
     board
     ```
     Expected output:
@@ -104,11 +121,158 @@ Example:
 The recommended way to initialize an empty board is simply `Board()`.
 
 Example:
-    And here we have another example:
+    You can also initialize a board with a sequence of moves:
     ```python
     import bitbully as bb
 
-    board = bb.Board("002233...")  # String
+    # Initialize a board with a sequence of moves played in the center column.
+
+    # The list [3, 3, 3] represents three moves in column index 3 (zero-based).
+    # Moves alternate automatically between Player 1 (yellow, X) and Player 2 (red, O).
+    # After these three moves, the center column will contain:
+    #   - Row 0: Player 1 token (bottom)
+    #   - Row 1: Player 2 token
+    #   - Row 2: Player 1 token
+    board = bb.Board([3, 3, 3])
+
+    # Display the resulting board.
+    # The textual output shows the tokens placed in the center column.
+    board
+    ```
+
+    Expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  X  _  _  _
+    _  _  _  O  _  _  _
+    _  _  _  X  _  _  _
+    ```
+
+Example:
+    You can also initialize a board using a string containing a move sequence:
+    ```python
+    import bitbully as bb
+
+    # Initialize a board using a compact move string.
+
+    # The string "33333111" represents a sequence of eight moves:
+    #   3 3 3 3 3 → five moves in the center column (index 3)
+    #   1 1 1 → three moves in the second column (index 1)
+    #
+    # Moves are applied in order, alternating automatically between Player 1 (yellow, X)
+    # and Player 2 (red, O), just as if you had called `board.play()` repeatedly.
+    #
+    # This shorthand is convenient for reproducing board states or test positions
+    # without having to provide long move lists.
+
+    board = bb.Board("33333111")
+
+    # Display the resulting board.
+    # The printed layout shows how the tokens stack in each column.
+    board
+    ```
+    Expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  X  _  _  _
+    _  _  _  O  _  _  _
+    _  O  _  X  _  _  _
+    _  X  _  O  _  _  _
+    _  O  _  X  _  _  _
+    ```
+
+Example:
+    You can also initialize a board using a 2D array (list of lists):
+    ```python
+    import bitbully as bb
+
+    # Use a 6 x 7 list (rows x columns) to set up a specific board position manually.
+
+    # Each inner list represents a row of the Connect-4 grid.
+    # Convention:
+    #   - 0 → empty cell
+    #   - 1 → Player 1 token (yellow, X)
+    #   - 2 → Player 2 token (red, O)
+    #
+    # The top list corresponds to the *top row* (row index 5),
+    # and the bottom list corresponds to the *bottom row* (row index 0).
+    # This layout matches the typical visual display of the board.
+
+    board_array = [
+        [0, 0, 0, 0, 0, 0, 0],  # Row 5 (top)
+        [0, 0, 0, 1, 0, 0, 0],  # Row 4: Player 1 token in column 3
+        [0, 0, 0, 2, 0, 0, 0],  # Row 3: Player 2 token in column 3
+        [0, 2, 0, 1, 0, 0, 0],  # Row 2: tokens in columns 1 and 3
+        [0, 1, 0, 2, 0, 0, 0],  # Row 1: tokens in columns 1 and 3
+        [0, 2, 0, 1, 0, 0, 0],  # Row 0 (bottom): tokens stacked lowest
+    ]
+
+    # Create a Board instance directly from the 2D list.
+    # This allows reconstructing arbitrary positions (e.g., from test data or saved states)
+    # without replaying the move sequence.
+    board = bb.Board(board_array)
+
+    # Display the resulting board state in text form.
+    board
+    ```
+    Expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  X  _  _  _
+    _  _  _  O  _  _  _
+    _  O  _  X  _  _  _
+    _  X  _  O  _  _  _
+    _  O  _  X  _  _  _
+    ```
+
+Example:
+    You can also initialize a board using a 2D (7 x 6) array with columns as inner lists:
+    ```python
+    import bitbully as bb
+
+    # Use a 7 x 6 list (columns x rows) to set up a specific board position manually.
+
+    # Each inner list represents a **column** of the Connect-4 board, from left (index 0)
+    # to right (index 6). Each column contains six entries — one for each row, from
+    # bottom (index 0) to top (index 5).
+    #
+    # Convention:
+    #   - 0 → empty cell
+    #   - 1 → Player 1 token (yellow, X)
+    #   - 2 → Player 2 token (red, O)
+    #
+    # This column-major layout matches the internal representation used by BitBully,
+    # where tokens are dropped into columns rather than filled row by row.
+
+    board_array = [
+        [0, 0, 0, 0, 0, 0],  # Column 0 (leftmost)
+        [2, 1, 2, 0, 0, 0],  # Column 1
+        [0, 0, 0, 0, 0, 0],  # Column 2
+        [1, 2, 1, 2, 1, 0],  # Column 3 (center)
+        [0, 0, 0, 0, 0, 0],  # Column 4
+        [0, 0, 0, 0, 0, 0],  # Column 5
+        [0, 0, 0, 0, 0, 0],  # Column 6 (rightmost)
+    ]
+
+    # Create a Board instance directly from the 2D list.
+    # This allows reconstructing any arbitrary position (e.g., test cases, saved games)
+    # without replaying all moves individually.
+    board = bb.Board(board_array)
+
+    # Display the resulting board.
+    # The text output shows tokens as they would appear in a real Connect-4 grid.
+    board
+    ```
+    Expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  X  _  _  _
+    _  _  _  O  _  _  _
+    _  O  _  X  _  _  _
+    _  X  _  O  _  _  _
+    _  O  _  X  _  _  _
     ```
 \end{DoxyVerb}
  
@@ -128,6 +292,14 @@ Definition at line \mbox{\hyperlink{board_8py_source_l00014}{14}} of file \mbox{
 
 \begin{DoxyVerb}Checks equality between two Board instances.
 
+Notes:
+    - Equality checks in BitBully compare the *exact board state* (bit patterns),
+      not just the move history.
+    - Two different move sequences can still yield the same position if they
+      result in identical token configurations.
+    - This is useful for comparing solver states, verifying test positions,
+      or detecting transpositions in search algorithms.
+
 Args:
     value (object): The other Board instance to compare against.
 
@@ -136,10 +308,39 @@ Returns:
 
 Raises:
     NotImplementedError: If the other value is not a Board instance.
+
+Example:
+    ```python
+    import bitbully as bb
+
+    # Create two boards that should represent *identical* game states.
+    board1 = bb.Board()
+    assert board1.play("33333111")
+
+    board2 = bb.Board()
+    # Play the same position step by step using a different but equivalent sequence.
+    # Internally, the final bitboard state will match `board1`.
+    assert board2.play("31133331")
+
+    # Boards with identical token placements are considered equal.
+    # Equality (`==`) and inequality (`!=`) operators are overloaded for convenience.
+    assert board1 == board2
+    assert not (board1 != board2)
+
+    # ------------------------------------------------------------------------------
+
+    # Create two boards that differ by one move.
+    board1 = bb.Board("33333111")
+    board2 = bb.Board("33333112")  # One extra move in the last column (index 2)
+
+    # Since the token layout differs, equality no longer holds.
+    assert board1 != board2
+    assert not (board1 == board2)
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00058}{58}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00224}{224}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_aa56a2afaa85ded51091e20ae61b872ec}\index{bitbully.board.Board@{bitbully.board.Board}!\_\_hash\_\_@{\_\_hash\_\_}}
 \index{\_\_hash\_\_@{\_\_hash\_\_}!bitbully.board.Board@{bitbully.board.Board}}
@@ -151,10 +352,36 @@ Definition at line \mbox{\hyperlink{board_8py_source_l00058}{58}} of file \mbox{
 
 Returns:
     int: The hash value of the Board instance.
+
+Example:
+    ```python
+    import bitbully as bb
+
+    # Create two boards that represent the same final position.
+    # The first board is initialized directly from a move string.
+    board1 = bb.Board("33333111")
+
+    # The second board is built incrementally by playing an equivalent sequence of moves.
+    # Even though the order of intermediate plays differs, the final layout of tokens
+    # (and thus the internal bitboard state) will be identical to `board1`.
+    board2 = bb.Board()
+    board2.play("31133331")
+
+    # Boards with identical configurations produce the same hash value.
+    # This allows them to be used efficiently as keys in dictionaries or members of sets.
+    assert hash(board1) == hash(board2)
+
+    # Display the board's hash value.
+    hash(board1)
+    ```
+    Expected output:
+    ```text
+    971238920548618160
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00153}{153}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00440}{440}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_af95a367c9b9e977c07ee89189f1e6087}\index{bitbully.board.Board@{bitbully.board.Board}!\_\_ne\_\_@{\_\_ne\_\_}}
 \index{\_\_ne\_\_@{\_\_ne\_\_}!bitbully.board.Board@{bitbully.board.Board}}
@@ -164,6 +391,8 @@ Definition at line \mbox{\hyperlink{board_8py_source_l00153}{153}} of file \mbox
 
 \begin{DoxyVerb}Checks inequality between two Board instances.
 
+See the documentation for [`src.bitbully.Board.__eq__`][src.bitbully.Board.__eq__] for details.
+
 Args:
     value (object): The other Board instance to compare against.
 
@@ -172,7 +401,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00074}{74}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00277}{277}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a685b273338fc40f86ce851d01632aeaf}\index{bitbully.board.Board@{bitbully.board.Board}!\_\_repr\_\_@{\_\_repr\_\_}}
 \index{\_\_repr\_\_@{\_\_repr\_\_}!bitbully.board.Board@{bitbully.board.Board}}
@@ -183,7 +412,7 @@ Definition at line \mbox{\hyperlink{board_8py_source_l00074}{74}} of file \mbox{
 \begin{DoxyVerb}Returns a string representation of the Board instance.\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00085}{85}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00290}{290}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a42903f41f41e423c133fd9ed842d2ed8}\index{bitbully.board.Board@{bitbully.board.Board}!all\_positions@{all\_positions}}
 \index{all\_positions@{all\_positions}!bitbully.board.Board@{bitbully.board.Board}}
@@ -202,7 +431,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00089}{89}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00294}{294}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a9514b7e3caa5c5d7c3bedd0268865fc1}\index{bitbully.board.Board@{bitbully.board.Board}!can\_win\_next@{can\_win\_next}}
 \index{can\_win\_next@{can\_win\_next}!bitbully.board.Board@{bitbully.board.Board}}
@@ -217,10 +446,47 @@ Args:
 
 Returns:
     bool: True if the current player can win next, False otherwise.
+
+See also: [`bitbully.Board.has_win`][src.bitbully.Board.has_win].
+
+Example:
+    ```python
+    import bitbully as bb
+
+    # Create a board from a move string.
+    # The string "332311" represents a short sequence of alternating moves
+    # that results in a nearly winning position for Player 1 (yellow, X).
+    board = bb.Board("332311")
+
+    # Display the current board state (see below)
+    print(board)
+
+    # Player 1 (yellow, X) — who is next to move — can win immediately
+    # by placing a token in either column 0 or column 4.
+    assert board.can_win_next(0)
+    assert board.can_win_next(4)
+
+    # However, playing in other columns does not result in an instant win.
+    assert not board.can_win_next(2)
+    assert not board.can_win_next(3)
+
+    # You can also call `can_win_next()` without arguments to perform a general check.
+    # It returns True if the current player has *any* winning move available.
+    assert board.can_win_next()
+    ```
+    The board we created above looks like this:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  O  _  _  _
+    _  O  _  O  _  _  _
+    _  X  X  X  _  _  _
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00103}{103}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00308}{308}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a0babec5f817efa063b5e89e035d79b4e}\index{bitbully.board.Board@{bitbully.board.Board}!copy@{copy}}
 \index{copy@{copy}!bitbully.board.Board@{bitbully.board.Board}}
@@ -235,7 +501,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00116}{116}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00358}{358}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a357ea549197e657a8ea52dcca863b039}\index{bitbully.board.Board@{bitbully.board.Board}!count\_tokens@{count\_tokens}}
 \index{count\_tokens@{count\_tokens}!bitbully.board.Board@{bitbully.board.Board}}
@@ -250,7 +516,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00126}{126}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00368}{368}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a9defd7d2c76118045f0b133f0a43547e}\index{bitbully.board.Board@{bitbully.board.Board}!get\_legal\_moves@{get\_legal\_moves}}
 \index{get\_legal\_moves@{get\_legal\_moves}!bitbully.board.Board@{bitbully.board.Board}}
@@ -268,7 +534,7 @@ Raises:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00134}{134}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00376}{376}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_ae50b3749d5857b53f6d8d7fed35b3bf7}\index{bitbully.board.Board@{bitbully.board.Board}!has\_win@{has\_win}}
 \index{has\_win@{has\_win}!bitbully.board.Board@{bitbully.board.Board}}
@@ -280,10 +546,55 @@ Definition at line \mbox{\hyperlink{board_8py_source_l00134}{134}} of file \mbox
 
 Returns:
     bool: True if the current player has a winning position (4-in-a-row), False otherwise.
+
+Unlike `can_win_next()`, which checks whether the current player *could* win
+on their next move, the `has_win()` method determines whether a winning
+condition already exists on the board.
+This method is typically used right after a move to verify whether the game
+has been won.
+
+See also: [`bitbully.Board.can_win_next`][src.bitbully.Board.can_win_next].
+
+Example:
+    ```python
+    import bitbully as bb
+
+    # Initialize a board from a move sequence.
+    # The string "332311" represents a position where Player 1 (yellow, X)
+    # is one move away from winning.
+    board = bb.Board("332311")
+
+    # At this stage, Player 1 has not yet won, but can win immediately
+    # by placing a token in either column 0 or column 4.
+    assert not board.has_win()
+    assert board.can_win_next(0)  # Check column 0
+    assert board.can_win_next(4)  # Check column 4
+    assert board.can_win_next()  # General check (any winning move)
+
+    # Simulate Player 1 playing in column 4 — this completes
+    # a horizontal line of four tokens and wins the game.
+    assert board.play(4)
+
+    # Display the updated board to visualize the winning position.
+    print(board)
+
+    # The board now contains a winning configuration:
+    # Player 1 (yellow, X) has achieved a Connect-4.
+    assert board.has_win()
+    ```
+    Board from above, expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  O  _  _  _
+    _  O  _  O  _  _  _
+    _  X  X  X  X  _  _
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00145}{145}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00387}{387}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_af0547d9a280ddeaebe6bf563c8a0617a}\index{bitbully.board.Board@{bitbully.board.Board}!is\_legal\_move@{is\_legal\_move}}
 \index{is\_legal\_move@{is\_legal\_move}!bitbully.board.Board@{bitbully.board.Board}}
@@ -301,7 +612,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00161}{161}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00474}{474}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_aa90638e1d8ff88b5eaedef40b6a6e30e}\index{bitbully.board.Board@{bitbully.board.Board}!mirror@{mirror}}
 \index{mirror@{mirror}!bitbully.board.Board@{bitbully.board.Board}}
@@ -316,7 +627,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00172}{172}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00485}{485}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_aed729a7efcbf07f00e2a8773b875291d}\index{bitbully.board.Board@{bitbully.board.Board}!moves\_left@{moves\_left}}
 \index{moves\_left@{moves\_left}!bitbully.board.Board@{bitbully.board.Board}}
@@ -331,7 +642,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00182}{182}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00495}{495}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_ac703e9fec40c4d9c60c314b33eb44bbd}\index{bitbully.board.Board@{bitbully.board.Board}!play@{play}}
 \index{play@{play}!bitbully.board.Board@{bitbully.board.Board}}
@@ -416,7 +727,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00190}{190}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00503}{503}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_adc7d83d53b91de5fdb00703468012786}\index{bitbully.board.Board@{bitbully.board.Board}!random\_board@{random\_board}}
 \index{random\_board@{random\_board}!bitbully.board.Board@{bitbully.board.Board}}
@@ -432,7 +743,7 @@ Args:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00332}{332}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00760}{760}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a9b6f64ab6125ede62a0cf338fff99043}\index{bitbully.board.Board@{bitbully.board.Board}!reset@{reset}}
 \index{reset@{reset}!bitbully.board.Board@{bitbully.board.Board}}
@@ -443,29 +754,143 @@ Definition at line \mbox{\hyperlink{board_8py_source_l00332}{332}} of file \mbox
 \begin{DoxyVerb}Resets the board to an empty state.\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00341}{341}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00769}{769}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
-\Hypertarget{classbitbully_1_1board_1_1Board_a9a88f1825c72b2f2aaf79a52afbb2d6f}\index{bitbully.board.Board@{bitbully.board.Board}!set\_board@{set\_board}}
-\index{set\_board@{set\_board}!bitbully.board.Board@{bitbully.board.Board}}
-\doxysubsubsection{\texorpdfstring{set\_board()}{set\_board()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1board_1_1Board_a9a88f1825c72b2f2aaf79a52afbb2d6f} 
- bool bitbully.\+board.\+Board.\+set\+\_\+board (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Sequence\mbox{[}int\mbox{]} \texorpdfstring{$\vert$}{|} Sequence\mbox{[}Sequence\mbox{[}int\mbox{]}\mbox{]} \texorpdfstring{$\vert$}{|} str}]{board}{}\end{DoxyParamCaption})}
+\Hypertarget{classbitbully_1_1board_1_1Board_a3ec7505932466440fce1a9fbbd54355a}\index{bitbully.board.Board@{bitbully.board.Board}!reset\_board@{reset\_board}}
+\index{reset\_board@{reset\_board}!bitbully.board.Board@{bitbully.board.Board}}
+\doxysubsubsection{\texorpdfstring{reset\_board()}{reset\_board()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1board_1_1Board_a3ec7505932466440fce1a9fbbd54355a} 
+ bool bitbully.\+board.\+Board.\+reset\+\_\+board (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Sequence\mbox{[}int\mbox{]} \texorpdfstring{$\vert$}{|} Sequence\mbox{[}Sequence\mbox{[}int\mbox{]}\mbox{]} \texorpdfstring{$\vert$}{|} str \texorpdfstring{$\vert$}{|} None }]{board}{ = {\ttfamily None}}\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}Sets (overrides) the board to a specific state.
+\begin{DoxyVerb}Resets the board or sets (overrides) the board to a specific state.
 
 Args:
-    board (Sequence[int] | Sequence[Sequence[int]] | str):
+    board (Sequence[int] | Sequence[Sequence[int]] | str | None):
         The new board state. Accepts:
         - 2D array (list, tuple, numpy-array) with shape 7x6 or 6x7
         - 1D sequence of ints: a move sequence of columns (e.g., [0, 0, 2, 2, 3, 3])
         - String: A move sequence of columns as string (e.g., "002233...")
+        - None: to reset to an empty board
 
 Returns:
     bool: True if the board was set successfully, False otherwise.
+
+Example:
+    Reset the board to an empty state:
+    ```python
+    import bitbully as bb
+
+    # Create a temporary board position from a move string.
+    # The string "0123456" plays one token in each column (0-6) in sequence.
+    board = bb.Board("0123456")
+
+    # Reset the board to an empty state.
+    # Calling `reset_board()` clears all tokens and restores the starting position.
+    # No moves → an empty board.
+    assert board.reset_board()
+    board
+    ```
+    Expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    ```
+
+Example:
+    (Re-)Set the board using a move sequence string:
+    ```python
+    import bitbully as bb
+
+    # This is just a temporary setup; it will be replaced below.
+    board = bb.Board("0123456")
+
+    # Set the board state directly from a move sequence.
+    # The list [3, 3, 3] represents three consecutive moves in the center column (index 3).
+    # Moves alternate automatically between Player 1 (yellow) and Player 2 (red).
+    #
+    # The `reset_board()` method clears the current position and replays the given moves
+    # from an empty board — effectively overriding any existing board state.
+    assert board.reset_board([3, 3, 3])
+
+    # Display the updated board to verify the new position.
+    board
+    ```
+    Expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  X  _  _  _
+    _  _  _  O  _  _  _
+    _  _  _  X  _  _  _
+    ```
+
+Example:
+    You can also set the board using other formats, such as a 2D array or a string.
+    See the examples in the [`bitbully.Board.__init__`][src.bitbully.Board.__init__] docstring for details.
+
+    ```python
+    # Briefly demonstrate the different input formats accepted by `reset_board()`.
+    import bitbully as bb
+
+    # Create an empty board instance
+    board = bb.Board()
+
+    # Variant 1: From a list of moves (integers)
+    # Each number represents a column index (0-6); moves alternate between players.
+    assert board.reset_board([3, 3, 3])
+
+    # Variant 2: From a compact move string
+    # Equivalent to the list above — useful for quick testing or serialization.
+    assert board.reset_board("33333111")
+
+    # Variant 3: From a 2D list in row-major format (6 x 7)
+    # Each inner list represents a row (top to bottom).
+    # 0 = empty, 1 = Player 1, 2 = Player 2.
+    board_array = [
+        [0, 0, 0, 0, 0, 0, 0],  # Row 5 (top)
+        [0, 0, 0, 1, 0, 0, 0],  # Row 4
+        [0, 0, 0, 2, 0, 0, 0],  # Row 3
+        [0, 2, 0, 1, 0, 0, 0],  # Row 2
+        [0, 1, 0, 2, 0, 0, 0],  # Row 1
+        [0, 2, 0, 1, 0, 0, 0],  # Row 0 (bottom)
+    ]
+    assert board.reset_board(board_array)
+
+    # Variant 4: From a 2D list in column-major format (7 x 6)
+    # Each inner list represents a column (left to right); this matches BitBully's internal layout.
+    board_array = [
+        [0, 0, 0, 0, 0, 0],  # Column 0 (leftmost)
+        [2, 1, 2, 1, 0, 0],  # Column 1
+        [0, 0, 0, 0, 0, 0],  # Column 2
+        [1, 2, 1, 2, 1, 0],  # Column 3 (center)
+        [0, 0, 0, 0, 0, 0],  # Column 4
+        [2, 1, 2, 0, 0, 0],  # Column 5
+        [0, 0, 0, 0, 0, 0],  # Column 6 (rightmost)
+    ]
+    assert board.reset_board(board_array)
+
+    # Display the final board state in text form
+    board
+    ```
+
+    Expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  X  _  _  _
+    _  X  _  O  _  _  _
+    _  O  _  X  _  O  _
+    _  X  _  O  _  X  _
+    _  O  _  X  _  O  _
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00278}{278}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00591}{591}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_adbc7e86e4081f3152024e2cad2a674a4}\index{bitbully.board.Board@{bitbully.board.Board}!to\_array@{to\_array}}
 \index{to\_array@{to\_array}!bitbully.board.Board@{bitbully.board.Board}}
@@ -480,7 +905,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00307}{307}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00735}{735}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a3db1df514e7c6d510f2188ceb7419aca}\index{bitbully.board.Board@{bitbully.board.Board}!to\_string@{to\_string}}
 \index{to\_string@{to\_string}!bitbully.board.Board@{bitbully.board.Board}}
@@ -495,7 +920,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00315}{315}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00743}{743}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_ad06cd5ac21f137de6b80c9b4f8f89d3b}\index{bitbully.board.Board@{bitbully.board.Board}!uid@{uid}}
 \index{uid@{uid}!bitbully.board.Board@{bitbully.board.Board}}
@@ -510,7 +935,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00323}{323}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00751}{751}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 
 
@@ -525,7 +950,7 @@ bitbully.\+board.\+Board.\+\_\+board = bitbully\+\_\+core.\+Board\+Core()\hspace
 
 
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00054}{54}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00218}{218}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 
 
