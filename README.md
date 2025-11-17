@@ -74,7 +74,7 @@ This will automatically download and install the pre-built package, including th
 
 ### Start with a simple Widget on Colab
 
-<a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/gameWidget.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/game_widget.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 ### BitBully Lib (recommended)
 
@@ -295,7 +295,3 @@ Pascal Pons and John Tromp. Their work has been invaluable in shaping this effor
 - [https://github.com/PascalPons/connect4](https://github.com/PascalPons/connect4)
 - https://tromp.github.io/c4/Connect4.java
 - https://github.com/gamesolver/fhourstones/
-
-<h1 align="center">
-<img src="https://raw.githubusercontent.com/MarkusThill/snk/refs/heads/manual-run-output/only-svg/github-contribution-grid-snake.svg" alt="https://raw.githubusercontent.com/MarkusThill/snk/refs/heads/manual-run-output/only-svg/github-contribution-grid-snake.svg" width="90%" >
-</h1><br>
