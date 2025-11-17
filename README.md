@@ -29,10 +29,12 @@ both developers and researchers.
 - [Features](#features)
 - [Installation](#installation)
 - [Build and Install](#build-and-install)
+- [Python API Docs](#python-api-docs)
 - [Usage](#usage)
-- [Testing and CI](#testing-and-ci)
-- [Contributing](#contributing)
+- [Advanced Build and Install](#advanced-build-and-install)
+- [Contributing & Development](#contributing--development)
 - [License](#license)
+- [Contact](#contact)
 - [Acknowledgments](#acknowledgments)
 
 ---
@@ -67,6 +69,14 @@ pip install bitbully
 ```
 
 This will automatically download and install the pre-built package, including the Python bindings.
+
+---
+
+## Python API Docs
+
+Please refer to the docs here: [https://markusthill.github.io/BitBully/](https://markusthill.github.io/BitBully/).
+
+The docs for the opening databases can be found here: [https://markusthill.github.io/bitbully-databases/](https://markusthill.github.io/bitbully-databases/)
 
 ---
 
@@ -447,14 +457,6 @@ print(book.isInBook(board.mirror()))     # e.g., True, checks symmetric position
    ```bash
    cmake --build . --target cppBitBully
    ```
-
----
-
-## Python API Docs
-
-Please refer to the docs here: [https://markusthill.github.io/BitBully/](https://markusthill.github.io/BitBully/).
-
-The docs for the opening databases can be found here: [https://markusthill.github.io/bitbully-databases/](https://markusthill.github.io/bitbully-databases/)
 
 ---
 
