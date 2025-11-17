@@ -11,6 +11,11 @@ Install BitBully via pip:
     pip install bitbully
     ```
 
+=== "With GUI Support (Jupyter Notebboks)"
+    ```bash
+    pip install bitbully[gui]
+    ```
+
 === "Version x.y.z"
     ```bash
     pip install bitbully==x.y.z

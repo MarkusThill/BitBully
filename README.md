@@ -20,8 +20,6 @@
 ![Doxygen](https://github.com/MarkusThill/BitBully/actions/workflows/cmake-multi-platform.yml/badge.svg)
 ![Buy Me a Coffee](https://img.shields.io/badge/support-Buy_Me_A_Coffee-orange)
 
-# BitBully
-
 **BitBully** is a high-performance Connect-4 solver built using C++ and Python bindings, leveraging advanced algorithms
 and optimized bitwise operations. It provides tools for solving and analyzing Connect-4 games efficiently, designed for
 both developers and researchers.
@@ -70,6 +68,8 @@ pip install bitbully
 
 This will automatically download and install the pre-built package, including the Python bindings.
 
+---
+
 ## Usage
 
 ### Start with a simple Widget on Colab
@@ -84,24 +84,215 @@ tbd
 
 Use the `BitBullyCore` and `BoardCore` classes directly in Python:
 
+#### BoardCore Examples
+
+The low-level `BoardCore` API gives you full control over Connect-4 positions:
+you can play moves, generate random boards, mirror positions, and query win
+conditions or hashes.
+
+##### Create and Print a Board
+
 ```python
-from bitbully import bitbully_core
-import time
+import bitbully.bitbully_core as bbc
 
-board = bitbully_core.BoardCore()
+board = bbc.BoardCore()
+print(board)          # Human-readable 7x6 board
+print(board.movesLeft())   # 42 on an empty board
+print(board.countTokens()) # 0 on an empty board
+```
 
-# Yellow and red alternately play moves into column 3 (center column):
-for _ in range(6):
-    board.play(3)
+---
+
+##### Play Moves and Check for Winning Positions
+
+```python
+import bitbully.bitbully_core as bbc
+
+board = bbc.BoardCore()
+
+# Play a small sequence of moves (columns 0–6)
+for col in [3, 2, 3, 2, 3, 4, 3]:
+    assert board.play(col)
 
 print(board)
 
-solver = bitbully_core.BitBullyCore()
-start = time.perf_counter()
-score = solver.mtdf(board, first_guess=0)
-print(f"Time: {round(time.perf_counter() - start, 2)} seconds!")
-print(f"Best score: {score}")
+# Check if the side to move has an immediate winning move
+print(board.canWin())      # False
+print(board.hasWin())      # True, since the last move created 4-in-a-row
 ```
+
+You can also check if a **specific column** is a winning move:
+
+```python
+board = bbc.BoardCore()
+board.setBoard([3, 3, 3, 3, 2, 2, 4, 4])
+
+print(board.canWin())  # True
+print(board.canWin(1))  # True  – playing in column 1 wins
+print(board.canWin(3))  # False – no win in column 3
+```
+
+---
+
+##### Set a Board from a Move List or Array
+
+```python
+import bitbully.bitbully_core as bbc
+
+board = bbc.BoardCore()
+
+# From a move sequence (recommended)
+assert board.setBoard([0, 1, 2, 3, 3, 2, 1, 0])
+
+# Convert to 7x6 array (columns × rows)
+array = board.toArray()
+print(len(array), len(array[0]))  # 7 x 6
+
+# From a 7x6 array of tokens (1 = Yellow, 2 = Red)
+array_board = [[0 for _ in range(6)] for _ in range(7)]
+array_board[3][0] = 1  # Yellow in center column bottom row
+b2 = bbc.BoardCore()
+assert b2.setBoard(array_board)
+```
+
+---
+
+##### Generate Random Boards
+
+```python
+import bitbully.bitbully_core as bbc
+
+board, moves = bbc.BoardCore.randomBoard(10, True)
+
+print(board)   # Random, valid board
+print(moves)   # List of 10 column indices
+print(board.canWin())  # Usually False for random boards in this setup
+```
+
+---
+
+##### Mirroring Boards and Symmetry
+
+```python
+import bitbully.bitbully_core as bbc
+
+board = bbc.BoardCore()
+board.setBoard([0, 1, 2])      # Left side
+
+mirrored = board.mirror()      # Mirror around center column
+print(board)
+print(mirrored)
+
+# Double-mirroring returns the original position
+assert board == mirrored.mirror()
+```
+
+---
+
+##### Hashing, Equality, and Copies
+
+```python
+import bitbully.bitbully_core as bbc
+
+b1 = bbc.BoardCore()
+b2 = bbc.BoardCore()
+
+moves = [0, 1, 2, 3]
+for m in moves:
+    b1.play(m)
+    b2.play(m)
+
+assert b1 == b2
+assert b1.hash() == b2.hash()
+assert b1.uid() == b2.uid()
+
+# Copying a board
+b3 = b1.copy()           # or bbc.BoardCore(b1)
+assert b3 == b1
+
+b3.play(4)               # Modify the copy
+assert b3 != b1
+assert b3.hash() != b1.hash()
+```
+
+These examples are based on the internal test suite and show typical ways of
+interacting with `BoardCore` programmatically.
+
+#### BitBullyCore: Connect-4 Solver Examples
+
+The `BitBullyCore` module provides a high-performance Connect-4 solver written in C++
+and exposed to Python. You can evaluate positions, score all legal moves, or run the
+full MTD(f) search.
+
+---
+
+##### Solve a Position with MTD(f)
+
+```python
+import bitbully.bitbully_core as bbc
+
+# Construct a position: alternate moves into the center column
+board = bbc.BoardCore()
+for _ in range(6):
+    board.play(3)  # Column 3
+
+solver = bbc.BitBullyCore()
+score = solver.mtdf(board, first_guess=0)
+
+print("Best score:", score)
+```
+
+`mtdf` returns an integer score from the perspective of the **side to move**
+(positive = winning, negative = losing).
+
+---
+
+##### Score All Moves in a Position
+
+`scoreMoves(board)` returns a list of 7 integers:
+the evaluated score for playing in each column (0–6).
+Illegal moves (full columns) are still included in the list.
+
+```python
+import bitbully.bitbully_core as bbc
+
+board = bbc.BoardCore()
+board.setBoard([3, 4, 1, 1, 0, 2, 2, 2])
+
+solver = bbc.BitBullyCore()
+scores = solver.scoreMoves(board)
+
+print("Move scores:", scores)
+# Example output:
+# [-3, -3, 1, -4, 3, -2, -2]
+```
+
+---
+
+##### Using the Solver in a Loop (Move Selection)
+
+```python
+import bitbully.bitbully_core as bbc
+import time
+
+board = bbc.BoardCore()
+solver = bbc.BitBullyCore()
+
+for move in [3, 4, 1, 1, 0, 2, 2, 2]:  # Example opening
+    board.play(move)
+
+start = time.perf_counter()
+scores = solver.scoreMoves(board)
+best_move = max(range(7), key=lambda c: scores[c])
+print(f"Time: {round(time.perf_counter() - start, 2)} seconds!")
+print("Scores:", scores)
+print("Best move suggestion:", best_move)
+# best move is into column 4
+```
+
+---
+
+##### Further Examples using the BitBully Solver
 
 You can initialize a board using an array with shape `(7, 6)` (columns first) and solve it:
 
@@ -111,6 +302,7 @@ from bitbully import bitbully_core
 # Define a Connect-4 board as an array (7 columns x 6 rows)
 # You may also define the board using a numpy array if numpy is installed
 # 0 = Empty, 1 = Yellow, 2 = Red
+# Here, the left column represents the bottom row of the board
 board_array = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -137,26 +329,16 @@ Run the Bitbully solver with an opening book (here: 12-ply opening book with win
 
 ```python
 from bitbully import bitbully_core as bbc
+import bitbully_databases as bbd
 import importlib.resources
 
-db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
+db_path = bbd.BitBullyDatabases.get_database_path("12-ply-dist")
 bitbully = bbc.BitBullyCore(db_path)
 b = bbc.BoardCore()  # Empty board
 bitbully.scoreMoves(b)  # expected result: [-2, -1, 0, 1, 0, -1, -2]
 ```
 
-Generate a random board with `n` tokens:
-
-```python
-from bitbully import bitbully_core as bbc
-
-# Create a random board (and the move sequence that generated it)
-b, move_list = bbc.BoardCore.randomBoard(12, True)
-print(b)
-print(move_list)
-```
-
-### Further Usage Examples for BitBully Core
+#### Further Usage Examples for BitBully Core
 
 Create all Positions with (up to) `n` tokens starting from Board `b`:
 
@@ -168,17 +350,64 @@ board_list_3ply = b.allPositions(3, True)  # All positions with exactly 3 tokens
 len(board_list_3ply)  # should be 238 according to https://oeis.org/A212693
 ```
 
-Find the game-theoretic value of a 12-ply position using an opening book:
+#### Opening Book Examples
+
+BitBully Databases provide fast lookup tables (opening books) for Connect-4, allowing you to query
+evaluated positions, check if a board is known, and retrieve win/loss/distance values.
+
+##### Load an Opening Book
 
 ```python
-from bitbully import bitbully_core as bbc
-import importlib.resources
+import bitbully_databases as bbd
+import bitbully.bitbully_core as bbc
 
-db_path = importlib.resources.files("bitbully").joinpath("assets/book_12ply_distances.dat")
-ob = bbc.OpeningBookCore(db_path)
-b, move_list = bbc.BoardCore.randomBoard(12, True)  # get a board without an immediate threat for Yellow
-assert ob.isInBook(b) or ob.isInBook(b.mirror())  # Either position `b` or its mirrored equivalent are in the DB
-ob.getBoardValue(b)  # Get game-theoretic value (also checks mirrored board)
+# Load the 8-ply opening book (no distances)
+db_path = bbd.BitBullyDatabases.get_database_path("8-ply")
+book = bbc.OpeningBookCore(db_path, is_8ply=True, with_distances=False)
+
+print(book.getBookSize())  # e.g., 34515
+print(book.getNPly())      # -> 8
+```
+
+---
+
+##### Accessing Entries
+
+Each entry consists of `(key, value)` where:
+- **key** is the Huffman-encoded board state
+- **value** is the evaluation (win/loss/draw or distance)
+
+```python
+k, v = book.getEntry(0)
+print(k, v)
+```
+
+---
+
+##### Evaluating a Board Position
+
+```python
+import bitbully.bitbully_core as bbc
+
+board = bbc.BoardCore()
+board.setBoard([2, 3, 3, 3, 3, 3, 5, 5])  # Sequence of column moves
+
+value = book.getBoardValue(board)
+print("Evaluation:", value)
+```
+
+---
+
+##### Check Whether a Position Is in the Opening Book
+
+The books only contain one variant for mirror-symmetric positions:
+
+```python
+board = bbc.BoardCore()
+board.setBoard([1, 3, 4, 3, 4, 4, 3, 3])
+
+print(book.isInBook(board))              # e.g., False
+print(book.isInBook(board.mirror()))     # e.g., True, checks symmetric position
 ```
 
 ---
@@ -225,50 +454,39 @@ ob.getBoardValue(b)  # Get game-theoretic value (also checks mirrored board)
 
 Please refer to the docs here: [https://markusthill.github.io/BitBully/](https://markusthill.github.io/BitBully/).
 
----
-
-## Testing and CI
-
-### Running Tests
-
-Run unit tests using `pytest`:
-
-```bash
-pytest
-```
-
-### GitHub Actions
-
-This project uses GitHub Actions to build and test the library. The CI workflow includes:
-
-- Building wheels for Linux and Windows using `cibuildwheel`.
-- Building source distributions (`sdist`).
-- Optionally uploading artifacts to PyPI.
+The docs for the opening databases can be found here: [https://markusthill.github.io/bitbully-databases/](https://markusthill.github.io/bitbully-databases/)
 
 ---
 
-## Contributing
+## Contributing & Development
 
-Contributions are welcome! Follow these steps:
+Whether you're fixing a bug, optimizing performance, or extending BitBully with new features, contributions are highly appreciated.
+The full development guide provides everything you need to work on the project efficiently:
 
-1. Fork the repository.
-2. Create a new branch for your changes:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Install pre-commit hooks:
-   ```
-   pre-commit install --hook-type commit-msg --hook-type pre-push
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "feat: Add feature or fix description"
-   ```
-4. Push to your branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request.
+📘 **Complete Development Documentation**
+https://markusthill.github.io/BitBully/develop/
+
+It covers all essential workflows, including:
+
+- **Repository setup**: cloning, submodules, virtual environments
+- **Development environment**: installing `dev` dependencies, using editable mode
+- **Code quality tools**: ruff, mypy/pyrefly, clang-format, pre-commit, commitizen
+- **Building the project**: local wheels, CMake, cibuildwheel, sdist
+- **Testing**: running pytest, filtering tests, coverage, CI integration
+- **Release workflow**: semantic versioning, version bumping, tagging, PyPI/TestPyPI publishing
+- **Debugging & tooling**: GDB, Doxygen, mkdocs, stub generation for pybind11
+- **Platform notes**: Debian/Linux setup, gcov matching, MSVC quirks
+- **Cheatsheets**: Git, submodules, CMake, Docker, Ruby/Jekyll, npm, environment management
+
+If you're contributing code, please:
+
+1. Follow the coding standards and formatting tools (ruff, mypy, clang-format).
+2. Install and run pre-commit hooks before committing.
+3. Write or update tests for all behavioral changes.
+4. Use Commitizen for semantic commit messages and versioning.
+5. Open an issue or discussion for major changes.
+
+Pull requests are welcome — thank you for helping improve BitBully! 🚀
 
 ---
 
@@ -286,6 +504,8 @@ If you have any questions or feedback, feel free to reach out:
 - **GitHub**: [MarkusThill](https://github.com/MarkusThill)
 - **LinkedIn**: [Markus Thill](https://www.linkedin.com/in/markus-thill-a4991090)
 
+---
+
 ## Acknowledgments
 
 Many of the concepts and techniques used in this project are inspired by the outstanding Connect-4 solvers developed by
@@ -295,3 +515,5 @@ Pascal Pons and John Tromp. Their work has been invaluable in shaping this effor
 - [https://github.com/PascalPons/connect4](https://github.com/PascalPons/connect4)
 - https://tromp.github.io/c4/Connect4.java
 - https://github.com/gamesolver/fhourstones/
+
+---
