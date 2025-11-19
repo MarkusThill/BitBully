@@ -358,18 +358,161 @@ class Board:
     def copy(self) -> Board:
         """Creates a copy of the current Board instance.
 
+        The `copy()` method returns a new `Board` object that represents the
+        *same position* as the original at the time of copying. Subsequent
+        changes to one board do **not** affect the other — they are completely
+        independent.
+
         Returns:
             Board: A new Board instance that is a copy of the current one.
+
+        Example:
+            Create a board, copy it, and verify that both represent the same position:
+            ```python
+            import bitbully as bb
+
+            # Create a board from a compact move string.
+            board = bb.Board("33333111")
+
+            # Create an independent copy of the current position.
+            board_copy = board.copy()
+
+            # Both boards represent the same position and are considered equal.
+            assert board == board_copy
+            assert hash(board) == hash(board_copy)
+            assert board.to_string() == board_copy.to_string()
+
+            # Display the board state.
+            print(board)
+            ```
+            Expected output (both boards print the same position):
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  O  _  X  _  _  _
+            _  X  _  O  _  _  _
+            _  O  _  X  _  _  _
+            ```
+
+        Example:
+            Modifying the copy does not affect the original:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board("33333111")
+
+            # Create a copy of the current position.
+            board_copy = board.copy()
+
+            # Play an additional move on the copied board only.
+            assert board_copy.play(0)  # Drop a token into the leftmost column.
+
+            # Now the boards represent different positions.
+            assert board != board_copy
+
+            # The original board remains unchanged.
+            print("Original:")
+            print(board)
+
+            print("Modified copy:")
+            print(board_copy)
+            ```
+            Expected output:
+            ```text
+            Original:
+
+            _  _  _  _  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  O  _  X  _  _  _
+            _  X  _  O  _  _  _
+            _  O  _  X  _  _  _
+
+            Modified copy:
+
+            _  _  _  _  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  O  _  X  _  _  _
+            _  X  _  O  _  _  _
+            X  O  _  X  _  _  _
+            ```
         """
         new_board = Board()
         new_board._board = self._board.copy()
         return new_board
 
     def count_tokens(self) -> int:
-        """Counts the total number of tokens on the board.
+        """Counts the total number of tokens currently placed on the board.
+
+        This method simply returns how many moves have been played so far in the
+        current position — that is, the number of occupied cells on the 7x6 grid.
+
+        It does **not** distinguish between players; it only reports the total
+        number of tokens, regardless of whether they belong to Player 1 or Player 2.
 
         Returns:
-            int: The total number of tokens.
+            int: The total number of tokens on the board (between 0 and 42).
+
+        Example:
+            Count tokens on an empty board:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()  # No moves played yet.
+            assert board.count_tokens() == 0
+
+            # The board is completely empty.
+            print(board)
+            ```
+            Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            ```
+
+        Example:
+            Count tokens after a few moves:
+            ```python
+            import bitbully as bb
+
+            # Play three moves in the center column (index 3).
+            board = bb.Board()
+            assert board.play([3, 3, 3])
+
+            # Three tokens have been placed on the board.
+            assert board.count_tokens() == 3
+
+            print(board)
+            ```
+            Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  _  _  X  _  _  _
+            ```
+
+        Example:
+            Relation to the length of a move sequence:
+            ```python
+            import bitbully as bb
+
+            moves = "33333111"  # 8 moves in total
+            board = bb.Board(moves)
+
+            # The number of tokens on the board always matches
+            # the number of moves that have been played.
+            # (as long as the input was valid)
+            assert board.count_tokens() == len(moves)
+            ```
         """
         return self._board.countTokens()
 
@@ -382,7 +525,20 @@ class Board:
         Raises:
             NotImplementedError: If the method is not implemented yet.
         """
+        # TODO: Implement in C++?
         raise NotImplementedError("get_legal_moves is not implemented yet.")
+
+    def get_non_losing_moves(self) -> list[int]:
+        """Returns a list of legal moves (columns) that can be played and which do not result in an immediate loss.
+
+        Returns:
+            list[int]: A list of column indices (0-6) where a move can be played.
+
+        Raises:
+            NotImplementedError: If the method is not implemented yet.
+        """
+        # TODO: Implement in C++?
+        raise NotImplementedError("get_non_losing_moves is not implemented yet.")
 
     def has_win(self) -> bool:
         """Checks if the current player has a winning position.
@@ -472,21 +628,179 @@ class Board:
         return self._board.hash()
 
     def is_legal_move(self, move: int) -> bool:
-        """Checks if a move (column) is legal.
+        """Checks if a move (column) is legal in the current position.
+
+        A move is considered *legal* if:
+
+        - The column index is within the valid range (0-6), **and**
+        - The column is **not full** (i.e. it still has at least one empty cell).
+
+        This method does **not** check for tactical consequences such as
+        leaving an immediate win to the opponent, nor does it stop being
+        usable once a player has already won. It purely validates whether a
+        token can be dropped into the given column according to the basic
+        rules of Connect Four. You have to check for wins separately using
+        [`bitbully.Board.has_win`][src.bitbully.Board.has_win].
+
 
         Args:
             move (int): The column index (0-6) to check.
 
         Returns:
             bool: True if the move is legal, False otherwise.
+
+        Example:
+            All moves are legal on an empty board:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()  # Empty 7x6 board
+
+            # Every column index from 0 to 6 is a valid move.
+            for col in range(7):
+                assert board.is_legal_move(col)
+
+            # Out-of-range indices are always illegal.
+            assert not board.is_legal_move(-1)
+            assert not board.is_legal_move(7)
+            ```
+
+        Example:
+            Detecting an illegal move in a full column:
+            ```python
+            import bitbully as bb
+
+            # Fill the center column (index 3) with six tokens.
+            board = bb.Board()
+            assert board.play([3, 3, 3, 3, 3, 3])
+
+            # The center column is now full, so another move in column 3 is illegal.
+            assert not board.is_legal_move(3)
+
+            # Other columns are still available (as long as they are not full).
+            assert board.is_legal_move(0)
+            assert board.is_legal_move(6)
+
+            print(board)
+            ```
+            Expected output:
+            ```text
+            _  _  _  O  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  _  _  X  _  _  _
+            ```
+
+        Example:
+            This function only checks legality, not for situations where a player has won:
+            ```python
+            import bitbully as bb
+
+            # Player 1 (yellow, X) wins  the game.
+            board = bb.Board()
+            assert board.play("1122334")
+
+            # Even though Player 1 has already won, moves in non-full columns are still legal.
+            for col in range(7):
+                assert board.is_legal_move(col)
+
+            print(board)
+            ```
+            Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  O  O  O  _  _  _
+            _  X  X  X  X  _  _
+            ```
         """
         return self._board.isLegalMove(move)
 
     def mirror(self) -> Board:
         """Returns a new Board instance that is the mirror image of the current board.
 
+        This method reflects the board **horizontally** around its vertical center column:
+        - Column 0 <-> Column 6
+        - Column 1 <-> Column 5
+        - Column 2 <-> Column 4
+        - Column 3 stays in the center
+
+        The player to move is not changed - only the spatial
+        arrangement of the tokens is mirrored. The original board remains unchanged;
+        `mirror()` always returns a **new** `Board` instance.
+
         Returns:
-            Board: A new Board instance that is the mirror image.
+            Board: A new Board instance that is the mirror image of the current one.
+
+        Example:
+            Mirroring a simple asymmetric position:
+            ```python
+            import bitbully as bb
+
+            # Play four moves along the bottom row.
+            board = bb.Board()
+            assert board.play("0123")  # Columns: 0, 1, 2, 3
+
+            # Create a mirrored copy of the board.
+            mirrored = board.mirror()
+
+            print("Original:")
+            print(board)
+
+            print("Mirrored:")
+            print(mirrored)
+            ```
+
+            Expected output:
+            ```text
+            Original:
+
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            X  O  X  O  _  _  _
+
+            Mirrored:
+
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  O  X  O  X
+            ```
+
+        Example:
+            Mirroring a position that is already symmetric:
+            ```python
+            import bitbully as bb
+
+            # Central symmetry: one token in each outer column and in the center.
+            board = bb.Board([1, 3, 5])
+
+            mirrored = board.mirror()
+
+            # The mirrored position is identical to the original.
+            assert board == mirrored
+            assert hash(board) == hash(mirrored)
+
+            print(board)
+            ```
+             Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  X  _  O  _  X  _
+            ```
         """
         new_board = Board()
         new_board._board = self._board.mirror()
