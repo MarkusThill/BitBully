@@ -277,7 +277,7 @@ class Board:
     def __ne__(self, value: object) -> bool:
         """Checks inequality between two Board instances.
 
-        See the documentation for [`src.bitbully.Board.__eq__`][src.bitbully.Board.__eq__] for details.
+        See the documentation for [`bitbully.Board.__eq__`][src.bitbully.Board.__eq__] for details.
 
         Args:
             value (object): The other Board instance to compare against.
@@ -290,6 +290,13 @@ class Board:
     def __repr__(self) -> str:
         """Returns a string representation of the Board instance."""
         return f"{self._board}"
+
+    def __str__(self) -> str:
+        """Return a human-readable ASCII representation (same as to_string()).
+
+        See the documentation for [`bitbully.Board.to_string`][src.bitbully.Board.to_string] for details.
+        """
+        return self.to_string()
 
     def all_positions(self, up_to_n_ply: int, exactly_n: bool) -> list[Board]:
         """Finds all positions on the board up to a certain ply.
@@ -809,8 +816,47 @@ class Board:
     def moves_left(self) -> int:
         """Returns the number of moves left until the board is full.
 
+        This is simply the number of *empty* cells remaining on the 7x6 grid.
+        On an empty board there are 42 free cells, so:
+
+        - At the start of the game: `moves_left() == 42`
+        - After `n` valid moves: `moves_left() == 42 - n`
+        - On a completely full board: `moves_left() == 0`
+
+        This method is equivalent to:
+        ```
+        42 - board.count_tokens()
+        ```
+        but implemented efficiently in the underlying C++ core.
+
         Returns:
             int: The number of moves left (0-42).
+
+        Example:
+            Moves left on an empty board:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()  # No tokens placed yet.
+            assert board.moves_left() == 42
+            assert board.count_tokens() == 0
+            ```
+
+        Example:
+            Relation to the number of moves played:
+            ```python
+            import bitbully as bb
+
+            # Play five moves in various columns.
+            moves = [3, 3, 1, 4, 6]
+            board = bb.Board()
+            assert board.play(moves)
+
+            # Five tokens have been placed, so 42 - 5 = 37 moves remain.
+            assert board.count_tokens() == 5
+            assert board.moves_left() == 37
+            assert board.moves_left() + board.count_tokens() == 42
+            ```
         """
         return self._board.movesLeft()
 
@@ -1046,40 +1092,587 @@ class Board:
         moves: list[int] = [int(v) for v in cast(Sequence[Any], board)]
         return self._board.setBoard(moves)
 
-    def to_array(self) -> list[list[int]]:
+    def to_array(self, column_major_layout: bool = True) -> list[list[int]]:
         """Returns the board state as a 2D array (list of lists).
 
+        This layout is convenient for printing, serialization, or converting
+        to a NumPy array for further analysis.
+
+        Args:
+            column_major_layout (bool): Use column-major format if set to `True`,
+                otherwise the row-major-layout is used.
+
         Returns:
-            list[list[int]]: A 2D list representing the board state.
+            list[list[int]]: A 7x6 2D list representing the board state.
+
+        Raises:
+            NotImplementedError: If `column_major_layout` is set to `False`.
+
+        Example:
+            === "Column-major Format:"
+
+                The returned array is in **column-major** format with shape `7 x 6`
+                (`[column][row]`):
+
+                - There are 7 inner lists, one for each column of the board.
+                - Each inner list has 6 integers, one for each row.
+                - Row index `0` corresponds to the **bottom row**,
+                row index `5` to the **top row**.
+                - Convention:
+                - `0` -> empty cell
+                - `1` -> Player 1 token (yellow, X)
+                - `2` -> Player 2 token (red, O)
+
+                ```python
+                import bitbully as bb
+                from pprint import pprint
+
+                # Create a position from a move sequence.
+                board = bb.Board("33333111")
+
+                # Extract the board as a 2D list (rows x columns).
+                arr = board.to_array()
+
+                # Reconstruct the same position from the 2D array.
+                board2 = bb.Board(arr)
+
+                # Both boards represent the same position.
+                assert board == board2
+                assert board.to_array() == board2.to_array()
+
+                # print ther result of `board.to_array()`:
+                pprint(board.to_array())
+                ```
+                Expected output:
+                ```text
+                [[0, 0, 0, 0, 0, 0],
+                [2, 1, 2, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0],
+                [1, 2, 1, 2, 1, 0],
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0]]
+                ```
+
+            === "Row-major Format:"
+
+                ``` markdown
+                TODO: This is not supported yet
+                ```
         """
+        if not column_major_layout:
+            # TODO: Implement in C++
+            raise NotImplementedError("Row-major Layout is yet to be implemented")
+
         return self._board.toArray()
 
     def to_string(self) -> str:
-        """Returns a string representation of the board to print on the command line.
+        """Returns a human-readable ASCII representation of the board.
+
+        The returned string shows the **current board position** as a 6x7 grid,
+        laid out exactly as it would appear when you print a `Board` instance:
+
+        - 6 lines of text, one per row (top row first, bottom row last)
+        - 7 entries per row, separated by two spaces
+        - `_` represents an empty cell
+        - `X` represents a token from Player 1 (yellow)
+        - `O` represents a token from Player 2 (red)
+
+        This is useful when you want to explicitly capture the board as a string
+        (e.g., for logging, debugging, or embedding into error messages) instead
+        of relying on `print(board)` or `repr(board)`.
 
         Returns:
-            str: A string representing the board (e.g., "002233...").
+            str: A multi-line ASCII string representing the board state.
+
+        Example:
+            Using `to_string()` on an empty board:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board("33333111")
+
+            s = board.to_string()
+            print(s)
+            ```
+
+            Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  O  _  X  _  _  _
+            _  X  _  O  _  _  _
+            _  O  _  X  _  _  _
+            ```
         """
         return self._board.toString()
 
     def uid(self) -> int:
         """Returns a unique identifier for the current board state.
 
+        The UID is a deterministic integer computed from the internal bitboard
+        representation of the position. It is **stable**, **position-based**, and
+        uniquely tied to the exact token layout **and** the side to move.
+
+        Key properties:
+
+        - Boards with the **same** configuration (tokens + player to move) always
+          produce the **same** UID.
+        - Any change to the board (e.g., after a legal move) will almost always
+          result in a **different** UID.
+        - Copies of a board created via the copy constructor or `Board.copy()`
+          naturally share the same UID as long as their states remain identical.
+
+        Unlike `__hash__()`, the UID is not optimized for hash-table dispersion.
+        For use in transposition tables, caching, or dictionary/set keys,
+        prefer `__hash__()` since it provides a higher-quality hash distribution.
+
         Returns:
             int: A unique integer identifier for the board state.
+
+        Example:
+            UID is an integer and not None:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()
+            u = board.uid()
+
+            assert isinstance(u, int)
+            # Empty board has a well-defined, stable UID.
+            assert board.uid() == u
+            ```
+
+        Example:
+            UID changes when the position changes:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()
+            uid_before = board.uid()
+
+            assert board.play(1)  # Make a move in column 1.
+
+            uid_after = board.uid()
+            assert uid_after != uid_before
+            ```
+
+        Example:
+            Copies share the same UID while they are identical:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board("0123")
+
+            # Create an independent copy of the same position.
+            board_copy = board.copy()
+
+            assert board is not board_copy  # Different objects
+            assert board == board_copy  # Same position
+            assert board.uid() == board_copy.uid()  # Same UID
+
+            # After modifying the copy, they diverge.
+            assert board_copy.play(4)
+            assert board != board_copy
+            assert board.uid() != board_copy.uid()
+            ```
+
+        Example:
+            Different move sequences leading to the same position share the same UID:
+            ```python
+            import bitbully as bb
+
+            board_1 = bb.Board("01234444")
+            board_2 = bb.Board("44440123")
+
+            assert board_1 is not board_2  # Different objects
+            assert board_1 == board_2  # Same position
+            assert board_1.uid() == board_2.uid()  # Same UID
+
+            # After modifying the copy, they diverge.
+            assert board_1.play(4)
+            assert board_1 != board_2
+            assert board_1.uid() != board_2.uid()
+            ```
         """
         return self._board.uid()
 
-    @staticmethod
-    def random_board(n_ply: int, forbid_direct_win: bool) -> None:
-        """Generates a random board state by playing a specified number of random moves.
+    @property
+    def current_player(self) -> int:
+        """Returns the player whose turn it is to move.
+
+        The current player is derived from the **parity** of the number of tokens
+        on the board:
+
+        - Player 1 (yellow, ``X``) moves first on an empty board.
+        - After an even number of moves → it is Player 1's turn.
+        - After an odd  number of moves → it is Player 2's turn.
+
+        Returns:
+            int:
+                The player to move:
+
+                - ``1`` → Player 1 (yellow, ``X``)
+                - ``2`` → Player 2 (red, ``O``)
+
+        Example:
+            ```python
+            import bitbully as bb
+
+            # Empty board → Player 1 starts.
+            board = bb.Board()
+            assert board.current_player == 1
+            assert board.count_tokens() == 0
+
+            # After one move, it's Player 2's turn.
+            assert board.play(3)
+            assert board.count_tokens() == 1
+            assert board.current_player == 2
+
+            # After a second move, it's again Player 1's turn.
+            assert board.play(4)
+            assert board.count_tokens() == 2
+            assert board.current_player == 1
+            ```
+        """
+        # Empty board: Player 1
+        return 1 if self.count_tokens() % 2 == 0 else 2
+
+    def is_full(self) -> bool:
+        """Checks whether the board has any empty cells left.
+
+        A Connect Four board has 42 cells in total (7 columns x 6 rows).
+        This method returns ``True`` if **all** cells are occupied, i.e.
+        when  [`bitbully.Board.moves_left`][src.bitbully.Board.moves_left] returns ``0``.
+
+        Returns:
+            bool:
+                ``True`` if the board is completely full
+                (no more legal moves possible), otherwise ``False``.
+
+        Example:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()
+            assert not board.is_full()
+            assert board.moves_left() == 42
+            assert board.count_tokens() == 0
+
+            # Fill the board column by column.
+            for _ in range(6):
+                assert board.play("0123456")  # one token per column, per row
+
+            # Now every cell is occupied.
+            assert board.is_full()
+            assert board.moves_left() == 0
+            assert board.count_tokens() == 42
+            ```
+        """
+        return self.moves_left() == 0
+
+    def is_game_over(self) -> bool:
+        """Checks whether the game has ended (win or draw).
+
+        A game of Connect Four is considered **over** if:
+
+        - One of the players has a winning position
+          (see [`bitbully.Board.has_win`][src.bitbully.Board.has_win]), **or**
+        - The board is completely full and no further moves can be played
+          (see [`bitbully.Board.is_full`][src.bitbully.Board.is_full]).
+
+        This method does **not** indicate *who* won; for that, use
+        [`bitbully.Board.winner`][src.bitbully.Board.winner].
+
+        Returns:
+            bool:
+                ``True`` if the game is over (win or draw), otherwise ``False``.
+
+        Example:
+            Game over by a win:
+            ```python
+            import bitbully as bb
+
+            # Player 1 (X) wins horizontally on the bottom row.
+            board = bb.Board()
+            assert board.play("0101010")
+
+            assert board.has_win()
+            assert board.is_game_over()
+            assert board.winner() == 1
+            ```
+
+        Example:
+            Game over by a draw (full board, no winner):
+            ```python
+            import bitbully as bb
+
+            board, _ = bb.Board.random_board(42, forbid_direct_win=False)
+
+            assert board.is_full()
+            assert not board.has_win()
+            assert board.is_game_over()
+            assert board.winner() is None
+            ```
+        """
+        return self.has_win() or self.is_full()
+
+    def winner(self) -> int | None:
+        """Returns the winning player, if the game has been won.
+
+        This helper interprets the current board under the assumption that
+        [`bitbully.Board.has_win`][src.bitbully.Board.has_win] indicates **the last move** created a
+        winning configuration. In that case, the winner is the *previous* player:
+
+        - If it is currently Player 1's turn, then Player 2 must have just won.
+        - If it is currently Player 2's turn, then Player 1 must have just won.
+
+        If there is no winner (i.e. [`bitbully.Board.has_win`][src.bitbully.Board.has_win] is ``False``),
+        this method returns ``None``.
+
+        Returns:
+            int | None:
+                The winning player, or ``None`` if there is no winner.
+
+                - ``1`` → Player 1 (yellow, ``X``)
+                - ``2`` → Player 2 (red, ``O``)
+                - ``None`` → No winner (game still ongoing or draw)
+
+        Example:
+            Detecting a winner:
+            ```python
+            import bitbully as bb
+
+            # Player 1 wins with a horizontal line at the bottom.
+            board = bb.Board()
+            assert board.play("1122334")
+
+            assert board.has_win()
+            assert board.is_game_over()
+
+            # It is now Player 2's turn to move next...
+            assert board.current_player == 2
+
+            # ...which implies Player 1 must be the winner.
+            assert board.winner() == 1
+            ```
+
+        Example:
+            No winner yet:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()
+            assert board.play("112233")  # no connect-four yet
+
+            assert not board.has_win()
+            assert not board.is_game_over()
+            assert board.winner() is None
+            ```
+        """
+        if not self.has_win():
+            return None
+        # Previous player = opposite of current_player
+        return 2 if self.current_player == 1 else 1
+
+    @classmethod
+    def from_moves(cls, moves: Sequence[int] | str) -> Board:
+        """Creates a board by replaying a sequence of moves from the empty position.
+
+        This is a convenience constructor around [`bitbully.Board.play`][src.bitbully.Board.play].
+        It starts from an empty board and applies the given move sequence, assuming
+        it is **legal** (no out-of-range columns, no moves in full columns, etc.).
 
         Args:
-            n_ply (int): The number of random moves to play on the board.
-            forbid_direct_win (bool): If True, the board will have a state that would result in an immediate win.
-        """
-        bitbully_core.BoardCore.randomBoard(n_ply, forbid_direct_win)
+            moves (Sequence[int] | str):
+                The move sequence to replay from the starting position. Accepts:
 
-    def reset(self) -> None:
-        """Resets the board to an empty state."""
-        self._board = bitbully_core.BoardCore()
+                - A sequence of integers (e.g. ``[3, 3, 3, 1]``)
+                - A string of digits (e.g. ``"3331"``)
+
+                Each value represents a column index (0-6). Players alternate
+                automatically between moves.
+
+        Returns:
+            Board:
+                A new `Board` instance representing the final position
+                after all moves have been applied.
+
+        Example:
+            ```python
+            import bitbully as bb
+
+            # Create a position directly from a compact move string.
+            board = bb.Board.from_moves("33333111")
+
+            # Equivalent to:
+            # board = bb.Board()
+            # assert board.play("33333111")
+
+            print(board)
+            assert board.count_tokens() == 8
+            assert not board.has_win()
+            ```
+        """
+        board = cls()
+        assert board.play(moves)
+        return board
+
+    @classmethod
+    def from_array(cls, arr: Sequence[Sequence[int]]) -> Board:
+        """Creates a board directly from a 2D array representation.
+
+        This is a convenience wrapper around the main constructor
+        [`bitbully.Board.__init__`][src.bitbully.Board.__init__]
+        and accepts the same array formats:
+
+        - **Row-major**: 6 x 7 (``[row][column]``), top row first.
+        - **Column-major**: 7 x 6 (``[column][row]``), left column first.
+
+        Values must follow the usual convention:
+
+        - ``0`` → empty cell
+        - ``1`` → Player 1 token (yellow, ``X``)
+        - ``2`` → Player 2 token (red, ``O``)
+
+        Args:
+            arr (Sequence[Sequence[int]]):
+                A 2D array describing the board state, either in row-major or
+                column-major layout. See the examples in
+                [`bitbully.Board.__init__`][src.bitbully.Board.__init__] for details.
+
+        Returns:
+            Board:
+                A new `Board` instance representing the given layout.
+
+        Example:
+            Using a 6 x 7 row-major layout:
+            ```python
+            import bitbully as bb
+
+            board_array = [
+                [0, 0, 0, 0, 0, 0, 0],  # Row 5 (top)
+                [0, 0, 0, 1, 0, 0, 0],  # Row 4
+                [0, 0, 0, 2, 0, 0, 0],  # Row 3
+                [0, 2, 0, 1, 0, 0, 0],  # Row 2
+                [0, 1, 0, 2, 0, 0, 0],  # Row 1
+                [0, 2, 0, 1, 0, 0, 0],  # Row 0 (bottom)
+            ]
+
+            board = bb.Board.from_array(board_array)
+            print(board)
+            ```
+
+        Example:
+            Using a 7 x 6 column-major layout:
+            ```python
+            import bitbully as bb
+
+            board_array = [
+                [0, 0, 0, 0, 0, 0],  # Column 0
+                [2, 1, 2, 1, 0, 0],  # Column 1
+                [0, 0, 0, 0, 0, 0],  # Column 2
+                [1, 2, 1, 2, 1, 0],  # Column 3
+                [0, 0, 0, 0, 0, 0],  # Column 4
+                [2, 1, 2, 0, 0, 0],  # Column 5
+                [0, 0, 0, 0, 0, 0],  # Column 6
+            ]
+
+            board = bb.Board.from_array(board_array)
+
+            # Round-trip via to_array:
+            assert board.to_array() == board_array
+            ```
+        """
+        return cls(arr)
+
+    @staticmethod
+    def random_board(n_ply: int, forbid_direct_win: bool) -> tuple[Board, list[int]]:
+        """Generates a random board state by playing a specified number of random moves.
+
+        If ``forbid_direct_win`` is ``True``, the generated position is guaranteed
+        **not** to contain an immediate winning move for the player to move.
+
+        Args:
+            n_ply (int):
+                Number of random moves to simulate (0-42).
+            forbid_direct_win (bool):
+                If ``True``, ensures the resulting board has **no immediate winning move**.
+
+        Returns:
+            tuple[Board, list[int]]:
+                A pair ``(board, moves)`` where ``board`` is the generated position
+                and ``moves`` are the exact random moves performed.
+
+        Raises:
+            ValueError: If `n_ply` is outside the valid range [0, 42].
+
+        Example:
+            Basic usage:
+            ```python
+            import bitbully as bb
+
+            board, moves = bb.Board.random_board(10, forbid_direct_win=True)
+
+            print("Moves:", moves)
+            print("Board:")
+            print(board)
+
+            # The move list must match the requested ply.
+            assert len(moves) == 10
+
+            # No immediate winning move when forbid_direct_win=True.
+            assert not board.can_win_next()
+            ```
+
+        Example:
+            Using random boards in tests or simulations:
+            ```python
+            import bitbully as bb
+
+            # Generate 50 random 10-ply positions.
+            for _ in range(50):
+                board, moves = bb.Board.random_board(10, forbid_direct_win=True)
+                assert len(moves) == 10
+                assert not board.has_win()  # Game should not be over
+                assert board.count_tokens() == 10  # All generated boards contain exactly 10 tokens
+                assert not board.can_win_next()  # Since `forbid_direct_win=True`, no immediate threat
+            ```
+
+        Example:
+            Reconstructing the board manually from the move list:
+            ```python
+            import bitbully as bb
+
+            b1, moves = bb.Board.random_board(8, forbid_direct_win=True)
+
+            # Recreate the board using the move sequence:
+            b2 = bb.Board(moves)
+
+            assert b1 == b2
+            assert b1.to_string() == b2.to_string()
+            assert b1.uid() == b2.uid()
+            ```
+
+        Example:
+            Ensure randomness by generating many distinct sequences:
+            ```python
+            import bitbully as bb
+
+            seen = set()
+            for _ in range(20):
+                _, moves = bb.Board.random_board(5, False)
+                seen.add(tuple(moves))
+
+            # Very likely to see more than one unique sequence.
+            assert len(seen) > 1
+            ```
+        """
+        if not 0 <= n_ply <= 42:
+            raise ValueError(f"n_ply must be between 0 and 42 (inclusive), got {n_ply}.")
+        board_, moves = bitbully_core.BoardCore.randomBoard(n_ply, forbid_direct_win)
+        board = Board()
+        board._board = board_
+
+        return board, moves

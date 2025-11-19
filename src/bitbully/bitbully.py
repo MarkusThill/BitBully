@@ -1,4 +1,4 @@
-"""BitBully: A Connect Four AI agent with opening book support."""
+"""This module provides the Connect Four AI agent "BitBully" with opening book support."""
 
 # from importlib.resources.abc import Traversable
 from typing import Literal

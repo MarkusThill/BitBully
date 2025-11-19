@@ -11,8 +11,10 @@ nav:
   - Home: index.md
   - Getting Started: getting_started.md
   - User Guide: user_guide.md
-  - API Reference:
-      - bitbully: python.md
+  - BitBully API Reference:
+      - bitbully: bitbully.md
+      - board: board.md
+      - gui_c4: gui_c4.md
   - Develop: develop.md
   - C++ Docs: cpp/html/index.html  # Link to Doxygen HTML docs
 
