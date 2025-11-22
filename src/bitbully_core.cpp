@@ -37,8 +37,6 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("resetNodeCounter", &BitBully::BitBully::resetNodeCounter,
            "Reset the node counter")
       .def("isBookLoaded", &BitBully::BitBully::isBookLoaded,
-           "Check, if opening book is loaded")
-      .def("isBookLoaded", &BitBully::BitBully::isBookLoaded,
            "Check, if opening book is loaded");
 
   // Expose the Board class
