@@ -299,18 +299,78 @@ class Board:
         return self.to_string()
 
     def all_positions(self, up_to_n_ply: int, exactly_n: bool) -> list[Board]:
-        """Finds all positions on the board up to a certain ply.
+        """Find all positions reachable from the current position up to a given ply.
+
+        This is a high-level wrapper around
+        `bitbully_core.BoardCore.allPositions`.
+
+        Starting from the **current** board, it generates all positions that can be
+        reached by playing additional moves such that the resulting position has:
+
+        - At most ``up_to_n_ply`` tokens on the board, if ``exactly_n`` is ``False``.
+        - Exactly ``up_to_n_ply`` tokens on the board, if ``exactly_n`` is ``True``.
+
+        Note:
+            The number of tokens already present in the current position is taken
+            into account. If ``up_to_n_ply`` is smaller than
+            ``self.count_tokens()``, the result is typically empty.
+
+            This function can grow combinatorially with ``up_to_n_ply`` and the
+            current position, so use it with care for large depths.
 
         Args:
-            up_to_n_ply (int): The maximum ply depth to search.
-            exactly_n (bool): If True, only returns positions at exactly N ply.
+            up_to_n_ply (int):
+                The maximum total number of tokens (ply) for generated positions.
+                Must be between 0 and 42 (inclusive).
+            exactly_n (bool):
+                If ``True``, only positions with exactly ``up_to_n_ply`` tokens
+                are returned. If ``False``, all positions with a token count
+                between the current number of tokens and ``up_to_n_ply`` are
+                included.
 
         Returns:
-            list[Board]: A list of Board instances representing all positions.
+            list[Board]: A list of :class:`Board` instances representing all
+            reachable positions that satisfy the ply constraint.
+
+        Raises:
+            ValueError: If ``up_to_n_ply`` is outside the range ``[0, 42]``.
+
+        Example:
+            Compute all positions at exactly 3 ply from the empty board:
+
+            ```python
+            import bitbully as bb
+
+            # Start from an empty board.
+            board = bb.Board()
+
+            # Generate all positions that contain exactly 3 tokens.
+            positions = board.all_positions(3, exactly_n=True)
+
+            # According to OEIS A212693, there are exactly 238 distinct
+            # reachable positions with 3 played moves in standard Connect-4.
+            assert len(positions) == 238
+            ```
+
+            Reference:
+                - Number of distinct positions at ply *n*:
+                  https://oeis.org/A212693
+
         """
-        # TODO: Implement this method properly. Need to convert BoardCore instances to Board.
-        # return self._board.all_positions(up_to_n_ply, exactly_n)
-        return [Board()]
+        if not 0 <= up_to_n_ply <= 42:
+            raise ValueError(f"up_to_n_ply must be between 0 and 42 (inclusive), got {up_to_n_ply}.")
+
+        # Delegate to the C++ core, which returns a list of BoardCore objects.
+        core_positions = self._board.allPositions(up_to_n_ply, exactly_n)
+
+        # Wrap each BoardCore in a high-level Board instance.
+        positions: list[Board] = []
+        for core_board in core_positions:
+            b = Board()  # start with an empty high-level Board
+            b._board = core_board  # replace its internal BoardCore
+            positions.append(b)
+
+        return positions
 
     def can_win_next(self, move: int | None = None) -> bool:
         """Checks if the current player can win in the next move.
@@ -947,6 +1007,47 @@ class Board:
         # From here on, move is a Sequence[...] (but not str or int).
         move_list: list[int] = [int(v) for v in cast(Sequence[Any], move)]
         return self._board.play(move_list)
+
+    def play_on_copy(self, move: int) -> Board:
+        """Return a new board with the given move applied, leaving the current board unchanged.
+
+        Args:
+            move (int):
+                The column index (0-6) in which to play the move.
+
+        Returns:
+            Board:
+                A new Board instance representing the position after the move.
+
+        Raises:
+            ValueError: If the move is illegal (e.g. column is full or out of range).
+
+        Example:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board("333")  # Some existing position
+            new_board = board.play_on_copy(4)
+
+            # The original board is unchanged.
+            assert board.count_tokens() == 3
+
+            # The returned board includes the new move.
+            assert new_board.count_tokens() == 4
+            assert new_board != board
+            ```
+        """
+        # Delegate to C++ (this returns a BoardCore instance)
+        core_new = self._board.playMoveOnCopy(move)
+
+        if core_new is None:
+            # C++ signals illegal move by returning a null board
+            raise ValueError(f"Illegal move: column {move}")
+
+        # Wrap in a new high-level Board object
+        new_board = Board()
+        new_board._board = core_new
+        return new_board
 
     def reset_board(self, board: Sequence[int] | Sequence[Sequence[int]] | str | None = None) -> bool:
         """Resets the board or sets (overrides) the board to a specific state.
@@ -1676,3 +1777,55 @@ class Board:
         board._board = board_
 
         return board, moves
+
+    def to_huffman(self) -> int:
+        """Encode the current board position into a Huffman-compressed byte sequence.
+
+        This is a high-level wrapper around
+        `bitbully_core.BoardCore.toHuffman`. The returned int encodes the
+        exact token layout **and** the side to move using the same format as
+        the BitBully opening databases.
+
+        The encoding is:
+
+        - Deterministic: the same position always yields the same byte sequence.
+        - Compact: suitable for storage (of positions with little number of tokens),
+          or lookups in the BitBully database format.
+
+        Returns:
+            int: A Huffman-compressed representation of the current board
+            state.
+
+        Raises:
+            NotImplementedError:
+                If the position does not contain exactly 8 or 12 tokens, as the
+                  Huffman encoding is only defined for these cases.
+
+        Example:
+            Encode a position and verify that equivalent positions have the
+            same Huffman code:
+
+            ```python
+            import bitbully as bb
+
+            # Two different move sequences leading to the same final position.
+            b1 = bb.Board("01234444")
+            b2 = bb.Board("44440123")
+
+            h1 = b1.to_huffman()
+            h2 = b2.to_huffman()
+
+            # Huffman encoding is purely position-based.
+            assert h1 == h2
+
+            print(f"Huffman code: {h1}")
+            ```
+        Expected output:
+            ```text
+            Huffman code: 10120112
+            ```
+        """
+        token_count = self.count_tokens()
+        if token_count != 8 and token_count != 12:
+            raise NotImplementedError("to_huffman() is only implemented for positions with 8 or 12 tokens.")
+        return self._board.toHuffman()
