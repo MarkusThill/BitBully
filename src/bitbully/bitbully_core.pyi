@@ -103,6 +103,9 @@ class BoardCore:
     def generateNonLosingMoves(self) -> int:
         """Generate non-losing moves"""
 
+    def generateMovesAsVector(self) -> list[int]:
+        """Generate possible moves as a vector of column indices"""
+
     def hasWin(self) -> bool:
         """Check, if the player who performed the last move has a winning position (4 in a row)."""
 

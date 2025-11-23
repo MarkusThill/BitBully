@@ -67,6 +67,10 @@ PYBIND11_MODULE(bitbully_core, m) {
            "Play a move on a copy of the board and return the new board",
            py::arg("mv"))
       .def("generateMoves", &B::generateMoves, "Generate possible moves")
+      .def("generateNonLosingMoves", &B::generateNonLosingMoves,
+           "Generate non-losing moves")
+      .def("generateMovesAsVector", &B::generateMovesAsVector,
+           "Generate possible moves as a vector of column indices")
       .def("isLegalMove", &B::isLegalMove, "Check if a move is legal",
            py::arg("column"))
       .def("toString", &B::toString,
@@ -84,8 +88,6 @@ PYBIND11_MODULE(bitbully_core, m) {
            py::arg("upToNPly"), py::arg("exactlyN"))
       .def("findThreats", &B::findThreats, "Find threats on the board",
            py::arg("moves"))
-      .def("generateNonLosingMoves", &B::generateNonLosingMoves,
-           "Generate non-losing moves")
       .def("doubleThreat", &B::doubleThreat, "Find double threats",
            py::arg("moves"))
       .def("toArray", &B::toArray,

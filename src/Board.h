@@ -35,6 +35,34 @@ c = (T)(v * ((T)~(T)0/255)) >> (sizeof(T) - 1) * CHAR_BIT; // count
 #endif
 #endif
 
+inline int ctz_u64(uint64_t x) {
+#if defined(_MSC_VER)
+  unsigned long index;
+  _BitScanForward64(&index, x);
+  return static_cast<int>(index);
+#elif defined(__GNUC__) || defined(__clang__)
+  return __builtin_ctzll(x);
+#else
+  int idx = 0;
+  while ((x & 1u) == 0u) {
+    x >>= 1u;
+    ++idx;
+  }
+  return idx;
+#endif
+}
+
+inline std::vector<int> bits_set(uint64_t x) {
+  std::vector<int> result;
+  result.reserve(uint64_t_popcnt(x));
+  while (x) {
+    int bit = ctz_u64(x);
+    result.push_back(bit);
+    x &= x - UINT64_C(1);
+  }
+  return result;
+}
+
 namespace BitBully {
 
 #ifndef CHAR_BIT
@@ -96,6 +124,8 @@ class Board {
   }
 
   [[nodiscard]] TBitBoard generateMoves() const;
+
+  [[nodiscard]] std::vector<int> generateMovesAsVector() const;
 
   [[nodiscard]] static constexpr int popCountBoard(uint64_t x) {
     int count = 0;

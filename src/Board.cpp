@@ -408,6 +408,14 @@ Board::TBitBoard Board::generateMoves() const {
   return (m_bAllTokens + BB_BOTTOM_ROW) & BB_ALL_LEGAL_TOKENS;
 }
 
+std::vector<int> Board::generateMovesAsVector() const {
+  TBitBoard mvBits = generateMoves();
+  auto all_bits = bits_set(mvBits);
+  std::transform(all_bits.begin(), all_bits.end(), all_bits.begin(),
+                 [](int value) { return value / COLUMN_BIT_OFFSET; });
+  return all_bits;
+}
+
 Board::TBoardArray Board::toArray() const {
   TBoardArray board{{0}};
   const auto activePlayer = (m_movesLeft & 1 ? P_RED : P_YELLOW);
