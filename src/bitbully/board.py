@@ -583,20 +583,12 @@ class Board:
         """
         return self._board.countTokens()
 
-    def get_legal_moves(self) -> list[int]:
+    def legal_moves(self, non_losing: bool = False) -> list[int]:
         """Returns a list of legal moves (columns) that can be played.
 
-        Returns:
-            list[int]: A list of column indices (0-6) where a move can be played.
-
-        Raises:
-            NotImplementedError: If the method is not implemented yet.
-        """
-        # TODO: Implement in C++?
-        raise NotImplementedError("get_legal_moves is not implemented yet.")
-
-    def get_non_losing_moves(self) -> list[int]:
-        """Returns a list of legal moves (columns) that can be played and which do not result in an immediate loss.
+        Args:
+            non_losing (bool): If True, only return moves that do not allow the
+              opponent to win immediately.
 
         Returns:
             list[int]: A list of column indices (0-6) where a move can be played.
@@ -605,7 +597,7 @@ class Board:
             NotImplementedError: If the method is not implemented yet.
         """
         # TODO: Implement in C++?
-        raise NotImplementedError("get_non_losing_moves is not implemented yet.")
+        raise NotImplementedError("legal_moves is not implemented yet.")
 
     def has_win(self) -> bool:
         """Checks if the current player has a winning position.
