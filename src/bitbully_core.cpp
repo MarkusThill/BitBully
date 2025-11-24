@@ -70,7 +70,8 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("generateNonLosingMoves", &B::generateNonLosingMoves,
            "Generate non-losing moves")
       .def("legalMoves", &B::legalMoves,
-           "Generate possible moves as a vector of column indices")
+           "Generate possible moves as a vector of column indices",
+           py::arg("nonLosing"), py::arg("orderMoves"))
       .def("isLegalMove", &B::isLegalMove, "Check if a move is legal",
            py::arg("column"))
       .def("toString", &B::toString,

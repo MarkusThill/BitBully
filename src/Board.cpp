@@ -408,12 +408,36 @@ Board::TBitBoard Board::legalMovesMask() const {
   return (m_bAllTokens + BB_BOTTOM_ROW) & BB_ALL_LEGAL_TOKENS;
 }
 
-std::vector<int> Board::legalMoves() const {
-  TBitBoard mvBits = legalMovesMask();
-  auto all_bits = bits_set(mvBits);
-  std::transform(all_bits.begin(), all_bits.end(), all_bits.begin(),
-                 [](int value) { return value / COLUMN_BIT_OFFSET; });
-  return all_bits;
+// In Board.cpp
+
+std::vector<int> Board::orderedLegalMovesFromMask(TBitBoard mvBits) const {
+  auto sortedMoves = sortMoves(mvBits);  // MoveList
+
+  std::vector<int> cols;
+  cols.reserve(sortedMoves.getSize());
+
+  while (auto mv = sortedMoves.pop()) {
+    int bit = ctz_u64(mv);                    // bit index of the move
+    cols.push_back(bit / COLUMN_BIT_OFFSET);  // convert to column index
+  }
+
+  return cols;
+}
+
+std::vector<int> Board::legalMovesFromMask(TBitBoard mvBits) const {
+  auto bits = bits_set(mvBits);  // bit indices of legal moves
+
+  std::transform(bits.begin(), bits.end(), bits.begin(),
+                 [](int bit) { return bit / COLUMN_BIT_OFFSET; });
+
+  return bits;  // now contains column indices
+}
+
+std::vector<int> Board::legalMoves(bool nonLosing, bool orderMoves) const {
+  // TODO: Google Unit tests are missing!
+  TBitBoard mvBits = nonLosing ? generateNonLosingMoves() : legalMovesMask();
+  return orderMoves ? orderedLegalMovesFromMask(mvBits)
+                    : legalMovesFromMask(mvBits);
 }
 
 Board::TBoardArray Board::toArray() const {

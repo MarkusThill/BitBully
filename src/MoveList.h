@@ -26,6 +26,8 @@ class MoveList {
     return size ? m_arrayPrioQueue[--size].move : UINT64_C(0);
   }
 
+  unsigned int getSize() const { return size; }
+
   void reset() { size = 0; }
 
   MoveList() : size{0}, m_arrayPrioQueue{} {}

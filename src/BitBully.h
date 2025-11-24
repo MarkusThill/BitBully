@@ -21,7 +21,7 @@ class BitBully {
   std::unique_ptr<OpeningBook> m_openingBook;
 
  public:
-  MoveList sortMoves(Board::TBitBoard moves);
+  // MoveList sortMoves(Board::TBitBoard moves); // implemented in Board.cpp
 
   explicit BitBully(const std::filesystem::path& bookPath = "")
       : nodeCounter{0},

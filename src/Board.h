@@ -125,7 +125,8 @@ class Board {
 
   [[nodiscard]] TBitBoard legalMovesMask() const;
 
-  [[nodiscard]] std::vector<int> legalMoves() const;
+  [[nodiscard]] std::vector<int> legalMoves(bool nonLosing,
+                                            bool orderMoves) const;
 
   [[nodiscard]] static constexpr int popCountBoard(uint64_t x) {
     int count = 0;
@@ -503,6 +504,10 @@ class Board {
   }
 
   static TBoardArray transpose(const TBoardArrayT& board);
+
+  std::vector<int> orderedLegalMovesFromMask(TBitBoard mvBits) const;
+
+  std::vector<int> legalMovesFromMask(TBitBoard mvBits) const;
 };
 
 }  // namespace BitBully
