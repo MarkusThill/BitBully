@@ -15,6 +15,7 @@ nav:
       - bitbully: bitbully.md
       - board: board.md
       - gui_c4: gui_c4.md
+      - bitbully_core: bitbully_core.md
   - Develop: develop.md
   - C++ Docs: cpp/html/index.html  # Link to Doxygen HTML docs
 
