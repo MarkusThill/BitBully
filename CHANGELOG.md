@@ -1,3 +1,15 @@
+## v0.0.59-a0 (2025-11-24)
+
+### Fix
+
+- allow to order and generate non-losing moves
+- renamed a clunky function name
+- add board method to generate valid moves as column indexes
+- merged 2 similar functions with args switch
+- added several missing board functions
+- removed redundant binding
+- added more functions to the board class and more docs
+
 ## v0.0.58 (2025-11-16)
 
 ## v0.0.58-a1 (2025-11-16)
