@@ -97,13 +97,13 @@ class BoardCore:
     def findThreats(self, moves: int) -> int:
         """Find threats on the board"""
 
-    def generateMoves(self) -> int:
-        """Generate possible moves"""
+    def legalMovesMask(self) -> int:
+        """Generate possible moves as bitboard"""
 
     def generateNonLosingMoves(self) -> int:
         """Generate non-losing moves"""
 
-    def generateMovesAsVector(self) -> list[int]:
+    def legalMoves(self) -> list[int]:
         """Generate possible moves as a vector of column indices"""
 
     def hasWin(self) -> bool:

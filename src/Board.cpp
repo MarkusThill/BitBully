@@ -364,7 +364,7 @@ std::pair<unsigned long, unsigned long> Board::findOddEvenThreats() {
   int curNumEvenThreats = uint64_t_popcnt(evenThreats);
   auto threatOddMoves = UINT64_C(0);
   auto threatEvenMoves = UINT64_C(0);
-  auto moves = generateMoves();
+  auto moves = legalMovesMask();
   while (moves) {
     auto mvMask = moves - UINT64_C(1);
     auto mv = ~mvMask & moves;
@@ -404,12 +404,12 @@ bool Board::canWin(int column) const {
           (m_bAllTokens + BB_BOTTOM_ROW) & getColumnMask(column));
 }
 
-Board::TBitBoard Board::generateMoves() const {
+Board::TBitBoard Board::legalMovesMask() const {
   return (m_bAllTokens + BB_BOTTOM_ROW) & BB_ALL_LEGAL_TOKENS;
 }
 
-std::vector<int> Board::generateMovesAsVector() const {
-  TBitBoard mvBits = generateMoves();
+std::vector<int> Board::legalMoves() const {
+  TBitBoard mvBits = legalMovesMask();
   auto all_bits = bits_set(mvBits);
   std::transform(all_bits.begin(), all_bits.end(), all_bits.begin(),
                  [](int value) { return value / COLUMN_BIT_OFFSET; });

@@ -123,9 +123,9 @@ class Board {
     return b;
   }
 
-  [[nodiscard]] TBitBoard generateMoves() const;
+  [[nodiscard]] TBitBoard legalMovesMask() const;
 
-  [[nodiscard]] std::vector<int> generateMovesAsVector() const;
+  [[nodiscard]] std::vector<int> legalMoves() const;
 
   [[nodiscard]] static constexpr int popCountBoard(uint64_t x) {
     int count = 0;
@@ -227,7 +227,7 @@ class Board {
     // Mostly inspired by Pascal's Code
     // This function might return an empty bitboard. In this case, the active
     // player will lose, since all possible moves will lead to a defeat.
-    TBitBoard moves = generateMoves();
+    TBitBoard moves = legalMovesMask();
     const TBitBoard threats =
         winningPositions(m_bActivePTokens ^ m_bAllTokens, true);
     if (const TBitBoard directThreats = threats & moves) {
@@ -448,7 +448,7 @@ class Board {
       return;
     }
 
-    auto moves = b.generateMoves();
+    auto moves = b.legalMovesMask();
 
     while (moves) {
       const auto mv = b.nextMove(moves);

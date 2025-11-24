@@ -66,10 +66,10 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("playMoveOnCopy", &B::playMoveOnCopy,
            "Play a move on a copy of the board and return the new board",
            py::arg("mv"))
-      .def("generateMoves", &B::generateMoves, "Generate possible moves")
+      .def("legalMovesMask", &B::legalMovesMask, "Generate possible moves")
       .def("generateNonLosingMoves", &B::generateNonLosingMoves,
            "Generate non-losing moves")
-      .def("generateMovesAsVector", &B::generateMovesAsVector,
+      .def("legalMoves", &B::legalMoves,
            "Generate possible moves as a vector of column indices")
       .def("isLegalMove", &B::isLegalMove, "Check if a move is legal",
            py::arg("column"))

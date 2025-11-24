@@ -131,7 +131,7 @@ class BitBully {
     }
 
     if (!b.movesLeft()) {
-      assert(!b.generateMoves());
+      assert(!b.legalMovesMask());
       assert(b.popCountBoard() == Board::N_COLUMNS * Board::N_ROWS);
       return 0;
     }
@@ -170,7 +170,7 @@ class BitBully {
       }
       // Enhanced Transposition Cutoff
       else if (depth < 22 && b.movesLeft() % 2) {
-        auto etcMoves = b.generateMoves();
+        auto etcMoves = b.legalMovesMask();
         while (etcMoves) {
           auto mv = b.nextMove(etcMoves);
           assert(uint64_t_popcnt(mv) == 1);
