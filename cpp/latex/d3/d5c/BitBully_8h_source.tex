@@ -25,7 +25,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00021}00021\ \ \ std::unique\_ptr<OpeningBook>\ m\_openingBook;}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00022}00022\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00023}00023\ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00024}00024\ \ \ \mbox{\hyperlink{classBitBully_1_1MoveList}{MoveList}}\ sortMoves(Board::TBitBoard\ moves);}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00024}00024\ \ \ \textcolor{comment}{//\ MoveList\ sortMoves(Board::TBitBoard\ moves);\ //\ implemented\ in\ Board.cpp}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00025}00025\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00026}00026\ \ \ \textcolor{keyword}{explicit}\ BitBully(\textcolor{keyword}{const}\ std::filesystem::path\&\ bookPath\ =\ \textcolor{stringliteral}{"{}"{}})}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00027}00027\ \ \ \ \ \ \ :\ nodeCounter\{0\},}
@@ -135,7 +135,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00131}00131\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00132}00132\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00133}00133\ \ \ \ \ \textcolor{keywordflow}{if}\ (!b.movesLeft())\ \{}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00134}00134\ \ \ \ \ \ \ assert(!b.generateMoves());}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00134}00134\ \ \ \ \ \ \ assert(!b.legalMovesMask());}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00135}00135\ \ \ \ \ \ \ assert(b.popCountBoard()\ ==\ Board::N\_COLUMNS\ *\ Board::N\_ROWS);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00136}00136\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00137}00137\ \ \ \ \ \}}
@@ -174,7 +174,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00170}00170\ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00171}00171\ \ \ \ \ \ \ \textcolor{comment}{//\ Enhanced\ Transposition\ Cutoff}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00172}00172\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (depth\ <\ 22\ \&\&\ b.movesLeft()\ \%\ 2)\ \{}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ etcMoves\ =\ b.generateMoves();}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ etcMoves\ =\ b.legalMovesMask();}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (etcMoves)\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ mv\ =\ b.nextMove(etcMoves);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ assert(uint64\_t\_popcnt(mv)\ ==\ 1);}
