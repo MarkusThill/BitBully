@@ -103,7 +103,7 @@ class BoardCore:
     def generateNonLosingMoves(self) -> int:
         """Generate non-losing moves"""
 
-    def legalMoves(self) -> list[int]:
+    def legalMoves(self, nonLosing:bool, orderMoves:bool) -> list[int]:
         """Generate possible moves as a vector of column indices"""
 
     def hasWin(self) -> bool:

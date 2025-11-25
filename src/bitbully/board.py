@@ -583,22 +583,6 @@ class Board:
         """
         return self._board.countTokens()
 
-    def legal_moves(self, non_losing: bool = False) -> list[int]:
-        """Returns a list of legal moves (columns) that can be played.
-
-        Args:
-            non_losing (bool): If True, only return moves that do not allow the
-              opponent to win immediately.
-
-        Returns:
-            list[int]: A list of column indices (0-6) where a move can be played.
-
-        Raises:
-            NotImplementedError: If the method is not implemented yet.
-        """
-        # TODO: Implement in C++?
-        raise NotImplementedError("legal_moves is not implemented yet.")
-
     def has_win(self) -> bool:
         """Checks if the current player has a winning position.
 
@@ -1821,3 +1805,30 @@ class Board:
         if token_count != 8 and token_count != 12:
             raise NotImplementedError("to_huffman() is only implemented for positions with 8 or 12 tokens.")
         return self._board.toHuffman()
+
+    def legal_moves(self, non_losing: bool = False, order_moves: bool = False) -> list[int]:
+        """Returns a list of all legal moves (non-full columns) for the current board state.
+
+        Args:
+            non_losing (bool):
+                If ``True``, only returns moves that do **not** allow the opponent
+                to win immediately on their next turn. The list might be empty
+                If ``False``, all legal moves are returned.
+            order_moves (bool):
+                If ``True``, the returned list is ordered to prioritize moves (potentially more promising first).
+
+        Returns:
+            list[int]: A list of column indices (0-6) where a token can be legally dropped.
+
+        Example:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()
+            legal_moves = board.legal_moves()
+            assert set(legal_moves) == set(range(7))  # All columns are initially legal
+            assert set(legal_moves) == set(board.legal_moves(order_moves=True))
+            board.legal_moves(order_moves=True) == [3, 2, 4, 1, 5, 0, 6]  # Center column prioritized
+            ```
+        """
+        return self._board.legalMoves(nonLosing=non_losing, orderMoves=order_moves)
