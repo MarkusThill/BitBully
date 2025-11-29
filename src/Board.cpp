@@ -284,6 +284,8 @@ MoveList Board::sortMoves(TBitBoard moves) const {
     assert(uint64_t_popcnt(mv) == 1);
 
     // How many threats (indirect & direct) will I have after this move?
+    // TODO: is vertical=true that clever? We will also count threats which can
+    // be neutralized immediately...
     const auto threats =
         winningPositions(m_bActivePTokens ^ mv, true) & ~(m_bAllTokens ^ mv);
     auto numThreats = static_cast<int>(uint64_t_popcnt(threats));
@@ -398,7 +400,7 @@ bool Board::canWin() const {
          (m_bAllTokens + BB_BOTTOM_ROW);
 }
 
-bool Board::canWin(int column) const {
+bool Board::canWin(const int column) const {
   return isLegalMove(column) &&
          (winningPositions(m_bActivePTokens, true) &
           (m_bAllTokens + BB_BOTTOM_ROW) & getColumnMask(column));
@@ -410,21 +412,22 @@ Board::TBitBoard Board::legalMovesMask() const {
 
 // In Board.cpp
 
-std::vector<int> Board::orderedLegalMovesFromMask(TBitBoard mvBits) const {
+std::vector<int> Board::orderedLegalMovesFromMask(
+    const TBitBoard mvBits) const {
   auto sortedMoves = sortMoves(mvBits);  // MoveList
 
   std::vector<int> cols;
   cols.reserve(sortedMoves.getSize());
 
-  while (auto mv = sortedMoves.pop()) {
-    int bit = ctz_u64(mv);                    // bit index of the move
+  while (const auto mv = sortedMoves.pop()) {
+    const int bit = ctz_u64(mv);              // bit index of the move
     cols.push_back(bit / COLUMN_BIT_OFFSET);  // convert to column index
   }
 
   return cols;
 }
 
-std::vector<int> Board::legalMovesFromMask(TBitBoard mvBits) const {
+std::vector<int> Board::legalMovesFromMask(const TBitBoard mvBits) const {
   auto bits = bits_set(mvBits);  // bit indices of legal moves
 
   std::transform(bits.begin(), bits.end(), bits.begin(),
@@ -433,9 +436,17 @@ std::vector<int> Board::legalMovesFromMask(TBitBoard mvBits) const {
   return bits;  // now contains column indices
 }
 
-std::vector<int> Board::legalMoves(bool nonLosing, bool orderMoves) const {
-  // TODO: Google Unit tests are missing!
-  TBitBoard mvBits = nonLosing ? generateNonLosingMoves() : legalMovesMask();
+std::vector<int> Board::legalMoves(const bool nonLosing,
+                                   const bool orderMoves) const {
+  // Add immediate wins (since generateNonLosingMoves does not consider these
+  // situations where a player has a direct win, but all moves lead to a
+  // defeat).
+  const TBitBoard mvBits = nonLosing
+                               ? generateNonLosingMoves() |
+                                     (winningPositions(m_bActivePTokens, true) &
+                                      (m_bAllTokens + BB_BOTTOM_ROW))
+                               : legalMovesMask();
+
   return orderMoves ? orderedLegalMovesFromMask(mvBits)
                     : legalMovesFromMask(mvBits);
 }

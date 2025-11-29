@@ -10,6 +10,7 @@
 
 #include "Board.h"
 #include "Solver.hpp"
+#include "gmock/gmock.h"
 #include "gtest/gtest.h"
 
 #ifdef _WIN32  // Check if we're on a Windows platform
@@ -18,6 +19,9 @@ using Clock = std::chrono::steady_clock;  // Use steady_clock on Windows
 using Clock = std::chrono::high_resolution_clock;  // Use high_resolution_clock
                                                    // on other platforms
 #endif
+
+using ::testing::ElementsAre;
+using ::testing::UnorderedElementsAreArray;
 
 class BoardTest : public ::testing::Test {
  protected:
@@ -1028,5 +1032,240 @@ TEST_F(BoardTest, allPositions) {
   nPly = 0;
   for (auto exp : expectedCumsum) {
     ASSERT_EQ(b.allPositions(nPly++, false).size(), exp);
+  }
+}
+
+TEST_F(BoardTest, LegalMoves) {
+  BitBully::Board b;  // empty board
+
+  auto expectLegalMoves = [&](const std::initializer_list<int> cols) {
+    EXPECT_THAT(b.legalMoves(false, false), UnorderedElementsAreArray(cols));
+  };
+
+  // Empty board: all columns are legal.
+  expectLegalMoves({0, 1, 2, 3, 4, 5, 6});
+
+  // Play one token in each column – all columns are still legal.
+  ASSERT_TRUE(b.play("0123456"));
+  expectLegalMoves({0, 1, 2, 3, 4, 5, 6});
+
+  // Fill the center column (3). It should no longer be legal.
+  ASSERT_TRUE(b.play("33333"));  // now column 3 is full
+  expectLegalMoves({0, 1, 2, 4, 5, 6});
+
+  // Fill the left-most column (0). It should no longer be legal.
+  ASSERT_TRUE(b.play("00000"));  // now column 0 is full
+  expectLegalMoves({1, 2, 4, 5, 6});
+
+  // Fill the right-most column (6). It should no longer be legal.
+  ASSERT_TRUE(b.play("66666"));  // now column 6 is full
+  expectLegalMoves({1, 2, 4, 5});
+}
+
+TEST_F(BoardTest, LegalMoves_nonLosing) {
+  BitBully::Board b;  // empty board
+
+  auto expectLegalMoves = [&](const std::initializer_list<int> cols) {
+    EXPECT_THAT(b.legalMoves(true, false), UnorderedElementsAreArray(cols));
+  };
+
+  // Empty board: all columns are legal.
+  expectLegalMoves({0, 1, 2, 3, 4, 5, 6});
+
+  // Play one token in each column – all columns are still legal.
+  ASSERT_TRUE(b.play("0123456"));
+  expectLegalMoves({0, 1, 2, 3, 4, 5, 6});
+
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  O  _  _  _
+  // _  _  X  O  _  _  _
+  // X  O  X  O  X  O  X
+  b = BitBully::Board();
+  ASSERT_TRUE(b.play("0123456323"));
+  expectLegalMoves({3});
+
+  // Column 2 is a losing move for player X (yellow):
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  X  _  _  _
+  // _  _  _  O  _  _  _
+  // _  _  X  O  O  _  _
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("012345632334"));
+  expectLegalMoves({0, 1, 3, 4, 5, 6});
+
+  // Columns 1 & 5 are losing columns for 1 (yellow)
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  X  _  _  _
+  // _  _  O  O  O  _  _
+  // _  _  X  O  X  _  _
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("01234563233244"));
+  expectLegalMoves({0, 2, 3, 4, 6});
+
+  // Yellow has only one legal move:
+  // _  _  _  _  _  _  _
+  // _  _  _  X  _  _  _
+  // _  _  _  X  _  _  _
+  // O  _  O  O  O  X  _
+  // X  O  X  O  X  O  _
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("01234563233244003551"));
+  expectLegalMoves({1});
+
+  // _  _  _  _  _  _  _
+  // _  _  _  X  _  _  _
+  // _  X  O  X  _  _  _
+  // O  X  O  O  O  X  _
+  // X  O  X  O  X  O  _
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("01234563233244003551121"));
+  expectLegalMoves({0, 1, 2, 3, 4, 5, 6});
+
+  // _  _  _  O  _  _  _
+  // _  _  _  X  _  _  _
+  // _  X  O  X  _  O  _
+  // O  X  O  O  O  X  X
+  // X  O  X  O  X  O  X
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("012345632332440035511213656"));
+  expectLegalMoves({});
+
+  // Red only has one winning move, all others are immediate losses:
+  // _  _  _  O  _  _  _
+  // _  _  X  X  X  _  _
+  // _  X  O  X  O  O  O
+  // O  X  O  O  O  X  X
+  // X  O  X  O  X  O  X
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("0123456323324400355112136566244"));
+  // expectLegalMoves({6});
+
+  // Red only has one winning move, and a move to neutralize the opponents
+  // threat:
+  // _  _  X  O  _  _  _
+  // _  _  X  X  X  O  _
+  // _  X  O  X  O  O  O
+  // O  X  O  O  O  X  X
+  // X  O  X  O  X  O  X
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("012345632332440035511213656624452"));
+  expectLegalMoves({1, 6});
+
+  //
+  // _  _  X  O  _  _  _
+  // _  O  X  X  X  O  X
+  // _  X  O  X  O  O  O
+  // O  X  O  O  O  X  X
+  // X  O  X  O  X  O  X
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("01234563233244003551121365662445216"));
+  expectLegalMoves({0, 1, 4, 5, 6});
+
+  //
+  // _  _  X  O  O  X  X
+  // _  O  X  X  X  O  X
+  // O  X  O  X  O  O  O
+  // O  X  O  O  O  X  X
+  // X  O  X  O  X  O  X
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("012345632332440035511213656624452164605"));
+  expectLegalMoves({0, 1});
+
+  //
+  // _  O  X  O  O  X  X
+  // _  O  X  X  X  O  X
+  // O  X  O  X  O  O  O
+  // O  X  O  O  O  X  X
+  // X  O  X  O  X  O  X
+  // X  O  X  O  X  O  X
+  ASSERT_TRUE(b.setBoard("0123456323324400355112136566244521646051"));
+  expectLegalMoves({});
+
+  // Another position:
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  X  _
+  // O  O  _  O  X  X  _
+  ASSERT_TRUE(b.setBoard("505143"));
+  expectLegalMoves({2});
+
+  //
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  O  _
+  // _  _  _  X  X  X  O
+  ASSERT_TRUE(b.setBoard("36554"));
+  expectLegalMoves({2});
+}
+
+TEST_F(BoardTest, LegalMoves_orderMoves) {
+  BitBully::Board b;  // empty board
+  // The order is important now:
+  EXPECT_THAT(b.legalMoves(false, true), ElementsAre(3, 2, 4, 1, 5, 0, 6));
+
+  // _  _  _  _  _  _  _
+  // _  _  _  _  _  _  _
+  // _  _  _  O  _  _  _
+  // _  _  X  X  _  _  _
+  // _  _  O  X  O  _  _
+  // _  _  X  X  O  _  _
+  ASSERT_TRUE(b.setBoard("342234332"));
+  EXPECT_THAT(b.legalMoves(false, true), ElementsAre(4, 2, 3, 1, 5, 0, 6));
+
+  // _  _  _  _  _  _  _
+  // _  O  _  _  _  _  _
+  // _  X  _  _  _  _  _
+  // _  X  X  _  _  _  _
+  // O  X  O  _  _  _  _
+  // X  O  O  X  O  _  _
+  ASSERT_TRUE(b.setBoard("011212201134"));
+  EXPECT_THAT(b.legalMoves(false, true), ElementsAre(3, 0, 2, 4, 1, 5, 6));
+}
+
+TEST_F(BoardTest, LegalMoves2) {
+  std::random_device rd;
+  std::mt19937 gen(rd());
+
+  constexpr int nGames = 2000;
+  for (int i = 0; i < nGames; ++i) {
+    auto b = BitBully::Board();
+
+    while (!b.hasWin()) {
+      // Collect legal moves
+      std::vector<int> moves;
+      std::vector<int> movesNonLosing;
+      for (int c = 0; c < BitBully::Board::N_COLUMNS; c++) {
+        if (b.isLegalMove(c)) {
+          moves.emplace_back(c);
+        } else {
+          continue;
+        }
+        if (auto bb = b.playMoveOnCopy(c); !bb.canWin() || b.canWin(c)) {
+          movesNonLosing.emplace_back(c);
+        }
+      }
+
+      EXPECT_THAT(b.legalMoves(false, false), UnorderedElementsAreArray(moves));
+      EXPECT_THAT(b.legalMoves(false, true), UnorderedElementsAreArray(moves));
+      ASSERT_THAT(b.legalMoves(true, false),
+                  UnorderedElementsAreArray(movesNonLosing));
+      ASSERT_THAT(b.legalMoves(true, true),
+                  UnorderedElementsAreArray(movesNonLosing));
+
+      if (moves.empty()) break;  // no legal moves -> game finished
+
+      std::uniform_int_distribution<std::size_t> dist(0, moves.size() - 1);
+      const int random_move = moves[dist(gen)];
+
+      b.play(random_move);
+    }
   }
 }

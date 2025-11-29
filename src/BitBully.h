@@ -174,7 +174,7 @@ class BitBully {
         while (etcMoves) {
           auto mv = b.nextMove(etcMoves);
           assert(uint64_t_popcnt(mv) == 1);
-          auto bETC = b.playMoveOnCopy(mv);
+          auto bETC = b.playBitMaskOnCopy(mv);
           auto etcEntry = transpositionTable.get(bETC);
 
           if (etcEntry->b == bETC.uid() &&
@@ -226,7 +226,7 @@ class BitBully {
         // const auto mv = (threats ? b.nextMove(threats) : b.nextMove(moves));
         assert(uint64_t_popcnt(mv) == 1);
         auto moveValue =
-            -negamax(b.playMoveOnCopy(mv), -beta, -alpha, depth + 1);
+            -negamax(b.playBitMaskOnCopy(mv), -beta, -alpha, depth + 1);
         value = std::max(value, moveValue);
         alpha = std::max(alpha, value);
       }
@@ -240,7 +240,7 @@ class BitBully {
         const auto mv = (threats ? b.nextMove(threats) : b.nextMove(moves));
         assert(uint64_t_popcnt(mv) == 1);
         auto moveValue =
-            -negamax(b.playMoveOnCopy(mv), -beta, -alpha, depth + 1);
+            -negamax(b.playBitMaskOnCopy(mv), -beta, -alpha, depth + 1);
         value = std::max(value, moveValue);
         alpha = std::max(alpha, value);
         threats &= ~mv;

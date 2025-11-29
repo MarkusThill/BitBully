@@ -112,10 +112,16 @@ class Board {
   using TBoardArray = std::array<std::array<int32_t, N_ROWS>, N_COLUMNS>;
   using TBoardArrayT = std::array<std::array<int32_t, N_COLUMNS>, N_ROWS>;
 
-  [[nodiscard]] Board inline playMoveOnCopy(const TBitBoard mv) const {
+  [[nodiscard]] Board inline playBitMaskOnCopy(const TBitBoard mv) const {
     Board b = *this;
     b.playMoveFastBB(mv);
     return b;
+  }
+
+  [[nodiscard]] Board inline playMoveOnCopy(const int mv) const {
+    // Returns an empty board in case the move is illegal.
+    Board b = *this;
+    return b.play(mv) ? b : Board();
   }
 
   [[nodiscard]] Board inline copy() const {
@@ -228,6 +234,8 @@ class Board {
     // Mostly inspired by Pascal's Code
     // This function might return an empty bitboard. In this case, the active
     // player will lose, since all possible moves will lead to a defeat.
+    // NOTE: This function will not return immediate winning moves in those
+    // cases where the opposing player has a double threat (or threat)
     TBitBoard moves = legalMovesMask();
     const TBitBoard threats =
         winningPositions(m_bActivePTokens ^ m_bAllTokens, true);
@@ -454,7 +462,7 @@ class Board {
     while (moves) {
       const auto mv = b.nextMove(moves);
       assert(uint64_t_popcnt(mv) == 1);
-      if (auto newB = b.playMoveOnCopy(mv);
+      if (auto newB = b.playBitMaskOnCopy(mv);
           boardCollection.find(newB.uid()) == boardCollection.end() &&
           !b.hasWin()) {
         // We have not  reached this position yet
