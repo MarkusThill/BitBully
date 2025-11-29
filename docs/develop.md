@@ -386,6 +386,56 @@ Test installation from PyPI:
 pip install bitbully
 ```
 
+## Compile Libs using CMake
+
+### Compile and run Google Tests
+```bash
+cmake -B build -S . -DCMAKE_BUILD_TYPE=Release # run in project root
+cmake --build build --target gtest_run --config Release
+cd build # navigate into build directory
+./gtests/gtest_run # run tests
+```
+
+## Updates
+### Update pybind11 Submodule
+
+```bash
+git -C thirdParty/pybind11 rev-parse --abbrev-ref HEAD && git -C thirdParty/pybind11 describe --tags --always && git -C thirdParty/pybind11 remote -v
+git -C thirdParty/pybind11 fetch --tags origin && git -C thirdParty/pybind11 tag --list "v3.*" | tail -n 200 # adapt to v4.* etc., depending on your needs
+git -C thirdParty/pybind11 status --porcelain
+git -C thirdParty/pybind11 fetch --tags origin
+git -C thirdParty/pybind11 tag --list
+git -C thirdParty/pybind11 checkout v3.0.1 # adapt to the version that you wish to checkout
+git add thirdParty/pybind11
+git commit -m "fix: update pybind11 submodule to vx.x.x" # adapt the version in the message
+```
+
+### Update GoogleTests Submodule
+```bash
+git -C thirdParty/googletest rev-parse --abbrev-ref HEAD && git -C thirdParty/googletest describe --tags --always && git -C thirdParty/googletest remote -v
+git -C thirdParty/googletest fetch --tags origin && git -C thirdParty/googletest tag --list | sort -V | tail -n 20
+git -C thirdParty/googletest status --porcelain # check status
+git -C thirdParty/googletest fetch --tags origin # fetch remote tags (if not done already)
+git -C thirdParty/googletest checkout vx.x.x # select a tag you want to check out
+git add thirdParty/googletest
+git commit -m "fix: update googletest submodule to vx.x.x" # adapt the tag here
+```
+
+## Update doxygen-awesome-css Submodule
+```bash
+git -C thirdParty/doxygen-awesome-css rev-parse --abbrev-ref HEAD && git -C thirdParty/doxygen-awesome-css describe --tags --always && git -C thirdParty/doxygen-awesome-css remote -v
+git -C thirdParty/doxygen-awesome-css fetch --tags origin && git -C thirdParty/doxygen-awesome-css tag --list | sort -V | tail -n 20
+
+
+git -C thirdParty/doxygen-awesome-css status --porcelain # 1. Check status
+git -C thirdParty/doxygen-awesome-css fetch --tags origin # 2. Fetch remote tags (if not already done)
+git -C thirdParty/doxygen-awesome-css checkout vx.x.x # 3. Checkout a tag (e.g., v2.4.1 for the latest)
+git add thirdParty/doxygen-awesome-css # 4. Update superproject reference
+git commit -m "fix: update doxygen-awesome-css submodule to vx.x.x"
+git push origin HEAD # 5. Push
+```
+
+
 ## Cheatsheet: Most Useful Commands
 
 ### **Version Control (Git)**

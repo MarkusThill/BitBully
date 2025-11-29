@@ -1,3 +1,10 @@
+## v0.0.59-a2 (2025-11-29)
+
+### Fix
+
+- update doxygen-awesome-css submodule to v2.4.1
+- update googletest submodule to v1.17.0
+
 ## v0.0.59-a1 (2025-11-29)
 
 ### Fix
