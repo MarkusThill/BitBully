@@ -21,8 +21,6 @@ bool \mbox{\hyperlink{classbitbully_1_1board_1_1Board_a9514b7e3caa5c5d7c3bedd026
 \item 
 int \mbox{\hyperlink{classbitbully_1_1board_1_1Board_a357ea549197e657a8ea52dcca863b039}{count\+\_\+tokens}} (self)
 \item 
-list\mbox{[}int\mbox{]} \mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae23cbcc0eb23e2741c5f66b452a0b7c8}{legal\+\_\+moves}} (self, bool non\+\_\+losing=False)
-\item 
 bool \mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae50b3749d5857b53f6d8d7fed35b3bf7}{has\+\_\+win}} (self)
 \item 
 int \mbox{\hyperlink{classbitbully_1_1board_1_1Board_aa56a2afaa85ded51091e20ae61b872ec}{\+\_\+\+\_\+hash\+\_\+\+\_\+}} (self)
@@ -58,6 +56,8 @@ int\texorpdfstring{$\vert$}{|}None \mbox{\hyperlink{classbitbully_1_1board_1_1Bo
 \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} \mbox{\hyperlink{classbitbully_1_1board_1_1Board_a04cf3920d1f460872b42d77c538a3423}{from\+\_\+array}} (cls, Sequence\mbox{[}Sequence\mbox{[}int\mbox{]}\mbox{]} arr)
 \item 
 int \mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0631f7c4d3734f0bb0993501f67f617c}{to\+\_\+huffman}} (self)
+\item 
+list\mbox{[}int\mbox{]} \mbox{\hyperlink{classbitbully_1_1board_1_1Board_afe754d7343ddc9c2b4596ec2c5eea43a}{legal\+\_\+moves}} (self, bool non\+\_\+losing=False, bool order\+\_\+moves=False)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -402,7 +402,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00655}{655}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00639}{639}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_af95a367c9b9e977c07ee89189f1e6087}\index{bitbully.board.Board@{bitbully.board.Board}!\_\_ne\_\_@{\_\_ne\_\_}}
 \index{\_\_ne\_\_@{\_\_ne\_\_}!bitbully.board.Board@{bitbully.board.Board}}
@@ -788,7 +788,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01395}{1395}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01379}{1379}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a04cf3920d1f460872b42d77c538a3423}\index{bitbully.board.Board@{bitbully.board.Board}!from\_array@{from\_array}}
 \index{from\_array@{from\_array}!bitbully.board.Board@{bitbully.board.Board}}
@@ -862,7 +862,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01616}{1616}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01600}{1600}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a9b97a7ced0bf0ed804d120478f57f257}\index{bitbully.board.Board@{bitbully.board.Board}!from\_moves@{from\_moves}}
 \index{from\_moves@{from\_moves}!bitbully.board.Board@{bitbully.board.Board}}
@@ -909,7 +909,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01573}{1573}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01557}{1557}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_ae50b3749d5857b53f6d8d7fed35b3bf7}\index{bitbully.board.Board@{bitbully.board.Board}!has\_win@{has\_win}}
 \index{has\_win@{has\_win}!bitbully.board.Board@{bitbully.board.Board}}
@@ -969,7 +969,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00602}{602}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00586}{586}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a1f0472df8447db26820d7dd99ffe2bab}\index{bitbully.board.Board@{bitbully.board.Board}!is\_full@{is\_full}}
 \index{is\_full@{is\_full}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1009,7 +1009,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01435}{1435}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01419}{1419}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_aad6d6426114ac320acf00f17f8291d0d}\index{bitbully.board.Board@{bitbully.board.Board}!is\_game\_over@{is\_game\_over}}
 \index{is\_game\_over@{is\_game\_over}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1062,7 +1062,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01468}{1468}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01452}{1452}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_af0547d9a280ddeaebe6bf563c8a0617a}\index{bitbully.board.Board@{bitbully.board.Board}!is\_legal\_move@{is\_legal\_move}}
 \index{is\_legal\_move@{is\_legal\_move}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1162,29 +1162,41 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00689}{689}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00673}{673}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
-\Hypertarget{classbitbully_1_1board_1_1Board_ae23cbcc0eb23e2741c5f66b452a0b7c8}\index{bitbully.board.Board@{bitbully.board.Board}!legal\_moves@{legal\_moves}}
+\Hypertarget{classbitbully_1_1board_1_1Board_afe754d7343ddc9c2b4596ec2c5eea43a}\index{bitbully.board.Board@{bitbully.board.Board}!legal\_moves@{legal\_moves}}
 \index{legal\_moves@{legal\_moves}!bitbully.board.Board@{bitbully.board.Board}}
 \doxysubsubsection{\texorpdfstring{legal\_moves()}{legal\_moves()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1board_1_1Board_ae23cbcc0eb23e2741c5f66b452a0b7c8} 
- list\mbox{[}int\mbox{]} bitbully.\+board.\+Board.\+legal\+\_\+moves (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{bool }]{non\+\_\+losing}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1board_1_1Board_afe754d7343ddc9c2b4596ec2c5eea43a} 
+ list\mbox{[}int\mbox{]} bitbully.\+board.\+Board.\+legal\+\_\+moves (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{bool }]{non\+\_\+losing}{ = {\ttfamily False}, }\item[{bool }]{order\+\_\+moves}{ = {\ttfamily False}}\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}Returns a list of legal moves (columns) that can be played.
+\begin{DoxyVerb}Returns a list of all legal moves (non-full columns) for the current board state.
 
 Args:
-    non_losing (bool): If True, only return moves that do not allow the
-      opponent to win immediately.
+    non_losing (bool):
+        If ``True``, only returns moves that do **not** allow the opponent
+        to win immediately on their next turn. The list might be empty
+        If ``False``, all legal moves are returned.
+    order_moves (bool):
+        If ``True``, the returned list is ordered to prioritize moves (potentially more promising first).
 
 Returns:
-    list[int]: A list of column indices (0-6) where a move can be played.
+    list[int]: A list of column indices (0-6) where a token can be legally dropped.
 
-Raises:
-    NotImplementedError: If the method is not implemented yet.
+Example:
+    ```python
+    import bitbully as bb
+
+    board = bb.Board()
+    legal_moves = board.legal_moves()
+    assert set(legal_moves) == set(range(7))  # All columns are initially legal
+    assert set(legal_moves) == set(board.legal_moves(order_moves=True))
+    board.legal_moves(order_moves=True) == [3, 2, 4, 1, 5, 0, 6]  # Center column prioritized
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00586}{586}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01809}{1809}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_aa90638e1d8ff88b5eaedef40b6a6e30e}\index{bitbully.board.Board@{bitbully.board.Board}!mirror@{mirror}}
 \index{mirror@{mirror}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1275,7 +1287,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00782}{782}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00766}{766}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_aed729a7efcbf07f00e2a8773b875291d}\index{bitbully.board.Board@{bitbully.board.Board}!moves\_left@{moves\_left}}
 \index{moves\_left@{moves\_left}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1329,7 +1341,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00868}{868}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00852}{852}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_ac703e9fec40c4d9c60c314b33eb44bbd}\index{bitbully.board.Board@{bitbully.board.Board}!play@{play}}
 \index{play@{play}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1414,7 +1426,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l00915}{915}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00899}{899}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a0c4555d1cb4a50484294b8452b4f02a9}\index{bitbully.board.Board@{bitbully.board.Board}!play\_on\_copy@{play\_on\_copy}}
 \index{play\_on\_copy@{play\_on\_copy}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1452,7 +1464,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01003}{1003}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l00987}{987}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_ad2a69d01c5b7e9f77041180f58355ae8}\index{bitbully.board.Board@{bitbully.board.Board}!random\_board@{random\_board}}
 \index{random\_board@{random\_board}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1542,7 +1554,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01684}{1684}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01668}{1668}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a3ec7505932466440fce1a9fbbd54355a}\index{bitbully.board.Board@{bitbully.board.Board}!reset\_board@{reset\_board}}
 \index{reset\_board@{reset\_board}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1678,7 +1690,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01044}{1044}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01028}{1028}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a936a2a08230396f27c72a75d53103282}\index{bitbully.board.Board@{bitbully.board.Board}!to\_array@{to\_array}}
 \index{to\_array@{to\_array}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1755,7 +1767,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01188}{1188}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01172}{1172}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a0631f7c4d3734f0bb0993501f67f617c}\index{bitbully.board.Board@{bitbully.board.Board}!to\_huffman@{to\_huffman}}
 \index{to\_huffman@{to\_huffman}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1811,7 +1823,7 @@ Expected output:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01773}{1773}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01757}{1757}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_a3db1df514e7c6d510f2188ceb7419aca}\index{bitbully.board.Board@{bitbully.board.Board}!to\_string@{to\_string}}
 \index{to\_string@{to\_string}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1860,7 +1872,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01262}{1262}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01246}{1246}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_ad06cd5ac21f137de6b80c9b4f8f89d3b}\index{bitbully.board.Board@{bitbully.board.Board}!uid@{uid}}
 \index{uid@{uid}!bitbully.board.Board@{bitbully.board.Board}}
@@ -1957,7 +1969,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01304}{1304}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01288}{1288}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_aa46e665bb5d315b9be74324bdeb36c3f}\index{bitbully.board.Board@{bitbully.board.Board}!winner@{winner}}
 \index{winner@{winner}!bitbully.board.Board@{bitbully.board.Board}}
@@ -2019,7 +2031,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01514}{1514}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01498}{1498}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 
 
@@ -2044,7 +2056,7 @@ int bitbully.\+board.\+Board.\+current\+\_\+player = 1 else 1}
 
 
 
-Definition at line \mbox{\hyperlink{board_8py_source_l01570}{1570}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+Definition at line \mbox{\hyperlink{board_8py_source_l01554}{1554}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 
 
