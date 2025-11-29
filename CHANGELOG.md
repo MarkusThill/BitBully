@@ -1,3 +1,11 @@
+## v0.0.59-a1 (2025-11-29)
+
+### Fix
+
+- update pybind11 submodule to v3.0.1
+- replace old macos-13 runners with macos-14
+- adapted legal_moves method in board
+
 ## v0.0.59-a0 (2025-11-24)
 
 ### Fix
