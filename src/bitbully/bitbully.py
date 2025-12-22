@@ -3,13 +3,21 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, TypeAlias
 
 from bitbully import bitbully_core
 
 from .board import Board
 
-OpeningBookName = Literal["default", "8-ply", "12-ply", "12-ply-dist"]
+OpeningBookName: TypeAlias = Literal["default", "8-ply", "12-ply", "12-ply-dist"]
+"""Name of the opening book used by the BitBully engine.
+
+Possible values:
+- ``"default"``: Alias for ``"12-ply-dist"``.
+- ``"8-ply"``: 8-ply opening book (win/loss only).
+- ``"12-ply"``: 12-ply opening book (win/loss only).
+- ``"12-ply-dist"``: 12-ply opening book with distance-to-win information.
+"""
 
 
 @dataclass(frozen=True, slots=True)
@@ -28,10 +36,10 @@ class SearchResult:
 class BitBully:
     """A Connect Four AI agent with optional opening book support.
 
-    This class is a high-level Python wrapper around
-    :class:`bitbully_core.BitBullyCore`. It integrates the packaged
+    This class is a high-level convenience Python wrapper around
+    [`bitbully_core.BitBullyCore`][src.bitbully.bitbully_core.BitBullyCore]. It integrates the packaged
     *BitBully Databases* opening books and exposes a clean API operating
-    on :class:`~bitbully.Board` objects.
+    on [`bitbully.Board`][src.bitbully.board.Board] objects.
 
     Notes:
         - If an opening book is enabled, it is used automatically for
@@ -104,7 +112,7 @@ class BitBully:
         """Score all legal moves for the given board state.
 
         This is a wrapper around
-        :meth:`bitbully_core.BitBullyCore.scoreMoves`.
+        [`bitbully_core.BitBullyCore.scoreMoves`][src.bitbully.bitbully_core.BitBullyCore.scoreMoves].
 
         Args:
             board (Board): The current board state.

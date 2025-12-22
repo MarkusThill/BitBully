@@ -1381,7 +1381,6 @@ class Board:
         """
         return self._board.uid()
 
-    @property
     def current_player(self) -> int:
         """Returns the player whose turn it is to move.
 
@@ -1405,18 +1404,18 @@ class Board:
 
             # Empty board → Player 1 starts.
             board = bb.Board()
-            assert board.current_player == 1
+            assert board.current_player() == 1
             assert board.count_tokens() == 0
 
             # After one move, it's Player 2's turn.
             assert board.play(3)
             assert board.count_tokens() == 1
-            assert board.current_player == 2
+            assert board.current_player() == 2
 
             # After a second move, it's again Player 1's turn.
             assert board.play(4)
             assert board.count_tokens() == 2
-            assert board.current_player == 1
+            assert board.current_player() == 1
             ```
         """
         # Empty board: Player 1
@@ -1535,7 +1534,7 @@ class Board:
             assert board.is_game_over()
 
             # It is now Player 2's turn to move next...
-            assert board.current_player == 2
+            assert board.current_player() == 2
 
             # ...which implies Player 1 must be the winner.
             assert board.winner() == 1
@@ -1557,7 +1556,7 @@ class Board:
         if not self.has_win():
             return None
         # Previous player = opposite of current_player
-        return 2 if self.current_player == 1 else 1
+        return 2 if self.current_player() == 1 else 1
 
     @classmethod
     def from_moves(cls, moves: Sequence[int] | str) -> Board:

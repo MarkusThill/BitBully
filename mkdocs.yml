@@ -47,8 +47,11 @@ plugins:
         # https://docs-url-for-your-dependency/objects.inv.
 
         options:
-          allow_inspection: true # added by Markus
-          find_stubs_package: true # added by Markus
+          # added by Markus --------------------------------------------------------
+          allow_inspection: true
+          find_stubs_package: true
+          show_docstring_type_aliases: true
+          show_if_no_docstring: true
 
           # DOCSTRINGS -------------------------------------------------------------
           docstring_options:
