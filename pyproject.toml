@@ -42,6 +42,7 @@ dev = [
     "mkdocs",
     "mkdocstrings[python]",
     "mkdocs-material",
+    "pyrefly",
     "pytest",
     "pytest-cov",
     "ruff"

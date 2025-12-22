@@ -283,7 +283,7 @@ class Board:
     def __ne__(self, value: object) -> bool:
         """Checks inequality between two Board instances.
 
-        See the documentation for [`bitbully.Board.__eq__`][src.bitbully.Board.__eq__] for details.
+        See the documentation for [src.bitbully.board.Board.__eq__][] for details.
 
         Args:
             value (object): The other Board instance to compare against.
@@ -300,7 +300,7 @@ class Board:
     def __str__(self) -> str:
         """Return a human-readable ASCII representation (same as to_string()).
 
-        See the documentation for [`bitbully.Board.to_string`][src.bitbully.Board.to_string] for details.
+        See the documentation for [src.bitbully.board.Board.to_string][] for details.
         """
         return self.to_string()
 
@@ -387,7 +387,7 @@ class Board:
         Returns:
             bool: True if the current player can win next, False otherwise.
 
-        See also: [`bitbully.Board.has_win`][src.bitbully.Board.has_win].
+        See also: [src.bitbully.board.Board.has_win][].
 
         Example:
             ```python
@@ -601,7 +601,7 @@ class Board:
         This method is typically used right after a move to verify whether the game
         has been won.
 
-        See also: [`bitbully.Board.can_win_next`][src.bitbully.Board.can_win_next].
+        See also: [src.bitbully.board.Board.can_win_next][].
 
         Example:
             ```python
@@ -689,7 +689,7 @@ class Board:
         usable once a player has already won. It purely validates whether a
         token can be dropped into the given column according to the basic
         rules of Connect Four. You have to check for wins separately using
-        [`bitbully.Board.has_win`][src.bitbully.Board.has_win].
+        [src.bitbully.board.Board.has_win][].
 
 
         Args:
@@ -1101,7 +1101,7 @@ class Board:
 
         Example:
             You can also set the board using other formats, such as a 2D array or a string.
-            See the examples in the [`bitbully.Board.__init__`][src.bitbully.Board.__init__] docstring for details.
+            See the examples in the [src.bitbully.board.Board][] docstring for details.
 
             ```python
             # Briefly demonstrate the different input formats accepted by `reset_board()`.
@@ -1427,7 +1427,7 @@ class Board:
 
         A Connect Four board has 42 cells in total (7 columns x 6 rows).
         This method returns ``True`` if **all** cells are occupied, i.e.
-        when  [`bitbully.Board.moves_left`][src.bitbully.Board.moves_left] returns ``0``.
+        when  [src.bitbully.board.Board.moves_left][] returns ``0``.
 
         Returns:
             bool:
@@ -1461,12 +1461,12 @@ class Board:
         A game of Connect Four is considered **over** if:
 
         - One of the players has a winning position
-          (see [`bitbully.Board.has_win`][src.bitbully.Board.has_win]), **or**
+          (see [src.bitbully.board.Board.has_win][]), **or**
         - The board is completely full and no further moves can be played
-          (see [`bitbully.Board.is_full`][src.bitbully.Board.is_full]).
+          (see [src.bitbully.board.Board.is_full][]).
 
         This method does **not** indicate *who* won; for that, use
-        [`bitbully.Board.winner`][src.bitbully.Board.winner].
+        [src.bitbully.board.Board.winner][].
 
         Returns:
             bool:
@@ -1505,13 +1505,13 @@ class Board:
         """Returns the winning player, if the game has been won.
 
         This helper interprets the current board under the assumption that
-        [`bitbully.Board.has_win`][src.bitbully.Board.has_win] indicates **the last move** created a
+        [src.bitbully.board.Board.has_win][] indicates **the last move** created a
         winning configuration. In that case, the winner is the *previous* player:
 
         - If it is currently Player 1's turn, then Player 2 must have just won.
         - If it is currently Player 2's turn, then Player 1 must have just won.
 
-        If there is no winner (i.e. [`bitbully.Board.has_win`][src.bitbully.Board.has_win] is ``False``),
+        If there is no winner (i.e. [src.bitbully.board.Board.has_win][] is ``False``),
         this method returns ``None``.
 
         Returns:
@@ -1563,7 +1563,7 @@ class Board:
     def from_moves(cls, moves: Sequence[int] | str) -> Board:
         """Creates a board by replaying a sequence of moves from the empty position.
 
-        This is a convenience constructor around [`bitbully.Board.play`][src.bitbully.Board.play].
+        This is a convenience constructor around [src.bitbully.board.Board.play][].
         It starts from an empty board and applies the given move sequence, assuming
         it is **legal** (no out-of-range columns, no moves in full columns, etc.).
 
@@ -1606,8 +1606,7 @@ class Board:
     def from_array(cls, arr: Sequence[Sequence[int]]) -> Board:
         """Creates a board directly from a 2D array representation.
 
-        This is a convenience wrapper around the main constructor
-        [`bitbully.Board.__init__`][src.bitbully.Board.__init__]
+        This is a convenience wrapper around the main constructor [src.bitbully.board.Board][]
         and accepts the same array formats:
 
         - **Row-major**: 6 x 7 (``[row][column]``), top row first.
@@ -1623,7 +1622,7 @@ class Board:
             arr (Sequence[Sequence[int]]):
                 A 2D array describing the board state, either in row-major or
                 column-major layout. See the examples in
-                [`bitbully.Board.__init__`][src.bitbully.Board.__init__] for details.
+                [src.bitbully.board.Board][] for details.
 
         Returns:
             Board:
