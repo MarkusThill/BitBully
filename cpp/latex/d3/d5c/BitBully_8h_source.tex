@@ -102,7 +102,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00098}00098\ \ \ \textcolor{keywordtype}{void}\ resetNodeCounter()\ \{\ nodeCounter\ =\ 0ULL;\ \}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00099}00099\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00100}00100\ \ \ \textcolor{keywordtype}{int}\ negamax(\mbox{\hyperlink{classBitBully_1_1Board}{Board}}\ b,\ \textcolor{keywordtype}{int}\ alpha,\ \textcolor{keywordtype}{int}\ beta,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ depth)\ \textcolor{keyword}{noexcept}\ \{}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ In\ many\ aspects\ inspired\ by\ Pascal's\ code}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ In\ several\ aspects\ inspired\ by\ Pascal's\ code}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00102}00102\ \ \ \ \ assert(alpha\ <\ beta);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00103}00103\ \ \ \ \ nodeCounter++;}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00104}00104\ }
@@ -178,7 +178,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (etcMoves)\ \{}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ mv\ =\ b.nextMove(etcMoves);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ assert(uint64\_t\_popcnt(mv)\ ==\ 1);}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bETC\ =\ b.playMoveOnCopy(mv);}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bETC\ =\ b.playBitMaskOnCopy(mv);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ etcEntry\ =\ transpositionTable.get(bETC);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00179}00179\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (etcEntry-\/>b\ ==\ bETC.uid()\ \&\&}
@@ -218,7 +218,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00214}00214\ \textcolor{comment}{\ \ \ \ \ \ //\ our\ potential\ score\ gets\ lower\ since\ we\ have\ a\ later\ win).}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00215}00215\ \textcolor{comment}{\ \ \ \ \ \ return\ alpha;}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00216}00216\ \textcolor{comment}{\ \ \ \ \}}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00217}00217\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00217}00217\ \textcolor{comment}{\ \ \ \ */}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00218}00218\ }
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00219}00219\ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ -\/(1\ <<\ 10);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00220}00220\ \ \ \ \ \textcolor{keywordflow}{if}\ (depth\ <\ 20)\ \{}
@@ -230,7 +230,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ const\ auto\ mv\ =\ (threats\ ?\ b.nextMove(threats)\ :\ b.nextMove(moves));}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00227}00227\ \ \ \ \ \ \ \ \ assert(uint64\_t\_popcnt(mv)\ ==\ 1);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ moveValue\ =}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ -\/negamax(b.playMoveOnCopy(mv),\ -\/beta,\ -\/alpha,\ depth\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ -\/negamax(b.playBitMaskOnCopy(mv),\ -\/beta,\ -\/alpha,\ depth\ +\ 1);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00230}00230\ \ \ \ \ \ \ \ \ value\ =\ std::max(value,\ moveValue);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00231}00231\ \ \ \ \ \ \ \ \ alpha\ =\ std::max(alpha,\ value);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00232}00232\ \ \ \ \ \ \ \}}
@@ -244,7 +244,7 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mv\ =\ (threats\ ?\ b.nextMove(threats)\ :\ b.nextMove(moves));}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00241}00241\ \ \ \ \ \ \ \ \ assert(uint64\_t\_popcnt(mv)\ ==\ 1);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ moveValue\ =}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ -\/negamax(b.playMoveOnCopy(mv),\ -\/beta,\ -\/alpha,\ depth\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ -\/negamax(b.playBitMaskOnCopy(mv),\ -\/beta,\ -\/alpha,\ depth\ +\ 1);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00244}00244\ \ \ \ \ \ \ \ \ value\ =\ std::max(value,\ moveValue);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00245}00245\ \ \ \ \ \ \ \ \ alpha\ =\ std::max(alpha,\ value);}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00246}00246\ \ \ \ \ \ \ \ \ threats\ \&=\ \string~mv;}
@@ -277,24 +277,41 @@
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00273}00273\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00274}00274\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00275}00275\ }
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00276}00276\ \ \ \textcolor{keyword}{auto}\ scoreMoves(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b)\ \{}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00277}00277\ \ \ \ \ std::vector\ scores(Board::N\_COLUMNS,\ -\/1000);}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00278}00278\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ col\ =\ 0UL;\ col\ <\ scores.size();\ col++)\ \{}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00279}00279\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ afterB\ =\ b;\ afterB.play(col))\ \{}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (afterB.hasWin())\ \{}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ scores[col]\ =\ (afterB.movesLeft())\ /\ 2\ +\ 1;}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00283}00283\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00284}00284\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Get\ first\ guess\ from\ hash\ table\ if\ possible}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00285}00285\ \ \ \ \ \ \ \ \ scores[col]\ =\ -\/mtdf(afterB,\ !col\ ?\ 0\ :\ scores.at(col\ -\/\ 1));}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00286}00286\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00287}00287\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00288}00288\ }
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00289}00289\ \ \ \ \ \textcolor{keywordflow}{return}\ scores;}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00290}00290\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00291}00291\ \};}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00292}00292\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00293}00293\ }
-\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00294}00294\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ BITBULLY\_\_BITBULLY\_H\_}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00276}00276\ \ \ \textcolor{keyword}{auto}\ scoreMove(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ column,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ firstGuess)\ \{}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00277}00277\ \ \ \ \ \textcolor{keywordtype}{int}\ score\ =\ -\/1000;}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00278}00278\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ afterB\ =\ b;\ afterB.play(column))\ \{}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00279}00279\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (afterB.hasWin())\ \{}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (afterB.movesLeft())\ /\ 2\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00281}00281\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00282}00282\ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Get\ first\ guess\ from\ hash\ table\ if\ possible}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00283}00283\ \ \ \ \ \ \ score\ =\ -\/mtdf(afterB,\ firstGuess);}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00284}00284\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{return}\ score;}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00286}00286\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00288}00288\ \ \ \textcolor{keyword}{auto}\ scoreMoves(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00289}00289\ \ \ \ \ std::vector\ scores(Board::N\_COLUMNS,\ -\/1000);}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00290}00290\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ col\ =\ 0UL;\ col\ <\ scores.size();\ col++)\ \{}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00291}00291\ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00292}00292\ \textcolor{comment}{\ \ \ \ \ \ if\ (auto\ afterB\ =\ b;\ afterB.play(col))\ \{}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00293}00293\ \textcolor{comment}{\ \ \ \ \ \ \ \ if\ (afterB.hasWin())\ \{}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00294}00294\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ scores[col]\ =\ (afterB.movesLeft())\ /\ 2\ +\ 1;}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00295}00295\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ continue;}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00296}00296\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00297}00297\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ TODO:\ Get\ first\ guess\ from\ hash\ table\ if\ possible}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00298}00298\ \textcolor{comment}{\ \ \ \ \ \ \ \ scores[col]\ =\ -\/mtdf(afterB,\ !col\ ?\ 0\ :\ scores.at(col\ -\/\ 1));}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00299}00299\ \textcolor{comment}{\ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00300}00300\ \textcolor{comment}{\ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00301}00301\ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Get\ first\ guess\ from\ hash\ table\ if\ possible}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00302}00302\ \ \ \ \ \ \ scores[col]\ =}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ scoreMove(b,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(col),\ !col\ ?\ 0\ :\ scores.at(col\ -\/\ 1));}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00304}00304\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00306}00306\ \ \ \ \ \textcolor{keywordflow}{return}\ scores;}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00307}00307\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00308}00308\ \};\ \ \textcolor{comment}{//\ class\ BitBully}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00309}00309\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{BitBully_8h_source_l00311}00311\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ BITBULLY\_\_BITBULLY\_H\_}}
 
 \end{DoxyCode}

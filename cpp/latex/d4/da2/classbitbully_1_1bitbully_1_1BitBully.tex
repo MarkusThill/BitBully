@@ -3,99 +3,446 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-None \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Literal\mbox{[}"{}default"{}, "{}8-\/ply"{}, "{}12-\/ply"{}, "{}12-\/ply-\/dist"{}\mbox{]}\texorpdfstring{$\vert$}{|}None opening\+\_\+book="{}default"{})
+None \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_ae63542942324df5be242ba0ec4b23d00}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Opening\+Book\+Name\texorpdfstring{$\vert$}{|}None opening\+\_\+book="{}default"{})
 \item 
-list\mbox{[}int\mbox{]} \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a4d30cb97c48c357a9a09d74eb3951847}{score\+\_\+next\+\_\+moves}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+str \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a4a856db6c89ecdad6b5572c25ccb6a06}{\+\_\+\+\_\+repr\+\_\+\+\_\+}} (self)
+\item 
+bool \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_aa72ad621137cbf356c06753602a89c35}{is\+\_\+book\+\_\+loaded}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_aa9c1d887a139403afe0c30ac8fafb463}{reset\+\_\+transposition\+\_\+table}} (self)
+\item 
+int \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_afb4c6114de8ebbd964632456f957a8c4}{get\+\_\+node\+\_\+counter}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a5faa604b9a0e9ec455585260d0add6a1}{reset\+\_\+node\+\_\+counter}} (self)
+\item 
+int \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a1a4c1f915555be0d9c8bdc76a2aa4f8b}{score\+\_\+move}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int column, int first\+\_\+guess=0)
+\item 
+list\mbox{[}int\mbox{]} \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a0285ea50cf2690fe62d18fde88d1b8c2}{score\+\_\+all\+\_\+moves}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+\item 
+int \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a4cf0446e20a16f394e9787449db03075}{negamax}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int alpha=-\/1000, int beta=1000, int depth=0)
+\item 
+int \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a1607437aa5b0df3197f1d411181d34c6}{null\+\_\+window}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+\item 
+int \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a7979827a5c24be4a7a635387bccc2291}{mtdf}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int first\+\_\+guess=0)
+\item 
+bool \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a4dd2ee718e7b0b9584cd75039199ca86}{load\+\_\+book}} (self, str book\+\_\+path)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a883541580b632bd9f408710e0d0e79a9}{reset\+\_\+book}} (self)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_aee369fd0d4e39cd10069382a8fcd58f5}{opening\+\_\+book\+\_\+type}} = opening\+\_\+book
+Opening\+Book\+Name\texorpdfstring{$\vert$}{|}None \mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a0dba004ddb3fb899dc3f8f74cb5042c7}{opening\+\_\+book\+\_\+type}} = opening\+\_\+book
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_ad536ecdc61f3dcebf6f68c94d5bc30c6}{bitbully\+\_\+agent}} = bitbully\+\_\+core.\+Bit\+Bully\+Core(Path(db\+\_\+path))
+\mbox{\hyperlink{classbitbully_1_1bitbully_1_1BitBully_a48e20f56db38d44420a824dc04045ce2}{\+\_\+core}} = bitbully\+\_\+core.\+Bit\+Bully\+Core()
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\begin{DoxyVerb}A Connect Four AI agent with opening book support.\end{DoxyVerb}
+\begin{DoxyVerb}A Connect Four AI agent with optional opening book support.
+
+Todo:
+- We have to describe the scoring scheme (range of values and their meaning).
+
+This class is a high-level Python wrapper around
+[`bitbully_core.BitBullyCore`][src.bitbully.bitbully_core.BitBullyCore].
+It integrates the packaged *BitBully Databases* opening books and
+operates on [`bitbully.Board`][src.bitbully.board.Board] objects.
+
+Notes:
+    - If an opening book is enabled, it is used automatically for
+      early-game positions.
+    - For deeper positions or positions outside the database horizon,
+      the engine falls back to search-based evaluation.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board, _ = Board.random_board(14, forbid_direct_win=True)
+    print(board)
+
+    # All three search methods should agree on the score
+    score_mtdf = agent.mtdf(board)
+    score_negamax = agent.negamax(board)
+    score_null_window = agent.null_window(board)
+    assert score_negamax == score_null_window == score_mtdf
+    ```
+\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{bitbully_8py_source_l00011}{11}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00022}{22}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
 
 
 
 \label{doc-constructors}
 \Hypertarget{classbitbully_1_1bitbully_1_1BitBully_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!\_\_init\_\_@{\_\_init\_\_}}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_ae63542942324df5be242ba0ec4b23d00}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!\_\_init\_\_@{\_\_init\_\_}}
 \index{\_\_init\_\_@{\_\_init\_\_}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
 \doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a16f00cd7e158977a03cd2bd73d542559} 
- None bitbully.\+bitbully.\+Bit\+Bully.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Literal\mbox{[}"{}default"{}, "{}8-\/ply"{}, "{}12-\/ply"{}, "{}12-\/ply-\/dist"{}\mbox{]} \texorpdfstring{$\vert$}{|} None }]{opening\+\_\+book}{ = {\ttfamily "{}default"{}}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_ae63542942324df5be242ba0ec4b23d00} 
+ None bitbully.\+bitbully.\+Bit\+Bully.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Opening\+Book\+Name \texorpdfstring{$\vert$}{|} None }]{opening\+\_\+book}{ = {\ttfamily "{}default"{}}}\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}Initializes the BitBully agent with the specified opening book.
+\begin{DoxyVerb}Initialize the BitBully agent.
 
 Args:
-    opening_book (Literal["default", "8-ply", "12-ply", "12-ply-dist"] | None):
-        The type of opening book to use. Options are:
-        - "default": Uses the default 12-ply distance-based opening book.
-        - "8-ply": Uses an 8-ply opening book.
-        - "12-ply": Uses a 12-ply opening book.
-        - "12-ply-dist": Uses a 12-ply distance-based opening book.
-        - None: No opening book will be used.
+    opening_book (OpeningBookName | None):
+        Which opening book to load.
+
+        - ``"default"``: Alias for ``"12-ply-dist"``.
+        - ``"8-ply"``: 8-ply book with win/loss values.
+        - ``"12-ply"``: 12-ply book with win/loss values.
+        - ``"12-ply-dist"``: 12-ply book with win/loss *and distance* values.
+        - ``None``: Disable opening-book usage entirely.
+
+TODO: Example for initialization with different books.
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{bitbully_8py_source_l00014}{14}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00056}{56}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
 
 
 
 \label{doc-func-members}
 \Hypertarget{classbitbully_1_1bitbully_1_1BitBully_doc-func-members}
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a4d30cb97c48c357a9a09d74eb3951847}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!score\_next\_moves@{score\_next\_moves}}
-\index{score\_next\_moves@{score\_next\_moves}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
-\doxysubsubsection{\texorpdfstring{score\_next\_moves()}{score\_next\_moves()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a4d30cb97c48c357a9a09d74eb3951847} 
- list\mbox{[}int\mbox{]} bitbully.\+bitbully.\+Bit\+Bully.\+score\+\_\+next\+\_\+moves (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a4a856db6c89ecdad6b5572c25ccb6a06}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!\_\_repr\_\_@{\_\_repr\_\_}}
+\index{\_\_repr\_\_@{\_\_repr\_\_}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{\_\_repr\_\_()}{\_\_repr\_\_()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a4a856db6c89ecdad6b5572c25ccb6a06} 
+ str bitbully.\+bitbully.\+Bit\+Bully.\+\_\+\+\_\+repr\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}Scores all possible moves for the given board state.
+\begin{DoxyVerb}Return a concise string representation of the BitBully agent.\end{DoxyVerb}
+ 
 
-Args:
-    board (Board):
-        The current board state.
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00085}{85}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_afb4c6114de8ebbd964632456f957a8c4}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!get\_node\_counter@{get\_node\_counter}}
+\index{get\_node\_counter@{get\_node\_counter}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{get\_node\_counter()}{get\_node\_counter()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_afb4c6114de8ebbd964632456f957a8c4} 
+ int bitbully.\+bitbully.\+Bit\+Bully.\+get\+\_\+node\+\_\+counter (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the number of nodes visited since the last reset.
 
 Returns:
-    list[int]: A list of scores for each column (0-6).
+    int: Number of visited nodes.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    _ = agent.score_all_moves(board)
+    print(f"Nodes visited: {agent.get_node_counter()}")
+
+    # Note that has to be reset manually:
+    agent.reset_node_counter()
+    assert agent.get_node_counter() == 0
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{bitbully_8py_source_l00038}{38}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00113}{113}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_aa72ad621137cbf356c06753602a89c35}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!is\_book\_loaded@{is\_book\_loaded}}
+\index{is\_book\_loaded@{is\_book\_loaded}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{is\_book\_loaded()}{is\_book\_loaded()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_aa72ad621137cbf356c06753602a89c35} 
+ bool bitbully.\+bitbully.\+Bit\+Bully.\+is\+\_\+book\+\_\+loaded (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check whether an opening book is loaded.
+
+Returns:
+    bool: ``True`` if an opening book is loaded, otherwise ``False``.
+
+Example:
+    ```python
+    from bitbully import BitBully
+
+    agent = BitBully()  # per default, the 12-ply-dist book is loaded
+    assert agent.is_book_loaded() is True
+
+    # Unload the book
+    agent.reset_book()
+    assert agent.is_book_loaded() is False
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00089}{89}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a4dd2ee718e7b0b9584cd75039199ca86}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!load\_book@{load\_book}}
+\index{load\_book@{load\_book}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{load\_book()}{load\_book()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a4dd2ee718e7b0b9584cd75039199ca86} 
+ bool bitbully.\+bitbully.\+Bit\+Bully.\+load\+\_\+book (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{book\+\_\+path}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Load an opening book from a file path.
+
+This is a thin wrapper around
+[`bitbully_core.BitBullyCore.loadBook`][src.bitbully.bitbully_core.BitBullyCore.loadBook].
+
+Args:
+    book_path (str):
+        Path to the opening book file. If empty or invalid, no book
+        is loaded.
+
+Returns:
+    bool:
+        ``True`` if the book was loaded successfully,
+        ``False`` otherwise.
+
+Example:
+    ```python
+    from bitbully import BitBully
+    from pathlib import Path
+    import bitbully_databases as bbd
+
+    db_path = bbd.BitBullyDatabases.get_database_path("default")
+
+    agent = BitBully(opening_book=None)  # start without book
+    assert agent.is_book_loaded() is False
+    success = agent.load_book(db_path)
+    assert agent.is_book_loaded() is True
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00266}{266}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a7979827a5c24be4a7a635387bccc2291}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!mtdf@{mtdf}}
+\index{mtdf@{mtdf}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{mtdf()}{mtdf()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a7979827a5c24be4a7a635387bccc2291} 
+ int bitbully.\+bitbully.\+Bit\+Bully.\+mtdf (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int }]{first\+\_\+guess}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluate a position using the MTD(f) algorithm.
+
+Args:
+    board (Board): The board position to evaluate.
+    first_guess (int): Initial guess for the score (often 0).
+
+Returns:
+    int: The evaluation score.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.mtdf(board)
+    assert score == 1  # Expected score for an empty board
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00244}{244}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a4cf0446e20a16f394e9787449db03075}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!negamax@{negamax}}
+\index{negamax@{negamax}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{negamax()}{negamax()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a4cf0446e20a16f394e9787449db03075} 
+ int bitbully.\+bitbully.\+Bit\+Bully.\+negamax (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int }]{alpha}{ = {\ttfamily -\/1000}, }\item[{int }]{beta}{ = {\ttfamily 1000}, }\item[{int }]{depth}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluate a position using negamax search.
+
+Args:
+    board (Board): The board position to evaluate.
+    alpha (int): Alpha bound.
+    beta (int): Beta bound.
+    depth (int): Search depth in plies.
+
+Returns:
+    int: The evaluation score returned by the engine.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.negamax(board)
+    assert score == 1  # Expected score for an empty board
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00192}{192}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a1607437aa5b0df3197f1d411181d34c6}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!null\_window@{null\_window}}
+\index{null\_window@{null\_window}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{null\_window()}{null\_window()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a1607437aa5b0df3197f1d411181d34c6} 
+ int bitbully.\+bitbully.\+Bit\+Bully.\+null\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluate a position using a null-window search.
+
+Args:
+    board (Board): The board position to evaluate.
+
+Returns:
+    int: The evaluation score.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.null_window(board)
+    assert score == 1  # Expected score for an empty board
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00223}{223}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a883541580b632bd9f408710e0d0e79a9}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!reset\_book@{reset\_book}}
+\index{reset\_book@{reset\_book}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{reset\_book()}{reset\_book()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a883541580b632bd9f408710e0d0e79a9} 
+ None bitbully.\+bitbully.\+Bit\+Bully.\+reset\+\_\+book (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Unload the currently loaded opening book (if any).
+
+This resets the engine to *search-only* mode until another
+opening book is loaded.
+
+Example:
+    ```python
+    from bitbully import BitBully
+
+    agent = BitBully()  # per default, the 12-ply-dist book is loaded
+    assert agent.is_book_loaded() is True
+    agent.reset_book()
+    assert agent.is_book_loaded() is False
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00298}{298}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a5faa604b9a0e9ec455585260d0add6a1}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!reset\_node\_counter@{reset\_node\_counter}}
+\index{reset\_node\_counter@{reset\_node\_counter}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{reset\_node\_counter()}{reset\_node\_counter()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a5faa604b9a0e9ec455585260d0add6a1} 
+ None bitbully.\+bitbully.\+Bit\+Bully.\+reset\+\_\+node\+\_\+counter (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reset the internal node counter.
+
+Example:
+See [`get_node_counter`][src.bitbully.bitbully.BitBully.get_node_counter] for usage.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00135}{135}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_aa9c1d887a139403afe0c30ac8fafb463}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!reset\_transposition\_table@{reset\_transposition\_table}}
+\index{reset\_transposition\_table@{reset\_transposition\_table}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{reset\_transposition\_table()}{reset\_transposition\_table()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_aa9c1d887a139403afe0c30ac8fafb463} 
+ None bitbully.\+bitbully.\+Bit\+Bully.\+reset\+\_\+transposition\+\_\+table (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Clear the internal transposition table.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00109}{109}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a0285ea50cf2690fe62d18fde88d1b8c2}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!score\_all\_moves@{score\_all\_moves}}
+\index{score\_all\_moves@{score\_all\_moves}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{score\_all\_moves()}{score\_all\_moves()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a0285ea50cf2690fe62d18fde88d1b8c2} 
+ list\mbox{[}int\mbox{]} bitbully.\+bitbully.\+Bit\+Bully.\+score\+\_\+all\+\_\+moves (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Score all legal moves for the given board state.
+
+Args:
+    board (Board): The current board state.
+
+Returns:
+    list[int]:
+        A list of 7 integers, one per column (0-6). Higher values
+        generally indicate better moves for the player to move.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    scores = agent.score_all_moves(board)
+    assert scores == [-2, -1, 0, 1, 0, -1, -2]  # Center column is best on an empty board
+```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00169}{169}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a1a4c1f915555be0d9c8bdc76a2aa4f8b}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!score\_move@{score\_move}}
+\index{score\_move@{score\_move}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{score\_move()}{score\_move()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a1a4c1f915555be0d9c8bdc76a2aa4f8b} 
+ int bitbully.\+bitbully.\+Bit\+Bully.\+score\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int}]{column}{, }\item[{int }]{first\+\_\+guess}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluate a single move for the given board state.
+
+This is a wrapper around
+[`bitbully_core.BitBullyCore.scoreMove`][src.bitbully.bitbully_core.BitBullyCore.scoreMove].
+
+Args:
+    board (Board): The current board state.
+    column (int): Column index (0-6) of the move to evaluate.
+    first_guess (int): Initial guess for the score (often 0).
+
+Returns:
+    int: The evaluation score of the move.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.score_move(board, column=3)
+    assert score == 1  # Score for the center column on an empty board
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00143}{143}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
 
 
 
 \label{doc-variable-members}
 \Hypertarget{classbitbully_1_1bitbully_1_1BitBully_doc-variable-members}
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_ad536ecdc61f3dcebf6f68c94d5bc30c6}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!bitbully\_agent@{bitbully\_agent}}
-\index{bitbully\_agent@{bitbully\_agent}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
-\doxysubsubsection{\texorpdfstring{bitbully\_agent}{bitbully\_agent}}
-{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_ad536ecdc61f3dcebf6f68c94d5bc30c6} 
-bitbully.\+bitbully.\+Bit\+Bully.\+bitbully\+\_\+agent = bitbully\+\_\+core.\+Bit\+Bully\+Core(Path(db\+\_\+path))}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a48e20f56db38d44420a824dc04045ce2}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!\_core@{\_core}}
+\index{\_core@{\_core}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
+\doxysubsubsection{\texorpdfstring{\_core}{\_core}}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a48e20f56db38d44420a824dc04045ce2} 
+bitbully.\+bitbully.\+Bit\+Bully.\+\_\+core = bitbully\+\_\+core.\+Bit\+Bully\+Core()\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{bitbully_8py_source_l00034}{34}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00075}{75}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
 
-\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_aee369fd0d4e39cd10069382a8fcd58f5}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!opening\_book\_type@{opening\_book\_type}}
+\Hypertarget{classbitbully_1_1bitbully_1_1BitBully_a0dba004ddb3fb899dc3f8f74cb5042c7}\index{bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}!opening\_book\_type@{opening\_book\_type}}
 \index{opening\_book\_type@{opening\_book\_type}!bitbully.bitbully.BitBully@{bitbully.bitbully.BitBully}}
 \doxysubsubsection{\texorpdfstring{opening\_book\_type}{opening\_book\_type}}
-{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_aee369fd0d4e39cd10069382a8fcd58f5} 
-bitbully.\+bitbully.\+Bit\+Bully.\+opening\+\_\+book\+\_\+type = opening\+\_\+book}
+{\footnotesize\ttfamily \label{classbitbully_1_1bitbully_1_1BitBully_a0dba004ddb3fb899dc3f8f74cb5042c7} 
+Opening\+Book\+Name \texorpdfstring{$\vert$}{|} None bitbully.\+bitbully.\+Bit\+Bully.\+opening\+\_\+book\+\_\+type = opening\+\_\+book}
 
 
 
-Definition at line \mbox{\hyperlink{bitbully_8py_source_l00030}{30}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
+Definition at line \mbox{\hyperlink{bitbully_8py_source_l00072}{72}} of file \mbox{\hyperlink{bitbully_8py_source}{bitbully.\+py}}.
 
 
 

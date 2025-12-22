@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.59-a2</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.59</span>
                         </div>
                     </td>
                 </tr>
@@ -143,9 +143,11 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad2a69d01c5b7e9f77041180f58355ae8" id="r_ad2a69d01c5b7e9f77041180f58355ae8"><td class="memItemLeft" align="right" valign="top">tuple[<a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>, list[int]]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2a69d01c5b7e9f77041180f58355ae8">random_board</a> (int n_ply, bool forbid_direct_win)</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a88b1d671849ae4fd5c09c1e7feb56e81" id="r_a88b1d671849ae4fd5c09c1e7feb56e81"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88b1d671849ae4fd5c09c1e7feb56e81">current_player</a> = 1 else 1</td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a1091ba72ad36a44683ce490d76726447" id="r_a1091ba72ad36a44683ce490d76726447"><td class="memItemLeft" align="right" valign="top">ClassVar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1091ba72ad36a44683ce490d76726447">N_COLUMNS</a> = bitbully_core.N_COLUMNS</td></tr>
+<tr class="memitem:aa729e1bd85ba1e8a4e1860b3bd6d5270" id="r_aa729e1bd85ba1e8a4e1860b3bd6d5270"><td class="memItemLeft" align="right" valign="top">ClassVar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa729e1bd85ba1e8a4e1860b3bd6d5270">N_ROWS</a> = bitbully_core.N_ROWS</td></tr>
+<tr class="memitem:a6600d819beec87b6cc78c3a90966170c" id="r_a6600d819beec87b6cc78c3a90966170c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6600d819beec87b6cc78c3a90966170c">Player</a> = bitbully_core.Player</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -376,7 +378,7 @@ Example:
     _  O  _  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00014">14</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00020">20</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -447,7 +449,7 @@ Example:
     assert not (board1 == board2)
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00224">224</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00230">230</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -496,7 +498,7 @@ Example:
     971238920548618160
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00639">639</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00645">645</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -520,7 +522,7 @@ Example:
 </div><div class="memdoc">
 <pre class="fragment">Checks inequality between two Board instances.
 
-See the documentation for [`bitbully.Board.__eq__`][src.bitbully.Board.__eq__] for details.
+See the documentation for [Board.__eq__][src.bitbully.board.Board.__eq__] for details.
 
 Args:
     value (object): The other Board instance to compare against.
@@ -528,7 +530,7 @@ Args:
 Returns:
     bool: True if both boards are not equal, False otherwise.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00277">277</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00283">283</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -547,7 +549,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Returns a string representation of the Board instance.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00290">290</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00296">296</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -567,9 +569,9 @@ Returns:
 </div><div class="memdoc">
 <pre class="fragment">Return a human-readable ASCII representation (same as to_string()).
 
-See the documentation for [`bitbully.Board.to_string`][src.bitbully.Board.to_string] for details.
+See the documentation for [Board.to_string][src.bitbully.board.Board.to_string] for details.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00294">294</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00300">300</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -653,7 +655,7 @@ Example:
         - Number of distinct positions at ply *n*:
           https://oeis.org/A212693
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00301">301</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00307">307</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -683,7 +685,7 @@ Args:
 Returns:
     bool: True if the current player can win next, False otherwise.
 
-See also: [`bitbully.Board.has_win`][src.bitbully.Board.has_win].
+See also: [`Board.has_win`][src.bitbully.board.Board.has_win].
 
 Example:
     ```python
@@ -720,7 +722,7 @@ Example:
     _  X  X  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00375">375</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00381">381</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -821,7 +823,7 @@ Example:
     X  O  _  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00425">425</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00431">431</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -909,7 +911,7 @@ Example:
     assert board.count_tokens() == len(moves)
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00513">513</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00519">519</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -949,21 +951,21 @@ Example:
 
     # Empty board → Player 1 starts.
     board = bb.Board()
-    assert board.current_player == 1
+    assert board.current_player() == 1
     assert board.count_tokens() == 0
 
     # After one move, it's Player 2's turn.
     assert board.play(3)
     assert board.count_tokens() == 1
-    assert board.current_player == 2
+    assert board.current_player() == 2
 
     # After a second move, it's again Player 1's turn.
     assert board.play(4)
     assert board.count_tokens() == 2
-    assert board.current_player == 1
+    assert board.current_player() == 1
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01379">1379</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01384">1384</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -987,8 +989,7 @@ Example:
 </div><div class="memdoc">
 <pre class="fragment">Creates a board directly from a 2D array representation.
 
-This is a convenience wrapper around the main constructor
-[`bitbully.Board.__init__`][src.bitbully.Board.__init__]
+This is a convenience wrapper around the main constructor [board.Board][src.bitbully.board.Board]
 and accepts the same array formats:
 
 - **Row-major**: 6 x 7 (``[row][column]``), top row first.
@@ -1004,7 +1005,7 @@ Args:
     arr (Sequence[Sequence[int]]):
         A 2D array describing the board state, either in row-major or
         column-major layout. See the examples in
-        [`bitbully.Board.__init__`][src.bitbully.Board.__init__] for details.
+        [Board][src.bitbully.board.Board] for details.
 
 Returns:
     Board:
@@ -1049,7 +1050,7 @@ Example:
     assert board.to_array() == board_array
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01600">1600</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01605">1605</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1073,7 +1074,7 @@ Example:
 </div><div class="memdoc">
 <pre class="fragment">Creates a board by replaying a sequence of moves from the empty position.
 
-This is a convenience constructor around [`bitbully.Board.play`][src.bitbully.Board.play].
+This is a convenience constructor around [Board.play][src.bitbully.board.Board.play].
 It starts from an empty board and applies the given move sequence, assuming
 it is **legal** (no out-of-range columns, no moves in full columns, etc.).
 
@@ -1108,7 +1109,7 @@ Example:
     assert not board.has_win()
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01557">1557</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01562">1562</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1137,7 +1138,7 @@ condition already exists on the board.
 This method is typically used right after a move to verify whether the game
 has been won.
 
-See also: [`bitbully.Board.can_win_next`][src.bitbully.Board.can_win_next].
+See also: [`Board.can_win_next`][src.bitbully.board.Board.can_win_next].
 
 Example:
     ```python
@@ -1176,7 +1177,7 @@ Example:
     _  X  X  X  X  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00586">586</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00592">592</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1198,7 +1199,7 @@ Example:
 
 A Connect Four board has 42 cells in total (7 columns x 6 rows).
 This method returns ``True`` if **all** cells are occupied, i.e.
-when  [`bitbully.Board.moves_left`][src.bitbully.Board.moves_left] returns ``0``.
+when  [Board.moves_left][src.bitbully.board.Board.moves_left] returns ``0``.
 
 Returns:
     bool:
@@ -1224,7 +1225,7 @@ Example:
     assert board.count_tokens() == 42
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01419">1419</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01424">1424</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1247,12 +1248,12 @@ Example:
 A game of Connect Four is considered **over** if:
 
 - One of the players has a winning position
-  (see [`bitbully.Board.has_win`][src.bitbully.Board.has_win]), **or**
+  (see [Board.has_win][src.bitbully.board.Board.has_win]), **or**
 - The board is completely full and no further moves can be played
-  (see [`bitbully.Board.is_full`][src.bitbully.Board.is_full]).
+  (see [Board.is_full][src.bitbully.board.Board.is_full]).
 
 This method does **not** indicate *who* won; for that, use
-[`bitbully.Board.winner`][src.bitbully.Board.winner].
+[Board.winner][src.bitbully.board.Board.winner].
 
 Returns:
     bool:
@@ -1285,7 +1286,7 @@ Example:
     assert board.winner() is None
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01452">1452</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01457">1457</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1319,7 +1320,7 @@ leaving an immediate win to the opponent, nor does it stop being
 usable once a player has already won. It purely validates whether a
 token can be dropped into the given column according to the basic
 rules of Connect Four. You have to check for wins separately using
-[`bitbully.Board.has_win`][src.bitbully.Board.has_win].
+[Board.has_win][src.bitbully.board.Board.has_win].
 
 
 Args:
@@ -1397,7 +1398,7 @@ Example:
     _  X  X  X  X  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00673">673</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00679">679</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1447,8 +1448,28 @@ Example:
     assert set(legal_moves) == set(board.legal_moves(order_moves=True))
     board.legal_moves(order_moves=True) == [3, 2, 4, 1, 5, 0, 6]  # Center column prioritized
     ```
+
+Example:
+    ```python
+    import bitbully as bb
+
+    board = bb.Board()
+    board.play("3322314")
+    print(board)
+    assert board.legal_moves() == list(range(7))
+    assert board.legal_moves(non_losing=True) == [5]
+    ```
+Expected output:
+    ```text
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  X  _  _  _
+    _  _  O  O  _  _  _
+    _  O  X  X  X  _  _
+    ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01809">1809</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01813">1813</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1547,7 +1568,7 @@ Example:
     _  X  _  O  _  X  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00766">766</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00772">772</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1609,7 +1630,7 @@ Example:
     assert board.moves_left() + board.count_tokens() == 42
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00852">852</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00858">858</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1706,7 +1727,7 @@ Example:
     _  O  _  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00899">899</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00905">905</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1756,7 +1777,7 @@ Example:
     assert new_board != board
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00987">987</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00993">993</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1866,7 +1887,7 @@ Example:
     assert len(seen) &gt; 1
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01668">1668</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01672">1672</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1957,7 +1978,7 @@ Example:
 
 Example:
     You can also set the board using other formats, such as a 2D array or a string.
-    See the examples in the [`bitbully.Board.__init__`][src.bitbully.Board.__init__] docstring for details.
+    See the examples in the [Board][src.bitbully.board.Board] docstring for details.
 
     ```python
     # Briefly demonstrate the different input formats accepted by `reset_board()`.
@@ -2014,7 +2035,7 @@ Example:
     _  O  _  X  _  O  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01028">1028</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01034">1034</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2103,7 +2124,7 @@ Example:
         TODO: This is not supported yet
         ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01172">1172</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01178">1178</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2167,7 +2188,7 @@ Expected output:
     Huffman code: 10120112
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01757">1757</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01761">1761</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2224,7 +2245,7 @@ Example:
     _  O  _  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01246">1246</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01252">1252</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2329,7 +2350,7 @@ Example:
     assert board_1.uid() != board_2.uid()
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01288">1288</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01294">1294</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2350,13 +2371,13 @@ Example:
 <pre class="fragment">Returns the winning player, if the game has been won.
 
 This helper interprets the current board under the assumption that
-[`bitbully.Board.has_win`][src.bitbully.Board.has_win] indicates **the last move** created a
+[Board.has_win][src.bitbully.board.Board.has_win] indicates **the last move** created a
 winning configuration. In that case, the winner is the *previous* player:
 
 - If it is currently Player 1's turn, then Player 2 must have just won.
 - If it is currently Player 2's turn, then Player 1 must have just won.
 
-If there is no winner (i.e. [`bitbully.Board.has_win`][src.bitbully.Board.has_win] is ``False``),
+If there is no winner (i.e. [Board.has_win][src.bitbully.board.Board.has_win] is ``False``),
 this method returns ``None``.
 
 Returns:
@@ -2380,7 +2401,7 @@ Example:
     assert board.is_game_over()
 
     # It is now Player 2's turn to move next...
-    assert board.current_player == 2
+    assert board.current_player() == 2
 
     # ...which implies Player 1 must be the winner.
     assert board.winner() == 1
@@ -2399,7 +2420,7 @@ Example:
     assert board.winner() is None
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01498">1498</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01503">1503</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2424,23 +2445,79 @@ Example:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00218">218</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00224">224</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
-<a id="a88b1d671849ae4fd5c09c1e7feb56e81" name="a88b1d671849ae4fd5c09c1e7feb56e81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88b1d671849ae4fd5c09c1e7feb56e81">&#9670;&#160;</a></span>current_player</h2>
+<a id="a1091ba72ad36a44683ce490d76726447" name="a1091ba72ad36a44683ce490d76726447"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1091ba72ad36a44683ce490d76726447">&#9670;&#160;</a></span>N_COLUMNS</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int bitbully.board.Board.current_player = 1 else 1</td>
+          <td class="memname">ClassVar bitbully.board.Board.N_COLUMNS = bitbully_core.N_COLUMNS</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01554">1554</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00015">15</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+
+</div>
+</div>
+<a id="aa729e1bd85ba1e8a4e1860b3bd6d5270" name="aa729e1bd85ba1e8a4e1860b3bd6d5270"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa729e1bd85ba1e8a4e1860b3bd6d5270">&#9670;&#160;</a></span>N_ROWS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ClassVar bitbully.board.Board.N_ROWS = bitbully_core.N_ROWS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00016">16</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+
+</div>
+</div>
+<a id="a6600d819beec87b6cc78c3a90966170c" name="a6600d819beec87b6cc78c3a90966170c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6600d819beec87b6cc78c3a90966170c">&#9670;&#160;</a></span>Player</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.board.Board.Player = bitbully_core.Player</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00018">18</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>

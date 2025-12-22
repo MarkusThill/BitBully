@@ -288,211 +288,222 @@
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00284}00284\ \ \ \ \ assert(uint64\_t\_popcnt(mv)\ ==\ 1);}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00285}00285\ }
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00286}00286\ \ \ \ \ \textcolor{comment}{//\ How\ many\ threats\ (indirect\ \&\ direct)\ will\ I\ have\ after\ this\ move?}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00287}00287\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ threats\ =}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ winningPositions(m\_bActivePTokens\ \string^\ mv,\ \textcolor{keyword}{true})\ \&\ \string~(m\_bAllTokens\ \string^\ mv);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00289}00289\ \ \ \ \ \textcolor{keyword}{auto}\ numThreats\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(uint64\_t\_popcnt(threats));}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00290}00290\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00291}00291\ \ \ \ \ \textcolor{comment}{//\ Usually,\ try\ to\ avoid\ moving\ under\ own\ threat\ since\ opponent\ will}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00292}00292\ \ \ \ \ \textcolor{comment}{//\ neutralize\ it...}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00293}00293\ \ \ \ \ \textcolor{keywordflow}{if}\ (ownThreats\ \&\ (mv\ <<\ 1))\ numThreats-\/-\/;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00294}00294\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00295}00295\ \ \ \ \ mvList.insert(mv,\ numThreats);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00287}00287\ \ \ \ \ \textcolor{comment}{//\ TODO:\ is\ vertical=true\ that\ clever?\ We\ will\ also\ count\ threats\ which\ can}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00288}00288\ \ \ \ \ \textcolor{comment}{//\ be\ neutralized\ immediately...}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00289}00289\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ threats\ =}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ winningPositions(m\_bActivePTokens\ \string^\ mv,\ \textcolor{keyword}{true})\ \&\ \string~(m\_bAllTokens\ \string^\ mv);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00291}00291\ \ \ \ \ \textcolor{keyword}{auto}\ numThreats\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(uint64\_t\_popcnt(threats));}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00293}00293\ \ \ \ \ \textcolor{comment}{//\ Usually,\ try\ to\ avoid\ moving\ under\ own\ threat\ since\ opponent\ will}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00294}00294\ \ \ \ \ \textcolor{comment}{//\ neutralize\ it...}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00295}00295\ \ \ \ \ \textcolor{keywordflow}{if}\ (ownThreats\ \&\ (mv\ <<\ 1))\ numThreats-\/-\/;}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00296}00296\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00297}00297\ \ \ \ \ moves\ \string^=\ mv;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00298}00298\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00299}00299\ \ \ \textcolor{keywordflow}{return}\ mvList;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00300}00300\ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00301}00301\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00302}00302\ Board::TBitBoard\ Board::findThreats(TBitBoard\ moves)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00303}00303\ \ \ \textcolor{keyword}{auto}\ threats\ =\ winningPositions(m\_bActivePTokens,\ \textcolor{keyword}{true})\ \&\ \string~m\_bAllTokens;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00304}00304\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00305}00305\ \ \ \textcolor{comment}{//\ TODO:\ The\ pop\ couting\ function\ seems\ to\ matter\ a\ lot}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00306}00306\ \ \ \textcolor{keyword}{auto}\ curNumThreats\ =\ uint64\_t\_popcnt(threats);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00307}00307\ \ \ \textcolor{keyword}{auto}\ threatMoves\ =\ UINT64\_C(0);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00308}00308\ \ \ \textcolor{keywordflow}{while}\ (moves)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00309}00309\ \ \ \ \ \textcolor{keyword}{auto}\ mv\ =\ lsb(moves);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00310}00310\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00311}00311\ \ \ \ \ \textcolor{comment}{//\ Threats\ are\ winning\ positions\ which\ are\ generated\ by\ performing\ move\ mv.}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00312}00312\ \ \ \ \ \textcolor{comment}{//\ However,\ we\ do\ not\ care\ about\ winning\ positions\ which\ are\ not\ achievable}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00313}00313\ \ \ \ \ \textcolor{comment}{//\ any\ more\ (since\ the\ positions\ are\ already\ occupied).\ Hence,\ we\ have\ to}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00314}00314\ \ \ \ \ \textcolor{comment}{//\ only\ select\ those\ positions\ as\ threats,\ which\ are\ still\ empty.}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00315}00315\ \ \ \ \ \textcolor{comment}{//\ It\ seems\ that\ all\ kind\ of\ threats\ (immediate\ and\ indirect\ threats)\ are}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{comment}{//\ beneficial\ for\ the\ move\ ordering!}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00317}00317\ \ \ \ \ threats\ =}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ winningPositions(m\_bActivePTokens\ \string^\ mv,\ \textcolor{keyword}{true})\ \&\ \string~(m\_bAllTokens\ \string^\ mv);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00319}00319\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00320}00320\ \ \ \ \ \textcolor{keywordflow}{if}\ (uint64\_t\_popcnt(threats\ \&\ (moves\ \string^\ mv))\ >\ 1)}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00321}00321\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mv;\ \ \textcolor{comment}{//\ at\ least\ 2\ immediate\ threats}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00322}00322\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00323}00323\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ numThreats\ =\ uint64\_t\_popcnt(threats);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ numThreats\ >\ curNumThreats)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00325}00325\ \ \ \ \ \ \ threatMoves\ \string^=\ mv;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00326}00326\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00327}00327\ \ \ \ \ moves\ \string^=\ mv;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00328}00328\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00329}00329\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00330}00330\ \ \ \textcolor{keywordflow}{return}\ threatMoves;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00331}00331\ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00332}00332\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00333}00333\ Board::TBitBoard\ Board::findOddThreats(TBitBoard\ moves)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00334}00334\ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ ODD\_ROWS\ =\ getRowMask(2)\ |\ getRowMask(4);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00335}00335\ \ \ \textcolor{keyword}{auto}\ threats\ =\ winningPositions(m\_bActivePTokens,\ \textcolor{keyword}{true})\ \&\ \string~m\_bAllTokens;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00336}00336\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00337}00337\ \ \ \textcolor{comment}{//\ TODO:\ The\ pop\ couting\ function\ seems\ to\ matter\ a\ lot}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00338}00338\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ curNumThreats\ =\ uint64\_t\_popcnt(threats\ \&\ ODD\_ROWS);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00339}00339\ \ \ \textcolor{keyword}{auto}\ threatMoves\ =\ UINT64\_C(0);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00340}00340\ \ \ \textcolor{keywordflow}{while}\ (moves)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00341}00341\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mv\ =\ lsb(moves);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00342}00342\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00343}00343\ \ \ \ \ threats\ =}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ winningPositions(m\_bActivePTokens\ \string^\ mv,\ \textcolor{keyword}{true})\ \&\ \string~(m\_bAllTokens\ \string^\ mv);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00345}00345\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ numThreats\ =\ uint64\_t\_popcnt(threats\ \&\ ODD\_ROWS);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ numThreats\ >\ curNumThreats)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00347}00347\ \ \ \ \ \ \ threatMoves\ \string^=\ mv;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00348}00348\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00349}00349\ \ \ \ \ moves\ \string^=\ mv;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00350}00350\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00351}00351\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00352}00352\ \ \ \textcolor{keywordflow}{return}\ threatMoves;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00353}00353\ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00354}00354\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00355}00355\ \textcolor{comment}{/*}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00356}00356\ \textcolor{comment}{std::pair<unsigned\ long,\ unsigned\ long>\ Board::findOddEvenThreats()\ \{}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00357}00357\ \textcolor{comment}{\ \ constexpr\ auto\ ODD\_ROWS\ =\ getRowMask(2)\ |\ getRowMask(4);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00358}00358\ \textcolor{comment}{\ \ constexpr\ auto\ EVEN\_ROWS\ =\ getRowMask(1)\ |\ getRowMask(3)\ |\ getRowMask(5);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00359}00359\ \textcolor{comment}{\ \ auto\ threats\ =\ winningPositions(m\_bActive)\ \&\ \string~m\_bAll;}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00360}00360\ \textcolor{comment}{\ \ auto\ oddThreats\ =\ threats\ \&\ ODD\_ROWS;}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00361}00361\ \textcolor{comment}{\ \ auto\ evenThreats\ =\ threats\ \&\ EVEN\_ROWS;}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00362}00362\ \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00363}00363\ \textcolor{comment}{\ \ int\ curNumOddThreats\ =\ uint64\_t\_popcnt(oddThreats);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00364}00364\ \textcolor{comment}{\ \ int\ curNumEvenThreats\ =\ uint64\_t\_popcnt(evenThreats);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00365}00365\ \textcolor{comment}{\ \ auto\ threatOddMoves\ =\ UINT64\_C(0);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00366}00366\ \textcolor{comment}{\ \ auto\ threatEvenMoves\ =\ UINT64\_C(0);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00367}00367\ \textcolor{comment}{\ \ auto\ moves\ =\ legalMovesMask();}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00368}00368\ \textcolor{comment}{\ \ while\ (moves)\ \{}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00369}00369\ \textcolor{comment}{\ \ \ \ auto\ mvMask\ =\ moves\ -\/\ UINT64\_C(1);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00370}00370\ \textcolor{comment}{\ \ \ \ auto\ mv\ =\ \string~mvMask\ \&\ moves;}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00371}00371\ \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00372}00372\ \textcolor{comment}{\ \ \ \ //\ Threats\ are\ winning\ positions\ which\ are\ generated\ by\ performing\ move\ mv.}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00373}00373\ \textcolor{comment}{\ \ \ \ //\ However,\ we\ do\ not\ care\ about\ winning\ positions\ which\ are\ not\ achievable}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00374}00374\ \textcolor{comment}{\ \ \ \ //\ any\ more\ (since\ the\ positions\ are\ already\ occupied).\ Hence,\ we\ have\ to}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00375}00375\ \textcolor{comment}{\ \ \ \ //\ only\ select\ those\ positions\ as\ threats,\ which\ are\ still\ empty.}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00376}00376\ \textcolor{comment}{\ \ \ \ threats\ =\ winningPositions(m\_bActive\ \string^\ mv)\ \&\ \string~(m\_bAll\ \string^\ mv);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00377}00377\ \textcolor{comment}{\ \ \ \ oddThreats\ =\ threats\ \&\ ODD\_ROWS;}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00378}00378\ \textcolor{comment}{\ \ \ \ int\ numOddThreats\ =\ uint64\_t\_popcnt(oddThreats);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00379}00379\ \textcolor{comment}{\ \ \ \ if\ (numOddThreats\ >\ curNumOddThreats)\ \{}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00380}00380\ \textcolor{comment}{\ \ \ \ \ \ threatOddMoves\ \string^=\ mv;}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00381}00381\ \textcolor{comment}{\ \ \ \ \}}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00382}00382\ \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00383}00383\ \textcolor{comment}{\ \ \ \ evenThreats\ =\ threats\ \&\ ODD\_ROWS;}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00384}00384\ \textcolor{comment}{\ \ \ \ int\ numEvenThreats\ =\ uint64\_t\_popcnt(oddThreats);}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00385}00385\ \textcolor{comment}{\ \ \ \ if\ (numEvenThreats\ >\ curNumEvenThreats)\ \{}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00386}00386\ \textcolor{comment}{\ \ \ \ \ \ threatEvenMoves\ \string^=\ mv;}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00387}00387\ \textcolor{comment}{\ \ \ \ \}}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00388}00388\ \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00389}00389\ \textcolor{comment}{\ \ \ \ moves\ \string^=\ mv;}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00390}00390\ \textcolor{comment}{\ \ \}}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00391}00391\ \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00392}00392\ \textcolor{comment}{\ \ return\ std::pair\{threatOddMoves,\ threatEvenMoves\};}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00393}00393\ \textcolor{comment}{\}}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00394}00394\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00395}00395\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00396}00396\ \textcolor{keywordtype}{bool}\ Board::canWin()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00397}00397\ \ \ \textcolor{keywordflow}{return}\ winningPositions(m\_bActivePTokens,\ \textcolor{keyword}{true})\ \&}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ (m\_bAllTokens\ +\ BB\_BOTTOM\_ROW);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00399}00399\ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00400}00400\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00401}00401\ \textcolor{keywordtype}{bool}\ Board::canWin(\textcolor{keywordtype}{int}\ column)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00402}00402\ \ \ \textcolor{keywordflow}{return}\ isLegalMove(column)\ \&\&}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ \ (winningPositions(m\_bActivePTokens,\ \textcolor{keyword}{true})\ \&}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ (m\_bAllTokens\ +\ BB\_BOTTOM\_ROW)\ \&\ getColumnMask(column));}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00405}00405\ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00406}00406\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00407}00407\ Board::TBitBoard\ Board::legalMovesMask()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00408}00408\ \ \ \textcolor{keywordflow}{return}\ (m\_bAllTokens\ +\ BB\_BOTTOM\_ROW)\ \&\ BB\_ALL\_LEGAL\_TOKENS;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00409}00409\ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00410}00410\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00411}00411\ \textcolor{comment}{//\ In\ Board.cpp}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00297}00297\ \ \ \ \ mvList.insert(mv,\ numThreats);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00299}00299\ \ \ \ \ moves\ \string^=\ mv;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00300}00300\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00301}00301\ \ \ \textcolor{keywordflow}{return}\ mvList;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00302}00302\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00304}00304\ Board::TBitBoard\ Board::findThreats(TBitBoard\ moves)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00305}00305\ \ \ \textcolor{keyword}{auto}\ threats\ =\ winningPositions(m\_bActivePTokens,\ \textcolor{keyword}{true})\ \&\ \string~m\_bAllTokens;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00307}00307\ \ \ \textcolor{comment}{//\ TODO:\ The\ pop\ couting\ function\ seems\ to\ matter\ a\ lot}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00308}00308\ \ \ \textcolor{keyword}{auto}\ curNumThreats\ =\ uint64\_t\_popcnt(threats);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00309}00309\ \ \ \textcolor{keyword}{auto}\ threatMoves\ =\ UINT64\_C(0);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00310}00310\ \ \ \textcolor{keywordflow}{while}\ (moves)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00311}00311\ \ \ \ \ \textcolor{keyword}{auto}\ mv\ =\ lsb(moves);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00313}00313\ \ \ \ \ \textcolor{comment}{//\ Threats\ are\ winning\ positions\ which\ are\ generated\ by\ performing\ move\ mv.}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00314}00314\ \ \ \ \ \textcolor{comment}{//\ However,\ we\ do\ not\ care\ about\ winning\ positions\ which\ are\ not\ achievable}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00315}00315\ \ \ \ \ \textcolor{comment}{//\ any\ more\ (since\ the\ positions\ are\ already\ occupied).\ Hence,\ we\ have\ to}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00316}00316\ \ \ \ \ \textcolor{comment}{//\ only\ select\ those\ positions\ as\ threats,\ which\ are\ still\ empty.}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00317}00317\ \ \ \ \ \textcolor{comment}{//\ It\ seems\ that\ all\ kind\ of\ threats\ (immediate\ and\ indirect\ threats)\ are}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00318}00318\ \ \ \ \ \textcolor{comment}{//\ beneficial\ for\ the\ move\ ordering!}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00319}00319\ \ \ \ \ threats\ =}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ winningPositions(m\_bActivePTokens\ \string^\ mv,\ \textcolor{keyword}{true})\ \&\ \string~(m\_bAllTokens\ \string^\ mv);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00322}00322\ \ \ \ \ \textcolor{keywordflow}{if}\ (uint64\_t\_popcnt(threats\ \&\ (moves\ \string^\ mv))\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00323}00323\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mv;\ \ \textcolor{comment}{//\ at\ least\ 2\ immediate\ threats}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00325}00325\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ numThreats\ =\ uint64\_t\_popcnt(threats);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ numThreats\ >\ curNumThreats)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00327}00327\ \ \ \ \ \ \ threatMoves\ \string^=\ mv;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00328}00328\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00329}00329\ \ \ \ \ moves\ \string^=\ mv;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00330}00330\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00332}00332\ \ \ \textcolor{keywordflow}{return}\ threatMoves;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00333}00333\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00335}00335\ Board::TBitBoard\ Board::findOddThreats(TBitBoard\ moves)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00336}00336\ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ ODD\_ROWS\ =\ getRowMask(2)\ |\ getRowMask(4);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00337}00337\ \ \ \textcolor{keyword}{auto}\ threats\ =\ winningPositions(m\_bActivePTokens,\ \textcolor{keyword}{true})\ \&\ \string~m\_bAllTokens;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00339}00339\ \ \ \textcolor{comment}{//\ TODO:\ The\ pop\ couting\ function\ seems\ to\ matter\ a\ lot}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00340}00340\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ curNumThreats\ =\ uint64\_t\_popcnt(threats\ \&\ ODD\_ROWS);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00341}00341\ \ \ \textcolor{keyword}{auto}\ threatMoves\ =\ UINT64\_C(0);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00342}00342\ \ \ \textcolor{keywordflow}{while}\ (moves)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00343}00343\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mv\ =\ lsb(moves);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00345}00345\ \ \ \ \ threats\ =}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ winningPositions(m\_bActivePTokens\ \string^\ mv,\ \textcolor{keyword}{true})\ \&\ \string~(m\_bAllTokens\ \string^\ mv);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00347}00347\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ numThreats\ =\ uint64\_t\_popcnt(threats\ \&\ ODD\_ROWS);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ numThreats\ >\ curNumThreats)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00349}00349\ \ \ \ \ \ \ threatMoves\ \string^=\ mv;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00350}00350\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00351}00351\ \ \ \ \ moves\ \string^=\ mv;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00352}00352\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00354}00354\ \ \ \textcolor{keywordflow}{return}\ threatMoves;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00355}00355\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00357}00357\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00358}00358\ \textcolor{comment}{std::pair<unsigned\ long,\ unsigned\ long>\ Board::findOddEvenThreats()\ \{}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00359}00359\ \textcolor{comment}{\ \ constexpr\ auto\ ODD\_ROWS\ =\ getRowMask(2)\ |\ getRowMask(4);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00360}00360\ \textcolor{comment}{\ \ constexpr\ auto\ EVEN\_ROWS\ =\ getRowMask(1)\ |\ getRowMask(3)\ |\ getRowMask(5);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00361}00361\ \textcolor{comment}{\ \ auto\ threats\ =\ winningPositions(m\_bActive)\ \&\ \string~m\_bAll;}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00362}00362\ \textcolor{comment}{\ \ auto\ oddThreats\ =\ threats\ \&\ ODD\_ROWS;}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00363}00363\ \textcolor{comment}{\ \ auto\ evenThreats\ =\ threats\ \&\ EVEN\_ROWS;}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00364}00364\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00365}00365\ \textcolor{comment}{\ \ int\ curNumOddThreats\ =\ uint64\_t\_popcnt(oddThreats);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00366}00366\ \textcolor{comment}{\ \ int\ curNumEvenThreats\ =\ uint64\_t\_popcnt(evenThreats);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00367}00367\ \textcolor{comment}{\ \ auto\ threatOddMoves\ =\ UINT64\_C(0);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00368}00368\ \textcolor{comment}{\ \ auto\ threatEvenMoves\ =\ UINT64\_C(0);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00369}00369\ \textcolor{comment}{\ \ auto\ moves\ =\ legalMovesMask();}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00370}00370\ \textcolor{comment}{\ \ while\ (moves)\ \{}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00371}00371\ \textcolor{comment}{\ \ \ \ auto\ mvMask\ =\ moves\ -\/\ UINT64\_C(1);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00372}00372\ \textcolor{comment}{\ \ \ \ auto\ mv\ =\ \string~mvMask\ \&\ moves;}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00373}00373\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00374}00374\ \textcolor{comment}{\ \ \ \ //\ Threats\ are\ winning\ positions\ which\ are\ generated\ by\ performing\ move\ mv.}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00375}00375\ \textcolor{comment}{\ \ \ \ //\ However,\ we\ do\ not\ care\ about\ winning\ positions\ which\ are\ not\ achievable}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00376}00376\ \textcolor{comment}{\ \ \ \ //\ any\ more\ (since\ the\ positions\ are\ already\ occupied).\ Hence,\ we\ have\ to}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00377}00377\ \textcolor{comment}{\ \ \ \ //\ only\ select\ those\ positions\ as\ threats,\ which\ are\ still\ empty.}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00378}00378\ \textcolor{comment}{\ \ \ \ threats\ =\ winningPositions(m\_bActive\ \string^\ mv)\ \&\ \string~(m\_bAll\ \string^\ mv);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00379}00379\ \textcolor{comment}{\ \ \ \ oddThreats\ =\ threats\ \&\ ODD\_ROWS;}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00380}00380\ \textcolor{comment}{\ \ \ \ int\ numOddThreats\ =\ uint64\_t\_popcnt(oddThreats);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00381}00381\ \textcolor{comment}{\ \ \ \ if\ (numOddThreats\ >\ curNumOddThreats)\ \{}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00382}00382\ \textcolor{comment}{\ \ \ \ \ \ threatOddMoves\ \string^=\ mv;}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00383}00383\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00384}00384\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00385}00385\ \textcolor{comment}{\ \ \ \ evenThreats\ =\ threats\ \&\ ODD\_ROWS;}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00386}00386\ \textcolor{comment}{\ \ \ \ int\ numEvenThreats\ =\ uint64\_t\_popcnt(oddThreats);}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00387}00387\ \textcolor{comment}{\ \ \ \ if\ (numEvenThreats\ >\ curNumEvenThreats)\ \{}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00388}00388\ \textcolor{comment}{\ \ \ \ \ \ threatEvenMoves\ \string^=\ mv;}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00389}00389\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00390}00390\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00391}00391\ \textcolor{comment}{\ \ \ \ moves\ \string^=\ mv;}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00392}00392\ \textcolor{comment}{\ \ \}}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00393}00393\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00394}00394\ \textcolor{comment}{\ \ return\ std::pair\{threatOddMoves,\ threatEvenMoves\};}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00395}00395\ \textcolor{comment}{\}}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00396}00396\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00398}00398\ \textcolor{keywordtype}{bool}\ Board::canWin()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00399}00399\ \ \ \textcolor{keywordflow}{return}\ winningPositions(m\_bActivePTokens,\ \textcolor{keyword}{true})\ \&}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \ (m\_bAllTokens\ +\ BB\_BOTTOM\_ROW);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00401}00401\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00403}00403\ \textcolor{keywordtype}{bool}\ Board::canWin(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ column)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00404}00404\ \ \ \textcolor{keywordflow}{return}\ isLegalMove(column)\ \&\&}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ \ (winningPositions(m\_bActivePTokens,\ \textcolor{keyword}{true})\ \&}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ (m\_bAllTokens\ +\ BB\_BOTTOM\_ROW)\ \&\ getColumnMask(column));}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00407}00407\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00408}00408\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00409}00409\ Board::TBitBoard\ Board::legalMovesMask()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00410}00410\ \ \ \textcolor{keywordflow}{return}\ (m\_bAllTokens\ +\ BB\_BOTTOM\_ROW)\ \&\ BB\_ALL\_LEGAL\_TOKENS;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00411}00411\ \}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00412}00412\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00413}00413\ std::vector<int>\ Board::orderedLegalMovesFromMask(TBitBoard\ mvBits)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00414}00414\ \ \ \textcolor{keyword}{auto}\ sortedMoves\ =\ sortMoves(mvBits);\ \ \textcolor{comment}{//\ MoveList}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00415}00415\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00416}00416\ \ \ std::vector<int>\ cols;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00417}00417\ \ \ cols.reserve(sortedMoves.getSize());}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00413}00413\ \textcolor{comment}{//\ In\ Board.cpp}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00415}00415\ std::vector<int>\ Board::orderedLegalMovesFromMask(}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00416}00416\ \ \ \ \ \textcolor{keyword}{const}\ TBitBoard\ mvBits)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00417}00417\ \ \ \textcolor{keyword}{auto}\ sortedMoves\ =\ sortMoves(mvBits);\ \ \textcolor{comment}{//\ MoveList}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00418}00418\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00419}00419\ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{auto}\ mv\ =\ sortedMoves.pop())\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00420}00420\ \ \ \ \ \textcolor{keywordtype}{int}\ bit\ =\ ctz\_u64(mv);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bit\ index\ of\ the\ move}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00421}00421\ \ \ \ \ cols.push\_back(bit\ /\ COLUMN\_BIT\_OFFSET);\ \ \textcolor{comment}{//\ convert\ to\ column\ index}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00422}00422\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00423}00423\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00424}00424\ \ \ \textcolor{keywordflow}{return}\ cols;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00425}00425\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00419}00419\ \ \ std::vector<int>\ cols;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00420}00420\ \ \ cols.reserve(sortedMoves.getSize());}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00421}00421\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00422}00422\ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mv\ =\ sortedMoves.pop())\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00423}00423\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ bit\ =\ ctz\_u64(mv);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bit\ index\ of\ the\ move}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00424}00424\ \ \ \ \ cols.push\_back(bit\ /\ COLUMN\_BIT\_OFFSET);\ \ \textcolor{comment}{//\ convert\ to\ column\ index}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00425}00425\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00426}00426\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00427}00427\ std::vector<int>\ Board::legalMovesFromMask(TBitBoard\ mvBits)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00428}00428\ \ \ \textcolor{keyword}{auto}\ bits\ =\ bits\_set(mvBits);\ \ \textcolor{comment}{//\ bit\ indices\ of\ legal\ moves}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00427}00427\ \ \ \textcolor{keywordflow}{return}\ cols;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00428}00428\ \}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00429}00429\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00430}00430\ \ \ std::transform(bits.begin(),\ bits.end(),\ bits.begin(),}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](\textcolor{keywordtype}{int}\ bit)\ \{\ return\ bit\ /\ COLUMN\_BIT\_OFFSET;\ \});}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00430}00430\ std::vector<int>\ Board::legalMovesFromMask(\textcolor{keyword}{const}\ TBitBoard\ mvBits)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00431}00431\ \ \ \textcolor{keyword}{auto}\ bits\ =\ bits\_set(mvBits);\ \ \textcolor{comment}{//\ bit\ indices\ of\ legal\ moves}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00432}00432\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00433}00433\ \ \ \textcolor{keywordflow}{return}\ bits;\ \ \textcolor{comment}{//\ now\ contains\ column\ indices}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00434}00434\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00433}00433\ \ \ std::transform(bits.begin(),\ bits.end(),\ bits.begin(),}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](\textcolor{keywordtype}{int}\ bit)\ \{\ return\ bit\ /\ COLUMN\_BIT\_OFFSET;\ \});}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00435}00435\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00436}00436\ std::vector<int>\ Board::legalMoves(\textcolor{keywordtype}{bool}\ nonLosing,\ \textcolor{keywordtype}{bool}\ orderMoves)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00437}00437\ \ \ \textcolor{comment}{//\ TODO:\ Google\ Unit\ tests\ are\ missing!}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00438}00438\ \ \ TBitBoard\ mvBits\ =\ nonLosing\ ?\ generateNonLosingMoves()\ :\ legalMovesMask();}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00439}00439\ \ \ \textcolor{keywordflow}{return}\ orderMoves\ ?\ orderedLegalMovesFromMask(mvBits)}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ legalMovesFromMask(mvBits);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00441}00441\ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00442}00442\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00443}00443\ Board::TBoardArray\ Board::toArray()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00444}00444\ \ \ TBoardArray\ board\{\{0\}\};}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00445}00445\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ activePlayer\ =\ (m\_movesLeft\ \&\ 1\ ?\ P\_RED\ :\ P\_YELLOW);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00446}00446\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ inactivePlayer\ =\ opponent(activePlayer);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00447}00447\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ c\ =\ 0;\ c\ <\ N\_COLUMNS;\ ++c)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00448}00448\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ r\ =\ 0;\ r\ <\ N\_ROWS;\ ++r)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00449}00449\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mask\ =\ getMaskColRow(c,\ r);\ m\_bActivePTokens\ \&\ mask)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ board[c][r]\ =\ activePlayer;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00451}00451\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (m\_bAllTokens\ \&\ mask)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ board[c][r]\ =\ inactivePlayer;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00453}00453\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ board[c][r]\ =\ P\_EMPTY;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00455}00455\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00456}00456\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00457}00457\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00458}00458\ \ \ \textcolor{keywordflow}{return}\ board;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00459}00459\ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00460}00460\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00461}00461\ std::string\ Board::toString()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00462}00462\ \ \ std::stringstream\ ss;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00463}00463\ \ \ ss\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\ \ "{}};}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00464}00464\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ arr\ =\ toArray();}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00465}00465\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ r\ =\ N\_ROWS\ -\/\ 1;\ r\ >=\ 0;\ r-\/-\/)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00466}00466\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ c\ =\ 0;\ c\ <\ N\_COLUMNS;\ c++)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00467}00467\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (arr[c][r]\ ==\ P\_RED)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}O\ \ "{}};}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00469}00469\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (arr[c][r]\ ==\ P\_YELLOW)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00470}00470\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}X\ \ "{}};}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00471}00471\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ assert(arr[c][r]\ ==\ P\_EMPTY);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}\_\ \ "{}};}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00474}00474\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00475}00475\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00476}00476\ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\ \ "{}};}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00477}00477\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00478}00478\ \ \ \textcolor{keywordflow}{return}\ ss.str();}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00479}00479\ \}}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00480}00480\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00481}00481\ Board\ Board::mirror()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00482}00482\ \ \ Board\ mB;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00483}00483\ \ \ mB.m\_movesLeft\ =\ m\_movesLeft;}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00484}00484\ \ \ mB.m\_bActivePTokens\ =\ mirrorBitBoard(m\_bActivePTokens);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00485}00485\ \ \ mB.m\_bAllTokens\ =\ mirrorBitBoard(m\_bAllTokens);}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00486}00486\ \ \ assert(uint64\_t\_popcnt(mB.m\_bActivePTokens)\ ==}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ uint64\_t\_popcnt(m\_bActivePTokens));}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00488}00488\ \ \ assert(uint64\_t\_popcnt(mB.m\_bAllTokens)\ ==\ uint64\_t\_popcnt(m\_bAllTokens));}
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00489}00489\ \ \ \textcolor{keywordflow}{return}\ mB;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00436}00436\ \ \ \textcolor{keywordflow}{return}\ bits;\ \ \textcolor{comment}{//\ now\ contains\ column\ indices}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00437}00437\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00439}00439\ std::vector<int>\ Board::legalMoves(\textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ nonLosing,}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ orderMoves)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00441}00441\ \ \ \textcolor{comment}{//\ Add\ immediate\ wins\ (since\ generateNonLosingMoves\ does\ not\ consider\ these}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00442}00442\ \ \ \textcolor{comment}{//\ situations\ where\ a\ player\ has\ a\ direct\ win,\ but\ all\ moves\ lead\ to\ a}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00443}00443\ \ \ \textcolor{comment}{//\ defeat).}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00444}00444\ \ \ \textcolor{keyword}{const}\ TBitBoard\ mvBits\ =\ nonLosing}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ generateNonLosingMoves()\ |}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (winningPositions(m\_bActivePTokens,\ \textcolor{keyword}{true})\ \&}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (m\_bAllTokens\ +\ BB\_BOTTOM\_ROW))}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ legalMovesMask();}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00450}00450\ \ \ \textcolor{keywordflow}{return}\ orderMoves\ ?\ orderedLegalMovesFromMask(mvBits)}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ legalMovesFromMask(mvBits);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00452}00452\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00454}00454\ Board::TBoardArray\ Board::toArray()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00455}00455\ \ \ TBoardArray\ board\{\{0\}\};}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00456}00456\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ activePlayer\ =\ (m\_movesLeft\ \&\ 1\ ?\ P\_RED\ :\ P\_YELLOW);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00457}00457\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ inactivePlayer\ =\ opponent(activePlayer);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00458}00458\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ c\ =\ 0;\ c\ <\ N\_COLUMNS;\ ++c)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00459}00459\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ r\ =\ 0;\ r\ <\ N\_ROWS;\ ++r)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00460}00460\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mask\ =\ getMaskColRow(c,\ r);\ m\_bActivePTokens\ \&\ mask)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ board[c][r]\ =\ activePlayer;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00462}00462\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (m\_bAllTokens\ \&\ mask)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ board[c][r]\ =\ inactivePlayer;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00464}00464\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00465}00465\ \ \ \ \ \ \ \ \ board[c][r]\ =\ P\_EMPTY;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00466}00466\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00467}00467\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00468}00468\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00469}00469\ \ \ \textcolor{keywordflow}{return}\ board;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00470}00470\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00471}00471\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00472}00472\ std::string\ Board::toString()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00473}00473\ \ \ std::stringstream\ ss;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00474}00474\ \ \ ss\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\ \ "{}};}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00475}00475\ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ arr\ =\ toArray();}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00476}00476\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ r\ =\ N\_ROWS\ -\/\ 1;\ r\ >=\ 0;\ r-\/-\/)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00477}00477\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ c\ =\ 0;\ c\ <\ N\_COLUMNS;\ c++)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00478}00478\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (arr[c][r]\ ==\ P\_RED)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}O\ \ "{}};}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00480}00480\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (arr[c][r]\ ==\ P\_YELLOW)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}X\ \ "{}};}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00482}00482\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ assert(arr[c][r]\ ==\ P\_EMPTY);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}\_\ \ "{}};}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00485}00485\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00486}00486\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00487}00487\ \ \ \ \ ss\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\ \ "{}};}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00488}00488\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00489}00489\ \ \ \textcolor{keywordflow}{return}\ ss.str();}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00490}00490\ \}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00491}00491\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00492}00492\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00492}00492\ Board\ Board::mirror()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00493}00493\ \ \ Board\ mB;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00494}00494\ \ \ mB.m\_movesLeft\ =\ m\_movesLeft;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00495}00495\ \ \ mB.m\_bActivePTokens\ =\ mirrorBitBoard(m\_bActivePTokens);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00496}00496\ \ \ mB.m\_bAllTokens\ =\ mirrorBitBoard(m\_bAllTokens);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00497}00497\ \ \ assert(uint64\_t\_popcnt(mB.m\_bActivePTokens)\ ==}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \ uint64\_t\_popcnt(m\_bActivePTokens));}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00499}00499\ \ \ assert(uint64\_t\_popcnt(mB.m\_bAllTokens)\ ==\ uint64\_t\_popcnt(m\_bAllTokens));}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00500}00500\ \ \ \textcolor{keywordflow}{return}\ mB;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00501}00501\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00502}00502\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00503}00503\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
 
 \end{DoxyCode}

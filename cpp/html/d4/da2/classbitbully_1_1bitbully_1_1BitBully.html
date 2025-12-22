@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.59-a2</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.59</span>
                         </div>
                     </td>
                 </tr>
@@ -110,20 +110,64 @@ $(function(){initNavTree('d4/da2/classbitbully_1_1bitbully_1_1BitBully.html','..
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a16f00cd7e158977a03cd2bd73d542559" id="r_a16f00cd7e158977a03cd2bd73d542559"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16f00cd7e158977a03cd2bd73d542559">__init__</a> (self, Literal[&quot;default&quot;, &quot;8-ply&quot;, &quot;12-ply&quot;, &quot;12-ply-dist&quot;]|None opening_book=&quot;default&quot;)</td></tr>
-<tr class="memitem:a4d30cb97c48c357a9a09d74eb3951847" id="r_a4d30cb97c48c357a9a09d74eb3951847"><td class="memItemLeft" align="right" valign="top">list[int]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d30cb97c48c357a9a09d74eb3951847">score_next_moves</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board)</td></tr>
+<tr class="memitem:ae63542942324df5be242ba0ec4b23d00" id="r_ae63542942324df5be242ba0ec4b23d00"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae63542942324df5be242ba0ec4b23d00">__init__</a> (self, OpeningBookName|None opening_book=&quot;default&quot;)</td></tr>
+<tr class="memitem:a4a856db6c89ecdad6b5572c25ccb6a06" id="r_a4a856db6c89ecdad6b5572c25ccb6a06"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a856db6c89ecdad6b5572c25ccb6a06">__repr__</a> (self)</td></tr>
+<tr class="memitem:aa72ad621137cbf356c06753602a89c35" id="r_aa72ad621137cbf356c06753602a89c35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa72ad621137cbf356c06753602a89c35">is_book_loaded</a> (self)</td></tr>
+<tr class="memitem:aa9c1d887a139403afe0c30ac8fafb463" id="r_aa9c1d887a139403afe0c30ac8fafb463"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9c1d887a139403afe0c30ac8fafb463">reset_transposition_table</a> (self)</td></tr>
+<tr class="memitem:afb4c6114de8ebbd964632456f957a8c4" id="r_afb4c6114de8ebbd964632456f957a8c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb4c6114de8ebbd964632456f957a8c4">get_node_counter</a> (self)</td></tr>
+<tr class="memitem:a5faa604b9a0e9ec455585260d0add6a1" id="r_a5faa604b9a0e9ec455585260d0add6a1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5faa604b9a0e9ec455585260d0add6a1">reset_node_counter</a> (self)</td></tr>
+<tr class="memitem:a1a4c1f915555be0d9c8bdc76a2aa4f8b" id="r_a1a4c1f915555be0d9c8bdc76a2aa4f8b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a4c1f915555be0d9c8bdc76a2aa4f8b">score_move</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board, int column, int first_guess=0)</td></tr>
+<tr class="memitem:a0285ea50cf2690fe62d18fde88d1b8c2" id="r_a0285ea50cf2690fe62d18fde88d1b8c2"><td class="memItemLeft" align="right" valign="top">list[int]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0285ea50cf2690fe62d18fde88d1b8c2">score_all_moves</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board)</td></tr>
+<tr class="memitem:a4cf0446e20a16f394e9787449db03075" id="r_a4cf0446e20a16f394e9787449db03075"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cf0446e20a16f394e9787449db03075">negamax</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board, int alpha=-1000, int beta=1000, int depth=0)</td></tr>
+<tr class="memitem:a1607437aa5b0df3197f1d411181d34c6" id="r_a1607437aa5b0df3197f1d411181d34c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1607437aa5b0df3197f1d411181d34c6">null_window</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board)</td></tr>
+<tr class="memitem:a7979827a5c24be4a7a635387bccc2291" id="r_a7979827a5c24be4a7a635387bccc2291"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7979827a5c24be4a7a635387bccc2291">mtdf</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board, int first_guess=0)</td></tr>
+<tr class="memitem:a4dd2ee718e7b0b9584cd75039199ca86" id="r_a4dd2ee718e7b0b9584cd75039199ca86"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dd2ee718e7b0b9584cd75039199ca86">load_book</a> (self, str book_path)</td></tr>
+<tr class="memitem:a883541580b632bd9f408710e0d0e79a9" id="r_a883541580b632bd9f408710e0d0e79a9"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a883541580b632bd9f408710e0d0e79a9">reset_book</a> (self)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aee369fd0d4e39cd10069382a8fcd58f5" id="r_aee369fd0d4e39cd10069382a8fcd58f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee369fd0d4e39cd10069382a8fcd58f5">opening_book_type</a> = opening_book</td></tr>
-<tr class="memitem:ad536ecdc61f3dcebf6f68c94d5bc30c6" id="r_ad536ecdc61f3dcebf6f68c94d5bc30c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad536ecdc61f3dcebf6f68c94d5bc30c6">bitbully_agent</a> = bitbully_core.BitBullyCore(Path(db_path))</td></tr>
+<tr class="memitem:a0dba004ddb3fb899dc3f8f74cb5042c7" id="r_a0dba004ddb3fb899dc3f8f74cb5042c7"><td class="memItemLeft" align="right" valign="top">OpeningBookName|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dba004ddb3fb899dc3f8f74cb5042c7">opening_book_type</a> = opening_book</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a48e20f56db38d44420a824dc04045ce2" id="r_a48e20f56db38d44420a824dc04045ce2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48e20f56db38d44420a824dc04045ce2">_core</a> = bitbully_core.BitBullyCore()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">A Connect Four AI agent with opening book support.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00011">11</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+<div class="textblock"><pre class="fragment">A Connect Four AI agent with optional opening book support.
+
+Todo:
+- We have to describe the scoring scheme (range of values and their meaning).
+
+This class is a high-level Python wrapper around
+[`bitbully_core.BitBullyCore`][src.bitbully.bitbully_core.BitBullyCore].
+It integrates the packaged *BitBully Databases* opening books and
+operates on [`bitbully.Board`][src.bitbully.board.Board] objects.
+
+Notes:
+    - If an opening book is enabled, it is used automatically for
+      early-game positions.
+    - For deeper positions or positions outside the database horizon,
+      the engine falls back to search-based evaluation.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board, _ = Board.random_board(14, forbid_direct_win=True)
+    print(board)
+
+    # All three search methods should agree on the score
+    score_mtdf = agent.mtdf(board)
+    score_negamax = agent.negamax(board)
+    score_null_window = agent.null_window(board)
+    assert score_negamax == score_null_window == score_mtdf
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00022">22</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a16f00cd7e158977a03cd2bd73d542559" name="a16f00cd7e158977a03cd2bd73d542559"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16f00cd7e158977a03cd2bd73d542559">&#9670;&#160;</a></span>__init__()</h2>
+<a id="ae63542942324df5be242ba0ec4b23d00" name="ae63542942324df5be242ba0ec4b23d00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae63542942324df5be242ba0ec4b23d00">&#9670;&#160;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,34 +180,283 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Literal[&quot;default&quot;, &quot;8-ply&quot;, &quot;12-ply&quot;, &quot;12-ply-dist&quot;] | None </td>          <td class="paramname"><span class="paramname"><em>opening_book</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;default&quot;</span>&#160;)</td>
+          <td class="paramtype">OpeningBookName | None </td>          <td class="paramname"><span class="paramname"><em>opening_book</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;default&quot;</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Initializes the BitBully agent with the specified opening book.
+<pre class="fragment">Initialize the BitBully agent.
 
 Args:
-    opening_book (Literal["default", "8-ply", "12-ply", "12-ply-dist"] | None):
-        The type of opening book to use. Options are:
-        - "default": Uses the default 12-ply distance-based opening book.
-        - "8-ply": Uses an 8-ply opening book.
-        - "12-ply": Uses a 12-ply opening book.
-        - "12-ply-dist": Uses a 12-ply distance-based opening book.
-        - None: No opening book will be used.
+    opening_book (OpeningBookName | None):
+        Which opening book to load.
+
+        - ``"default"``: Alias for ``"12-ply-dist"``.
+        - ``"8-ply"``: 8-ply book with win/loss values.
+        - ``"12-ply"``: 12-ply book with win/loss values.
+        - ``"12-ply-dist"``: 12-ply book with win/loss *and distance* values.
+        - ``None``: Disable opening-book usage entirely.
+
+TODO: Example for initialization with different books.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00014">14</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00056">56</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a4d30cb97c48c357a9a09d74eb3951847" name="a4d30cb97c48c357a9a09d74eb3951847"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d30cb97c48c357a9a09d74eb3951847">&#9670;&#160;</a></span>score_next_moves()</h2>
+<a id="a4a856db6c89ecdad6b5572c25ccb6a06" name="a4a856db6c89ecdad6b5572c25ccb6a06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a856db6c89ecdad6b5572c25ccb6a06">&#9670;&#160;</a></span>__repr__()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"> list[int] bitbully.bitbully.BitBully.score_next_moves </td>
+          <td class="memname"> str bitbully.bitbully.BitBully.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return a concise string representation of the BitBully agent.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00085">85</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="afb4c6114de8ebbd964632456f957a8c4" name="afb4c6114de8ebbd964632456f957a8c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb4c6114de8ebbd964632456f957a8c4">&#9670;&#160;</a></span>get_node_counter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int bitbully.bitbully.BitBully.get_node_counter </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return the number of nodes visited since the last reset.
+
+Returns:
+    int: Number of visited nodes.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    _ = agent.score_all_moves(board)
+    print(f"Nodes visited: {agent.get_node_counter()}")
+
+    # Note that has to be reset manually:
+    agent.reset_node_counter()
+    assert agent.get_node_counter() == 0
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00113">113</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="aa72ad621137cbf356c06753602a89c35" name="aa72ad621137cbf356c06753602a89c35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa72ad621137cbf356c06753602a89c35">&#9670;&#160;</a></span>is_book_loaded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool bitbully.bitbully.BitBully.is_book_loaded </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Check whether an opening book is loaded.
+
+Returns:
+    bool: ``True`` if an opening book is loaded, otherwise ``False``.
+
+Example:
+    ```python
+    from bitbully import BitBully
+
+    agent = BitBully()  # per default, the 12-ply-dist book is loaded
+    assert agent.is_book_loaded() is True
+
+    # Unload the book
+    agent.reset_book()
+    assert agent.is_book_loaded() is False
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00089">89</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="a4dd2ee718e7b0b9584cd75039199ca86" name="a4dd2ee718e7b0b9584cd75039199ca86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dd2ee718e7b0b9584cd75039199ca86">&#9670;&#160;</a></span>load_book()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool bitbully.bitbully.BitBully.load_book </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str</td>          <td class="paramname"><span class="paramname"><em>book_path</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Load an opening book from a file path.
+
+This is a thin wrapper around
+[`bitbully_core.BitBullyCore.loadBook`][src.bitbully.bitbully_core.BitBullyCore.loadBook].
+
+Args:
+    book_path (str):
+        Path to the opening book file. If empty or invalid, no book
+        is loaded.
+
+Returns:
+    bool:
+        ``True`` if the book was loaded successfully,
+        ``False`` otherwise.
+
+Example:
+    ```python
+    from bitbully import BitBully
+    from pathlib import Path
+    import bitbully_databases as bbd
+
+    db_path = bbd.BitBullyDatabases.get_database_path("default")
+
+    agent = BitBully(opening_book=None)  # start without book
+    assert agent.is_book_loaded() is False
+    success = agent.load_book(db_path)
+    assert agent.is_book_loaded() is True
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00266">266</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="a7979827a5c24be4a7a635387bccc2291" name="a7979827a5c24be4a7a635387bccc2291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7979827a5c24be4a7a635387bccc2291">&#9670;&#160;</a></span>mtdf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int bitbully.bitbully.BitBully.mtdf </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a></td>          <td class="paramname"><span class="paramname"><em>board</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>          <td class="paramname"><span class="paramname"><em>first_guess</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Evaluate a position using the MTD(f) algorithm.
+
+Args:
+    board (Board): The board position to evaluate.
+    first_guess (int): Initial guess for the score (often 0).
+
+Returns:
+    int: The evaluation score.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.mtdf(board)
+    assert score == 1  # Expected score for an empty board
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00244">244</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="a4cf0446e20a16f394e9787449db03075" name="a4cf0446e20a16f394e9787449db03075"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cf0446e20a16f394e9787449db03075">&#9670;&#160;</a></span>negamax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int bitbully.bitbully.BitBully.negamax </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a></td>          <td class="paramname"><span class="paramname"><em>board</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>          <td class="paramname"><span class="paramname"><em>alpha</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1000</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>          <td class="paramname"><span class="paramname"><em>beta</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1000</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>          <td class="paramname"><span class="paramname"><em>depth</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Evaluate a position using negamax search.
+
+Args:
+    board (Board): The board position to evaluate.
+    alpha (int): Alpha bound.
+    beta (int): Beta bound.
+    depth (int): Search depth in plies.
+
+Returns:
+    int: The evaluation score returned by the engine.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.negamax(board)
+    assert score == 1  # Expected score for an empty board
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00192">192</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="a1607437aa5b0df3197f1d411181d34c6" name="a1607437aa5b0df3197f1d411181d34c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1607437aa5b0df3197f1d411181d34c6">&#9670;&#160;</a></span>null_window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int bitbully.bitbully.BitBully.null_window </td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
@@ -174,49 +467,238 @@ Args:
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Scores all possible moves for the given board state.
+<pre class="fragment">Evaluate a position using a null-window search.
 
 Args:
-    board (Board):
-        The current board state.
+    board (Board): The board position to evaluate.
 
 Returns:
-    list[int]: A list of scores for each column (0-6).
+    int: The evaluation score.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.null_window(board)
+    assert score == 1  # Expected score for an empty board
+    ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00038">38</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00223">223</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="a883541580b632bd9f408710e0d0e79a9" name="a883541580b632bd9f408710e0d0e79a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a883541580b632bd9f408710e0d0e79a9">&#9670;&#160;</a></span>reset_book()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.bitbully.BitBully.reset_book </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Unload the currently loaded opening book (if any).
+
+This resets the engine to *search-only* mode until another
+opening book is loaded.
+
+Example:
+    ```python
+    from bitbully import BitBully
+
+    agent = BitBully()  # per default, the 12-ply-dist book is loaded
+    assert agent.is_book_loaded() is True
+    agent.reset_book()
+    assert agent.is_book_loaded() is False
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00298">298</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="a5faa604b9a0e9ec455585260d0add6a1" name="a5faa604b9a0e9ec455585260d0add6a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5faa604b9a0e9ec455585260d0add6a1">&#9670;&#160;</a></span>reset_node_counter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.bitbully.BitBully.reset_node_counter </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Reset the internal node counter.
+
+Example:
+See [`get_node_counter`][src.bitbully.bitbully.BitBully.get_node_counter] for usage.
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00135">135</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="aa9c1d887a139403afe0c30ac8fafb463" name="aa9c1d887a139403afe0c30ac8fafb463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9c1d887a139403afe0c30ac8fafb463">&#9670;&#160;</a></span>reset_transposition_table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.bitbully.BitBully.reset_transposition_table </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Clear the internal transposition table.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00109">109</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="a0285ea50cf2690fe62d18fde88d1b8c2" name="a0285ea50cf2690fe62d18fde88d1b8c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0285ea50cf2690fe62d18fde88d1b8c2">&#9670;&#160;</a></span>score_all_moves()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> list[int] bitbully.bitbully.BitBully.score_all_moves </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a></td>          <td class="paramname"><span class="paramname"><em>board</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Score all legal moves for the given board state.
+
+Args:
+    board (Board): The current board state.
+
+Returns:
+    list[int]:
+        A list of 7 integers, one per column (0-6). Higher values
+        generally indicate better moves for the player to move.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    scores = agent.score_all_moves(board)
+    assert scores == [-2, -1, 0, 1, 0, -1, -2]  # Center column is best on an empty board
+```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00169">169</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="a1a4c1f915555be0d9c8bdc76a2aa4f8b" name="a1a4c1f915555be0d9c8bdc76a2aa4f8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a4c1f915555be0d9c8bdc76a2aa4f8b">&#9670;&#160;</a></span>score_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int bitbully.bitbully.BitBully.score_move </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a></td>          <td class="paramname"><span class="paramname"><em>board</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>column</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>          <td class="paramname"><span class="paramname"><em>first_guess</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Evaluate a single move for the given board state.
+
+This is a wrapper around
+[`bitbully_core.BitBullyCore.scoreMove`][src.bitbully.bitbully_core.BitBullyCore.scoreMove].
+
+Args:
+    board (Board): The current board state.
+    column (int): Column index (0-6) of the move to evaluate.
+    first_guess (int): Initial guess for the score (often 0).
+
+Returns:
+    int: The evaluation score of the move.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.score_move(board, column=3)
+    assert score == 1  # Score for the center column on an empty board
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00143">143</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
 
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="ad536ecdc61f3dcebf6f68c94d5bc30c6" name="ad536ecdc61f3dcebf6f68c94d5bc30c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad536ecdc61f3dcebf6f68c94d5bc30c6">&#9670;&#160;</a></span>bitbully_agent</h2>
+<a id="a48e20f56db38d44420a824dc04045ce2" name="a48e20f56db38d44420a824dc04045ce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48e20f56db38d44420a824dc04045ce2">&#9670;&#160;</a></span>_core</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.bitbully.BitBully._core = bitbully_core.BitBullyCore()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00075">75</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+
+</div>
+</div>
+<a id="a0dba004ddb3fb899dc3f8f74cb5042c7" name="a0dba004ddb3fb899dc3f8f74cb5042c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dba004ddb3fb899dc3f8f74cb5042c7">&#9670;&#160;</a></span>opening_book_type</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bitbully.bitbully.BitBully.bitbully_agent = bitbully_core.BitBullyCore(Path(db_path))</td>
+          <td class="memname">OpeningBookName | None bitbully.bitbully.BitBully.opening_book_type = opening_book</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00034">34</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
-
-</div>
-</div>
-<a id="aee369fd0d4e39cd10069382a8fcd58f5" name="aee369fd0d4e39cd10069382a8fcd58f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee369fd0d4e39cd10069382a8fcd58f5">&#9670;&#160;</a></span>opening_book_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bitbully.bitbully.BitBully.opening_book_type = opening_book</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00030">30</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/dee/bitbully_8py_source.html#l00072">72</a> of file <a class="el" href="../../d6/dee/bitbully_8py_source.html">bitbully.py</a>.</p>
 
 </div>
 </div>
