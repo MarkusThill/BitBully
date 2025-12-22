@@ -1836,5 +1836,25 @@ class Board:
             assert set(legal_moves) == set(board.legal_moves(order_moves=True))
             board.legal_moves(order_moves=True) == [3, 2, 4, 1, 5, 0, 6]  # Center column prioritized
             ```
+
+        Example:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board()
+            board.play("3322314")
+            print(board)
+            assert board.legal_moves() == list(range(7))
+            assert board.legal_moves(non_losing=True) == [5]
+            ```
+        Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  X  _  _  _
+            _  _  O  O  _  _  _
+            _  O  X  X  X  _  _
+            ```
         """
         return self._board.legalMoves(nonLosing=non_losing, orderMoves=order_moves)
