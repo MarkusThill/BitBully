@@ -118,7 +118,7 @@ class BitBully:
         """
         return list(self._core.scoreMoves(board._board))
 
-    def negamax(self, board: Board, *, alpha: int, beta: int, depth: int) -> SearchResult:
+    def negamax(self, board: Board, alpha: int, beta: int, depth: int) -> SearchResult:
         """Evaluate a position using negamax search.
 
         Args:
@@ -155,7 +155,7 @@ class BitBully:
         score = int(self._core.nullWindow(board._board))
         return SearchResult(score=score, nodes=self.get_node_counter())
 
-    def mtdf(self, board: Board, *, first_guess: int = 0) -> SearchResult:
+    def mtdf(self, board: Board, first_guess: int = 0) -> SearchResult:
         """Evaluate a position using the MTD(f) algorithm.
 
         MTD(f) repeatedly applies null-window searches to converge to

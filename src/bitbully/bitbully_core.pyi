@@ -27,13 +27,22 @@ class BitBullyCore:
     def __init__(self, openingBookPath: os.PathLike) -> None: ...
 
     def getNodeCounter(self) -> int:
-        """Get the current node counter"""
+        """Get the current node counter.
+        Returns:
+            int: The number of nodes visited since the last reset.
+        """
 
     def isBookLoaded(self) -> bool:
         """Check, if opening book is loaded"""
 
-    def mtdf(self, board: ..., first_guess: int) -> int:
-        """MTD(f) algorithm"""
+    def mtdf(self, board: BoardCore, first_guess: int) -> int:
+        """MTD(f) algorithm
+        Args:
+            board (BoardCore): The current board state.
+            first_guess (int): Initial guess for the score.
+        Returns:
+            int: The minimax score of the position.
+        """
 
     def negamax(self, board: ..., alpha: int, beta: int, depth: int) -> int:
         """Negamax search"""
