@@ -1,3 +1,11 @@
+## v0.0.59 (2025-12-22)
+
+### Fix
+
+- added some methods to bitbully class
+- fixed few missing functions in pyc file
+- added some tests for legalMoves
+
 ## v0.0.59-a2 (2025-11-29)
 
 ### Fix
