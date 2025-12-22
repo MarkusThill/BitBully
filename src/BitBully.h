@@ -98,7 +98,7 @@ class BitBully {
   void resetNodeCounter() { nodeCounter = 0ULL; }
 
   int negamax(Board b, int alpha, int beta, const int depth) noexcept {
-    // In many aspects inspired by Pascal's code
+    // In several aspects inspired by Pascal's code
     assert(alpha < beta);
     nodeCounter++;
 
@@ -214,7 +214,7 @@ class BitBully {
       // our potential score gets lower since we have a later win).
       return alpha;
     }
-     */
+    */
 
     int value = -(1 << 10);
     if (depth < 20) {
@@ -273,9 +273,22 @@ class BitBully {
     return value;
   }
 
+  auto scoreMove(const Board& b, const int column, const int firstGuess) {
+    int score = -1000;
+    if (auto afterB = b; afterB.play(column)) {
+      if (afterB.hasWin()) {
+        return (afterB.movesLeft()) / 2 + 1;
+      }
+      // TODO: Get first guess from hash table if possible
+      score = -mtdf(afterB, firstGuess);
+    }
+    return score;
+  }
+
   auto scoreMoves(const Board& b) {
     std::vector scores(Board::N_COLUMNS, -1000);
     for (auto col = 0UL; col < scores.size(); col++) {
+      /*
       if (auto afterB = b; afterB.play(col)) {
         if (afterB.hasWin()) {
           scores[col] = (afterB.movesLeft()) / 2 + 1;
@@ -284,11 +297,15 @@ class BitBully {
         // TODO: Get first guess from hash table if possible
         scores[col] = -mtdf(afterB, !col ? 0 : scores.at(col - 1));
       }
+      */
+      // TODO: Get first guess from hash table if possible
+      scores[col] =
+          scoreMove(b, static_cast<int>(col), !col ? 0 : scores.at(col - 1));
     }
 
     return scores;
   }
-};
+};  // class BitBully
 }  // namespace BitBully
 
 #endif  // BITBULLY__BITBULLY_H_

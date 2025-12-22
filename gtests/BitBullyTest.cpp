@@ -226,3 +226,36 @@ TEST_F(BitBullyTest, mtdfWithBook) {
     EXPECT_EQ(bitbullyValue, *itExp++);
   }
 }
+
+// TODO: This Test is mostly incomplete...
+TEST_F(BitBullyTest, scoreMove) {
+  auto bookPath =
+      std::filesystem::path("../gtests/assets/book_12ply_distances.dat");
+  if (!exists(bookPath)) {
+    bookPath = ".." / bookPath;
+  }
+  ASSERT_TRUE(exists(bookPath));
+
+  using B = BitBully::Board;
+
+  BitBully::BitBully bb(bookPath);
+  ASSERT_TRUE(bb.isBookLoaded());
+
+  B b;
+  // Case 1: Empty board
+  const auto expectedValues_1 = {-2, -1, 0, 1, 0, -1, -2};
+  auto itExp = expectedValues_1.begin();
+  for (int i = 0; i < B::N_COLUMNS; ++i) {
+    auto score = bb.scoreMove(b, i, 0);
+    EXPECT_EQ(score, *itExp++);
+  }
+
+  // Case 2: After "333331111"
+  ASSERT_TRUE(b.play("333331111"));
+  const auto expectedValues_2 = {-3, -3, -2, -1, -3, -1, -1};
+  itExp = expectedValues_2.begin();
+  for (int i = 0; i < B::N_COLUMNS; ++i) {
+    auto score = bb.scoreMove(b, i, 0);
+    EXPECT_EQ(score, *itExp++);
+  }
+}

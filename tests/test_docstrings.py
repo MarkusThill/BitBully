@@ -11,7 +11,7 @@ from typing import Any
 
 import pytest
 
-from bitbully import Board
+from bitbully import BitBully, Board
 
 # ---------- Block parsing ----------
 
@@ -208,7 +208,7 @@ def public_doc_objects_of(cls: type, skip_private: bool = False) -> list[object]
 
 # ---------- The test ----------
 
-TARGETS = public_doc_objects_of(Board)
+TARGETS = public_doc_objects_of(Board) + public_doc_objects_of(BitBully)
 
 
 @pytest.mark.parametrize("obj", TARGETS, ids=lambda o: getattr(o, "__qualname__", str(o)))

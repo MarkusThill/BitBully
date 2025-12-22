@@ -44,10 +44,10 @@ class BitBullyCore:
             int: The minimax score of the position.
         """
 
-    def negamax(self, board: ..., alpha: int, beta: int, depth: int) -> int:
+    def negamax(self, board: BoardCore, alpha: int, beta: int, depth: int) -> int:
         """Negamax search"""
 
-    def nullWindow(self, board: ...) -> int:
+    def nullWindow(self, board: BoardCore) -> int:
         """Null-window search"""
 
     def resetNodeCounter(self) -> None:
@@ -56,8 +56,34 @@ class BitBullyCore:
     def resetTranspositionTable(self) -> None:
         """Reset the transposition table"""
 
-    def scoreMoves(self, board: ...) -> list[int]:
+    def scoreMove(self, board: BoardCore, column: int, first_guess: int) -> int:
+        """Evaluate a single move.
+
+        Args:
+            board (BoardCore): The current board state.
+            column (int): Column index (0–6) of the move to evaluate.
+            first_guess (int): Initial guess for the score.
+
+        Returns:
+            int: The evaluation score of the move.
+        """
+
+    def scoreMoves(self, board: BoardCore) -> list[int]:
         """Evaluate all moves"""
+
+    def loadBook(self, bookPath: os.PathLike[str] | str = ...) -> bool:
+        """Load an opening book from a file path.
+
+        Args:
+            bookPath (os.PathLike[str] | str):
+                Path to the opening book file. If empty or invalid, no book is loaded.
+
+        Returns:
+            bool: ``True`` if the book was loaded successfully, ``False`` otherwise.
+        """
+
+    def resetBook(self) -> None:
+        """Unload the currently loaded opening book (if any)."""
 
 
 class BoardCore:

@@ -38,6 +38,9 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("negamax", &BitBully::BitBully::negamax, "negamax search",
            py::arg("board"), py::arg("alpha"), py::arg("beta"),
            py::arg("depth"))
+      .def("scoreMove", &BitBully::BitBully::scoreMove,
+           "evaluate a single move", py::arg("board"), py::arg("column"),
+           py::arg("first_guess"))
       .def("scoreMoves", &BitBully::BitBully::scoreMoves, "evaluate all moves",
            py::arg("board"))
       .def("resetTranspositionTable",
@@ -48,7 +51,12 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("resetNodeCounter", &BitBully::BitBully::resetNodeCounter,
            "Reset the node counter")
       .def("isBookLoaded", &BitBully::BitBully::isBookLoaded,
-           "Check, if opening book is loaded");
+           "Check, if opening book is loaded")
+      .def("loadBook", &BitBully::BitBully::loadBook,
+           "Load an opening book from a file path. Returns True if loaded.",
+           py::arg("bookPath") = std::filesystem::path{})
+      .def("resetBook", &BitBully::BitBully::resetBook,
+           "Unload the currently loaded opening book (if any).");
 
   // Expose the Board class
   // TODO: Check functions.... Many not necessary and some might be missing
