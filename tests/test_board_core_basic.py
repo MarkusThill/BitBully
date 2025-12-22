@@ -491,3 +491,25 @@ def test_copy() -> None:
     assert b1.hash() != b2.hash(), "Hashes should differ after modifying the copy"
     assert b2.movesLeft() == b1.movesLeft() - 1, "Moves left should decrease after modifying the copy"
     assert b2.countTokens() == b1.countTokens() + 1, "Token count should increase after modifying the copy"
+
+
+def test_pop_count_board() -> None:
+    """Test the popCountBoard method for correct token counting."""
+    b: bbc.BoardCore = bbc.BoardCore()
+    assert b.popCountBoard() == 0, f"Expected 0 tokens on empty board, got {b.popCountBoard()}"
+    b.play(0)
+    assert b.popCountBoard() == 1, f"Expected 1 token after one move, got {b.popCountBoard()}"
+    b.play(1)
+    b.play(2)
+    assert b.popCountBoard() == 3, f"Expected 3 tokens after three moves, got {b.popCountBoard()}"
+    # Fill up column 0
+    for _ in range(5):
+        b.play(0)
+    assert b.popCountBoard() == 8, f"Expected 8 tokens after filling column 0, got {b.popCountBoard()}"
+
+    # popCountBoard should match countTokens. They are independent implementations.
+    b, _ = bbc.BoardCore.randomBoard(20, False)
+    assert b.popCountBoard() == b.countTokens(), (
+        f"popCountBoard should match countTokens. Got popCountBoard:"  # line-break
+        f"{b.popCountBoard()}, countTokens: {b.countTokens()}"
+    )

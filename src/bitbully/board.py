@@ -3,13 +3,19 @@
 from __future__ import annotations  # for forward references in type hints (Python 3.7+)
 
 from collections.abc import Sequence
-from typing import Any, cast
+from typing import Any, ClassVar, cast
 
 from bitbully import bitbully_core
 
 
 class Board:
     """Represents the state of a Connect Four board. Mostly a thin wrapper around BoardCore."""
+
+    # class-level constants
+    N_COLUMNS: ClassVar[int] = bitbully_core.N_COLUMNS
+    N_ROWS: ClassVar[int] = bitbully_core.N_ROWS
+
+    Player = bitbully_core.Player
 
     def __init__(self, init_with: Sequence[Sequence[int]] | Sequence[int] | str | None = None) -> None:
         """Initializes a Board instance.

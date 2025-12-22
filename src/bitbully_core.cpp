@@ -17,6 +17,17 @@ PYBIND11_MODULE(bitbully_core, m) {
   m.doc() =
       "Bitbully is a fast Connect-4 solver.";  // optional module docstring
 
+  // Board constants (module-level; easy to discover and use from Python)
+  m.attr("N_COLUMNS") = py::int_(B::N_COLUMNS);
+  m.attr("N_ROWS") = py::int_(B::N_ROWS);
+
+  // Player enum (as a proper Python enum)
+  py::enum_<B::Player>(m, "Player")
+      .value("P_EMPTY", B::Player::P_EMPTY)
+      .value("P_YELLOW", B::Player::P_YELLOW)
+      .value("P_RED", B::Player::P_RED)
+      .export_values();
+
   py::class_<BitBully::BitBully>(m, "BitBullyCore")
       .def(py::init<>())  // Expose the default constructor
       .def(py::init<std::filesystem::path>(), py::arg("openingBookPath"))
@@ -66,6 +77,8 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("playMoveOnCopy", &B::playMoveOnCopy,
            "Play a move on a copy of the board and return the new board",
            py::arg("mv"))
+      .def("popCountBoard", py::overload_cast<>(&B::popCountBoard, py::const_),
+           "Popcount of all tokens/bits in the bitboard (for debugging).")
       .def("legalMovesMask", &B::legalMovesMask, "Generate possible moves")
       .def("generateNonLosingMoves", &B::generateNonLosingMoves,
            "Generate non-losing moves")
@@ -81,8 +94,6 @@ PYBIND11_MODULE(bitbully_core, m) {
            "Get the number of Tokens on the board")
       .def("mirror", &B::mirror,
            "Get the mirrored board (mirror around center column)")
-      .def("sortMoves", &B::sortMoves, "Sort moves based on priority",
-           py::arg("moves"))
       .def("allPositions", &B::allPositions,
            "Generate all positions that can be reached from the current board "
            "with n tokens.",

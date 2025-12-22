@@ -1,13 +1,23 @@
 """Bitbully is a fast Connect-4 solver."""
 
+import enum
 import os
 import typing
 from typing import Sequence
 
 import pybind11_stubgen.typing_ext
 
-__all__: list[str] = ["BitBullyCore", "BoardCore", "OpeningBookCore"]
+__all__: list[str] = ["BitBullyCore", "BoardCore", "OpeningBookCore", "Player", "N_COLUMNS", "N_ROWS"]
 
+N_COLUMNS: int
+N_ROWS: int
+
+
+
+class Player(enum.IntEnum):
+    P_EMPTY: int
+    P_YELLOW: int
+    P_RED: int
 
 class BitBullyCore:
     @typing.overload
@@ -19,11 +29,6 @@ class BitBullyCore:
     def getNodeCounter(self) -> int:
         """Get the current node counter"""
 
-    @typing.overload
-    def isBookLoaded(self) -> bool:
-        """Check, if opening book is loaded"""
-
-    @typing.overload
     def isBookLoaded(self) -> bool:
         """Check, if opening book is loaded"""
 
@@ -60,7 +65,7 @@ class BoardCore:
 
     @staticmethod
     def randomBoard(nPly: int, forbidDirectWin: bool) -> tuple[BoardCore, list[int]]:
-        """Create a random board with n tokens."""
+        """Create a random board with n tokens and returns the board and the move sequence."""
 
     def __eq__(self, arg0: BoardCore) -> bool:
         """Check if two boards are equal"""
@@ -73,6 +78,15 @@ class BoardCore:
 
     def __ne__(self, arg0: BoardCore) -> bool:
         """Check if two boards are not equal"""
+
+    def __str__(self) -> str:
+        """Return a human-readable string representation of the board."""
+        ...
+
+    def __repr__(self) -> str:
+        """Return a developer-oriented string representation of the board."""
+        ...
+
 
     def allPositions(self, upToNPly: int, exactlyN: bool) -> list[BoardCore]:
         """Generate all positions that can be reached from the current board with n tokens."""
@@ -140,9 +154,12 @@ class BoardCore:
     def playMoveOnCopy(self, mv: int) -> BoardCore:
         """Play a move on a copy of the board and return the new board"""
 
+    def popCountBoard(self) -> int:
+        """Popcount of all tokens bitboard (number of occupied cells)."""
+
     @typing.overload
     def setBoard(self, moveSequence: list[int]) -> bool:
-        """Set the board using a 2D array"""
+        """Set the board using a move sequence as list"""
 
     @typing.overload
     def setBoard(
@@ -167,9 +184,6 @@ class BoardCore:
     @typing.overload
     def setBoard(self, moveSequence: str) -> bool:
         """Set the board using a sequence as string"""
-
-    def sortMoves(self, moves: int) -> ...:
-        """Sort moves based on priority"""
 
     def toArray(
             self,
