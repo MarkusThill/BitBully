@@ -1,3 +1,9 @@
+## v0.0.68 (2025-12-23)
+
+### Fix
+
+- use only one macos runner
+
 ## v0.0.67 (2025-12-23)
 
 ### Fix
