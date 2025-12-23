@@ -1,1 +1,1 @@
-::: src.bitbully.bitbully
+::: src.bitbully.solver
