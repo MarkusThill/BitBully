@@ -8,3 +8,18 @@ from .solver import BitBully
 
 __all__: list[str] = ["BitBully", "Board"]
 __version__: str = "0.0.63"
+
+# bitbully/__init__.py
+__all__ = ["BitBully", "Board"]
+
+
+def __getattr__(name: str) -> object:
+    if name == "BitBully":
+        from .solver import BitBully
+
+        return BitBully
+    if name == "Board":
+        from .board import Board
+
+        return Board
+    raise AttributeError(name)

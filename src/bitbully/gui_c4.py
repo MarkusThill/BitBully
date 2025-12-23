@@ -12,7 +12,7 @@ import numpy.typing as npt
 from IPython.display import Javascript, clear_output, display
 from ipywidgets import AppLayout, Button, HBox, Layout, Output, VBox, widgets
 
-from bitbully import bitbully_core
+from . import bitbully_core
 
 
 class GuiC4:
