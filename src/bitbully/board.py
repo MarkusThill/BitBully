@@ -5,7 +5,7 @@ from __future__ import annotations  # for forward references in type hints (Pyth
 from collections.abc import Sequence
 from typing import Any, ClassVar, cast
 
-from bitbully import bitbully_core
+from . import bitbully_core
 
 
 class Board:
