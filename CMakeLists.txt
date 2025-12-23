@@ -67,11 +67,25 @@ endif ()
 add_subdirectory(thirdParty)
 add_subdirectory(gtests)
 
+# --------------------------------------------------------------
 # bitbully_core:
-# --------------
+# --------------------------------------------------------------
 # https://pybind11.readthedocs.io/en/stable/basics.html
 # https://pybind11.readthedocs.io/en/stable/compiling.html#compiling
 # https://pybind11.readthedocs.io/en/stable/compiling.html#cmake
+
+# --- Python selection (critical for cibuildwheel) ---
+# Use the "new" FindPython behavior so pybind11 respects Python_EXECUTABLE.
+set(PYBIND11_FINDPYTHON NEW)
+
+# Prefer the Python that is driving the build (the one on PATH / passed in).
+# cibuildwheel will ensure the correct one is active, but CMake must be told to use it.
+find_package(Python REQUIRED COMPONENTS Interpreter Development.Module)
+
+message(STATUS "CMake Python_EXECUTABLE = ${Python_EXECUTABLE}")
+message(STATUS "CMake Python_VERSION     = ${Python_VERSION}")
+
+
 add_subdirectory(thirdParty/pybind11)
 pybind11_add_module(bitbully_core src/bitbully_core.cpp)
 target_link_libraries(bitbully_core PUBLIC cppBitBully)
