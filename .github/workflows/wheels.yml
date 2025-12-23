@@ -16,7 +16,7 @@ jobs:
       matrix:
         # [ubuntu-latest, ubuntu-24.04-arm, windows-latest, windows-11-arm, macos-14, macos-latest]
         # Add again, once repo is no longer private: ubuntu-24.04-arm
-        os: [ ubuntu-latest, windows-latest, macos-14, macos-latest ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
         python-version: [3.12] # could also add more versions here, to test builds in different python versions
 
     steps:
