@@ -135,7 +135,7 @@ class BitBully:
         """Reset the internal node counter.
 
         Example:
-        See [`get_node_counter`][src.bitbully.bitbully.BitBully.get_node_counter] for usage.
+        See [`get_node_counter`][src.bitbully.solver.BitBully.get_node_counter] for usage.
         """
         self._core.resetNodeCounter()
 
