@@ -1,3 +1,9 @@
+## v0.0.67 (2025-12-23)
+
+### Fix
+
+- update setup.py for python_executable
+
 ## v0.0.66 (2025-12-23)
 
 ### Fix
