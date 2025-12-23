@@ -5,5 +5,5 @@ var searchData=
   ['moves_5fleft_2',['moves_left',['../d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d',1,'bitbully::board::Board']]],
   ['movescore_3',['moveScore',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#ad2feea243d7d6ce71e6a7318336dcf6d',1,'GameSolver::Connect4::Position']]],
   ['movesorter_4',['MoveSorter',['../d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html',1,'GameSolver::Connect4::MoveSorter'],['../d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html#ad41bb041bfc4f52ad8996a3cea049c08',1,'GameSolver::Connect4::MoveSorter::MoveSorter()']]],
-  ['mtdf_5',['mtdf',['../d4/da2/classbitbully_1_1bitbully_1_1BitBully.html#a7979827a5c24be4a7a635387bccc2291',1,'bitbully::bitbully::BitBully']]]
+  ['mtdf_5',['mtdf',['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ac2f21a6fb7d7197bd156c86d30c84d45',1,'bitbully::solver::BitBully']]]
 ];

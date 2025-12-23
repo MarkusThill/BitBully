@@ -7,10 +7,25 @@
 \DoxyCodeLine{\Hypertarget{____init_____8py_source_l00003}00003\ \textcolor{stringliteral}{Homepage:\ https://github.com/MarkusThill/BitBully}}
 \DoxyCodeLine{\Hypertarget{____init_____8py_source_l00004}00004\ \textcolor{stringliteral}{"{}"{}"{}}}
 \DoxyCodeLine{\Hypertarget{____init_____8py_source_l00005}00005\ }
-\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00006}00006\ \textcolor{keyword}{from}\ .bitbully\ \textcolor{keyword}{import}\ BitBully}
-\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00007}00007\ \textcolor{keyword}{from}\ .board\ \textcolor{keyword}{import}\ Board}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00006}00006\ \textcolor{keyword}{from}\ .board\ \textcolor{keyword}{import}\ Board}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00007}00007\ \textcolor{keyword}{from}\ .solver\ \textcolor{keyword}{import}\ BitBully}
 \DoxyCodeLine{\Hypertarget{____init_____8py_source_l00008}00008\ }
 \DoxyCodeLine{\Hypertarget{____init_____8py_source_l00009}00009\ \_\_all\_\_:\ list[str]\ =\ [\textcolor{stringliteral}{"{}BitBully"{}},\ \textcolor{stringliteral}{"{}Board"{}}]}
-\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00010}00010\ \_\_version\_\_:\ str\ =\ \textcolor{stringliteral}{"{}0.0.60"{}}}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00010}00010\ \_\_version\_\_:\ str\ =\ \textcolor{stringliteral}{"{}0.0.68"{}}}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00012}00012\ \textcolor{comment}{\#\ bitbully/\_\_init\_\_.py}}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00013}00013\ \_\_all\_\_\ =\ [\textcolor{stringliteral}{"{}BitBully"{}},\ \textcolor{stringliteral}{"{}Board"{}}]}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00016}00016\ \textcolor{keyword}{def\ }\_\_getattr\_\_(name:\ str)\ -\/>\ object:}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{if}\ name\ ==\ \textcolor{stringliteral}{"{}BitBully"{}}:}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{from}\ .solver\ \textcolor{keyword}{import}\ BitBully}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BitBully}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{if}\ name\ ==\ \textcolor{stringliteral}{"{}Board"{}}:}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{from}\ .board\ \textcolor{keyword}{import}\ Board}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Board}
+\DoxyCodeLine{\Hypertarget{____init_____8py_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{raise}\ AttributeError(name)}
 
 \end{DoxyCode}

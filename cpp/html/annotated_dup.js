@@ -8,14 +8,14 @@ var annotated_dup =
       [ "TranspositionTable", "db/dc6/classBitBully_1_1TranspositionTable.html", "db/dc6/classBitBully_1_1TranspositionTable" ]
     ] ],
     [ "bitbully", "d4/dde/namespacebitbully.html", [
-      [ "bitbully", "de/d48/namespacebitbully_1_1bitbully.html", [
-        [ "BitBully", "d4/da2/classbitbully_1_1bitbully_1_1BitBully.html", "d4/da2/classbitbully_1_1bitbully_1_1BitBully" ]
-      ] ],
       [ "board", "d5/d0e/namespacebitbully_1_1board.html", [
         [ "Board", "d9/d83/classbitbully_1_1board_1_1Board.html", "d9/d83/classbitbully_1_1board_1_1Board" ]
       ] ],
       [ "gui_c4", "d5/d32/namespacebitbully_1_1gui__c4.html", [
         [ "GuiC4", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4" ]
+      ] ],
+      [ "solver", "d4/d55/namespacebitbully_1_1solver.html", [
+        [ "BitBully", "dc/d09/classbitbully_1_1solver_1_1BitBully.html", "dc/d09/classbitbully_1_1solver_1_1BitBully" ]
       ] ]
     ] ],
     [ "GameSolver", null, [
