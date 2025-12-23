@@ -1,3 +1,9 @@
+## v0.0.66 (2025-12-23)
+
+### Fix
+
+- tell cmake to use correct python (2)
+
 ## v0.0.65 (2025-12-23)
 
 ### Fix
