@@ -4,8 +4,7 @@ from __future__ import annotations
 
 from typing import Literal, TypeAlias
 
-from bitbully import bitbully_core
-
+from . import bitbully_core
 from .board import Board
 
 OpeningBookName: TypeAlias = Literal["default", "8-ply", "12-ply", "12-ply-dist"]
