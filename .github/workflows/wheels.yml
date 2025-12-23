@@ -42,8 +42,6 @@ jobs:
         env:
           MACOSX_DEPLOYMENT_TARGET: "10.15"
           CIBW_BUILD: cp312-*
-          CIBW_ENVIRONMENT: >-
-            CMAKE_ARGS="-DPython_EXECUTABLE:FILEPATH=$(python -c 'import sys; print(sys.executable)')"
 
       # 👇 Stable release build (use pyproject.toml)
       - name: Build wheels (regular)
@@ -51,8 +49,6 @@ jobs:
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           MACOSX_DEPLOYMENT_TARGET: "10.15"
-          CIBW_ENVIRONMENT: >-
-            CMAKE_ARGS="-DPython_EXECUTABLE:FILEPATH=$(python -c 'import sys; print(sys.executable)')"
         # to supply options, put them in 'env', like:
         # env:
         #   CIBW_SOME_OPTION: value

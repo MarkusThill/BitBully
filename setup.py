@@ -44,7 +44,9 @@ class CMakeBuildExtension(build_ext):
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
             f"-DCMAKE_RUNTIME_OUTPUT_DIRECTORY={extdir}",
             f"-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY={extdir}",
-            f"-DPYTHON_EXECUTABLE={sys.executable}",
+            # f"-DPYTHON_EXECUTABLE={sys.executable}",
+            f"-DPython_EXECUTABLE:FILEPATH={sys.executable}",
+            "-DPYBIND11_FINDPYTHON=NEW",
             f"-DCMAKE_BUILD_TYPE={cfg}",
         ]
 
