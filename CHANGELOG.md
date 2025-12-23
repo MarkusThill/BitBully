@@ -1,3 +1,9 @@
+## v0.0.61 (2025-12-23)
+
+### Fix
+
+- fix problem with circular import (2)
+
 ## v0.0.60 (2025-12-23)
 
 ### Fix
