@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import operator
 import os
+import random
 from pathlib import Path
 from typing import (
     Literal,
@@ -22,6 +23,15 @@ Possible values:
 - ``"8-ply"``: 8-ply opening book (win/loss only).
 - ``"12-ply"``: 12-ply opening book (win/loss only).
 - ``"12-ply-dist"``: 12-ply opening book with distance-to-win information.
+"""
+
+TieBreakStrategy = Literal["center", "leftmost", "random"]
+"""Strategy for breaking ties between equally good moves.
+
+Possible values:
+- ``"center"``: Prefer moves closer to the center column.
+- ``"leftmost"``: Prefer the leftmost among the best moves.
+- ``"random"``: Choose randomly among the best moves.
 """
 
 
@@ -236,6 +246,104 @@ class BitBully:
             col: val for (col, val) in enumerate(scores) if val > -100
         }  # invalid moves have score less than -100
         return dict(sorted(column_values.items(), key=operator.itemgetter(1), reverse=True))
+
+    def best_move(
+        self,
+        board: Board,
+        *,
+        tie_break: TieBreakStrategy = "center",
+        rng: random.Random | None = None,
+    ) -> int:
+        """Return the best legal move (column index) for the current player.
+
+        All legal moves are scored using :meth:`score_all_moves`. The move(s)
+        with the highest score are considered best, and ties are resolved
+        according to ``tie_break``.
+
+        Tie-breaking strategies:
+            - ``"center"`` (default):
+                Prefer the move closest to the center column (3). If still tied,
+                choose the smaller column index.
+            - ``"leftmost"``:
+                Choose the smallest column index among tied moves.
+            - ``"random"``:
+                Choose uniformly at random among tied moves. An optional
+                ``rng`` can be provided for reproducibility.
+
+        Args:
+            board (Board): The current board state.
+            tie_break (TieBreakStrategy):
+                Strategy used to resolve ties between equally scoring moves.
+            rng (random.Random | None):
+                Random number generator used when ``tie_break="random"``.
+                If ``None``, the global RNG is used.
+
+        Returns:
+            int: The selected column index (0-6).
+
+        Raises:
+            ValueError: If there are no legal moves (board is full) or
+                if an unknown tie-breaking strategy is specified.
+
+        Example:
+            ```python
+            from bitbully import BitBully, Board
+            import random
+
+            agent = BitBully()
+            board = Board()
+            best_col = agent.best_move(board)
+            assert best_col == 3  # Center column is best on an empty board
+            ```
+
+        Example:
+            ```python
+            from bitbully import BitBully, Board
+            import random
+
+            agent = BitBully()
+            board = Board("341")  # some arbitrary position
+            print(board)
+            assert agent.best_move(board, tie_break="center") == 3  # Several moves are tied; center is preferred
+            assert agent.best_move(board, tie_break="leftmost") == 1  # Leftmost among tied moves
+            assert agent.best_move(board, tie_break="random") in {1, 3, 4}  # Random among tied moves
+
+            rng = random.Random(42)  # use own random number generator
+            assert agent.best_move(board, tie_break="random", rng=rng) in {1, 3, 4}
+            ```
+            Expected Output:
+            ```
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  _  _  _  _  _  _
+            _  X  _  X  O  _  _
+            ```
+        """
+        scores = self.score_all_moves(board)
+        if not scores:
+            raise ValueError("No legal moves available (board appears to be full).")
+
+        best_score = max(scores.values())
+        best_cols = [c for c, s in scores.items() if s == best_score]
+
+        if len(best_cols) == 1:
+            return best_cols[0]
+
+        if tie_break == "center":
+            # Prefer center column (3), then smaller index for stability.
+            return min(best_cols, key=lambda c: (abs(c - 3), c))
+
+        if tie_break == "leftmost":
+            return min(best_cols)
+
+        if tie_break == "random":
+            if rng is None:
+                return random.choice(best_cols)
+            return rng.choice(best_cols)
+
+        raise ValueError(f"Unknown tie-breaking strategy: {tie_break!r}")
 
     def negamax(self, board: Board, alpha: int = -1000, beta: int = 1000, depth: int = 0) -> int:
         """Evaluate a position using negamax search.
