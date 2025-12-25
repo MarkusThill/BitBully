@@ -6,6 +6,7 @@ from collections.abc import Sequence
 from typing import Any, ClassVar, cast
 
 from . import bitbully_core
+from .bitbully_core import BoardCore
 
 
 class Board:
@@ -119,6 +120,7 @@ class Board:
             # The printed layout shows how the tokens stack in each column.
             board
             ```
+
             Expected output:
             ```text
             _  _  _  _  _  _  _
@@ -221,7 +223,7 @@ class Board:
             _  O  _  X  _  _  _
             ```
         """
-        self._board = bitbully_core.BoardCore()
+        self._board = BoardCore()
         if init_with is not None and not self.reset_board(init_with):
             raise ValueError(
                 "Invalid initial board state provided. Check the examples in the docstring for valid formats."
@@ -630,7 +632,7 @@ class Board:
             # Player 1 (yellow, X) has achieved a Connect-4.
             assert board.has_win()
             ```
-            Board from above, expected output:
+            Expected output:
             ```text
             _  _  _  _  _  _  _
             _  _  _  _  _  _  _
@@ -841,7 +843,7 @@ class Board:
 
             print(board)
             ```
-             Expected output:
+            Expected output:
             ```text
             _  _  _  _  _  _  _
             _  _  _  _  _  _  _
@@ -1752,7 +1754,7 @@ class Board:
         """
         if not 0 <= n_ply <= 42:
             raise ValueError(f"n_ply must be between 0 and 42 (inclusive), got {n_ply}.")
-        board_, moves = bitbully_core.BoardCore.randomBoard(n_ply, forbid_direct_win)
+        board_, moves = BoardCore.randomBoard(n_ply, forbid_direct_win)
         board = Board()
         board._board = board_
 
@@ -1800,7 +1802,7 @@ class Board:
 
             print(f"Huffman code: {h1}")
             ```
-        Expected output:
+            Expected output:
             ```text
             Huffman code: 10120112
             ```
@@ -1845,7 +1847,8 @@ class Board:
             assert board.legal_moves() == list(range(7))
             assert board.legal_moves(non_losing=True) == [5]
             ```
-        Expected output:
+
+            Expected output:
             ```text
             _  _  _  _  _  _  _
             _  _  _  _  _  _  _
@@ -1856,3 +1859,21 @@ class Board:
             ```
         """
         return self._board.legalMoves(nonLosing=non_losing, orderMoves=order_moves)
+
+    @property
+    def native(self) -> BoardCore:
+        """Return the underlying native board representation.
+
+        This is intended for internal engine integrations and wrappers.
+        Users should treat this as read-only.
+
+        Returns:
+            BoardCore:
+                The underlying native `BoardCore` instance representing the board state.
+
+        Notes:
+        - The `native` property exposes the underlying engine representation.
+        - This is intended for engine wrappers (e.g. BitBully) and should be
+        treated as read-only by users.
+        """
+        return self._board

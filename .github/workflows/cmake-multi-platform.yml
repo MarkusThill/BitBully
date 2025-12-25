@@ -67,18 +67,6 @@ jobs:
             arch: x86
             c_compiler: clang
             cpp_compiler: clang++
-          - os: macos-14
-            arch: x64
-            c_compiler: clang
-            cpp_compiler: clang++
-          - os: macos-14
-            arch: aarch64
-            c_compiler: clang
-            cpp_compiler: clang++
-          - os: macos-14
-            arch: x86
-            c_compiler: clang
-            cpp_compiler: clang++
         exclude:
           - os: windows-latest
             c_compiler: gcc

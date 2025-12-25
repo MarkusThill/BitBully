@@ -2,7 +2,15 @@
 
 from __future__ import annotations
 
-from typing import Literal, TypeAlias
+import operator
+import os
+from pathlib import Path
+from typing import (
+    Literal,
+    TypeAlias,
+    TypeGuard,  # typing.TypeGuard on Python 3.11+
+    get_args,
+)
 
 from . import Board, bitbully_core
 
@@ -15,6 +23,10 @@ Possible values:
 - ``"12-ply"``: 12-ply opening book (win/loss only).
 - ``"12-ply-dist"``: 12-ply opening book with distance-to-win information.
 """
+
+
+def _is_opening_book_name(x: object) -> TypeGuard[OpeningBookName]:
+    return x in get_args(OpeningBookName)
 
 
 class BitBully:
@@ -49,6 +61,24 @@ class BitBully:
         assert score_negamax == score_null_window == score_mtdf
         ```
 
+    Example:
+        ```python
+        from bitbully import BitBully, Board
+
+        board = Board()  # empty board
+        agent = BitBully()
+        scores = agent.score_all_moves(board)  # get scores for all moves
+        assert len(scores) == 7  # there are 7 columns
+        assert scores == {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}  # center column is best
+        print(scores)
+        ```
+
+        Expected Output:
+        ```
+        {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}
+        ```
+
+
     """
 
     def __init__(self, opening_book: OpeningBookName | None = "default") -> None:
@@ -72,8 +102,6 @@ class BitBully:
         if opening_book is None:
             self._core = bitbully_core.BitBullyCore()
             return
-
-        from pathlib import Path
 
         import bitbully_databases as bbd
 
@@ -133,16 +161,12 @@ class BitBully:
     def reset_node_counter(self) -> None:
         """Reset the internal node counter.
 
-        Example:
-        See [`get_node_counter`][src.bitbully.solver.BitBully.get_node_counter] for usage.
+        See Also: [`get_node_counter`][src.bitbully.solver.BitBully.get_node_counter] for usage.
         """
         self._core.resetNodeCounter()
 
     def score_move(self, board: Board, column: int, first_guess: int = 0) -> int:
         """Evaluate a single move for the given board state.
-
-        This is a wrapper around
-        [`bitbully_core.BitBullyCore.scoreMove`][src.bitbully.bitbully_core.BitBullyCore.scoreMove].
 
         Args:
             board (Board): The current board state.
@@ -161,19 +185,30 @@ class BitBully:
             score = agent.score_move(board, column=3)
             assert score == 1  # Score for the center column on an empty board
             ```
-        """
-        return int(self._core.scoreMove(board._board, column, first_guess))
 
-    def score_all_moves(self, board: Board) -> list[int]:
+        Raises:
+            ValueError: If the column is outside the valid range or if the column is full.
+
+        Notes:
+            - This is a wrapper around
+              [`bitbully_core.BitBullyCore.scoreMove`][src.bitbully.bitbully_core.BitBullyCore.scoreMove].
+        """
+        if not board.is_legal_move(column):
+            raise ValueError(f"Column {column} is either full or invalid; cannot score move.")
+
+        return int(self._core.scoreMove(board.native, column, first_guess))
+
+    def score_all_moves(self, board: Board) -> dict[int, int]:
         """Score all legal moves for the given board state.
 
         Args:
             board (Board): The current board state.
 
         Returns:
-            list[int]:
-                A list of 7 integers, one per column (0-6). Higher values
-                generally indicate better moves for the player to move.
+            dict[int, int]:
+                A dictionary of up to 7 column-value pairs, one per reachable column (0-6).
+                Higher values generally indicate better moves for the player to move. If a
+                column is full, it will not be listed in the returned dictionary.
 
         Example:
             ```python
@@ -182,10 +217,25 @@ class BitBully:
             agent = BitBully()
             board = Board()
             scores = agent.score_all_moves(board)
-            assert scores == [-2, -1, 0, 1, 0, -1, -2]  # Center column is best on an empty board
+            assert scores == {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}  # Center column is best on an empty board
+        ```
+
+        Example:
+            When a column is full, it is omitted from the results:
+            ```python
+            from bitbully import BitBully, Board
+
+            agent = BitBully()
+            board = Board(6 * "3")  # fill center column
+            scores = agent.score_all_moves(board)
+            assert scores == {2: 1, 4: 1, 1: 0, 5: 0, 0: -1, 6: -1}  # Column 3 is full and thus omitted
         ```
         """
-        return list(self._core.scoreMoves(board._board))
+        scores = self._core.scoreMoves(board.native)
+        column_values = {
+            col: val for (col, val) in enumerate(scores) if val > -100
+        }  # invalid moves have score less than -100
+        return dict(sorted(column_values.items(), key=operator.itemgetter(1), reverse=True))
 
     def negamax(self, board: Board, alpha: int = -1000, beta: int = 1000, depth: int = 0) -> int:
         """Evaluate a position using negamax search.
@@ -211,7 +261,7 @@ class BitBully:
         """
         return int(
             self._core.negamax(
-                board._board,
+                board.native,
                 alpha=alpha,
                 beta=beta,
                 depth=depth,
@@ -237,7 +287,7 @@ class BitBully:
             assert score == 1  # Expected score for an empty board
             ```
         """
-        return int(self._core.nullWindow(board._board))
+        return int(self._core.nullWindow(board.native))
 
     def mtdf(self, board: Board, first_guess: int = 0) -> int:
         """Evaluate a position using the MTD(f) algorithm.
@@ -259,23 +309,35 @@ class BitBully:
             assert score == 1  # Expected score for an empty board
             ```
         """
-        return int(self._core.mtdf(board._board, first_guess=first_guess))
+        return int(self._core.mtdf(board.native, first_guess=first_guess))
 
-    def load_book(self, book_path: str) -> bool:
+    def load_book(self, book: OpeningBookName | os.PathLike) -> None:
         """Load an opening book from a file path.
 
         This is a thin wrapper around
         [`bitbully_core.BitBullyCore.loadBook`][src.bitbully.bitbully_core.BitBullyCore.loadBook].
 
         Args:
-            book_path (str):
-                Path to the opening book file. If empty or invalid, no book
-                is loaded.
+            book (OpeningBookName | os.PathLike):
+                Name/Identifier (see [`available_opening_books`][src.bitbully.solver.BitBully.available_opening_books])
+                or path of the opening book to load.
 
-        Returns:
-            bool:
-                ``True`` if the book was loaded successfully,
-                ``False`` otherwise.
+        Raises:
+            ValueError:
+                If the book identifier/path is invalid or if loading the book fails.
+
+        Example:
+            ```python
+            from bitbully import BitBully
+            from pathlib import Path
+
+            which_book = BitBully.available_opening_books()[0]  # e.g., "default"
+
+            agent = BitBully(opening_book=None)  # start without book
+            assert agent.is_book_loaded() is False
+            agent.load_book(which_book)  # load "default" book
+            assert agent.is_book_loaded() is True
+            ```
 
         Example:
             ```python
@@ -283,15 +345,34 @@ class BitBully:
             from pathlib import Path
             import bitbully_databases as bbd
 
-            db_path = bbd.BitBullyDatabases.get_database_path("default")
+            which_book = BitBully.available_opening_books()[2]  # e.g., "12-ply"
+            db_path = bbd.BitBullyDatabases.get_database_path(which_book)
 
             agent = BitBully(opening_book=None)  # start without book
             assert agent.is_book_loaded() is False
-            success = agent.load_book(db_path)
+            agent.load_book(db_path)
             assert agent.is_book_loaded() is True
             ```
         """
-        return bool(self._core.loadBook(book_path))
+        self._core.resetBook()
+        if _is_opening_book_name(book):
+            import bitbully_databases as bbd
+
+            db_path = bbd.BitBullyDatabases.get_database_path(book)
+            self.opening_book_type = book
+        elif isinstance(book, (os.PathLike, str)):
+            db_path = Path(book)
+            self.opening_book_type = None
+        else:
+            raise ValueError(f"Invalid book identifier or path: {book!r}")
+
+        if str(db_path).strip() == "":
+            raise ValueError(f"Invalid book path: {book!r}")
+
+        if not self._core.loadBook(db_path):
+            self.opening_book_type = None
+            self._core.resetBook()
+            raise ValueError(f"Failed to load opening book from path: {db_path}")
 
     def reset_book(self) -> None:
         """Unload the currently loaded opening book (if any).
@@ -310,3 +391,23 @@ class BitBully:
             ```
         """
         self._core.resetBook()
+        self.opening_book_type = None
+
+    @classmethod
+    def available_opening_books(cls) -> tuple[OpeningBookName, ...]:
+        """Return the available opening book identifiers.
+
+        Returns:
+            tuple[OpeningBookName, ...]:
+                All supported opening book names, including ``"default"``.
+
+        Example:
+            ```python
+            from bitbully import BitBully
+
+            books = BitBully.available_opening_books()
+            print(books)  # ('default', '8-ply', '12-ply', '12-ply-dist')
+            ```
+
+        """
+        return get_args(OpeningBookName)
