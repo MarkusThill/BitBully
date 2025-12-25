@@ -25,7 +25,7 @@ Possible values:
 - ``"12-ply-dist"``: 12-ply opening book with distance-to-win information.
 """
 
-TieBreakStrategy = Literal["center", "leftmost", "random"]
+TieBreakStrategy: TypeAlias = Literal["center", "leftmost", "random"]
 """Strategy for breaking ties between equally good moves.
 
 Possible values:
@@ -61,7 +61,7 @@ class BitBully:
         from bitbully import BitBully, Board
 
         agent = BitBully()
-        board, _ = Board.random_board(14, forbid_direct_win=True)
+        board, _ = Board.random_board(n_ply=14, forbid_direct_win=True)
         print(board)
 
         # All three search methods should agree on the score
