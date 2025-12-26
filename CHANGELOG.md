@@ -1,3 +1,12 @@
+## v0.0.70 (2025-12-26)
+
+### Fix
+
+- fixed few issues with python versions
+- corrected typehints and docs
+- added best_move method
+- updated bitbully solver
+
 ## v0.0.69 (2025-12-23)
 
 ### Fix
