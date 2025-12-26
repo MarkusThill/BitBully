@@ -20,6 +20,7 @@ var classbitbully_1_1board_1_1Board =
     [ "legal_moves", "d9/d83/classbitbully_1_1board_1_1Board.html#afe754d7343ddc9c2b4596ec2c5eea43a", null ],
     [ "mirror", "d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e", null ],
     [ "moves_left", "d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d", null ],
+    [ "native", "d9/d83/classbitbully_1_1board_1_1Board.html#ae2f018bdfa396d7e35145911fb1466c9", null ],
     [ "play", "d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd", null ],
     [ "play_on_copy", "d9/d83/classbitbully_1_1board_1_1Board.html#a0c4555d1cb4a50484294b8452b4f02a9", null ],
     [ "reset_board", "d9/d83/classbitbully_1_1board_1_1Board.html#a3ec7505932466440fce1a9fbbd54355a", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['winner_0',['winner',['../d9/d83/classbitbully_1_1board_1_1Board.html#aa46e665bb5d315b9be74324bdeb36c3f',1,'bitbully::board::Board']]]
+  ['uid_0',['uid',['../d9/d83/classbitbully_1_1board_1_1Board.html#ad06cd5ac21f137de6b80c9b4f8f89d3b',1,'bitbully::board::Board']]]
 ];

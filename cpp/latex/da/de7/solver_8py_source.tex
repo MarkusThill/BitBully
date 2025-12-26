@@ -6,155 +6,155 @@
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00002}00002\ }
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00003}00003\ \textcolor{keyword}{from}\ \_\_future\_\_\ \textcolor{keyword}{import}\ annotations}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00004}00004\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00005}00005\ \textcolor{keyword}{from}\ typing\ \textcolor{keyword}{import}\ Literal,\ TypeAlias}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00006}00006\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00007}00007\ \textcolor{keyword}{from}\ .\ \textcolor{keyword}{import}\ Board,\ bitbully\_core}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00009}00009\ OpeningBookName:\ TypeAlias\ =\ Literal[\textcolor{stringliteral}{"{}default"{}},\ \textcolor{stringliteral}{"{}8-\/ply"{}},\ \textcolor{stringliteral}{"{}12-\/ply"{}},\ \textcolor{stringliteral}{"{}12-\/ply-\/dist"{}}]}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00010}00010\ \textcolor{stringliteral}{"{}"{}"{}Name\ of\ the\ opening\ book\ used\ by\ the\ BitBully\ engine.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00011}00011\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00012}00012\ \textcolor{stringliteral}{Possible\ values:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00013}00013\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}default"{}\`{}\`{}:\ Alias\ for\ \`{}\`{}"{}12-\/ply-\/dist"{}\`{}\`{}.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00014}00014\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}8-\/ply"{}\`{}\`{}:\ 8-\/ply\ opening\ book\ (win/loss\ only).}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00015}00015\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}12-\/ply"{}\`{}\`{}:\ 12-\/ply\ opening\ book\ (win/loss\ only).}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00016}00016\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}12-\/ply-\/dist"{}\`{}\`{}:\ 12-\/ply\ opening\ book\ with\ distance-\/to-\/win\ information.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00017}00017\ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00018}00018\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00020}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully}{00020}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully}{BitBully}}:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00021}00021\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}A\ Connect\ Four\ AI\ agent\ with\ optional\ opening\ book\ support.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00022}00022\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ Todo:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ -\/\ We\ have\ to\ describe\ the\ scoring\ scheme\ (range\ of\ values\ and\ their\ meaning).}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00025}00025\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ This\ class\ is\ a\ high-\/level\ Python\ wrapper\ around}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ [\`{}bitbully\_core.BitBullyCore\`{}][src.bitbully.bitbully\_core.BitBullyCore].}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ It\ integrates\ the\ packaged\ *BitBully\ Databases*\ opening\ books\ and}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ operates\ on\ [\`{}bitbully.Board\`{}][src.bitbully.board.Board]\ objects.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00005}00005\ \textcolor{keyword}{import}\ operator}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00006}00006\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00007}00007\ \textcolor{keyword}{import}\ random}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00008}00008\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00009}00009\ \textcolor{keyword}{from}\ typing\ \textcolor{keyword}{import}\ (}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00010}00010\ \ \ \ \ Literal,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00011}00011\ \ \ \ \ TypeAlias,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00012}00012\ \ \ \ \ TypeGuard,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00013}00013\ \ \ \ \ get\_args,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00014}00014\ )}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00016}00016\ \textcolor{keyword}{from}\ .\ \textcolor{keyword}{import}\ Board,\ bitbully\_core}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00018}00018\ OpeningBookName:\ TypeAlias\ =\ Literal[\textcolor{stringliteral}{"{}default"{}},\ \textcolor{stringliteral}{"{}8-\/ply"{}},\ \textcolor{stringliteral}{"{}12-\/ply"{}},\ \textcolor{stringliteral}{"{}12-\/ply-\/dist"{}}]}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00019}00019\ \textcolor{stringliteral}{"{}"{}"{}Name\ of\ the\ opening\ book\ used\ by\ the\ BitBully\ engine.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00020}00020\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00021}00021\ \textcolor{stringliteral}{Possible\ values:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00022}00022\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}default"{}\`{}\`{}:\ Alias\ for\ \`{}\`{}"{}12-\/ply-\/dist"{}\`{}\`{}.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00023}00023\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}8-\/ply"{}\`{}\`{}:\ 8-\/ply\ opening\ book\ (win/loss\ only).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00024}00024\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}12-\/ply"{}\`{}\`{}:\ 12-\/ply\ opening\ book\ (win/loss\ only).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00025}00025\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}12-\/ply-\/dist"{}\`{}\`{}:\ 12-\/ply\ opening\ book\ with\ distance-\/to-\/win\ information.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00026}00026\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00028}00028\ TieBreakStrategy:\ TypeAlias\ =\ Literal[\textcolor{stringliteral}{"{}center"{}},\ \textcolor{stringliteral}{"{}leftmost"{}},\ \textcolor{stringliteral}{"{}random"{}}]}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00029}00029\ \textcolor{stringliteral}{"{}"{}"{}Strategy\ for\ breaking\ ties\ between\ equally\ good\ moves.}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00030}00030\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ Notes:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ If\ an\ opening\ book\ is\ enabled,\ it\ is\ used\ automatically\ for}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ early-\/game\ positions.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ For\ deeper\ positions\ or\ positions\ outside\ the\ database\ horizon,}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ the\ engine\ falls\ back\ to\ search-\/based\ evaluation.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00036}00036\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00040}00040\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00042}00042\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ board,\ \_\ =\ Board.random\_board(14,\ forbid\_direct\_win=True)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ print(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00031}00031\ \textcolor{stringliteral}{Possible\ values:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00032}00032\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}center"{}\`{}\`{}:\ Prefer\ moves\ closer\ to\ the\ center\ column.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00033}00033\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}leftmost"{}\`{}\`{}:\ Prefer\ the\ leftmost\ among\ the\ best\ moves.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00034}00034\ \textcolor{stringliteral}{-\/\ \`{}\`{}"{}random"{}\`{}\`{}:\ Choose\ randomly\ among\ the\ best\ moves.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00035}00035\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00038}00038\ \textcolor{keyword}{def\ }\_is\_opening\_book\_name(x:\ object)\ -\/>\ TypeGuard[OpeningBookName]:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{return}\ x\ \textcolor{keywordflow}{in}\ get\_args(OpeningBookName)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00042}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully}{00042}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully}{BitBully}}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00043}00043\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}A\ Connect\ Four\ AI\ agent\ with\ optional\ opening\ book\ support.}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00044}00044\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \#\ All\ three\ search\ methods\ should\ agree\ on\ the\ score}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ score\_mtdf\ =\ agent.mtdf(board)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ score\_negamax\ =\ agent.negamax(board)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ score\_null\_window\ =\ agent.null\_window(board)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ assert\ score\_negamax\ ==\ score\_null\_window\ ==\ score\_mtdf}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00051}00051\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00053}00053\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00054}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a2fb03edec61e80ce6e7dd3a9ea8c2952}{00054}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a2fb03edec61e80ce6e7dd3a9ea8c2952}{\_\_init\_\_}}(self,\ opening\_book:\ OpeningBookName\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{stringliteral}{"{}default"{}})\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Initialize\ the\ BitBully\ agent.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00056}00056\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00057}00057\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00058}00058\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ opening\_book\ (OpeningBookName\ |\ None):}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Which\ opening\ book\ to\ load.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00060}00060\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}default"{}\`{}\`{}:\ Alias\ for\ \`{}\`{}"{}12-\/ply-\/dist"{}\`{}\`{}.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}8-\/ply"{}\`{}\`{}:\ 8-\/ply\ book\ with\ win/loss\ values.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}12-\/ply"{}\`{}\`{}:\ 12-\/ply\ book\ with\ win/loss\ values.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}12-\/ply-\/dist"{}\`{}\`{}:\ 12-\/ply\ book\ with\ win/loss\ *and\ distance*\ values.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}None\`{}\`{}:\ Disable\ opening-\/book\ usage\ entirely.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ Todo:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ -\/\ We\ have\ to\ describe\ the\ scoring\ scheme\ (range\ of\ values\ and\ their\ meaning).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00047}00047\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ This\ class\ is\ a\ high-\/level\ Python\ wrapper\ around}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ [\`{}bitbully\_core.BitBullyCore\`{}][src.bitbully.bitbully\_core.BitBullyCore].}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ It\ integrates\ the\ packaged\ *BitBully\ Databases*\ opening\ books\ and}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ operates\ on\ [\`{}bitbully.Board\`{}][src.bitbully.board.Board]\ objects.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00052}00052\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ Notes:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ If\ an\ opening\ book\ is\ enabled,\ it\ is\ used\ automatically\ for}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00055}00055\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ early-\/game\ positions.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00056}00056\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ For\ deeper\ positions\ or\ positions\ outside\ the\ database\ horizon,}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00057}00057\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ the\ engine\ falls\ back\ to\ search-\/based\ evaluation.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00058}00058\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00062}00062\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ board,\ \_\ =\ Board.random\_board(n\_ply=14,\ forbid\_direct\_win=True)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ print(board)}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00066}00066\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ TODO:\ Example\ for\ initialization\ with\ different\ books.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00068}00068\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}:\ OpeningBookName\ |\ \textcolor{keywordtype}{None}\ =\ opening\_book}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00071}00071\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ opening\_book\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}\ =\ bitbully\_core.BitBullyCore()}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00075}00075\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00077}00077\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{import}\ bitbully\_databases\ \textcolor{keyword}{as}\ bbd}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00079}00079\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ db\_path\ =\ bbd.BitBullyDatabases.get\_database\_path(opening\_book)}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}\ =\ bitbully\_core.BitBullyCore(Path(db\_path))}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00082}00082\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00083}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_adab7e8da4f9dcf12f10e2f1a13877d6e}{00083}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_adab7e8da4f9dcf12f10e2f1a13877d6e}{\_\_repr\_\_}}(self)\ -\/>\ str:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ a\ concise\ string\ representation\ of\ the\ BitBully\ agent."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ f\textcolor{stringliteral}{"{}BitBully(opening\_book=\{self.opening\_book\_type!r\},\ book\_loaded=\{self.is\_book\_loaded()\})"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00086}00086\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00087}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a1bba87f872323b9ebf53476f68ff9f50}{00087}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a1bba87f872323b9ebf53476f68ff9f50}{is\_book\_loaded}}(self)\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Check\ whether\ an\ opening\ book\ is\ loaded.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00089}00089\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ \`{}\`{}True\`{}\`{}\ if\ an\ opening\ book\ is\ loaded,\ otherwise\ \`{}\`{}False\`{}\`{}.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00092}00092\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \#\ All\ three\ search\ methods\ should\ agree\ on\ the\ score}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ score\_mtdf\ =\ agent.mtdf(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ score\_negamax\ =\ agent.negamax(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00070}00070\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ score\_null\_window\ =\ agent.null\_window(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00071}00071\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ assert\ score\_negamax\ ==\ score\_null\_window\ ==\ score\_mtdf}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00072}00072\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00073}00073\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00074}00074\ \textcolor{stringliteral}{\ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00075}00075\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00076}00076\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00077}00077\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00078}00078\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ board\ =\ Board()\ \ \#\ empty\ board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00079}00079\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00080}00080\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ scores\ =\ agent.score\_all\_moves(board)\ \ \#\ get\ scores\ for\ all\ moves}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00081}00081\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ assert\ len(scores)\ ==\ 7\ \ \#\ there\ are\ 7\ columns}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00082}00082\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ assert\ scores\ ==\ \{3:\ 1,\ 2:\ 0,\ 4:\ 0,\ 1:\ -\/1,\ 5:\ -\/1,\ 0:\ -\/2,\ 6:\ -\/2\}\ \ \#\ center\ column\ is\ best}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ print(scores)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00085}00085\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Expected\ Output:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \{3:\ 1,\ 2:\ 0,\ 4:\ 0,\ 1:\ -\/1,\ 5:\ -\/1,\ 0:\ -\/2,\ 6:\ -\/2\}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00090}00090\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00091}00091\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00094}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a2fb03edec61e80ce6e7dd3a9ea8c2952}{00094}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a2fb03edec61e80ce6e7dd3a9ea8c2952}{\_\_init\_\_}}(self,\ opening\_book:\ OpeningBookName\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{stringliteral}{"{}default"{}})\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Initialize\ the\ BitBully\ agent.}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00096}00096\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()\ \ \#\ per\ default,\ the\ 12-\/ply-\/dist\ book\ is\ loaded}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00099}00099\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00100}00100\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \#\ Unload\ the\ book}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.reset\_book()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bool(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.isBookLoaded())}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00106}00106\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00107}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a4df1552079a461af7381b52674232ce0}{00107}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a4df1552079a461af7381b52674232ce0}{reset\_transposition\_table}}(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Clear\ the\ internal\ transposition\ table."{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetTranspositionTable()}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00110}00110\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00111}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a8d480388ce2e289229862cffc07e2499}{00111}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a8d480388ce2e289229862cffc07e2499}{get\_node\_counter}}(self)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ the\ number\ of\ nodes\ visited\ since\ the\ last\ reset.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00113}00113\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00114}00114\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00115}00115\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ Number\ of\ visited\ nodes.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00116}00116\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00117}00117\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00118}00118\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00119}00119\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00120}00120\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00121}00121\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00122}00122\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00123}00123\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ =\ agent.score\_all\_moves(board)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00124}00124\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ print(f"{}Nodes\ visited:\ \{agent.get\_node\_counter()\}"{})}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00125}00125\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \#\ Note\ that\ has\ to\ be\ reset\ manually:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00127}00127\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.reset\_node\_counter()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.get\_node\_counter()\ ==\ 0}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00129}00129\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00130}00130\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.getNodeCounter())}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00132}00132\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00133}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a9c6822bc9d8bfa7c1f3617911ba9b3e5}{00133}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a9c6822bc9d8bfa7c1f3617911ba9b3e5}{reset\_node\_counter}}(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Reset\ the\ internal\ node\ counter.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00135}00135\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00136}00136\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00137}00137\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ See\ [\`{}get\_node\_counter\`{}][src.bitbully.solver.BitBully.get\_node\_counter]\ for\ usage.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00138}00138\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetNodeCounter()}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00140}00140\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00141}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_aec733ffd737381bf89b49c88b8e6933a}{00141}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_aec733ffd737381bf89b49c88b8e6933a}{score\_move}}(self,\ board:\ Board,\ column:\ int,\ first\_guess:\ int\ =\ 0)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Evaluate\ a\ single\ move\ for\ the\ given\ board\ state.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00143}00143\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00144}00144\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ is\ a\ wrapper\ around}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00145}00145\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ [\`{}bitbully\_core.BitBullyCore.scoreMove\`{}][src.bitbully.bitbully\_core.BitBullyCore.scoreMove].}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00146}00146\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00147}00147\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00148}00148\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ current\ board\ state.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00149}00149\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ column\ (int):\ Column\ index\ (0-\/6)\ of\ the\ move\ to\ evaluate.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00150}00150\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ first\_guess\ (int):\ Initial\ guess\ for\ the\ score\ (often\ 0).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ opening\_book\ (OpeningBookName\ |\ None):}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00099}00099\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Which\ opening\ book\ to\ load.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00100}00100\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}default"{}\`{}\`{}:\ Alias\ for\ \`{}\`{}"{}12-\/ply-\/dist"{}\`{}\`{}.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}8-\/ply"{}\`{}\`{}:\ 8-\/ply\ book\ with\ win/loss\ values.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}12-\/ply"{}\`{}\`{}:\ 12-\/ply\ book\ with\ win/loss\ values.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}12-\/ply-\/dist"{}\`{}\`{}:\ 12-\/ply\ book\ with\ win/loss\ *and\ distance*\ values.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}None\`{}\`{}:\ Disable\ opening-\/book\ usage\ entirely.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00106}00106\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ TODO:\ Example\ for\ initialization\ with\ different\ books.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00108}00108\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00109}00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00110}00110\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}:\ OpeningBookName\ |\ \textcolor{keywordtype}{None}\ =\ opening\_book}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ opening\_book\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}\ =\ bitbully\_core.BitBullyCore()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{import}\ bitbully\_databases\ \textcolor{keyword}{as}\ bbd}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ db\_path\ =\ bbd.BitBullyDatabases.get\_database\_path(opening\_book)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00119}00119\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}\ =\ bitbully\_core.BitBullyCore(Path(db\_path))}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00121}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_adab7e8da4f9dcf12f10e2f1a13877d6e}{00121}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_adab7e8da4f9dcf12f10e2f1a13877d6e}{\_\_repr\_\_}}(self)\ -\/>\ str:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ a\ concise\ string\ representation\ of\ the\ BitBully\ agent."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ f\textcolor{stringliteral}{"{}BitBully(opening\_book=\{self.opening\_book\_type!r\},\ book\_loaded=\{self.is\_book\_loaded()\})"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00125}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a1bba87f872323b9ebf53476f68ff9f50}{00125}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a1bba87f872323b9ebf53476f68ff9f50}{is\_book\_loaded}}(self)\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Check\ whether\ an\ opening\ book\ is\ loaded.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00127}00127\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00129}00129\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:\ \`{}\`{}True\`{}\`{}\ if\ an\ opening\ book\ is\ loaded,\ otherwise\ \`{}\`{}False\`{}\`{}.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00130}00130\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00131}00131\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00132}00132\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00133}00133\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00134}00134\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00135}00135\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()\ \ \#\ per\ default,\ the\ 12-\/ply-\/dist\ book\ is\ loaded}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00136}00136\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00137}00137\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00138}00138\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \#\ Unload\ the\ book}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00139}00139\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.reset\_book()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00140}00140\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00141}00141\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00142}00142\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bool(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.isBookLoaded())}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00145}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a4df1552079a461af7381b52674232ce0}{00145}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a4df1552079a461af7381b52674232ce0}{reset\_transposition\_table}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Clear\ the\ internal\ transposition\ table."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetTranspositionTable()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00149}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a8d480388ce2e289229862cffc07e2499}{00149}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a8d480388ce2e289229862cffc07e2499}{get\_node\_counter}}(self)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ the\ number\ of\ nodes\ visited\ since\ the\ last\ reset.}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00151}00151\ \textcolor{stringliteral}{}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00152}00152\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00153}00153\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ evaluation\ score\ of\ the\ move.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00153}00153\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ Number\ of\ visited\ nodes.}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00154}00154\ \textcolor{stringliteral}{}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00155}00155\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00156}00156\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
@@ -162,157 +162,365 @@
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00158}00158\ \textcolor{stringliteral}{}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00159}00159\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00160}00160\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00161}00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ =\ agent.score\_move(board,\ column=3)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00162}00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ score\ ==\ 1\ \ \#\ Score\ for\ the\ center\ column\ on\ an\ empty\ board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00163}00163\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00164}00164\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.scoreMove(board.\_board,\ column,\ first\_guess))}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00166}00166\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00167}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a25bb1b13100ad5a2c7c230842bb03b92}{00167}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a25bb1b13100ad5a2c7c230842bb03b92}{score\_all\_moves}}(self,\ board:\ Board)\ -\/>\ list[int]:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Score\ all\ legal\ moves\ for\ the\ given\ board\ state.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00169}00169\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00170}00170\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00171}00171\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ current\ board\ state.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00172}00172\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00173}00173\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00174}00174\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ list[int]:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00175}00175\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ A\ list\ of\ 7\ integers,\ one\ per\ column\ (0-\/6).\ Higher\ values}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00176}00176\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ generally\ indicate\ better\ moves\ for\ the\ player\ to\ move.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00177}00177\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00178}00178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00180}00180\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00181}00181\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00182}00182\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00183}00183\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00184}00184\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ scores\ =\ agent.score\_all\_moves(board)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00185}00185\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ scores\ ==\ [-\/2,\ -\/1,\ 0,\ 1,\ 0,\ -\/1,\ -\/2]\ \ \#\ Center\ column\ is\ best\ on\ an\ empty\ board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00186}00186\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00187}00187\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.scoreMoves(board.\_board))}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00189}00189\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00190}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}{00190}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}{negamax}}(self,\ board:\ Board,\ alpha:\ int\ =\ -\/1000,\ beta:\ int\ =\ 1000,\ depth:\ int\ =\ 0)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Evaluate\ a\ position\ using\ negamax\ search.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00161}00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ =\ agent.score\_all\_moves(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00162}00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ print(f"{}Nodes\ visited:\ \{agent.get\_node\_counter()\}"{})}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00163}00163\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00164}00164\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \#\ Note\ that\ has\ to\ be\ reset\ manually:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00165}00165\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.reset\_node\_counter()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00166}00166\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.get\_node\_counter()\ ==\ 0}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00167}00167\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00168}00168\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.getNodeCounter())}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00171}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a9c6822bc9d8bfa7c1f3617911ba9b3e5}{00171}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a9c6822bc9d8bfa7c1f3617911ba9b3e5}{reset\_node\_counter}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Reset\ the\ internal\ node\ counter.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00173}00173\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00174}00174\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ See\ Also:\ [\`{}get\_node\_counter\`{}][src.bitbully.solver.BitBully.get\_node\_counter]\ for\ usage.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00175}00175\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00176}00176\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetNodeCounter()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00178}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_aec733ffd737381bf89b49c88b8e6933a}{00178}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_aec733ffd737381bf89b49c88b8e6933a}{score\_move}}(self,\ board:\ Board,\ column:\ int,\ first\_guess:\ int\ =\ 0)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Evaluate\ a\ single\ move\ for\ the\ given\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00180}00180\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00181}00181\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00182}00182\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ current\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00183}00183\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ column\ (int):\ Column\ index\ (0-\/6)\ of\ the\ move\ to\ evaluate.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00184}00184\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ first\_guess\ (int):\ Initial\ guess\ for\ the\ score\ (often\ 0).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00185}00185\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00186}00186\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00187}00187\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ evaluation\ score\ of\ the\ move.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00188}00188\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00189}00189\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00190}00190\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00191}00191\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00192}00192\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00193}00193\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00194}00194\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ board\ position\ to\ evaluate.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00195}00195\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ alpha\ (int):\ Alpha\ bound.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00196}00196\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ beta\ (int):\ Beta\ bound.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00197}00197\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ depth\ (int):\ Search\ depth\ in\ plies.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00193}00193\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00194}00194\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00195}00195\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ =\ agent.score\_move(board,\ column=3)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00196}00196\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ score\ ==\ 1\ \ \#\ Score\ for\ the\ center\ column\ on\ an\ empty\ board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00197}00197\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00198}00198\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00199}00199\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00200}00200\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ evaluation\ score\ returned\ by\ the\ engine.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00199}00199\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00200}00200\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ValueError:\ If\ the\ column\ is\ outside\ the\ valid\ range\ or\ if\ the\ column\ is\ full.}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00201}00201\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00202}00202\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00203}00203\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00204}00204\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00205}00205\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00206}00206\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00207}00207\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00208}00208\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ =\ agent.negamax(board)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00209}00209\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ score\ ==\ 1\ \ \#\ Expected\ score\ for\ an\ empty\ board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00210}00210\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00211}00211\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}{negamax}}(}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ board.\_board,}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alpha=alpha,}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ beta=beta,}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ depth=depth,}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00220}00220\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00221}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_af02c83d244d2d01bd881a7613360eebb}{00221}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_af02c83d244d2d01bd881a7613360eebb}{null\_window}}(self,\ board:\ Board)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00222}00222\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Evaluate\ a\ position\ using\ a\ null-\/window\ search.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00223}00223\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00224}00224\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00225}00225\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ board\ position\ to\ evaluate.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00202}00202\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Notes:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00203}00203\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ -\/\ This\ is\ a\ wrapper\ around}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00204}00204\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ [\`{}bitbully\_core.BitBullyCore.scoreMove\`{}][src.bitbully.bitbully\_core.BitBullyCore.scoreMove].}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00205}00205\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ board.is\_legal\_move(column):}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Column\ \{column\}\ is\ either\ full\ or\ invalid;\ cannot\ score\ move."{}})}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00209}00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.scoreMove(board.native,\ column,\ first\_guess))}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00211}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a4edb66c8feb77079f74bb89664a28248}{00211}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a4edb66c8feb77079f74bb89664a28248}{score\_all\_moves}}(self,\ board:\ Board)\ -\/>\ dict[int,\ int]:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Score\ all\ legal\ moves\ for\ the\ given\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00213}00213\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00214}00214\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00215}00215\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ current\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00216}00216\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00217}00217\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00218}00218\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ dict[int,\ int]:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00219}00219\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ A\ dictionary\ of\ up\ to\ 7\ column-\/value\ pairs,\ one\ per\ reachable\ column\ (0-\/6).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00220}00220\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Higher\ values\ generally\ indicate\ better\ moves\ for\ the\ player\ to\ move.\ If\ a}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00221}00221\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ column\ is\ full,\ it\ will\ not\ be\ listed\ in\ the\ returned\ dictionary.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00222}00222\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00223}00223\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00224}00224\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00225}00225\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00226}00226\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00227}00227\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00228}00228\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ evaluation\ score.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00229}00229\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00230}00230\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00231}00231\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00232}00232\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00233}00233\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00234}00234\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00235}00235\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00236}00236\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ =\ agent.null\_window(board)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00237}00237\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ score\ ==\ 1\ \ \#\ Expected\ score\ for\ an\ empty\ board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00238}00238\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00239}00239\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.nullWindow(board.\_board))}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00241}00241\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00242}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45}{00242}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45}{mtdf}}(self,\ board:\ Board,\ first\_guess:\ int\ =\ 0)\ -\/>\ int:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00243}00243\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Evaluate\ a\ position\ using\ the\ MTD(f)\ algorithm.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00244}00244\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00245}00245\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00246}00246\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ board\ position\ to\ evaluate.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00247}00247\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ first\_guess\ (int):\ Initial\ guess\ for\ the\ score\ (often\ 0).}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00248}00248\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00249}00249\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00250}00250\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ evaluation\ score.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00251}00251\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00252}00252\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00253}00253\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00254}00254\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00255}00255\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00256}00256\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00257}00257\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00258}00258\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ =\ agent.mtdf(board)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00259}00259\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ score\ ==\ 1\ \ \#\ Expected\ score\ for\ an\ empty\ board}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00260}00260\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00261}00261\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45}{mtdf}}(board.\_board,\ first\_guess=first\_guess))}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00263}00263\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00264}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ae2ff2897d70040811c2044839353e02a}{00264}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ae2ff2897d70040811c2044839353e02a}{load\_book}}(self,\ book\_path:\ str)\ -\/>\ bool:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Load\ an\ opening\ book\ from\ a\ file\ path.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00266}00266\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00267}00267\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ is\ a\ thin\ wrapper\ around}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00268}00268\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ [\`{}bitbully\_core.BitBullyCore.loadBook\`{}][src.bitbully.bitbully\_core.BitBullyCore.loadBook].}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00269}00269\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00270}00270\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00271}00271\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ book\_path\ (str):}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00272}00272\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ the\ opening\ book\ file.\ If\ empty\ or\ invalid,\ no\ book}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00273}00273\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\ loaded.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00274}00274\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00275}00275\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00276}00276\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ bool:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00277}00277\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}True\`{}\`{}\ if\ the\ book\ was\ loaded\ successfully,}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00278}00278\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}False\`{}\`{}\ otherwise.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00279}00279\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00280}00280\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00281}00281\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00282}00282\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00283}00283\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ pathlib\ import\ Path}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00284}00284\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ bitbully\_databases\ as\ bbd}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00285}00285\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00286}00286\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ bbd.BitBullyDatabases.get\_database\_path("{}default"{})}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00227}00227\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00228}00228\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00229}00229\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ scores\ =\ agent.score\_all\_moves(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00230}00230\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ scores\ ==\ \{3:\ 1,\ 2:\ 0,\ 4:\ 0,\ 1:\ -\/1,\ 5:\ -\/1,\ 0:\ -\/2,\ 6:\ -\/2\}\ \ \#\ Center\ column\ is\ best\ on\ an\ empty\ board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00231}00231\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00232}00232\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00233}00233\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00234}00234\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ When\ a\ column\ is\ full,\ it\ is\ omitted\ from\ the\ results:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00235}00235\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00236}00236\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00237}00237\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00238}00238\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00239}00239\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board(6\ *\ "{}3"{})\ \ \#\ fill\ center\ column}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00240}00240\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ scores\ =\ agent.score\_all\_moves(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00241}00241\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ scores\ ==\ \{2:\ 1,\ 4:\ 1,\ 1:\ 0,\ 5:\ 0,\ 0:\ -\/1,\ 6:\ -\/1\}\ \ \#\ Column\ 3\ is\ full\ and\ thus\ omitted}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00242}00242\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00243}00243\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00244}00244\ \ \ \ \ \ \ \ \ scores\ =\ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.scoreMoves(board.native)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00245}00245\ \ \ \ \ \ \ \ \ column\_values\ =\ \{}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ col:\ val\ \textcolor{keywordflow}{for}\ (col,\ val)\ \textcolor{keywordflow}{in}\ enumerate(scores)\ \textcolor{keywordflow}{if}\ val\ >\ -\/100}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00247}00247\ \ \ \ \ \ \ \ \ \}\ \ \textcolor{comment}{\#\ invalid\ moves\ have\ score\ less\ than\ -\/100}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dict(sorted(column\_values.items(),\ key=operator.itemgetter(1),\ reverse=\textcolor{keyword}{True}))}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00250}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_aa3048d69b1b0f60384ebfa96fcffc917}{00250}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_aa3048d69b1b0f60384ebfa96fcffc917}{best\_move}}(}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00251}00251\ \ \ \ \ \ \ \ \ self,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00252}00252\ \ \ \ \ \ \ \ \ board:\ Board,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00253}00253\ \ \ \ \ \ \ \ \ *,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ tie\_break:\ TieBreakStrategy\ =\ \textcolor{stringliteral}{"{}center"{}},}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00255}00255\ \ \ \ \ \ \ \ \ rng:\ random.Random\ |\ \textcolor{keywordtype}{None}\ =\ \textcolor{keywordtype}{None},}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00256}00256\ \ \ \ \ )\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ the\ best\ legal\ move\ (column\ index)\ for\ the\ current\ player.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00258}00258\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00259}00259\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ All\ legal\ moves\ are\ scored\ using\ :meth:\`{}score\_all\_moves\`{}.\ The\ move(s)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00260}00260\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ with\ the\ highest\ score\ are\ considered\ best,\ and\ ties\ are\ resolved}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00261}00261\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ according\ to\ \`{}\`{}tie\_break\`{}\`{}.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00262}00262\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00263}00263\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Tie-\/breaking\ strategies:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00264}00264\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}center"{}\`{}\`{}\ (default):}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00265}00265\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Prefer\ the\ move\ closest\ to\ the\ center\ column\ (3).\ If\ still\ tied,}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00266}00266\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ choose\ the\ smaller\ column\ index.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00267}00267\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}leftmost"{}\`{}\`{}:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00268}00268\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Choose\ the\ smallest\ column\ index\ among\ tied\ moves.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00269}00269\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ -\/\ \`{}\`{}"{}random"{}\`{}\`{}:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00270}00270\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Choose\ uniformly\ at\ random\ among\ tied\ moves.\ An\ optional}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00271}00271\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}rng\`{}\`{}\ can\ be\ provided\ for\ reproducibility.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00272}00272\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00273}00273\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00274}00274\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ current\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00275}00275\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ tie\_break\ (TieBreakStrategy):}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00276}00276\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Strategy\ used\ to\ resolve\ ties\ between\ equally\ scoring\ moves.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00277}00277\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ rng\ (random.Random\ |\ None):}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00278}00278\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Random\ number\ generator\ used\ when\ \`{}\`{}tie\_break="{}random"{}\`{}\`{}.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00279}00279\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ \`{}\`{}None\`{}\`{},\ the\ global\ RNG\ is\ used.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00280}00280\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00281}00281\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00282}00282\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ selected\ column\ index\ (0-\/6).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00283}00283\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00284}00284\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00285}00285\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ValueError:\ If\ there\ are\ no\ legal\ moves\ (board\ is\ full)\ or}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00286}00286\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ an\ unknown\ tie-\/breaking\ strategy\ is\ specified.}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00287}00287\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00288}00288\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully(opening\_book=None)\ \ \#\ start\ without\ book}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00289}00289\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00290}00290\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ success\ =\ agent.load\_book(db\_path)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00291}00291\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00292}00292\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00293}00293\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bool(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.loadBook(book\_path))}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00295}00295\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00296}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}{00296}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}{reset\_book}}(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Unload\ the\ currently\ loaded\ opening\ book\ (if\ any).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00288}00288\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00289}00289\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00290}00290\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00291}00291\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ random}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00292}00292\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00293}00293\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00294}00294\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00295}00295\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ best\_col\ =\ agent.best\_move(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00296}00296\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ best\_col\ ==\ 3\ \ \#\ Center\ column\ is\ best\ on\ an\ empty\ board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00297}00297\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00298}00298\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00299}00299\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ resets\ the\ engine\ to\ *search-\/only*\ mode\ until\ another}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00300}00300\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ opening\ book\ is\ loaded.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00301}00301\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00302}00302\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00303}00303\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00304}00304\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00305}00305\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00306}00306\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()\ \ \#\ per\ default,\ the\ 12-\/ply-\/dist\ book\ is\ loaded}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00307}00307\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00308}00308\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.reset\_book()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00309}00309\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00310}00310\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00311}00311\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00312}00312\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00299}00299\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00300}00300\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00301}00301\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00302}00302\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ random}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00303}00303\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00304}00304\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00305}00305\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board("{}341"{})\ \ \#\ some\ arbitrary\ position}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00306}00306\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ print(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00307}00307\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.best\_move(board,\ tie\_break="{}center"{})\ ==\ 3\ \ \#\ Several\ moves\ are\ tied;\ center\ is\ preferred}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00308}00308\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.best\_move(board,\ tie\_break="{}leftmost"{})\ ==\ 1\ \ \#\ Leftmost\ among\ tied\ moves}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00309}00309\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.best\_move(board,\ tie\_break="{}random"{})\ in\ \{1,\ 3,\ 4\}\ \ \#\ Random\ among\ tied\ moves}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00310}00310\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00311}00311\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ rng\ =\ random.Random(42)\ \ \#\ use\ own\ random\ number\ generator}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00312}00312\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.best\_move(board,\ tie\_break="{}random"{},\ rng=rng)\ in\ \{1,\ 3,\ 4\}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00313}00313\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00314}00314\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Expected\ Output:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00315}00315\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00316}00316\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00317}00317\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00318}00318\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00319}00319\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00320}00320\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00321}00321\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \_\ \ X\ \ \_\ \ X\ \ O\ \ \_\ \ \_}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00322}00322\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00323}00323\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00324}00324\ \ \ \ \ \ \ \ \ scores\ =\ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a4edb66c8feb77079f74bb89664a28248}{score\_all\_moves}}(board)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00325}00325\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ scores:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(\textcolor{stringliteral}{"{}No\ legal\ moves\ available\ (board\ appears\ to\ be\ full)."{}})}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00328}00328\ \ \ \ \ \ \ \ \ best\_score\ =\ max(scores.values())}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00329}00329\ \ \ \ \ \ \ \ \ best\_cols\ =\ [c\ \textcolor{keywordflow}{for}\ c,\ s\ \textcolor{keywordflow}{in}\ scores.items()\ \textcolor{keywordflow}{if}\ s\ ==\ best\_score]}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(best\_cols)\ ==\ 1:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ best\_cols[0]}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tie\_break\ ==\ \textcolor{stringliteral}{"{}center"{}}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Prefer\ center\ column\ (3),\ then\ smaller\ index\ for\ stability.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ min(best\_cols,\ key=\textcolor{keyword}{lambda}\ c:\ (abs(c\ -\/\ 3),\ c))}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tie\_break\ ==\ \textcolor{stringliteral}{"{}leftmost"{}}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ min(best\_cols)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ tie\_break\ ==\ \textcolor{stringliteral}{"{}random"{}}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ rng\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ random.choice(best\_cols)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rng.choice(best\_cols)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00346}00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Unknown\ tie-\/breaking\ strategy:\ \{tie\_break!r\}"{}})}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00348}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}{00348}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}{negamax}}(self,\ board:\ Board,\ alpha:\ int\ =\ -\/1000,\ beta:\ int\ =\ 1000,\ depth:\ int\ =\ 0)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00349}00349\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Evaluate\ a\ position\ using\ negamax\ search.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00350}00350\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00351}00351\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00352}00352\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ board\ position\ to\ evaluate.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00353}00353\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ alpha\ (int):\ Alpha\ bound.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00354}00354\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ beta\ (int):\ Beta\ bound.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00355}00355\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ depth\ (int):\ Search\ depth\ in\ plies.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00356}00356\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00357}00357\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00358}00358\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ evaluation\ score\ returned\ by\ the\ engine.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00359}00359\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00360}00360\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00361}00361\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00362}00362\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00363}00363\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00364}00364\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00365}00365\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00366}00366\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ =\ agent.negamax(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00367}00367\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ score\ ==\ 1\ \ \#\ Expected\ score\ for\ an\ empty\ board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00368}00368\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00369}00369\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00370}00370\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}{negamax}}(}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ board.native,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alpha=alpha,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ beta=beta,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ depth=depth,}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00377}00377\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00379}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_af02c83d244d2d01bd881a7613360eebb}{00379}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_af02c83d244d2d01bd881a7613360eebb}{null\_window}}(self,\ board:\ Board)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00380}00380\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Evaluate\ a\ position\ using\ a\ null-\/window\ search.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00381}00381\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00382}00382\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00383}00383\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ board\ position\ to\ evaluate.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00384}00384\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00385}00385\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00386}00386\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ evaluation\ score.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00387}00387\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00388}00388\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00389}00389\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00390}00390\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00391}00391\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00392}00392\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00393}00393\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00394}00394\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ =\ agent.null\_window(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00395}00395\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ score\ ==\ 1\ \ \#\ Expected\ score\ for\ an\ empty\ board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00396}00396\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00397}00397\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00398}00398\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.nullWindow(board.native))}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00400}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45}{00400}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45}{mtdf}}(self,\ board:\ Board,\ first\_guess:\ int\ =\ 0)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00401}00401\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Evaluate\ a\ position\ using\ the\ MTD(f)\ algorithm.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00402}00402\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00403}00403\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00404}00404\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ board\ position\ to\ evaluate.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00405}00405\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ first\_guess\ (int):\ Initial\ guess\ for\ the\ score\ (often\ 0).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00406}00406\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00407}00407\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00408}00408\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ evaluation\ score.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00409}00409\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00410}00410\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00411}00411\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00412}00412\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00413}00413\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00414}00414\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00415}00415\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00416}00416\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ =\ agent.mtdf(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00417}00417\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ score\ ==\ 1\ \ \#\ Expected\ score\ for\ an\ empty\ board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00418}00418\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00419}00419\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00420}00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45}{mtdf}}(board.native,\ first\_guess=first\_guess))}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00421}00421\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00422}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a83419e0054f2ad2c6d83b6edfaa0c7b6}{00422}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a83419e0054f2ad2c6d83b6edfaa0c7b6}{load\_book}}(self,\ book:\ OpeningBookName\ |\ os.PathLike[str]\ |\ str)\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00423}00423\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Load\ an\ opening\ book\ from\ a\ file\ path.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00424}00424\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00425}00425\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ is\ a\ thin\ wrapper\ around}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00426}00426\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ [\`{}bitbully\_core.BitBullyCore.loadBook\`{}][src.bitbully.bitbully\_core.BitBullyCore.loadBook].}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00427}00427\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00428}00428\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00429}00429\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ book\ (OpeningBookName\ |\ os.PathLike[str]\ |\ str):}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00430}00430\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Name/Identifier\ (see\ [\`{}available\_opening\_books\`{}][src.bitbully.solver.BitBully.available\_opening\_books])}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00431}00431\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ or\ path\ of\ the\ opening\ book\ to\ load.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00432}00432\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00433}00433\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00434}00434\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ValueError:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00435}00435\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ the\ book\ identifier/path\ is\ invalid\ or\ if\ loading\ the\ book\ fails.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00436}00436\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00437}00437\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00438}00438\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00439}00439\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00440}00440\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ pathlib\ import\ Path}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00441}00441\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00442}00442\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ which\_book\ =\ BitBully.available\_opening\_books()[0]\ \ \#\ e.g.,\ "{}default"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00443}00443\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00444}00444\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully(opening\_book=None)\ \ \#\ start\ without\ book}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00445}00445\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00446}00446\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.load\_book(which\_book)\ \ \#\ load\ "{}default"{}\ book}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00447}00447\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00448}00448\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00449}00449\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00450}00450\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00451}00451\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00452}00452\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00453}00453\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ pathlib\ import\ Path}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00454}00454\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ bitbully\_databases\ as\ bbd}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00455}00455\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00456}00456\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ which\_book\ =\ BitBully.available\_opening\_books()[2]\ \ \#\ e.g.,\ "{}12-\/ply"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00457}00457\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ bbd.BitBullyDatabases.get\_database\_path(which\_book)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00458}00458\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00459}00459\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully(opening\_book=None)\ \ \#\ start\ without\ book}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00460}00460\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00461}00461\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.load\_book(db\_path)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00462}00462\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00463}00463\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00464}00464\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00465}00465\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00466}00466\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_opening\_book\_name(book):}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{import}\ bitbully\_databases\ \textcolor{keyword}{as}\ bbd}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00468}00468\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ bbd.BitBullyDatabases.get\_database\_path(book)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ book}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00471}00471\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ isinstance(book,\ (os.PathLike,\ str)):}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(book,\ str)\ \textcolor{keywordflow}{and}\ \textcolor{keywordflow}{not}\ book.strip():}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Invalid\ book\ path:\ \{book!r\}"{}})}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ Path(book)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00476}00476\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Invalid\ book\ identifier\ or\ path:\ \{book!r\}"{}})}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00479}00479\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.loadBook(db\_path):}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Failed\ to\ load\ opening\ book\ from\ path:\ \{db\_path\}"{}})}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00484}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}{00484}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}{reset\_book}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00485}00485\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Unload\ the\ currently\ loaded\ opening\ book\ (if\ any).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00486}00486\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00487}00487\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ resets\ the\ engine\ to\ *search-\/only*\ mode\ until\ another}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00488}00488\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ opening\ book\ is\ loaded.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00489}00489\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00490}00490\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00491}00491\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00492}00492\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00493}00493\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00494}00494\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()\ \ \#\ per\ default,\ the\ 12-\/ply-\/dist\ book\ is\ loaded}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00495}00495\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00496}00496\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.reset\_book()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00497}00497\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00498}00498\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00499}00499\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00500}00500\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00501}00501\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00502}00502\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00503}00503\ \ \ \ \ \textcolor{preprocessor}{@classmethod}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00504}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ae2e3f241a045aa7ead284c101845b032}{00504}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ae2e3f241a045aa7ead284c101845b032}{available\_opening\_books}}(cls)\ -\/>\ tuple[OpeningBookName,\ ...]:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00505}00505\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ the\ available\ opening\ book\ identifiers.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00506}00506\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00507}00507\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00508}00508\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ tuple[OpeningBookName,\ ...]:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00509}00509\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ All\ supported\ opening\ book\ names,\ including\ \`{}\`{}"{}default"{}\`{}\`{}.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00510}00510\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00511}00511\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00512}00512\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00513}00513\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00514}00514\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00515}00515\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ books\ =\ BitBully.available\_opening\_books()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00516}00516\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ print(books)\ \ \#\ ('default',\ '8-\/ply',\ '12-\/ply',\ '12-\/ply-\/dist')}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00517}00517\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00518}00518\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00519}00519\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00520}00520\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ get\_args(OpeningBookName)}
 
 \end{DoxyCode}

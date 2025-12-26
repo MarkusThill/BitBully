@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['from_5farray_0',['from_array',['../d9/d83/classbitbully_1_1board_1_1Board.html#a04cf3920d1f460872b42d77c538a3423',1,'bitbully::board::Board']]],
-  ['from_5fmoves_1',['from_moves',['../d9/d83/classbitbully_1_1board_1_1Board.html#a9b97a7ced0bf0ed804d120478f57f257',1,'bitbully::board::Board']]]
+  ['destroy_0',['destroy',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e',1,'bitbully::gui_c4::GuiC4']]]
 ];

@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.69</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.70</span>
                         </div>
                     </td>
                 </tr>
@@ -138,6 +138,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a04cf3920d1f460872b42d77c538a3423" id="r_a04cf3920d1f460872b42d77c538a3423"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04cf3920d1f460872b42d77c538a3423">from_array</a> (cls, Sequence[Sequence[int]] arr)</td></tr>
 <tr class="memitem:a0631f7c4d3734f0bb0993501f67f617c" id="r_a0631f7c4d3734f0bb0993501f67f617c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0631f7c4d3734f0bb0993501f67f617c">to_huffman</a> (self)</td></tr>
 <tr class="memitem:afe754d7343ddc9c2b4596ec2c5eea43a" id="r_afe754d7343ddc9c2b4596ec2c5eea43a"><td class="memItemLeft" align="right" valign="top">list[int]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe754d7343ddc9c2b4596ec2c5eea43a">legal_moves</a> (self, bool non_losing=False, bool order_moves=False)</td></tr>
+<tr class="memitem:ae2f018bdfa396d7e35145911fb1466c9" id="r_ae2f018bdfa396d7e35145911fb1466c9"><td class="memItemLeft" align="right" valign="top">BoardCore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2f018bdfa396d7e35145911fb1466c9">native</a> (self)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -151,11 +152,11 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ad34abdcda492a98a5532c713d83f4f0b" id="r_ad34abdcda492a98a5532c713d83f4f0b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad34abdcda492a98a5532c713d83f4f0b">_board</a> = bitbully_core.BoardCore()</td></tr>
+<tr class="memitem:ad34abdcda492a98a5532c713d83f4f0b" id="r_ad34abdcda492a98a5532c713d83f4f0b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad34abdcda492a98a5532c713d83f4f0b">_board</a> = BoardCore()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Represents the state of a Connect Four board. Mostly a thin wrapper around BoardCore.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00011">11</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00012">12</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a26f6bb8016db04d0ed10a8c05cfb87e6" name="a26f6bb8016db04d0ed10a8c05cfb87e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a26f6bb8016db04d0ed10a8c05cfb87e6">&#9670;&#160;</a></span>__init__()</h2>
@@ -276,6 +277,7 @@ Example:
     # The printed layout shows how the tokens stack in each column.
     board
     ```
+
     Expected output:
     ```text
     _  _  _  _  _  _  _
@@ -378,7 +380,7 @@ Example:
     _  O  _  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00020">20</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00021">21</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -449,7 +451,7 @@ Example:
     assert not (board1 == board2)
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00230">230</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00232">232</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -498,7 +500,7 @@ Example:
     971238920548618160
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00645">645</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00647">647</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -530,7 +532,7 @@ Args:
 Returns:
     bool: True if both boards are not equal, False otherwise.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00283">283</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00285">285</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -549,7 +551,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Returns a string representation of the Board instance.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00296">296</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00298">298</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -571,7 +573,7 @@ Returns:
 
 See the documentation for [Board.to_string][src.bitbully.board.Board.to_string] for details.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00300">300</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00302">302</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -655,7 +657,7 @@ Example:
         - Number of distinct positions at ply *n*:
           https://oeis.org/A212693
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00307">307</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00309">309</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -722,7 +724,7 @@ Example:
     _  X  X  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00381">381</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00383">383</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -823,7 +825,7 @@ Example:
     X  O  _  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00431">431</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00433">433</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -911,7 +913,7 @@ Example:
     assert board.count_tokens() == len(moves)
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00519">519</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00521">521</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -965,7 +967,7 @@ Example:
     assert board.current_player() == 1
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01384">1384</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01386">1386</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1050,7 +1052,7 @@ Example:
     assert board.to_array() == board_array
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01605">1605</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01607">1607</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1109,7 +1111,7 @@ Example:
     assert not board.has_win()
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01562">1562</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01564">1564</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1167,7 +1169,7 @@ Example:
     # Player 1 (yellow, X) has achieved a Connect-4.
     assert board.has_win()
     ```
-    Board from above, expected output:
+    Expected output:
     ```text
     _  _  _  _  _  _  _
     _  _  _  _  _  _  _
@@ -1177,7 +1179,7 @@ Example:
     _  X  X  X  X  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00592">592</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00594">594</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1225,7 +1227,7 @@ Example:
     assert board.count_tokens() == 42
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01424">1424</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01426">1426</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1286,7 +1288,7 @@ Example:
     assert board.winner() is None
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01457">1457</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01459">1459</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1398,7 +1400,7 @@ Example:
     _  X  X  X  X  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00679">679</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00681">681</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1459,7 +1461,8 @@ Example:
     assert board.legal_moves() == list(range(7))
     assert board.legal_moves(non_losing=True) == [5]
     ```
-Expected output:
+
+    Expected output:
     ```text
     _  _  _  _  _  _  _
     _  _  _  _  _  _  _
@@ -1469,7 +1472,7 @@ Expected output:
     _  O  X  X  X  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01813">1813</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01815">1815</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1558,7 +1561,7 @@ Example:
 
     print(board)
     ```
-     Expected output:
+    Expected output:
     ```text
     _  _  _  _  _  _  _
     _  _  _  _  _  _  _
@@ -1568,7 +1571,7 @@ Example:
     _  X  _  O  _  X  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00772">772</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00774">774</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1630,7 +1633,39 @@ Example:
     assert board.moves_left() + board.count_tokens() == 42
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00858">858</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00860">860</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+
+</div>
+</div>
+<a id="ae2f018bdfa396d7e35145911fb1466c9" name="ae2f018bdfa396d7e35145911fb1466c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2f018bdfa396d7e35145911fb1466c9">&#9670;&#160;</a></span>native()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> BoardCore bitbully.board.Board.native </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return the underlying native board representation.
+
+This is intended for internal engine integrations and wrappers.
+Users should treat this as read-only.
+
+Returns:
+    BoardCore:
+        The underlying native `BoardCore` instance representing the board state.
+
+Notes:
+- The `native` property exposes the underlying engine representation.
+- This is intended for engine wrappers (e.g. BitBully) and should be
+treated as read-only by users.
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01864">1864</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1727,7 +1762,7 @@ Example:
     _  O  _  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00905">905</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00907">907</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1777,7 +1812,7 @@ Example:
     assert new_board != board
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00993">993</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00995">995</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -1887,7 +1922,7 @@ Example:
     assert len(seen) &gt; 1
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01672">1672</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01674">1674</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2035,7 +2070,7 @@ Example:
     _  O  _  X  _  O  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01034">1034</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01036">1036</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2124,7 +2159,7 @@ Example:
         TODO: This is not supported yet
         ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01178">1178</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01180">1180</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2183,12 +2218,12 @@ Example:
 
     print(f"Huffman code: {h1}")
     ```
-Expected output:
+    Expected output:
     ```text
     Huffman code: 10120112
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01761">1761</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01763">1763</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2245,7 +2280,7 @@ Example:
     _  O  _  X  _  _  _
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01252">1252</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01254">1254</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2350,7 +2385,7 @@ Example:
     assert board_1.uid() != board_2.uid()
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01294">1294</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01296">1296</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2420,7 +2455,7 @@ Example:
     assert board.winner() is None
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01503">1503</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01505">1505</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2435,7 +2470,7 @@ Example:
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bitbully.board.Board._board = bitbully_core.BoardCore()</td>
+          <td class="memname">bitbully.board.Board._board = BoardCore()</td>
         </tr>
       </table>
   </td>
@@ -2445,7 +2480,7 @@ Example:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00224">224</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00226">226</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2469,7 +2504,7 @@ Example:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00015">15</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00016">16</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2493,7 +2528,7 @@ Example:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00016">16</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00017">17</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>
@@ -2517,7 +2552,7 @@ Example:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00018">18</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l00019">19</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>

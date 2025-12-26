@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.69</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.70</span>
                         </div>
                     </td>
                 </tr>
@@ -112,12 +112,45 @@ $(function(){initNavTree('d4/d55/namespacebitbully_1_1solver.html','../../','');
 Classes</h2></td></tr>
 <tr class="memitem:BitBully" id="r_BitBully"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html">BitBully</a></td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ac588fe935bda7db13ec4972dfb87af7d" id="r_ac588fe935bda7db13ec4972dfb87af7d"><td class="memItemLeft" align="right" valign="top">TypeGuard[OpeningBookName]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac588fe935bda7db13ec4972dfb87af7d">_is_opening_book_name</a> (object x)</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a8c8643ce5ffe757c3d98b482d591062a" id="r_a8c8643ce5ffe757c3d98b482d591062a"><td class="memItemLeft" align="right" valign="top">TypeAlias&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c8643ce5ffe757c3d98b482d591062a">OpeningBookName</a> = Literal[&quot;default&quot;, &quot;8-ply&quot;, &quot;12-ply&quot;, &quot;12-ply-dist&quot;]</td></tr>
+<tr class="memitem:aee95d78f16437b19c82ff85f1e134535" id="r_aee95d78f16437b19c82ff85f1e134535"><td class="memItemLeft" align="right" valign="top">TypeAlias&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee95d78f16437b19c82ff85f1e134535">TieBreakStrategy</a> = Literal[&quot;center&quot;, &quot;leftmost&quot;, &quot;random&quot;]</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">This module provides the Connect Four AI agent "BitBully" with opening book support.</pre> </div><a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<div class="textblock"><pre class="fragment">This module provides the Connect Four AI agent "BitBully" with opening book support.</pre> </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="ac588fe935bda7db13ec4972dfb87af7d" name="ac588fe935bda7db13ec4972dfb87af7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac588fe935bda7db13ec4972dfb87af7d">&#9670;&#160;</a></span>_is_opening_book_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> TypeGuard[OpeningBookName] bitbully.solver._is_opening_book_name </td>
+          <td>(</td>
+          <td class="paramtype">object</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00038">38</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
 <a id="a8c8643ce5ffe757c3d98b482d591062a" name="a8c8643ce5ffe757c3d98b482d591062a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c8643ce5ffe757c3d98b482d591062a">&#9670;&#160;</a></span>OpeningBookName</h2>
 
@@ -130,7 +163,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00009">9</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00018">18</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+
+</div>
+</div>
+<a id="aee95d78f16437b19c82ff85f1e134535" name="aee95d78f16437b19c82ff85f1e134535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee95d78f16437b19c82ff85f1e134535">&#9670;&#160;</a></span>TieBreakStrategy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TypeAlias bitbully.solver.TieBreakStrategy = Literal[&quot;center&quot;, &quot;leftmost&quot;, &quot;random&quot;]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00028">28</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>

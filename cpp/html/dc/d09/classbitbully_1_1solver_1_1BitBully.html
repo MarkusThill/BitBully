@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.69</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.70</span>
                         </div>
                     </td>
                 </tr>
@@ -117,12 +117,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d480388ce2e289229862cffc07e2499" id="r_a8d480388ce2e289229862cffc07e2499"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d480388ce2e289229862cffc07e2499">get_node_counter</a> (self)</td></tr>
 <tr class="memitem:a9c6822bc9d8bfa7c1f3617911ba9b3e5" id="r_a9c6822bc9d8bfa7c1f3617911ba9b3e5"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c6822bc9d8bfa7c1f3617911ba9b3e5">reset_node_counter</a> (self)</td></tr>
 <tr class="memitem:aec733ffd737381bf89b49c88b8e6933a" id="r_aec733ffd737381bf89b49c88b8e6933a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec733ffd737381bf89b49c88b8e6933a">score_move</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board, int column, int first_guess=0)</td></tr>
-<tr class="memitem:a25bb1b13100ad5a2c7c230842bb03b92" id="r_a25bb1b13100ad5a2c7c230842bb03b92"><td class="memItemLeft" align="right" valign="top">list[int]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25bb1b13100ad5a2c7c230842bb03b92">score_all_moves</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board)</td></tr>
+<tr class="memitem:a4edb66c8feb77079f74bb89664a28248" id="r_a4edb66c8feb77079f74bb89664a28248"><td class="memItemLeft" align="right" valign="top">dict[int, int]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4edb66c8feb77079f74bb89664a28248">score_all_moves</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board)</td></tr>
+<tr class="memitem:aa3048d69b1b0f60384ebfa96fcffc917" id="r_aa3048d69b1b0f60384ebfa96fcffc917"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3048d69b1b0f60384ebfa96fcffc917">best_move</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board, *, TieBreakStrategy tie_break=&quot;center&quot;, random.Random|None rng=None)</td></tr>
 <tr class="memitem:ad10c2d025b83052b206433cb9960e1c0" id="r_ad10c2d025b83052b206433cb9960e1c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad10c2d025b83052b206433cb9960e1c0">negamax</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board, int alpha=-1000, int beta=1000, int depth=0)</td></tr>
 <tr class="memitem:af02c83d244d2d01bd881a7613360eebb" id="r_af02c83d244d2d01bd881a7613360eebb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af02c83d244d2d01bd881a7613360eebb">null_window</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board)</td></tr>
 <tr class="memitem:ac2f21a6fb7d7197bd156c86d30c84d45" id="r_ac2f21a6fb7d7197bd156c86d30c84d45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2f21a6fb7d7197bd156c86d30c84d45">mtdf</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board, int first_guess=0)</td></tr>
-<tr class="memitem:ae2ff2897d70040811c2044839353e02a" id="r_ae2ff2897d70040811c2044839353e02a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2ff2897d70040811c2044839353e02a">load_book</a> (self, str book_path)</td></tr>
+<tr class="memitem:a83419e0054f2ad2c6d83b6edfaa0c7b6" id="r_a83419e0054f2ad2c6d83b6edfaa0c7b6"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83419e0054f2ad2c6d83b6edfaa0c7b6">load_book</a> (self, OpeningBookName|os.PathLike[str]|str book)</td></tr>
 <tr class="memitem:a426d0dc29875659fb641316420dfa495" id="r_a426d0dc29875659fb641316420dfa495"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a426d0dc29875659fb641316420dfa495">reset_book</a> (self)</td></tr>
+<tr class="memitem:ae2e3f241a045aa7ead284c101845b032" id="r_ae2e3f241a045aa7ead284c101845b032"><td class="memItemLeft" align="right" valign="top">tuple[OpeningBookName,...]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2e3f241a045aa7ead284c101845b032">available_opening_books</a> (cls)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -154,7 +156,7 @@ Example:
     from bitbully import BitBully, Board
 
     agent = BitBully()
-    board, _ = Board.random_board(14, forbid_direct_win=True)
+    board, _ = Board.random_board(n_ply=14, forbid_direct_win=True)
     print(board)
 
     # All three search methods should agree on the score
@@ -163,8 +165,25 @@ Example:
     score_null_window = agent.null_window(board)
     assert score_negamax == score_null_window == score_mtdf
     ```
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+
+    board = Board()  # empty board
+    agent = BitBully()
+    scores = agent.score_all_moves(board)  # get scores for all moves
+    assert len(scores) == 7  # there are 7 columns
+    assert scores == {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}  # center column is best
+    print(scores)
+    ```
+
+    Expected Output:
+    ```
+    {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}
+    ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00020">20</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00042">42</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2fb03edec61e80ce6e7dd3a9ea8c2952" name="a2fb03edec61e80ce6e7dd3a9ea8c2952"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2fb03edec61e80ce6e7dd3a9ea8c2952">&#9670;&#160;</a></span>__init__()</h2>
@@ -198,7 +217,7 @@ Args:
 
 TODO: Example for initialization with different books.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00054">54</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00094">94</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -218,7 +237,143 @@ TODO: Example for initialization with different books.
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Return a concise string representation of the BitBully agent.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00083">83</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00121">121</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+
+</div>
+</div>
+<a id="ae2e3f241a045aa7ead284c101845b032" name="ae2e3f241a045aa7ead284c101845b032"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e3f241a045aa7ead284c101845b032">&#9670;&#160;</a></span>available_opening_books()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> tuple[OpeningBookName, ...] bitbully.solver.BitBully.available_opening_books </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>cls</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return the available opening book identifiers.
+
+Returns:
+    tuple[OpeningBookName, ...]:
+        All supported opening book names, including ``"default"``.
+
+Example:
+    ```python
+    from bitbully import BitBully
+
+    books = BitBully.available_opening_books()
+    print(books)  # ('default', '8-ply', '12-ply', '12-ply-dist')
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00504">504</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+
+</div>
+</div>
+<a id="aa3048d69b1b0f60384ebfa96fcffc917" name="aa3048d69b1b0f60384ebfa96fcffc917"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3048d69b1b0f60384ebfa96fcffc917">&#9670;&#160;</a></span>best_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int bitbully.solver.BitBully.best_move </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a></td>          <td class="paramname"><span class="paramname"><em>board</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TieBreakStrategy </td>          <td class="paramname"><span class="paramname"><em>tie_break</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;center&quot;</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">random.Random | None </td>          <td class="paramname"><span class="paramname"><em>rng</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return the best legal move (column index) for the current player.
+
+All legal moves are scored using :meth:`score_all_moves`. The move(s)
+with the highest score are considered best, and ties are resolved
+according to ``tie_break``.
+
+Tie-breaking strategies:
+    - ``"center"`` (default):
+        Prefer the move closest to the center column (3). If still tied,
+        choose the smaller column index.
+    - ``"leftmost"``:
+        Choose the smallest column index among tied moves.
+    - ``"random"``:
+        Choose uniformly at random among tied moves. An optional
+        ``rng`` can be provided for reproducibility.
+
+Args:
+    board (Board): The current board state.
+    tie_break (TieBreakStrategy):
+        Strategy used to resolve ties between equally scoring moves.
+    rng (random.Random | None):
+        Random number generator used when ``tie_break="random"``.
+        If ``None``, the global RNG is used.
+
+Returns:
+    int: The selected column index (0-6).
+
+Raises:
+    ValueError: If there are no legal moves (board is full) or
+        if an unknown tie-breaking strategy is specified.
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+    import random
+
+    agent = BitBully()
+    board = Board()
+    best_col = agent.best_move(board)
+    assert best_col == 3  # Center column is best on an empty board
+    ```
+
+Example:
+    ```python
+    from bitbully import BitBully, Board
+    import random
+
+    agent = BitBully()
+    board = Board("341")  # some arbitrary position
+    print(board)
+    assert agent.best_move(board, tie_break="center") == 3  # Several moves are tied; center is preferred
+    assert agent.best_move(board, tie_break="leftmost") == 1  # Leftmost among tied moves
+    assert agent.best_move(board, tie_break="random") in {1, 3, 4}  # Random among tied moves
+
+    rng = random.Random(42)  # use own random number generator
+    assert agent.best_move(board, tie_break="random", rng=rng) in {1, 3, 4}
+    ```
+    Expected Output:
+    ```
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  _  _  _  _  _  _
+    _  X  _  X  O  _  _
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00250">250</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -255,7 +410,7 @@ Example:
     assert agent.get_node_counter() == 0
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00111">111</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00149">149</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -290,25 +445,25 @@ Example:
     assert agent.is_book_loaded() is False
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00087">87</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00125">125</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
-<a id="ae2ff2897d70040811c2044839353e02a" name="ae2ff2897d70040811c2044839353e02a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2ff2897d70040811c2044839353e02a">&#9670;&#160;</a></span>load_book()</h2>
+<a id="a83419e0054f2ad2c6d83b6edfaa0c7b6" name="a83419e0054f2ad2c6d83b6edfaa0c7b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83419e0054f2ad2c6d83b6edfaa0c7b6">&#9670;&#160;</a></span>load_book()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"> bool bitbully.solver.BitBully.load_book </td>
+          <td class="memname"> None bitbully.solver.BitBully.load_book </td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">str</td>          <td class="paramname"><span class="paramname"><em>book_path</em></span>&#160;)</td>
+          <td class="paramtype">OpeningBookName | os.PathLike[str] | str</td>          <td class="paramname"><span class="paramname"><em>book</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -318,14 +473,26 @@ This is a thin wrapper around
 [`bitbully_core.BitBullyCore.loadBook`][src.bitbully.bitbully_core.BitBullyCore.loadBook].
 
 Args:
-    book_path (str):
-        Path to the opening book file. If empty or invalid, no book
-        is loaded.
+    book (OpeningBookName | os.PathLike[str] | str):
+        Name/Identifier (see [`available_opening_books`][src.bitbully.solver.BitBully.available_opening_books])
+        or path of the opening book to load.
 
-Returns:
-    bool:
-        ``True`` if the book was loaded successfully,
-        ``False`` otherwise.
+Raises:
+    ValueError:
+        If the book identifier/path is invalid or if loading the book fails.
+
+Example:
+    ```python
+    from bitbully import BitBully
+    from pathlib import Path
+
+    which_book = BitBully.available_opening_books()[0]  # e.g., "default"
+
+    agent = BitBully(opening_book=None)  # start without book
+    assert agent.is_book_loaded() is False
+    agent.load_book(which_book)  # load "default" book
+    assert agent.is_book_loaded() is True
+    ```
 
 Example:
     ```python
@@ -333,15 +500,16 @@ Example:
     from pathlib import Path
     import bitbully_databases as bbd
 
-    db_path = bbd.BitBullyDatabases.get_database_path("default")
+    which_book = BitBully.available_opening_books()[2]  # e.g., "12-ply"
+    db_path = bbd.BitBullyDatabases.get_database_path(which_book)
 
     agent = BitBully(opening_book=None)  # start without book
     assert agent.is_book_loaded() is False
-    success = agent.load_book(db_path)
+    agent.load_book(db_path)
     assert agent.is_book_loaded() is True
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00264">264</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00422">422</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -387,7 +555,7 @@ Example:
     assert score == 1  # Expected score for an empty board
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00242">242</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00400">400</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -445,7 +613,7 @@ Example:
     assert score == 1  # Expected score for an empty board
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00190">190</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00348">348</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -485,7 +653,7 @@ Example:
     assert score == 1  # Expected score for an empty board
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00221">221</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00379">379</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -518,7 +686,7 @@ Example:
     assert agent.is_book_loaded() is False
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00296">296</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00484">484</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -538,10 +706,9 @@ Example:
 </div><div class="memdoc">
 <pre class="fragment">Reset the internal node counter.
 
-Example:
-See [`get_node_counter`][src.bitbully.solver.BitBully.get_node_counter] for usage.
+See Also: [`get_node_counter`][src.bitbully.solver.BitBully.get_node_counter] for usage.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00133">133</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00171">171</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -560,18 +727,18 @@ See [`get_node_counter`][src.bitbully.solver.BitBully.get_node_counter] for usag
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Clear the internal transposition table.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00107">107</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00145">145</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
-<a id="a25bb1b13100ad5a2c7c230842bb03b92" name="a25bb1b13100ad5a2c7c230842bb03b92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25bb1b13100ad5a2c7c230842bb03b92">&#9670;&#160;</a></span>score_all_moves()</h2>
+<a id="a4edb66c8feb77079f74bb89664a28248" name="a4edb66c8feb77079f74bb89664a28248"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4edb66c8feb77079f74bb89664a28248">&#9670;&#160;</a></span>score_all_moves()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"> list[int] bitbully.solver.BitBully.score_all_moves </td>
+          <td class="memname"> dict[int, int] bitbully.solver.BitBully.score_all_moves </td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
@@ -588,9 +755,10 @@ Args:
     board (Board): The current board state.
 
 Returns:
-    list[int]:
-        A list of 7 integers, one per column (0-6). Higher values
-        generally indicate better moves for the player to move.
+    dict[int, int]:
+        A dictionary of up to 7 column-value pairs, one per reachable column (0-6).
+        Higher values generally indicate better moves for the player to move. If a
+        column is full, it will not be listed in the returned dictionary.
 
 Example:
     ```python
@@ -599,10 +767,21 @@ Example:
     agent = BitBully()
     board = Board()
     scores = agent.score_all_moves(board)
-    assert scores == [-2, -1, 0, 1, 0, -1, -2]  # Center column is best on an empty board
+    assert scores == {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}  # Center column is best on an empty board
+```
+
+Example:
+    When a column is full, it is omitted from the results:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board(6 * "3")  # fill center column
+    scores = agent.score_all_moves(board)
+    assert scores == {2: 1, 4: 1, 1: 0, 5: 0, 0: -1, 6: -1}  # Column 3 is full and thus omitted
 ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00167">167</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00211">211</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -636,9 +815,6 @@ Example:
 </div><div class="memdoc">
 <pre class="fragment">Evaluate a single move for the given board state.
 
-This is a wrapper around
-[`bitbully_core.BitBullyCore.scoreMove`][src.bitbully.bitbully_core.BitBullyCore.scoreMove].
-
 Args:
     board (Board): The current board state.
     column (int): Column index (0-6) of the move to evaluate.
@@ -656,8 +832,15 @@ Example:
     score = agent.score_move(board, column=3)
     assert score == 1  # Score for the center column on an empty board
     ```
+
+Raises:
+    ValueError: If the column is outside the valid range or if the column is full.
+
+Notes:
+    - This is a wrapper around
+      [`bitbully_core.BitBullyCore.scoreMove`][src.bitbully.bitbully_core.BitBullyCore.scoreMove].
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00141">141</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00178">178</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -682,7 +865,7 @@ Example:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00073">73</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00113">113</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -698,7 +881,7 @@ Example:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00070">70</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00110">110</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
