@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import (
     Literal,
     TypeAlias,
-    TypeGuard,  # typing.TypeGuard on Python 3.11+
+    TypeGuard,
     get_args,
 )
 
@@ -419,14 +419,14 @@ class BitBully:
         """
         return int(self._core.mtdf(board.native, first_guess=first_guess))
 
-    def load_book(self, book: OpeningBookName | os.PathLike) -> None:
+    def load_book(self, book: OpeningBookName | os.PathLike[str] | str) -> None:
         """Load an opening book from a file path.
 
         This is a thin wrapper around
         [`bitbully_core.BitBullyCore.loadBook`][src.bitbully.bitbully_core.BitBullyCore.loadBook].
 
         Args:
-            book (OpeningBookName | os.PathLike):
+            book (OpeningBookName | os.PathLike[str] | str):
                 Name/Identifier (see [`available_opening_books`][src.bitbully.solver.BitBully.available_opening_books])
                 or path of the opening book to load.
 
@@ -469,13 +469,12 @@ class BitBully:
             db_path = bbd.BitBullyDatabases.get_database_path(book)
             self.opening_book_type = book
         elif isinstance(book, (os.PathLike, str)):
+            if isinstance(book, str) and not book.strip():
+                raise ValueError(f"Invalid book path: {book!r}")
             db_path = Path(book)
             self.opening_book_type = None
         else:
             raise ValueError(f"Invalid book identifier or path: {book!r}")
-
-        if str(db_path).strip() == "":
-            raise ValueError(f"Invalid book path: {book!r}")
 
         if not self._core.loadBook(db_path):
             self.opening_book_type = None

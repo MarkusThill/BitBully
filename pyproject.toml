@@ -114,6 +114,7 @@ exclude = '\.git'
 allow-init-docstring = true
 
 [tool.ruff]
+target-version = "py310"
 line-length = 120
 include = ["pyproject.toml", "src/**/*.py", "scripts/**/*.py", "tests/**/*.py"]
 exclude = ["thirdParty/", "*.pyi"]
