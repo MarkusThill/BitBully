@@ -1,3 +1,10 @@
+## v0.0.71 (2025-12-26)
+
+### Fix
+
+- add support for python 3.14
+- bump version of cibuildwheel
+
 ## v0.0.70 (2025-12-26)
 
 ### Fix
