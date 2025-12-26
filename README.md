@@ -713,6 +713,13 @@ If you have any questions or feedback, feel free to reach out:
 
 ---
 
+## Further Ressources
+- [BitBully project summary on blog](https://markusthill.github.io/projects/0_bitbully/)
+- BitBully Databases project [on GitHub](https://github.com/MarkusThill/bitbully-databases) and [project summary on my blog](https://markusthill.github.io/projects/1_bitbully_databases/)
+- A blog post series on tree search algorithms for Connect-4:
+  - [Initial steps](https://markusthill.github.io/blog/2025/connect-4-introduction-and-tree-search-algorithms/)
+  - [Tree search algorithms](https://markusthill.github.io/blog/2025/connect-4-tree-search-algorithms/)
+
 ## Acknowledgments
 
 Many of the concepts and techniques used in this project are inspired by the outstanding Connect-4 solvers developed by

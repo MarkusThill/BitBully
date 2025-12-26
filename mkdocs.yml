@@ -48,7 +48,7 @@ plugins:
 
         options:
           # added by Markus --------------------------------------------------------
-          allow_inspection: true
+          allow_inspection: false # when turned on, mkdocs inspects the so file
           find_stubs_package: true
           show_docstring_type_aliases: true
           show_if_no_docstring: true
