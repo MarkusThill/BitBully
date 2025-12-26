@@ -80,8 +80,8 @@ include-package-data = true  # Include additional non-Python files (e.g., librar
 
 # https://cibuildwheel.pypa.io/en/stable/options/#build-skip
 [tool.cibuildwheel]
-build = "cp310-* cp311-* cp312-* cp313-* pp310-* pp311-*"
-enable = ["pypy"]  # <-- required in cibuildwheel 3.x
+build = "cp310-* cp311-* cp312-* cp313-* cp314-* pp310-* pp311-*"
+enable = ["pypy", "pypy-eol"]  # <-- required in cibuildwheel 3.x
 # build = "cp311-*" # TODO: Change back to above setting
 skip = "*win32*" # 14.09.2025:  removed "cp38-macosx_arm64*"
 environment = "MACOSX_DEPLOYMENT_TARGET=10.15"
