@@ -10,7 +10,7 @@ theme:
 nav:
   - Home: index.md
   - Getting Started: getting_started.md
-  - User Guide: user_guide.md
+#   - User Guide: user_guide.md
   - BitBully API Reference:
       - solver: solver.md
       - board: board.md
