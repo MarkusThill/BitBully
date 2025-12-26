@@ -14,15 +14,57 @@
 ![PyPI - Version](https://img.shields.io/pypi/v/bitbully)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/bitbully)
 ![PyPI - License](https://img.shields.io/pypi/l/bitbully)
-![Coveralls](https://coveralls.io/repos/github/OWNER/REPO/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/MarkusThill/BitBully/badge.svg?branch=master)](https://coveralls.io/github/MarkusThill/BitBully?branch=master)
 ![Wheels](https://github.com/MarkusThill/BitBully/actions/workflows/wheels.yml/badge.svg)
 ![Doxygen](https://github.com/MarkusThill/BitBully/actions/workflows/doxygen.yml/badge.svg)
-![Doxygen](https://github.com/MarkusThill/BitBully/actions/workflows/cmake-multi-platform.yml/badge.svg)
+![CMake Build](https://github.com/MarkusThill/BitBully/actions/workflows/cmake-multi-platform.yml/badge.svg)
 ![Buy Me a Coffee](https://img.shields.io/badge/support-Buy_Me_A_Coffee-orange)
 
 **BitBully** is a high-performance Connect-4 solver built using C++ and Python bindings, leveraging advanced algorithms
 and optimized bitwise operations. It provides tools for solving and analyzing Connect-4 games efficiently, designed for
 both developers and researchers.
+
+> BitBully evaluates millions of nodes per second in pure C++ and supports
+> constant-time opening book lookups for early-game positions.
+
+
+<p align="center">
+  <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-1-1400.webp"
+       alt="Connect4 opening"
+       width="28%"
+       style="margin: 0 12px;">
+  <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-2-1400.webp"
+       alt="Connect4 mid-game"
+       width="28%"
+       style="margin: 0 12px;">
+  <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-3-1400.webp"
+       alt="Connect4 victory"
+       width="28%"
+       style="margin: 0 12px;">
+</p>
+
+<p align="center">
+  <em>
+    From opening to victory: three key stages of a Connect&nbsp;4 match — early game,
+    mid-game tension, and the final winning position.
+  </em>
+</p>
+
+
+## Quickstart
+
+```python
+import bitbully as bb
+
+agent = bb.BitBully()
+board = bb.Board()
+
+while not board.is_game_over():
+    board.play(agent.best_move(board))
+
+print(board)
+print("Winner:", board.winner())
+```
 
 ## Table of Contents
 
@@ -49,6 +91,18 @@ both developers and researchers.
 - **Open-Source**: Fully accessible codebase for learning and contribution.
 
 ---
+
+### Who is this for?
+
+- **Just want to play or analyze Connect-4 in Python?**
+  → Read *Quickstart* + *Usage (High-level Python API)*
+
+- **Interested in performance, algorithms, or C++ integration?**
+  → See *Low-level C++ bindings (advanced)*
+
+- **Working on research, solvers, or databases?**
+  → See *Opening Books* and *BoardCore*
+
 
 ## Installation
 
@@ -82,15 +136,166 @@ The docs for the opening databases can be found here: [https://markusthill.githu
 
 ## Usage
 
+> ⚠️ **Note**
+> `bitbully_core` exposes low-level C++ bindings intended for advanced users.
+> Most users should use the high-level `bitbully` Python API with the classes `Board` and `BitBully`.
+>
+> BitBully currently supports **standard Connect-4 (7 columns × 6 rows)**.
+> Generalized board sizes are not supported.
+
+
 ### Start with a simple Widget on Colab
 
 <a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/game_widget.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
-### BitBully Lib (recommended)
+### High-level Python API (recommended)
 
-tbd
+#### Empty board + play moves incrementally
 
-### BitBully Core (advanced)
+```python
+import bitbully as bb
+
+board = bb.Board()
+assert board.play(3)          # single move (int)
+assert board.play([2, 4, 3])  # multiple moves (list)
+assert board.play("001122")   # multiple moves (string)
+
+print(board)
+```
+
+#### Initialize directly from a move sequence
+
+```python
+import bitbully as bb
+
+board_a = bb.Board([3, 3, 3, 1, 1])
+board_b = bb.Board("33311")
+
+assert board_a == board_b
+print(board_a)
+```
+
+#### Create positions (moves, strings, arrays) and round-trip them
+
+```python
+import bitbully as bb
+
+# From a move list
+b1 = bb.Board([3, 3, 3, 1, 1])
+
+# From a compact move string
+b2 = bb.Board("33311")
+
+assert b1 == b2
+print(b1)
+
+# From a 2D array (row-major 6x7 or column-major 7x6 both work)
+arr = b1.to_array()  # default: column-major 7x6
+b3 = bb.Board(arr)
+
+assert b1 == b3
+```
+
+#### Legal moves and remaining moves
+
+```python
+import bitbully as bb
+
+board = bb.Board("33333111")
+
+print(board.legal_moves())                 # all legal columns
+print(board.legal_moves(order_moves=True)) # ordered (center-first)
+print("Moves left:", board.moves_left())
+print("Tokens:", board.count_tokens())
+```
+
+#### Some board utilities
+
+```python
+import bitbully as bb
+
+board = bb.Board("332311")
+print(board)
+
+print("Can win next (any):", board.can_win_next())
+print("Can win next in col 4:", board.can_win_next(4))
+
+assert board.play(4)  # play winning move
+print(board)
+
+print("Has win:", board.has_win())
+print("Game over:", board.is_game_over())
+print("Winner:", board.winner())  # 1
+```
+
+#### Solver Quickstart: evaluate a position and pick a move
+```python
+import bitbully as bb
+
+agent = bb.BitBully()          # loads default opening book ("12-ply-dist")
+board = bb.Board()             # empty board
+
+print(board)
+
+scores = agent.score_all_moves(board)
+print("Move scores:", scores)
+
+best_col = agent.best_move(board)
+print("Best move:", best_col)
+```
+
+#### Play a small game loop (agent vs. itself)
+```python
+import bitbully as bb
+
+agent = bb.BitBully()
+board = bb.Board()
+
+while not board.is_game_over():
+    col = agent.best_move(board, tie_break="random")
+    assert board.play(col)
+
+print(board)
+print("Winner:", board.winner())  # 1, 2, or None for draw
+```
+
+#### Tie-breaking strategies for `best_move`
+
+```python
+import bitbully as bb
+import random
+
+agent = bb.BitBully()
+board = bb.Board("341")  # arbitrary position
+
+print(board)
+
+print("Center tie-break:", agent.best_move(board, tie_break="center"))
+print("Leftmost tie-break:", agent.best_move(board, tie_break="leftmost"))
+
+rng = random.Random(42) # optional own random generator
+print("Random tie-break (seeded):", agent.best_move(board, tie_break="random", rng=rng))
+```
+
+#### Different Search Algorithms
+
+```python
+import bitbully as bb
+
+agent = bb.BitBully()
+board, _ = bb.Board.random_board(n_ply=14, forbid_direct_win=True)
+
+s1 = agent.mtdf(board)
+s2 = agent.negamax(board)
+s3 = agent.null_window(board)
+
+assert s1 == s2 == s3
+print("Score:", s1)
+```
+
+---
+
+### Low-level C++ bindings (advanced)
 
 Use the `BitBullyCore` and `BoardCore` classes directly in Python:
 
