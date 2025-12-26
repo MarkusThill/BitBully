@@ -308,10 +308,65 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#simple-example" class="md-nav__link">
+  <a href="#minimal-example-create-a-board-and-let-bitbully-pick-a-move" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Simple Example
+        Minimal Example: create a board and let BitBully pick a move
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#play-a-few-moves-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Play a few moves manually
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simple-example-with-a-concrete-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simple example with a concrete position
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#let-the-ai-play-a-full-game-against-itself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let the AI play a full game against itself
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-board-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the board state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes-for-beginners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes for beginners
       
     </span>
   </a>
@@ -628,10 +683,65 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#simple-example" class="md-nav__link">
+  <a href="#minimal-example-create-a-board-and-let-bitbully-pick-a-move" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Simple Example
+        Minimal Example: create a board and let BitBully pick a move
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#play-a-few-moves-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Play a few moves manually
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simple-example-with-a-concrete-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simple example with a concrete position
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#let-the-ai-play-a-full-game-against-itself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let the AI play a full game against itself
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-board-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the board state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes-for-beginners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes for beginners
       
     </span>
   </a>
@@ -680,37 +790,90 @@
 </div>
 </div>
 <h2 id="usage">Usage</h2>
-<h3 id="simple-example">Simple Example</h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">bitbully</span><span class="w"> </span><span class="kn">import</span> <span class="n">Board</span><span class="p">,</span> <span class="n">BitBully</span>
+<h3 id="minimal-example-create-a-board-and-let-bitbully-pick-a-move">Minimal Example: create a board and let BitBully pick a move</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bitbully</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bb</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Create an empty Connect Four board</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">board</span> <span class="o">=</span> <span class="n">Board</span><span class="p">()</span>  <span class="c1"># Board is empty at the start</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Create an empty Connect-4 board</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">board</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">Board</span><span class="p">()</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># Players YELLOW and RED alternately drop 5 tokens into the center column (column 3)</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">board</span><span class="o">.</span><span class="n">play_move</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Place token in center column (index 3)</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># RED places one token into the second column from the left (column 1)</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">board</span><span class="o">.</span><span class="n">play_move</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># Expected output:</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1">#  _  _  _  _  _  _  _</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c1">#  _  _  _  X  _  _  _</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1">#  _  _  _  O  _  _  _</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1">#  _  _  _  X  _  _  _</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1">#  _  _  _  O  _  _  _</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1">#  _  O  _  X  _  _  _</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="c1"># Use the BitBully AI to evaluate the current board position</span>
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="n">bb_agent</span> <span class="o">=</span> <span class="n">BitBully</span><span class="p">()</span>
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="n">scores</span> <span class="o">=</span> <span class="n">bb_agent</span><span class="o">.</span><span class="n">score_next_moves</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Move scores:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
-</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="c1"># Expected output: [-2, 1, -2, -3, 0, 0, -3]</span>
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
-</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="c1"># Now YELLOW must also play in column 1 to win the game</span>
-</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="c1"># (column indices start at 0, so column 1 is the second from the left)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># Create the BitBully AI (loads the default opening book)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">BitBully</span><span class="p">()</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># Ask the AI to evaluate all legal moves</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">scores</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">score_all_moves</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Move scores:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># Pick the best move and play it</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">best_col</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">best_move</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="n">board</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">best_col</span><span class="p">)</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After best move:&quot;</span><span class="p">)</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
 </span></code></pre></div>
+<h3 id="play-a-few-moves-manually">Play a few moves manually</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bitbully</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bb</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">board</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">Board</span><span class="p">()</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Moves can be played as:</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">board</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>          <span class="c1"># single column</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">board</span><span class="o">.</span><span class="n">play</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># list of columns</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">board</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="s2">&quot;001122&quot;</span><span class="p">)</span>   <span class="c1"># compact move string</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="simple-example-with-a-concrete-position">Simple example with a concrete position</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bitbully</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bb</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Create a position from a move sequence</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Players alternate automatically</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">board</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">Board</span><span class="p">(</span><span class="s2">&quot;33331&quot;</span><span class="p">)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">BitBully</span><span class="p">()</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="n">scores</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">score_all_moves</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Move scores:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">best_col</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">best_move</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best move:&quot;</span><span class="p">,</span> <span class="n">best_col</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="let-the-ai-play-a-full-game-against-itself">Let the AI play a full game against itself</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bitbully</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bb</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">board</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">Board</span><span class="p">()</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">BitBully</span><span class="p">()</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">while</span> <span class="ow">not</span> <span class="n">board</span><span class="o">.</span><span class="n">is_game_over</span><span class="p">():</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">col</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">best_move</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">tie_break</span><span class="o">=</span><span class="s2">&quot;random&quot;</span><span class="p">)</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">board</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Winner:&quot;</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">winner</span><span class="p">())</span>  <span class="c1"># 1, 2, or None (draw)</span>
+</span></code></pre></div>
+<h3 id="understanding-the-board-state">Understanding the board state</h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bitbully</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bb</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">board</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">Board</span><span class="p">(</span><span class="s2">&quot;332311&quot;</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current player:&quot;</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">current_player</span><span class="p">())</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Legal moves:&quot;</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">())</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Can win next:&quot;</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">can_win_next</span><span class="p">())</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Has win:&quot;</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">has_win</span><span class="p">())</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Game over:&quot;</span><span class="p">,</span> <span class="n">board</span><span class="o">.</span><span class="n">is_game_over</span><span class="p">())</span>
+</span></code></pre></div>
+<h3 id="notes-for-beginners">Notes for beginners</h3>
+<ul>
+<li><strong>Column indices</strong> range from <code>0</code> to <code>6</code> (left to right).</li>
+<li><code>Board.play(...)</code> automatically alternates between players.</li>
+<li><code>BitBully.best_move(...)</code> returns the selected <strong>column index</strong>.</li>
+<li>The default <code>BitBully</code> agent plays <strong>optimal (perfect) Connect-4</strong>.</li>
+</ul>
 
 
 
