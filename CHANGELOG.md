@@ -1,3 +1,10 @@
+## v0.0.72 (2025-12-27)
+
+### Fix
+
+- added tests for docstrings in stub
+- add missing docs file
+
 ## v0.0.71 (2025-12-26)
 
 ### Fix

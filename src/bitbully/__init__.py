@@ -7,7 +7,7 @@ from .board import Board
 from .solver import BitBully
 
 __all__: list[str] = ["BitBully", "Board"]
-__version__: str = "0.0.71"
+__version__: str = "0.0.72"
 
 # bitbully/__init__.py
 __all__ = ["BitBully", "Board"]
