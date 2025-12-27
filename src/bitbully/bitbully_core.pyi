@@ -19,15 +19,20 @@ Example:
     import bitbully.bitbully_core as bbc
 
     board = bbc.BoardCore()
-    board.play("333331111555")  # columns 0..6
-    print(board.toString())
+    assert board.play("334411")
+    assert isinstance(str(board), str) and str(board) != ""
 
     solver = bbc.BitBullyCore()
     scores = solver.scoreMoves(board)
+
+    # One score per column.
+    assert len(scores) == 7
+
+    # Pick best column by score (ties resolved by first max).
     best_col = max(range(7), key=scores.__getitem__)
-    print("Scores:", scores)
-    print("Best column:", best_col)
+    assert 0 <= best_col < 7
     ```
+
 """
 
 import enum
@@ -121,22 +126,29 @@ class BitBullyCore:
         best_col = max(range(7), key=scores.__getitem__)
         print("Best column:", best_col)
         ```
-    """
+        Expected output:
+        ```text
+            Best column: 2
+        ```
+        """
 
     @typing.overload
     def __init__(self) -> None:
         """Create a solver without an opening book.
 
         Example:
-            Construct a solver and evaluate the empty board:
+            Construct a solver and evaluate a non-empty board:
             ```python
             import bitbully.bitbully_core as bbc
 
             solver = bbc.BitBullyCore()
-            board = bbc.BoardCore("333331111555")
+            board = bbc.BoardCore()
+            assert board.play("334411")
+            assert solver.getNodeCounter() == 0
 
             score = solver.mtdf(board, first_guess=0)
-            print("Score:", score)
+            assert isinstance(score, int)
+            assert solver.getNodeCounter() > 0
             ```
         """
         ...
@@ -152,8 +164,10 @@ class BitBullyCore:
             Load a book at construction time:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
-            solver = bbc.BitBullyCore("path/to/book.bin")
+            solver = bbc.BitBullyCore(db_path)
             assert solver.isBookLoaded() is True
             ```
         """
@@ -164,7 +178,7 @@ class BitBullyCore:
 
         Returns:
             int: Number of search nodes visited since the last call to
-            [BitBullyCore.resetNodeCounter][src.bitbully.bitbully_core.BitBullyCore.resetNodeCounter].
+                [BitBullyCore.resetNodeCounter][src.bitbully.bitbully_core.BitBullyCore.resetNodeCounter].
 
         Example:
             Count how many nodes a search visited:
@@ -172,7 +186,8 @@ class BitBullyCore:
             import bitbully.bitbully_core as bbc
 
             solver = bbc.BitBullyCore()
-            board = bbc.BoardCore("333331111555")
+            board = bbc.BoardCore()
+            assert board.play("333331111555")
             assert solver.getNodeCounter() == 0
 
             _ = solver.mtdf(board, first_guess=0)
@@ -210,16 +225,24 @@ class BitBullyCore:
             int: Evaluation score for the side to move.
 
         Example:
-            Evaluate a position using MTD(f):
+            Evaluate a position using MTD(f) (six moves in the center column):
             ```python
             import bitbully.bitbully_core as bbc
 
             board = bbc.BoardCore()
-            assert board.play("333331111555")
+            for _ in range(6):
+                assert board.play(3)
 
             solver = bbc.BitBullyCore()
             score = solver.mtdf(board, first_guess=0)
             print("MTD(f) score:", score)
+
+            assert isinstance(score, int)
+            assert solver.getNodeCounter() > 0
+            ```
+            Expected output:
+            ```text
+                MTD(f) score: 1
             ```
         """
 
@@ -247,6 +270,10 @@ class BitBullyCore:
             score = solver.negamax(board, alpha=-1000, beta=1000, depth=0)
             print("Negamax score:", score)
             ```
+            Expected output:
+            ```text
+                Negamax score: 18
+            ```
         """
 
     def nullWindow(self, board: "BoardCore") -> int:
@@ -269,6 +296,10 @@ class BitBullyCore:
             solver = bbc.BitBullyCore()
             score = solver.nullWindow(board)
             print("Null-window score:", score)
+            ```
+            Expected output:
+            ```text
+                Null-window score: 18
             ```
         """
 
@@ -327,6 +358,26 @@ class BitBullyCore:
             score = solver.scoreMove(board, column=3, first_guess=0)
             print("Score for column 3:", score)
             ```
+            Expected output:
+            ```text
+                Score for column 3: 3
+            ```
+
+        Example:
+            Score one candidate move and verify it matches the per-column score vector:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            solver = bbc.BitBullyCore()
+            board = bbc.BoardCore()
+            assert board.setBoard([3, 4, 1, 1, 0, 2, 2, 2])
+
+            scores = solver.scoreMoves(board)
+
+            # Column 4 is known to be best in this position.
+            one = solver.scoreMove(board, column=4, first_guess=0)
+            assert one == scores[4] == 3
+            ```
         """
 
     def scoreMoves(self, board: "BoardCore") -> list[int]:
@@ -337,7 +388,7 @@ class BitBullyCore:
 
         Returns:
             list[int]: A list of length 7 with per-column scores. Illegal moves
-            (full columns) are included and use an engine-defined sentinel value.
+                (full columns) are included and use an engine-defined sentinel value.
 
         Example:
             Score all moves and pick the best:
@@ -352,8 +403,40 @@ class BitBullyCore:
             assert len(scores) == 7
 
             best_col = max(range(7), key=scores.__getitem__)
-            print("Scores:", scores)
-            print("Best column:", best_col)
+            assert 0 <= best_col < 7
+            assert board.isLegalMove(best_col) is True
+            ```
+
+        Example:
+            Score all columns and compare against a known expected score vector:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            solver = bbc.BitBullyCore()
+            board = bbc.BoardCore()
+
+            move_sequence = [3, 4, 1, 1, 0, 2, 2, 2]
+            assert board.setBoard(move_sequence)
+
+            scores = solver.scoreMoves(board)
+            assert scores == [-3, -3, 1, -4, 3, -2, -2]
+            ```
+
+        Example:
+            Illegal moves are included and use the engine sentinel value (-1000):
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            solver = bbc.BitBullyCore()
+            board = bbc.BoardCore()
+            assert board.setBoard([3, 3, 3, 3, 3, 3, 4, 2])
+
+            scores = solver.scoreMoves(board)
+            assert scores == [-2, -2, 2, -1000, -2, 1, -1]
+
+            # Column 3 is full here (sentinel score).
+            assert board.isLegalMove(3) is False
+            assert scores[3] == -1000
             ```
         """
 
@@ -419,6 +502,15 @@ class BoardCore:
         assert board.play("33333111")
         print(board.toString())
         ```
+        Expected output:
+        ```text
+        _  _  _  _  _  _  _
+        _  _  _  X  _  _  _
+        _  _  _  O  _  _  _
+        _  O  _  X  _  _  _
+        _  X  _  O  _  _  _
+        _  O  _  X  _  _  _
+        ```
     """
 
     __hash__: typing.ClassVar[None] = None
@@ -438,7 +530,7 @@ class BoardCore:
 
         Returns:
             bool: ``True`` if the array has the right shape and encodes a legal
-            position according to engine rules.
+                position according to engine rules.
 
         Example:
             Validate a board grid before setting it:
@@ -447,8 +539,10 @@ class BoardCore:
 
             grid = [[0] * 6 for _ in range(7)]
             grid[3][0] = int(bbc.Player.P_YELLOW)
-
             assert bbc.BoardCore.isValid(grid) is True
+
+            grid[3][0] = 3  # invalid token
+            assert bbc.BoardCore.isValid(grid) is False
             ```
         """
 
@@ -463,7 +557,7 @@ class BoardCore:
 
         Returns:
             tuple[BoardCore, list[int]]: ``(board, moves)`` where ``moves`` is the
-            move sequence used to generate the board.
+                move sequence used to generate the board.
 
         Example:
             Create a random 8-ply position and show the move sequence:
@@ -474,7 +568,7 @@ class BoardCore:
             assert len(moves) == 8
 
             print("Moves:", moves)
-            print(board.toString())
+            print(board)
             ```
         """
 
@@ -585,6 +679,10 @@ class BoardCore:
             assert all(p.countTokens() == 2 for p in positions)
             print("Count:", len(positions))
             ```
+            Expected output:
+            ```text
+                Count: 49
+            ```
         """
 
     @typing.overload
@@ -652,7 +750,7 @@ class BoardCore:
             # Display the board state.
             print(board.toString())
             ```
-            Expected output (both boards print the same position):
+            Expected output:
             ```text
               _  _  _  _  _  _  _
               _  _  _  X  _  _  _
@@ -765,6 +863,10 @@ class BoardCore:
             assert all(0 <= c < 7 for c in cols)
             print(cols)
             ```
+            Expected output:
+            ```text
+            [3, 2, 4, 1, 5, 0, 6]
+            ```
         """
 
     def hasWin(self) -> bool:
@@ -791,7 +893,7 @@ class BoardCore:
             int: Hash value suitable for hash tables / transposition tables.
 
         Example:
-            Compute hashes for the same position:
+            Hashes match for identical positions and differ after divergence:
             ```python
             import bitbully.bitbully_core as bbc
 
@@ -799,8 +901,10 @@ class BoardCore:
             b2 = bbc.BoardCore()
             assert b1.play("334411")
             assert b2.play("334411")
-
             assert b1.hash() == b2.hash()
+
+            assert b1.play(1)
+            assert b1.hash() != b2.hash()
             ```
         """
 
@@ -836,10 +940,12 @@ class BoardCore:
             import bitbully.bitbully_core as bbc
 
             board = bbc.BoardCore()
-            assert board.play("012345")
+            assert board.setBoard([0, 1, 2])  # simple asymmetric position
 
             mirrored = board.mirror()
-            assert board == mirrored.mirror()
+            assert mirrored != board
+            assert mirrored.countTokens() == board.countTokens()
+            assert mirrored.mirror() == board
             ```
         """
 
@@ -1030,7 +1136,7 @@ class BoardCore:
             import bitbully.bitbully_core as bbc
 
             grid = [[0] * 7 for _ in range(6)]
-            grid[0][3] = int(bbc.Player.P_YELLOW)
+            grid[5][3] = int(bbc.Player.P_YELLOW)
 
             board = bbc.BoardCore()
             assert board.setBoard(grid) is True
@@ -1101,6 +1207,10 @@ class BoardCore:
             key = board.toHuffman()
             print("Huffman key:", key)
             ```
+            Expected output:
+            ```text
+                Huffman key: 6133600
+            ```
         """
 
     def toString(self) -> str:
@@ -1115,8 +1225,17 @@ class BoardCore:
             import bitbully.bitbully_core as bbc
 
             board = bbc.BoardCore()
-            assert board.play("3")
+            assert board.play("33333111")
             print(board.toString())
+            ```
+            Expected output:
+            ```text
+            _  _  _  _  _  _  _
+            _  _  _  X  _  _  _
+            _  _  _  O  _  _  _
+            _  O  _  X  _  _  _
+            _  X  _  O  _  _  _
+            _  O  _  X  _  _  _
             ```
         """
 
@@ -1151,12 +1270,14 @@ class OpeningBookCore:
         Load a book and check whether a position is contained:
         ```python
         import bitbully.bitbully_core as bbc
+        import bitbully_databases as bbd
+        db_path = bbd.BitBullyDatabases.get_database_path("default")
 
         board = bbc.BoardCore()
-        assert board.play("334411")
+        assert board.play("333331111555")
 
-        book = bbc.OpeningBookCore("path/to/book.bin")  # replace with your file
-        print(book.isInBook(board))
+        book = bbc.OpeningBookCore(db_path)  # replace with your file
+        assert book.isInBook(board)
         ```
     """
 
@@ -1181,13 +1302,19 @@ class OpeningBookCore:
             Read the raw book table:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
             table = bbc.OpeningBookCore.readBook(
-                "path/to/book.bin",
+                db_path,
                 with_distances=True,
                 is_8ply=False,
             )
             print("Entries:", len(table))
+            ```
+            Expected output:
+            ```text
+                Entries: 4200899
             ```
         """
 
@@ -1204,13 +1331,19 @@ class OpeningBookCore:
             Load an 8-ply book with win/loss-only values:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("8-ply")
 
             book = bbc.OpeningBookCore(
-                "path/to/book_8ply.bin",
+                db_path,
                 is_8ply=True,
                 with_distances=False,
             )
             print("Book size:", book.getBookSize())
+            ```
+            Expected output:
+            ```text
+                Book size: 34515
             ```
         """
         ...
@@ -1226,9 +1359,15 @@ class OpeningBookCore:
             Let the engine infer book type:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
-            book = bbc.OpeningBookCore("path/to/book.bin")
+            book = bbc.OpeningBookCore(db_path)
             print("NPly:", book.getNPly())
+            ```
+            Expected output:
+            ```text
+                NPly: 12
             ```
         """
         ...
@@ -1247,13 +1386,19 @@ class OpeningBookCore:
             Convert a raw entry value using the current board context:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
             board = bbc.BoardCore()
-            book = bbc.OpeningBookCore("path/to/book.bin")  # replace with your file
+            book = bbc.OpeningBookCore(db_path)  # replace with your file
 
             key, raw_val = book.getEntry(0)
             score = book.convertValue(raw_val, board)
             print("Converted score:", score)
+            ```
+            Expected output:
+            ```text
+                Converted score: 9
             ```
         """
 
@@ -1270,13 +1415,19 @@ class OpeningBookCore:
             Query a position's book value:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
             board = bbc.BoardCore()
-            assert board.play("334411")
+            assert board.play("333331111555")
 
-            book = bbc.OpeningBookCore("path/to/book.bin")  # replace with your file
+            book = bbc.OpeningBookCore(db_path)  # replace with your file
             if book.isInBook(board):
                 print("Value:", book.getBoardValue(board))
+            ```
+            Expected output:
+            ```text
+                Value: 1
             ```
         """
 
@@ -1290,12 +1441,18 @@ class OpeningBookCore:
             Access the raw table and inspect the first entry:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
-            book = bbc.OpeningBookCore("path/to/book.bin")  # replace with your file
+            book = bbc.OpeningBookCore(db_path)  # replace with your file
             raw = book.getBook()
 
             key0, val0 = raw[0]
             print("First entry:", key0, val0)
+            ```
+            Expected output:
+            ```text
+                First entry: -2124988676 75
             ```
         """
 
@@ -1309,9 +1466,15 @@ class OpeningBookCore:
             Print the number of stored positions:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
-            book = bbc.OpeningBookCore("path/to/book.bin")  # replace with your file
+            book = bbc.OpeningBookCore(db_path)  # replace with your file
             print(book.getBookSize())
+            ```
+            Expected output:
+            ```text
+                4200899
             ```
         """
 
@@ -1328,11 +1491,17 @@ class OpeningBookCore:
             Read a single entry:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
-            book = bbc.OpeningBookCore("path/to/book.bin")  # replace with your file
+            book = bbc.OpeningBookCore(db_path)  # replace with your file
             key, val = book.getEntry(0)
 
             print("Entry 0:", key, val)
+            ```
+            Expected output:
+            ```text
+                Entry 0: -2124988676 75
             ```
         """
 
@@ -1346,9 +1515,15 @@ class OpeningBookCore:
             Print the book depth:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
-            book = bbc.OpeningBookCore("path/to/book.bin")  # replace with your file
+            book = bbc.OpeningBookCore(db_path)  # replace with your file
             print("NPly:", book.getNPly())
+            ```
+            Expected output:
+            ```text
+                NPly: 12
             ```
         """
 
@@ -1364,9 +1539,11 @@ class OpeningBookCore:
             Reinitialize an existing instance:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+            db_path = bbd.BitBullyDatabases.get_database_path("12-ply-dist")
 
-            book = bbc.OpeningBookCore("path/to/book.bin")  # replace with your file
-            book.init("path/to/other.bin", is_8ply=False, with_distances=True)
+            book = bbc.OpeningBookCore(db_path)  # replace with your file
+            book.init(db_path, is_8ply=False, with_distances=True)
             ```
         """
 
@@ -1377,21 +1554,26 @@ class OpeningBookCore:
             board (BoardCore): Position to check.
 
         Returns:
-            bool: ``True`` if the position (or its mirrored canonical form) is
-            present in the book, otherwise ``False``.
+            bool: ``True`` if the position (or its mirrored canonical form) is present in the book, otherwise ``False``.
 
         Example:
             Check membership before lookup:
             ```python
             import bitbully.bitbully_core as bbc
+            import bitbully_databases as bbd
+
+            db_path = bbd.BitBullyDatabases.get_database_path("default")
 
             board = bbc.BoardCore()
             assert board.play("334411")
 
-            book = bbc.OpeningBookCore("path/to/book.bin")  # replace with your file
-            if book.isInBook(board):
-                print("Value:", book.getBoardValue(board))
-            else:
-                print("Not in book.")
+            book = bbc.OpeningBookCore(db_path)
+
+            in_book = book.isInBook(board)
+            if in_book:
+                _ = book.getBoardValue(board)
+
+            assert isinstance(in_book, bool)
             ```
+
         """
