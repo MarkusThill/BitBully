@@ -3,6 +3,7 @@
 import importlib.resources
 import logging
 import time
+from collections.abc import Sequence
 from pathlib import Path
 
 import matplotlib.backend_bases as mpl_backend_bases
@@ -12,7 +13,8 @@ import numpy.typing as npt
 from IPython.display import Javascript, clear_output, display
 from ipywidgets import AppLayout, Button, HBox, Layout, Output, VBox, widgets
 
-from . import BitBully, Board
+from . import Board
+from .agent_interface import Connect4Agent  # adjust if needed
 
 
 class GuiC4:
@@ -49,7 +51,12 @@ class GuiC4:
 
     """
 
-    def __init__(self, agent: BitBully) -> None:
+    def __init__(
+        self,
+        agents: dict[str, Connect4Agent] | Sequence[Connect4Agent] | None = None,
+        *,
+        autoplay: bool = False,
+    ) -> None:
         """Init the GuiC4 widget."""
         # Create a logger with the class name
         self.m_logger = logging.getLogger(self.__class__.__name__)
@@ -92,6 +99,24 @@ class GuiC4:
         # self.m_player = 1
         self.is_busy = False
 
+        # ---------------- NEW: multi-agent support ----------------
+        self.autoplay = bool(autoplay)
+
+        # Normalize `agents` into a dict[str, Connect4Agent]
+        if agents is None:
+            self.agents: dict[str, Connect4Agent] = {}
+        elif isinstance(agents, dict):
+            self.agents = dict(agents)
+        else:
+            self.agents = {f"agent{i + 1}": a for i, a in enumerate(agents)}
+
+        self._agent_names: list[str] = list(self.agents.keys())
+
+        # Which controller plays which color
+        # values are either "human" or one of self._agent_names
+        self.yellow_player: str = "human"
+        self.red_player: str = self._agent_names[0] if self._agent_names else "human"
+
         # Create board first
         self._create_board()
 
@@ -100,6 +125,9 @@ class GuiC4:
 
         # Create control buttons
         self._create_control_buttons()
+
+        # NEW: player selection dropdowns (must exist before get_widget())
+        self._create_player_selectors()
 
         # NEW: evaluation row widget (must exist before get_widget())
         self._create_eval_row()
@@ -119,7 +147,57 @@ class GuiC4:
         # C4 agent
 
         # TODO: allow choosing opening book
-        self.agent = agent  # BitBully(opening_book="12-ply-dist")
+        # self.agent = agent  # BitBully(opening_book="12-ply-dist")
+
+    def _create_player_selectors(self) -> None:
+        """Create dropdowns to choose who controls yellow/red (human or agent)."""
+        options = ["human", *self._agent_names]
+
+        self.dd_yellow = widgets.Dropdown(
+            options=options,
+            value=self.yellow_player if self.yellow_player in options else "human",
+            description="Yellow:",
+            layout=Layout(width="220px"),
+        )
+        self.dd_red = widgets.Dropdown(
+            options=options,
+            value=self.red_player if self.red_player in options else "human",
+            description="Red:",
+            layout=Layout(width="220px"),
+        )
+
+        def _on_change(_change: object) -> None:
+            self.yellow_player = str(self.dd_yellow.value)
+            self.red_player = str(self.dd_red.value)
+            self._update_insert_buttons()
+            if self.autoplay:
+                self._maybe_autoplay()
+
+        self.dd_yellow.observe(_on_change, names="value")
+        self.dd_red.observe(_on_change, names="value")
+
+        self.player_select_row = HBox(
+            [self.dd_yellow, self.dd_red],
+            layout=Layout(
+                display="flex",
+                flex_flow="row wrap",
+                justify_content="center",
+                align_items="center",
+            ),
+        )
+
+    def _current_player(self) -> int:
+        """Return player to move: 1 (Yellow) starts, then alternates."""
+        return 1 if (len(self.m_movelist) % 2 == 0) else 2
+
+    def _controller_for_player(self, player: int) -> str:
+        return self.yellow_player if player == 1 else self.red_player
+
+    def _agent_for_player(self, player: int) -> Connect4Agent | None:
+        controller = self._controller_for_player(player)
+        if controller == "human":
+            return None
+        return self.agents.get(controller)
 
     def _reset(self) -> None:
         self.m_movelist = []
@@ -221,7 +299,14 @@ class GuiC4:
 
             # If you want: show blanks for illegal moves.
             # Compute scores for all 7 columns.
-            scores = self.agent.score_all_moves(board)  # -> Sequence[int] of length 7
+            # scores = self.agent.score_all_moves(board)  # -> Sequence[int] of length 7
+            player = self._current_player()
+            agent = self._agent_for_player(player) or (self.agents[self._agent_names[0]] if self._agent_names else None)
+            if agent is None:
+                self._clear_eval_row()
+                return
+
+            scores = agent.score_all_moves(board)
 
             # Fill the label row. (Optionally blank-out illegal moves)
             legal = set(board.legal_moves())
@@ -242,12 +327,24 @@ class GuiC4:
             self._update_insert_buttons()
 
     def _computer_move(self) -> None:
+        if self.is_busy or self.m_gameover:
+            return
+
+        player = self._current_player()
+        agent = self._agent_for_player(player)
+        if agent is None:
+            # It's a human-controlled side
+            return
+
         self.is_busy = True
         self._update_insert_buttons()
-        b = self._board_from_history()
-        # TODO: Allow to configure tie_break strategy
-        best_move = self.agent.best_move(b, tie_break="center")
-        self.is_busy = False
+        try:
+            b = self._board_from_history()
+            best_move = agent.best_move(b)
+        finally:
+            self.is_busy = False
+
+        # Perform move (this will re-disable/re-enable buttons as usual)
         self._insert_token(best_move)
 
     def _create_board(self) -> None:
@@ -334,6 +431,7 @@ class GuiC4:
             # Re-enable all buttons (if columns not full)
             self.is_busy = False
             self._update_insert_buttons()
+            self._maybe_autoplay()
 
     def _redo_move(self) -> None:
         if len(self.m_redolist) < 1:
@@ -382,13 +480,25 @@ class GuiC4:
             time.sleep(0.25)  # debounce button
 
     def _update_insert_buttons(self) -> None:
+        player = self._current_player()
+        human_turn = self._controller_for_player(player) == "human"
+
         for button, col in zip(self.m_insert_buttons, range(self.m_n_col)):
-            button.disabled = bool(self.m_height[col] >= self.m_n_row) or self.m_gameover or self.is_busy
+            # disable if column full OR gameover/busy OR not a human turn
+            button.disabled = (
+                bool(self.m_height[col] >= self.m_n_row) or self.m_gameover or self.is_busy or (not human_turn)
+            )
 
         self.m_control_buttons["undo"].disabled = len(self.m_movelist) < 1 or self.is_busy
         self.m_control_buttons["redo"].disabled = len(self.m_redolist) < 1 or self.is_busy
-        self.m_control_buttons["move"].disabled = self.m_gameover or self.is_busy
-        self.m_control_buttons["evaluate"].disabled = self.m_gameover or self.is_busy
+
+        # 🕹️ only makes sense if current side is agent-controlled
+        self.m_control_buttons["move"].disabled = (
+            self.m_gameover or self.is_busy or (self._agent_for_player(player) is None)
+        )
+
+        # 📊 enable only if we have at least one agent to evaluate with
+        self.m_control_buttons["evaluate"].disabled = self.m_gameover or self.is_busy or (len(self.agents) == 0)
 
     def _get_img_idx(self, col: int, row: int) -> int:
         """Translates a column and row ID into the corresponding image ID.
@@ -486,6 +596,9 @@ class GuiC4:
         Args:
             event (mpl_backend_bases.Event): A matplotlib mouse event.
         """
+        if self._controller_for_player(self._current_player()) != "human":
+            return
+
         if not isinstance(event, mpl_backend_bases.MouseEvent):
             return
         if event.inaxes is None or event.xdata is None:
@@ -537,7 +650,13 @@ class GuiC4:
             header=None,
             left_sidebar=control_buttons_col,
             center=VBox(
-                [insert_button_row, self.output, tb, self.m_eval_row],  # NEW: scores row below labels
+                [
+                    self.player_select_row,
+                    insert_button_row,
+                    self.output,
+                    tb,
+                    self.m_eval_row,
+                ],  # NEW: scores row below labels
                 layout=Layout(
                     display="flex",
                     flex_flow="column wrap",
@@ -548,6 +667,14 @@ class GuiC4:
             footer=None,
             right_sidebar=None,
         )
+
+    def _maybe_autoplay(self) -> None:
+        """If it's an agent-controlled turn, immediately play its move."""
+        if self.is_busy or self.m_gameover:
+            return
+        if self._agent_for_player(self._current_player()) is None:
+            return
+        self._computer_move()
 
     def _check_winner(self, board: Board) -> None:
         """Check for Win or draw."""
@@ -562,7 +689,7 @@ class GuiC4:
     def destroy(self) -> None:
         """Destroy and release the acquired resources."""
         plt.close(self.m_fig)
-        del self.agent
+        del self.agents
         del self.m_axs
         del self.m_fig
         del self.output
