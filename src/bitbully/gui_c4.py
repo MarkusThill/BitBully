@@ -124,6 +124,9 @@ class GuiC4:
         # Create board first
         self._create_board()
 
+        # NEW: timing row (must exist before get_widget())
+        self._create_timing_row()
+
         # Generate buttons for inserting the tokens:
         self._create_buttons()
 
@@ -240,6 +243,23 @@ class GuiC4:
             ),
         )
 
+    def _create_timing_row(self) -> None:
+        """Create a row that shows the computation time of the last agent move."""
+        self.m_time_label = widgets.Label(
+            value="",
+            layout=Layout(width="100%"),
+        )
+        self.m_time_row = HBox(
+            [self.m_time_label],
+            layout=Layout(
+                display="flex",
+                flex_flow="row",
+                justify_content="flex-start",
+                align_items="center",
+                width="100%",
+            ),
+        )
+
     # TODO: a bit hacky, use board instance instead?
     def _current_player(self) -> int:
         """Return player to move: 1 (Yellow) starts, then alternates."""
@@ -281,6 +301,7 @@ class GuiC4:
         self.m_fig.canvas.flush_events()
         self._update_insert_buttons()
         self._clear_eval_row()  # NEW
+        self.m_time_label.value = ""
 
     def _get_fig_size_px(self) -> npt.NDArray[np.float64]:
         # Get the size in inches
@@ -374,7 +395,21 @@ class GuiC4:
                 self._clear_eval_row()
                 return
 
+            t0 = time.perf_counter()
             scores = agent.score_all_moves(board)
+            dt_ms = (time.perf_counter() - t0) * 1000.0
+
+            # Update timing row
+            # Identify agent name for display
+            if self.eval_agent_choice != "auto":
+                agent_name = self.eval_agent_choice
+            else:
+                # auto → agent for side-to-move or fallback
+                player = self._current_player()
+                agent_name = self._controller_for_player(player)
+                if agent_name == "human":
+                    agent_name = self._agent_names[0]
+            self.m_time_label.value = f"📊 Evaluation: {agent_name} — ⏱️ {dt_ms:.1f} ms"
 
             # Fill the label row. (Optionally blank-out illegal moves)
             legal = set(board.legal_moves())
@@ -404,11 +439,22 @@ class GuiC4:
             # It's a human-controlled side
             return
 
+        # Identify which agent name is playing this side (for display)
+        agent_name = self._controller_for_player(player)
+
         self.is_busy = True
         self._update_insert_buttons()
         try:
             b = self._board_from_history()
+
+            t0 = time.perf_counter()
             best_move = agent.best_move(b)
+            dt_ms = (time.perf_counter() - t0) * 1000.0
+
+            # Update timing row (only if it was an agent move)
+            color = "Yellow" if player == 1 else "Red"
+            self.m_time_label.value = f"🕹️ Last move: {color} ({agent_name}) — ⏱️ {dt_ms:.1f} ms"
+
         finally:
             self.is_busy = False
 
@@ -733,8 +779,8 @@ class GuiC4:
                     self.player_select_row,
                     insert_button_row,
                     self.output,
-                    # tb,
                     self.m_eval_row,
+                    self.m_time_row,
                 ],  # NEW: scores row below labels
                 layout=Layout(
                     display="flex",
