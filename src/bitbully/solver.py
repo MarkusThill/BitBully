@@ -91,7 +91,13 @@ class BitBully:
 
     """
 
-    def __init__(self, opening_book: OpeningBookName | None = "default") -> None:
+    def __init__(
+        self,
+        opening_book: OpeningBookName | None = "default",
+        *,
+        tie_break: TieBreakStrategy | None = None,
+        rng: random.Random | None = None,
+    ) -> None:
         """Initialize the BitBully agent.
 
         Args:
@@ -103,11 +109,18 @@ class BitBully:
                 - ``"12-ply"``: 12-ply book with win/loss values.
                 - ``"12-ply-dist"``: 12-ply book with win/loss *and distance* values.
                 - ``None``: Disable opening-book usage entirely.
+            tie_break (TieBreakStrategy | None):
+                Default strategy for breaking ties between equally scoring moves.
+                If ``None``, defaults to ``"center"``.
+            rng (random.Random | None):
+                Optional RNG for reproducible "random" tie-breaking.
 
         TODO: Example for initialization with different books.
 
         """
         self.opening_book_type: OpeningBookName | None = opening_book
+        self.tie_break = tie_break if tie_break is not None else "center"
+        self.rng = rng if rng is not None else random.Random()
 
         if opening_book is None:
             self._core = bitbully_core.BitBullyCore()
@@ -251,7 +264,7 @@ class BitBully:
         self,
         board: Board,
         *,
-        tie_break: TieBreakStrategy = "center",
+        tie_break: TieBreakStrategy | None = None,
         rng: random.Random | None = None,
     ) -> int:
         """Return the best legal move (column index) for the current player.
@@ -261,6 +274,7 @@ class BitBully:
         according to ``tie_break``.
 
         Tie-breaking strategies:
+            - ``None`` (default): Use the agent's default tie-breaking strategy (`self.tie_break`).
             - ``"center"`` (default):
                 Prefer the move closest to the center column (3). If still tied,
                 choose the smaller column index.
@@ -272,11 +286,11 @@ class BitBully:
 
         Args:
             board (Board): The current board state.
-            tie_break (TieBreakStrategy):
+            tie_break (TieBreakStrategy | None):
                 Strategy used to resolve ties between equally scoring moves.
             rng (random.Random | None):
                 Random number generator used when ``tie_break="random"``.
-                If ``None``, the global RNG is used.
+                If ``None``, the agent's (`self.rng`) RNG is used.
 
         Returns:
             int: The selected column index (0-6).
@@ -330,6 +344,11 @@ class BitBully:
 
         if len(best_cols) == 1:
             return best_cols[0]
+
+        if tie_break is None:
+            tie_break = self.tie_break
+        if rng is None:
+            rng = self.rng
 
         if tie_break == "center":
             # Prefer center column (3), then smaller index for stability.

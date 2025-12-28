@@ -49,7 +49,7 @@ class GuiC4:
 
     """
 
-    def __init__(self) -> None:
+    def __init__(self, agent: BitBully) -> None:
         """Init the GuiC4 widget."""
         # Create a logger with the class name
         self.m_logger = logging.getLogger(self.__class__.__name__)
@@ -119,8 +119,7 @@ class GuiC4:
         # C4 agent
 
         # TODO: allow choosing opening book
-        # TODO: Allow to pass 1-2 agents (for player 1 and 2) instead of initializing here
-        self.bitbully_agent = BitBully(opening_book="12-ply-dist")
+        self.agent = agent  # BitBully(opening_book="12-ply-dist")
 
     def _reset(self) -> None:
         self.m_movelist = []
@@ -222,7 +221,7 @@ class GuiC4:
 
             # If you want: show blanks for illegal moves.
             # Compute scores for all 7 columns.
-            scores = self.bitbully_agent.score_all_moves(board)  # -> Sequence[int] of length 7
+            scores = self.agent.score_all_moves(board)  # -> Sequence[int] of length 7
 
             # Fill the label row. (Optionally blank-out illegal moves)
             legal = set(board.legal_moves())
@@ -247,7 +246,7 @@ class GuiC4:
         self._update_insert_buttons()
         b = self._board_from_history()
         # TODO: Allow to configure tie_break strategy
-        best_move = self.bitbully_agent.best_move(b, tie_break="center")
+        best_move = self.agent.best_move(b, tie_break="center")
         self.is_busy = False
         self._insert_token(best_move)
 
@@ -563,7 +562,7 @@ class GuiC4:
     def destroy(self) -> None:
         """Destroy and release the acquired resources."""
         plt.close(self.m_fig)
-        del self.bitbully_agent
+        del self.agent
         del self.m_axs
         del self.m_fig
         del self.output
