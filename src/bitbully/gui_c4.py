@@ -117,6 +117,10 @@ class GuiC4:
         self.yellow_player: str = "human"
         self.red_player: str = self._agent_names[0] if self._agent_names else "human"
 
+        # Which agent should be used for the "Evaluate" button.
+        # Values: "auto" or one of self._agent_names (if any exist)
+        self.eval_agent_choice: str = "auto"
+
         # Create board first
         self._create_board()
 
@@ -150,42 +154,93 @@ class GuiC4:
         # self.agent = agent  # BitBully(opening_book="12-ply-dist")
 
     def _create_player_selectors(self) -> None:
-        """Create dropdowns to choose who controls yellow/red (human or agent)."""
-        options = ["human", *self._agent_names]
+        """Create UI controls for player assignment, autoplay, and evaluation agent."""
+        agent_options = list(self._agent_names)
+        player_options = ["human", *agent_options]
+        eval_options = ["auto", *agent_options]  # "auto" = use agent for side-to-move, else fallback
 
+        # --- Player assignment ---
         self.dd_yellow = widgets.Dropdown(
-            options=options,
-            value=self.yellow_player if self.yellow_player in options else "human",
+            options=player_options,
+            value=self.yellow_player if self.yellow_player in player_options else "human",
             description="Yellow:",
-            layout=Layout(width="220px"),
+            layout=Layout(width="200px"),
         )
         self.dd_red = widgets.Dropdown(
-            options=options,
-            value=self.red_player if self.red_player in options else "human",
+            options=player_options,
+            value=self.red_player if self.red_player in player_options else "human",
             description="Red:",
-            layout=Layout(width="220px"),
+            layout=Layout(width="200px"),
         )
 
-        def _on_change(_change: object) -> None:
+        # --- Autoplay toggle ---
+        self.cb_autoplay = widgets.Checkbox(
+            value=bool(self.autoplay),
+            description="Autoplay",
+            indent=False,
+            layout=Layout(width="auto"),  # width="200px"
+        )
+
+        # --- Eval agent selection ---
+        self.dd_eval_agent = widgets.Dropdown(
+            options=eval_options,
+            value=self.eval_agent_choice if self.eval_agent_choice in eval_options else "auto",
+            description="Eval:",
+            layout=Layout(width="200px"),
+        )
+
+        def _on_players_change(_change: object) -> None:
             self.yellow_player = str(self.dd_yellow.value)
             self.red_player = str(self.dd_red.value)
             self._update_insert_buttons()
             if self.autoplay:
                 self._maybe_autoplay()
 
-        self.dd_yellow.observe(_on_change, names="value")
-        self.dd_red.observe(_on_change, names="value")
+        def _on_autoplay_change(_change: object) -> None:
+            self.autoplay = bool(self.cb_autoplay.value)
+            # If autoplay is turned on mid-game, maybe immediately make the next agent move
+            if self.autoplay:
+                self._maybe_autoplay()
 
-        self.player_select_row = HBox(
+        def _on_eval_agent_change(_change: object) -> None:
+            self.eval_agent_choice = str(self.dd_eval_agent.value)
+
+        self.dd_yellow.observe(_on_players_change, names="value")
+        self.dd_red.observe(_on_players_change, names="value")
+        self.cb_autoplay.observe(_on_autoplay_change, names="value")
+        self.dd_eval_agent.observe(_on_eval_agent_change, names="value")
+
+        row1 = HBox(
             [self.dd_yellow, self.dd_red],
             layout=Layout(
                 display="flex",
-                flex_flow="row wrap",
-                justify_content="center",
+                flex_flow="row",
+                justify_content="flex-start",
                 align_items="center",
             ),
         )
 
+        row2 = HBox(
+            [self.cb_autoplay, self.dd_eval_agent],
+            layout=Layout(
+                display="flex",
+                flex_flow="row",
+                justify_content="flex-end",
+                align_items="flex-end",
+            ),
+        )
+
+        self.player_select_row = VBox(
+            [row1, row2],
+            layout=Layout(
+                display="flex",
+                flex_flow="column",
+                justify_content="flex-end",
+                align_items="flex-end",
+            ),
+        )
+
+    # TODO: a bit hacky, use board instance instead?
     def _current_player(self) -> int:
         """Return player to move: 1 (Yellow) starts, then alternates."""
         return 1 if (len(self.m_movelist) % 2 == 0) else 2
@@ -198,6 +253,20 @@ class GuiC4:
         if controller == "human":
             return None
         return self.agents.get(controller)
+
+    def _agent_for_evaluation(self) -> Connect4Agent | None:
+        """Return the agent used for the Evaluate button based on dropdown selection."""
+        if not self._agent_names:
+            return None
+
+        choice = getattr(self, "eval_agent_choice", "auto")
+        if choice != "auto":
+            return self.agents.get(choice)
+
+        # "auto": prefer the agent controlling the side to move; fallback to first agent
+        player = self._current_player()
+        agent = self._agent_for_player(player)
+        return agent or self.agents[self._agent_names[0]]
 
     def _reset(self) -> None:
         self.m_movelist = []
@@ -300,8 +369,7 @@ class GuiC4:
             # If you want: show blanks for illegal moves.
             # Compute scores for all 7 columns.
             # scores = self.agent.score_all_moves(board)  # -> Sequence[int] of length 7
-            player = self._current_player()
-            agent = self._agent_for_player(player) or (self.agents[self._agent_names[0]] if self._agent_names else None)
+            agent = self._agent_for_evaluation()
             if agent is None:
                 self._clear_eval_row()
                 return
@@ -431,7 +499,8 @@ class GuiC4:
             # Re-enable all buttons (if columns not full)
             self.is_busy = False
             self._update_insert_buttons()
-            self._maybe_autoplay()
+            if self.autoplay:
+                self._maybe_autoplay()
 
     def _redo_move(self) -> None:
         if len(self.m_redolist) < 1:
@@ -483,13 +552,17 @@ class GuiC4:
         player = self._current_player()
         human_turn = self._controller_for_player(player) == "human"
 
+        # ⏬ buttons
         for button, col in zip(self.m_insert_buttons, range(self.m_n_col)):
             # disable if column full OR gameover/busy OR not a human turn
             button.disabled = (
                 bool(self.m_height[col] >= self.m_n_row) or self.m_gameover or self.is_busy or (not human_turn)
             )
 
+        # ↩️ button
         self.m_control_buttons["undo"].disabled = len(self.m_movelist) < 1 or self.is_busy
+
+        # ↪️ button
         self.m_control_buttons["redo"].disabled = len(self.m_redolist) < 1 or self.is_busy
 
         # 🕹️ only makes sense if current side is agent-controlled
@@ -499,6 +572,11 @@ class GuiC4:
 
         # 📊 enable only if we have at least one agent to evaluate with
         self.m_control_buttons["evaluate"].disabled = self.m_gameover or self.is_busy or (len(self.agents) == 0)
+
+        if hasattr(self, "dd_eval_agent"):
+            self.dd_eval_agent.disabled = (len(self.agents) == 0) or self.is_busy
+        if hasattr(self, "cb_autoplay"):
+            self.cb_autoplay.disabled = self.is_busy
 
     def _get_img_idx(self, col: int, row: int) -> int:
         """Translates a column and row ID into the corresponding image ID.
@@ -639,12 +717,13 @@ class GuiC4:
             layout=Layout(
                 display="flex",
                 flex_flow="row wrap",  # or "column" depending on your layout needs
-                justify_content="flex-end",  # Left alignment
-                align_items="center",  # Top alignment
+                justify_content="flex-end",
+                align_items="center",  # bottom alignment
             ),
         )
 
-        tb = self._create_column_labels()
+        # deactivate for now
+        # tb = self._create_column_labels()
 
         return AppLayout(
             header=None,
@@ -654,7 +733,7 @@ class GuiC4:
                     self.player_select_row,
                     insert_button_row,
                     self.output,
-                    tb,
+                    # tb,
                     self.m_eval_row,
                 ],  # NEW: scores row below labels
                 layout=Layout(
