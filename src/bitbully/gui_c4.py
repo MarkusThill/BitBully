@@ -92,8 +92,6 @@ class GuiC4:
         # self.m_player = 1
         self.is_busy = False
 
-        self.last_event_time = time.time()
-
         # Create board first
         self._create_board()
 
@@ -224,7 +222,6 @@ class GuiC4:
 
             # If you want: show blanks for illegal moves.
             # Compute scores for all 7 columns.
-            # IMPORTANT: Replace this line with your actual API call if needed.
             scores = self.bitbully_agent.score_all_moves(board)  # -> Sequence[int] of length 7
 
             # Fill the label row. (Optionally blank-out illegal moves)
@@ -310,8 +307,8 @@ class GuiC4:
 
         board = self._board_from_history()
         if self.m_gameover or not board.play(int(col)):
-            self._update_insert_buttons()
             self.is_busy = False
+            self._update_insert_buttons()
             return
 
         try:
@@ -334,7 +331,7 @@ class GuiC4:
             self.m_logger.error("Error: %s", str(e))
             raise
         finally:
-            time.sleep(0.5)  # debounce button
+            time.sleep(0.25)  # debounce button
             # Re-enable all buttons (if columns not full)
             self.is_busy = False
             self._update_insert_buttons()
@@ -383,7 +380,7 @@ class GuiC4:
             self.is_busy = False
             self._update_insert_buttons()
 
-            time.sleep(0.5)  # debounce button
+            time.sleep(0.25)  # debounce button
 
     def _update_insert_buttons(self) -> None:
         for button, col in zip(self.m_insert_buttons, range(self.m_n_col)):
