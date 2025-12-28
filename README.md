@@ -143,8 +143,26 @@ The docs for the opening databases can be found here: [https://markusthill.githu
 > BitBully currently supports **standard Connect-4 (7 columns × 6 rows)**.
 > Generalized board sizes are not supported.
 
+### 🚀 BitBully: Getting Started with a Jupyter Notebook
 
-### Start with a simple Widget on Colab
+This notebook introduces the main building blocks of **BitBully**:
+
+- `Board`: represent and manipulate Connect Four positions
+- `BitBully`: analyze positions and choose strong moves
+
+All examples are designed to be copy-pasteable and easy to adapt for your own experiments.
+
+Jupyter Notebook: [notebooks/getting_started.ipynb](https://github.com/MarkusThill/BitBully/blob/master/notebooks/getting_started.ipynb)
+
+<a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/getting_started.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+### 🎮 Play a Game of Connect-4 with a simple Jupyter Notebook Widget
+TODO: Screenshot here!
+
+BitBully includes an interactive Connect-4 widget for Jupyter built with ipywidgets + Matplotlib.
+`GuiC4` renders a 6x7 board using image sprites, supports click-to-play or column buttons, provides undo/redo, can trigger a computer move using the BitBully engine (optionally with an opening book database), and shows win/draw popups. It's intended for quick experimentation and demos inside notebooks (best with %matplotlib ipympl).
+
+Jupyter Notebook: [notebooks/game_widget.ipynb](https://github.com/MarkusThill/BitBully/blob/master/notebooks/game_widget.ipynb)
 
 <a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/game_widget.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 

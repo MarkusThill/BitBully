@@ -12,7 +12,7 @@ import numpy.typing as npt
 from IPython.display import Javascript, clear_output, display
 from ipywidgets import AppLayout, Button, HBox, Layout, Output, VBox, widgets
 
-from . import bitbully_core
+from . import BitBully, Board
 
 
 class GuiC4:
@@ -64,7 +64,8 @@ class GuiC4:
         ch.setFormatter(formatter)
 
         # Add the handler to the logger
-        self.m_logger.addHandler(ch)
+        if not self.m_logger.handlers:
+            self.m_logger.addHandler(ch)
 
         # Avoid adding handlers multiple times
         self.m_logger.propagate = False
@@ -102,6 +103,9 @@ class GuiC4:
         # Create control buttons
         self._create_control_buttons()
 
+        # NEW: evaluation row widget (must exist before get_widget())
+        self._create_eval_row()
+
         # Capture clicks on the field
         _ = self.m_fig.canvas.mpl_connect("button_press_event", self._on_field_click)
 
@@ -115,11 +119,10 @@ class GuiC4:
         self.m_gameover = False
 
         # C4 agent
-        import bitbully_databases as bbd
 
         # TODO: allow choosing opening book
-        db_path: str = bbd.BitBullyDatabases.get_database_path("12-ply-dist")
-        self.bitbully_agent = bitbully_core.BitBullyCore(Path(db_path))
+        # TODO: Allow to pass 1-2 agents (for player 1 and 2) instead of initializing here
+        self.bitbully_agent = BitBully(opening_book="12-ply-dist")
 
     def _reset(self) -> None:
         self.m_movelist = []
@@ -133,6 +136,7 @@ class GuiC4:
         self.m_fig.canvas.draw_idle()
         self.m_fig.canvas.flush_events()
         self._update_insert_buttons()
+        self._clear_eval_row()  # NEW
 
     def _get_fig_size_px(self) -> npt.NDArray[np.float64]:
         # Get the size in inches
@@ -150,7 +154,7 @@ class GuiC4:
         self.m_control_buttons = {}
 
         # Create buttons for each column
-        self.m_logger.debug("Figure size: ", self._get_fig_size_px())
+        self.m_logger.debug("Figure size: %s", self._get_fig_size_px())
 
         fig_size_px = self._get_fig_size_px()
         wh = f"{-3 + (fig_size_px[1] / self.m_n_row)}px"
@@ -175,16 +179,80 @@ class GuiC4:
         self.m_control_buttons["move"] = button
 
         button = Button(description="📊", tooltip="Evaluate Board", layout=btn_layout)
+        button.on_click(lambda b: self._evaluate_board())  # NEW
         self.m_control_buttons["evaluate"] = button
+
+        # ---------------- NEW: evaluation widgets ----------------
+
+    def _create_eval_row(self) -> None:
+        """Create a row of 7 labels to display per-column evaluation scores."""
+        fig_size_px = self._get_fig_size_px()
+        width = f"{-3 + (fig_size_px[0] / self.m_n_col)}px"
+
+        self.m_eval_labels: list[widgets.Label] = [
+            widgets.Label(
+                value="",
+                layout=Layout(justify_content="center", align_items="center", width=width),
+            )
+            for _ in range(self.m_n_col)
+        ]
+        self.m_eval_row = HBox(
+            self.m_eval_labels,
+            layout=Layout(
+                display="flex",
+                flex_flow="row wrap",
+                justify_content="center",
+                align_items="center",
+            ),
+        )
+
+    def _clear_eval_row(self) -> None:
+        """Clear all evaluation score labels."""
+        for lbl in self.m_eval_labels:
+            lbl.value = ""
+
+    def _evaluate_board(self) -> None:
+        """Compute and display per-column evaluation scores for the current position."""
+        if self.is_busy:
+            return
+
+        self.is_busy = True
+        self._update_insert_buttons()
+
+        try:
+            board = self._board_from_history()
+
+            # If you want: show blanks for illegal moves.
+            # Compute scores for all 7 columns.
+            # IMPORTANT: Replace this line with your actual API call if needed.
+            scores = self.bitbully_agent.score_all_moves(board)  # -> Sequence[int] of length 7
+
+            # Fill the label row. (Optionally blank-out illegal moves)
+            legal = set(board.legal_moves())
+            for col in range(self.m_n_col):
+                if col in legal:
+                    self.m_eval_labels[col].value = str(int(scores[col]))
+                else:
+                    self.m_eval_labels[col].value = "—"
+
+        except Exception as e:
+            self.m_logger.error("Evaluation failed: %s", str(e))
+            # Optional: popup on error
+            # self._popup(f"Evaluation failed: {e}")
+            self._clear_eval_row()
+            raise
+        finally:
+            self.is_busy = False
+            self._update_insert_buttons()
 
     def _computer_move(self) -> None:
         self.is_busy = True
         self._update_insert_buttons()
-        b = bitbully_core.BoardCore()
-        assert b.setBoard([mv[1] for mv in self.m_movelist])
-        move_scores = self.bitbully_agent.scoreMoves(b)
+        b = self._board_from_history()
+        # TODO: Allow to configure tie_break strategy
+        best_move = self.bitbully_agent.best_move(b, tie_break="center")
         self.is_busy = False
-        self._insert_token(int(np.argmax(move_scores)))
+        self._insert_token(best_move)
 
     def _create_board(self) -> None:
         self.output = Output()
@@ -229,8 +297,8 @@ class GuiC4:
         clear_output()
         display(Javascript(f"alert('{text}')"))
 
-    def _is_legal_move(self, col: int) -> bool:
-        return not self.m_height[col] >= self.m_n_row
+    def _board_from_history(self) -> Board:
+        return Board([mv[1] for mv in self.m_movelist])
 
     def _insert_token(self, col: int, reset_redo_list: bool = True) -> None:
         if self.is_busy:
@@ -240,9 +308,8 @@ class GuiC4:
         for button in self.m_insert_buttons:
             button.disabled = True
 
-        board = bitbully_core.BoardCore()
-        board.setBoard([mv[1] for mv in self.m_movelist])
-        if self.m_gameover or not board.play(col):
+        board = self._board_from_history()
+        if self.m_gameover or not board.play(int(col)):
             self._update_insert_buttons()
             self.is_busy = False
             return
@@ -260,6 +327,8 @@ class GuiC4:
                 self.m_redolist = []
 
             self._check_winner(board)
+            # NEW: clear eval row because the position changed
+            self._clear_eval_row()
 
         except Exception as e:
             self.m_logger.error("Error: %s", str(e))
@@ -302,6 +371,9 @@ class GuiC4:
                 self.m_fig.canvas.flush_events()
 
             self.m_gameover = False
+
+            # NEW: clear eval row because the position changed
+            self._clear_eval_row()
 
         except Exception as e:
             self.m_logger.error("Error: %s", str(e))
@@ -374,7 +446,7 @@ class GuiC4:
 
     def _create_buttons(self) -> None:
         # Create buttons for each column
-        self.m_logger.debug("Figure size: ", self._get_fig_size_px())
+        self.m_logger.debug("Figure size: %s", self._get_fig_size_px())
 
         fig_size_px = self._get_fig_size_px()
 
@@ -418,6 +490,10 @@ class GuiC4:
         Args:
             event (mpl_backend_bases.Event): A matplotlib mouse event.
         """
+        if not isinstance(event, mpl_backend_bases.MouseEvent):
+            return
+        if event.inaxes is None or event.xdata is None:
+            return
         if isinstance(event, mpl_backend_bases.MouseEvent):
             ix, iy = event.xdata, event.ydata
             self.m_logger.debug("click (x,y): %d, %d", ix, iy)
@@ -465,7 +541,7 @@ class GuiC4:
             header=None,
             left_sidebar=control_buttons_col,
             center=VBox(
-                [insert_button_row, self.output, tb],
+                [insert_button_row, self.output, tb, self.m_eval_row],  # NEW: scores row below labels
                 layout=Layout(
                     display="flex",
                     flex_flow="column wrap",
@@ -477,13 +553,13 @@ class GuiC4:
             right_sidebar=None,
         )
 
-    def _check_winner(self, board: bitbully_core.BoardCore) -> None:
+    def _check_winner(self, board: Board) -> None:
         """Check for Win or draw."""
-        if board.hasWin():
-            winner = "Yellow" if board.movesLeft() % 2 else "Red"
+        if board.has_win():
+            winner = "Yellow" if board.winner() == 1 else "Red"
             self._popup(f"Game over! {winner} wins!")
             self.m_gameover = True
-        if board.movesLeft() == 0:
+        elif board.is_full():
             self._popup("Game over! Draw!")
             self.m_gameover = True
 
