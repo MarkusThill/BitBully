@@ -2,6 +2,7 @@
 
 import importlib.resources
 import logging
+import textwrap
 import time
 from collections.abc import Sequence
 from pathlib import Path
@@ -99,7 +100,7 @@ class GuiC4:
         # self.m_player = 1
         self.is_busy = False
 
-        # ---------------- NEW: multi-agent support ----------------
+        # ---------------- multi-agent support ----------------
         self.autoplay = bool(autoplay)
 
         # Normalize `agents` into a dict[str, Connect4Agent]
@@ -124,7 +125,7 @@ class GuiC4:
         # Create board first
         self._create_board()
 
-        # NEW: timing row (must exist before get_widget())
+        # timing row (must exist before get_widget())
         self._create_timing_row()
 
         # Generate buttons for inserting the tokens:
@@ -133,10 +134,10 @@ class GuiC4:
         # Create control buttons
         self._create_control_buttons()
 
-        # NEW: player selection dropdowns (must exist before get_widget())
+        # player selection dropdowns (must exist before get_widget())
         self._create_player_selectors()
 
-        # NEW: evaluation row widget (must exist before get_widget())
+        # evaluation row widget (must exist before get_widget())
         self._create_eval_row()
 
         # Capture clicks on the field
@@ -151,10 +152,8 @@ class GuiC4:
         # Gameover flag:
         self.m_gameover = False
 
-        # C4 agent
-
-        # TODO: allow choosing opening book
-        # self.agent = agent  # BitBully(opening_book="12-ply-dist")
+        # NEW: move list + copy position UI
+        self._create_move_list_ui()
 
     def _create_player_selectors(self) -> None:
         """Create UI controls for player assignment, autoplay, and evaluation agent."""
@@ -260,6 +259,110 @@ class GuiC4:
             ),
         )
 
+    def _create_move_list_ui(self) -> None:
+        """Create the move list display and clipboard buttons."""
+        self.ta_moves = widgets.Textarea(
+            value="",
+            description="",
+            disabled=True,
+            layout=Layout(width="100%", height="100%"),  # was "110px"
+        )
+
+        self.btn_copy_pos = Button(
+            description="📋 Copy move sequence",
+            tooltip="Copy the position string used by Board(...), e.g. '3431'",
+            layout=Layout(width="100%"),
+        )
+        self.btn_copy_moves_ag = Button(
+            description="📋 Copy ASCII board",
+            tooltip="Copy the ascii representation of the board",
+            layout=Layout(width="100%"),
+        )
+
+        # buttons_row = VBox(
+        #    [self.btn_copy_pos, self.btn_copy_moves_ag],
+        #    layout=Layout(width="100%"),
+        # )
+
+        self.btn_copy_pos.on_click(lambda _b: self._copy_position_string())
+        self.btn_copy_moves_ag.on_click(lambda _b: self._copy_moves_ag())
+
+        self.move_list_row = VBox(
+            [self.btn_copy_pos, self.btn_copy_moves_ag, self.ta_moves],
+            layout=Layout(
+                width="200px",
+                height="100%",  # NEW: take all available height in sidebar
+                align_items="stretch",
+                flex="1 1 auto",  # NEW: allow growing
+            ),
+        )
+
+        # Make the textarea take the remaining space below the buttons row
+        # buttons_row.layout = Layout(width="100%", flex="0 0 auto")
+        # self.ta_moves.layout = Layout(width="100%", height="100%", flex="1 1 auto")
+
+        self._update_move_list_ui()  # initialize
+
+    def _position_string(self) -> str:
+        """Return the position encoding compatible with Board(...).
+
+        BitBully's Board examples use strings like "341" (columns as digits),
+        so we follow the same convention.
+        """
+        return "".join(str(col) for (_p, col, _row) in self.m_movelist)
+
+    def _moves_ag_string(self) -> str:
+        """Return board as ascii string.."""
+        # column 0..6 -> a..g
+        # return " ".join(chr(ord("a") + col) for (_p, col, _row) in self.m_movelist)
+        return textwrap.dedent(self._board_from_history().to_string()).strip()
+
+    def _update_move_list_ui(self) -> None:
+        """Refresh the move list textarea."""
+        pos = self._position_string()
+        ag = self._moves_ag_string()
+
+        lines: list[str] = []
+        lines.extend(
+            [
+                f"moves: {pos or '—'}",  #
+                f"\nplies:  {len(self.m_movelist)}",  #
+                f"\nboard:\n{ag or '—'}",
+            ]
+        )
+
+        self.ta_moves.value = "\n".join(lines)
+
+    def _copy_to_clipboard(self, text: str) -> None:
+        """Copy text to clipboard in Jupyter (best-effort)."""
+        # Works in most modern Jupyter setups; if clipboard is blocked, it just won't copy.
+        js = Javascript(
+            f"""
+            (async () => {{
+            try {{
+                await navigator.clipboard.writeText({text!r});
+            }} catch (e) {{
+                // Fallback for stricter environments
+                const ta = document.createElement('textarea');
+                ta.value = {text!r};
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            }}
+            }})();
+            """
+        )
+        display(js)
+
+    def _copy_position_string(self) -> None:
+        pos = self._position_string()
+        self._copy_to_clipboard(pos)
+
+    def _copy_moves_ag(self) -> None:
+        ag = self._moves_ag_string()
+        self._copy_to_clipboard(ag)
+
     # TODO: a bit hacky, use board instance instead?
     def _current_player(self) -> int:
         """Return player to move: 1 (Yellow) starts, then alternates."""
@@ -300,8 +403,9 @@ class GuiC4:
         self.m_fig.canvas.draw_idle()
         self.m_fig.canvas.flush_events()
         self._update_insert_buttons()
-        self._clear_eval_row()  # NEW
+        self._clear_eval_row()
         self.m_time_label.value = ""
+        self._update_move_list_ui()
 
     def _get_fig_size_px(self) -> npt.NDArray[np.float64]:
         # Get the size in inches
@@ -344,10 +448,10 @@ class GuiC4:
         self.m_control_buttons["move"] = button
 
         button = Button(description="📊", tooltip="Evaluate Board", layout=btn_layout)
-        button.on_click(lambda b: self._evaluate_board())  # NEW
+        button.on_click(lambda b: self._evaluate_board())
         self.m_control_buttons["evaluate"] = button
 
-        # ---------------- NEW: evaluation widgets ----------------
+        # ---------------- evaluation widgets ----------------
 
     def _create_eval_row(self) -> None:
         """Create a row of 7 labels to display per-column evaluation scores."""
@@ -481,8 +585,8 @@ class GuiC4:
                 ax.set_xticklabels([])
                 ax.set_yticklabels([])
 
-            fig.tight_layout()
-            plt.subplots_adjust(wspace=0.05, hspace=0.05, left=0.0, right=1.0, top=1.0, bottom=0.0)
+            fig.tight_layout(pad=0.1)
+            plt.subplots_adjust(wspace=0.05, hspace=0.05, left=0.01, right=0.99, top=0.99, bottom=0.01)
             fig.suptitle("")
             fig.set_facecolor("darkgray")
             fig.canvas.toolbar_visible = False  # type: ignore[attr-defined]
@@ -525,6 +629,7 @@ class GuiC4:
             # Get player
             player = 1 if not self.m_movelist else 3 - self.m_movelist[-1][0]
             self.m_movelist.append((player, col, self.m_height[col]))
+            self._update_move_list_ui()
             self._paint_token()
             self.m_height[col] += 1
 
@@ -534,7 +639,7 @@ class GuiC4:
                 self.m_redolist = []
 
             self._check_winner(board)
-            # NEW: clear eval row because the position changed
+            # clear eval row because the position changed
             self._clear_eval_row()
 
         except Exception as e:
@@ -573,6 +678,8 @@ class GuiC4:
 
             self.ims[img_idx].set_data(self.m_png[0]["plain"])
             self.m_axs[img_idx].draw_artist(self.ims[img_idx])
+
+            self._update_move_list_ui()
             if len(self.m_movelist) > 0:
                 self._paint_token()
             else:
@@ -581,7 +688,7 @@ class GuiC4:
 
             self.m_gameover = False
 
-            # NEW: clear eval row because the position changed
+            # clear eval row because the position changed
             self._clear_eval_row()
 
         except Exception as e:
@@ -684,7 +791,7 @@ class GuiC4:
         for col in range(self.m_n_col):
             button = Button(
                 description="⏬",
-                layout=Layout(width=f"{-3 + (fig_size_px[0] / self.m_n_col)}px", height="50px"),
+                layout=Layout(width=f"{-4 + (fig_size_px[0] / self.m_n_col)}px", height="50px"),
             )
             button.on_click(lambda b, col=col: self._insert_token(col))
             self.m_insert_buttons.append(button)
@@ -750,7 +857,7 @@ class GuiC4:
         """
         # Arrange buttons in a row
         insert_button_row = HBox(
-            self.m_insert_buttons,
+            [VBox(layout=Layout(padding="0px 0px 0px 6px")), *self.m_insert_buttons],
             layout=Layout(
                 display="flex",
                 flex_flow="row wrap",  # or "column" depending on your layout needs
@@ -771,26 +878,54 @@ class GuiC4:
         # deactivate for now
         # tb = self._create_column_labels()
 
+        right = VBox(
+            [self.move_list_row],
+            layout=Layout(
+                display="flex",
+                flex_flow="column",
+                justify_content="flex-start",
+                align_items="stretch",
+                width="200px",
+                height="90%",  # NEW: fill AppLayout height
+                flex="1 1 auto",  # NEW: allow it to grow
+            ),
+        )
+
+        main = HBox(
+            [
+                VBox(
+                    [
+                        self.player_select_row,
+                        insert_button_row,
+                        self.output,
+                        self.m_eval_row,
+                        self.m_time_row,
+                    ],
+                    layout=Layout(
+                        display="flex",
+                        flex_flow="column",
+                        align_items="flex-start",
+                    ),
+                ),
+                right,
+            ],
+            layout=Layout(
+                display="flex",
+                flex_flow="row",
+                align_items="flex-start",
+                justify_content="flex-start",
+                gap="5px",  # space between board and sidebar
+                width="100%",
+            ),
+        )
+
         return AppLayout(
             header=None,
             left_sidebar=control_buttons_col,
-            center=VBox(
-                [
-                    self.player_select_row,
-                    insert_button_row,
-                    self.output,
-                    self.m_eval_row,
-                    self.m_time_row,
-                ],  # NEW: scores row below labels
-                layout=Layout(
-                    display="flex",
-                    flex_flow="column wrap",
-                    justify_content="flex-start",  # Left alignment
-                    align_items="flex-start",  # Top alignment
-                ),
-            ),
+            center=main,
+            right_sidebar=None,  # <= important
             footer=None,
-            right_sidebar=None,
+            layout=Layout(grid_gap="0px"),
         )
 
     def _maybe_autoplay(self) -> None:
