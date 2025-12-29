@@ -62,6 +62,7 @@ int main(const int argc, const char* const argv[]) {
   int nPly = 8;
   int nRepeats = 1000;
   std::string filename;
+  int reset_tt = 0;
 
   // Parse command-line arguments
   auto args = parseArgs(argc, argv);
@@ -73,6 +74,9 @@ int main(const int argc, const char* const argv[]) {
   else
     filename = "../times_" + std::to_string(nPly) + "_ply_" +
                std::to_string(nRepeats) + "_pos.csv";
+  if (args.find("--reset_tt") !=
+      args.end())  // reset transposition table every N moves
+    reset_tt = std::stoi(args["--reset_tt"]);
 
   std::vector<std::tuple<float, float>> times = {};
 
@@ -84,8 +88,10 @@ int main(const int argc, const char* const argv[]) {
   for (auto i = 0; i < nRepeats; i++) {
     auto [b, mvSequence] = BitBully::Board::randomBoard(nPly, true);
 
-    solverPonsC4.reset();
-    bb.resetTranspositionTable();
+    if (reset_tt > 0 && i % reset_tt == 0) {
+      solverPonsC4.reset();
+      bb.resetTranspositionTable();
+    }
 
     // Bitbully:
     auto tStart = Clock::now();
