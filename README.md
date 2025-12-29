@@ -53,6 +53,12 @@ both developers and researchers.
 
 ## Quickstart
 
+### Installation
+```bash
+pip install bitbully
+```
+
+### Usage
 ```python
 import bitbully as bb
 
