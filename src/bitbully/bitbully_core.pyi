@@ -1259,6 +1259,33 @@ class BoardCore:
             ```
         """
 
+    def getColumnHeight(self, column: int) -> int:
+        """Return the number of tokens in the given column.
+
+        Args:
+            column (int): Column index (0-6).
+
+        Returns:
+            int: Number of tokens in the column (0-6).
+
+        Example:
+            Check column heights after some moves:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            board = bbc.BoardCore()
+            assert board.play("3332211" + 6 * "5")
+
+            assert board.getColumnHeight(0) == 0
+            assert board.getColumnHeight(1) == 2
+            assert board.getColumnHeight(2) == 2
+            assert board.getColumnHeight(3) == 3
+            assert board.getColumnHeight(4) == 0
+            assert board.getColumnHeight(5) == 6
+            assert board.getColumnHeight(6) == 0
+            ```
+        """
+
 
 class OpeningBookCore:
     """Opening book reader and lookup helper.

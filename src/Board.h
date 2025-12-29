@@ -225,6 +225,19 @@ class Board {
 
   TBitBoard findThreats(TBitBoard moves);
 
+  /*
+   * [ *,  *,  *,  *,  *,  *,  *]
+   * [ *,  *,  *,  *,  *,  *,  *]
+   * [ *,  *,  *,  *,  *,  *,  *]
+   * [ 5, 14, 23, 32, 41, 50, 59],
+   * [ 4, 13, 22, 31, 40, 49, 58],
+   * [ 3, 12, 21, 30, 39, 48, 57],
+   * [ 2, 11, 20, 29, 38, 47, 56],
+   * [ 1, 10, 19, 28, 37, 46, 55],
+   * [ 0,  9, 18, 27, 36, 45, 54]
+   */
+  [[nodiscard]] int getColumnHeight(const int column) const;
+
   static inline TBitBoard lsb(const TBitBoard x) {
     const auto mvMask = x - UINT64_C(1);
     return ~mvMask & x;

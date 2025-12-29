@@ -500,4 +500,12 @@ Board Board::mirror() const {
   return mB;
 }
 
+int Board::getColumnHeight(const int column) const {
+  assert(column >= 0 && column < N_COLUMNS);
+  TBitBoard columnMask = getColumnMask(column);
+  // columnMask -= (UINT64_C(1) << (column * COLUMN_BIT_OFFSET));
+  TBitBoard occupied = m_bAllTokens & columnMask;
+  return static_cast<int>(uint64_t_popcnt(occupied));
+}
+
 }  // namespace BitBully

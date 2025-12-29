@@ -129,7 +129,9 @@ PYBIND11_MODULE(bitbully_core, m) {
            "Encode position into a huffman-code compressed sequence.")
       .def("uid", &B::uid, "Get the unique identifier for the board")
       .def("__eq__", &B::operator==, "Check if two boards are equal")
-      .def("__ne__", &B::operator!=, "Check if two boards are not equal");
+      .def("__ne__", &B::operator!=, "Check if two boards are not equal")
+      .def("getColumnHeight", &B::getColumnHeight,
+           "Get the current height of a column", py::arg("column"));
 
   // Expose OpeningBook:
   py::class_<BitBully::OpeningBook>(m, "OpeningBookCore")

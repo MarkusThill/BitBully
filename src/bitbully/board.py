@@ -1877,3 +1877,52 @@ class Board:
         treated as read-only by users.
         """
         return self._board
+
+    def get_column_height(self, column: int) -> int:
+        """Returns the height of a specific column on the board.
+
+        The height of a column is defined as the number of tokens currently
+        present in that column.
+
+        Args:
+            column (int): The column index (0-6) for which to retrieve the height.
+
+        Returns:
+            int: The height of the specified column (0-6).
+
+        Raises:
+            ValueError: If the `column` index is outside the valid range [0, 6].
+
+        Example:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board("0011223")
+            height = board.get_column_height(2)
+            assert height == 2
+            ```
+        """
+        if not (0 <= column <= 6):
+            raise ValueError(f"Column index must be between 0 and 6, got {column}.")
+        return self._board.getColumnHeight(column)
+
+    def get_column_heights(self) -> list[int]:
+        """Returns a list of heights for each column on the board.
+
+        The height of a column is defined as the number of tokens currently
+        present in that column.
+
+        Returns:
+            list[int]: A list of 7 integers, where each integer represents
+            the height of the corresponding column (0-6).
+
+        Example:
+            ```python
+            import bitbully as bb
+
+            board = bb.Board("0011223")
+            heights = board.get_column_heights()
+            assert heights == [2, 2, 2, 1, 0, 0, 0]
+            ```
+        """
+        return [self._board.getColumnHeight(col) for col in range(7)]

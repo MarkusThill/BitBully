@@ -1269,3 +1269,30 @@ TEST_F(BoardTest, LegalMoves2) {
     }
   }
 }
+
+TEST_F(BoardTest, getColumnHeight) {
+  BitBully::Board b;  // empty board
+
+  for (int col = 0; col < BitBully::Board::N_COLUMNS; ++col) {
+    EXPECT_EQ(b.getColumnHeight(col), 0);
+  }
+
+  ASSERT_TRUE(b.play("00112233445566"));
+
+  for (int col = 0; col < BitBully::Board::N_COLUMNS; ++col) {
+    EXPECT_EQ(b.getColumnHeight(col), 2);
+  }
+
+  ASSERT_TRUE(b.play("555666"));
+  for (int col = 0; col < BitBully::Board::N_COLUMNS; ++col) {
+    if (col >= 5 && col <= 6) {
+      EXPECT_EQ(b.getColumnHeight(col), 5);
+    } else {
+      EXPECT_EQ(b.getColumnHeight(col), 2);
+    }
+  }
+
+  ASSERT_TRUE(b.play("65"));
+  EXPECT_EQ(b.getColumnHeight(5), 6);
+  EXPECT_EQ(b.getColumnHeight(6), 6);
+}
