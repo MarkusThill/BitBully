@@ -126,7 +126,7 @@ class GuiC4:
         self._create_board()
 
         # timing row (must exist before get_widget())
-        self._create_timing_row()
+        self._create_status_bar()
 
         # Generate buttons for inserting the tokens:
         self._create_buttons()
@@ -242,14 +242,18 @@ class GuiC4:
             ),
         )
 
-    def _create_timing_row(self) -> None:
+    def _create_status_bar(self) -> None:
         """Create a row that shows the computation time of the last agent move."""
-        self.m_time_label = widgets.Label(
+        self.m_status_label = widgets.Label(
             value="",
-            layout=Layout(width="100%"),
+            layout=Layout(width="80%"),
+        )
+        self.m_active_player_label = widgets.Label(
+            value="| Next: 🟡",
+            layout=Layout(width="20%", justify_content="flex-end", align_items="center"),
         )
         self.m_time_row = HBox(
-            [self.m_time_label],
+            [self.m_status_label, self.m_active_player_label],
             layout=Layout(
                 display="flex",
                 flex_flow="row",
@@ -404,7 +408,7 @@ class GuiC4:
         self.m_fig.canvas.flush_events()
         self._update_insert_buttons()
         self._clear_eval_row()
-        self.m_time_label.value = ""
+        self.m_status_label.value = ""
         self._update_move_list_ui()
 
     def _get_fig_size_px(self) -> npt.NDArray[np.float64]:
@@ -513,7 +517,7 @@ class GuiC4:
                 agent_name = self._controller_for_player(player)
                 if agent_name == "human":
                     agent_name = self._agent_names[0]
-            self.m_time_label.value = f"📊 Evaluation: {agent_name} — ⏱️ {dt_ms:.1f} ms"
+            self.m_status_label.value = f"📊 Evaluation: {agent_name} — ⏱️ {dt_ms:.1f} ms"
 
             # Fill the label row. (Optionally blank-out illegal moves)
             legal = set(board.legal_moves())
@@ -556,8 +560,8 @@ class GuiC4:
             dt_ms = (time.perf_counter() - t0) * 1000.0
 
             # Update timing row (only if it was an agent move)
-            color = "Yellow" if player == 1 else "Red"
-            self.m_time_label.value = f"🕹️ Last move: {color} ({agent_name}) — ⏱️ {dt_ms:.1f} ms"
+            color = "🟡" if player == 1 else "🔴"
+            self.m_status_label.value = f"🕹️ Last move: {color} ({agent_name}) — ⏱️ {dt_ms:.1f} ms."
 
         finally:
             self.is_busy = False
@@ -730,6 +734,11 @@ class GuiC4:
             self.dd_eval_agent.disabled = (len(self.agents) == 0) or self.is_busy
         if hasattr(self, "cb_autoplay"):
             self.cb_autoplay.disabled = self.is_busy
+
+        active_player = "🔴" if player == 2 else "🟡"
+        if self.m_gameover:
+            active_player = "—"
+        self.m_active_player_label.value = f" | Next: {active_player}"
 
     def _get_img_idx(self, col: int, row: int) -> int:
         """Translates a column and row ID into the corresponding image ID.
@@ -939,11 +948,15 @@ class GuiC4:
     def _check_winner(self, board: Board) -> None:
         """Check for Win or draw."""
         if board.has_win():
-            winner = "Yellow" if board.winner() == 1 else "Red"
-            self._popup(f"Game over! {winner} wins!")
+            winner = "Yellow (🟡)" if board.winner() == 1 else "Red (🔴)"
+            msg = f"🏆 Game over! {winner} wins!"
+            self.m_status_label.value = msg
+            self._popup(msg)
             self.m_gameover = True
         elif board.is_full():
-            self._popup("Game over! Draw!")
+            msg = "🤝 Game over! It's a draw!"
+            self.m_status_label.value = msg
+            self._popup(msg)
             self.m_gameover = True
 
     def destroy(self) -> None:
