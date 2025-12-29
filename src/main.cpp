@@ -84,6 +84,9 @@ int main(const int argc, const char* const argv[]) {
   for (auto i = 0; i < nRepeats; i++) {
     auto [b, mvSequence] = BitBully::Board::randomBoard(nPly, true);
 
+    solverPonsC4.reset();
+    bb.resetTranspositionTable();
+
     // Bitbully:
     auto tStart = Clock::now();
     const int scoreBitbully = bb.mtdf(b, 0);

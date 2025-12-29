@@ -1,3 +1,16 @@
+## v0.0.73 (2025-12-29)
+
+### Fix
+
+- added textarea in GUI and copy move sequence
+- added timings to gui
+- corrected aligment of dropboxes
+- add agent selection to gui
+- Added interface class for solvers
+- Added interface class for solvers
+- problem with deactivated buttons
+- adapted the widget a bit
+
 ## v0.0.72 (2025-12-27)
 
 ### Fix
