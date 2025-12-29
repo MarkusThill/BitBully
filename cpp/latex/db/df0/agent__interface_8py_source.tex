@@ -1,0 +1,95 @@
+\doxysection{agent\+\_\+interface.\+py}
+\hypertarget{agent__interface_8py_source}{}\label{agent__interface_8py_source}\index{src/bitbully/agent\_interface.py@{src/bitbully/agent\_interface.py}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00001}\mbox{\hyperlink{namespacebitbully_1_1agent__interface}{00001}}\ \textcolor{stringliteral}{"{}"{}"{}Agent\ interface\ definitions\ for\ Connect-\/4.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00002}00002\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00003}00003\ \textcolor{stringliteral}{This\ module\ defines\ the\ minimal,\ structural\ interface\ that\ Connect-\/4\ agents\ must}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00004}00004\ \textcolor{stringliteral}{implement\ in\ order\ to\ be\ compatible\ with\ the\ interactive\ GUI\ and\ other}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00005}00005\ \textcolor{stringliteral}{high-\/level\ components.\ The\ interface\ is\ expressed\ using\ \`{}\`{}typing.Protocol\`{}\`{}\ to}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00006}00006\ \textcolor{stringliteral}{enable\ static\ type\ checking\ without\ requiring\ inheritance\ or\ tight\ coupling}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00007}00007\ \textcolor{stringliteral}{between\ agents\ and\ consumers.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00008}00008\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00010}00010\ \textcolor{keyword}{from}\ \_\_future\_\_\ \textcolor{keyword}{import}\ annotations}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00012}00012\ \textcolor{keyword}{from}\ typing\ \textcolor{keyword}{import}\ Protocol,\ runtime\_checkable}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00014}00014\ \textcolor{keyword}{from}\ .\ \textcolor{keyword}{import}\ Board}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00017}00017\ \textcolor{preprocessor}{@runtime\_checkable}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00018}\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{00018}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{Connect4Agent}}(Protocol):}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00019}00019\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Minimal\ interface\ a\ Connect-\/4\ agent\ must\ implement\ to\ work\ with\ \`{}\`{}GuiC4\`{}\`{}.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00020}00020\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ This\ interface\ is\ intentionally\ aligned\ with\ the\ public\ \`{}\`{}BitBully\`{}\`{}\ API,}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ but\ excludes\ BitBully-\/specific\ engine\ features\ such\ as\ opening-\/book\ handling,}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ node\ counters,\ transposition\ tables,\ and\ specialized\ search\ entry\ points.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00024}00024\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ Required\ methods:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ \`{}\`{}score\_all\_moves\`{}\`{}:\ Provide\ integer\ evaluations\ for\ all\ *legal*\ moves.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ \`{}\`{}best\_move\`{}\`{}:\ Select\ one\ legal\ move\ using\ BitBully-\/compatible}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ tie-\/breaking\ semantics.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00029}00029\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ Notes\ on\ scoring:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ Scores\ are\ integers\ where\ **larger\ values\ are\ better**\ for\ the\ side\ to\ move.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ The\ absolute\ scale\ is\ agent-\/defined.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ The\ GUI\ only\ relies\ on\ *relative\ ordering*\ and\ legality.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00036}\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent_ac2b74bd9092a56a8e08d5c0726c9f3c3}{00036}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent_ac2b74bd9092a56a8e08d5c0726c9f3c3}{score\_all\_moves}}(self,\ board:\ Board)\ -\/>\ dict[int,\ int]:}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Score\ all\ legal\ moves\ for\ the\ given\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00038}00038\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Current\ Connect-\/4\ board\ position.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00042}00042\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ dict[int,\ int]:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mapping\ \`{}\`{}\{column:\ score\}\`{}\`{}\ for\ all\ *legal*\ columns\ (0..6).}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Columns\ that\ are\ full\ or\ illegal\ **must\ not**\ appear\ in\ the\ mapping.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00047}00047\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Notes:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ -\/\ Higher\ scores\ indicate\ better\ moves.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ -\/\ The\ returned\ dictionary\ may\ contain\ between\ 0\ and\ 7\ entries.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ ...}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00054}\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent_afa4f39dea58c4f354bf7a2f2785e3fc3}{00054}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent_afa4f39dea58c4f354bf7a2f2785e3fc3}{best\_move}}(}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ self,}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ board:\ Board,}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00057}00057\ \ \ \ \ )\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ the\ best\ legal\ move\ (column\ index)\ for\ the\ side\ to\ move.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00059}00059\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Current\ Connect-\/4\ board\ position.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00063}00063\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Selected\ column\ index\ in\ the\ range\ \`{}\`{}0..6\`{}\`{}.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ ...}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00070}\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent_aae72966d4929d407416107d22e988dec}{00070}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent_aae72966d4929d407416107d22e988dec}{score\_move}}(self,\ board:\ Board,\ column:\ int,\ first\_guess:\ int\ =\ 0)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Evaluate\ a\ single\ legal\ move\ for\ the\ given\ board\ state.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00072}00072\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00073}00073\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ method\ is\ optional\ and\ not\ required\ by\ the\ GUI,\ but\ can\ be\ useful}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00074}00074\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ for\ agents\ that\ support\ fine-\/grained\ move\ evaluation.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00075}00075\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00076}00076\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00077}00077\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00078}00078\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Current\ Connect-\/4\ board\ position.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00079}00079\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ column\ (int):}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00080}00080\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Column\ index\ (0..6)\ of\ the\ move\ to\ evaluate.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00081}00081\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ first\_guess\ (int):}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00082}00082\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Optional\ initial\ guess\ for\ iterative\ or\ search-\/based\ agents.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Implementations\ may\ safely\ ignore\ this\ parameter.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00084}00084\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Evaluation\ score\ for\ the\ given\ move.}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{agent__interface_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ ...}
+
+\end{DoxyCode}

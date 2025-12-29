@@ -3,7 +3,7 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2c1324d9ffd53a85ed248b3d01fcab35}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9da3ed8ec455e51efe1689fe34befef8}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, dict\mbox{[}str, \mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{Connect4\+Agent}}\mbox{]}\texorpdfstring{$\vert$}{|}Sequence\mbox{[}\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{Connect4\+Agent}}\mbox{]}\texorpdfstring{$\vert$}{|}None agents=None, \texorpdfstring{$\ast$}{*}, bool autoplay=False)
 \item 
 App\+Layout \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae1334fcc19604c05bd712359811a7f8d}{get\+\_\+widget}} (self)
 \item 
@@ -26,7 +26,15 @@ float \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_addd687076c5ff95ffcd82f
 \item 
 bool \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}{is\+\_\+busy}} = False
 \item 
-\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_af348897dbebae8dfa0622419f6a64fbe}{last\+\_\+event\+\_\+time}} = time.\+time()
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a953893b4d831ccc5344f6c13fd8ebad1}{autoplay}} = bool(autoplay)
+\item 
+dict \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a4d90c29ba040d23093054e4fdb6570bd}{agents}} = \{\}
+\item 
+str \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a448cb910855293a95e0e9b85497baa08}{yellow\+\_\+player}} = "{}human"{}
+\item 
+str \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_af0b3973db46276fc344c4b28e124456b}{red\+\_\+player}} = self.\+\_\+agent\+\_\+names\mbox{[}0\mbox{]} if self.\+\_\+agent\+\_\+names else "{}human"{}
+\item 
+str \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a77a70403c426deed06eb968f3cb8a8b6}{eval\+\_\+agent\+\_\+choice}} = "{}auto"{}
 \item 
 list \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}{m\+\_\+movelist}} = \mbox{[}$\,$\mbox{]}
 \item 
@@ -34,11 +42,35 @@ list \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342
 \item 
 bool \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}{m\+\_\+gameover}} = False
 \item 
-\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aea8b03c17faca8b6ecc92d17d95dcce9}{bitbully\+\_\+agent}} = bitbully\+\_\+core.\+Bit\+Bully\+Core(Path(db\+\_\+path))
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a83232bad963f43d0d714b7f83b0c56f7}{dd\+\_\+yellow}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3d4e2c4a6ccbfbd8152831162fe89753}{dd\+\_\+red}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_af1a58832c785cc45dafc9b2e97ef3e7a}{cb\+\_\+autoplay}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a4a53f879f186112eeb5182f61ecf088d}{dd\+\_\+eval\+\_\+agent}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a0a28d832baa43e2db2da75eab2267cdd}{player\+\_\+select\+\_\+row}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_affa0aee12dfa6e5f7b2b41843837e454}{m\+\_\+time\+\_\+label}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae1b178f4e5ed20a64ae997c65075ec3e}{m\+\_\+time\+\_\+row}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a8d175677e4741e5656edb820c6198eae}{ta\+\_\+moves}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a913c4f5d6e047782820d28b53526a945}{btn\+\_\+copy\+\_\+pos}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ad4d59283f057ae669642b1312935b0a5}{btn\+\_\+copy\+\_\+moves\+\_\+ag}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a10208223f8724e92e690d6ccbb47eb29}{move\+\_\+list\+\_\+row}}
 \item 
 list \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}{ims}}
 \item 
 dict \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}{m\+\_\+control\+\_\+buttons}} = \{\}
+\item 
+list \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a252f80f807d5600507ea0c968fdede75}{m\+\_\+eval\+\_\+labels}}
+\item 
+\mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a944e115887b98814802456597a1c78c2}{m\+\_\+eval\+\_\+row}}
 \item 
 \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}{output}} = Output()
 \item 
@@ -56,11 +88,43 @@ widgets \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a4903697246389f0141ab
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a8b812134478ceb20ccd4d8e8136990ba}{\+\_\+create\+\_\+player\+\_\+selectors}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a769d36abf7a7ef51b5d7cd7adc22322f}{\+\_\+create\+\_\+timing\+\_\+row}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9115591967f83a0187615e7850b67059}{\+\_\+create\+\_\+move\+\_\+list\+\_\+ui}} (self)
+\item 
+str \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa07e8a4e8e5f42dc9a5b36c01b1fce1e}{\+\_\+position\+\_\+string}} (self)
+\item 
+str \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a368e0ca3bf680eb49b13ec71a05a3893}{\+\_\+moves\+\_\+ag\+\_\+string}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ab334f89d9e63d079469288d0e45be42c}{\+\_\+update\+\_\+move\+\_\+list\+\_\+ui}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aad05e2e3a7f7a8d220db014f852acc92}{\+\_\+copy\+\_\+to\+\_\+clipboard}} (self, str text)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2319b4057f32f99fc494af03ac64ef3e}{\+\_\+copy\+\_\+position\+\_\+string}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a2e98a89dcf771e32dd38e65bdd87aaad}{\+\_\+copy\+\_\+moves\+\_\+ag}} (self)
+\item 
+int \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a016420d82729880e855e1851b06a354d}{\+\_\+current\+\_\+player}} (self)
+\item 
+str \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ab2f3d8f9e8d02b1844218db5187cb8dc}{\+\_\+controller\+\_\+for\+\_\+player}} (self, int player)
+\item 
+\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{Connect4\+Agent}}\texorpdfstring{$\vert$}{|}None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a9f46e5a8b98895725d82a7d011cf5c42}{\+\_\+agent\+\_\+for\+\_\+player}} (self, int player)
+\item 
+\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{Connect4\+Agent}}\texorpdfstring{$\vert$}{|}None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5d782a996a35242fd8df74604ce5157f}{\+\_\+agent\+\_\+for\+\_\+evaluation}} (self)
+\item 
 None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aa354fc72f710ec515342c24e362d74c2}{\+\_\+reset}} (self)
 \item 
 npt.\+NDArray\mbox{[}np.\+float64\mbox{]} \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}{\+\_\+get\+\_\+fig\+\_\+size\+\_\+px}} (self)
 \item 
 None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_af0a79f8bd3d42d0c072be6f227faf6e2}{\+\_\+create\+\_\+control\+\_\+buttons}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a47417d16b1f7c349a56f23bd28210ab7}{\+\_\+create\+\_\+eval\+\_\+row}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a4304feb1dbdf70b4fea5f271be439be8}{\+\_\+clear\+\_\+eval\+\_\+row}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a0d631e28f1275b46324c0de5be713547}{\+\_\+evaluate\+\_\+board}} (self)
 \item 
 None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ab8355f95b9b352f205abca15d2f25a3d}{\+\_\+computer\+\_\+move}} (self)
 \item 
@@ -68,7 +132,7 @@ None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aae80ec42d3321f14b44f033
 \item 
 None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a8066373c4f57497c4625040894034a3d}{\+\_\+popup}} (self, str text)
 \item 
-bool \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a748b1d99d1ad1154602a1f8daa6523b9}{\+\_\+is\+\_\+legal\+\_\+move}} (self, int col)
+\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a6752abad309547e9e76e0d4f21546b2b}{\+\_\+board\+\_\+from\+\_\+history}} (self)
 \item 
 None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}{\+\_\+insert\+\_\+token}} (self, int col, bool reset\+\_\+redo\+\_\+list=True)
 \item 
@@ -88,7 +152,14 @@ HBox \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a3dde63ddaf5ff642f60c9c4
 \item 
 None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_a30c2c5e0a13e6f49762f3abeda6b056b}{\+\_\+on\+\_\+field\+\_\+click}} (self, mpl\+\_\+backend\+\_\+bases.\+Event event)
 \item 
-None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_aecc4c650c3ac6a52dcc3fe0b1d04b3f8}{\+\_\+check\+\_\+winner}} (self, bitbully\+\_\+core.\+Board\+Core board)
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_ae492ec0d0f83bed0f261856555133cce}{\+\_\+maybe\+\_\+autoplay}} (self)
+\item 
+None \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_addeb5675aa795bbbf75d18290b4f9e47}{\+\_\+check\+\_\+winner}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list\mbox{[}str\mbox{]} \mbox{\hyperlink{classbitbully_1_1gui__c4_1_1GuiC4_af6c3f55ed20a2a78540f70c953c33476}{\+\_\+agent\+\_\+names}} = list(self.\+agents.\+keys())
 \end{DoxyCompactItemize}
 
 
@@ -126,39 +197,81 @@ Examples:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00018}{18}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00021}{21}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 
 
 \label{doc-constructors}
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a2c1324d9ffd53a85ed248b3d01fcab35}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_\_init\_\_@{\_\_init\_\_}}
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a9da3ed8ec455e51efe1689fe34befef8}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_\_init\_\_@{\_\_init\_\_}}
 \index{\_\_init\_\_@{\_\_init\_\_}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
 \doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a2c1324d9ffd53a85ed248b3d01fcab35} 
- None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a9da3ed8ec455e51efe1689fe34befef8} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{dict\mbox{[}str, \mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{Connect4\+Agent}}\mbox{]} \texorpdfstring{$\vert$}{|} Sequence\mbox{[}\mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{Connect4\+Agent}}\mbox{]} \texorpdfstring{$\vert$}{|} None }]{agents}{ = {\ttfamily None}, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{bool }]{autoplay}{ = {\ttfamily False}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Init the GuiC4 widget.\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00052}{52}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00055}{55}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 
 
 \label{doc-func-members}
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_doc-func-members}
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_aecc4c650c3ac6a52dcc3fe0b1d04b3f8}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_check\_winner@{\_check\_winner}}
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a5d782a996a35242fd8df74604ce5157f}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_agent\_for\_evaluation@{\_agent\_for\_evaluation}}
+\index{\_agent\_for\_evaluation@{\_agent\_for\_evaluation}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_agent\_for\_evaluation()}{\_agent\_for\_evaluation()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a5d782a996a35242fd8df74604ce5157f} 
+ \mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{Connect4\+Agent}} \texorpdfstring{$\vert$}{|} None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+agent\+\_\+for\+\_\+evaluation (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Return the agent used for the Evaluate button based on dropdown selection.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00380}{380}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a9f46e5a8b98895725d82a7d011cf5c42}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_agent\_for\_player@{\_agent\_for\_player}}
+\index{\_agent\_for\_player@{\_agent\_for\_player}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_agent\_for\_player()}{\_agent\_for\_player()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a9f46e5a8b98895725d82a7d011cf5c42} 
+ \mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent}{Connect4\+Agent}} \texorpdfstring{$\vert$}{|} None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+agent\+\_\+for\+\_\+player (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00374}{374}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a6752abad309547e9e76e0d4f21546b2b}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_board\_from\_history@{\_board\_from\_history}}
+\index{\_board\_from\_history@{\_board\_from\_history}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_board\_from\_history()}{\_board\_from\_history()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a6752abad309547e9e76e0d4f21546b2b} 
+ \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+board\+\_\+from\+\_\+history (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00611}{611}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_addeb5675aa795bbbf75d18290b4f9e47}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_check\_winner@{\_check\_winner}}
 \index{\_check\_winner@{\_check\_winner}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
 \doxysubsubsection{\texorpdfstring{\_check\_winner()}{\_check\_winner()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_aecc4c650c3ac6a52dcc3fe0b1d04b3f8} 
- None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+check\+\_\+winner (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{bitbully\+\_\+core.\+Board\+Core}]{board}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_addeb5675aa795bbbf75d18290b4f9e47} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+check\+\_\+winner (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 \begin{DoxyVerb}Check for Win or draw.\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00480}{480}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00939}{939}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a4304feb1dbdf70b4fea5f271be439be8}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_clear\_eval\_row@{\_clear\_eval\_row}}
+\index{\_clear\_eval\_row@{\_clear\_eval\_row}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_clear\_eval\_row()}{\_clear\_eval\_row()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a4304feb1dbdf70b4fea5f271be439be8} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+clear\+\_\+eval\+\_\+row (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Clear all evaluation score labels.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00478}{478}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ab8355f95b9b352f205abca15d2f25a3d}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_computer\_move@{\_computer\_move}}
 \index{\_computer\_move@{\_computer\_move}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -168,7 +281,48 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00480}{480}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00180}{180}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00536}{536}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ab2f3d8f9e8d02b1844218db5187cb8dc}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_controller\_for\_player@{\_controller\_for\_player}}
+\index{\_controller\_for\_player@{\_controller\_for\_player}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_controller\_for\_player()}{\_controller\_for\_player()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_ab2f3d8f9e8d02b1844218db5187cb8dc} 
+ str bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+controller\+\_\+for\+\_\+player (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00371}{371}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a2e98a89dcf771e32dd38e65bdd87aaad}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_copy\_moves\_ag@{\_copy\_moves\_ag}}
+\index{\_copy\_moves\_ag@{\_copy\_moves\_ag}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_copy\_moves\_ag()}{\_copy\_moves\_ag()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a2e98a89dcf771e32dd38e65bdd87aaad} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+copy\+\_\+moves\+\_\+ag (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00362}{362}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a2319b4057f32f99fc494af03ac64ef3e}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_copy\_position\_string@{\_copy\_position\_string}}
+\index{\_copy\_position\_string@{\_copy\_position\_string}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_copy\_position\_string()}{\_copy\_position\_string()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a2319b4057f32f99fc494af03ac64ef3e} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+copy\+\_\+position\+\_\+string (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00358}{358}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_aad05e2e3a7f7a8d220db014f852acc92}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_copy\_to\_clipboard@{\_copy\_to\_clipboard}}
+\index{\_copy\_to\_clipboard@{\_copy\_to\_clipboard}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_copy\_to\_clipboard()}{\_copy\_to\_clipboard()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_aad05e2e3a7f7a8d220db014f852acc92} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+copy\+\_\+to\+\_\+clipboard (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Copy text to clipboard in Jupyter (best-effort).\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00336}{336}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_aae80ec42d3321f14b44f033d2a86cd1a}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_create\_board@{\_create\_board}}
 \index{\_create\_board@{\_create\_board}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -178,7 +332,7 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00180}{180}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00189}{189}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00568}{568}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ae5127e49ba6a3b0066a296abcb3d0c9b}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_create\_buttons@{\_create\_buttons}}
 \index{\_create\_buttons@{\_create\_buttons}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -188,7 +342,7 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00189}{189}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00375}{375}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00784}{784}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a3dde63ddaf5ff642f60c9c4d8da942c9}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_create\_column\_labels@{\_create\_column\_labels}}
 \index{\_create\_column\_labels@{\_create\_column\_labels}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -203,7 +357,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00390}{390}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00799}{799}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_af0a79f8bd3d42d0c072be6f227faf6e2}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_create\_control\_buttons@{\_create\_control\_buttons}}
 \index{\_create\_control\_buttons@{\_create\_control\_buttons}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -213,7 +367,73 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00390}{390}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00149}{149}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00422}{422}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a47417d16b1f7c349a56f23bd28210ab7}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_create\_eval\_row@{\_create\_eval\_row}}
+\index{\_create\_eval\_row@{\_create\_eval\_row}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_create\_eval\_row()}{\_create\_eval\_row()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a47417d16b1f7c349a56f23bd28210ab7} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+create\+\_\+eval\+\_\+row (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Create a row of 7 labels to display per-column evaluation scores.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00456}{456}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a9115591967f83a0187615e7850b67059}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_create\_move\_list\_ui@{\_create\_move\_list\_ui}}
+\index{\_create\_move\_list\_ui@{\_create\_move\_list\_ui}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_create\_move\_list\_ui()}{\_create\_move\_list\_ui()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a9115591967f83a0187615e7850b67059} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+create\+\_\+move\+\_\+list\+\_\+ui (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Create the move list display and clipboard buttons.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00262}{262}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a8b812134478ceb20ccd4d8e8136990ba}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_create\_player\_selectors@{\_create\_player\_selectors}}
+\index{\_create\_player\_selectors@{\_create\_player\_selectors}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_create\_player\_selectors()}{\_create\_player\_selectors()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a8b812134478ceb20ccd4d8e8136990ba} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+create\+\_\+player\+\_\+selectors (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Create UI controls for player assignment, autoplay, and evaluation agent.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00158}{158}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a769d36abf7a7ef51b5d7cd7adc22322f}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_create\_timing\_row@{\_create\_timing\_row}}
+\index{\_create\_timing\_row@{\_create\_timing\_row}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_create\_timing\_row()}{\_create\_timing\_row()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a769d36abf7a7ef51b5d7cd7adc22322f} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+create\+\_\+timing\+\_\+row (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Create a row that shows the computation time of the last agent move.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00245}{245}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a016420d82729880e855e1851b06a354d}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_current\_player@{\_current\_player}}
+\index{\_current\_player@{\_current\_player}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_current\_player()}{\_current\_player()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a016420d82729880e855e1851b06a354d} 
+ int bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+current\+\_\+player (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Return player to move: 1 (Yellow) starts, then alternates.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00367}{367}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a0d631e28f1275b46324c0de5be713547}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_evaluate\_board@{\_evaluate\_board}}
+\index{\_evaluate\_board@{\_evaluate\_board}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_evaluate\_board()}{\_evaluate\_board()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a0d631e28f1275b46324c0de5be713547} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+evaluate\+\_\+board (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Compute and display per-column evaluation scores for the current position.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00483}{483}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_abaa9eef7994fd1c179c901c43001f4b8}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_get\_fig\_size\_px@{\_get\_fig\_size\_px}}
 \index{\_get\_fig\_size\_px@{\_get\_fig\_size\_px}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -223,7 +443,7 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00149}{149}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00137}{137}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00410}{410}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_adba205cc0228d95ab13b6ebaae7d7b6b}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_get\_img\_idx@{\_get\_img\_idx}}
 \index{\_get\_img\_idx@{\_get\_img\_idx}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -242,7 +462,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00325}{325}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00734}{734}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a5a000fd1b68de07c029f462067ba2e35}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_insert\_token@{\_insert\_token}}
 \index{\_insert\_token@{\_insert\_token}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -252,17 +472,29 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00325}{325}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00235}{235}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00614}{614}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
-\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a748b1d99d1ad1154602a1f8daa6523b9}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_is\_legal\_move@{\_is\_legal\_move}}
-\index{\_is\_legal\_move@{\_is\_legal\_move}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
-\doxysubsubsection{\texorpdfstring{\_is\_legal\_move()}{\_is\_legal\_move()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a748b1d99d1ad1154602a1f8daa6523b9} 
- bool bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+is\+\_\+legal\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ae492ec0d0f83bed0f261856555133cce}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_maybe\_autoplay@{\_maybe\_autoplay}}
+\index{\_maybe\_autoplay@{\_maybe\_autoplay}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_maybe\_autoplay()}{\_maybe\_autoplay()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_ae492ec0d0f83bed0f261856555133cce} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+maybe\+\_\+autoplay (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+\begin{DoxyVerb}If it's an agent-controlled turn, immediately play its move.\end{DoxyVerb}
+ 
 
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00931}{931}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00232}{232}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a368e0ca3bf680eb49b13ec71a05a3893}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_moves\_ag\_string@{\_moves\_ag\_string}}
+\index{\_moves\_ag\_string@{\_moves\_ag\_string}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_moves\_ag\_string()}{\_moves\_ag\_string()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a368e0ca3bf680eb49b13ec71a05a3893} 
+ str bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+moves\+\_\+ag\+\_\+string (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Return board as ascii string..\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00314}{314}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a30c2c5e0a13e6f49762f3abeda6b056b}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_on\_field\_click@{\_on\_field\_click}}
 \index{\_on\_field\_click@{\_on\_field\_click}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -277,7 +509,7 @@ Args:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00415}{415}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00824}{824}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a7b29fac2ef412489b0eaccb21334e5c4}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_paint\_token@{\_paint\_token}}
 \index{\_paint\_token@{\_paint\_token}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -287,7 +519,7 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00415}{415}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00339}{339}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00748}{748}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a8066373c4f57497c4625040894034a3d}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_popup@{\_popup}}
 \index{\_popup@{\_popup}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -297,7 +529,22 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00339}{339}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00228}{228}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00607}{607}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_aa07e8a4e8e5f42dc9a5b36c01b1fce1e}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_position\_string@{\_position\_string}}
+\index{\_position\_string@{\_position\_string}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_position\_string()}{\_position\_string()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_aa07e8a4e8e5f42dc9a5b36c01b1fce1e} 
+ str bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+position\+\_\+string (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Return the position encoding compatible with Board(...).
+
+BitBully's Board examples use strings like "341" (columns as digits),
+so we follow the same convention.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00306}{306}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a831570cdbbddbb6275c29ff4282992a3}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_redo\_move@{\_redo\_move}}
 \index{\_redo\_move@{\_redo\_move}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -307,7 +554,7 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00228}{228}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00273}{273}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00656}{656}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_aa354fc72f710ec515342c24e362d74c2}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_reset@{\_reset}}
 \index{\_reset@{\_reset}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -317,7 +564,7 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00273}{273}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00124}{124}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00394}{394}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a184462427e34e80295413c7204c9dc9e}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_undo\_move@{\_undo\_move}}
 \index{\_undo\_move@{\_undo\_move}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -327,7 +574,7 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00124}{124}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00279}{279}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00662}{662}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a3ef7fb0f9d1272cd4c95970fc48aa83d}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_update\_insert\_buttons@{\_update\_insert\_buttons}}
 \index{\_update\_insert\_buttons@{\_update\_insert\_buttons}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -337,7 +584,18 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00279}{279}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00316}{316}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00704}{704}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ab334f89d9e63d079469288d0e45be42c}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_update\_move\_list\_ui@{\_update\_move\_list\_ui}}
+\index{\_update\_move\_list\_ui@{\_update\_move\_list\_ui}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_update\_move\_list\_ui()}{\_update\_move\_list\_ui()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_ab334f89d9e63d079469288d0e45be42c} 
+ None bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+update\+\_\+move\+\_\+list\+\_\+ui (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Refresh the move list textarea.\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00320}{320}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a276722dae16ec33e096afb8f28d9721e}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!destroy@{destroy}}
 \index{destroy@{destroy}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -348,7 +606,7 @@ Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00316}{316}} of file \mb
 \begin{DoxyVerb}Destroy and release the acquired resources.\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00490}{490}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00949}{949}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ae1334fcc19604c05bd712359811a7f8d}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!get\_widget@{get\_widget}}
 \index{get\_widget@{get\_widget}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -372,22 +630,170 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00427}{427}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00843}{843}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 
 
 \label{doc-variable-members}
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_doc-variable-members}
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_aea8b03c17faca8b6ecc92d17d95dcce9}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!bitbully\_agent@{bitbully\_agent}}
-\index{bitbully\_agent@{bitbully\_agent}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
-\doxysubsubsection{\texorpdfstring{bitbully\_agent}{bitbully\_agent}}
-{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_aea8b03c17faca8b6ecc92d17d95dcce9} 
-bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+bitbully\+\_\+agent = bitbully\+\_\+core.\+Bit\+Bully\+Core(Path(db\+\_\+path))}
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_af6c3f55ed20a2a78540f70c953c33476}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!\_agent\_names@{\_agent\_names}}
+\index{\_agent\_names@{\_agent\_names}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{\_agent\_names}{\_agent\_names}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_af6c3f55ed20a2a78540f70c953c33476} 
+list\mbox{[}str\mbox{]} bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+\_\+agent\+\_\+names = list(self.\+agents.\+keys())\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00122}{122}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00114}{114}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a4d90c29ba040d23093054e4fdb6570bd}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!agents@{agents}}
+\index{agents@{agents}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{agents}{agents}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a4d90c29ba040d23093054e4fdb6570bd} 
+dict bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+agents = \{\}}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00108}{108}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a953893b4d831ccc5344f6c13fd8ebad1}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!autoplay@{autoplay}}
+\index{autoplay@{autoplay}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{autoplay}{autoplay}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a953893b4d831ccc5344f6c13fd8ebad1} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+autoplay = bool(autoplay)}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00104}{104}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ad4d59283f057ae669642b1312935b0a5}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!btn\_copy\_moves\_ag@{btn\_copy\_moves\_ag}}
+\index{btn\_copy\_moves\_ag@{btn\_copy\_moves\_ag}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{btn\_copy\_moves\_ag}{btn\_copy\_moves\_ag}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_ad4d59283f057ae669642b1312935b0a5} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+btn\+\_\+copy\+\_\+moves\+\_\+ag}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ Button(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}📋\ Copy\ ASCII\ board"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ tooltip=\textcolor{stringliteral}{"{}Copy\ the\ ascii\ representation\ of\ the\ board"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=\textcolor{stringliteral}{"{}100\%"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00276}{276}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a913c4f5d6e047782820d28b53526a945}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!btn\_copy\_pos@{btn\_copy\_pos}}
+\index{btn\_copy\_pos@{btn\_copy\_pos}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{btn\_copy\_pos}{btn\_copy\_pos}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a913c4f5d6e047782820d28b53526a945} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+btn\+\_\+copy\+\_\+pos}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ Button(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}📋\ Copy\ move\ sequence"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ tooltip=\textcolor{stringliteral}{"{}Copy\ the\ position\ string\ used\ by\ Board(...),\ e.g.\ '3431'"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=\textcolor{stringliteral}{"{}100\%"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00271}{271}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_af1a58832c785cc45dafc9b2e97ef3e7a}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!cb\_autoplay@{cb\_autoplay}}
+\index{cb\_autoplay@{cb\_autoplay}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{cb\_autoplay}{cb\_autoplay}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_af1a58832c785cc45dafc9b2e97ef3e7a} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+cb\+\_\+autoplay}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ widgets.Checkbox(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ value=bool(self.autoplay),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}Autoplay"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ indent=\textcolor{keyword}{False},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=\textcolor{stringliteral}{"{}auto"{}}),\ \ \textcolor{comment}{\#\ width="{}200px"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00179}{179}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a4a53f879f186112eeb5182f61ecf088d}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!dd\_eval\_agent@{dd\_eval\_agent}}
+\index{dd\_eval\_agent@{dd\_eval\_agent}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{dd\_eval\_agent}{dd\_eval\_agent}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a4a53f879f186112eeb5182f61ecf088d} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+dd\+\_\+eval\+\_\+agent}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ widgets.Dropdown(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options=eval\_options,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ value=self.eval\_agent\_choice\ \textcolor{keywordflow}{if}\ self.eval\_agent\_choice\ \textcolor{keywordflow}{in}\ eval\_options\ \textcolor{keywordflow}{else}\ \textcolor{stringliteral}{"{}auto"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}Eval:"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=\textcolor{stringliteral}{"{}200px"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00187}{187}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a3d4e2c4a6ccbfbd8152831162fe89753}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!dd\_red@{dd\_red}}
+\index{dd\_red@{dd\_red}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{dd\_red}{dd\_red}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a3d4e2c4a6ccbfbd8152831162fe89753} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+dd\+\_\+red}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ widgets.Dropdown(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options=player\_options,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ value=self.red\_player\ \textcolor{keywordflow}{if}\ self.red\_player\ \textcolor{keywordflow}{in}\ player\_options\ \textcolor{keywordflow}{else}\ \textcolor{stringliteral}{"{}human"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}Red:"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=\textcolor{stringliteral}{"{}200px"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00171}{171}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a83232bad963f43d0d714b7f83b0c56f7}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!dd\_yellow@{dd\_yellow}}
+\index{dd\_yellow@{dd\_yellow}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{dd\_yellow}{dd\_yellow}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a83232bad963f43d0d714b7f83b0c56f7} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+dd\+\_\+yellow}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ widgets.Dropdown(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options=player\_options,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ value=self.yellow\_player\ \textcolor{keywordflow}{if}\ self.yellow\_player\ \textcolor{keywordflow}{in}\ player\_options\ \textcolor{keywordflow}{else}\ \textcolor{stringliteral}{"{}human"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}Yellow:"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=\textcolor{stringliteral}{"{}200px"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00165}{165}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a77a70403c426deed06eb968f3cb8a8b6}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!eval\_agent\_choice@{eval\_agent\_choice}}
+\index{eval\_agent\_choice@{eval\_agent\_choice}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{eval\_agent\_choice}{eval\_agent\_choice}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a77a70403c426deed06eb968f3cb8a8b6} 
+str bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+eval\+\_\+agent\+\_\+choice = "{}auto"{}}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00123}{123}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_acd869807c10162e0476289caeb3ea16e}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!ims@{ims}}
 \index{ims@{ims}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -397,7 +803,7 @@ list bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+ims}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00130}{130}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00400}{400}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_adb1b32213f759d595d0b471e4a28f2be}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!is\_busy@{is\_busy}}
 \index{is\_busy@{is\_busy}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -407,17 +813,7 @@ bool bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+is\+\_\+busy = False}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00092}{92}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
-
-\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_af348897dbebae8dfa0622419f6a64fbe}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!last\_event\_time@{last\_event\_time}}
-\index{last\_event\_time@{last\_event\_time}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
-\doxysubsubsection{\texorpdfstring{last\_event\_time}{last\_event\_time}}
-{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_af348897dbebae8dfa0622419f6a64fbe} 
-bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+last\+\_\+event\+\_\+time = time.\+time()}
-
-
-
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00094}{94}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00101}{101}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a9c8311e1af38e99e0ce68e0934d8dc57}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_axs@{m\_axs}}
 \index{m\_axs@{m\_axs}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -427,7 +823,7 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+axs = axs}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00222}{222}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00601}{601}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_addd687076c5ff95ffcd82f74f50423eb}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_board\_size@{m\_board\_size}}
 \index{m\_board\_size@{m\_board\_size}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -437,7 +833,7 @@ float bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+board\+\_\+size = 3.\+5}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00090}{90}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00099}{99}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_aa0cab8ed9fc3fc3828743e8140a4d2b9}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_control\_buttons@{m\_control\_buttons}}
 \index{m\_control\_buttons@{m\_control\_buttons}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -447,7 +843,51 @@ dict bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+control\+\_\+buttons = \{\}}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00150}{150}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00423}{423}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a252f80f807d5600507ea0c968fdede75}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_eval\_labels@{m\_eval\_labels}}
+\index{m\_eval\_labels@{m\_eval\_labels}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{m\_eval\_labels}{m\_eval\_labels}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a252f80f807d5600507ea0c968fdede75} 
+list bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+eval\+\_\+labels}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ widgets.Label(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value=\textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(justify\_content=\textcolor{stringliteral}{"{}center"{}},\ align\_items=\textcolor{stringliteral}{"{}center"{}},\ width=width),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ \_\ \textcolor{keywordflow}{in}\ range(self.m\_n\_col)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ]}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00461}{461}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a944e115887b98814802456597a1c78c2}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_eval\_row@{m\_eval\_row}}
+\index{m\_eval\_row@{m\_eval\_row}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{m\_eval\_row}{m\_eval\_row}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a944e115887b98814802456597a1c78c2} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+eval\+\_\+row}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ HBox(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ self.m\_eval\_labels,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}row\ wrap"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}center"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}center"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00468}{468}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a21e3e8f1ae0f1553400b5f2725bd7cd8}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_fig@{m\_fig}}
 \index{m\_fig@{m\_fig}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -457,7 +897,7 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+fig = fig}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00221}{221}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00600}{600}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_acb21a3ea47f98bb5e7342578a687283c}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_gameover@{m\_gameover}}
 \index{m\_gameover@{m\_gameover}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -467,7 +907,7 @@ bool bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+gameover = False}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00115}{115}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00153}{153}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a263bd699bb06be6129a9d6506d116656}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_height@{m\_height}}
 \index{m\_height@{m\_height}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -477,7 +917,7 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+height = np.\+zeros(7, dtype=np.\+int3
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00088}{88}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00097}{97}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ae53e314f0aa64014e77d869bbc0b3e41}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_insert\_buttons@{m\_insert\_buttons}}
 \index{m\_insert\_buttons@{m\_insert\_buttons}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -487,7 +927,7 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+insert\+\_\+buttons}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00240}{240}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00619}{619}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a2c68b59f16ec0d35d94902764640f5a3}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_logger@{m\_logger}}
 \index{m\_logger@{m\_logger}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -497,7 +937,7 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+logger = logging.\+get\+Logger(self.\+
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00055}{55}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00063}{63}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a88f0f7262e50c554e86a9ffc73720edb}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_movelist@{m\_movelist}}
 \index{m\_movelist@{m\_movelist}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -507,7 +947,7 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+movelist = \mbox{[}$\,$\mbox{]}}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00109}{109}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00147}{147}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a96669ed1ce877546b09f5047b212be82}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_n\_col@{m\_n\_col}}
 \index{m\_n\_col@{m\_n\_col}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -517,7 +957,7 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+n\+\_\+col = 6, 7}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00085}{85}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00094}{94}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a9bee781dd6bb4aa52b1a74d57e722bc4}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_n\_row@{m\_n\_row}}
 \index{m\_n\_row@{m\_n\_row}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -527,7 +967,7 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+n\+\_\+row}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00085}{85}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00094}{94}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_aca5a964405e989abb65463b03a472fce}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_png@{m\_png}}
 \index{m\_png@{m\_png}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -546,7 +986,7 @@ dict bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+png}
 \end{DoxyCode}
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00079}{79}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00088}{88}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ae2449ffc90e2da958e60342acd5f3544}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_redolist@{m\_redolist}}
 \index{m\_redolist@{m\_redolist}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -556,7 +996,72 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+redolist = \mbox{[}$\,$\mbox{]}}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00112}{112}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00150}{150}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_affa0aee12dfa6e5f7b2b41843837e454}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_time\_label@{m\_time\_label}}
+\index{m\_time\_label@{m\_time\_label}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{m\_time\_label}{m\_time\_label}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_affa0aee12dfa6e5f7b2b41843837e454} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+time\+\_\+label}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ widgets.Label(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ value=\textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=\textcolor{stringliteral}{"{}100\%"{}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00247}{247}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_ae1b178f4e5ed20a64ae997c65075ec3e}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!m\_time\_row@{m\_time\_row}}
+\index{m\_time\_row@{m\_time\_row}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{m\_time\_row}{m\_time\_row}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_ae1b178f4e5ed20a64ae997c65075ec3e} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+m\+\_\+time\+\_\+row}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ HBox(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ [self.m\_time\_label],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}row"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}flex-\/start"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}center"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ width=\textcolor{stringliteral}{"{}100\%"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00251}{251}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a10208223f8724e92e690d6ccbb47eb29}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!move\_list\_row@{move\_list\_row}}
+\index{move\_list\_row@{move\_list\_row}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{move\_list\_row}{move\_list\_row}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a10208223f8724e92e690d6ccbb47eb29} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+move\+\_\+list\+\_\+row}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ VBox(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ [self.btn\_copy\_pos,\ self.btn\_copy\_moves\_ag,\ self.ta\_moves],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ width=\textcolor{stringliteral}{"{}200px"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ height=\textcolor{stringliteral}{"{}100\%"{}},\ \ \textcolor{comment}{\#\ NEW:\ take\ all\ available\ height\ in\ sidebar}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}stretch"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex=\textcolor{stringliteral}{"{}1\ 1\ auto"{}},\ \ \textcolor{comment}{\#\ NEW:\ allow\ growing}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00290}{290}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a4903697246389f0141abd60a16aa6e6d}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!notify\_output@{notify\_output}}
 \index{notify\_output@{notify\_output}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -566,7 +1071,7 @@ widgets bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+notify\+\_\+output = widgets.\+Output
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00224}{224}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00603}{603}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 \Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a42896183c3c87b7718a79b1d4db4d166}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!output@{output}}
 \index{output@{output}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
@@ -576,7 +1081,70 @@ bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+output = Output()}
 
 
 
-Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00190}{190}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00569}{569}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a0a28d832baa43e2db2da75eab2267cdd}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!player\_select\_row@{player\_select\_row}}
+\index{player\_select\_row@{player\_select\_row}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{player\_select\_row}{player\_select\_row}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a0a28d832baa43e2db2da75eab2267cdd} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+player\+\_\+select\+\_\+row}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ VBox(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ [row1,\ row2],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ display=\textcolor{stringliteral}{"{}flex"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flex\_flow=\textcolor{stringliteral}{"{}column"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ justify\_content=\textcolor{stringliteral}{"{}flex-\/end"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ align\_items=\textcolor{stringliteral}{"{}flex-\/end"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00235}{235}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_af0b3973db46276fc344c4b28e124456b}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!red\_player@{red\_player}}
+\index{red\_player@{red\_player}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{red\_player}{red\_player}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_af0b3973db46276fc344c4b28e124456b} 
+str bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+red\+\_\+player = self.\+\_\+agent\+\_\+names\mbox{[}0\mbox{]} if self.\+\_\+agent\+\_\+names else "{}human"{}}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00119}{119}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a8d175677e4741e5656edb820c6198eae}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!ta\_moves@{ta\_moves}}
+\index{ta\_moves@{ta\_moves}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{ta\_moves}{ta\_moves}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a8d175677e4741e5656edb820c6198eae} 
+bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+ta\+\_\+moves}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ widgets.Textarea(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ value=\textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ disabled=\textcolor{keyword}{True},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ layout=Layout(width=\textcolor{stringliteral}{"{}100\%"{}},\ height=\textcolor{stringliteral}{"{}100\%"{}}),\ \ \textcolor{comment}{\#\ was\ "{}110px"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00264}{264}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
+
+\Hypertarget{classbitbully_1_1gui__c4_1_1GuiC4_a448cb910855293a95e0e9b85497baa08}\index{bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}!yellow\_player@{yellow\_player}}
+\index{yellow\_player@{yellow\_player}!bitbully.gui\_c4.GuiC4@{bitbully.gui\_c4.GuiC4}}
+\doxysubsubsection{\texorpdfstring{yellow\_player}{yellow\_player}}
+{\footnotesize\ttfamily \label{classbitbully_1_1gui__c4_1_1GuiC4_a448cb910855293a95e0e9b85497baa08} 
+str bitbully.\+gui\+\_\+c4.\+Gui\+C4.\+yellow\+\_\+player = "{}human"{}}
+
+
+
+Definition at line \mbox{\hyperlink{gui__c4_8py_source_l00118}{118}} of file \mbox{\hyperlink{gui__c4_8py_source}{gui\+\_\+c4.\+py}}.
 
 
 

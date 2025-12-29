@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['solver_0',['Solver',['../d3/dcd/classGameSolver_1_1Connect4_1_1Solver.html',1,'GameSolver::Connect4']]]
+  ['position_0',['Position',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html',1,'GameSolver::Connect4']]]
 ];

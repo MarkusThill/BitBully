@@ -3,7 +3,7 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-None \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a2fb03edec61e80ce6e7dd3a9ea8c2952}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Opening\+Book\+Name\texorpdfstring{$\vert$}{|}None opening\+\_\+book="{}default"{})
+None \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a3d7732ccc3e2f14c4678ef2a9ee14897}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Opening\+Book\+Name\texorpdfstring{$\vert$}{|}None opening\+\_\+book="{}default"{}, \texorpdfstring{$\ast$}{*}, Tie\+Break\+Strategy\texorpdfstring{$\vert$}{|}None tie\+\_\+break=None, random.\+Random\texorpdfstring{$\vert$}{|}None rng=None)
 \item 
 str \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_adab7e8da4f9dcf12f10e2f1a13877d6e}{\+\_\+\+\_\+repr\+\_\+\+\_\+}} (self)
 \item 
@@ -19,7 +19,7 @@ int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_aec733ffd737381bf89b49c
 \item 
 dict\mbox{[}int, int\mbox{]} \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a4edb66c8feb77079f74bb89664a28248}{score\+\_\+all\+\_\+moves}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
 \item 
-int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_aa3048d69b1b0f60384ebfa96fcffc917}{best\+\_\+move}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, \texorpdfstring{$\ast$}{*}, Tie\+Break\+Strategy tie\+\_\+break="{}center"{}, random.\+Random\texorpdfstring{$\vert$}{|}None rng=None)
+int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a02ae861fc33992b730e289d9e8cacf4e}{best\+\_\+move}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, \texorpdfstring{$\ast$}{*}, Tie\+Break\+Strategy\texorpdfstring{$\vert$}{|}None tie\+\_\+break=None, random.\+Random\texorpdfstring{$\vert$}{|}None rng=None)
 \item 
 int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}{negamax}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int alpha=-\/1000, int beta=1000, int depth=0)
 \item 
@@ -37,6 +37,10 @@ tuple\mbox{[}Opening\+Book\+Name,...\mbox{]} \mbox{\hyperlink{classbitbully_1_1s
 \begin{DoxyCompactItemize}
 \item 
 Opening\+Book\+Name\texorpdfstring{$\vert$}{|}None \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\+\_\+book\+\_\+type}} = opening\+\_\+book
+\item 
+str \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_af967f4fc83064a6300a276295957aee7}{tie\+\_\+break}} = tie\+\_\+break if tie\+\_\+break is not None else "{}center"{}
+\item 
+\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a9c95680271124f5bb1e3f3d92413897e}{rng}} = rng if rng is not None else random.\+Random()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -103,11 +107,11 @@ Definition at line \mbox{\hyperlink{solver_8py_source_l00042}{42}} of file \mbox
 \label{doc-constructors}
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classbitbully_1_1solver_1_1BitBully_a2fb03edec61e80ce6e7dd3a9ea8c2952}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!\_\_init\_\_@{\_\_init\_\_}}
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a3d7732ccc3e2f14c4678ef2a9ee14897}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!\_\_init\_\_@{\_\_init\_\_}}
 \index{\_\_init\_\_@{\_\_init\_\_}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
 \doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a2fb03edec61e80ce6e7dd3a9ea8c2952} 
- None bitbully.\+solver.\+Bit\+Bully.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Opening\+Book\+Name \texorpdfstring{$\vert$}{|} None }]{opening\+\_\+book}{ = {\ttfamily "{}default"{}}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a3d7732ccc3e2f14c4678ef2a9ee14897} 
+ None bitbully.\+solver.\+Bit\+Bully.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Opening\+Book\+Name \texorpdfstring{$\vert$}{|} None }]{opening\+\_\+book}{ = {\ttfamily "{}default"{}}, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{Tie\+Break\+Strategy \texorpdfstring{$\vert$}{|} None }]{tie\+\_\+break}{ = {\ttfamily None}, }\item[{random.\+Random \texorpdfstring{$\vert$}{|} None }]{rng}{ = {\ttfamily None}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Initialize the BitBully agent.
 
@@ -120,6 +124,11 @@ Args:
         - ``"12-ply"``: 12-ply book with win/loss values.
         - ``"12-ply-dist"``: 12-ply book with win/loss *and distance* values.
         - ``None``: Disable opening-book usage entirely.
+    tie_break (TieBreakStrategy | None):
+        Default strategy for breaking ties between equally scoring moves.
+        If ``None``, defaults to ``"center"``.
+    rng (random.Random | None):
+        Optional RNG for reproducible "random" tie-breaking.
 
 TODO: Example for initialization with different books.
 \end{DoxyVerb}
@@ -141,7 +150,7 @@ Definition at line \mbox{\hyperlink{solver_8py_source_l00094}{94}} of file \mbox
 \begin{DoxyVerb}Return a concise string representation of the BitBully agent.\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00121}{121}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00134}{134}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_ae2e3f241a045aa7ead284c101845b032}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!available\_opening\_books@{available\_opening\_books}}
 \index{available\_opening\_books@{available\_opening\_books}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -165,13 +174,13 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00504}{504}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00523}{523}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
-\Hypertarget{classbitbully_1_1solver_1_1BitBully_aa3048d69b1b0f60384ebfa96fcffc917}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!best\_move@{best\_move}}
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a02ae861fc33992b730e289d9e8cacf4e}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!best\_move@{best\_move}}
 \index{best\_move@{best\_move}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
 \doxysubsubsection{\texorpdfstring{best\_move()}{best\_move()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_aa3048d69b1b0f60384ebfa96fcffc917} 
- int bitbully.\+solver.\+Bit\+Bully.\+best\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{Tie\+Break\+Strategy }]{tie\+\_\+break}{ = {\ttfamily "{}center"{}}, }\item[{random.\+Random \texorpdfstring{$\vert$}{|} None }]{rng}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a02ae861fc33992b730e289d9e8cacf4e} 
+ int bitbully.\+solver.\+Bit\+Bully.\+best\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{Tie\+Break\+Strategy \texorpdfstring{$\vert$}{|} None }]{tie\+\_\+break}{ = {\ttfamily None}, }\item[{random.\+Random \texorpdfstring{$\vert$}{|} None }]{rng}{ = {\ttfamily None}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Return the best legal move (column index) for the current player.
 
@@ -180,6 +189,7 @@ with the highest score are considered best, and ties are resolved
 according to ``tie_break``.
 
 Tie-breaking strategies:
+    - ``None`` (default): Use the agent's default tie-breaking strategy (`self.tie_break`).
     - ``"center"`` (default):
         Prefer the move closest to the center column (3). If still tied,
         choose the smaller column index.
@@ -191,11 +201,11 @@ Tie-breaking strategies:
 
 Args:
     board (Board): The current board state.
-    tie_break (TieBreakStrategy):
+    tie_break (TieBreakStrategy | None):
         Strategy used to resolve ties between equally scoring moves.
     rng (random.Random | None):
         Random number generator used when ``tie_break="random"``.
-        If ``None``, the global RNG is used.
+        If ``None``, the agent's (`self.rng`) RNG is used.
 
 Returns:
     int: The selected column index (0-6).
@@ -242,7 +252,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00250}{250}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00263}{263}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a8d480388ce2e289229862cffc07e2499}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!get\_node\_counter@{get\_node\_counter}}
 \index{get\_node\_counter@{get\_node\_counter}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -271,7 +281,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00149}{149}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00162}{162}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a1bba87f872323b9ebf53476f68ff9f50}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!is\_book\_loaded@{is\_book\_loaded}}
 \index{is\_book\_loaded@{is\_book\_loaded}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -298,7 +308,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00125}{125}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00138}{138}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a83419e0054f2ad2c6d83b6edfaa0c7b6}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!load\_book@{load\_book}}
 \index{load\_book@{load\_book}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -350,7 +360,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00422}{422}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00441}{441}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!mtdf@{mtdf}}
 \index{mtdf@{mtdf}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -379,7 +389,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00400}{400}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00419}{419}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!negamax@{negamax}}
 \index{negamax@{negamax}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -410,7 +420,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00348}{348}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00367}{367}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_af02c83d244d2d01bd881a7613360eebb}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!null\_window@{null\_window}}
 \index{null\_window@{null\_window}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -438,7 +448,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00379}{379}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00398}{398}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!reset\_book@{reset\_book}}
 \index{reset\_book@{reset\_book}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -463,7 +473,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00484}{484}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00503}{503}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a9c6822bc9d8bfa7c1f3617911ba9b3e5}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!reset\_node\_counter@{reset\_node\_counter}}
 \index{reset\_node\_counter@{reset\_node\_counter}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -477,7 +487,7 @@ See Also: [`get_node_counter`][src.bitbully.solver.BitBully.get_node_counter] fo
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00171}{171}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00184}{184}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a4df1552079a461af7381b52674232ce0}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!reset\_transposition\_table@{reset\_transposition\_table}}
 \index{reset\_transposition\_table@{reset\_transposition\_table}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -488,7 +498,7 @@ Definition at line \mbox{\hyperlink{solver_8py_source_l00171}{171}} of file \mbo
 \begin{DoxyVerb}Clear the internal transposition table.\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00145}{145}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00158}{158}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a4edb66c8feb77079f74bb89664a28248}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!score\_all\_moves@{score\_all\_moves}}
 \index{score\_all\_moves@{score\_all\_moves}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -530,7 +540,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00211}{211}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00224}{224}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_aec733ffd737381bf89b49c88b8e6933a}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!score\_move@{score\_move}}
 \index{score\_move@{score\_move}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -567,7 +577,7 @@ Notes:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00178}{178}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00191}{191}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 
 
@@ -582,7 +592,7 @@ bitbully.\+solver.\+Bit\+Bully.\+\_\+core = bitbully\+\_\+core.\+Bit\+Bully\+Cor
 
 
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00113}{113}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00126}{126}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!opening\_book\_type@{opening\_book\_type}}
 \index{opening\_book\_type@{opening\_book\_type}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -592,7 +602,27 @@ Opening\+Book\+Name \texorpdfstring{$\vert$}{|} None bitbully.\+solver.\+Bit\+Bu
 
 
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00110}{110}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00121}{121}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a9c95680271124f5bb1e3f3d92413897e}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!rng@{rng}}
+\index{rng@{rng}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
+\doxysubsubsection{\texorpdfstring{rng}{rng}}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a9c95680271124f5bb1e3f3d92413897e} 
+bitbully.\+solver.\+Bit\+Bully.\+rng = rng if rng is not None else random.\+Random()}
+
+
+
+Definition at line \mbox{\hyperlink{solver_8py_source_l00123}{123}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_af967f4fc83064a6300a276295957aee7}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!tie\_break@{tie\_break}}
+\index{tie\_break@{tie\_break}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
+\doxysubsubsection{\texorpdfstring{tie\_break}{tie\_break}}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_af967f4fc83064a6300a276295957aee7} 
+str bitbully.\+solver.\+Bit\+Bully.\+tie\+\_\+break = tie\+\_\+break if tie\+\_\+break is not None else "{}center"{}}
+
+
+
+Definition at line \mbox{\hyperlink{solver_8py_source_l00122}{122}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 
 

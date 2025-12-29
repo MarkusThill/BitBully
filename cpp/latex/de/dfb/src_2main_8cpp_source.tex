@@ -88,49 +88,52 @@
 \DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00084}00084\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ i\ =\ 0;\ i\ <\ nRepeats;\ i++)\ \{}
 \DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{auto}\ [b,\ mvSequence]\ =\ BitBully::Board::randomBoard(nPly,\ \textcolor{keyword}{true});}
 \DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00086}00086\ }
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Bitbully:}}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keyword}{auto}\ tStart\ =\ Clock::now();}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ scoreBitbully\ =\ bb.mtdf(b,\ 0);}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{auto}\ tEnd\ =\ Clock::now();}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{auto}\ timeBitbully\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(duration(tEnd\ -\/\ tStart).count());}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00092}00092\ }
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Pons-\/C4:}}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{GameSolver::Connect4::Position}}\ P;}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ Convert\ move\ sequence\ into\ a\ string\ representation:}}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keyword}{auto}\ mvSequenceStr\ =}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ std::accumulate(mvSequence.begin(),\ mvSequence.end(),\ std::string(\textcolor{stringliteral}{"{}"{}}),}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](\textcolor{keyword}{const}\ std::string\&\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ mv)\ \{}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a\ +\ std::to\_string(mv\ +\ 1);}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{if}\ (P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa}{play}}(mvSequenceStr)\ !=\ b.countTokens())\ \{}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00102}00102\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ (P.play(mvSequenceStr)\ !=\ b.countTokens())"{}};}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00103}00103\ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00104}00104\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00105}00105\ \ \ \ \ tStart\ =\ Clock::now();}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ scorePonsC4\ =\ solverPonsC4.solve(P,\ \textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00107}00107\ \ \ \ \ tEnd\ =\ Clock::now();}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{keyword}{auto}\ timePonsC4\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(duration(tEnd\ -\/\ tStart).count());}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00109}00109\ \ \ \ \ times.emplace\_back(timeBitbully,\ timePonsC4);}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00110}00110\ }
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{if}\ (scorePonsC4\ !=\ scoreBitbully)\ \{}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00112}00112\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ "{}}\ <<\ b.toString()\ <<\ \textcolor{stringliteral}{"{}Pons-\/C4:\ "{}}\ <<\ scorePonsC4}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ BitBully:\ "{}}\ <<\ scoreBitbully\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00114}00114\ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00115}00115\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00116}00116\ }
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ \%\ (std::max(nRepeats,\ 100)\ /\ 100)\ ==\ 0)\ \{}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00118}00118\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Done\ with\ "{}}\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ iterations"{}}\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00119}00119\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00120}00120\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00121}00121\ \ \ writeToCSV(times,\ filename);}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00122}00122\ }
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00123}00123\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Node\ Count\ Pons-\/C4:\ "{}}\ <<\ solverPonsC4.getNodeCount()\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}BitBully:\ "{}}\ <<\ bb.getNodeCounter()\ <<\ \textcolor{stringliteral}{"{}\ Percent:\ "{}}}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(bb.getNodeCounter()\ -\/}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ solverPonsC4.getNodeCount())\ /}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bb.getNodeCounter()\ *\ 100.0}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ \%"{}}\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00129}00129\ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00087}00087\ \ \ \ \ solverPonsC4.reset();}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00088}00088\ \ \ \ \ bb.resetTranspositionTable();}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ Bitbully:}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{auto}\ tStart\ =\ Clock::now();}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ scoreBitbully\ =\ bb.mtdf(b,\ 0);}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{auto}\ tEnd\ =\ Clock::now();}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{auto}\ timeBitbully\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(duration(tEnd\ -\/\ tStart).count());}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ Pons-\/C4:}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position}{GameSolver::Connect4::Position}}\ P;}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//\ Convert\ move\ sequence\ into\ a\ string\ representation:}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keyword}{auto}\ mvSequenceStr\ =}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ std::accumulate(mvSequence.begin(),\ mvSequence.end(),\ std::string(\textcolor{stringliteral}{"{}"{}}),}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](\textcolor{keyword}{const}\ std::string\&\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ mv)\ \{}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a\ +\ std::to\_string(mv\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (P.\mbox{\hyperlink{classGameSolver_1_1Connect4_1_1Position_a57dadc2f70eb02ff6237166f02a341fa}{play}}(mvSequenceStr)\ !=\ b.countTokens())\ \{}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00105}00105\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ (P.play(mvSequenceStr)\ !=\ b.countTokens())"{}};}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00106}00106\ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00108}00108\ \ \ \ \ tStart\ =\ Clock::now();}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ scorePonsC4\ =\ solverPonsC4.solve(P,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00110}00110\ \ \ \ \ tEnd\ =\ Clock::now();}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keyword}{auto}\ timePonsC4\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(duration(tEnd\ -\/\ tStart).count());}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00112}00112\ \ \ \ \ times.emplace\_back(timeBitbully,\ timePonsC4);}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (scorePonsC4\ !=\ scoreBitbully)\ \{}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00115}00115\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ "{}}\ <<\ b.toString()\ <<\ \textcolor{stringliteral}{"{}Pons-\/C4:\ "{}}\ <<\ scorePonsC4}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ BitBully:\ "{}}\ <<\ scoreBitbully\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00117}00117\ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00118}00118\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ \%\ (std::max(nRepeats,\ 100)\ /\ 100)\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00121}00121\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Done\ with\ "{}}\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ iterations"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00123}00123\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00124}00124\ \ \ writeToCSV(times,\ filename);}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00126}00126\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Node\ Count\ Pons-\/C4:\ "{}}\ <<\ solverPonsC4.getNodeCount()\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}BitBully:\ "{}}\ <<\ bb.getNodeCounter()\ <<\ \textcolor{stringliteral}{"{}\ Percent:\ "{}}}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(bb.getNodeCounter()\ -\/}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ solverPonsC4.getNodeCount())\ /}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bb.getNodeCounter()\ *\ 100.0}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ \%"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00132}00132\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{src_2main_8cpp_source_l00133}00133\ \}}
 
 \end{DoxyCode}

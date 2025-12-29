@@ -1,0 +1,137 @@
+\doxysection{bitbully.\+agent\+\_\+interface.\+Connect4\+Agent Class Reference}
+\hypertarget{classbitbully_1_1agent__interface_1_1Connect4Agent}{}\label{classbitbully_1_1agent__interface_1_1Connect4Agent}\index{bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}}
+
+
+Inheritance diagram for bitbully.\+agent\+\_\+interface.\+Connect4\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{de/d7a/classbitbully_1_1agent__interface_1_1Connect4Agent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for bitbully.\+agent\+\_\+interface.\+Connect4\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{df/d62/classbitbully_1_1agent__interface_1_1Connect4Agent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+dict\mbox{[}int, int\mbox{]} \mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent_ac2b74bd9092a56a8e08d5c0726c9f3c3}{score\+\_\+all\+\_\+moves}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+\item 
+int \mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent_afa4f39dea58c4f354bf7a2f2785e3fc3}{best\+\_\+move}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+\item 
+int \mbox{\hyperlink{classbitbully_1_1agent__interface_1_1Connect4Agent_aae72966d4929d407416107d22e988dec}{score\+\_\+move}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int column, int first\+\_\+guess=0)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Minimal interface a Connect-4 agent must implement to work with ``GuiC4``.
+
+This interface is intentionally aligned with the public ``BitBully`` API,
+but excludes BitBully-specific engine features such as opening-book handling,
+node counters, transposition tables, and specialized search entry points.
+
+Required methods:
+    - ``score_all_moves``: Provide integer evaluations for all *legal* moves.
+    - ``best_move``: Select one legal move using BitBully-compatible
+      tie-breaking semantics.
+
+Notes on scoring:
+    - Scores are integers where **larger values are better** for the side to move.
+    - The absolute scale is agent-defined.
+    - The GUI only relies on *relative ordering* and legality.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00018}{18}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classbitbully_1_1agent__interface_1_1Connect4Agent_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbitbully_1_1agent__interface_1_1Connect4Agent_afa4f39dea58c4f354bf7a2f2785e3fc3}\index{bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}!best\_move@{best\_move}}
+\index{best\_move@{best\_move}!bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}}
+\doxysubsubsection{\texorpdfstring{best\_move()}{best\_move()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1agent__interface_1_1Connect4Agent_afa4f39dea58c4f354bf7a2f2785e3fc3} 
+ int bitbully.\+agent\+\_\+interface.\+Connect4\+Agent.\+best\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the best legal move (column index) for the side to move.
+
+Args:
+    board (Board):
+        Current Connect-4 board position.
+
+Returns:
+    int:
+        Selected column index in the range ``0..6``.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00054}{54}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
+
+\Hypertarget{classbitbully_1_1agent__interface_1_1Connect4Agent_ac2b74bd9092a56a8e08d5c0726c9f3c3}\index{bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}!score\_all\_moves@{score\_all\_moves}}
+\index{score\_all\_moves@{score\_all\_moves}!bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}}
+\doxysubsubsection{\texorpdfstring{score\_all\_moves()}{score\_all\_moves()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1agent__interface_1_1Connect4Agent_ac2b74bd9092a56a8e08d5c0726c9f3c3} 
+ dict\mbox{[}int, int\mbox{]} bitbully.\+agent\+\_\+interface.\+Connect4\+Agent.\+score\+\_\+all\+\_\+moves (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Score all legal moves for the given board state.
+
+Args:
+    board (Board):
+        Current Connect-4 board position.
+
+Returns:
+    dict[int, int]:
+        Mapping ``{column: score}`` for all *legal* columns (0..6).
+        Columns that are full or illegal **must not** appear in the mapping.
+
+Notes:
+    - Higher scores indicate better moves.
+    - The returned dictionary may contain between 0 and 7 entries.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00036}{36}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
+
+\Hypertarget{classbitbully_1_1agent__interface_1_1Connect4Agent_aae72966d4929d407416107d22e988dec}\index{bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}!score\_move@{score\_move}}
+\index{score\_move@{score\_move}!bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}}
+\doxysubsubsection{\texorpdfstring{score\_move()}{score\_move()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1agent__interface_1_1Connect4Agent_aae72966d4929d407416107d22e988dec} 
+ int bitbully.\+agent\+\_\+interface.\+Connect4\+Agent.\+score\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int}]{column}{, }\item[{int }]{first\+\_\+guess}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluate a single legal move for the given board state.
+
+This method is optional and not required by the GUI, but can be useful
+for agents that support fine-grained move evaluation.
+
+Args:
+    board (Board):
+        Current Connect-4 board position.
+    column (int):
+        Column index (0..6) of the move to evaluate.
+    first_guess (int):
+        Optional initial guess for iterative or search-based agents.
+        Implementations may safely ignore this parameter.
+
+Returns:
+    int:
+        Evaluation score for the given move.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00070}{70}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/bitbully/agent\+\_\+interface.\+py\end{DoxyCompactItemize}

@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.72</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.73</span>
                         </div>
                     </td>
                 </tr>
@@ -110,7 +110,7 @@ $(function(){initNavTree('df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html','../../
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2c1324d9ffd53a85ed248b3d01fcab35" id="r_a2c1324d9ffd53a85ed248b3d01fcab35"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c1324d9ffd53a85ed248b3d01fcab35">__init__</a> (self)</td></tr>
+<tr class="memitem:a9da3ed8ec455e51efe1689fe34befef8" id="r_a9da3ed8ec455e51efe1689fe34befef8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9da3ed8ec455e51efe1689fe34befef8">__init__</a> (self, dict[str, <a class="el" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html">Connect4Agent</a>]|Sequence[<a class="el" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html">Connect4Agent</a>]|None agents=None, *, bool autoplay=False)</td></tr>
 <tr class="memitem:ae1334fcc19604c05bd712359811a7f8d" id="r_ae1334fcc19604c05bd712359811a7f8d"><td class="memItemLeft" align="right" valign="top">AppLayout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1334fcc19604c05bd712359811a7f8d">get_widget</a> (self)</td></tr>
 <tr class="memitem:a276722dae16ec33e096afb8f28d9721e" id="r_a276722dae16ec33e096afb8f28d9721e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a276722dae16ec33e096afb8f28d9721e">destroy</a> (self)</td></tr>
 </table><table class="memberdecls">
@@ -123,13 +123,29 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a263bd699bb06be6129a9d6506d116656" id="r_a263bd699bb06be6129a9d6506d116656"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a263bd699bb06be6129a9d6506d116656">m_height</a> = np.zeros(7, dtype=np.int32)</td></tr>
 <tr class="memitem:addd687076c5ff95ffcd82f74f50423eb" id="r_addd687076c5ff95ffcd82f74f50423eb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addd687076c5ff95ffcd82f74f50423eb">m_board_size</a> = 3.5</td></tr>
 <tr class="memitem:adb1b32213f759d595d0b471e4a28f2be" id="r_adb1b32213f759d595d0b471e4a28f2be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb1b32213f759d595d0b471e4a28f2be">is_busy</a> = False</td></tr>
-<tr class="memitem:af348897dbebae8dfa0622419f6a64fbe" id="r_af348897dbebae8dfa0622419f6a64fbe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af348897dbebae8dfa0622419f6a64fbe">last_event_time</a> = time.time()</td></tr>
+<tr class="memitem:a953893b4d831ccc5344f6c13fd8ebad1" id="r_a953893b4d831ccc5344f6c13fd8ebad1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a953893b4d831ccc5344f6c13fd8ebad1">autoplay</a> = bool(autoplay)</td></tr>
+<tr class="memitem:a4d90c29ba040d23093054e4fdb6570bd" id="r_a4d90c29ba040d23093054e4fdb6570bd"><td class="memItemLeft" align="right" valign="top">dict&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d90c29ba040d23093054e4fdb6570bd">agents</a> = {}</td></tr>
+<tr class="memitem:a448cb910855293a95e0e9b85497baa08" id="r_a448cb910855293a95e0e9b85497baa08"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a448cb910855293a95e0e9b85497baa08">yellow_player</a> = &quot;human&quot;</td></tr>
+<tr class="memitem:af0b3973db46276fc344c4b28e124456b" id="r_af0b3973db46276fc344c4b28e124456b"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0b3973db46276fc344c4b28e124456b">red_player</a> = self._agent_names[0] if self._agent_names else &quot;human&quot;</td></tr>
+<tr class="memitem:a77a70403c426deed06eb968f3cb8a8b6" id="r_a77a70403c426deed06eb968f3cb8a8b6"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77a70403c426deed06eb968f3cb8a8b6">eval_agent_choice</a> = &quot;auto&quot;</td></tr>
 <tr class="memitem:a88f0f7262e50c554e86a9ffc73720edb" id="r_a88f0f7262e50c554e86a9ffc73720edb"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88f0f7262e50c554e86a9ffc73720edb">m_movelist</a> = []</td></tr>
 <tr class="memitem:ae2449ffc90e2da958e60342acd5f3544" id="r_ae2449ffc90e2da958e60342acd5f3544"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2449ffc90e2da958e60342acd5f3544">m_redolist</a> = []</td></tr>
 <tr class="memitem:acb21a3ea47f98bb5e7342578a687283c" id="r_acb21a3ea47f98bb5e7342578a687283c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb21a3ea47f98bb5e7342578a687283c">m_gameover</a> = False</td></tr>
-<tr class="memitem:aea8b03c17faca8b6ecc92d17d95dcce9" id="r_aea8b03c17faca8b6ecc92d17d95dcce9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea8b03c17faca8b6ecc92d17d95dcce9">bitbully_agent</a> = bitbully_core.BitBullyCore(Path(db_path))</td></tr>
+<tr class="memitem:a83232bad963f43d0d714b7f83b0c56f7" id="r_a83232bad963f43d0d714b7f83b0c56f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83232bad963f43d0d714b7f83b0c56f7">dd_yellow</a></td></tr>
+<tr class="memitem:a3d4e2c4a6ccbfbd8152831162fe89753" id="r_a3d4e2c4a6ccbfbd8152831162fe89753"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d4e2c4a6ccbfbd8152831162fe89753">dd_red</a></td></tr>
+<tr class="memitem:af1a58832c785cc45dafc9b2e97ef3e7a" id="r_af1a58832c785cc45dafc9b2e97ef3e7a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1a58832c785cc45dafc9b2e97ef3e7a">cb_autoplay</a></td></tr>
+<tr class="memitem:a4a53f879f186112eeb5182f61ecf088d" id="r_a4a53f879f186112eeb5182f61ecf088d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a53f879f186112eeb5182f61ecf088d">dd_eval_agent</a></td></tr>
+<tr class="memitem:a0a28d832baa43e2db2da75eab2267cdd" id="r_a0a28d832baa43e2db2da75eab2267cdd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a28d832baa43e2db2da75eab2267cdd">player_select_row</a></td></tr>
+<tr class="memitem:affa0aee12dfa6e5f7b2b41843837e454" id="r_affa0aee12dfa6e5f7b2b41843837e454"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affa0aee12dfa6e5f7b2b41843837e454">m_time_label</a></td></tr>
+<tr class="memitem:ae1b178f4e5ed20a64ae997c65075ec3e" id="r_ae1b178f4e5ed20a64ae997c65075ec3e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1b178f4e5ed20a64ae997c65075ec3e">m_time_row</a></td></tr>
+<tr class="memitem:a8d175677e4741e5656edb820c6198eae" id="r_a8d175677e4741e5656edb820c6198eae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d175677e4741e5656edb820c6198eae">ta_moves</a></td></tr>
+<tr class="memitem:a913c4f5d6e047782820d28b53526a945" id="r_a913c4f5d6e047782820d28b53526a945"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a913c4f5d6e047782820d28b53526a945">btn_copy_pos</a></td></tr>
+<tr class="memitem:ad4d59283f057ae669642b1312935b0a5" id="r_ad4d59283f057ae669642b1312935b0a5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4d59283f057ae669642b1312935b0a5">btn_copy_moves_ag</a></td></tr>
+<tr class="memitem:a10208223f8724e92e690d6ccbb47eb29" id="r_a10208223f8724e92e690d6ccbb47eb29"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10208223f8724e92e690d6ccbb47eb29">move_list_row</a></td></tr>
 <tr class="memitem:acd869807c10162e0476289caeb3ea16e" id="r_acd869807c10162e0476289caeb3ea16e"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd869807c10162e0476289caeb3ea16e">ims</a></td></tr>
 <tr class="memitem:aa0cab8ed9fc3fc3828743e8140a4d2b9" id="r_aa0cab8ed9fc3fc3828743e8140a4d2b9"><td class="memItemLeft" align="right" valign="top">dict&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0cab8ed9fc3fc3828743e8140a4d2b9">m_control_buttons</a> = {}</td></tr>
+<tr class="memitem:a252f80f807d5600507ea0c968fdede75" id="r_a252f80f807d5600507ea0c968fdede75"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a252f80f807d5600507ea0c968fdede75">m_eval_labels</a></td></tr>
+<tr class="memitem:a944e115887b98814802456597a1c78c2" id="r_a944e115887b98814802456597a1c78c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a944e115887b98814802456597a1c78c2">m_eval_row</a></td></tr>
 <tr class="memitem:a42896183c3c87b7718a79b1d4db4d166" id="r_a42896183c3c87b7718a79b1d4db4d166"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42896183c3c87b7718a79b1d4db4d166">output</a> = Output()</td></tr>
 <tr class="memitem:a21e3e8f1ae0f1553400b5f2725bd7cd8" id="r_a21e3e8f1ae0f1553400b5f2725bd7cd8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21e3e8f1ae0f1553400b5f2725bd7cd8">m_fig</a> = fig</td></tr>
 <tr class="memitem:a9c8311e1af38e99e0ce68e0934d8dc57" id="r_a9c8311e1af38e99e0ce68e0934d8dc57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c8311e1af38e99e0ce68e0934d8dc57">m_axs</a> = axs</td></tr>
@@ -141,13 +157,29 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a8b812134478ceb20ccd4d8e8136990ba" id="r_a8b812134478ceb20ccd4d8e8136990ba"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b812134478ceb20ccd4d8e8136990ba">_create_player_selectors</a> (self)</td></tr>
+<tr class="memitem:a769d36abf7a7ef51b5d7cd7adc22322f" id="r_a769d36abf7a7ef51b5d7cd7adc22322f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a769d36abf7a7ef51b5d7cd7adc22322f">_create_timing_row</a> (self)</td></tr>
+<tr class="memitem:a9115591967f83a0187615e7850b67059" id="r_a9115591967f83a0187615e7850b67059"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9115591967f83a0187615e7850b67059">_create_move_list_ui</a> (self)</td></tr>
+<tr class="memitem:aa07e8a4e8e5f42dc9a5b36c01b1fce1e" id="r_aa07e8a4e8e5f42dc9a5b36c01b1fce1e"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa07e8a4e8e5f42dc9a5b36c01b1fce1e">_position_string</a> (self)</td></tr>
+<tr class="memitem:a368e0ca3bf680eb49b13ec71a05a3893" id="r_a368e0ca3bf680eb49b13ec71a05a3893"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a368e0ca3bf680eb49b13ec71a05a3893">_moves_ag_string</a> (self)</td></tr>
+<tr class="memitem:ab334f89d9e63d079469288d0e45be42c" id="r_ab334f89d9e63d079469288d0e45be42c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab334f89d9e63d079469288d0e45be42c">_update_move_list_ui</a> (self)</td></tr>
+<tr class="memitem:aad05e2e3a7f7a8d220db014f852acc92" id="r_aad05e2e3a7f7a8d220db014f852acc92"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad05e2e3a7f7a8d220db014f852acc92">_copy_to_clipboard</a> (self, str text)</td></tr>
+<tr class="memitem:a2319b4057f32f99fc494af03ac64ef3e" id="r_a2319b4057f32f99fc494af03ac64ef3e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2319b4057f32f99fc494af03ac64ef3e">_copy_position_string</a> (self)</td></tr>
+<tr class="memitem:a2e98a89dcf771e32dd38e65bdd87aaad" id="r_a2e98a89dcf771e32dd38e65bdd87aaad"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e98a89dcf771e32dd38e65bdd87aaad">_copy_moves_ag</a> (self)</td></tr>
+<tr class="memitem:a016420d82729880e855e1851b06a354d" id="r_a016420d82729880e855e1851b06a354d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a016420d82729880e855e1851b06a354d">_current_player</a> (self)</td></tr>
+<tr class="memitem:ab2f3d8f9e8d02b1844218db5187cb8dc" id="r_ab2f3d8f9e8d02b1844218db5187cb8dc"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2f3d8f9e8d02b1844218db5187cb8dc">_controller_for_player</a> (self, int player)</td></tr>
+<tr class="memitem:a9f46e5a8b98895725d82a7d011cf5c42" id="r_a9f46e5a8b98895725d82a7d011cf5c42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html">Connect4Agent</a>|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f46e5a8b98895725d82a7d011cf5c42">_agent_for_player</a> (self, int player)</td></tr>
+<tr class="memitem:a5d782a996a35242fd8df74604ce5157f" id="r_a5d782a996a35242fd8df74604ce5157f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html">Connect4Agent</a>|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d782a996a35242fd8df74604ce5157f">_agent_for_evaluation</a> (self)</td></tr>
 <tr class="memitem:aa354fc72f710ec515342c24e362d74c2" id="r_aa354fc72f710ec515342c24e362d74c2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa354fc72f710ec515342c24e362d74c2">_reset</a> (self)</td></tr>
 <tr class="memitem:abaa9eef7994fd1c179c901c43001f4b8" id="r_abaa9eef7994fd1c179c901c43001f4b8"><td class="memItemLeft" align="right" valign="top">npt.NDArray[np.float64]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaa9eef7994fd1c179c901c43001f4b8">_get_fig_size_px</a> (self)</td></tr>
 <tr class="memitem:af0a79f8bd3d42d0c072be6f227faf6e2" id="r_af0a79f8bd3d42d0c072be6f227faf6e2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0a79f8bd3d42d0c072be6f227faf6e2">_create_control_buttons</a> (self)</td></tr>
+<tr class="memitem:a47417d16b1f7c349a56f23bd28210ab7" id="r_a47417d16b1f7c349a56f23bd28210ab7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47417d16b1f7c349a56f23bd28210ab7">_create_eval_row</a> (self)</td></tr>
+<tr class="memitem:a4304feb1dbdf70b4fea5f271be439be8" id="r_a4304feb1dbdf70b4fea5f271be439be8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4304feb1dbdf70b4fea5f271be439be8">_clear_eval_row</a> (self)</td></tr>
+<tr class="memitem:a0d631e28f1275b46324c0de5be713547" id="r_a0d631e28f1275b46324c0de5be713547"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d631e28f1275b46324c0de5be713547">_evaluate_board</a> (self)</td></tr>
 <tr class="memitem:ab8355f95b9b352f205abca15d2f25a3d" id="r_ab8355f95b9b352f205abca15d2f25a3d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8355f95b9b352f205abca15d2f25a3d">_computer_move</a> (self)</td></tr>
 <tr class="memitem:aae80ec42d3321f14b44f033d2a86cd1a" id="r_aae80ec42d3321f14b44f033d2a86cd1a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae80ec42d3321f14b44f033d2a86cd1a">_create_board</a> (self)</td></tr>
 <tr class="memitem:a8066373c4f57497c4625040894034a3d" id="r_a8066373c4f57497c4625040894034a3d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8066373c4f57497c4625040894034a3d">_popup</a> (self, str text)</td></tr>
-<tr class="memitem:a748b1d99d1ad1154602a1f8daa6523b9" id="r_a748b1d99d1ad1154602a1f8daa6523b9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a748b1d99d1ad1154602a1f8daa6523b9">_is_legal_move</a> (self, int col)</td></tr>
+<tr class="memitem:a6752abad309547e9e76e0d4f21546b2b" id="r_a6752abad309547e9e76e0d4f21546b2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6752abad309547e9e76e0d4f21546b2b">_board_from_history</a> (self)</td></tr>
 <tr class="memitem:a5a000fd1b68de07c029f462067ba2e35" id="r_a5a000fd1b68de07c029f462067ba2e35"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a000fd1b68de07c029f462067ba2e35">_insert_token</a> (self, int col, bool reset_redo_list=True)</td></tr>
 <tr class="memitem:a831570cdbbddbb6275c29ff4282992a3" id="r_a831570cdbbddbb6275c29ff4282992a3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a831570cdbbddbb6275c29ff4282992a3">_redo_move</a> (self)</td></tr>
 <tr class="memitem:a184462427e34e80295413c7204c9dc9e" id="r_a184462427e34e80295413c7204c9dc9e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a184462427e34e80295413c7204c9dc9e">_undo_move</a> (self)</td></tr>
@@ -157,7 +189,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae5127e49ba6a3b0066a296abcb3d0c9b" id="r_ae5127e49ba6a3b0066a296abcb3d0c9b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5127e49ba6a3b0066a296abcb3d0c9b">_create_buttons</a> (self)</td></tr>
 <tr class="memitem:a3dde63ddaf5ff642f60c9c4d8da942c9" id="r_a3dde63ddaf5ff642f60c9c4d8da942c9"><td class="memItemLeft" align="right" valign="top">HBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dde63ddaf5ff642f60c9c4d8da942c9">_create_column_labels</a> (self)</td></tr>
 <tr class="memitem:a30c2c5e0a13e6f49762f3abeda6b056b" id="r_a30c2c5e0a13e6f49762f3abeda6b056b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30c2c5e0a13e6f49762f3abeda6b056b">_on_field_click</a> (self, mpl_backend_bases.Event event)</td></tr>
-<tr class="memitem:aecc4c650c3ac6a52dcc3fe0b1d04b3f8" id="r_aecc4c650c3ac6a52dcc3fe0b1d04b3f8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecc4c650c3ac6a52dcc3fe0b1d04b3f8">_check_winner</a> (self, bitbully_core.BoardCore board)</td></tr>
+<tr class="memitem:ae492ec0d0f83bed0f261856555133cce" id="r_ae492ec0d0f83bed0f261856555133cce"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae492ec0d0f83bed0f261856555133cce">_maybe_autoplay</a> (self)</td></tr>
+<tr class="memitem:addeb5675aa795bbbf75d18290b4f9e47" id="r_addeb5675aa795bbbf75d18290b4f9e47"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addeb5675aa795bbbf75d18290b4f9e47">_check_winner</a> (self, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:af6c3f55ed20a2a78540f70c953c33476" id="r_af6c3f55ed20a2a78540f70c953c33476"><td class="memItemLeft" align="right" valign="top">list[str]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6c3f55ed20a2a78540f70c953c33476">_agent_names</a> = list(self.agents.keys())</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">A class which allows to create an interactive Connect-4 widget.
@@ -191,10 +228,10 @@ Examples:
         &gt;&gt;&gt; display(c4gui.get_widget())
         ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00018">18</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00021">21</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2c1324d9ffd53a85ed248b3d01fcab35" name="a2c1324d9ffd53a85ed248b3d01fcab35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c1324d9ffd53a85ed248b3d01fcab35">&#9670;&#160;</a></span>__init__()</h2>
+<a id="a9da3ed8ec455e51efe1689fe34befef8" name="a9da3ed8ec455e51efe1689fe34befef8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9da3ed8ec455e51efe1689fe34befef8">&#9670;&#160;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,19 +239,118 @@ Examples:
         <tr>
           <td class="memname"> None bitbully.gui_c4.GuiC4.__init__ </td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">dict[str, <a class="el" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html">Connect4Agent</a>] | Sequence[<a class="el" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html">Connect4Agent</a>] | None </td>          <td class="paramname"><span class="paramname"><em>agents</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>autoplay</em></span><span class="paramdefsep"> = </span><span class="paramdefval">False</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Init the GuiC4 widget.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00052">52</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00055">55</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="aecc4c650c3ac6a52dcc3fe0b1d04b3f8" name="aecc4c650c3ac6a52dcc3fe0b1d04b3f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aecc4c650c3ac6a52dcc3fe0b1d04b3f8">&#9670;&#160;</a></span>_check_winner()</h2>
+<a id="a5d782a996a35242fd8df74604ce5157f" name="a5d782a996a35242fd8df74604ce5157f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d782a996a35242fd8df74604ce5157f">&#9670;&#160;</a></span>_agent_for_evaluation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html">Connect4Agent</a> | None bitbully.gui_c4.GuiC4._agent_for_evaluation </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Return the agent used for the Evaluate button based on dropdown selection.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00380">380</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a9f46e5a8b98895725d82a7d011cf5c42" name="a9f46e5a8b98895725d82a7d011cf5c42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f46e5a8b98895725d82a7d011cf5c42">&#9670;&#160;</a></span>_agent_for_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html">Connect4Agent</a> | None bitbully.gui_c4.GuiC4._agent_for_player </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>player</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00374">374</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a6752abad309547e9e76e0d4f21546b2b" name="a6752abad309547e9e76e0d4f21546b2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6752abad309547e9e76e0d4f21546b2b">&#9670;&#160;</a></span>_board_from_history()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> bitbully.gui_c4.GuiC4._board_from_history </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00611">611</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="addeb5675aa795bbbf75d18290b4f9e47" name="addeb5675aa795bbbf75d18290b4f9e47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addeb5675aa795bbbf75d18290b4f9e47">&#9670;&#160;</a></span>_check_winner()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,7 +366,7 @@ Examples:
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bitbully_core.BoardCore</td>          <td class="paramname"><span class="paramname"><em>board</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a></td>          <td class="paramname"><span class="paramname"><em>board</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -240,7 +376,34 @@ Examples:
 </table>
 </div><div class="memdoc">
 <pre class="fragment">Check for Win or draw.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00480">480</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00939">939</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a4304feb1dbdf70b4fea5f271be439be8" name="a4304feb1dbdf70b4fea5f271be439be8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4304feb1dbdf70b4fea5f271be439be8">&#9670;&#160;</a></span>_clear_eval_row()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._clear_eval_row </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Clear all evaluation score labels.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00478">478</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -267,7 +430,123 @@ Examples:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00180">180</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00536">536</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="ab2f3d8f9e8d02b1844218db5187cb8dc" name="ab2f3d8f9e8d02b1844218db5187cb8dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2f3d8f9e8d02b1844218db5187cb8dc">&#9670;&#160;</a></span>_controller_for_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str bitbully.gui_c4.GuiC4._controller_for_player </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>player</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00371">371</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a2e98a89dcf771e32dd38e65bdd87aaad" name="a2e98a89dcf771e32dd38e65bdd87aaad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e98a89dcf771e32dd38e65bdd87aaad">&#9670;&#160;</a></span>_copy_moves_ag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._copy_moves_ag </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00362">362</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a2319b4057f32f99fc494af03ac64ef3e" name="a2319b4057f32f99fc494af03ac64ef3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2319b4057f32f99fc494af03ac64ef3e">&#9670;&#160;</a></span>_copy_position_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._copy_position_string </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00358">358</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="aad05e2e3a7f7a8d220db014f852acc92" name="aad05e2e3a7f7a8d220db014f852acc92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad05e2e3a7f7a8d220db014f852acc92">&#9670;&#160;</a></span>_copy_to_clipboard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._copy_to_clipboard </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Copy text to clipboard in Jupyter (best-effort).</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00336">336</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -294,7 +573,7 @@ Examples:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00189">189</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00568">568</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -321,7 +600,7 @@ Examples:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00375">375</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00784">784</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -352,7 +631,7 @@ Examples:
 Returns:
     HBox: A row of textboxes containing the columns labels 'a' to 'g'.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00390">390</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00799">799</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -379,7 +658,169 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00149">149</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00422">422</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a47417d16b1f7c349a56f23bd28210ab7" name="a47417d16b1f7c349a56f23bd28210ab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47417d16b1f7c349a56f23bd28210ab7">&#9670;&#160;</a></span>_create_eval_row()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._create_eval_row </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Create a row of 7 labels to display per-column evaluation scores.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00456">456</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a9115591967f83a0187615e7850b67059" name="a9115591967f83a0187615e7850b67059"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9115591967f83a0187615e7850b67059">&#9670;&#160;</a></span>_create_move_list_ui()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._create_move_list_ui </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Create the move list display and clipboard buttons.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00262">262</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a8b812134478ceb20ccd4d8e8136990ba" name="a8b812134478ceb20ccd4d8e8136990ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b812134478ceb20ccd4d8e8136990ba">&#9670;&#160;</a></span>_create_player_selectors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._create_player_selectors </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Create UI controls for player assignment, autoplay, and evaluation agent.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00158">158</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a769d36abf7a7ef51b5d7cd7adc22322f" name="a769d36abf7a7ef51b5d7cd7adc22322f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a769d36abf7a7ef51b5d7cd7adc22322f">&#9670;&#160;</a></span>_create_timing_row()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._create_timing_row </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Create a row that shows the computation time of the last agent move.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00245">245</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a016420d82729880e855e1851b06a354d" name="a016420d82729880e855e1851b06a354d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a016420d82729880e855e1851b06a354d">&#9670;&#160;</a></span>_current_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int bitbully.gui_c4.GuiC4._current_player </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Return player to move: 1 (Yellow) starts, then alternates.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00367">367</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a0d631e28f1275b46324c0de5be713547" name="a0d631e28f1275b46324c0de5be713547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d631e28f1275b46324c0de5be713547">&#9670;&#160;</a></span>_evaluate_board()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._evaluate_board </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Compute and display per-column evaluation scores for the current position.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00483">483</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -406,7 +847,7 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00137">137</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00410">410</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -450,7 +891,7 @@ Args:
 Returns:
     int: The corresponding image id (0-41).
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00325">325</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00734">734</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -486,12 +927,12 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00235">235</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00614">614</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
-<a id="a748b1d99d1ad1154602a1f8daa6523b9" name="a748b1d99d1ad1154602a1f8daa6523b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a748b1d99d1ad1154602a1f8daa6523b9">&#9670;&#160;</a></span>_is_legal_move()</h2>
+<a id="ae492ec0d0f83bed0f261856555133cce" name="ae492ec0d0f83bed0f261856555133cce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae492ec0d0f83bed0f261856555133cce">&#9670;&#160;</a></span>_maybe_autoplay()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -500,14 +941,10 @@ Returns:
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"> bool bitbully.gui_c4.GuiC4._is_legal_move </td>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._maybe_autoplay </td>
           <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>col</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -516,8 +953,35 @@ Returns:
   </tr>
 </table>
 </div><div class="memdoc">
+<pre class="fragment">If it's an agent-controlled turn, immediately play its move.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00931">931</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00232">232</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+</div>
+</div>
+<a id="a368e0ca3bf680eb49b13ec71a05a3893" name="a368e0ca3bf680eb49b13ec71a05a3893"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a368e0ca3bf680eb49b13ec71a05a3893">&#9670;&#160;</a></span>_moves_ag_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str bitbully.gui_c4.GuiC4._moves_ag_string </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Return board as ascii string..</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00314">314</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -552,7 +1016,7 @@ Returns:
 Args:
     event (mpl_backend_bases.Event): A matplotlib mouse event.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00415">415</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00824">824</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -579,7 +1043,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00339">339</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00748">748</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -610,7 +1074,38 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00228">228</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00607">607</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="aa07e8a4e8e5f42dc9a5b36c01b1fce1e" name="aa07e8a4e8e5f42dc9a5b36c01b1fce1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa07e8a4e8e5f42dc9a5b36c01b1fce1e">&#9670;&#160;</a></span>_position_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str bitbully.gui_c4.GuiC4._position_string </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Return the position encoding compatible with Board(...).
+
+BitBully's Board examples use strings like "341" (columns as digits),
+so we follow the same convention.
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00306">306</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -637,7 +1132,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00273">273</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00656">656</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -664,7 +1159,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00124">124</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00394">394</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -691,7 +1186,7 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00279">279</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00662">662</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -718,7 +1213,34 @@ Args:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00316">316</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00704">704</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="ab334f89d9e63d079469288d0e45be42c" name="ab334f89d9e63d079469288d0e45be42c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab334f89d9e63d079469288d0e45be42c">&#9670;&#160;</a></span>_update_move_list_ui()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None bitbully.gui_c4.GuiC4._update_move_list_ui </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Refresh the move list textarea.</pre> 
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00320">320</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -737,7 +1259,7 @@ Args:
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Destroy and release the acquired resources.</pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00490">490</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00949">949</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -769,24 +1291,210 @@ Examples:
 Returns:
     AppLayout: the widget.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00427">427</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00843">843</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="aea8b03c17faca8b6ecc92d17d95dcce9" name="aea8b03c17faca8b6ecc92d17d95dcce9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea8b03c17faca8b6ecc92d17d95dcce9">&#9670;&#160;</a></span>bitbully_agent</h2>
+<a id="af6c3f55ed20a2a78540f70c953c33476" name="af6c3f55ed20a2a78540f70c953c33476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6c3f55ed20a2a78540f70c953c33476">&#9670;&#160;</a></span>_agent_names</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">list[str] bitbully.gui_c4.GuiC4._agent_names = list(self.agents.keys())</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00114">114</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a4d90c29ba040d23093054e4fdb6570bd" name="a4d90c29ba040d23093054e4fdb6570bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d90c29ba040d23093054e4fdb6570bd">&#9670;&#160;</a></span>agents</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bitbully.gui_c4.GuiC4.bitbully_agent = bitbully_core.BitBullyCore(Path(db_path))</td>
+          <td class="memname">dict bitbully.gui_c4.GuiC4.agents = {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00122">122</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00108">108</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a953893b4d831ccc5344f6c13fd8ebad1" name="a953893b4d831ccc5344f6c13fd8ebad1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a953893b4d831ccc5344f6c13fd8ebad1">&#9670;&#160;</a></span>autoplay</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.autoplay = bool(autoplay)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00104">104</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="ad4d59283f057ae669642b1312935b0a5" name="ad4d59283f057ae669642b1312935b0a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4d59283f057ae669642b1312935b0a5">&#9670;&#160;</a></span>btn_copy_moves_ag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.btn_copy_moves_ag</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  Button(</div>
+<div class="line">            description=<span class="stringliteral">&quot;📋 Copy ASCII board&quot;</span>,</div>
+<div class="line">            tooltip=<span class="stringliteral">&quot;Copy the ascii representation of the board&quot;</span>,</div>
+<div class="line">            layout=Layout(width=<span class="stringliteral">&quot;100%&quot;</span>),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00276">276</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a913c4f5d6e047782820d28b53526a945" name="a913c4f5d6e047782820d28b53526a945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a913c4f5d6e047782820d28b53526a945">&#9670;&#160;</a></span>btn_copy_pos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.btn_copy_pos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  Button(</div>
+<div class="line">            description=<span class="stringliteral">&quot;📋 Copy move sequence&quot;</span>,</div>
+<div class="line">            tooltip=<span class="stringliteral">&quot;Copy the position string used by Board(...), e.g. &#39;3431&#39;&quot;</span>,</div>
+<div class="line">            layout=Layout(width=<span class="stringliteral">&quot;100%&quot;</span>),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00271">271</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="af1a58832c785cc45dafc9b2e97ef3e7a" name="af1a58832c785cc45dafc9b2e97ef3e7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1a58832c785cc45dafc9b2e97ef3e7a">&#9670;&#160;</a></span>cb_autoplay</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.cb_autoplay</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  widgets.Checkbox(</div>
+<div class="line">            value=bool(self.autoplay),</div>
+<div class="line">            description=<span class="stringliteral">&quot;Autoplay&quot;</span>,</div>
+<div class="line">            indent=<span class="keyword">False</span>,</div>
+<div class="line">            layout=Layout(width=<span class="stringliteral">&quot;auto&quot;</span>),  <span class="comment"># width=&quot;200px&quot;</span></div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00179">179</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a4a53f879f186112eeb5182f61ecf088d" name="a4a53f879f186112eeb5182f61ecf088d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a53f879f186112eeb5182f61ecf088d">&#9670;&#160;</a></span>dd_eval_agent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.dd_eval_agent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  widgets.Dropdown(</div>
+<div class="line">            options=eval_options,</div>
+<div class="line">            value=self.eval_agent_choice <span class="keywordflow">if</span> self.eval_agent_choice <span class="keywordflow">in</span> eval_options <span class="keywordflow">else</span> <span class="stringliteral">&quot;auto&quot;</span>,</div>
+<div class="line">            description=<span class="stringliteral">&quot;Eval:&quot;</span>,</div>
+<div class="line">            layout=Layout(width=<span class="stringliteral">&quot;200px&quot;</span>),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00187">187</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a3d4e2c4a6ccbfbd8152831162fe89753" name="a3d4e2c4a6ccbfbd8152831162fe89753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d4e2c4a6ccbfbd8152831162fe89753">&#9670;&#160;</a></span>dd_red</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.dd_red</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  widgets.Dropdown(</div>
+<div class="line">            options=player_options,</div>
+<div class="line">            value=self.red_player <span class="keywordflow">if</span> self.red_player <span class="keywordflow">in</span> player_options <span class="keywordflow">else</span> <span class="stringliteral">&quot;human&quot;</span>,</div>
+<div class="line">            description=<span class="stringliteral">&quot;Red:&quot;</span>,</div>
+<div class="line">            layout=Layout(width=<span class="stringliteral">&quot;200px&quot;</span>),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00171">171</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a83232bad963f43d0d714b7f83b0c56f7" name="a83232bad963f43d0d714b7f83b0c56f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83232bad963f43d0d714b7f83b0c56f7">&#9670;&#160;</a></span>dd_yellow</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.dd_yellow</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  widgets.Dropdown(</div>
+<div class="line">            options=player_options,</div>
+<div class="line">            value=self.yellow_player <span class="keywordflow">if</span> self.yellow_player <span class="keywordflow">in</span> player_options <span class="keywordflow">else</span> <span class="stringliteral">&quot;human&quot;</span>,</div>
+<div class="line">            description=<span class="stringliteral">&quot;Yellow:&quot;</span>,</div>
+<div class="line">            layout=Layout(width=<span class="stringliteral">&quot;200px&quot;</span>),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00165">165</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a77a70403c426deed06eb968f3cb8a8b6" name="a77a70403c426deed06eb968f3cb8a8b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77a70403c426deed06eb968f3cb8a8b6">&#9670;&#160;</a></span>eval_agent_choice</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">str bitbully.gui_c4.GuiC4.eval_agent_choice = &quot;auto&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00123">123</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -802,7 +1510,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00130">130</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00400">400</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -818,23 +1526,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00092">92</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
-
-</div>
-</div>
-<a id="af348897dbebae8dfa0622419f6a64fbe" name="af348897dbebae8dfa0622419f6a64fbe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af348897dbebae8dfa0622419f6a64fbe">&#9670;&#160;</a></span>last_event_time</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bitbully.gui_c4.GuiC4.last_event_time = time.time()</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00094">94</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00101">101</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -850,7 +1542,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00222">222</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00601">601</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -866,7 +1558,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00090">90</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00099">99</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -882,7 +1574,55 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00150">150</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00423">423</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a252f80f807d5600507ea0c968fdede75" name="a252f80f807d5600507ea0c968fdede75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a252f80f807d5600507ea0c968fdede75">&#9670;&#160;</a></span>m_eval_labels</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list bitbully.gui_c4.GuiC4.m_eval_labels</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  [</div>
+<div class="line">            widgets.Label(</div>
+<div class="line">                value=<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line">                layout=Layout(justify_content=<span class="stringliteral">&quot;center&quot;</span>, align_items=<span class="stringliteral">&quot;center&quot;</span>, width=width),</div>
+<div class="line">            )</div>
+<div class="line">            <span class="keywordflow">for</span> _ <span class="keywordflow">in</span> range(self.m_n_col)</div>
+<div class="line">        ]</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00461">461</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a944e115887b98814802456597a1c78c2" name="a944e115887b98814802456597a1c78c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a944e115887b98814802456597a1c78c2">&#9670;&#160;</a></span>m_eval_row</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.m_eval_row</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  HBox(</div>
+<div class="line">            self.m_eval_labels,</div>
+<div class="line">            layout=Layout(</div>
+<div class="line">                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line">                flex_flow=<span class="stringliteral">&quot;row wrap&quot;</span>,</div>
+<div class="line">                justify_content=<span class="stringliteral">&quot;center&quot;</span>,</div>
+<div class="line">                align_items=<span class="stringliteral">&quot;center&quot;</span>,</div>
+<div class="line">            ),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00468">468</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -898,7 +1638,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00221">221</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00600">600</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -914,7 +1654,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00115">115</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00153">153</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -930,7 +1670,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00088">88</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00097">97</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -946,7 +1686,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00240">240</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00619">619</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -962,7 +1702,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00055">55</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00063">63</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -978,7 +1718,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00109">109</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00147">147</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -994,7 +1734,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00085">85</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00094">94</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1010,7 +1750,7 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00085">85</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00094">94</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1031,7 +1771,7 @@ Returns:
 <div class="line">            2: {<span class="stringliteral">&quot;plain&quot;</span>: png_red, <span class="stringliteral">&quot;corner&quot;</span>: png_red_m},</div>
 <div class="line">        }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00079">79</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00088">88</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1047,7 +1787,78 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00112">112</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00150">150</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="affa0aee12dfa6e5f7b2b41843837e454" name="affa0aee12dfa6e5f7b2b41843837e454"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affa0aee12dfa6e5f7b2b41843837e454">&#9670;&#160;</a></span>m_time_label</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.m_time_label</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  widgets.Label(</div>
+<div class="line">            value=<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line">            layout=Layout(width=<span class="stringliteral">&quot;100%&quot;</span>),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00247">247</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="ae1b178f4e5ed20a64ae997c65075ec3e" name="ae1b178f4e5ed20a64ae997c65075ec3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1b178f4e5ed20a64ae997c65075ec3e">&#9670;&#160;</a></span>m_time_row</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.m_time_row</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  HBox(</div>
+<div class="line">            [self.m_time_label],</div>
+<div class="line">            layout=Layout(</div>
+<div class="line">                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line">                flex_flow=<span class="stringliteral">&quot;row&quot;</span>,</div>
+<div class="line">                justify_content=<span class="stringliteral">&quot;flex-start&quot;</span>,</div>
+<div class="line">                align_items=<span class="stringliteral">&quot;center&quot;</span>,</div>
+<div class="line">                width=<span class="stringliteral">&quot;100%&quot;</span>,</div>
+<div class="line">            ),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00251">251</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a10208223f8724e92e690d6ccbb47eb29" name="a10208223f8724e92e690d6ccbb47eb29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10208223f8724e92e690d6ccbb47eb29">&#9670;&#160;</a></span>move_list_row</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.move_list_row</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  VBox(</div>
+<div class="line">            [self.btn_copy_pos, self.btn_copy_moves_ag, self.ta_moves],</div>
+<div class="line">            layout=Layout(</div>
+<div class="line">                width=<span class="stringliteral">&quot;200px&quot;</span>,</div>
+<div class="line">                height=<span class="stringliteral">&quot;100%&quot;</span>,  <span class="comment"># NEW: take all available height in sidebar</span></div>
+<div class="line">                align_items=<span class="stringliteral">&quot;stretch&quot;</span>,</div>
+<div class="line">                flex=<span class="stringliteral">&quot;1 1 auto&quot;</span>,  <span class="comment"># NEW: allow growing</span></div>
+<div class="line">            ),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00290">290</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1071,7 +1882,7 @@ Returns:
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00224">224</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00603">603</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>
@@ -1087,7 +1898,86 @@ Returns:
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00190">190</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00569">569</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a0a28d832baa43e2db2da75eab2267cdd" name="a0a28d832baa43e2db2da75eab2267cdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a28d832baa43e2db2da75eab2267cdd">&#9670;&#160;</a></span>player_select_row</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.player_select_row</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  VBox(</div>
+<div class="line">            [row1, row2],</div>
+<div class="line">            layout=Layout(</div>
+<div class="line">                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line">                flex_flow=<span class="stringliteral">&quot;column&quot;</span>,</div>
+<div class="line">                justify_content=<span class="stringliteral">&quot;flex-end&quot;</span>,</div>
+<div class="line">                align_items=<span class="stringliteral">&quot;flex-end&quot;</span>,</div>
+<div class="line">            ),</div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00235">235</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="af0b3973db46276fc344c4b28e124456b" name="af0b3973db46276fc344c4b28e124456b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0b3973db46276fc344c4b28e124456b">&#9670;&#160;</a></span>red_player</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">str bitbully.gui_c4.GuiC4.red_player = self._agent_names[0] if self._agent_names else &quot;human&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00119">119</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a8d175677e4741e5656edb820c6198eae" name="a8d175677e4741e5656edb820c6198eae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d175677e4741e5656edb820c6198eae">&#9670;&#160;</a></span>ta_moves</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bitbully.gui_c4.GuiC4.ta_moves</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  widgets.Textarea(</div>
+<div class="line">            value=<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line">            description=<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line">            disabled=<span class="keyword">True</span>,</div>
+<div class="line">            layout=Layout(width=<span class="stringliteral">&quot;100%&quot;</span>, height=<span class="stringliteral">&quot;100%&quot;</span>),  <span class="comment"># was &quot;110px&quot;</span></div>
+<div class="line">        )</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00264">264</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
+
+</div>
+</div>
+<a id="a448cb910855293a95e0e9b85497baa08" name="a448cb910855293a95e0e9b85497baa08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a448cb910855293a95e0e9b85497baa08">&#9670;&#160;</a></span>yellow_player</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">str bitbully.gui_c4.GuiC4.yellow_player = &quot;human&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d30/gui__c4_8py_source.html#l00118">118</a> of file <a class="el" href="../../d0/d30/gui__c4_8py_source.html">gui_c4.py</a>.</p>
 
 </div>
 </div>

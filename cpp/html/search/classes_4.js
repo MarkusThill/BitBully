@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['openingbook_0',['OpeningBook',['../d2/d9f/classBitBully_1_1OpeningBook.html',1,'BitBully::OpeningBook'],['../d3/d78/classGameSolver_1_1Connect4_1_1OpeningBook.html',1,'GameSolver::Connect4::OpeningBook']]]
+  ['movelist_0',['MoveList',['../d7/d3c/classBitBully_1_1MoveList.html',1,'BitBully']]],
+  ['movesorter_1',['MoveSorter',['../d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html',1,'GameSolver::Connect4']]]
 ];

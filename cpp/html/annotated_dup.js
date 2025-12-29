@@ -8,6 +8,9 @@ var annotated_dup =
       [ "TranspositionTable", "db/dc6/classBitBully_1_1TranspositionTable.html", "db/dc6/classBitBully_1_1TranspositionTable" ]
     ] ],
     [ "bitbully", "d4/dde/namespacebitbully.html", [
+      [ "agent_interface", "d2/d0a/namespacebitbully_1_1agent__interface.html", [
+        [ "Connect4Agent", "d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html", "d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent" ]
+      ] ],
       [ "board", "d5/d0e/namespacebitbully_1_1board.html", [
         [ "Board", "d9/d83/classbitbully_1_1board_1_1Board.html", "d9/d83/classbitbully_1_1board_1_1Board" ]
       ] ],

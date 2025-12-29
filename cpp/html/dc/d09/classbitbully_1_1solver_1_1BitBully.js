@@ -1,9 +1,9 @@
 var classbitbully_1_1solver_1_1BitBully =
 [
-    [ "__init__", "dc/d09/classbitbully_1_1solver_1_1BitBully.html#a2fb03edec61e80ce6e7dd3a9ea8c2952", null ],
+    [ "__init__", "dc/d09/classbitbully_1_1solver_1_1BitBully.html#a3d7732ccc3e2f14c4678ef2a9ee14897", null ],
     [ "__repr__", "dc/d09/classbitbully_1_1solver_1_1BitBully.html#adab7e8da4f9dcf12f10e2f1a13877d6e", null ],
     [ "available_opening_books", "dc/d09/classbitbully_1_1solver_1_1BitBully.html#ae2e3f241a045aa7ead284c101845b032", null ],
-    [ "best_move", "dc/d09/classbitbully_1_1solver_1_1BitBully.html#aa3048d69b1b0f60384ebfa96fcffc917", null ],
+    [ "best_move", "dc/d09/classbitbully_1_1solver_1_1BitBully.html#a02ae861fc33992b730e289d9e8cacf4e", null ],
     [ "get_node_counter", "dc/d09/classbitbully_1_1solver_1_1BitBully.html#a8d480388ce2e289229862cffc07e2499", null ],
     [ "is_book_loaded", "dc/d09/classbitbully_1_1solver_1_1BitBully.html#a1bba87f872323b9ebf53476f68ff9f50", null ],
     [ "load_book", "dc/d09/classbitbully_1_1solver_1_1BitBully.html#a83419e0054f2ad2c6d83b6edfaa0c7b6", null ],
