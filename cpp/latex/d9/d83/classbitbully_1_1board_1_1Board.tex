@@ -60,6 +60,10 @@ int \mbox{\hyperlink{classbitbully_1_1board_1_1Board_a0631f7c4d3734f0bb0993501f6
 list\mbox{[}int\mbox{]} \mbox{\hyperlink{classbitbully_1_1board_1_1Board_afe754d7343ddc9c2b4596ec2c5eea43a}{legal\+\_\+moves}} (self, bool non\+\_\+losing=False, bool order\+\_\+moves=False)
 \item 
 Board\+Core \mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae2f018bdfa396d7e35145911fb1466c9}{native}} (self)
+\item 
+int \mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae520d2fda88cce17ace16b45f314246e}{get\+\_\+column\+\_\+height}} (self, int column)
+\item 
+list\mbox{[}int\mbox{]} \mbox{\hyperlink{classbitbully_1_1board_1_1Board_a12790d340058ad7cade8c2491cc60a0f}{get\+\_\+column\+\_\+heights}} (self)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -916,6 +920,67 @@ Example:
  
 
 Definition at line \mbox{\hyperlink{board_8py_source_l01564}{1564}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+
+\Hypertarget{classbitbully_1_1board_1_1Board_ae520d2fda88cce17ace16b45f314246e}\index{bitbully.board.Board@{bitbully.board.Board}!get\_column\_height@{get\_column\_height}}
+\index{get\_column\_height@{get\_column\_height}!bitbully.board.Board@{bitbully.board.Board}}
+\doxysubsubsection{\texorpdfstring{get\_column\_height()}{get\_column\_height()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1board_1_1Board_ae520d2fda88cce17ace16b45f314246e} 
+ int bitbully.\+board.\+Board.\+get\+\_\+column\+\_\+height (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{column}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the height of a specific column on the board.
+
+The height of a column is defined as the number of tokens currently
+present in that column.
+
+Args:
+    column (int): The column index (0-6) for which to retrieve the height.
+
+Returns:
+    int: The height of the specified column (0-6).
+
+Raises:
+    ValueError: If the `column` index is outside the valid range [0, 6].
+
+Example:
+    ```python
+    import bitbully as bb
+
+    board = bb.Board("0011223")
+    height = board.get_column_height(2)
+    assert height == 2
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{board_8py_source_l01881}{1881}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
+
+\Hypertarget{classbitbully_1_1board_1_1Board_a12790d340058ad7cade8c2491cc60a0f}\index{bitbully.board.Board@{bitbully.board.Board}!get\_column\_heights@{get\_column\_heights}}
+\index{get\_column\_heights@{get\_column\_heights}!bitbully.board.Board@{bitbully.board.Board}}
+\doxysubsubsection{\texorpdfstring{get\_column\_heights()}{get\_column\_heights()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1board_1_1Board_a12790d340058ad7cade8c2491cc60a0f} 
+ list\mbox{[}int\mbox{]} bitbully.\+board.\+Board.\+get\+\_\+column\+\_\+heights (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns a list of heights for each column on the board.
+
+The height of a column is defined as the number of tokens currently
+present in that column.
+
+Returns:
+    list[int]: A list of 7 integers, where each integer represents
+    the height of the corresponding column (0-6).
+
+Example:
+    ```python
+    import bitbully as bb
+
+    board = bb.Board("0011223")
+    heights = board.get_column_heights()
+    assert heights == [2, 2, 2, 1, 0, 0, 0]
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{board_8py_source_l01909}{1909}} of file \mbox{\hyperlink{board_8py_source}{board.\+py}}.
 
 \Hypertarget{classbitbully_1_1board_1_1Board_ae50b3749d5857b53f6d8d7fed35b3bf7}\index{bitbully.board.Board@{bitbully.board.Board}!has\_win@{has\_win}}
 \index{has\_win@{has\_win}!bitbully.board.Board@{bitbully.board.Board}}

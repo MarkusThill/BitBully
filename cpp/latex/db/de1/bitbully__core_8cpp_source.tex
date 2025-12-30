@@ -133,43 +133,45 @@
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Encode\ position\ into\ a\ huffman-\/code\ compressed\ sequence."{}})}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00130}00130\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}uid"{}},\ \&B::uid,\ \textcolor{stringliteral}{"{}Get\ the\ unique\ identifier\ for\ the\ board"{}})}
 \DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00131}00131\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}\_\_eq\_\_"{}},\ \&B::operator==,\ \textcolor{stringliteral}{"{}Check\ if\ two\ boards\ are\ equal"{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00132}00132\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}\_\_ne\_\_"{}},\ \&B::operator!=,\ \textcolor{stringliteral}{"{}Check\ if\ two\ boards\ are\ not\ equal"{}});}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00133}00133\ }
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00134}00134\ \ \ \textcolor{comment}{//\ Expose\ OpeningBook:}}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00135}00135\ \ \ py::class\_<BitBully::OpeningBook>(m,\ \textcolor{stringliteral}{"{}OpeningBookCore"{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00136}00136\ \ \ \ \ \ \ \textcolor{comment}{//\ Constructors}}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00137}00137\ \ \ \ \ \ \ .def(py::init<const\ std::filesystem::path\&,\ bool,\ bool>(),}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}bookPath"{}}),\ py::arg(\textcolor{stringliteral}{"{}is\_8ply"{}}),\ py::arg(\textcolor{stringliteral}{"{}with\_distances"{}}),}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Initialize\ an\ OpeningBook\ with\ explicit\ settings."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00140}00140\ \ \ \ \ \ \ .def(py::init<const\ std::filesystem::path\&>(),\ py::arg(\textcolor{stringliteral}{"{}bookPath"{}}),}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Initialize\ an\ OpeningBook\ by\ inferring\ database\ type\ from\ file\ "{}}}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}size."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00143}00143\ }
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00144}00144\ \ \ \ \ \ \ \textcolor{comment}{//\ Member\ functions}}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00145}00145\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}init"{}},\ \&BitBully::OpeningBook::init,\ py::arg(\textcolor{stringliteral}{"{}bookPath"{}}),}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}is\_8ply"{}}),\ py::arg(\textcolor{stringliteral}{"{}with\_distances"{}}),}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Reinitialize\ the\ OpeningBook\ with\ new\ settings."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00148}00148\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getEntry"{}},\ \&BitBully::OpeningBook::getEntry,\ py::arg(\textcolor{stringliteral}{"{}entryIdx"{}}),}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Get\ an\ entry\ from\ the\ book\ by\ index."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00150}00150\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getBook"{}},\ \&BitBully::OpeningBook::getBook,}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Return\ the\ raw\ book\ table."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00152}00152\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getBookSize"{}},\ \&BitBully::OpeningBook::getBookSize,}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Get\ the\ size\ of\ the\ book."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00154}00154\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getBoardValue"{}},\ \&BitBully::OpeningBook::getBoardValue,}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}board"{}}),\ \textcolor{stringliteral}{"{}Get\ the\ value\ of\ a\ given\ board."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00156}00156\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}isInBook"{}},\ \&BitBully::OpeningBook::isInBook,\ py::arg(\textcolor{stringliteral}{"{}board"{}}),}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Check,\ if\ the\ given\ board\ is\ in\ the\ opening\ book.\ Note,\ that\ "{}}}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}usually\ boards\ are\ only\ present\ in\ one\ mirrored\ variant."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00159}00159\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}convertValue"{}},\ \&BitBully::OpeningBook::convertValue,}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}value"{}}),\ py::arg(\textcolor{stringliteral}{"{}board"{}}),}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Convert\ a\ value\ to\ the\ internal\ scoring\ system."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00162}00162\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getNPly"{}},\ \&BitBully::OpeningBook::getNPly,}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Get\ the\ ply\ depth\ of\ the\ book."{}})}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00164}00164\ }
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00165}00165\ \ \ \ \ \ \ \textcolor{comment}{//\ Static\ functions}}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00166}00166\ \ \ \ \ \ \ .def\_static(\textcolor{stringliteral}{"{}readBook"{}},\ \&BitBully::OpeningBook::readBook,}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}filename"{}}),\ py::arg(\textcolor{stringliteral}{"{}with\_distances"{}})\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}is\_8ply"{}})\ =\ \textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Read\ a\ book\ from\ a\ file."{}});}
-\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00169}00169\ \}}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00132}00132\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}\_\_ne\_\_"{}},\ \&B::operator!=,\ \textcolor{stringliteral}{"{}Check\ if\ two\ boards\ are\ not\ equal"{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00133}00133\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getColumnHeight"{}},\ \&B::getColumnHeight,}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Get\ the\ current\ height\ of\ a\ column"{}},\ py::arg(\textcolor{stringliteral}{"{}column"{}}));}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00136}00136\ \ \ \textcolor{comment}{//\ Expose\ OpeningBook:}}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00137}00137\ \ \ py::class\_<BitBully::OpeningBook>(m,\ \textcolor{stringliteral}{"{}OpeningBookCore"{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00138}00138\ \ \ \ \ \ \ \textcolor{comment}{//\ Constructors}}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00139}00139\ \ \ \ \ \ \ .def(py::init<const\ std::filesystem::path\&,\ bool,\ bool>(),}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}bookPath"{}}),\ py::arg(\textcolor{stringliteral}{"{}is\_8ply"{}}),\ py::arg(\textcolor{stringliteral}{"{}with\_distances"{}}),}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Initialize\ an\ OpeningBook\ with\ explicit\ settings."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00142}00142\ \ \ \ \ \ \ .def(py::init<const\ std::filesystem::path\&>(),\ py::arg(\textcolor{stringliteral}{"{}bookPath"{}}),}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Initialize\ an\ OpeningBook\ by\ inferring\ database\ type\ from\ file\ "{}}}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}size."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00146}00146\ \ \ \ \ \ \ \textcolor{comment}{//\ Member\ functions}}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00147}00147\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}init"{}},\ \&BitBully::OpeningBook::init,\ py::arg(\textcolor{stringliteral}{"{}bookPath"{}}),}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}is\_8ply"{}}),\ py::arg(\textcolor{stringliteral}{"{}with\_distances"{}}),}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Reinitialize\ the\ OpeningBook\ with\ new\ settings."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00150}00150\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getEntry"{}},\ \&BitBully::OpeningBook::getEntry,\ py::arg(\textcolor{stringliteral}{"{}entryIdx"{}}),}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Get\ an\ entry\ from\ the\ book\ by\ index."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00152}00152\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getBook"{}},\ \&BitBully::OpeningBook::getBook,}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Return\ the\ raw\ book\ table."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00154}00154\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getBookSize"{}},\ \&BitBully::OpeningBook::getBookSize,}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Get\ the\ size\ of\ the\ book."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00156}00156\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getBoardValue"{}},\ \&BitBully::OpeningBook::getBoardValue,}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}board"{}}),\ \textcolor{stringliteral}{"{}Get\ the\ value\ of\ a\ given\ board."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00158}00158\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}isInBook"{}},\ \&BitBully::OpeningBook::isInBook,\ py::arg(\textcolor{stringliteral}{"{}board"{}}),}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Check,\ if\ the\ given\ board\ is\ in\ the\ opening\ book.\ Note,\ that\ "{}}}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}usually\ boards\ are\ only\ present\ in\ one\ mirrored\ variant."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00161}00161\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}convertValue"{}},\ \&BitBully::OpeningBook::convertValue,}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}value"{}}),\ py::arg(\textcolor{stringliteral}{"{}board"{}}),}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Convert\ a\ value\ to\ the\ internal\ scoring\ system."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00164}00164\ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}getNPly"{}},\ \&BitBully::OpeningBook::getNPly,}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Get\ the\ ply\ depth\ of\ the\ book."{}})}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00167}00167\ \ \ \ \ \ \ \textcolor{comment}{//\ Static\ functions}}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00168}00168\ \ \ \ \ \ \ .def\_static(\textcolor{stringliteral}{"{}readBook"{}},\ \&BitBully::OpeningBook::readBook,}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}filename"{}}),\ py::arg(\textcolor{stringliteral}{"{}with\_distances"{}})\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ py::arg(\textcolor{stringliteral}{"{}is\_8ply"{}})\ =\ \textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Read\ a\ book\ from\ a\ file."{}});}
+\DoxyCodeLine{\Hypertarget{bitbully__core_8cpp_source_l00171}00171\ \}}
 
 \end{DoxyCode}

@@ -14,7 +14,7 @@ var searchData=
   ['_5fcreate_5feval_5frow_11',['_create_eval_row',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a47417d16b1f7c349a56f23bd28210ab7',1,'bitbully::gui_c4::GuiC4']]],
   ['_5fcreate_5fmove_5flist_5fui_12',['_create_move_list_ui',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9115591967f83a0187615e7850b67059',1,'bitbully::gui_c4::GuiC4']]],
   ['_5fcreate_5fplayer_5fselectors_13',['_create_player_selectors',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a8b812134478ceb20ccd4d8e8136990ba',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fcreate_5ftiming_5frow_14',['_create_timing_row',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a769d36abf7a7ef51b5d7cd7adc22322f',1,'bitbully::gui_c4::GuiC4']]],
+  ['_5fcreate_5fstatus_5fbar_14',['_create_status_bar',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ad49f96070c2eedf9e89d8ee71047142b',1,'bitbully::gui_c4::GuiC4']]],
   ['_5fcurrent_5fplayer_15',['_current_player',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a016420d82729880e855e1851b06a354d',1,'bitbully::gui_c4::GuiC4']]],
   ['_5fevaluate_5fboard_16',['_evaluate_board',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a0d631e28f1275b46324c0de5be713547',1,'bitbully::gui_c4::GuiC4']]],
   ['_5fget_5fimg_5fidx_17',['_get_img_idx',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#adba205cc0228d95ab13b6ebaae7d7b6b',1,'bitbully::gui_c4::GuiC4']]],

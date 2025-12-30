@@ -13,6 +13,8 @@ var classbitbully_1_1board_1_1Board =
     [ "current_player", "d9/d83/classbitbully_1_1board_1_1Board.html#a034cd0819f00709bcaa40520c0972098", null ],
     [ "from_array", "d9/d83/classbitbully_1_1board_1_1Board.html#a04cf3920d1f460872b42d77c538a3423", null ],
     [ "from_moves", "d9/d83/classbitbully_1_1board_1_1Board.html#a9b97a7ced0bf0ed804d120478f57f257", null ],
+    [ "get_column_height", "d9/d83/classbitbully_1_1board_1_1Board.html#ae520d2fda88cce17ace16b45f314246e", null ],
+    [ "get_column_heights", "d9/d83/classbitbully_1_1board_1_1Board.html#a12790d340058ad7cade8c2491cc60a0f", null ],
     [ "has_win", "d9/d83/classbitbully_1_1board_1_1Board.html#ae50b3749d5857b53f6d8d7fed35b3bf7", null ],
     [ "is_full", "d9/d83/classbitbully_1_1board_1_1Board.html#a1f0472df8447db26820d7dd99ffe2bab", null ],
     [ "is_game_over", "d9/d83/classbitbully_1_1board_1_1Board.html#aad6d6426114ac320acf00f17f8291d0d", null ],

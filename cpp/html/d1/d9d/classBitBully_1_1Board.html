@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.73</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.74</span>
                         </div>
                     </td>
                 </tr>
@@ -150,6 +150,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a97357373ac0844cd2a7c07c87361131d" id="r_a97357373ac0844cd2a7c07c87361131d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97357373ac0844cd2a7c07c87361131d">mirror</a> () const</td></tr>
 <tr class="memitem:a0d3c307cd8aa9aa2654254b6e801db6b" id="r_a0d3c307cd8aa9aa2654254b6e801db6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d3c/classBitBully_1_1MoveList.html">MoveList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d3c307cd8aa9aa2654254b6e801db6b">sortMoves</a> (TBitBoard moves) const</td></tr>
 <tr class="memitem:aa1a6fa84e11fe0fc5a7abb64ee713cf6" id="r_aa1a6fa84e11fe0fc5a7abb64ee713cf6"><td class="memItemLeft" align="right" valign="top">TBitBoard&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1a6fa84e11fe0fc5a7abb64ee713cf6">findThreats</a> (TBitBoard moves)</td></tr>
+<tr class="memitem:a06a24457ec44b3866449e6090b45353f" id="r_a06a24457ec44b3866449e6090b45353f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06a24457ec44b3866449e6090b45353f">getColumnHeight</a> (const int column) const</td></tr>
 <tr class="memitem:a952c36a7a0faafbc49ab18f393ff6f6c" id="r_a952c36a7a0faafbc49ab18f393ff6f6c"><td class="memItemLeft" align="right" valign="top">TBitBoard&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a952c36a7a0faafbc49ab18f393ff6f6c">generateNonLosingMoves</a> () const</td></tr>
 <tr class="memitem:a27969eddcd49d5644c812339aec41ae8" id="r_a27969eddcd49d5644c812339aec41ae8"><td class="memItemLeft" align="right" valign="top">TBitBoard&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27969eddcd49d5644c812339aec41ae8">doubleThreat</a> (const TBitBoard moves) const</td></tr>
 <tr class="memitem:adcabaf7694d4fb3ff607068be70c377f" id="r_adcabaf7694d4fb3ff607068be70c377f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcabaf7694d4fb3ff607068be70c377f">toHuffman</a> () const</td></tr>
@@ -308,7 +309,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00309">309</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00322">322</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -443,7 +444,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00251">251</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00264">264</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -516,7 +517,34 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00233">233</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00246">246</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
+
+</div>
+</div>
+<a id="a06a24457ec44b3866449e6090b45353f" name="a06a24457ec44b3866449e6090b45353f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06a24457ec44b3866449e6090b45353f">&#9670;&#160;</a></span>getColumnHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BitBully::Board::getColumnHeight </td>
+          <td>(</td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>column</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d6/dbe/Board_8cpp_source.html#l00503">503</a> of file <a class="el" href="../../d6/dbe/Board_8cpp_source.html">Board.cpp</a>.</p>
 
 </div>
 </div>
@@ -736,7 +764,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00228">228</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00241">241</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -1083,7 +1111,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00293">293</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00306">306</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -1272,7 +1300,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00268">268</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00281">281</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>

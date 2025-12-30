@@ -9,7 +9,7 @@ var classbitbully_1_1gui__c4_1_1GuiC4 =
     [ "_create_eval_row", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a47417d16b1f7c349a56f23bd28210ab7", null ],
     [ "_create_move_list_ui", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9115591967f83a0187615e7850b67059", null ],
     [ "_create_player_selectors", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a8b812134478ceb20ccd4d8e8136990ba", null ],
-    [ "_create_timing_row", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a769d36abf7a7ef51b5d7cd7adc22322f", null ],
+    [ "_create_status_bar", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ad49f96070c2eedf9e89d8ee71047142b", null ],
     [ "_current_player", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a016420d82729880e855e1851b06a354d", null ],
     [ "_evaluate_board", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a0d631e28f1275b46324c0de5be713547", null ],
     [ "_get_img_idx", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#adba205cc0228d95ab13b6ebaae7d7b6b", null ],

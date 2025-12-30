@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.73</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.74</span>
                         </div>
                     </td>
                 </tr>
@@ -139,6 +139,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0631f7c4d3734f0bb0993501f67f617c" id="r_a0631f7c4d3734f0bb0993501f67f617c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0631f7c4d3734f0bb0993501f67f617c">to_huffman</a> (self)</td></tr>
 <tr class="memitem:afe754d7343ddc9c2b4596ec2c5eea43a" id="r_afe754d7343ddc9c2b4596ec2c5eea43a"><td class="memItemLeft" align="right" valign="top">list[int]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe754d7343ddc9c2b4596ec2c5eea43a">legal_moves</a> (self, bool non_losing=False, bool order_moves=False)</td></tr>
 <tr class="memitem:ae2f018bdfa396d7e35145911fb1466c9" id="r_ae2f018bdfa396d7e35145911fb1466c9"><td class="memItemLeft" align="right" valign="top">BoardCore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2f018bdfa396d7e35145911fb1466c9">native</a> (self)</td></tr>
+<tr class="memitem:ae520d2fda88cce17ace16b45f314246e" id="r_ae520d2fda88cce17ace16b45f314246e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae520d2fda88cce17ace16b45f314246e">get_column_height</a> (self, int column)</td></tr>
+<tr class="memitem:a12790d340058ad7cade8c2491cc60a0f" id="r_a12790d340058ad7cade8c2491cc60a0f"><td class="memItemLeft" align="right" valign="top">list[int]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12790d340058ad7cade8c2491cc60a0f">get_column_heights</a> (self)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -1112,6 +1114,87 @@ Example:
     ```
 </pre> 
 <p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01564">1564</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+
+</div>
+</div>
+<a id="ae520d2fda88cce17ace16b45f314246e" name="ae520d2fda88cce17ace16b45f314246e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae520d2fda88cce17ace16b45f314246e">&#9670;&#160;</a></span>get_column_height()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int bitbully.board.Board.get_column_height </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>column</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Returns the height of a specific column on the board.
+
+The height of a column is defined as the number of tokens currently
+present in that column.
+
+Args:
+    column (int): The column index (0-6) for which to retrieve the height.
+
+Returns:
+    int: The height of the specified column (0-6).
+
+Raises:
+    ValueError: If the `column` index is outside the valid range [0, 6].
+
+Example:
+    ```python
+    import bitbully as bb
+
+    board = bb.Board("0011223")
+    height = board.get_column_height(2)
+    assert height == 2
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01881">1881</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
+
+</div>
+</div>
+<a id="a12790d340058ad7cade8c2491cc60a0f" name="a12790d340058ad7cade8c2491cc60a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12790d340058ad7cade8c2491cc60a0f">&#9670;&#160;</a></span>get_column_heights()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> list[int] bitbully.board.Board.get_column_heights </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Returns a list of heights for each column on the board.
+
+The height of a column is defined as the number of tokens currently
+present in that column.
+
+Returns:
+    list[int]: A list of 7 integers, where each integer represents
+    the height of the corresponding column (0-6).
+
+Example:
+    ```python
+    import bitbully as bb
+
+    board = bb.Board("0011223")
+    heights = board.get_column_heights()
+    assert heights == [2, 2, 2, 1, 0, 0, 0]
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../df/d85/board_8py_source.html#l01909">1909</a> of file <a class="el" href="../../df/d85/board_8py_source.html">board.py</a>.</p>
 
 </div>
 </div>

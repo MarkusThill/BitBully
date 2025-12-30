@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.73</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.74</span>
                         </div>
                     </td>
                 </tr>
@@ -171,75 +171,81 @@ $(function(){initNavTree('de/dfb/src_2main_8cpp_source.html','../../',''); });
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keywordtype">int</span> nPly = 8;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordtype">int</span> nRepeats = 1000;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  std::string filename;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="comment">// Parse command-line arguments</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="keyword">auto</span> args = parseArgs(argc, argv);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keywordflow">if</span> (args.find(<span class="stringliteral">&quot;--nply&quot;</span>) != args.end()) nPly = std::stoi(args[<span class="stringliteral">&quot;--nply&quot;</span>]);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keywordflow">if</span> (args.find(<span class="stringliteral">&quot;--nrepeats&quot;</span>) != args.end())</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    nRepeats = std::stoi(args[<span class="stringliteral">&quot;--nrepeats&quot;</span>]);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordflow">if</span> (args.find(<span class="stringliteral">&quot;--filename&quot;</span>) != args.end())</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    filename = args[<span class="stringliteral">&quot;--filename&quot;</span>];</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    filename = <span class="stringliteral">&quot;../times_&quot;</span> + std::to_string(nPly) + <span class="stringliteral">&quot;_ply_&quot;</span> +</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>               std::to_string(nRepeats) + <span class="stringliteral">&quot;_pos.csv&quot;</span>;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  std::vector&lt;std::tuple&lt;float, float&gt;&gt; times = {};</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="keyword">using </span>duration = std::chrono::duration&lt;float&gt;;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keywordtype">int</span> reset_tt = 0;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="comment">// Parse command-line arguments</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keyword">auto</span> args = parseArgs(argc, argv);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keywordflow">if</span> (args.find(<span class="stringliteral">&quot;--nply&quot;</span>) != args.end()) nPly = std::stoi(args[<span class="stringliteral">&quot;--nply&quot;</span>]);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keywordflow">if</span> (args.find(<span class="stringliteral">&quot;--nrepeats&quot;</span>) != args.end())</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    nRepeats = std::stoi(args[<span class="stringliteral">&quot;--nrepeats&quot;</span>]);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keywordflow">if</span> (args.find(<span class="stringliteral">&quot;--filename&quot;</span>) != args.end())</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    filename = args[<span class="stringliteral">&quot;--filename&quot;</span>];</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    filename = <span class="stringliteral">&quot;../times_&quot;</span> + std::to_string(nPly) + <span class="stringliteral">&quot;_ply_&quot;</span> +</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>               std::to_string(nRepeats) + <span class="stringliteral">&quot;_pos.csv&quot;</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordflow">if</span> (args.find(<span class="stringliteral">&quot;--reset_tt&quot;</span>) !=</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      args.end())  <span class="comment">// reset transposition table every N moves</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    reset_tt = std::stoi(args[<span class="stringliteral">&quot;--reset_tt&quot;</span>]);</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <a class="code hl_class" href="../../d3/dcd/classGameSolver_1_1Connect4_1_1Solver.html">GameSolver::Connect4::Solver</a> solverPonsC4;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <a class="code hl_class" href="../../d9/d00/classBitBully_1_1BitBully.html">BitBully::BitBully</a> bb;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; nRepeats; i++) {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keyword">auto</span> [b, mvSequence] = BitBully::Board::randomBoard(nPly, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    solverPonsC4.reset();</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    bb.resetTranspositionTable();</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// Bitbully:</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keyword">auto</span> tStart = Clock::now();</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> scoreBitbully = bb.mtdf(b, 0);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keyword">auto</span> tEnd = Clock::now();</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">auto</span> timeBitbully = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(duration(tEnd - tStart).count());</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  std::vector&lt;std::tuple&lt;float, float&gt;&gt; times = {};</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="keyword">using </span>duration = std::chrono::duration&lt;float&gt;;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <a class="code hl_class" href="../../d3/dcd/classGameSolver_1_1Connect4_1_1Solver.html">GameSolver::Connect4::Solver</a> solverPonsC4;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  <a class="code hl_class" href="../../d9/d00/classBitBully_1_1BitBully.html">BitBully::BitBully</a> bb;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; nRepeats; i++) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keyword">auto</span> [b, mvSequence] = BitBully::Board::randomBoard(nPly, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">if</span> (reset_tt &gt; 0 &amp;&amp; i % reset_tt == 0) {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>      solverPonsC4.reset();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>      bb.resetTranspositionTable();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">// Pons-C4:</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_class" href="../../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html">GameSolver::Connect4::Position</a> P;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="comment">// Convert move sequence into a string representation:</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">auto</span> mvSequenceStr =</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        std::accumulate(mvSequence.begin(), mvSequence.end(), std::string(<span class="stringliteral">&quot;&quot;</span>),</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                        [](<span class="keyword">const</span> std::string&amp; a, <span class="keyword">const</span> <span class="keywordtype">int</span> mv) {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                          return a + std::to_string(mv + 1);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                        });</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">if</span> (P.<a class="code hl_function" href="../../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a57dadc2f70eb02ff6237166f02a341fa">play</a>(mvSequenceStr) != b.countTokens()) {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: (P.play(mvSequenceStr) != b.countTokens())&quot;</span>;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>      exit(EXIT_FAILURE);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    tStart = Clock::now();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> scorePonsC4 = solverPonsC4.solve(P, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    tEnd = Clock::now();</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">auto</span> timePonsC4 = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(duration(tEnd - tStart).count());</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    times.emplace_back(timeBitbully, timePonsC4);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordflow">if</span> (scorePonsC4 != scoreBitbully) {</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>      std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: &quot;</span> &lt;&lt; b.toString() &lt;&lt; <span class="stringliteral">&quot;Pons-C4: &quot;</span> &lt;&lt; scorePonsC4</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                &lt;&lt; <span class="stringliteral">&quot; BitBully: &quot;</span> &lt;&lt; scoreBitbully &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>      exit(EXIT_FAILURE);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">// Bitbully:</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keyword">auto</span> tStart = Clock::now();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> scoreBitbully = bb.mtdf(b, 0);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">auto</span> tEnd = Clock::now();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">auto</span> timeBitbully = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(duration(tEnd - tStart).count());</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">// Pons-C4:</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_class" href="../../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html">GameSolver::Connect4::Position</a> P;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="comment">// Convert move sequence into a string representation:</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keyword">auto</span> mvSequenceStr =</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        std::accumulate(mvSequence.begin(), mvSequence.end(), std::string(<span class="stringliteral">&quot;&quot;</span>),</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                        [](<span class="keyword">const</span> std::string&amp; a, <span class="keyword">const</span> <span class="keywordtype">int</span> mv) {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                          return a + std::to_string(mv + 1);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                        });</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">if</span> (P.<a class="code hl_function" href="../../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a57dadc2f70eb02ff6237166f02a341fa">play</a>(mvSequenceStr) != b.countTokens()) {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: (P.play(mvSequenceStr) != b.countTokens())&quot;</span>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>      exit(EXIT_FAILURE);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    tStart = Clock::now();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> scorePonsC4 = solverPonsC4.solve(P, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    tEnd = Clock::now();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keyword">auto</span> timePonsC4 = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(duration(tEnd - tStart).count());</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    times.emplace_back(timeBitbully, timePonsC4);</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (i % (std::max(nRepeats, 100) / 100) == 0) {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Done with &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; iterations&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    }</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  }</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  writeToCSV(times, filename);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (scorePonsC4 != scoreBitbully) {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: &quot;</span> &lt;&lt; b.toString() &lt;&lt; <span class="stringliteral">&quot;Pons-C4: &quot;</span> &lt;&lt; scorePonsC4</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                &lt;&lt; <span class="stringliteral">&quot; BitBully: &quot;</span> &lt;&lt; scoreBitbully &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>      exit(EXIT_FAILURE);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    }</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Node Count Pons-C4: &quot;</span> &lt;&lt; solverPonsC4.getNodeCount() &lt;&lt; <span class="stringliteral">&quot;, &quot;</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            &lt;&lt; <span class="stringliteral">&quot;BitBully: &quot;</span> &lt;&lt; bb.getNodeCounter() &lt;&lt; <span class="stringliteral">&quot; Percent: &quot;</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            &lt;&lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(bb.getNodeCounter() -</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                                   solverPonsC4.getNodeCount()) /</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                   bb.getNodeCounter() * 100.0</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            &lt;&lt; <span class="stringliteral">&quot; %&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">if</span> (i % (std::max(nRepeats, 100) / 100) == 0) {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;Done with &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; iterations&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    }</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  writeToCSV(times, filename);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Node Count Pons-C4: &quot;</span> &lt;&lt; solverPonsC4.getNodeCount() &lt;&lt; <span class="stringliteral">&quot;, &quot;</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            &lt;&lt; <span class="stringliteral">&quot;BitBully: &quot;</span> &lt;&lt; bb.getNodeCounter() &lt;&lt; <span class="stringliteral">&quot; Percent: &quot;</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            &lt;&lt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(bb.getNodeCounter() -</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                                   solverPonsC4.getNodeCount()) /</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                   bb.getNodeCounter() * 100.0</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            &lt;&lt; <span class="stringliteral">&quot; %&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}</div>
 <div class="ttc" id="aclassBitBully_1_1BitBully_html"><div class="ttname"><a href="../../d9/d00/classBitBully_1_1BitBully.html">BitBully::BitBully</a></div><div class="ttdef"><b>Definition</b> <a href="../../d3/d5c/BitBully_8h_source.html#l00014">BitBully.h:14</a></div></div>
 <div class="ttc" id="aclassGameSolver_1_1Connect4_1_1Position_html"><div class="ttname"><a href="../../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html">GameSolver::Connect4::Position</a></div><div class="ttdef"><b>Definition</b> <a href="../../dc/d58/Position_8hpp_source.html#l00084">Position.hpp:84</a></div></div>
 <div class="ttc" id="aclassGameSolver_1_1Connect4_1_1Position_html_a57dadc2f70eb02ff6237166f02a341fa"><div class="ttname"><a href="../../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a57dadc2f70eb02ff6237166f02a341fa">GameSolver::Connect4::Position::play</a></div><div class="ttdeci">void play(position_t move)</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d58/Position_8hpp_source.html#l00113">Position.hpp:113</a></div></div>

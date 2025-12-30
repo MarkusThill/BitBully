@@ -1881,5 +1881,54 @@
 \DoxyCodeLine{\Hypertarget{board_8py_source_l01877}01877\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ treated\ as\ read-\/only\ by\ users.}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l01878}01878\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
 \DoxyCodeLine{\Hypertarget{board_8py_source_l01879}01879\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01880}01880\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01881}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae520d2fda88cce17ace16b45f314246e}{01881}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ae520d2fda88cce17ace16b45f314246e}{get\_column\_height}}(self,\ column:\ int)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01882}01882\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ the\ height\ of\ a\ specific\ column\ on\ the\ board.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01883}01883\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01884}01884\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ The\ height\ of\ a\ column\ is\ defined\ as\ the\ number\ of\ tokens\ currently}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01885}01885\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ present\ in\ that\ column.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01886}01886\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01887}01887\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01888}01888\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ column\ (int):\ The\ column\ index\ (0-\/6)\ for\ which\ to\ retrieve\ the\ height.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01889}01889\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01890}01890\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01891}01891\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ The\ height\ of\ the\ specified\ column\ (0-\/6).}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01892}01892\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01893}01893\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01894}01894\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ValueError:\ If\ the\ \`{}column\`{}\ index\ is\ outside\ the\ valid\ range\ [0,\ 6].}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01895}01895\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01896}01896\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01897}01897\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01898}01898\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ bitbully\ as\ bb}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01899}01899\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01900}01900\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ bb.Board("{}0011223"{})}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01901}01901\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ height\ =\ board.get\_column\_height(2)}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01902}01902\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ height\ ==\ 2}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01903}01903\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01904}01904\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01905}01905\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ (0\ <=\ column\ <=\ 6):}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01906}01906\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Column\ index\ must\ be\ between\ 0\ and\ 6,\ got\ \{column\}."{}})}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01907}01907\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.getColumnHeight(column)}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01908}01908\ }
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01909}\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a12790d340058ad7cade8c2491cc60a0f}{01909}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1board_1_1Board_a12790d340058ad7cade8c2491cc60a0f}{get\_column\_heights}}(self)\ -\/>\ list[int]:}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01910}01910\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Returns\ a\ list\ of\ heights\ for\ each\ column\ on\ the\ board.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01911}01911\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01912}01912\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ The\ height\ of\ a\ column\ is\ defined\ as\ the\ number\ of\ tokens\ currently}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01913}01913\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ present\ in\ that\ column.}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01914}01914\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01915}01915\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01916}01916\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ list[int]:\ A\ list\ of\ 7\ integers,\ where\ each\ integer\ represents}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01917}01917\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ the\ height\ of\ the\ corresponding\ column\ (0-\/6).}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01918}01918\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01919}01919\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01920}01920\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01921}01921\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ bitbully\ as\ bb}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01922}01922\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01923}01923\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ bb.Board("{}0011223"{})}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01924}01924\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ heights\ =\ board.get\_column\_heights()}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01925}01925\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ heights\ ==\ [2,\ 2,\ 2,\ 1,\ 0,\ 0,\ 0]}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01926}01926\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01927}01927\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{board_8py_source_l01928}01928\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ [self.\mbox{\hyperlink{classbitbully_1_1board_1_1Board_ad34abdcda492a98a5532c713d83f4f0b}{\_board}}.getColumnHeight(col)\ \textcolor{keywordflow}{for}\ col\ \textcolor{keywordflow}{in}\ range(7)]}
 
 \end{DoxyCode}

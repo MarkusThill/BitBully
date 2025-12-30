@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.73</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.74</span>
                         </div>
                     </td>
                 </tr>
@@ -2046,6 +2046,59 @@ $(function(){initNavTree('df/d85/board_8py_source.html','../../',''); });
 <div class="line"><a id="l01877" name="l01877"></a><span class="lineno"> 1877</span><span class="stringliteral">        treated as read-only by users.</span></div>
 <div class="line"><a id="l01878" name="l01878"></a><span class="lineno"> 1878</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
 <div class="line"><a id="l01879" name="l01879"></a><span class="lineno"> 1879</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a></div>
+<div class="line"><a id="l01880" name="l01880"></a><span class="lineno"> 1880</span> </div>
+</div>
+<div class="foldopen" id="foldopen01881" data-start="" data-end="">
+<div class="line"><a id="l01881" name="l01881"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae520d2fda88cce17ace16b45f314246e"> 1881</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae520d2fda88cce17ace16b45f314246e">get_column_height</a>(self, column: int) -&gt; int:</div>
+<div class="line"><a id="l01882" name="l01882"></a><span class="lineno"> 1882</span>        <span class="stringliteral">&quot;&quot;&quot;Returns the height of a specific column on the board.</span></div>
+<div class="line"><a id="l01883" name="l01883"></a><span class="lineno"> 1883</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01884" name="l01884"></a><span class="lineno"> 1884</span><span class="stringliteral">        The height of a column is defined as the number of tokens currently</span></div>
+<div class="line"><a id="l01885" name="l01885"></a><span class="lineno"> 1885</span><span class="stringliteral">        present in that column.</span></div>
+<div class="line"><a id="l01886" name="l01886"></a><span class="lineno"> 1886</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01887" name="l01887"></a><span class="lineno"> 1887</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l01888" name="l01888"></a><span class="lineno"> 1888</span><span class="stringliteral">            column (int): The column index (0-6) for which to retrieve the height.</span></div>
+<div class="line"><a id="l01889" name="l01889"></a><span class="lineno"> 1889</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01890" name="l01890"></a><span class="lineno"> 1890</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l01891" name="l01891"></a><span class="lineno"> 1891</span><span class="stringliteral">            int: The height of the specified column (0-6).</span></div>
+<div class="line"><a id="l01892" name="l01892"></a><span class="lineno"> 1892</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01893" name="l01893"></a><span class="lineno"> 1893</span><span class="stringliteral">        Raises:</span></div>
+<div class="line"><a id="l01894" name="l01894"></a><span class="lineno"> 1894</span><span class="stringliteral">            ValueError: If the `column` index is outside the valid range [0, 6].</span></div>
+<div class="line"><a id="l01895" name="l01895"></a><span class="lineno"> 1895</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01896" name="l01896"></a><span class="lineno"> 1896</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l01897" name="l01897"></a><span class="lineno"> 1897</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l01898" name="l01898"></a><span class="lineno"> 1898</span><span class="stringliteral">            import bitbully as bb</span></div>
+<div class="line"><a id="l01899" name="l01899"></a><span class="lineno"> 1899</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01900" name="l01900"></a><span class="lineno"> 1900</span><span class="stringliteral">            board = bb.Board(&quot;0011223&quot;)</span></div>
+<div class="line"><a id="l01901" name="l01901"></a><span class="lineno"> 1901</span><span class="stringliteral">            height = board.get_column_height(2)</span></div>
+<div class="line"><a id="l01902" name="l01902"></a><span class="lineno"> 1902</span><span class="stringliteral">            assert height == 2</span></div>
+<div class="line"><a id="l01903" name="l01903"></a><span class="lineno"> 1903</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l01904" name="l01904"></a><span class="lineno"> 1904</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l01905" name="l01905"></a><span class="lineno"> 1905</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> (0 &lt;= column &lt;= 6):</div>
+<div class="line"><a id="l01906" name="l01906"></a><span class="lineno"> 1906</span>            <span class="keywordflow">raise</span> ValueError(f<span class="stringliteral">&quot;Column index must be between 0 and 6, got {column}.&quot;</span>)</div>
+<div class="line"><a id="l01907" name="l01907"></a><span class="lineno"> 1907</span>        <span class="keywordflow">return</span> self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.getColumnHeight(column)</div>
+<div class="line"><a id="l01908" name="l01908"></a><span class="lineno"> 1908</span> </div>
+</div>
+<div class="foldopen" id="foldopen01909" data-start="" data-end="">
+<div class="line"><a id="l01909" name="l01909"></a><span class="lineno"><a class="line" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a12790d340058ad7cade8c2491cc60a0f"> 1909</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a12790d340058ad7cade8c2491cc60a0f">get_column_heights</a>(self) -&gt; list[int]:</div>
+<div class="line"><a id="l01910" name="l01910"></a><span class="lineno"> 1910</span>        <span class="stringliteral">&quot;&quot;&quot;Returns a list of heights for each column on the board.</span></div>
+<div class="line"><a id="l01911" name="l01911"></a><span class="lineno"> 1911</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01912" name="l01912"></a><span class="lineno"> 1912</span><span class="stringliteral">        The height of a column is defined as the number of tokens currently</span></div>
+<div class="line"><a id="l01913" name="l01913"></a><span class="lineno"> 1913</span><span class="stringliteral">        present in that column.</span></div>
+<div class="line"><a id="l01914" name="l01914"></a><span class="lineno"> 1914</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01915" name="l01915"></a><span class="lineno"> 1915</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l01916" name="l01916"></a><span class="lineno"> 1916</span><span class="stringliteral">            list[int]: A list of 7 integers, where each integer represents</span></div>
+<div class="line"><a id="l01917" name="l01917"></a><span class="lineno"> 1917</span><span class="stringliteral">            the height of the corresponding column (0-6).</span></div>
+<div class="line"><a id="l01918" name="l01918"></a><span class="lineno"> 1918</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01919" name="l01919"></a><span class="lineno"> 1919</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l01920" name="l01920"></a><span class="lineno"> 1920</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l01921" name="l01921"></a><span class="lineno"> 1921</span><span class="stringliteral">            import bitbully as bb</span></div>
+<div class="line"><a id="l01922" name="l01922"></a><span class="lineno"> 1922</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l01923" name="l01923"></a><span class="lineno"> 1923</span><span class="stringliteral">            board = bb.Board(&quot;0011223&quot;)</span></div>
+<div class="line"><a id="l01924" name="l01924"></a><span class="lineno"> 1924</span><span class="stringliteral">            heights = board.get_column_heights()</span></div>
+<div class="line"><a id="l01925" name="l01925"></a><span class="lineno"> 1925</span><span class="stringliteral">            assert heights == [2, 2, 2, 1, 0, 0, 0]</span></div>
+<div class="line"><a id="l01926" name="l01926"></a><span class="lineno"> 1926</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l01927" name="l01927"></a><span class="lineno"> 1927</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l01928" name="l01928"></a><span class="lineno"> 1928</span>        <span class="keywordflow">return</span> [self.<a class="code hl_variable" href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad34abdcda492a98a5532c713d83f4f0b">_board</a>.getColumnHeight(col) <span class="keywordflow">for</span> col <span class="keywordflow">in</span> range(7)]</div>
 </div>
 </div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html">bitbully.board.Board</a></div><div class="ttdef"><b>Definition</b> <a href="#l00012">board.py:12</a></div></div>
@@ -2054,6 +2107,7 @@ $(function(){initNavTree('df/d85/board_8py_source.html','../../',''); });
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a0631f7c4d3734f0bb0993501f67f617c"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0631f7c4d3734f0bb0993501f67f617c">bitbully.board.Board.to_huffman</a></div><div class="ttdeci">int to_huffman(self)</div><div class="ttdef"><b>Definition</b> <a href="#l01763">board.py:1763</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a0babec5f817efa063b5e89e035d79b4e"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">bitbully.board.Board.copy</a></div><div class="ttdeci">Board copy(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00433">board.py:433</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a0c4555d1cb4a50484294b8452b4f02a9"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a0c4555d1cb4a50484294b8452b4f02a9">bitbully.board.Board.play_on_copy</a></div><div class="ttdeci">Board play_on_copy(self, int move)</div><div class="ttdef"><b>Definition</b> <a href="#l00995">board.py:995</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a12790d340058ad7cade8c2491cc60a0f"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a12790d340058ad7cade8c2491cc60a0f">bitbully.board.Board.get_column_heights</a></div><div class="ttdeci">list[int] get_column_heights(self)</div><div class="ttdef"><b>Definition</b> <a href="#l01909">board.py:1909</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a14e3593ac443efa0acedf090e3671a7d"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">bitbully.board.Board.__eq__</a></div><div class="ttdeci">bool __eq__(self, object value)</div><div class="ttdef"><b>Definition</b> <a href="#l00232">board.py:232</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a1f0472df8447db26820d7dd99ffe2bab"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a1f0472df8447db26820d7dd99ffe2bab">bitbully.board.Board.is_full</a></div><div class="ttdeci">bool is_full(self)</div><div class="ttdef"><b>Definition</b> <a href="#l01426">board.py:1426</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_a26f6bb8016db04d0ed10a8c05cfb87e6"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#a26f6bb8016db04d0ed10a8c05cfb87e6">bitbully.board.Board.__init__</a></div><div class="ttdeci">None __init__(self, Sequence[Sequence[int]]|Sequence[int]|str|None init_with=None)</div><div class="ttdef"><b>Definition</b> <a href="#l00021">board.py:21</a></div></div>
@@ -2076,6 +2130,7 @@ $(function(){initNavTree('df/d85/board_8py_source.html','../../',''); });
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ad9a2dd40b4217e8d4f3aac392444f79e"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ad9a2dd40b4217e8d4f3aac392444f79e">bitbully.board.Board.__str__</a></div><div class="ttdeci">str __str__(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00302">board.py:302</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ae2f018bdfa396d7e35145911fb1466c9"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae2f018bdfa396d7e35145911fb1466c9">bitbully.board.Board.native</a></div><div class="ttdeci">BoardCore native(self)</div><div class="ttdef"><b>Definition</b> <a href="#l01864">board.py:1864</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ae50b3749d5857b53f6d8d7fed35b3bf7"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae50b3749d5857b53f6d8d7fed35b3bf7">bitbully.board.Board.has_win</a></div><div class="ttdeci">bool has_win(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00594">board.py:594</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_ae520d2fda88cce17ace16b45f314246e"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#ae520d2fda88cce17ace16b45f314246e">bitbully.board.Board.get_column_height</a></div><div class="ttdeci">int get_column_height(self, int column)</div><div class="ttdef"><b>Definition</b> <a href="#l01881">board.py:1881</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_aed729a7efcbf07f00e2a8773b875291d"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d">bitbully.board.Board.moves_left</a></div><div class="ttdeci">int moves_left(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00860">board.py:860</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_af0547d9a280ddeaebe6bf563c8a0617a"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af0547d9a280ddeaebe6bf563c8a0617a">bitbully.board.Board.is_legal_move</a></div><div class="ttdeci">bool is_legal_move(self, int move)</div><div class="ttdef"><b>Definition</b> <a href="#l00681">board.py:681</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html_af95a367c9b9e977c07ee89189f1e6087"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html#af95a367c9b9e977c07ee89189f1e6087">bitbully.board.Board.__ne__</a></div><div class="ttdeci">bool __ne__(self, object value)</div><div class="ttdef"><b>Definition</b> <a href="#l00285">board.py:285</a></div></div>

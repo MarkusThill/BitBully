@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.73</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.74</span>
                         </div>
                     </td>
                 </tr>
@@ -609,7 +609,15 @@ $(function(){initNavTree('d6/dbe/Board_8cpp_source.html','../../',''); });
 <div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>  <span class="keywordflow">return</span> mB;</div>
 <div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>}</div>
 <div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span> </div>
-<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>}  <span class="comment">// namespace BitBully</span></div>
+<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span><span class="keywordtype">int</span> Board::getColumnHeight(<span class="keyword">const</span> <span class="keywordtype">int</span> column)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>  assert(column &gt;= 0 &amp;&amp; column &lt; N_COLUMNS);</div>
+<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>  TBitBoard columnMask = getColumnMask(column);</div>
+<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>  <span class="comment">// columnMask -= (UINT64_C(1) &lt;&lt; (column * COLUMN_BIT_OFFSET));</span></div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>  TBitBoard occupied = m_bAllTokens &amp; columnMask;</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>  <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(uint64_t_popcnt(occupied));</div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>}</div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span> </div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>}  <span class="comment">// namespace BitBully</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

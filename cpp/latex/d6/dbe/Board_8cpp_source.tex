@@ -504,6 +504,14 @@
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00500}00500\ \ \ \textcolor{keywordflow}{return}\ mB;}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00501}00501\ \}}
 \DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00502}00502\ }
-\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00503}00503\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00503}00503\ \textcolor{keywordtype}{int}\ Board::getColumnHeight(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ column)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00504}00504\ \ \ assert(column\ >=\ 0\ \&\&\ column\ <\ N\_COLUMNS);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00505}00505\ \ \ TBitBoard\ columnMask\ =\ getColumnMask(column);}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00506}00506\ \ \ \textcolor{comment}{//\ columnMask\ -\/=\ (UINT64\_C(1)\ <<\ (column\ *\ COLUMN\_BIT\_OFFSET));}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00507}00507\ \ \ TBitBoard\ occupied\ =\ m\_bAllTokens\ \&\ columnMask;}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00508}00508\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(uint64\_t\_popcnt(occupied));}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00509}00509\ \}}
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00510}00510\ }
+\DoxyCodeLine{\Hypertarget{Board_8cpp_source_l00511}00511\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
 
 \end{DoxyCode}
