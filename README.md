@@ -31,16 +31,16 @@ both developers and researchers.
 <p align="center">
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-1-1400.webp"
        alt="Connect4 opening"
-       width="28%"
-       style="margin: 0 12px;">
+       width="25%"
+       style="margin: 0 25px;">
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-2-1400.webp"
        alt="Connect4 mid-game"
-       width="28%"
-       style="margin: 0 12px;">
+       width="25%"
+       style="margin: 0 25px;">
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-3-1400.webp"
        alt="Connect4 victory"
-       width="28%"
-       style="margin: 0 12px;">
+       width="25%"
+       style="margin: 0 25px;">
 </p>
 
 <p align="center">
@@ -150,6 +150,7 @@ The docs for the opening databases can be found here: [https://markusthill.githu
 > Generalized board sizes are not supported.
 
 ### 🚀 BitBully: Getting Started with a Jupyter Notebook
+<a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/getting_started.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 This notebook introduces the main building blocks of **BitBully**:
 
@@ -160,17 +161,20 @@ All examples are designed to be copy-pasteable and easy to adapt for your own ex
 
 Jupyter Notebook: [notebooks/getting_started.ipynb](https://github.com/MarkusThill/BitBully/blob/master/notebooks/getting_started.ipynb)
 
-<a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/getting_started.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 
 ### 🎮 Play a Game of Connect-4 with a simple Jupyter Notebook Widget
-TODO: Screenshot here!
+<a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/game_widget.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+<img src="https://markusthill.github.io/assets/img/project_bitbully/screenshot_gui-1400.webp" alt="screenshot_gui" width="700" >
+<br>
 
 BitBully includes an interactive Connect-4 widget for Jupyter built with ipywidgets + Matplotlib.
-`GuiC4` renders a 6x7 board using image sprites, supports click-to-play or column buttons, provides undo/redo, can trigger a computer move using the BitBully engine (optionally with an opening book database), and shows win/draw popups. It's intended for quick experimentation and demos inside notebooks (best with %matplotlib ipympl).
+`GuiC4` renders a 6x7 board using image sprites, supports move evaluation, provides undo/redo, can trigger a computer move using the BitBully engine (optionally with an opening book database). It's intended for quick experimentation and demos inside notebooks (best with `%matplotlib ipympl`).
 
 Jupyter Notebook: [notebooks/game_widget.ipynb](https://github.com/MarkusThill/BitBully/blob/master/notebooks/game_widget.ipynb)
 
-<a href="https://colab.research.google.com/github/MarkusThill/BitBully/blob/master/notebooks/game_widget.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 
 ### High-level Python API (recommended)
 
