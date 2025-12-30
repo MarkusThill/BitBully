@@ -1,3 +1,12 @@
+## v0.0.74 (2025-12-30)
+
+### Fix
+
+- added active player to gui
+- get column heights
+- updated readme
+- allow to reset transtable in benchmark
+
 ## v0.0.73 (2025-12-29)
 
 ### Fix
