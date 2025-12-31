@@ -140,6 +140,7 @@ The docs for the opening databases can be found here: [https://markusthill.githu
 
 ---
 
+
 ## Usage
 
 > ⚠️ **Note**
@@ -654,6 +655,133 @@ print(book.isInBook(board.mirror()))     # e.g., True, checks symmetric position
 ```
 
 ---
+
+## Benchmarking
+
+This section describes how **BitBully** was benchmarked against a strong **[Baseline](https://github.com/PascalPons/connect4)** solver, how the reported numbers were obtained, and how to interpret the reported *p-values*.
+
+### Setup
+
+The benchmark compares **BitBully** against the **Baseline** on identical Connect-4 positions, measuring *wall-clock solve time* per position.
+
+**Position generation**
+- For a fixed search depth `nply`, random but *legal* Connect-4 positions are generated.
+- Each position is constructed by playing a random sequence of `nply` moves from the empty board (non-trivial positions, meaning that they do not contain a winning position for the player to move next.).
+- The same position is evaluated by both solvers.
+
+**Solvers**
+- **BitBully**: evaluated using its `mtdf` search with transposition tables enabled. Transposition Table size: $2^{20}=1\,048\,576$ entries.
+- **Baseline**: evaluated using its standard `solve` routine, with transposition tables enabled. Transposition Table size: $2^{24}=16\,777\,216$ entries.
+- For correctness, both solvers must return the *same game-theoretic score*; execution aborts if a mismatch occurs.
+
+**Timing**: Each solver is timed **independently** on the same board.
+
+**Repetitions**
+- For each `nply`, the experiment is repeated `nrepeats` times (typically 25–2000, depending on search depth).
+- In this case, transposition-table resets are enabled to control caching effects.
+
+### Aggregation & Reported Metrics
+
+From the recorded timings, the following statistics are computed:
+
+- **Mean ± Standard Deviation**: Arithmetic mean and sample standard deviation of solve times (in seconds).
+- **Speed-up**: Speed-up = mean(Baseline) / mean(BitBully). Values > 1 indicate that BitBully is faster on average.
+- **Paired Statistical Test (p-value)**:A *paired* Wilcoxon signed-rank test is applied to the timing pairs.
+
+### Statistical Significance & p-Value Interpretation
+
+To assess whether observed speed differences are statistically meaningful, a **Wilcoxon signed-rank test** is used:
+
+**Why Wilcoxon?**
+- Timing distributions are often non-Gaussian and heavy-tailed.
+- Measurements are *paired* (same position, two solvers).
+- Wilcoxon is non-parametric and robust to outliers.
+
+**Test definition**
+- Null hypothesis (H₀): BitBully is **not faster** than *Baseline*.
+- Alternative hypothesis (H₁): BitBully is **faster** than *Baseline*.
+
+**p-value meaning**
+- The p-value is the probability of observing the measured (or more extreme) speed advantage **if H₀ were true**.
+- Very small p-values (e.g. `1e-40`) indicate overwhelming evidence that BitBully is faster.
+- Values ≥ 0.05 indicate that the observed difference is *not statistically significant* at the 5% level.
+
+**Practical interpretation**
+- For small `#Ply`, BitBully shows a clear and statistically significant speed advantage.
+- As `#Ply` increases, runtimes converge and differences become statistically indistinguishable.
+
+### Notes & Caveats
+
+- We left the size of the transposition table for **Baseline** as-is, likely giving it a slight advantage over BitBully.
+- Benchmarks measure *solve time*, not node count or memory usage.
+- Results might depend on compiler optimizations, hardware, and cache behavior.
+- Extremely small p-values are expected for large `nrepeats` when even modest speed differences are consistent.
+
+The full [benchmark code](https://github.com/MarkusThill/BitBully/blob/master/src/main.cpp) and [analysis notebook](https://github.com/MarkusThill/BitBully/blob/master/notebooks/c4_analyze_runtimes.ipynb) are included in the repository for reproducibility.
+
+### Machine Setup
+
+**FUJITSU LIFEBOOK N532** from 2012.
+
+`WSL` Setup:
+```
++------------------+-------------------------------------------+
+| OS               | Linux 6.6.87.2-microsoft-standard-WSL2    |
+| Distribution     | Ubuntu 22.04.4 LTS                        |
+| Architecture     | x86_64                                    |
+| CPU              | x86_64                                    |
+| Cores (phys/log) | 2 / 4                                     |
+| RAM              | 8 GiB                                     |
+| GPU              | None / Unknown                            |
+| Python           | CPython 3.11.0rc1                         |
+| Compiler         | gcc (Ubuntu 13.1.0-8ubuntu1~22.04) 13.1.0 |
+| Fingerprint      | ea68f7b392a21300                          |
++------------------+-------------------------------------------+
+```
+
+Output of `systeminfo` on Windows CMD (reformatted):
+```
+┌────────────────────────┬────────────────────────────────────────────────┐
+│ Manufacturer / Model   │ FUJITSU LIFEBOOK N532                          │
+│ System Type            │ x64-based PC                                   │
+│ BIOS                   │ AMI 1.12A (02.07.2012)                         │
+├────────────────────────┼────────────────────────────────────────────────┤
+│ Operating System       │ Windows 10 Pro                                 │
+│ OS Version             │ 10.0.19045 (Build 19045)                       │
+│ Install Date           │ 25.08.2020                                     │
+│ Time Zone              │ UTC+01:00 (Central Europe)                     │
+├────────────────────────┼────────────────────────────────────────────────┤
+│ CPU                    │ Intel Core (Family 6, Model 58)                │
+│ Nominal Frequency      │ ~2.9 GHz                                       │
+│ CPU Count              │ 1 physical processor                           │
+├────────────────────────┼────────────────────────────────────────────────┤
+│ Physical Memory        │ 16 GB RAM                                      │
+│ Available Memory       │ ~6 GB                                          │
+│ Virtual Memory (Max)   │ ~20 GB                                         │
+├────────────────────────┼────────────────────────────────────────────────┤
+│ Virtualization         │ Hypervisor detected (Hyper-V / WSL active)     │
+└────────────────────────┴────────────────────────────────────────────────┘
+```
+
+### Results (BitBully vs Baseline)
+- TODO: Compute for nply=0..7
+- Times in seconds: (Mean ± Std)
+
+|   #Ply |   #Repeats | BitBully [s]            | Baseline [s]           |   Speed-up |   p-value |
+|-------:|-----------:|:------------------------|:-----------------------|-----------:|----------:|
+|      8 |       1000 | 0.5269 ± 0.6483         | 0.8201 ± 1.2421        |       1.56 |  3.44e-62 |
+|      9 |       1000 | 0.2537 ± 0.3188         | 0.3709 ± 0.6311        |       1.46 |  3.54e-41 |
+|     10 |       1000 | 0.1523 ± 0.1849         | 0.2035 ± 0.2979        |       1.34 |  4.68e-20 |
+|     11 |       1000 | 0.0808 ± 0.1201         | 0.1102 ± 0.1997        |       1.36 |  8.42e-17 |
+|     12 |       1000 | 0.0487 ± 0.0761         | 0.0601 ± 0.1179        |       1.23 |  0.00366  |
+|     13 |       1000 | 0.0254 ± 0.0429         | 0.0293 ± 0.0525        |       1.15 |  0.0028   |
+|     14 |       2000 | 0.0176 ± 0.0286         | 0.0180 ± 0.0325        |       1.02 |  1        |
+|     15 |       2000 | 0.0110 ± 0.0204         | 0.0104 ± 0.0221        |       0.94 |  1        |
+|     16 |       2000 | 0.0065 ± 0.0131         | 0.0060 ± 0.0136        |       0.93 |  1        |
+
+
+---
+
 
 ## Advanced Build and Install
 
