@@ -75,15 +75,42 @@ print("Winner:", board.winner())
 ## Table of Contents
 
 - [Features](#features)
-- [Installation](#installation)
+- [Who is this for?](#who-is-this-for)
+- [Quickstart](#quickstart)
+  - [Installation](#installation)
+  - [Usage](#usage)
+- [Installation](#installation-1)
+  - [Prerequisites](#prerequisites)
 - [Build and Install](#build-and-install)
+  - [From PyPI (Recommended)](#from-pypi-recommended)
 - [Python API Docs](#python-api-docs)
-- [Usage](#usage)
+- [Usage](#usage-1)
+  - [Getting Started (Jupyter Notebook)](#-bitbully-getting-started-with-a-jupyter-notebook)
+  - [Interactive Game Widget](#-play-a-game-of-connect-4-with-a-simple-jupyter-notebook-widget)
+  - [High-level Python API (recommended)](#high-level-python-api-recommended)
+    - [Board creation and move input](#empty-board--play-moves-incrementally)
+    - [Legal moves and utilities](#legal-moves-and-remaining-moves)
+    - [Solver quickstart](#solver-quickstart-evaluate-a-position-and-pick-a-move)
+    - [Tie-breaking strategies](#tie-breaking-strategies-for-best_move)
+    - [Search algorithms](#different-search-algorithms)
+  - [Low-level C++ bindings (advanced)](#low-level-c-bindings-advanced)
+    - [BoardCore](#boardcore-examples)
+    - [BitBullyCore](#bitbullycore-connect-4-solver-examples)
+    - [Opening Books](#opening-book-examples)
+- [Benchmarking](#benchmarking)
+  - [Setup](#setup)
+  - [Aggregation & Reported Metrics](#aggregation--reported-metrics)
+  - [Statistical Significance](#statistical-significance--p-value-interpretation)
+  - [Results](#results-bitbully-vs-baseline)
 - [Advanced Build and Install](#advanced-build-and-install)
+  - [From Source](#from-source)
+  - [Building Static Library with CMake](#building-static-library-with-cmake)
 - [Contributing & Development](#contributing--development)
 - [License](#license)
 - [Contact](#contact)
+- [Further Resources](#further-ressources)
 - [Acknowledgments](#acknowledgments)
+
 
 ---
 
@@ -764,7 +791,7 @@ Output of `systeminfo` on Windows CMD (reformatted):
 ```
 
 ### Results (BitBully vs Baseline)
-- TODO: Compute for nply=0..7
+- TODO: Compute for nply=0
 - Times in seconds: (Mean ± Std)
 
 |   nply |   nrepeats | BitBully [s]            | Baseline [s]           |   Speed-up |   p-value | Significant   |
