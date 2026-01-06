@@ -32,15 +32,15 @@ both developers and researchers.
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-1-1400.webp"
        alt="Connect4 opening"
        width="25%"
-       style="margin: 0 25px;">
+       style="margin: 0 75px;">
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-2-1400.webp"
        alt="Connect4 mid-game"
        width="25%"
-       style="margin: 0 25px;">
+       style="margin: 0 75px;">
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-3-1400.webp"
        alt="Connect4 victory"
        width="25%"
-       style="margin: 0 25px;">
+       style="margin: 0 75px;">
 </p>
 
 <p align="center">
@@ -112,7 +112,6 @@ print("Winner:", board.winner())
 - [Acknowledgments](#acknowledgments)
 
 
----
 
 ## Features
 
@@ -143,7 +142,6 @@ print("Winner:", board.winner())
 
 - **Python**: Version 3.10 or higher, PyPy 3.10 or higher
 
----
 
 ## Build and Install
 
@@ -165,7 +163,6 @@ Please refer to the docs here: [https://markusthill.github.io/BitBully/](https:/
 
 The docs for the opening databases can be found here: [https://markusthill.github.io/bitbully-databases/](https://markusthill.github.io/bitbully-databases/)
 
----
 
 
 ## Usage
@@ -681,7 +678,6 @@ print(book.isInBook(board))              # e.g., False
 print(book.isInBook(board.mirror()))     # e.g., True, checks symmetric position
 ```
 
----
 
 ## Benchmarking
 
@@ -697,6 +693,7 @@ The benchmark compares **BitBully** against the **Baseline** on identical Connec
 - The same position is evaluated by both solvers.
 
 **Solvers**
+- Opening books are deactivated for both solvers.
 - **BitBully**: evaluated using its `mtdf` search with transposition tables enabled. Transposition Table size: $2^{20}=1\,048\,576$ entries.
 - **Baseline**: evaluated using its standard `solve` routine, with transposition tables enabled. Transposition Table size: $2^{24}=16\,777\,216$ entries.
 - For correctness, both solvers must return the *same game-theoretic score*; execution aborts if a mismatch occurs.
@@ -730,19 +727,15 @@ To assess whether observed speed differences are statistically meaningful, a **W
 
 **p-value meaning**
 - The p-value is the probability of observing the measured (or more extreme) speed advantage **if H₀ were true**.
-- Very small p-values (e.g. `1e-40`) indicate overwhelming evidence that BitBully is faster.
+- Very small p-values indicate overwhelming evidence that BitBully is faster.
 - Values ≥ 0.05 indicate that the observed difference is *not statistically significant* at the 5% level.
-
-**Practical interpretation**
-- For small `#Ply`, BitBully shows a clear and statistically significant speed advantage.
-- As `#Ply` increases, runtimes converge and differences become statistically indistinguishable.
 
 ### Notes & Caveats
 
 - We left the size of the transposition table for **Baseline** as-is, likely giving it a slight advantage over BitBully.
 - Benchmarks measure *solve time*, not node count or memory usage.
 - Results might depend on compiler optimizations, hardware, and cache behavior.
-- Extremely small p-values are expected for large `nrepeats` when even modest speed differences are consistent.
+- Small p-values are expected for large `nrepeats` when even modest speed differences are consistent.
 
 The full [benchmark code](https://github.com/MarkusThill/BitBully/blob/master/src/main.cpp) and [analysis notebook](https://github.com/MarkusThill/BitBully/blob/master/notebooks/c4_analyze_runtimes.ipynb) are included in the repository for reproducibility.
 
@@ -791,11 +784,11 @@ Output of `systeminfo` on Windows CMD (reformatted):
 ```
 
 ### Results (BitBully vs Baseline)
-- TODO: Compute for nply=0
 - Times in seconds: (Mean ± Std)
 
 |   nply |   nrepeats | BitBully [s]            | Baseline [s]           |   Speed-up |   p-value | Significant   |
 |-------:|-----------:|:------------------------|:-----------------------|-----------:|----------:|:--------------|
+|      (empty board) 0 |         25 | 197.5023 ± 7.8470       | 386.3228 ± 17.3956     |       1.96 |  2.98e-08 | *             |
 |      1 |         50 | 117.0179 ± 42.2797      | 151.0143 ± 55.6900     |       1.29 |  4.73e-05 | *             |
 |      2 |        250 | 59.7311 ± 60.7071       | 68.5259 ± 68.1356      |       1.15 |  0.000299 | *             |
 |      3 |        500 | 27.6295 ± 27.4619       | 31.9983 ± 33.9760      |       1.16 |  2.7e-10  | *             |
@@ -813,8 +806,19 @@ Output of `systeminfo` on Windows CMD (reformatted):
 |     15 |       2000 | 0.0110 ± 0.0204         | 0.0104 ± 0.0221        |       0.94 |  1        |               |
 |     16 |       2000 | 0.0065 ± 0.0131         | 0.0060 ± 0.0136        |       0.93 |  1        |               |
 
+#### Interpretation of the Benchmarking Results
 
----
+The benchmarking results highlight two distinct performance regimes: **early-game (low ply)** and **mid-to-late-game (higher ply)** positions.
+
+**Early game (0–6 ply).**
+Starting from an empty board (`nply = 0`), BitBully requires on average **~198 seconds** solving the whole game, while the Baseline solver needs **~386 seconds**, resulting in an almost **2× speed-up**. This gap remains clearly visible up to about 6 ply, where BitBully consistently outperforms the Baseline, with small p-values indicating strong statistical significance.
+This regime corresponds to the hardest positions in Connect-4: the branching factor is maximal and the solver must explore a large fraction of the game tree. Here, BitBully's search strategy, move ordering, and pruning heuristics pay off most.
+
+**Transition region (7–12 ply).**
+As more tokens are placed on the board, the average solve time drops rapidly for both solvers—from seconds to tens of milliseconds. BitBully still maintains a consistent advantage (≈ **1.2×–1.5×**), and the differences remain statistically significant. However, the *absolute* time savings shrink quickly: improving from 0.8 s to 0.5 s is far less noticeable than shaving minutes off an empty-board solve.
+
+**Late game (≥14 ply).**
+Beyond roughly **14 ply**, solve times become **negligible** (on the order of a few milliseconds or less) for both solvers. In this region, many positions are tactically forced, shallow, or immediately decidable via pruning. Measured differences are dominated by some BitBully overhead and partially by noise, and no statistically significant advantage can be established.
 
 
 ## Advanced Build and Install
@@ -853,7 +857,6 @@ Output of `systeminfo` on Windows CMD (reformatted):
    cmake --build . --target cppBitBully
    ```
 
----
 
 ## Contributing & Development
 
@@ -885,13 +888,11 @@ If you're contributing code, please:
 
 Pull requests are welcome — thank you for helping improve BitBully! 🚀
 
----
 
 ## License
 
 This project is licensed under the [AGPL-3.0 license](LICENSE).
 
----
 
 ## Contact
 
@@ -901,7 +902,6 @@ If you have any questions or feedback, feel free to reach out:
 - **GitHub**: [MarkusThill](https://github.com/MarkusThill)
 - **LinkedIn**: [Markus Thill](https://www.linkedin.com/in/markus-thill-a4991090)
 
----
 
 ## Further Ressources
 - [BitBully project summary on blog](https://markusthill.github.io/projects/0_bitbully/)
