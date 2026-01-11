@@ -20,12 +20,13 @@
 ![CMake Build](https://github.com/MarkusThill/BitBully/actions/workflows/cmake-multi-platform.yml/badge.svg)
 ![Buy Me a Coffee](https://img.shields.io/badge/support-Buy_Me_A_Coffee-orange)
 
-**BitBully** is a high-performance Connect-4 solver built using C++ and Python bindings, leveraging advanced algorithms
-and optimized bitwise operations. It provides tools for solving and analyzing Connect-4 games efficiently, designed for
-both developers and researchers.
+**BitBully** is a high-performance Connect-4 solver implemented in C++ with Python bindings, built around advanced search algorithms and highly optimized bitboard operations. It is designed for efficient game solving and analysis, targeting both developers interested in performance-critical implementations and researchers working on game-tree search.
 
-> BitBully evaluates millions of nodes per second in pure C++ and supports
-> constant-time opening book lookups for early-game positions.
+> BitBully evaluates millions of positions per second in pure C++ and supports
+> constant-time opening-book lookups for early-game positions. Even without
+> opening databases, it can solve the entire game in under 200 seconds on
+> relatively modest hardware.
+
 
 
 <p align="center">
