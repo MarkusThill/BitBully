@@ -13,6 +13,7 @@ nav:
 #   - User Guide: user_guide.md
   - BitBully API Reference:
       - solver: solver.md
+      - agent interface: interface.md
       - board: board.md
       - gui_c4: gui_c4.md
       - bitbully_core: bitbully_core.md

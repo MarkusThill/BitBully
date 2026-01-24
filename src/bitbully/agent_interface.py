@@ -31,6 +31,47 @@ class Connect4Agent(Protocol):
         - Scores are integers where **larger values are better** for the side to move.
         - The absolute scale is agent-defined.
         - The GUI only relies on *relative ordering* and legality.
+
+    Example:
+        Minimal agent compatible with the `Connect4Agent` protocol:
+
+        ```python
+        import random
+        from bitbully import Board
+
+        # Importing the Protocol is optional at runtime, but useful for:
+        #  - static type checking (mypy / pyright)
+        #  - documenting that this class satisfies the agent interface
+        from bitbully.agent_protocols import Connect4Agent
+
+
+        class RandomAgent:
+            '''Agent that plays a random legal move.
+
+            This class does NOT inherit from ``Connect4Agent``.
+            It is compatible because it implements the required methods
+            with matching signatures (structural typing).
+            '''
+
+            def score_all_moves(self, board: Board) -> dict[int, int]:
+                # Only legal columns may appear in the result.
+                # The GUI and other consumers rely on this contract.
+                return {c: 0 for c in board.legal_moves()}
+
+            def best_move(self, board: Board) -> int:
+                # Consumers may call only ``best_move`` if they are
+                # not interested in individual move scores.
+                return random.choice(board.legal_moves())
+
+
+        board = Board("332311")
+
+        # The variable annotation enforces the protocol at type-check time.
+        agent: Connect4Agent = RandomAgent()
+
+        move = agent.best_move(board)
+        board.play(move)
+        ```
     """
 
     def score_all_moves(self, board: Board) -> dict[int, int]:
