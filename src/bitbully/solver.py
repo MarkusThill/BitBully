@@ -241,7 +241,7 @@ class BitBully:
             board = Board()
             scores = agent.score_all_moves(board)
             assert scores == {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}  # Center column is best on an empty board
-        ```
+            ```
 
         Example:
             When a column is full, it is omitted from the results:
@@ -252,7 +252,7 @@ class BitBully:
             board = Board(6 * "3")  # fill center column
             scores = agent.score_all_moves(board)
             assert scores == {2: 1, 4: 1, 1: 0, 5: 0, 0: -1, 6: -1}  # Column 3 is full and thus omitted
-        ```
+            ```
         """
         scores = self._core.scoreMoves(board.native)
         column_values = {
