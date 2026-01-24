@@ -141,73 +141,114 @@ $(function(){initNavTree('db/df0/agent__interface_8py_source.html','../../','');
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="stringliteral">        - Scores are integers where **larger values are better** for the side to move.</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="stringliteral">        - The absolute scale is agent-defined.</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="stringliteral">        - The GUI only relies on *relative ordering* and legality.</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="foldopen" id="foldopen00036" data-start="" data-end="">
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#ac2b74bd9092a56a8e08d5c0726c9f3c3">   36</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#ac2b74bd9092a56a8e08d5c0726c9f3c3">score_all_moves</a>(self, board: Board) -&gt; dict[int, int]:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="stringliteral">&quot;&quot;&quot;Score all legal moves for the given board state.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="stringliteral">            board (Board):</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="stringliteral">                Current Connect-4 board position.</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="stringliteral">            dict[int, int]:</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="stringliteral">                Mapping ``{column: score}`` for all *legal* columns (0..6).</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="stringliteral">                Columns that are full or illegal **must not** appear in the mapping.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="stringliteral">    Example:</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="stringliteral">        Minimal agent compatible with the `Connect4Agent` protocol:</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="stringliteral">        ```python</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">        import random</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="stringliteral">        from bitbully import Board</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="stringliteral">        # Importing the Protocol is optional at runtime, but useful for:</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="stringliteral">        #  - static type checking (mypy / pyright)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="stringliteral">        #  - documenting that this class satisfies the agent interface</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="stringliteral">        from bitbully.agent_protocols import Connect4Agent</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="stringliteral"></span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="stringliteral">        Notes:</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="stringliteral">            - Higher scores indicate better moves.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="stringliteral">            - The returned dictionary may contain between 0 and 7 entries.</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        ...</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="stringliteral">        class RandomAgent:</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="stringliteral">            &#39;&#39;&#39;Agent that plays a random legal move.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="stringliteral">            This class does NOT inherit from ``Connect4Agent``.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral">            It is compatible because it implements the required methods</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="stringliteral">            with matching signatures (structural typing).</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="stringliteral">            &#39;&#39;&#39;</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="stringliteral">            def score_all_moves(self, board: Board) -&gt; dict[int, int]:</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="stringliteral">                # Only legal columns may appear in the result.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="stringliteral">                # The GUI and other consumers rely on this contract.</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="stringliteral">                return {c: 0 for c in board.legal_moves()}</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="stringliteral">            def best_move(self, board: Board) -&gt; int:</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral">                # Consumers may call only ``best_move`` if they are</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="stringliteral">                # not interested in individual move scores.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="stringliteral">                return random.choice(board.legal_moves())</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="stringliteral">        board = Board(&quot;332311&quot;)</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="stringliteral">        # The variable annotation enforces the protocol at type-check time.</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="stringliteral">        agent: Connect4Agent = RandomAgent()</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="stringliteral">        move = agent.best_move(board)</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="stringliteral">        board.play(move)</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="stringliteral">        ```</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="foldopen" id="foldopen00077" data-start="" data-end="">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#ac2b74bd9092a56a8e08d5c0726c9f3c3">   77</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#ac2b74bd9092a56a8e08d5c0726c9f3c3">score_all_moves</a>(self, board: Board) -&gt; dict[int, int]:</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="stringliteral">&quot;&quot;&quot;Score all legal moves for the given board state.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="stringliteral">            board (Board):</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="stringliteral">                Current Connect-4 board position.</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="stringliteral">            dict[int, int]:</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="stringliteral">                Mapping ``{column: score}`` for all *legal* columns (0..6).</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="stringliteral">                Columns that are full or illegal **must not** appear in the mapping.</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="stringliteral">        Notes:</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="stringliteral">            - Higher scores indicate better moves.</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="stringliteral">            - The returned dictionary may contain between 0 and 7 entries.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        ...</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
 </div>
-<div class="foldopen" id="foldopen00054" data-start="" data-end="">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#afa4f39dea58c4f354bf7a2f2785e3fc3">   54</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#afa4f39dea58c4f354bf7a2f2785e3fc3">best_move</a>(</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        self,</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        board: Board,</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    ) -&gt; int:</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="stringliteral">&quot;&quot;&quot;Return the best legal move (column index) for the side to move.</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="stringliteral">            board (Board):</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral">                Current Connect-4 board position.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="stringliteral">            int:</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="stringliteral">                Selected column index in the range ``0..6``.</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        ...</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="foldopen" id="foldopen00095" data-start="" data-end="">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#afa4f39dea58c4f354bf7a2f2785e3fc3">   95</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#afa4f39dea58c4f354bf7a2f2785e3fc3">best_move</a>(</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        self,</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        board: Board,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    ) -&gt; int:</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="stringliteral">&quot;&quot;&quot;Return the best legal move (column index) for the side to move.</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="stringliteral">            board (Board):</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="stringliteral">                Current Connect-4 board position.</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="stringliteral">            int:</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="stringliteral">                Selected column index in the range ``0..6``.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        ...</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
 </div>
-<div class="foldopen" id="foldopen00070" data-start="" data-end="">
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#aae72966d4929d407416107d22e988dec">   70</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#aae72966d4929d407416107d22e988dec">score_move</a>(self, board: Board, column: int, first_guess: int = 0) -&gt; int:</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="stringliteral">&quot;&quot;&quot;Evaluate a single legal move for the given board state.</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="stringliteral">        This method is optional and not required by the GUI, but can be useful</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="stringliteral">        for agents that support fine-grained move evaluation.</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="stringliteral">            board (Board):</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="stringliteral">                Current Connect-4 board position.</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="stringliteral">            column (int):</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="stringliteral">                Column index (0..6) of the move to evaluate.</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="stringliteral">            first_guess (int):</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="stringliteral">                Optional initial guess for iterative or search-based agents.</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="stringliteral">                Implementations may safely ignore this parameter.</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="stringliteral">            int:</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="stringliteral">                Evaluation score for the given move.</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        ...</div>
+<div class="foldopen" id="foldopen00111" data-start="" data-end="">
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#aae72966d4929d407416107d22e988dec">  111</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#aae72966d4929d407416107d22e988dec">score_move</a>(self, board: Board, column: int, first_guess: int = 0) -&gt; int:</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="stringliteral">&quot;&quot;&quot;Evaluate a single legal move for the given board state.</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="stringliteral">        This method is optional and not required by the GUI, but can be useful</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="stringliteral">        for agents that support fine-grained move evaluation.</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="stringliteral">            board (Board):</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="stringliteral">                Current Connect-4 board position.</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="stringliteral">            column (int):</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="stringliteral">                Column index (0..6) of the move to evaluate.</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="stringliteral">            first_guess (int):</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="stringliteral">                Optional initial guess for iterative or search-based agents.</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="stringliteral">                Implementations may safely ignore this parameter.</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="stringliteral">            int:</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="stringliteral">                Evaluation score for the given move.</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        ...</div>
 </div>
 </div>
 <div class="ttc" id="aclassbitbully_1_1agent__interface_1_1Connect4Agent_html"><div class="ttname"><a href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html">bitbully.agent_interface.Connect4Agent</a></div><div class="ttdef"><b>Definition</b> <a href="#l00018">agent_interface.py:18</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1agent__interface_1_1Connect4Agent_html_aae72966d4929d407416107d22e988dec"><div class="ttname"><a href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#aae72966d4929d407416107d22e988dec">bitbully.agent_interface.Connect4Agent.score_move</a></div><div class="ttdeci">int score_move(self, Board board, int column, int first_guess=0)</div><div class="ttdef"><b>Definition</b> <a href="#l00070">agent_interface.py:70</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1agent__interface_1_1Connect4Agent_html_ac2b74bd9092a56a8e08d5c0726c9f3c3"><div class="ttname"><a href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#ac2b74bd9092a56a8e08d5c0726c9f3c3">bitbully.agent_interface.Connect4Agent.score_all_moves</a></div><div class="ttdeci">dict[int, int] score_all_moves(self, Board board)</div><div class="ttdef"><b>Definition</b> <a href="#l00036">agent_interface.py:36</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1agent__interface_1_1Connect4Agent_html_afa4f39dea58c4f354bf7a2f2785e3fc3"><div class="ttname"><a href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#afa4f39dea58c4f354bf7a2f2785e3fc3">bitbully.agent_interface.Connect4Agent.best_move</a></div><div class="ttdeci">int best_move(self, Board board)</div><div class="ttdef"><b>Definition</b> <a href="#l00054">agent_interface.py:57</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1agent__interface_1_1Connect4Agent_html_aae72966d4929d407416107d22e988dec"><div class="ttname"><a href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#aae72966d4929d407416107d22e988dec">bitbully.agent_interface.Connect4Agent.score_move</a></div><div class="ttdeci">int score_move(self, Board board, int column, int first_guess=0)</div><div class="ttdef"><b>Definition</b> <a href="#l00111">agent_interface.py:111</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1agent__interface_1_1Connect4Agent_html_ac2b74bd9092a56a8e08d5c0726c9f3c3"><div class="ttname"><a href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#ac2b74bd9092a56a8e08d5c0726c9f3c3">bitbully.agent_interface.Connect4Agent.score_all_moves</a></div><div class="ttdeci">dict[int, int] score_all_moves(self, Board board)</div><div class="ttdef"><b>Definition</b> <a href="#l00077">agent_interface.py:77</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1agent__interface_1_1Connect4Agent_html_afa4f39dea58c4f354bf7a2f2785e3fc3"><div class="ttname"><a href="../../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#afa4f39dea58c4f354bf7a2f2785e3fc3">bitbully.agent_interface.Connect4Agent.best_move</a></div><div class="ttdeci">int best_move(self, Board board)</div><div class="ttdef"><b>Definition</b> <a href="#l00095">agent_interface.py:98</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

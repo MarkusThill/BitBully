@@ -12,7 +12,7 @@
         <link rel="prev" href="../getting_started/">
       
       
-        <link rel="next" href="../board/">
+        <link rel="next" href="../interface/">
       
       
         
@@ -830,6 +830,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    agent interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -4004,23 +4032,26 @@ column is full, it will not be listed in the returned dictionary.</p>
 
 <details class="example" open>
   <summary>Example</summary>
-  <p>```python
-from bitbully import BitBully, Board</p>
-<p>agent = BitBully()
-board = Board()
-scores = agent.score_all_moves(board)
-assert scores == {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}  # Center column is best on an empty board</p>
-</details>        <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Example:
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    When a column is full, it is omitted from the results:
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ```python
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    from bitbully import BitBully, Board
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    agent = BitBully()
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    board = Board(6 * &quot;3&quot;)  # fill center column
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    scores = agent.score_all_moves(board)
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    assert scores == {2: 1, 4: 1, 1: 0, 5: 0, 0: -1, 6: -1}  # Column 3 is full and thus omitted
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">bitbully</span><span class="w"> </span><span class="kn">import</span> <span class="n">BitBully</span><span class="p">,</span> <span class="n">Board</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">BitBully</span><span class="p">()</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">board</span> <span class="o">=</span> <span class="n">Board</span><span class="p">()</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">scores</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">score_all_moves</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">assert</span> <span class="n">scores</span> <span class="o">==</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">}</span>  <span class="c1"># Center column is best on an empty board</span>
 </span></code></pre></div>
+</details>
 
+<details class="example" open>
+  <summary>Example</summary>
+  <p>When a column is full, it is omitted from the results:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">bitbully</span><span class="w"> </span><span class="kn">import</span> <span class="n">BitBully</span><span class="p">,</span> <span class="n">Board</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">BitBully</span><span class="p">()</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">board</span> <span class="o">=</span> <span class="n">Board</span><span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="s2">&quot;3&quot;</span><span class="p">)</span>  <span class="c1"># fill center column</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">scores</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">score_all_moves</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">assert</span> <span class="n">scores</span> <span class="o">==</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}</span>  <span class="c1"># Column 3 is full and thus omitted</span>
+</span></code></pre></div></p>
+</details>
           
 
             <details class="mkdocstrings-source">
@@ -4082,7 +4113,7 @@ assert scores == {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}  # Center column
 </span><span id="__span-0-241"><a id="__codelineno-0-241" name="__codelineno-0-241"></a><span class="sd">        board = Board()</span>
 </span><span id="__span-0-242"><a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="sd">        scores = agent.score_all_moves(board)</span>
 </span><span id="__span-0-243"><a id="__codelineno-0-243" name="__codelineno-0-243"></a><span class="sd">        assert scores == {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}  # Center column is best on an empty board</span>
-</span><span id="__span-0-244"><a id="__codelineno-0-244" name="__codelineno-0-244"></a><span class="sd">    ```</span>
+</span><span id="__span-0-244"><a id="__codelineno-0-244" name="__codelineno-0-244"></a><span class="sd">        ```</span>
 </span><span id="__span-0-245"><a id="__codelineno-0-245" name="__codelineno-0-245"></a>
 </span><span id="__span-0-246"><a id="__codelineno-0-246" name="__codelineno-0-246"></a><span class="sd">    Example:</span>
 </span><span id="__span-0-247"><a id="__codelineno-0-247" name="__codelineno-0-247"></a><span class="sd">        When a column is full, it is omitted from the results:</span>
@@ -4093,7 +4124,7 @@ assert scores == {3: 1, 2: 0, 4: 0, 1: -1, 5: -1, 0: -2, 6: -2}  # Center column
 </span><span id="__span-0-252"><a id="__codelineno-0-252" name="__codelineno-0-252"></a><span class="sd">        board = Board(6 * &quot;3&quot;)  # fill center column</span>
 </span><span id="__span-0-253"><a id="__codelineno-0-253" name="__codelineno-0-253"></a><span class="sd">        scores = agent.score_all_moves(board)</span>
 </span><span id="__span-0-254"><a id="__codelineno-0-254" name="__codelineno-0-254"></a><span class="sd">        assert scores == {2: 1, 4: 1, 1: 0, 5: 0, 0: -1, 6: -1}  # Column 3 is full and thus omitted</span>
-</span><span id="__span-0-255"><a id="__codelineno-0-255" name="__codelineno-0-255"></a><span class="sd">    ```</span>
+</span><span id="__span-0-255"><a id="__codelineno-0-255" name="__codelineno-0-255"></a><span class="sd">        ```</span>
 </span><span id="__span-0-256"><a id="__codelineno-0-256" name="__codelineno-0-256"></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="__span-0-257"><a id="__codelineno-0-257" name="__codelineno-0-257"></a>    <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_core</span><span class="o">.</span><span class="n">scoreMoves</span><span class="p">(</span><span class="n">board</span><span class="o">.</span><span class="n">native</span><span class="p">)</span>
 </span><span id="__span-0-258"><a id="__codelineno-0-258" name="__codelineno-0-258"></a>    <span class="n">column_values</span> <span class="o">=</span> <span class="p">{</span>

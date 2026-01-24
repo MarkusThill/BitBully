@@ -47,6 +47,47 @@ Notes on scoring:
     - Scores are integers where **larger values are better** for the side to move.
     - The absolute scale is agent-defined.
     - The GUI only relies on *relative ordering* and legality.
+
+Example:
+    Minimal agent compatible with the `Connect4Agent` protocol:
+
+    ```python
+    import random
+    from bitbully import Board
+
+    # Importing the Protocol is optional at runtime, but useful for:
+    #  - static type checking (mypy / pyright)
+    #  - documenting that this class satisfies the agent interface
+    from bitbully.agent_protocols import Connect4Agent
+
+
+    class RandomAgent:
+        '''Agent that plays a random legal move.
+
+        This class does NOT inherit from ``Connect4Agent``.
+        It is compatible because it implements the required methods
+        with matching signatures (structural typing).
+        '''
+
+        def score_all_moves(self, board: Board) -> dict[int, int]:
+            # Only legal columns may appear in the result.
+            # The GUI and other consumers rely on this contract.
+            return {c: 0 for c in board.legal_moves()}
+
+        def best_move(self, board: Board) -> int:
+            # Consumers may call only ``best_move`` if they are
+            # not interested in individual move scores.
+            return random.choice(board.legal_moves())
+
+
+    board = Board("332311")
+
+    # The variable annotation enforces the protocol at type-check time.
+    agent: Connect4Agent = RandomAgent()
+
+    move = agent.best_move(board)
+    board.play(move)
+    ```
 \end{DoxyVerb}
  
 
@@ -75,7 +116,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00054}{54}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
+Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00095}{95}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
 
 \Hypertarget{classbitbully_1_1agent__interface_1_1Connect4Agent_ac2b74bd9092a56a8e08d5c0726c9f3c3}\index{bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}!score\_all\_moves@{score\_all\_moves}}
 \index{score\_all\_moves@{score\_all\_moves}!bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}}
@@ -100,7 +141,7 @@ Notes:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00036}{36}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
+Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00077}{77}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
 
 \Hypertarget{classbitbully_1_1agent__interface_1_1Connect4Agent_aae72966d4929d407416107d22e988dec}\index{bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}!score\_move@{score\_move}}
 \index{score\_move@{score\_move}!bitbully.agent\_interface.Connect4Agent@{bitbully.agent\_interface.Connect4Agent}}
@@ -128,7 +169,7 @@ Returns:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00070}{70}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
+Definition at line \mbox{\hyperlink{agent__interface_8py_source_l00111}{111}} of file \mbox{\hyperlink{agent__interface_8py_source}{agent\+\_\+interface.\+py}}.
 
 
 
