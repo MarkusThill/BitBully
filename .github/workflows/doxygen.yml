@@ -1,10 +1,8 @@
 name: Generate Doxygen Documentation
 
 on:
-  workflow_run:
-    workflows: ["Build"]   # 👈 Name of the workflow in build.yml (must match `name:`)
-    types:
-      - completed
+  push:
+    branches: ["master"]
 
 jobs:
   generate-docs:
