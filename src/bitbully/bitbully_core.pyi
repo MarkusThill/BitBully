@@ -1286,6 +1286,45 @@ class BoardCore:
             ```
         """
 
+    def rawState(self) -> tuple[int, int, int]:
+        """Return the raw internal engine state as a tuple.
+
+        The returned values correspond 1:1 to the C++ `Board` members:
+
+        - ``all_tokens``: Bitboard of all occupied squares (engine layout, 64-bit).
+        - ``active_tokens``: Bitboard of the side-to-move stones (engine layout, 64-bit).
+        - ``moves_left``: Remaining empty cells (0..42).
+
+        Notes:
+            - This is a *low-level* API intended for high-performance interop
+              (e.g. GPU rollouts / custom envs).
+            - Bitboards are returned as Python ``int`` (conceptually unsigned 64-bit).
+
+        Returns:
+            tuple[int, int, int]: ``(all_tokens, active_tokens, moves_left)``.
+
+        Example:
+            Extract raw bitboards and reconstruct a board later (engine-side):
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            b = bbc.BoardCore()
+            assert b.play("33333111")
+
+            all_tokens, active_tokens, moves_left = b.rawState()
+
+            assert isinstance(all_tokens, int)
+            assert isinstance(active_tokens, int)
+            assert isinstance(moves_left, int)
+            assert 0 <= moves_left <= 42
+
+            assert all_tokens == 4160753152
+            assert active_tokens == 2818573312
+            assert moves_left == 34
+            ```
+        """
+
+
 
 class OpeningBookCore:
     """Opening book reader and lookup helper.

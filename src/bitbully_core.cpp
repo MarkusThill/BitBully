@@ -131,7 +131,19 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def("__eq__", &B::operator==, "Check if two boards are equal")
       .def("__ne__", &B::operator!=, "Check if two boards are not equal")
       .def("getColumnHeight", &B::getColumnHeight,
-           "Get the current height of a column", py::arg("column"));
+           "Get the current height of a column", py::arg("column"))
+      .def(
+          "rawState",
+          [](const B& b) {
+            const auto s = b.rawState();
+            // Return as Python ints (uint64 fits in Python int)
+            return py::make_tuple(
+                py::int_(static_cast<unsigned long long>(s.all_tokens)),
+                py::int_(static_cast<unsigned long long>(s.active_tokens)),
+                py::int_(s.moves_left));
+          },
+          "Return raw internal state: (all_tokens, active_tokens, "
+          "moves_left).");
 
   // Expose OpeningBook:
   py::class_<BitBully::OpeningBook>(m, "OpeningBookCore")

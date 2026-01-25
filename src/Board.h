@@ -336,6 +336,22 @@ class Board {
     return boardVector;
   }
 
+  struct RawState {
+    TBitBoard all_tokens;
+    TBitBoard active_tokens;
+    TMovesCounter moves_left;
+  };
+
+  [[nodiscard]] inline RawState rawState() const noexcept {
+    return RawState{m_bAllTokens, m_bActivePTokens, m_movesLeft};
+  }
+
+  inline void setRawState(const RawState& s) noexcept {
+    m_bAllTokens = s.all_tokens;
+    m_bActivePTokens = s.active_tokens;
+    m_movesLeft = s.moves_left;
+  }
+
  private:
   /* [ *,  *,  *,  *,  *,  *,  *]
    * [ *,  *,  *,  *,  *,  *,  *]
