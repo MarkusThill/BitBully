@@ -340,203 +340,219 @@
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00336}00336\ \ \ \ \ \textcolor{keywordflow}{return}\ boardVector;}
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00337}00337\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00338}00338\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00339}00339\ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00340}00340\ \ \ \textcolor{comment}{/*\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00341}00341\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00342}00342\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00343}00343\ \textcolor{comment}{\ \ \ *\ [\ 5,\ 14,\ 23,\ 32,\ 41,\ 50,\ 59],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00344}00344\ \textcolor{comment}{\ \ \ *\ [\ 4,\ 13,\ 22,\ 31,\ 40,\ 49,\ 58],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00345}00345\ \textcolor{comment}{\ \ \ *\ [\ 3,\ 12,\ 21,\ 30,\ 39,\ 48,\ 57],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00346}00346\ \textcolor{comment}{\ \ \ *\ [\ 2,\ 11,\ 20,\ 29,\ 38,\ 47,\ 56],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00347}00347\ \textcolor{comment}{\ \ \ *\ [\ 1,\ 10,\ 19,\ 28,\ 37,\ 46,\ 55],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00348}00348\ \textcolor{comment}{\ \ \ *\ [\ 0,\ \ 9,\ 18,\ 27,\ 36,\ 45,\ 54]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00349}00349\ \textcolor{comment}{\ \ \ */}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00350}00350\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ BOTTOM\_ROW\_BITS\ =\ \{54,\ 45,\ 36,\ 27,\ 18,\ 9,\ 0\};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00351}00351\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_BOTTOM\_ROW\ =\ getMask(BOTTOM\_ROW\_BITS);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00352}00352\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ TOP\_ROW\_BITS\ =\ \{59,\ 50,\ 41,\ 32,\ 23,\ 14,\ 5\};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00353}00353\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_TOP\_ROW\ =\ getMask(TOP\_ROW\_BITS);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00354}00354\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_ILLEGAL\ =\ illegalBitMask();}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00355}00355\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_ALL\_LEGAL\_TOKENS\ =\ \string~BB\_ILLEGAL;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00356}00356\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_EMPTY\{UINT64\_C(0)\};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00357}00357\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00358}00358\ \ \ \textcolor{comment}{//\ These\ two\ center\ fields\ generally\ are\ the\ most\ promising\ ones:}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00359}00359\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO1\ =\ getMask(\{29,\ 30\});}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00360}00360\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00361}00361\ \ \ \textcolor{comment}{//\ After\ \{29,\ 30\},\ we\ should\ consider\ these\ moves,\ and\ so\ on:}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00362}00362\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO2\ =\ getMask(\{31,\ 21,\ 20,\ 28,\ 38,\ 39\});}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00363}00363\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO3\ =\ getMask(\{40,\ 32,\ 22,\ 19,\ 27,\ 37\});}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00364}00364\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO4\ =\ getMask(\{47,\ 48,\ 11,\ 12\});}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00365}00365\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO5\ =}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00366}00366\ \ \ \ \ \ \ getMask(\{49,\ 41,\ 23,\ 13,\ 10,\ 18,\ 36,\ 46\});}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00367}00367\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO6\ =\ getMask(\{45,\ 50,\ 14,\ 9\});}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00368}00368\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ BB\_MOVES\_PRIO\_LIST\ =\ \{BB\_MOVES\_PRIO1,\ BB\_MOVES\_PRIO2,}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BB\_MOVES\_PRIO3,\ BB\_MOVES\_PRIO4,}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BB\_MOVES\_PRIO5,\ BB\_MOVES\_PRIO6\};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00371}00371\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00372}00372\ \ \ \textcolor{comment}{/*\ Having\ a\ bitboard\ that\ contains\ all\ stones\ and\ another\ one\ representing\ the}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00373}00373\ \textcolor{comment}{\ \ \ *\ current\ active\ player\ has\ the\ advantage\ that\ we\ do\ not\ have\ to\ do\ any}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00374}00374\ \textcolor{comment}{\ \ \ *\ branching\ to\ figure\ out\ which\ player's\ turn\ it\ is.\ After\ each\ move\ we}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00375}00375\ \textcolor{comment}{\ \ \ *\ simply\ apply\ an\ XOR-\/operation\ to\ switch\ players.\ */}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00376}00376\ \ \ \textcolor{comment}{/*\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00377}00377\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00378}00378\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00379}00379\ \textcolor{comment}{\ \ \ *\ [\ 5,\ 14,\ 23,\ 32,\ 41,\ 50,\ 59],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00380}00380\ \textcolor{comment}{\ \ \ *\ [\ 4,\ 13,\ 22,\ 31,\ 40,\ 49,\ 58],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00381}00381\ \textcolor{comment}{\ \ \ *\ [\ 3,\ 12,\ 21,\ 30,\ 39,\ 48,\ 57],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00382}00382\ \textcolor{comment}{\ \ \ *\ [\ 2,\ 11,\ 20,\ 29,\ 38,\ 47,\ 56],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00383}00383\ \textcolor{comment}{\ \ \ *\ [\ 1,\ 10,\ 19,\ 28,\ 37,\ 46,\ 55],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00384}00384\ \textcolor{comment}{\ \ \ *\ [\ 0,\ \ 9,\ 18,\ 27,\ 36,\ 45,\ 54]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00385}00385\ \textcolor{comment}{\ \ \ */}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00386}00386\ \ \ TBitBoard\ m\_bAllTokens,\ m\_bActivePTokens;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00387}00387\ \ \ TMovesCounter\ m\_movesLeft;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00388}00388\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00389}00389\ \ \ \textcolor{keyword}{static}\ TBitBoard\ winningPositions(TBitBoard\ x,\ \textcolor{keywordtype}{bool}\ verticals);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00390}00390\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00391}00391\ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ getColumnMask(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ column)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00392}00392\ \ \ \ \ assert(column\ >=\ 0\ \&\&\ column\ <\ N\_COLUMNS);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00393}00393\ \ \ \ \ \textcolor{keywordflow}{return}\ (UINT64\_C(1)\ <<\ (column\ *\ COLUMN\_BIT\_OFFSET\ +\ N\_ROWS))\ -\/}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ (UINT64\_C(1)\ <<\ (column\ *\ COLUMN\_BIT\_OFFSET));}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00395}00395\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00396}00396\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00397}00397\ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ getRowMask(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ row)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00398}00398\ \ \ \ \ assert(row\ >=\ 0\ \&\&\ row\ <\ N\_ROWS);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00399}00399\ \ \ \ \ TBitBoard\ mask\{0\};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00400}00400\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N\_COLUMNS;\ ++i)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00401}00401\ \ \ \ \ \ \ mask\ |=\ (UINT64\_C(1)\ <<\ (i\ *\ COLUMN\_BIT\_OFFSET\ +\ row));}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00402}00402\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00403}00403\ \ \ \ \ \textcolor{keywordflow}{return}\ mask;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00404}00404\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00405}00405\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00406}00406\ \ \ \textcolor{comment}{/*\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00407}00407\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00408}00408\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00409}00409\ \textcolor{comment}{\ \ \ *\ [\ 5,\ 14,\ 23,\ 32,\ 41,\ 50,\ 59],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00410}00410\ \textcolor{comment}{\ \ \ *\ [\ 4,\ 13,\ 22,\ 31,\ 40,\ 49,\ 58],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00411}00411\ \textcolor{comment}{\ \ \ *\ [\ 3,\ 12,\ 21,\ 30,\ 39,\ 48,\ 57],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00412}00412\ \textcolor{comment}{\ \ \ *\ [\ 2,\ 11,\ 20,\ 29,\ 38,\ 47,\ 56],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00413}00413\ \textcolor{comment}{\ \ \ *\ [\ 1,\ 10,\ 19,\ 28,\ 37,\ 46,\ 55],}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00414}00414\ \textcolor{comment}{\ \ \ *\ [\ 0,\ \ 9,\ 18,\ 27,\ 36,\ 45,\ 54]}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00415}00415\ \textcolor{comment}{\ \ \ */}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00416}00416\ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ mirrorBitBoard(\textcolor{keyword}{const}\ TBitBoard\ x)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00417}00417\ \ \ \ \ \textcolor{comment}{//\ TODO:\ It\ should\ be\ possible\ to\ do\ it\ in\ x\ only\ (using\ XORS).\ But,}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00418}00418\ \ \ \ \ \textcolor{comment}{//\ premature\ optimization\ is\ the\ root\ of\ all\ evil.\ Try\ this\ later.}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00419}00419\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Any\ difference\ using\ XOR\ instead\ of\ OR?\ (probably\ not)...}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00420}00420\ \ \ \ \ TBitBoard\ y\{UINT64\_C(0)\};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00421}00421\ \ \ \ \ \textcolor{comment}{//\ move\ left-\/most\ column\ to\ right-\/most\ and\ vice\ versa:}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00422}00422\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(6))\ >>\ 6\ *\ COLUMN\_BIT\_OFFSET);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00423}00423\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(0))\ <<\ 6\ *\ COLUMN\_BIT\_OFFSET);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00424}00424\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00425}00425\ \ \ \ \ \textcolor{comment}{//\ Same\ with\ columns\ 1\ \&\ 5...}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00426}00426\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(5))\ >>\ 4\ *\ COLUMN\_BIT\_OFFSET);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00427}00427\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(1))\ <<\ 4\ *\ COLUMN\_BIT\_OFFSET);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00428}00428\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00429}00429\ \ \ \ \ \textcolor{comment}{//\ Same\ with\ columns\ 2\ \&\ 4}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00430}00430\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(4))\ >>\ 2\ *\ COLUMN\_BIT\_OFFSET);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00431}00431\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(2))\ <<\ 2\ *\ COLUMN\_BIT\_OFFSET);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00432}00432\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00433}00433\ \ \ \ \ \textcolor{comment}{//\ column\ 3\ stays\ where\ it\ is...}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00434}00434\ \ \ \ \ \textcolor{keywordflow}{return}\ y\ |\ (x\ \&\ getColumnMask(3));}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00435}00435\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00436}00436\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00437}00437\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ getMaskColRow(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ column,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ row)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00438}00438\ \ \ \ \ assert(column\ >=\ 0\ \&\&\ column\ <\ N\_COLUMNS);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00439}00439\ \ \ \ \ assert(row\ >=\ 0\ \&\&\ row\ <\ N\_ROWS);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00440}00440\ \ \ \ \ \textcolor{keywordflow}{return}\ UINT64\_C(1)\ <<\ (column\ *\ COLUMN\_BIT\_OFFSET\ +\ row);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00441}00441\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00442}00442\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00443}00443\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Player\ opponent(Player\ p)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00444}00444\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}Player\textcolor{keyword}{>}(3\ -\/\ p);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00445}00445\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00446}00446\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00447}00447\ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ playMoveFastBB(\textcolor{keyword}{const}\ TBitBoard\ mv)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00448}00448\ \ \ \ \ assert(mv\ !=\ BB\_EMPTY);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00449}00449\ \ \ \ \ assert((mv\ \&\ BB\_ILLEGAL)\ ==\ BB\_EMPTY);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00450}00450\ \ \ \ \ assert((m\_bAllTokens\ \&\ mv)\ ==\ BB\_EMPTY);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00451}00451\ \ \ \ \ m\_bActivePTokens\ \string^=\ m\_bAllTokens;\ \ \textcolor{comment}{//\ Already,\ switch\ player}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00339}\mbox{\hyperlink{structBitBully_1_1Board_1_1RawState}{00339}}\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBitBully_1_1Board_1_1RawState}{RawState}}\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00340}00340\ \ \ \ \ TBitBoard\ all\_tokens;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00341}00341\ \ \ \ \ TBitBoard\ active\_tokens;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00342}00342\ \ \ \ \ TMovesCounter\ moves\_left;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00343}00343\ \ \ \};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00345}00345\ \ \ [[nodiscard]]\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structBitBully_1_1Board_1_1RawState}{RawState}}\ rawState()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00346}00346\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structBitBully_1_1Board_1_1RawState}{RawState}}\{m\_bAllTokens,\ m\_bActivePTokens,\ m\_movesLeft\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00347}00347\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00349}00349\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ setRawState(\textcolor{keyword}{const}\ RawState\&\ s)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00350}00350\ \ \ \ \ m\_bAllTokens\ =\ s.all\_tokens;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00351}00351\ \ \ \ \ m\_bActivePTokens\ =\ s.active\_tokens;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00352}00352\ \ \ \ \ m\_movesLeft\ =\ s.moves\_left;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00353}00353\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00355}00355\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00356}00356\ \ \ \textcolor{comment}{/*\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00357}00357\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00358}00358\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00359}00359\ \textcolor{comment}{\ \ \ *\ [\ 5,\ 14,\ 23,\ 32,\ 41,\ 50,\ 59],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00360}00360\ \textcolor{comment}{\ \ \ *\ [\ 4,\ 13,\ 22,\ 31,\ 40,\ 49,\ 58],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00361}00361\ \textcolor{comment}{\ \ \ *\ [\ 3,\ 12,\ 21,\ 30,\ 39,\ 48,\ 57],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00362}00362\ \textcolor{comment}{\ \ \ *\ [\ 2,\ 11,\ 20,\ 29,\ 38,\ 47,\ 56],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00363}00363\ \textcolor{comment}{\ \ \ *\ [\ 1,\ 10,\ 19,\ 28,\ 37,\ 46,\ 55],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00364}00364\ \textcolor{comment}{\ \ \ *\ [\ 0,\ \ 9,\ 18,\ 27,\ 36,\ 45,\ 54]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00365}00365\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00366}00366\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ BOTTOM\_ROW\_BITS\ =\ \{54,\ 45,\ 36,\ 27,\ 18,\ 9,\ 0\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00367}00367\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_BOTTOM\_ROW\ =\ getMask(BOTTOM\_ROW\_BITS);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00368}00368\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ TOP\_ROW\_BITS\ =\ \{59,\ 50,\ 41,\ 32,\ 23,\ 14,\ 5\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00369}00369\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_TOP\_ROW\ =\ getMask(TOP\_ROW\_BITS);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00370}00370\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_ILLEGAL\ =\ illegalBitMask();}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00371}00371\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_ALL\_LEGAL\_TOKENS\ =\ \string~BB\_ILLEGAL;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00372}00372\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_EMPTY\{UINT64\_C(0)\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00374}00374\ \ \ \textcolor{comment}{//\ These\ two\ center\ fields\ generally\ are\ the\ most\ promising\ ones:}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00375}00375\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO1\ =\ getMask(\{29,\ 30\});}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00377}00377\ \ \ \textcolor{comment}{//\ After\ \{29,\ 30\},\ we\ should\ consider\ these\ moves,\ and\ so\ on:}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00378}00378\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO2\ =\ getMask(\{31,\ 21,\ 20,\ 28,\ 38,\ 39\});}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00379}00379\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO3\ =\ getMask(\{40,\ 32,\ 22,\ 19,\ 27,\ 37\});}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00380}00380\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO4\ =\ getMask(\{47,\ 48,\ 11,\ 12\});}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00381}00381\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO5\ =}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00382}00382\ \ \ \ \ \ \ getMask(\{49,\ 41,\ 23,\ 13,\ 10,\ 18,\ 36,\ 46\});}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00383}00383\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ TBitBoard\ BB\_MOVES\_PRIO6\ =\ getMask(\{45,\ 50,\ 14,\ 9\});}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00384}00384\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ BB\_MOVES\_PRIO\_LIST\ =\ \{BB\_MOVES\_PRIO1,\ BB\_MOVES\_PRIO2,}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BB\_MOVES\_PRIO3,\ BB\_MOVES\_PRIO4,}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BB\_MOVES\_PRIO5,\ BB\_MOVES\_PRIO6\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00388}00388\ \ \ \textcolor{comment}{/*\ Having\ a\ bitboard\ that\ contains\ all\ stones\ and\ another\ one\ representing\ the}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00389}00389\ \textcolor{comment}{\ \ \ *\ current\ active\ player\ has\ the\ advantage\ that\ we\ do\ not\ have\ to\ do\ any}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00390}00390\ \textcolor{comment}{\ \ \ *\ branching\ to\ figure\ out\ which\ player's\ turn\ it\ is.\ After\ each\ move\ we}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00391}00391\ \textcolor{comment}{\ \ \ *\ simply\ apply\ an\ XOR-\/operation\ to\ switch\ players.\ */}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00392}00392\ \ \ \textcolor{comment}{/*\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00393}00393\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00394}00394\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00395}00395\ \textcolor{comment}{\ \ \ *\ [\ 5,\ 14,\ 23,\ 32,\ 41,\ 50,\ 59],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00396}00396\ \textcolor{comment}{\ \ \ *\ [\ 4,\ 13,\ 22,\ 31,\ 40,\ 49,\ 58],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00397}00397\ \textcolor{comment}{\ \ \ *\ [\ 3,\ 12,\ 21,\ 30,\ 39,\ 48,\ 57],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00398}00398\ \textcolor{comment}{\ \ \ *\ [\ 2,\ 11,\ 20,\ 29,\ 38,\ 47,\ 56],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00399}00399\ \textcolor{comment}{\ \ \ *\ [\ 1,\ 10,\ 19,\ 28,\ 37,\ 46,\ 55],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00400}00400\ \textcolor{comment}{\ \ \ *\ [\ 0,\ \ 9,\ 18,\ 27,\ 36,\ 45,\ 54]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00401}00401\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00402}00402\ \ \ TBitBoard\ m\_bAllTokens,\ m\_bActivePTokens;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00403}00403\ \ \ TMovesCounter\ m\_movesLeft;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00405}00405\ \ \ \textcolor{keyword}{static}\ TBitBoard\ winningPositions(TBitBoard\ x,\ \textcolor{keywordtype}{bool}\ verticals);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00407}00407\ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ getColumnMask(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ column)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00408}00408\ \ \ \ \ assert(column\ >=\ 0\ \&\&\ column\ <\ N\_COLUMNS);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00409}00409\ \ \ \ \ \textcolor{keywordflow}{return}\ (UINT64\_C(1)\ <<\ (column\ *\ COLUMN\_BIT\_OFFSET\ +\ N\_ROWS))\ -\/}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ (UINT64\_C(1)\ <<\ (column\ *\ COLUMN\_BIT\_OFFSET));}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00411}00411\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00413}00413\ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ getRowMask(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ row)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00414}00414\ \ \ \ \ assert(row\ >=\ 0\ \&\&\ row\ <\ N\_ROWS);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00415}00415\ \ \ \ \ TBitBoard\ mask\{0\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00416}00416\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N\_COLUMNS;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00417}00417\ \ \ \ \ \ \ mask\ |=\ (UINT64\_C(1)\ <<\ (i\ *\ COLUMN\_BIT\_OFFSET\ +\ row));}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00418}00418\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00419}00419\ \ \ \ \ \textcolor{keywordflow}{return}\ mask;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00420}00420\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00421}00421\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00422}00422\ \ \ \textcolor{comment}{/*\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00423}00423\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00424}00424\ \textcolor{comment}{\ \ \ *\ [\ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *,\ \ *]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00425}00425\ \textcolor{comment}{\ \ \ *\ [\ 5,\ 14,\ 23,\ 32,\ 41,\ 50,\ 59],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00426}00426\ \textcolor{comment}{\ \ \ *\ [\ 4,\ 13,\ 22,\ 31,\ 40,\ 49,\ 58],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00427}00427\ \textcolor{comment}{\ \ \ *\ [\ 3,\ 12,\ 21,\ 30,\ 39,\ 48,\ 57],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00428}00428\ \textcolor{comment}{\ \ \ *\ [\ 2,\ 11,\ 20,\ 29,\ 38,\ 47,\ 56],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00429}00429\ \textcolor{comment}{\ \ \ *\ [\ 1,\ 10,\ 19,\ 28,\ 37,\ 46,\ 55],}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00430}00430\ \textcolor{comment}{\ \ \ *\ [\ 0,\ \ 9,\ 18,\ 27,\ 36,\ 45,\ 54]}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00431}00431\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00432}00432\ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ mirrorBitBoard(\textcolor{keyword}{const}\ TBitBoard\ x)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00433}00433\ \ \ \ \ \textcolor{comment}{//\ TODO:\ It\ should\ be\ possible\ to\ do\ it\ in\ x\ only\ (using\ XORS).\ But,}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00434}00434\ \ \ \ \ \textcolor{comment}{//\ premature\ optimization\ is\ the\ root\ of\ all\ evil.\ Try\ this\ later.}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00435}00435\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Any\ difference\ using\ XOR\ instead\ of\ OR?\ (probably\ not)...}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00436}00436\ \ \ \ \ TBitBoard\ y\{UINT64\_C(0)\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00437}00437\ \ \ \ \ \textcolor{comment}{//\ move\ left-\/most\ column\ to\ right-\/most\ and\ vice\ versa:}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00438}00438\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(6))\ >>\ 6\ *\ COLUMN\_BIT\_OFFSET);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00439}00439\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(0))\ <<\ 6\ *\ COLUMN\_BIT\_OFFSET);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00440}00440\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00441}00441\ \ \ \ \ \textcolor{comment}{//\ Same\ with\ columns\ 1\ \&\ 5...}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00442}00442\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(5))\ >>\ 4\ *\ COLUMN\_BIT\_OFFSET);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00443}00443\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(1))\ <<\ 4\ *\ COLUMN\_BIT\_OFFSET);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00444}00444\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00445}00445\ \ \ \ \ \textcolor{comment}{//\ Same\ with\ columns\ 2\ \&\ 4}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00446}00446\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(4))\ >>\ 2\ *\ COLUMN\_BIT\_OFFSET);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00447}00447\ \ \ \ \ y\ |=\ ((x\ \&\ getColumnMask(2))\ <<\ 2\ *\ COLUMN\_BIT\_OFFSET);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00449}00449\ \ \ \ \ \textcolor{comment}{//\ column\ 3\ stays\ where\ it\ is...}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00450}00450\ \ \ \ \ \textcolor{keywordflow}{return}\ y\ |\ (x\ \&\ getColumnMask(3));}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00451}00451\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00452}00452\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00453}00453\ \ \ \ \ \textcolor{comment}{//\ However,\ move\ is\ performed\ for\ current\ player\ (assuming,\ above\ switch\ is}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00454}00454\ \ \ \ \ \textcolor{comment}{//\ not\ yet\ performed)}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00455}00455\ \ \ \ \ m\_bAllTokens\ \string^=\ mv;\ \ \textcolor{comment}{//\ bitwise\ xor\ and\ bitwise\ or\ are\ equivalent\ here}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00456}00456\ \ \ \ \ m\_movesLeft-\/-\/;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00453}00453\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ getMaskColRow(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ column,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ row)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00454}00454\ \ \ \ \ assert(column\ >=\ 0\ \&\&\ column\ <\ N\_COLUMNS);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00455}00455\ \ \ \ \ assert(row\ >=\ 0\ \&\&\ row\ <\ N\_ROWS);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00456}00456\ \ \ \ \ \textcolor{keywordflow}{return}\ UINT64\_C(1)\ <<\ (column\ *\ COLUMN\_BIT\_OFFSET\ +\ row);}
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00457}00457\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00458}00458\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00459}00459\ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ playMoveFast(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ column)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00460}00460\ \ \ \ \ assert(column\ >=\ 0\ \&\&\ column\ <\ N\_COLUMNS);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00461}00461\ \ \ \ \ \textcolor{keyword}{const}\ TBitBoard\ columnMask\ =\ getColumnMask(column);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00462}00462\ \ \ \ \ assert(uint64\_t\_popcnt(columnMask)\ ==\ N\_ROWS);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00463}00463\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mvMask\ =\ (m\_bAllTokens\ +\ BB\_BOTTOM\_ROW)\ \&\ columnMask;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00464}00464\ \ \ \ \ playMoveFastBB(mvMask);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00465}00465\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00466}00466\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00467}00467\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ addAfterStates(std::map<uint64\_t,\ Board>\&\ boardCollection,}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Board\&\ b,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nPly)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00469}00469\ \ \ \ \ \textcolor{keywordflow}{if}\ (b.countTokens()\ >=\ nPly)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00470}00470\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00471}00471\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00472}00472\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00473}00473\ \ \ \ \ \textcolor{keyword}{auto}\ moves\ =\ b.legalMovesMask();}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00459}00459\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Player\ opponent(Player\ p)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00460}00460\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}Player\textcolor{keyword}{>}(3\ -\/\ p);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00461}00461\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00463}00463\ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ playMoveFastBB(\textcolor{keyword}{const}\ TBitBoard\ mv)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00464}00464\ \ \ \ \ assert(mv\ !=\ BB\_EMPTY);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00465}00465\ \ \ \ \ assert((mv\ \&\ BB\_ILLEGAL)\ ==\ BB\_EMPTY);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00466}00466\ \ \ \ \ assert((m\_bAllTokens\ \&\ mv)\ ==\ BB\_EMPTY);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00467}00467\ \ \ \ \ m\_bActivePTokens\ \string^=\ m\_bAllTokens;\ \ \textcolor{comment}{//\ Already,\ switch\ player}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00468}00468\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00469}00469\ \ \ \ \ \textcolor{comment}{//\ However,\ move\ is\ performed\ for\ current\ player\ (assuming,\ above\ switch\ is}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00470}00470\ \ \ \ \ \textcolor{comment}{//\ not\ yet\ performed)}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00471}00471\ \ \ \ \ m\_bAllTokens\ \string^=\ mv;\ \ \textcolor{comment}{//\ bitwise\ xor\ and\ bitwise\ or\ are\ equivalent\ here}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00472}00472\ \ \ \ \ m\_movesLeft-\/-\/;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00473}00473\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00474}00474\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00475}00475\ \ \ \ \ \textcolor{keywordflow}{while}\ (moves)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00476}00476\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mv\ =\ b.nextMove(moves);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00477}00477\ \ \ \ \ \ \ assert(uint64\_t\_popcnt(mv)\ ==\ 1);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00478}00478\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ newB\ =\ b.playBitMaskOnCopy(mv);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ boardCollection.find(newB.uid())\ ==\ boardCollection.end()\ \&\&}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ !b.hasWin())\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00481}00481\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ have\ not\ \ reached\ this\ position\ yet}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00482}00482\ \ \ \ \ \ \ \ \ boardCollection.insert(\{newB.uid(),\ newB\});}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00483}00483\ \ \ \ \ \ \ \ \ addAfterStates(boardCollection,\ newB,\ nPly);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00484}00484\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00485}00485\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00486}00486\ \ \ \ \ \ \ moves\ \string^=\ mv;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00475}00475\ \ \ \textcolor{keywordtype}{void}\ \textcolor{keyword}{inline}\ playMoveFast(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ column)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00476}00476\ \ \ \ \ assert(column\ >=\ 0\ \&\&\ column\ <\ N\_COLUMNS);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00477}00477\ \ \ \ \ \textcolor{keyword}{const}\ TBitBoard\ columnMask\ =\ getColumnMask(column);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00478}00478\ \ \ \ \ assert(uint64\_t\_popcnt(columnMask)\ ==\ N\_ROWS);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00479}00479\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mvMask\ =\ (m\_bAllTokens\ +\ BB\_BOTTOM\_ROW)\ \&\ columnMask;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00480}00480\ \ \ \ \ playMoveFastBB(mvMask);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00481}00481\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00482}00482\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00483}00483\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ addAfterStates(std::map<uint64\_t,\ Board>\&\ boardCollection,}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Board\&\ b,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nPly)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00485}00485\ \ \ \ \ \textcolor{keywordflow}{if}\ (b.countTokens()\ >=\ nPly)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00486}00486\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00487}00487\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00488}00488\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00489}00489\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00490}00490\ \ \ \textcolor{keyword}{static}\ std::pair<Board,\ std::vector<int>>\ randomBoardInternal(}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00491}00491\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nPly)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00492}00492\ \ \ \ \ \textcolor{keywordflow}{if}\ (nPly\ <\ 0\ ||\ nPly\ >\ N\_COLUMNS\ *\ N\_ROWS)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00493}00493\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00494}00494\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00495}00495\ \ \ \ \ Board\ b;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00496}00496\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00497}00497\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ random\ device\ to\ seed\ the\ random\ number\ generator}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00498}00498\ \ \ \ \ \textcolor{keyword}{static}\ std::random\_device\ rd;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00499}00499\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00500}00500\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ Mersenne\ Twister\ random\ number\ generator}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00501}00501\ \ \ \ \ \textcolor{keyword}{static}\ std::mt19937\ gen(rd());}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00502}00502\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00503}00503\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ integer\ distribution\ for\ the\ desired\ range}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00504}00504\ \ \ \ \ \textcolor{keyword}{static}\ std::uniform\_int\_distribution<>\ nextUniform(0,\ N\_COLUMNS);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00488}00488\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00489}00489\ \ \ \ \ \textcolor{keyword}{auto}\ moves\ =\ b.legalMovesMask();}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00491}00491\ \ \ \ \ \textcolor{keywordflow}{while}\ (moves)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00492}00492\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ mv\ =\ b.nextMove(moves);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00493}00493\ \ \ \ \ \ \ assert(uint64\_t\_popcnt(mv)\ ==\ 1);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00494}00494\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ newB\ =\ b.playBitMaskOnCopy(mv);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ boardCollection.find(newB.uid())\ ==\ boardCollection.end()\ \&\&}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ !b.hasWin())\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00497}00497\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ have\ not\ \ reached\ this\ position\ yet}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00498}00498\ \ \ \ \ \ \ \ \ boardCollection.insert(\{newB.uid(),\ newB\});}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00499}00499\ \ \ \ \ \ \ \ \ addAfterStates(boardCollection,\ newB,\ nPly);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00500}00500\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00501}00501\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00502}00502\ \ \ \ \ \ \ moves\ \string^=\ mv;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00503}00503\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00504}00504\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00505}00505\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00506}00506\ \ \ \ \ std::vector<int>\ mvSequence;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00507}00507\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ MAX\_TRIES\ =\ 20;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00508}00508\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ nPly;\ ++j)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00509}00509\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ randColumn,\ tries\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00510}00510\ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00511}00511\ \ \ \ \ \ \ \ \ randColumn\ =\ nextUniform(gen);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00512}00512\ \ \ \ \ \ \ \ \ tries++;}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00513}00513\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (tries\ <\ MAX\_TRIES\ \&\&}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!b.isLegalMove(randColumn)\ ||\ b.canWin(randColumn)));}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00515}00515\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tries\ >=\ MAX\_TRIES)\ \{}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00516}00516\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00517}00517\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00518}00518\ \ \ \ \ \ \ b.play(randColumn);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00519}00519\ \ \ \ \ \ \ mvSequence.emplace\_back(randColumn);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00520}00520\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00506}00506\ \ \ \textcolor{keyword}{static}\ std::pair<Board,\ std::vector<int>>\ randomBoardInternal(}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00507}00507\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nPly)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00508}00508\ \ \ \ \ \textcolor{keywordflow}{if}\ (nPly\ <\ 0\ ||\ nPly\ >\ N\_COLUMNS\ *\ N\_ROWS)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00509}00509\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00510}00510\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00511}00511\ \ \ \ \ Board\ b;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00512}00512\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00513}00513\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ random\ device\ to\ seed\ the\ random\ number\ generator}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00514}00514\ \ \ \ \ \textcolor{keyword}{static}\ std::random\_device\ rd;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00516}00516\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ Mersenne\ Twister\ random\ number\ generator}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00517}00517\ \ \ \ \ \textcolor{keyword}{static}\ std::mt19937\ gen(rd());}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00518}00518\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00519}00519\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ integer\ distribution\ for\ the\ desired\ range}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00520}00520\ \ \ \ \ \textcolor{keyword}{static}\ std::uniform\_int\_distribution<>\ nextUniform(0,\ N\_COLUMNS);}
 \DoxyCodeLine{\Hypertarget{Board_8h_source_l00521}00521\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00522}00522\ \ \ \ \ assert(b.countTokens()\ ==\ nPly);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00523}00523\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00524}00524\ \ \ \ \ \textcolor{keywordflow}{return}\ \{std::move(b),\ std::move(mvSequence)\};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00525}00525\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00526}00526\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00527}00527\ \ \ \textcolor{keyword}{static}\ TBoardArray\ transpose(\textcolor{keyword}{const}\ TBoardArrayT\&\ board);}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00528}00528\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00529}00529\ \ \ std::vector<int>\ orderedLegalMovesFromMask(TBitBoard\ mvBits)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00530}00530\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00531}00531\ \ \ std::vector<int>\ legalMovesFromMask(TBitBoard\ mvBits)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00532}00532\ \};}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00533}00533\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00534}00534\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00535}00535\ }
-\DoxyCodeLine{\Hypertarget{Board_8h_source_l00536}00536\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ XBITBULLY\_\_BOARD\_H\_}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00522}00522\ \ \ \ \ std::vector<int>\ mvSequence;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00523}00523\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ MAX\_TRIES\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00524}00524\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ nPly;\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00525}00525\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ randColumn,\ tries\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00526}00526\ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00527}00527\ \ \ \ \ \ \ \ \ randColumn\ =\ nextUniform(gen);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00528}00528\ \ \ \ \ \ \ \ \ tries++;}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00529}00529\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (tries\ <\ MAX\_TRIES\ \&\&}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!b.isLegalMove(randColumn)\ ||\ b.canWin(randColumn)));}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00531}00531\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tries\ >=\ MAX\_TRIES)\ \{}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00532}00532\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00533}00533\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00534}00534\ \ \ \ \ \ \ b.play(randColumn);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00535}00535\ \ \ \ \ \ \ mvSequence.emplace\_back(randColumn);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00536}00536\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00537}00537\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00538}00538\ \ \ \ \ assert(b.countTokens()\ ==\ nPly);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00539}00539\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00540}00540\ \ \ \ \ \textcolor{keywordflow}{return}\ \{std::move(b),\ std::move(mvSequence)\};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00541}00541\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00542}00542\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00543}00543\ \ \ \textcolor{keyword}{static}\ TBoardArray\ transpose(\textcolor{keyword}{const}\ TBoardArrayT\&\ board);}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00544}00544\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00545}00545\ \ \ std::vector<int>\ orderedLegalMovesFromMask(TBitBoard\ mvBits)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00546}00546\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00547}00547\ \ \ std::vector<int>\ legalMovesFromMask(TBitBoard\ mvBits)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00548}00548\ \};}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00549}00549\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00550}00550\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{Board_8h_source_l00552}00552\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ XBITBULLY\_\_BOARD\_H\_}}
 
 \end{DoxyCode}

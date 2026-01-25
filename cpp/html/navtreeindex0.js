@@ -121,6 +121,7 @@ var NAVTREEINDEX0 =
 "d9/d83/classbitbully_1_1board_1_1Board.html#afe754d7343ddc9c2b4596ec2c5eea43a":[0,0,0,1,0,19],
 "d9/d83/classbitbully_1_1board_1_1Board.html#afe754d7343ddc9c2b4596ec2c5eea43a":[1,0,1,1,0,19],
 "d9/df8/structBitBully_1_1TranspositionTable_1_1Entry.html":[1,0,0,4,0],
+"da/dd9/structBitBully_1_1Board_1_1RawState.html":[1,0,0,1,0],
 "da/de7/solver_8py_source.html":[2,0,0,0,4],
 "da/df9/TranspositionTable_8hpp_source.html":[2,0,1,0,7],
 "db/dc6/classBitBully_1_1TranspositionTable.html":[1,0,0,4],

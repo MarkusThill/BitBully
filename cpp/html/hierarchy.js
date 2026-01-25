@@ -14,6 +14,7 @@ var hierarchy =
     [ "Protocol", null, [
       [ "bitbully.agent_interface.Connect4Agent", "d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html", null ]
     ] ],
+    [ "BitBully::Board::RawState", "da/dd9/structBitBully_1_1Board_1_1RawState.html", null ],
     [ "GameSolver::Connect4::Solver", "d3/dcd/classGameSolver_1_1Connect4_1_1Solver.html", null ],
     [ "GameSolver::Connect4::TableGetter< key_t, value_t >", "d7/ddf/classGameSolver_1_1Connect4_1_1TableGetter.html", [
       [ "GameSolver::Connect4::TranspositionTable< partial_key_t, key_t, value_t, log_size >", "d2/d52/classGameSolver_1_1Connect4_1_1TranspositionTable.html", null ]

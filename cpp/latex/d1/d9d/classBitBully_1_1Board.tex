@@ -1,5 +1,10 @@
 \doxysection{Bit\+Bully\+::Board Class Reference}
 \hypertarget{classBitBully_1_1Board}{}\label{classBitBully_1_1Board}\index{BitBully::Board@{BitBully::Board}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structBitBully_1_1Board_1_1RawState}{Raw\+State}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -86,6 +91,10 @@ TBit\+Board \mbox{\hyperlink{classBitBully_1_1Board_a27969eddcd49d5644c812339aec
 int \mbox{\hyperlink{classBitBully_1_1Board_adcabaf7694d4fb3ff607068be70c377f}{to\+Huffman}} () const
 \item 
 std\+::vector$<$ \mbox{\hyperlink{classBitBully_1_1Board}{Board}} $>$ \mbox{\hyperlink{classBitBully_1_1Board_acfc579a8c01d89956adc69dc23006714}{all\+Positions}} (const int up\+To\+NPly, bool exactlyN) const
+\item 
+\mbox{\hyperlink{structBitBully_1_1Board_1_1RawState}{Raw\+State}} \mbox{\hyperlink{classBitBully_1_1Board_acc57d99498f8bf1f2647cc46013d4704}{raw\+State}} () const noexcept
+\item 
+void \mbox{\hyperlink{classBitBully_1_1Board_a1502e21f58934185d678ae641ced3e30}{set\+Raw\+State}} (const \mbox{\hyperlink{structBitBully_1_1Board_1_1RawState}{Raw\+State}} \&s) noexcept
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -515,6 +524,16 @@ std\+::pair$<$ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}, std\+::vector$<
 
 Definition at line \mbox{\hyperlink{Board_8h_source_l00306}{306}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
+\Hypertarget{classBitBully_1_1Board_acc57d99498f8bf1f2647cc46013d4704}\index{BitBully::Board@{BitBully::Board}!rawState@{rawState}}
+\index{rawState@{rawState}!BitBully::Board@{BitBully::Board}}
+\doxysubsubsection{\texorpdfstring{rawState()}{rawState()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1Board_acc57d99498f8bf1f2647cc46013d4704} 
+\mbox{\hyperlink{structBitBully_1_1Board_1_1RawState}{Raw\+State}} Bit\+Bully\+::\+Board\+::raw\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{Board_8h_source_l00345}{345}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
+
 \Hypertarget{classBitBully_1_1Board_af68094c778fb01a6956eec5b853671c2}\index{BitBully::Board@{BitBully::Board}!setBoard@{setBoard}}
 \index{setBoard@{setBoard}!BitBully::Board@{BitBully::Board}}
 \doxysubsubsection{\texorpdfstring{setBoard()}{setBoard()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
@@ -554,6 +573,16 @@ bool Bit\+Bully\+::\+Board\+::set\+Board (\begin{DoxyParamCaption}\item[{const T
 
 
 Definition at line \mbox{\hyperlink{Board_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{Board_8cpp_source}{Board.\+cpp}}.
+
+\Hypertarget{classBitBully_1_1Board_a1502e21f58934185d678ae641ced3e30}\index{BitBully::Board@{BitBully::Board}!setRawState@{setRawState}}
+\index{setRawState@{setRawState}!BitBully::Board@{BitBully::Board}}
+\doxysubsubsection{\texorpdfstring{setRawState()}{setRawState()}}
+{\footnotesize\ttfamily \label{classBitBully_1_1Board_a1502e21f58934185d678ae641ced3e30} 
+void Bit\+Bully\+::\+Board\+::set\+Raw\+State (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structBitBully_1_1Board_1_1RawState}{Raw\+State}} \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{Board_8h_source_l00349}{349}} of file \mbox{\hyperlink{Board_8h_source}{Board.\+h}}.
 
 \Hypertarget{classBitBully_1_1Board_a0d3c307cd8aa9aa2654254b6e801db6b}\index{BitBully::Board@{BitBully::Board}!sortMoves@{sortMoves}}
 \index{sortMoves@{sortMoves}!BitBully::Board@{BitBully::Board}}

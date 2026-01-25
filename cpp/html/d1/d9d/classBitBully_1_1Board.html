@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.74</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.75</span>
                         </div>
                     </td>
                 </tr>
@@ -108,6 +108,10 @@ $(function(){initNavTree('d1/d9d/classBitBully_1_1Board.html','../../','d5/d34/c
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:RawState" id="r_RawState"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd9/structBitBully_1_1Board_1_1RawState.html">RawState</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a51de95ec0b58e477cb87831872b2d9ac" id="r_a51de95ec0b58e477cb87831872b2d9ac"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>Player</b> { <b>P_EMPTY</b> = 0
@@ -155,6 +159,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a27969eddcd49d5644c812339aec41ae8" id="r_a27969eddcd49d5644c812339aec41ae8"><td class="memItemLeft" align="right" valign="top">TBitBoard&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27969eddcd49d5644c812339aec41ae8">doubleThreat</a> (const TBitBoard moves) const</td></tr>
 <tr class="memitem:adcabaf7694d4fb3ff607068be70c377f" id="r_adcabaf7694d4fb3ff607068be70c377f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcabaf7694d4fb3ff607068be70c377f">toHuffman</a> () const</td></tr>
 <tr class="memitem:acfc579a8c01d89956adc69dc23006714" id="r_acfc579a8c01d89956adc69dc23006714"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfc579a8c01d89956adc69dc23006714">allPositions</a> (const int upToNPly, bool exactlyN) const</td></tr>
+<tr class="memitem:acc57d99498f8bf1f2647cc46013d4704" id="r_acc57d99498f8bf1f2647cc46013d4704"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/dd9/structBitBully_1_1Board_1_1RawState.html">RawState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc57d99498f8bf1f2647cc46013d4704">rawState</a> () const noexcept</td></tr>
+<tr class="memitem:a1502e21f58934185d678ae641ced3e30" id="r_a1502e21f58934185d678ae641ced3e30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1502e21f58934185d678ae641ced3e30">setRawState</a> (const <a class="el" href="../../da/dd9/structBitBully_1_1Board_1_1RawState.html">RawState</a> &amp;s) noexcept</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -1115,6 +1121,33 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="acc57d99498f8bf1f2647cc46013d4704" name="acc57d99498f8bf1f2647cc46013d4704"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc57d99498f8bf1f2647cc46013d4704">&#9670;&#160;</a></span>rawState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/dd9/structBitBully_1_1Board_1_1RawState.html">RawState</a> BitBully::Board::rawState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00345">345</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
+
+</div>
+</div>
 <a id="af68094c778fb01a6956eec5b853671c2" name="af68094c778fb01a6956eec5b853671c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af68094c778fb01a6956eec5b853671c2">&#9670;&#160;</a></span>setBoard() <span class="overload">[1/4]</span></h2>
 
@@ -1220,6 +1253,33 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d6/dbe/Board_8cpp_source.html#l00053">53</a> of file <a class="el" href="../../d6/dbe/Board_8cpp_source.html">Board.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1502e21f58934185d678ae641ced3e30" name="a1502e21f58934185d678ae641ced3e30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1502e21f58934185d678ae641ced3e30">&#9670;&#160;</a></span>setRawState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BitBully::Board::setRawState </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../da/dd9/structBitBully_1_1Board_1_1RawState.html">RawState</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/dd3/Board_8h_source.html#l00349">349</a> of file <a class="el" href="../../dd/dd3/Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>

@@ -2,7 +2,7 @@ var annotated_dup =
 [
     [ "BitBully", null, [
       [ "BitBully", "d9/d00/classBitBully_1_1BitBully.html", null ],
-      [ "Board", "d1/d9d/classBitBully_1_1Board.html", null ],
+      [ "Board", "d1/d9d/classBitBully_1_1Board.html", "d1/d9d/classBitBully_1_1Board" ],
       [ "MoveList", "d7/d3c/classBitBully_1_1MoveList.html", null ],
       [ "OpeningBook", "d2/d9f/classBitBully_1_1OpeningBook.html", null ],
       [ "TranspositionTable", "db/dc6/classBitBully_1_1TranspositionTable.html", "db/dc6/classBitBully_1_1TranspositionTable" ]
