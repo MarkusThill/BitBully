@@ -1324,6 +1324,49 @@ class BoardCore:
             ```
         """
 
+    def setRawState(self, all_tokens: int, active_tokens: int, moves_left: int) -> None:
+        """Set the raw internal engine state.
+
+        Args:
+            all_tokens (int): Bitboard of all occupied squares (engine layout).
+            active_tokens (int): Bitboard of side-to-move stones (engine layout).
+            moves_left (int): Remaining empty cells (0..42).
+
+        Notes:
+            This is a low-level API. It does not validate consistency (e.g. illegal states).
+
+        Danger:
+            Improper use may lead to invalid board states. Use with caution.
+
+        Example:
+            Extract raw bitboards from one board and reconstruct the position in another:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            # Create and play on the first board.
+            b1 = bbc.BoardCore()
+            assert b1.play("33333111")
+
+            # Extract raw internal state.
+            all_tokens, active_tokens, moves_left = b1.rawState()
+
+            assert isinstance(all_tokens, int)
+            assert isinstance(active_tokens, int)
+            assert isinstance(moves_left, int)
+            assert 0 <= moves_left <= 42
+
+            # Create a second board and inject the raw state.
+            b2 = bbc.BoardCore()
+            b2.setRawState(all_tokens, active_tokens, moves_left)
+
+            # Both boards now represent the exact same position.
+            assert b1 == b2
+            assert b1.uid() == b2.uid()
+            assert b1.hash() == b2.hash()
+            assert b1.toString() == b2.toString()
+            ```
+        """
+
 
 
 class OpeningBookCore:

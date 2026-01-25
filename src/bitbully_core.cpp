@@ -143,7 +143,22 @@ PYBIND11_MODULE(bitbully_core, m) {
                 py::int_(s.moves_left));
           },
           "Return raw internal state: (all_tokens, active_tokens, "
-          "moves_left).");
+          "moves_left).")
+      .def(
+          "setRawState",
+          [](B& b, unsigned long long all_tokens,
+             unsigned long long active_tokens, int moves_left) {
+            B::RawState s{
+                static_cast<B::TBitBoard>(all_tokens),
+                static_cast<B::TBitBoard>(active_tokens),
+                static_cast<B::TMovesCounter>(moves_left),
+            };
+            b.setRawState(s);
+          },
+          py::arg("all_tokens"), py::arg("active_tokens"),
+          py::arg("moves_left"),
+          "Set raw internal state from (all_tokens, active_tokens, "
+          "moves_left). DANGER: No validity checks are performed!");
 
   // Expose OpeningBook:
   py::class_<BitBully::OpeningBook>(m, "OpeningBookCore")
