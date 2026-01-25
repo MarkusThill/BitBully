@@ -1,3 +1,10 @@
+## v0.0.75 (2026-01-25)
+
+### Fix
+
+- added core function to set bitboard directly
+- add a core function to return internal board state
+
 ## v0.0.74 (2025-12-30)
 
 ### Fix
