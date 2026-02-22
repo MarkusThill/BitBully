@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.75</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.76</span>
                         </div>
                     </td>
                 </tr>
@@ -125,6 +125,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a83419e0054f2ad2c6d83b6edfaa0c7b6" id="r_a83419e0054f2ad2c6d83b6edfaa0c7b6"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83419e0054f2ad2c6d83b6edfaa0c7b6">load_book</a> (self, OpeningBookName|os.PathLike[str]|str book)</td></tr>
 <tr class="memitem:a426d0dc29875659fb641316420dfa495" id="r_a426d0dc29875659fb641316420dfa495"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a426d0dc29875659fb641316420dfa495">reset_book</a> (self)</td></tr>
 <tr class="memitem:ae2e3f241a045aa7ead284c101845b032" id="r_ae2e3f241a045aa7ead284c101845b032"><td class="memItemLeft" align="right" valign="top">tuple[OpeningBookName,...]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2e3f241a045aa7ead284c101845b032">available_opening_books</a> (cls)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a1f8d0858dba82ddc4dd8bdb14ab21337" id="r_a1f8d0858dba82ddc4dd8bdb14ab21337"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f8d0858dba82ddc4dd8bdb14ab21337">score_to_moves_left</a> (int score, <a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a> board)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -301,7 +305,7 @@ Example:
     print(books)  # ('default', '8-ply', '12-ply', '12-ply-dist')
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00616">616</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00666">666</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -560,7 +564,7 @@ Example:
     assert agent.is_book_loaded() is True
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00534">534</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00584">584</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -806,7 +810,7 @@ Example:
     assert agent.is_book_loaded() is False
     ```
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00596">596</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00646">646</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>
@@ -1007,6 +1011,82 @@ Notes:
       [`bitbully_core.BitBullyCore.scoreMove`][src.bitbully.bitbully_core.BitBullyCore.scoreMove].
 </pre> 
 <p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00197">197</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
+
+</div>
+</div>
+<a id="a1f8d0858dba82ddc4dd8bdb14ab21337" name="a1f8d0858dba82ddc4dd8bdb14ab21337"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f8d0858dba82ddc4dd8bdb14ab21337">&#9670;&#160;</a></span>score_to_moves_left()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int bitbully.solver.BitBully.score_to_moves_left </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>score</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d83/classbitbully_1_1board_1_1Board.html">Board</a></td>          <td class="paramname"><span class="paramname"><em>board</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Convert a solver score to the number of moves until the game ends.
+
+Given a score returned by the solver (e.g., from
+:meth:`mtdf` or :meth:`score_all_moves`) and the board state,
+returns how many moves remain until the game concludes under
+perfect play.
+
+Args:
+    score (int): The solver score. Positive means the current player
+        wins; negative means the current player loses; 0 means draw.
+    board (Board): The board state for which the score was computed.
+
+Returns:
+    int: Number of moves remaining until the game ends.
+
+Example:
+    A draw uses all remaining moves:
+    ```python
+    from bitbully import BitBully, Board
+
+    board = Board()  # empty board, 42 moves left
+    assert BitBully.score_to_moves_left(0, board) == 42
+    ```
+
+Example:
+    Maximum score means the current player wins on the very next move:
+    ```python
+    from bitbully import BitBully, Board
+
+    board = Board()
+    assert BitBully.score_to_moves_left(21, board) == 1
+    ```
+
+Example:
+    Combining with the solver to find how many moves until
+    the game is decided:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.mtdf(board)
+    moves_until_end = BitBully.score_to_moves_left(score, board)
+    assert moves_until_end == 41  # yellow barely wins
+    ```
+</pre> 
+<p class="definition">Definition at line <a class="el" href="../../da/de7/solver_8py_source.html#l00535">535</a> of file <a class="el" href="../../da/de7/solver_8py_source.html">solver.py</a>.</p>
 
 </div>
 </div>

@@ -535,104 +535,154 @@
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00531}00531\ \ \ \ \ \ \ \ \ effective\_max\_depth\ =\ max\_depth\ \textcolor{keywordflow}{if}\ max\_depth\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{else}\ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a1d919b28f85e90eb2095ff68cefc75e9}{max\_depth}}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00532}00532\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_af3c70d5aad94be8f3b4a0750dabaa409}{mtdf}}(board.native,\ first\_guess=first\_guess,\ max\_depth=effective\_max\_depth))}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00533}00533\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00534}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a83419e0054f2ad2c6d83b6edfaa0c7b6}{00534}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a83419e0054f2ad2c6d83b6edfaa0c7b6}{load\_book}}(self,\ book:\ OpeningBookName\ |\ os.PathLike[str]\ |\ str)\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00535}00535\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Load\ an\ opening\ book\ from\ a\ file\ path.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00536}00536\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00537}00537\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ is\ a\ thin\ wrapper\ around}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00538}00538\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ [\`{}bitbully\_core.BitBullyCore.loadBook\`{}][src.bitbully.bitbully\_core.BitBullyCore.loadBook].}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00539}00539\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00540}00540\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00541}00541\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ book\ (OpeningBookName\ |\ os.PathLike[str]\ |\ str):}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00542}00542\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Name/Identifier\ (see\ [\`{}available\_opening\_books\`{}][src.bitbully.solver.BitBully.available\_opening\_books])}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00543}00543\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ or\ path\ of\ the\ opening\ book\ to\ load.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00544}00544\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00545}00545\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00546}00546\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ValueError:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00547}00547\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ the\ book\ identifier/path\ is\ invalid\ or\ if\ loading\ the\ book\ fails.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00548}00548\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00549}00549\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00550}00550\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00551}00551\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00552}00552\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ pathlib\ import\ Path}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00553}00553\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00554}00554\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ which\_book\ =\ BitBully.available\_opening\_books()[0]\ \ \#\ e.g.,\ "{}default"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00534}00534\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00535}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a1f8d0858dba82ddc4dd8bdb14ab21337}{00535}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a1f8d0858dba82ddc4dd8bdb14ab21337}{score\_to\_moves\_left}}(score:\ int,\ board:\ Board)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00536}00536\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Convert\ a\ solver\ score\ to\ the\ number\ of\ moves\ until\ the\ game\ ends.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00537}00537\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00538}00538\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Given\ a\ score\ returned\ by\ the\ solver\ (e.g.,\ from}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00539}00539\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ :meth:\`{}mtdf\`{}\ or\ :meth:\`{}score\_all\_moves\`{})\ and\ the\ board\ state,}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00540}00540\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ returns\ how\ many\ moves\ remain\ until\ the\ game\ concludes\ under}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00541}00541\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ perfect\ play.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00542}00542\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00543}00543\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00544}00544\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ (int):\ The\ solver\ score.\ Positive\ means\ the\ current\ player}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00545}00545\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wins;\ negative\ means\ the\ current\ player\ loses;\ 0\ means\ draw.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00546}00546\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ (Board):\ The\ board\ state\ for\ which\ the\ score\ was\ computed.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00547}00547\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00548}00548\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00549}00549\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ int:\ Number\ of\ moves\ remaining\ until\ the\ game\ ends.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00550}00550\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00551}00551\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00552}00552\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ A\ draw\ uses\ all\ remaining\ moves:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00553}00553\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00554}00554\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00555}00555\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00556}00556\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully(opening\_book=None)\ \ \#\ start\ without\ book}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00557}00557\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00558}00558\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.load\_book(which\_book)\ \ \#\ load\ "{}default"{}\ book}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00559}00559\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00560}00560\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00561}00561\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00562}00562\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00563}00563\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00564}00564\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00565}00565\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ pathlib\ import\ Path}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00566}00566\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ bitbully\_databases\ as\ bbd}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00567}00567\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00568}00568\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ which\_book\ =\ BitBully.available\_opening\_books()[2]\ \ \#\ e.g.,\ "{}12-\/ply"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00569}00569\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ bbd.BitBullyDatabases.get\_database\_path(which\_book)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00570}00570\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00571}00571\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully(opening\_book=None)\ \ \#\ start\ without\ book}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00572}00572\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00573}00573\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.load\_book(db\_path)}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00574}00574\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00575}00575\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00576}00576\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00577}00577\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00578}00578\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_opening\_book\_name(book):}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00579}00579\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{import}\ bitbully\_databases\ \textcolor{keyword}{as}\ bbd}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00580}00580\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00581}00581\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ bbd.BitBullyDatabases.get\_database\_path(book)}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00582}00582\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ book}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00583}00583\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ isinstance(book,\ (os.PathLike,\ str)):}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00584}00584\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(book,\ str)\ \textcolor{keywordflow}{and}\ \textcolor{keywordflow}{not}\ book.strip():}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00585}00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Invalid\ book\ path:\ \{book!r\}"{}})}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ Path(book)}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ \textcolor{keywordtype}{None}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00588}00588\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00589}00589\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Invalid\ book\ identifier\ or\ path:\ \{book!r\}"{}})}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00590}00590\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00591}00591\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.loadBook(db\_path):}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ \textcolor{keywordtype}{None}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00594}00594\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Failed\ to\ load\ opening\ book\ from\ path:\ \{db\_path\}"{}})}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00595}00595\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00596}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}{00596}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}{reset\_book}}(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00597}00597\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Unload\ the\ currently\ loaded\ opening\ book\ (if\ any).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00556}00556\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()\ \ \#\ empty\ board,\ 42\ moves\ left}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00557}00557\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ BitBully.score\_to\_moves\_left(0,\ board)\ ==\ 42}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00558}00558\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00559}00559\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00560}00560\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00561}00561\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Maximum\ score\ means\ the\ current\ player\ wins\ on\ the\ very\ next\ move:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00562}00562\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00563}00563\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00564}00564\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00565}00565\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00566}00566\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ BitBully.score\_to\_moves\_left(21,\ board)\ ==\ 1}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00567}00567\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00568}00568\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00569}00569\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00570}00570\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ Combining\ with\ the\ solver\ to\ find\ how\ many\ moves\ until}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00571}00571\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ the\ game\ is\ decided:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00572}00572\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00573}00573\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully,\ Board}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00574}00574\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00575}00575\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00576}00576\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ board\ =\ Board()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00577}00577\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ score\ =\ agent.mtdf(board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00578}00578\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ moves\_until\_end\ =\ BitBully.score\_to\_moves\_left(score,\ board)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00579}00579\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ moves\_until\_end\ ==\ 41\ \ \#\ yellow\ barely\ wins}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00580}00580\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00581}00581\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00582}00582\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int(bitbully\_core.BitBullyCore.scoreToMovesLeft(score,\ board.native))}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00584}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a83419e0054f2ad2c6d83b6edfaa0c7b6}{00584}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a83419e0054f2ad2c6d83b6edfaa0c7b6}{load\_book}}(self,\ book:\ OpeningBookName\ |\ os.PathLike[str]\ |\ str)\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00585}00585\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Load\ an\ opening\ book\ from\ a\ file\ path.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00586}00586\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00587}00587\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ is\ a\ thin\ wrapper\ around}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00588}00588\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ [\`{}bitbully\_core.BitBullyCore.loadBook\`{}][src.bitbully.bitbully\_core.BitBullyCore.loadBook].}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00589}00589\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00590}00590\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Args:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00591}00591\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ book\ (OpeningBookName\ |\ os.PathLike[str]\ |\ str):}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00592}00592\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Name/Identifier\ (see\ [\`{}available\_opening\_books\`{}][src.bitbully.solver.BitBully.available\_opening\_books])}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00593}00593\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ or\ path\ of\ the\ opening\ book\ to\ load.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00594}00594\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00595}00595\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Raises:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00596}00596\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ValueError:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00597}00597\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ If\ the\ book\ identifier/path\ is\ invalid\ or\ if\ loading\ the\ book\ fails.}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00598}00598\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00599}00599\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ resets\ the\ engine\ to\ *search-\/only*\ mode\ until\ another}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00600}00600\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ opening\ book\ is\ loaded.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00601}00601\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00602}00602\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00603}00603\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00604}00604\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00599}00599\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00600}00600\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00601}00601\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00602}00602\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ pathlib\ import\ Path}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00603}00603\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00604}00604\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ which\_book\ =\ BitBully.available\_opening\_books()[0]\ \ \#\ e.g.,\ "{}default"{}}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00605}00605\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00606}00606\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()\ \ \#\ per\ default,\ the\ 12-\/ply-\/dist\ book\ is\ loaded}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00607}00607\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00608}00608\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.reset\_book()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00609}00609\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00606}00606\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully(opening\_book=None)\ \ \#\ start\ without\ book}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00607}00607\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00608}00608\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.load\_book(which\_book)\ \ \#\ load\ "{}default"{}\ book}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00609}00609\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
 \DoxyCodeLine{\Hypertarget{solver_8py_source_l00610}00610\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00611}00611\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00612}00612\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00613}00613\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ \textcolor{keywordtype}{None}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00614}00614\ }
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00615}00615\ \ \ \ \ \textcolor{preprocessor}{@classmethod}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00616}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ae2e3f241a045aa7ead284c101845b032}{00616}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ae2e3f241a045aa7ead284c101845b032}{available\_opening\_books}}(cls)\ -\/>\ tuple[OpeningBookName,\ ...]:}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00617}00617\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ the\ available\ opening\ book\ identifiers.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00618}00618\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00619}00619\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00620}00620\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ tuple[OpeningBookName,\ ...]:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00621}00621\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ All\ supported\ opening\ book\ names,\ including\ \`{}\`{}"{}default"{}\`{}\`{}.}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00622}00622\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00623}00623\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00624}00624\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00625}00625\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00626}00626\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00627}00627\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ books\ =\ BitBully.available\_opening\_books()}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00628}00628\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ print(books)\ \ \#\ ('default',\ '8-\/ply',\ '12-\/ply',\ '12-\/ply-\/dist')}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00629}00629\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00630}00630\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00631}00631\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{solver_8py_source_l00632}00632\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ get\_args(OpeningBookName)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00611}00611\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00612}00612\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00613}00613\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00614}00614\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00615}00615\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ pathlib\ import\ Path}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00616}00616\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ import\ bitbully\_databases\ as\ bbd}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00617}00617\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00618}00618\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ which\_book\ =\ BitBully.available\_opening\_books()[2]\ \ \#\ e.g.,\ "{}12-\/ply"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00619}00619\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ bbd.BitBullyDatabases.get\_database\_path(which\_book)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00620}00620\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00621}00621\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully(opening\_book=None)\ \ \#\ start\ without\ book}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00622}00622\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00623}00623\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.load\_book(db\_path)}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00624}00624\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00625}00625\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00626}00626\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00627}00627\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00628}00628\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_opening\_book\_name(book):}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{import}\ bitbully\_databases\ \textcolor{keyword}{as}\ bbd}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00630}00630\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ bbd.BitBullyDatabases.get\_database\_path(book)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ book}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00633}00633\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ isinstance(book,\ (os.PathLike,\ str)):}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(book,\ str)\ \textcolor{keywordflow}{and}\ \textcolor{keywordflow}{not}\ book.strip():}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Invalid\ book\ path:\ \{book!r\}"{}})}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ db\_path\ =\ Path(book)}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00638}00638\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Invalid\ book\ identifier\ or\ path:\ \{book!r\}"{}})}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00640}00640\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00641}00641\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.loadBook(db\_path):}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(f\textcolor{stringliteral}{"{}Failed\ to\ load\ opening\ book\ from\ path:\ \{db\_path\}"{}})}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00645}00645\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00646}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}{00646}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}{reset\_book}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00647}00647\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Unload\ the\ currently\ loaded\ opening\ book\ (if\ any).}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00648}00648\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00649}00649\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ This\ resets\ the\ engine\ to\ *search-\/only*\ mode\ until\ another}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00650}00650\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ opening\ book\ is\ loaded.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00651}00651\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00652}00652\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00653}00653\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00654}00654\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00655}00655\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00656}00656\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent\ =\ BitBully()\ \ \#\ per\ default,\ the\ 12-\/ply-\/dist\ book\ is\ loaded}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00657}00657\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ True}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00658}00658\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ agent.reset\_book()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00659}00659\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ assert\ agent.is\_book\_loaded()\ is\ False}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00660}00660\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00661}00661\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00662}00662\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a305167d3cf31042a3a4597bb4d676148}{\_core}}.resetBook()}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00663}00663\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}{opening\_book\_type}}\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00664}00664\ }
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00665}00665\ \ \ \ \ \textcolor{preprocessor}{@classmethod}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00666}\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ae2e3f241a045aa7ead284c101845b032}{00666}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ae2e3f241a045aa7ead284c101845b032}{available\_opening\_books}}(cls)\ -\/>\ tuple[OpeningBookName,\ ...]:}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00667}00667\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ the\ available\ opening\ book\ identifiers.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00668}00668\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00669}00669\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00670}00670\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ tuple[OpeningBookName,\ ...]:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00671}00671\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ All\ supported\ opening\ book\ names,\ including\ \`{}\`{}"{}default"{}\`{}\`{}.}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00672}00672\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00673}00673\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Example:}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00674}00674\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}python}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00675}00675\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ from\ bitbully\ import\ BitBully}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00676}00676\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00677}00677\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ books\ =\ BitBully.available\_opening\_books()}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00678}00678\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ print(books)\ \ \#\ ('default',\ '8-\/ply',\ '12-\/ply',\ '12-\/ply-\/dist')}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00679}00679\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \`{}\`{}\`{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00680}00680\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00681}00681\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{solver_8py_source_l00682}00682\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ get\_args(OpeningBookName)}
 
 \end{DoxyCode}

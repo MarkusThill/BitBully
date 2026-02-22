@@ -33,6 +33,11 @@ None \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb6413
 \item 
 tuple\mbox{[}Opening\+Book\+Name,...\mbox{]} \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ae2e3f241a045aa7ead284c101845b032}{available\+\_\+opening\+\_\+books}} (cls)
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a1f8d0858dba82ddc4dd8bdb14ab21337}{score\+\_\+to\+\_\+moves\+\_\+left}} (int score, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -180,7 +185,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00616}{616}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00666}{666}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a399ebaed18fac71d0addb830275915a7}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!best\_move@{best\_move}}
 \index{best\_move@{best\_move}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -379,7 +384,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00534}{534}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00584}{584}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_af3c70d5aad94be8f3b4a0750dabaa409}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!mtdf@{mtdf}}
 \index{mtdf@{mtdf}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -531,7 +536,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00596}{596}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00646}{646}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a9c6822bc9d8bfa7c1f3617911ba9b3e5}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!reset\_node\_counter@{reset\_node\_counter}}
 \index{reset\_node\_counter@{reset\_node\_counter}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -662,6 +667,62 @@ Notes:
  
 
 Definition at line \mbox{\hyperlink{solver_8py_source_l00197}{197}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a1f8d0858dba82ddc4dd8bdb14ab21337}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!score\_to\_moves\_left@{score\_to\_moves\_left}}
+\index{score\_to\_moves\_left@{score\_to\_moves\_left}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
+\doxysubsubsection{\texorpdfstring{score\_to\_moves\_left()}{score\_to\_moves\_left()}}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a1f8d0858dba82ddc4dd8bdb14ab21337} 
+ int bitbully.\+solver.\+Bit\+Bully.\+score\+\_\+to\+\_\+moves\+\_\+left (\begin{DoxyParamCaption}\item[{int}]{score}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}Convert a solver score to the number of moves until the game ends.
+
+Given a score returned by the solver (e.g., from
+:meth:`mtdf` or :meth:`score_all_moves`) and the board state,
+returns how many moves remain until the game concludes under
+perfect play.
+
+Args:
+    score (int): The solver score. Positive means the current player
+        wins; negative means the current player loses; 0 means draw.
+    board (Board): The board state for which the score was computed.
+
+Returns:
+    int: Number of moves remaining until the game ends.
+
+Example:
+    A draw uses all remaining moves:
+    ```python
+    from bitbully import BitBully, Board
+
+    board = Board()  # empty board, 42 moves left
+    assert BitBully.score_to_moves_left(0, board) == 42
+    ```
+
+Example:
+    Maximum score means the current player wins on the very next move:
+    ```python
+    from bitbully import BitBully, Board
+
+    board = Board()
+    assert BitBully.score_to_moves_left(21, board) == 1
+    ```
+
+Example:
+    Combining with the solver to find how many moves until
+    the game is decided:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.mtdf(board)
+    moves_until_end = BitBully.score_to_moves_left(score, board)
+    assert moves_until_end == 41  # yellow barely wins
+    ```
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{solver_8py_source_l00535}{535}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 
 

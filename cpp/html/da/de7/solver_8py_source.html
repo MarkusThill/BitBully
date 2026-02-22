@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.75</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.76</span>
                         </div>
                     </td>
                 </tr>
@@ -665,110 +665,162 @@ $(function(){initNavTree('da/de7/solver_8py_source.html','../../',''); });
 <div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>        <span class="keywordflow">return</span> int(self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">_core</a>.<a class="code hl_function" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#af3c70d5aad94be8f3b4a0750dabaa409">mtdf</a>(board.native, first_guess=first_guess, max_depth=effective_max_depth))</div>
 <div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span> </div>
 </div>
-<div class="foldopen" id="foldopen00534" data-start="" data-end="">
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno"><a class="line" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a83419e0054f2ad2c6d83b6edfaa0c7b6">  534</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a83419e0054f2ad2c6d83b6edfaa0c7b6">load_book</a>(self, book: OpeningBookName | os.PathLike[str] | str) -&gt; <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>        <span class="stringliteral">&quot;&quot;&quot;Load an opening book from a file path.</span></div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span><span class="stringliteral">        This is a thin wrapper around</span></div>
-<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span><span class="stringliteral">        [`bitbully_core.BitBullyCore.loadBook`][src.bitbully.bitbully_core.BitBullyCore.loadBook].</span></div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span><span class="stringliteral">            book (OpeningBookName | os.PathLike[str] | str):</span></div>
-<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span><span class="stringliteral">                Name/Identifier (see [`available_opening_books`][src.bitbully.solver.BitBully.available_opening_books])</span></div>
-<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span><span class="stringliteral">                or path of the opening book to load.</span></div>
-<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span><span class="stringliteral">        Raises:</span></div>
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span><span class="stringliteral">            ValueError:</span></div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span><span class="stringliteral">                If the book identifier/path is invalid or if loading the book fails.</span></div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span><span class="stringliteral">        Example:</span></div>
-<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span><span class="stringliteral">            ```python</span></div>
-<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span><span class="stringliteral">            from bitbully import BitBully</span></div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span><span class="stringliteral">            from pathlib import Path</span></div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span><span class="stringliteral">            which_book = BitBully.available_opening_books()[0]  # e.g., &quot;default&quot;</span></div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>    <span class="preprocessor">@staticmethod</span></div>
+<div class="foldopen" id="foldopen00535" data-start="" data-end="">
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno"><a class="line" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a1f8d0858dba82ddc4dd8bdb14ab21337">  535</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a1f8d0858dba82ddc4dd8bdb14ab21337">score_to_moves_left</a>(score: int, board: Board) -&gt; int:</div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>        <span class="stringliteral">&quot;&quot;&quot;Convert a solver score to the number of moves until the game ends.</span></div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span><span class="stringliteral">        Given a score returned by the solver (e.g., from</span></div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span><span class="stringliteral">        :meth:`mtdf` or :meth:`score_all_moves`) and the board state,</span></div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span><span class="stringliteral">        returns how many moves remain until the game concludes under</span></div>
+<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span><span class="stringliteral">        perfect play.</span></div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span><span class="stringliteral">            score (int): The solver score. Positive means the current player</span></div>
+<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span><span class="stringliteral">                wins; negative means the current player loses; 0 means draw.</span></div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span><span class="stringliteral">            board (Board): The board state for which the score was computed.</span></div>
+<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span><span class="stringliteral">            int: Number of moves remaining until the game ends.</span></div>
+<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span><span class="stringliteral">            A draw uses all remaining moves:</span></div>
+<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span><span class="stringliteral">            from bitbully import BitBully, Board</span></div>
 <div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span><span class="stringliteral">            agent = BitBully(opening_book=None)  # start without book</span></div>
-<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span><span class="stringliteral">            assert agent.is_book_loaded() is False</span></div>
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span><span class="stringliteral">            agent.load_book(which_book)  # load &quot;default&quot; book</span></div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span><span class="stringliteral">            assert agent.is_book_loaded() is True</span></div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span><span class="stringliteral">        Example:</span></div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span><span class="stringliteral">            ```python</span></div>
-<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span><span class="stringliteral">            from bitbully import BitBully</span></div>
-<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span><span class="stringliteral">            from pathlib import Path</span></div>
-<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span><span class="stringliteral">            import bitbully_databases as bbd</span></div>
-<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span><span class="stringliteral">            which_book = BitBully.available_opening_books()[2]  # e.g., &quot;12-ply&quot;</span></div>
-<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span><span class="stringliteral">            db_path = bbd.BitBullyDatabases.get_database_path(which_book)</span></div>
-<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span><span class="stringliteral">            agent = BitBully(opening_book=None)  # start without book</span></div>
-<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span><span class="stringliteral">            assert agent.is_book_loaded() is False</span></div>
-<div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span><span class="stringliteral">            agent.load_book(db_path)</span></div>
-<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span><span class="stringliteral">            assert agent.is_book_loaded() is True</span></div>
-<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span>        self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">_core</a>.resetBook()</div>
-<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span>        <span class="keywordflow">if</span> _is_opening_book_name(book):</div>
-<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>            <span class="keyword">import</span> bitbully_databases <span class="keyword">as</span> bbd</div>
-<div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span> </div>
-<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span>            db_path = bbd.BitBullyDatabases.get_database_path(book)</div>
-<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>            self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a405da3184e1947ee74c62d76dcc6b45b">opening_book_type</a> = book</div>
-<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>        <span class="keywordflow">elif</span> isinstance(book, (os.PathLike, str)):</div>
-<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>            <span class="keywordflow">if</span> isinstance(book, str) <span class="keywordflow">and</span> <span class="keywordflow">not</span> book.strip():</div>
-<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>                <span class="keywordflow">raise</span> ValueError(f<span class="stringliteral">&quot;Invalid book path: {book!r}&quot;</span>)</div>
-<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>            db_path = Path(book)</div>
-<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>            self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a405da3184e1947ee74c62d76dcc6b45b">opening_book_type</a> = <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>            <span class="keywordflow">raise</span> ValueError(f<span class="stringliteral">&quot;Invalid book identifier or path: {book!r}&quot;</span>)</div>
-<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span> </div>
-<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">_core</a>.loadBook(db_path):</div>
-<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>            self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a405da3184e1947ee74c62d76dcc6b45b">opening_book_type</a> = <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>            self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">_core</a>.resetBook()</div>
-<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>            <span class="keywordflow">raise</span> ValueError(f<span class="stringliteral">&quot;Failed to load opening book from path: {db_path}&quot;</span>)</div>
-<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span> </div>
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span><span class="stringliteral">            board = Board()  # empty board, 42 moves left</span></div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span><span class="stringliteral">            assert BitBully.score_to_moves_left(0, board) == 42</span></div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span><span class="stringliteral">            Maximum score means the current player wins on the very next move:</span></div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span><span class="stringliteral">            from bitbully import BitBully, Board</span></div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span><span class="stringliteral">            board = Board()</span></div>
+<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span><span class="stringliteral">            assert BitBully.score_to_moves_left(21, board) == 1</span></div>
+<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span><span class="stringliteral">            Combining with the solver to find how many moves until</span></div>
+<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span><span class="stringliteral">            the game is decided:</span></div>
+<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span><span class="stringliteral">            from bitbully import BitBully, Board</span></div>
+<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span><span class="stringliteral">            agent = BitBully()</span></div>
+<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span><span class="stringliteral">            board = Board()</span></div>
+<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span><span class="stringliteral">            score = agent.mtdf(board)</span></div>
+<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span><span class="stringliteral">            moves_until_end = BitBully.score_to_moves_left(score, board)</span></div>
+<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span><span class="stringliteral">            assert moves_until_end == 41  # yellow barely wins</span></div>
+<div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>        <span class="keywordflow">return</span> int(bitbully_core.BitBullyCore.scoreToMovesLeft(score, board.native))</div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span> </div>
 </div>
-<div class="foldopen" id="foldopen00596" data-start="" data-end="">
-<div class="line"><a id="l00596" name="l00596"></a><span class="lineno"><a class="line" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a426d0dc29875659fb641316420dfa495">  596</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a426d0dc29875659fb641316420dfa495">reset_book</a>(self) -&gt; None:</div>
-<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>        <span class="stringliteral">&quot;&quot;&quot;Unload the currently loaded opening book (if any).</span></div>
+<div class="foldopen" id="foldopen00584" data-start="" data-end="">
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno"><a class="line" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a83419e0054f2ad2c6d83b6edfaa0c7b6">  584</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a83419e0054f2ad2c6d83b6edfaa0c7b6">load_book</a>(self, book: OpeningBookName | os.PathLike[str] | str) -&gt; <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>        <span class="stringliteral">&quot;&quot;&quot;Load an opening book from a file path.</span></div>
+<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span><span class="stringliteral">        This is a thin wrapper around</span></div>
+<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span><span class="stringliteral">        [`bitbully_core.BitBullyCore.loadBook`][src.bitbully.bitbully_core.BitBullyCore.loadBook].</span></div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span><span class="stringliteral">            book (OpeningBookName | os.PathLike[str] | str):</span></div>
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span><span class="stringliteral">                Name/Identifier (see [`available_opening_books`][src.bitbully.solver.BitBully.available_opening_books])</span></div>
+<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span><span class="stringliteral">                or path of the opening book to load.</span></div>
+<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span><span class="stringliteral">        Raises:</span></div>
+<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span><span class="stringliteral">            ValueError:</span></div>
+<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span><span class="stringliteral">                If the book identifier/path is invalid or if loading the book fails.</span></div>
 <div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span><span class="stringliteral">        This resets the engine to *search-only* mode until another</span></div>
-<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span><span class="stringliteral">        opening book is loaded.</span></div>
-<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span><span class="stringliteral">        Example:</span></div>
-<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span><span class="stringliteral">            ```python</span></div>
-<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span><span class="stringliteral">            from bitbully import BitBully</span></div>
+<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span><span class="stringliteral">            from bitbully import BitBully</span></div>
+<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span><span class="stringliteral">            from pathlib import Path</span></div>
+<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span><span class="stringliteral">            which_book = BitBully.available_opening_books()[0]  # e.g., &quot;default&quot;</span></div>
 <div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span><span class="stringliteral">            agent = BitBully()  # per default, the 12-ply-dist book is loaded</span></div>
-<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span><span class="stringliteral">            assert agent.is_book_loaded() is True</span></div>
-<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span><span class="stringliteral">            agent.reset_book()</span></div>
-<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span><span class="stringliteral">            assert agent.is_book_loaded() is False</span></div>
+<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span><span class="stringliteral">            agent = BitBully(opening_book=None)  # start without book</span></div>
+<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span><span class="stringliteral">            assert agent.is_book_loaded() is False</span></div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span><span class="stringliteral">            agent.load_book(which_book)  # load &quot;default&quot; book</span></div>
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span><span class="stringliteral">            assert agent.is_book_loaded() is True</span></div>
 <div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>        self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">_core</a>.resetBook()</div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>        self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a405da3184e1947ee74c62d76dcc6b45b">opening_book_type</a> = <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span> </div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span><span class="stringliteral">            from bitbully import BitBully</span></div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span><span class="stringliteral">            from pathlib import Path</span></div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span><span class="stringliteral">            import bitbully_databases as bbd</span></div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span><span class="stringliteral">            which_book = BitBully.available_opening_books()[2]  # e.g., &quot;12-ply&quot;</span></div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span><span class="stringliteral">            db_path = bbd.BitBullyDatabases.get_database_path(which_book)</span></div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span><span class="stringliteral">            agent = BitBully(opening_book=None)  # start without book</span></div>
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span><span class="stringliteral">            assert agent.is_book_loaded() is False</span></div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span><span class="stringliteral">            agent.load_book(db_path)</span></div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span><span class="stringliteral">            assert agent.is_book_loaded() is True</span></div>
+<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>        self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">_core</a>.resetBook()</div>
+<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>        <span class="keywordflow">if</span> _is_opening_book_name(book):</div>
+<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>            <span class="keyword">import</span> bitbully_databases <span class="keyword">as</span> bbd</div>
+<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span> </div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>            db_path = bbd.BitBullyDatabases.get_database_path(book)</div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>            self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a405da3184e1947ee74c62d76dcc6b45b">opening_book_type</a> = book</div>
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>        <span class="keywordflow">elif</span> isinstance(book, (os.PathLike, str)):</div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>            <span class="keywordflow">if</span> isinstance(book, str) <span class="keywordflow">and</span> <span class="keywordflow">not</span> book.strip():</div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>                <span class="keywordflow">raise</span> ValueError(f<span class="stringliteral">&quot;Invalid book path: {book!r}&quot;</span>)</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>            db_path = Path(book)</div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>            self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a405da3184e1947ee74c62d76dcc6b45b">opening_book_type</a> = <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>            <span class="keywordflow">raise</span> ValueError(f<span class="stringliteral">&quot;Invalid book identifier or path: {book!r}&quot;</span>)</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span> </div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">_core</a>.loadBook(db_path):</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>            self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a405da3184e1947ee74c62d76dcc6b45b">opening_book_type</a> = <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>            self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">_core</a>.resetBook()</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>            <span class="keywordflow">raise</span> ValueError(f<span class="stringliteral">&quot;Failed to load opening book from path: {db_path}&quot;</span>)</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span> </div>
 </div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>    <span class="preprocessor">@classmethod</span></div>
-<div class="foldopen" id="foldopen00616" data-start="" data-end="">
-<div class="line"><a id="l00616" name="l00616"></a><span class="lineno"><a class="line" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ae2e3f241a045aa7ead284c101845b032">  616</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ae2e3f241a045aa7ead284c101845b032">available_opening_books</a>(cls) -&gt; tuple[OpeningBookName, ...]:</div>
-<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>        <span class="stringliteral">&quot;&quot;&quot;Return the available opening book identifiers.</span></div>
-<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span><span class="stringliteral">            tuple[OpeningBookName, ...]:</span></div>
-<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span><span class="stringliteral">                All supported opening book names, including ``&quot;default&quot;``.</span></div>
-<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span><span class="stringliteral">        Example:</span></div>
-<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span><span class="stringliteral">            ```python</span></div>
-<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span><span class="stringliteral">            from bitbully import BitBully</span></div>
-<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span><span class="stringliteral">            books = BitBully.available_opening_books()</span></div>
-<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span><span class="stringliteral">            print(books)  # (&#39;default&#39;, &#39;8-ply&#39;, &#39;12-ply&#39;, &#39;12-ply-dist&#39;)</span></div>
-<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span><span class="stringliteral">            ```</span></div>
-<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>        <span class="keywordflow">return</span> get_args(OpeningBookName)</div>
+<div class="foldopen" id="foldopen00646" data-start="" data-end="">
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno"><a class="line" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a426d0dc29875659fb641316420dfa495">  646</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a426d0dc29875659fb641316420dfa495">reset_book</a>(self) -&gt; None:</div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>        <span class="stringliteral">&quot;&quot;&quot;Unload the currently loaded opening book (if any).</span></div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span><span class="stringliteral">        This resets the engine to *search-only* mode until another</span></div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span><span class="stringliteral">        opening book is loaded.</span></div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span><span class="stringliteral">            from bitbully import BitBully</span></div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span><span class="stringliteral">            agent = BitBully()  # per default, the 12-ply-dist book is loaded</span></div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span><span class="stringliteral">            assert agent.is_book_loaded() is True</span></div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span><span class="stringliteral">            agent.reset_book()</span></div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span><span class="stringliteral">            assert agent.is_book_loaded() is False</span></div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>        self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">_core</a>.resetBook()</div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>        self.<a class="code hl_variable" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a405da3184e1947ee74c62d76dcc6b45b">opening_book_type</a> = <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span> </div>
+</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>    <span class="preprocessor">@classmethod</span></div>
+<div class="foldopen" id="foldopen00666" data-start="" data-end="">
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno"><a class="line" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ae2e3f241a045aa7ead284c101845b032">  666</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ae2e3f241a045aa7ead284c101845b032">available_opening_books</a>(cls) -&gt; tuple[OpeningBookName, ...]:</div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>        <span class="stringliteral">&quot;&quot;&quot;Return the available opening book identifiers.</span></div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span><span class="stringliteral">            tuple[OpeningBookName, ...]:</span></div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span><span class="stringliteral">                All supported opening book names, including ``&quot;default&quot;``.</span></div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span><span class="stringliteral">        Example:</span></div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span><span class="stringliteral">            ```python</span></div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span><span class="stringliteral">            from bitbully import BitBully</span></div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span><span class="stringliteral">            books = BitBully.available_opening_books()</span></div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span><span class="stringliteral">            print(books)  # (&#39;default&#39;, &#39;8-ply&#39;, &#39;12-ply&#39;, &#39;12-ply-dist&#39;)</span></div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>        <span class="keywordflow">return</span> get_args(OpeningBookName)</div>
 </div>
 </div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html">bitbully.solver.BitBully</a></div><div class="ttdef"><b>Definition</b> <a href="#l00042">solver.py:42</a></div></div>
@@ -776,20 +828,21 @@ $(function(){initNavTree('da/de7/solver_8py_source.html','../../',''); });
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a16fa4e7115b69a1e72c75d744f4cf5fe"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a16fa4e7115b69a1e72c75d744f4cf5fe">bitbully.solver.BitBully.negamax</a></div><div class="ttdeci">int negamax(self, Board board, int alpha=-1000, int beta=1000, int depth=0, *, int|None max_depth=None)</div><div class="ttdef"><b>Definition</b> <a href="#l00415">solver.py:417</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a1bba87f872323b9ebf53476f68ff9f50"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a1bba87f872323b9ebf53476f68ff9f50">bitbully.solver.BitBully.is_book_loaded</a></div><div class="ttdeci">bool is_book_loaded(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00144">solver.py:144</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a1d919b28f85e90eb2095ff68cefc75e9"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a1d919b28f85e90eb2095ff68cefc75e9">bitbully.solver.BitBully.max_depth</a></div><div class="ttdeci">max_depth</div><div class="ttdef"><b>Definition</b> <a href="#l00129">solver.py:129</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a1f8d0858dba82ddc4dd8bdb14ab21337"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a1f8d0858dba82ddc4dd8bdb14ab21337">bitbully.solver.BitBully.score_to_moves_left</a></div><div class="ttdeci">int score_to_moves_left(int score, Board board)</div><div class="ttdef"><b>Definition</b> <a href="#l00535">solver.py:535</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a276f2725c8705ffc0cd513d03ac6a5e1"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a276f2725c8705ffc0cd513d03ac6a5e1">bitbully.solver.BitBully.null_window</a></div><div class="ttdeci">int null_window(self, Board board, *, int|None max_depth=None)</div><div class="ttdef"><b>Definition</b> <a href="#l00463">solver.py:463</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a305167d3cf31042a3a4597bb4d676148"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a305167d3cf31042a3a4597bb4d676148">bitbully.solver.BitBully._core</a></div><div class="ttdeci">_core</div><div class="ttdef"><b>Definition</b> <a href="#l00132">solver.py:132</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a399ebaed18fac71d0addb830275915a7"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a399ebaed18fac71d0addb830275915a7">bitbully.solver.BitBully.best_move</a></div><div class="ttdeci">int best_move(self, Board board, *, TieBreakStrategy|None tie_break=None, random.Random|None rng=None, int|None max_depth=None)</div><div class="ttdef"><b>Definition</b> <a href="#l00297">solver.py:304</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a405da3184e1947ee74c62d76dcc6b45b"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a405da3184e1947ee74c62d76dcc6b45b">bitbully.solver.BitBully.opening_book_type</a></div><div class="ttdeci">OpeningBookName|None opening_book_type</div><div class="ttdef"><b>Definition</b> <a href="#l00126">solver.py:126</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a426d0dc29875659fb641316420dfa495"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a426d0dc29875659fb641316420dfa495">bitbully.solver.BitBully.reset_book</a></div><div class="ttdeci">None reset_book(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00596">solver.py:596</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a426d0dc29875659fb641316420dfa495"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a426d0dc29875659fb641316420dfa495">bitbully.solver.BitBully.reset_book</a></div><div class="ttdeci">None reset_book(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00646">solver.py:646</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a4df1552079a461af7381b52674232ce0"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a4df1552079a461af7381b52674232ce0">bitbully.solver.BitBully.reset_transposition_table</a></div><div class="ttdeci">None reset_transposition_table(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00164">solver.py:164</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a5e903e22e59d69e9067fcc6bd781eed5"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a5e903e22e59d69e9067fcc6bd781eed5">bitbully.solver.BitBully.score_all_moves</a></div><div class="ttdeci">dict[int, int] score_all_moves(self, Board board, *, int|None max_depth=None)</div><div class="ttdef"><b>Definition</b> <a href="#l00244">solver.py:244</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a83419e0054f2ad2c6d83b6edfaa0c7b6"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a83419e0054f2ad2c6d83b6edfaa0c7b6">bitbully.solver.BitBully.load_book</a></div><div class="ttdeci">None load_book(self, OpeningBookName|os.PathLike[str]|str book)</div><div class="ttdef"><b>Definition</b> <a href="#l00534">solver.py:534</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a83419e0054f2ad2c6d83b6edfaa0c7b6"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a83419e0054f2ad2c6d83b6edfaa0c7b6">bitbully.solver.BitBully.load_book</a></div><div class="ttdeci">None load_book(self, OpeningBookName|os.PathLike[str]|str book)</div><div class="ttdef"><b>Definition</b> <a href="#l00584">solver.py:584</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a8d480388ce2e289229862cffc07e2499"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a8d480388ce2e289229862cffc07e2499">bitbully.solver.BitBully.get_node_counter</a></div><div class="ttdeci">int get_node_counter(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00168">solver.py:168</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a9c6822bc9d8bfa7c1f3617911ba9b3e5"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a9c6822bc9d8bfa7c1f3617911ba9b3e5">bitbully.solver.BitBully.reset_node_counter</a></div><div class="ttdeci">None reset_node_counter(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00190">solver.py:190</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_a9c95680271124f5bb1e3f3d92413897e"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a9c95680271124f5bb1e3f3d92413897e">bitbully.solver.BitBully.rng</a></div><div class="ttdeci">rng</div><div class="ttdef"><b>Definition</b> <a href="#l00128">solver.py:128</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_ab19dccf0ff53c09689e50e3ac6544c05"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ab19dccf0ff53c09689e50e3ac6544c05">bitbully.solver.BitBully.__init__</a></div><div class="ttdeci">None __init__(self, OpeningBookName|None opening_book=&quot;default&quot;, *, TieBreakStrategy|None tie_break=None, random.Random|None rng=None, int max_depth=-1)</div><div class="ttdef"><b>Definition</b> <a href="#l00094">solver.py:101</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_adab7e8da4f9dcf12f10e2f1a13877d6e"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#adab7e8da4f9dcf12f10e2f1a13877d6e">bitbully.solver.BitBully.__repr__</a></div><div class="ttdeci">str __repr__(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00140">solver.py:140</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_ae2e3f241a045aa7ead284c101845b032"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ae2e3f241a045aa7ead284c101845b032">bitbully.solver.BitBully.available_opening_books</a></div><div class="ttdeci">tuple[OpeningBookName,...] available_opening_books(cls)</div><div class="ttdef"><b>Definition</b> <a href="#l00616">solver.py:616</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_ae2e3f241a045aa7ead284c101845b032"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ae2e3f241a045aa7ead284c101845b032">bitbully.solver.BitBully.available_opening_books</a></div><div class="ttdeci">tuple[OpeningBookName,...] available_opening_books(cls)</div><div class="ttdef"><b>Definition</b> <a href="#l00666">solver.py:666</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_af3c70d5aad94be8f3b4a0750dabaa409"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#af3c70d5aad94be8f3b4a0750dabaa409">bitbully.solver.BitBully.mtdf</a></div><div class="ttdeci">int mtdf(self, Board board, int first_guess=0, *, int|None max_depth=None)</div><div class="ttdef"><b>Definition</b> <a href="#l00498">solver.py:498</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1solver_1_1BitBully_html_af967f4fc83064a6300a276295957aee7"><div class="ttname"><a href="../../dc/d09/classbitbully_1_1solver_1_1BitBully.html#af967f4fc83064a6300a276295957aee7">bitbully.solver.BitBully.tie_break</a></div><div class="ttdeci">str tie_break</div><div class="ttdef"><b>Definition</b> <a href="#l00127">solver.py:127</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
