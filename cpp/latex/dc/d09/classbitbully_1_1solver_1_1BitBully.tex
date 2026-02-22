@@ -3,7 +3,7 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-None \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a3d7732ccc3e2f14c4678ef2a9ee14897}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Opening\+Book\+Name\texorpdfstring{$\vert$}{|}None opening\+\_\+book="{}default"{}, \texorpdfstring{$\ast$}{*}, Tie\+Break\+Strategy\texorpdfstring{$\vert$}{|}None tie\+\_\+break=None, random.\+Random\texorpdfstring{$\vert$}{|}None rng=None)
+None \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ab19dccf0ff53c09689e50e3ac6544c05}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Opening\+Book\+Name\texorpdfstring{$\vert$}{|}None opening\+\_\+book="{}default"{}, \texorpdfstring{$\ast$}{*}, Tie\+Break\+Strategy\texorpdfstring{$\vert$}{|}None tie\+\_\+break=None, random.\+Random\texorpdfstring{$\vert$}{|}None rng=None, int max\+\_\+depth=-\/1)
 \item 
 str \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_adab7e8da4f9dcf12f10e2f1a13877d6e}{\+\_\+\+\_\+repr\+\_\+\+\_\+}} (self)
 \item 
@@ -15,17 +15,17 @@ int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a8d480388ce2e289229862c
 \item 
 None \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a9c6822bc9d8bfa7c1f3617911ba9b3e5}{reset\+\_\+node\+\_\+counter}} (self)
 \item 
-int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_aec733ffd737381bf89b49c88b8e6933a}{score\+\_\+move}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int column, int first\+\_\+guess=0)
+int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a0a7a5b79197e87b2e47054834235cd27}{score\+\_\+move}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int column, int first\+\_\+guess=0, \texorpdfstring{$\ast$}{*}, int\texorpdfstring{$\vert$}{|}None max\+\_\+depth=None)
 \item 
-dict\mbox{[}int, int\mbox{]} \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a4edb66c8feb77079f74bb89664a28248}{score\+\_\+all\+\_\+moves}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+dict\mbox{[}int, int\mbox{]} \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a5e903e22e59d69e9067fcc6bd781eed5}{score\+\_\+all\+\_\+moves}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, \texorpdfstring{$\ast$}{*}, int\texorpdfstring{$\vert$}{|}None max\+\_\+depth=None)
 \item 
-int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a02ae861fc33992b730e289d9e8cacf4e}{best\+\_\+move}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, \texorpdfstring{$\ast$}{*}, Tie\+Break\+Strategy\texorpdfstring{$\vert$}{|}None tie\+\_\+break=None, random.\+Random\texorpdfstring{$\vert$}{|}None rng=None)
+int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a399ebaed18fac71d0addb830275915a7}{best\+\_\+move}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, \texorpdfstring{$\ast$}{*}, Tie\+Break\+Strategy\texorpdfstring{$\vert$}{|}None tie\+\_\+break=None, random.\+Random\texorpdfstring{$\vert$}{|}None rng=None, int\texorpdfstring{$\vert$}{|}None max\+\_\+depth=None)
 \item 
-int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}{negamax}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int alpha=-\/1000, int beta=1000, int depth=0)
+int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a16fa4e7115b69a1e72c75d744f4cf5fe}{negamax}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int alpha=-\/1000, int beta=1000, int depth=0, \texorpdfstring{$\ast$}{*}, int\texorpdfstring{$\vert$}{|}None max\+\_\+depth=None)
 \item 
-int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_af02c83d244d2d01bd881a7613360eebb}{null\+\_\+window}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board)
+int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a276f2725c8705ffc0cd513d03ac6a5e1}{null\+\_\+window}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, \texorpdfstring{$\ast$}{*}, int\texorpdfstring{$\vert$}{|}None max\+\_\+depth=None)
 \item 
-int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45}{mtdf}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int first\+\_\+guess=0)
+int \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_af3c70d5aad94be8f3b4a0750dabaa409}{mtdf}} (self, \mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}} board, int first\+\_\+guess=0, \texorpdfstring{$\ast$}{*}, int\texorpdfstring{$\vert$}{|}None max\+\_\+depth=None)
 \item 
 None \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a83419e0054f2ad2c6d83b6edfaa0c7b6}{load\+\_\+book}} (self, Opening\+Book\+Name\texorpdfstring{$\vert$}{|}os.\+Path\+Like\mbox{[}str\mbox{]}\texorpdfstring{$\vert$}{|}str book)
 \item 
@@ -41,6 +41,8 @@ Opening\+Book\+Name\texorpdfstring{$\vert$}{|}None \mbox{\hyperlink{classbitbull
 str \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_af967f4fc83064a6300a276295957aee7}{tie\+\_\+break}} = tie\+\_\+break if tie\+\_\+break is not None else "{}center"{}
 \item 
 \mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a9c95680271124f5bb1e3f3d92413897e}{rng}} = rng if rng is not None else random.\+Random()
+\item 
+\mbox{\hyperlink{classbitbully_1_1solver_1_1BitBully_a1d919b28f85e90eb2095ff68cefc75e9}{max\+\_\+depth}} = max\+\_\+depth
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -107,11 +109,11 @@ Definition at line \mbox{\hyperlink{solver_8py_source_l00042}{42}} of file \mbox
 \label{doc-constructors}
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classbitbully_1_1solver_1_1BitBully_a3d7732ccc3e2f14c4678ef2a9ee14897}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!\_\_init\_\_@{\_\_init\_\_}}
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_ab19dccf0ff53c09689e50e3ac6544c05}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!\_\_init\_\_@{\_\_init\_\_}}
 \index{\_\_init\_\_@{\_\_init\_\_}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
 \doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a3d7732ccc3e2f14c4678ef2a9ee14897} 
- None bitbully.\+solver.\+Bit\+Bully.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Opening\+Book\+Name \texorpdfstring{$\vert$}{|} None }]{opening\+\_\+book}{ = {\ttfamily "{}default"{}}, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{Tie\+Break\+Strategy \texorpdfstring{$\vert$}{|} None }]{tie\+\_\+break}{ = {\ttfamily None}, }\item[{random.\+Random \texorpdfstring{$\vert$}{|} None }]{rng}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_ab19dccf0ff53c09689e50e3ac6544c05} 
+ None bitbully.\+solver.\+Bit\+Bully.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Opening\+Book\+Name \texorpdfstring{$\vert$}{|} None }]{opening\+\_\+book}{ = {\ttfamily "{}default"{}}, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{Tie\+Break\+Strategy \texorpdfstring{$\vert$}{|} None }]{tie\+\_\+break}{ = {\ttfamily None}, }\item[{random.\+Random \texorpdfstring{$\vert$}{|} None }]{rng}{ = {\ttfamily None}, }\item[{int }]{max\+\_\+depth}{ = {\ttfamily -\/1}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Initialize the BitBully agent.
 
@@ -129,6 +131,10 @@ Args:
         If ``None``, defaults to ``"center"``.
     rng (random.Random | None):
         Optional RNG for reproducible "random" tie-breaking.
+    max_depth (int):
+        Maximum search depth in plies. When reached, a rollout using
+        non-losing moves is performed instead of continuing the search.
+        ``-1`` (default) means unlimited depth (full search).
 
 TODO: Example for initialization with different books.
 \end{DoxyVerb}
@@ -150,7 +156,7 @@ Definition at line \mbox{\hyperlink{solver_8py_source_l00094}{94}} of file \mbox
 \begin{DoxyVerb}Return a concise string representation of the BitBully agent.\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00134}{134}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00140}{140}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_ae2e3f241a045aa7ead284c101845b032}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!available\_opening\_books@{available\_opening\_books}}
 \index{available\_opening\_books@{available\_opening\_books}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -174,13 +180,13 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00523}{523}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00616}{616}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
-\Hypertarget{classbitbully_1_1solver_1_1BitBully_a02ae861fc33992b730e289d9e8cacf4e}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!best\_move@{best\_move}}
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a399ebaed18fac71d0addb830275915a7}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!best\_move@{best\_move}}
 \index{best\_move@{best\_move}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
 \doxysubsubsection{\texorpdfstring{best\_move()}{best\_move()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a02ae861fc33992b730e289d9e8cacf4e} 
- int bitbully.\+solver.\+Bit\+Bully.\+best\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{Tie\+Break\+Strategy \texorpdfstring{$\vert$}{|} None }]{tie\+\_\+break}{ = {\ttfamily None}, }\item[{random.\+Random \texorpdfstring{$\vert$}{|} None }]{rng}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a399ebaed18fac71d0addb830275915a7} 
+ int bitbully.\+solver.\+Bit\+Bully.\+best\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{Tie\+Break\+Strategy \texorpdfstring{$\vert$}{|} None }]{tie\+\_\+break}{ = {\ttfamily None}, }\item[{random.\+Random \texorpdfstring{$\vert$}{|} None }]{rng}{ = {\ttfamily None}, }\item[{int \texorpdfstring{$\vert$}{|} None }]{max\+\_\+depth}{ = {\ttfamily None}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Return the best legal move (column index) for the current player.
 
@@ -206,6 +212,8 @@ Args:
     rng (random.Random | None):
         Random number generator used when ``tie_break="random"``.
         If ``None``, the agent's (`self.rng`) RNG is used.
+    max_depth (int | None): Maximum search depth override.
+        ``None`` uses the instance default (``self.max_depth``).
 
 Returns:
     int: The selected column index (0-6).
@@ -249,10 +257,21 @@ Example:
     _  _  _  _  _  _  _
     _  X  _  X  O  _  _
     ```
+
+Example:
+    Use depth-limited search for a fast (approximate) best move:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    col = agent.best_move(board, max_depth=12)
+    assert 0 <= col <= 6
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00263}{263}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00297}{297}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a8d480388ce2e289229862cffc07e2499}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!get\_node\_counter@{get\_node\_counter}}
 \index{get\_node\_counter@{get\_node\_counter}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -281,7 +300,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00162}{162}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00168}{168}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a1bba87f872323b9ebf53476f68ff9f50}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!is\_book\_loaded@{is\_book\_loaded}}
 \index{is\_book\_loaded@{is\_book\_loaded}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -308,7 +327,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00138}{138}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00144}{144}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a83419e0054f2ad2c6d83b6edfaa0c7b6}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!load\_book@{load\_book}}
 \index{load\_book@{load\_book}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -360,19 +379,21 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00441}{441}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00534}{534}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
-\Hypertarget{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!mtdf@{mtdf}}
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_af3c70d5aad94be8f3b4a0750dabaa409}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!mtdf@{mtdf}}
 \index{mtdf@{mtdf}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
 \doxysubsubsection{\texorpdfstring{mtdf()}{mtdf()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_ac2f21a6fb7d7197bd156c86d30c84d45} 
- int bitbully.\+solver.\+Bit\+Bully.\+mtdf (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int }]{first\+\_\+guess}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_af3c70d5aad94be8f3b4a0750dabaa409} 
+ int bitbully.\+solver.\+Bit\+Bully.\+mtdf (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int }]{first\+\_\+guess}{ = {\ttfamily 0}, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{int \texorpdfstring{$\vert$}{|} None }]{max\+\_\+depth}{ = {\ttfamily None}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Evaluate a position using the MTD(f) algorithm.
 
 Args:
     board (Board): The board position to evaluate.
     first_guess (int): Initial guess for the score (often 0).
+    max_depth (int | None): Maximum search depth override.
+        ``None`` uses the instance default (``self.max_depth``).
 
 Returns:
     int: The evaluation score.
@@ -386,16 +407,27 @@ Example:
     score = agent.mtdf(board)
     assert score == 1  # Expected score for an empty board
     ```
+
+Example:
+    Depth-limited MTD(f) (rollout at depth 12):
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board("334411")
+    score = agent.mtdf(board, max_depth=12)
+    assert isinstance(score, int)
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00419}{419}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00498}{498}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
-\Hypertarget{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!negamax@{negamax}}
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a16fa4e7115b69a1e72c75d744f4cf5fe}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!negamax@{negamax}}
 \index{negamax@{negamax}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
 \doxysubsubsection{\texorpdfstring{negamax()}{negamax()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_ad10c2d025b83052b206433cb9960e1c0} 
- int bitbully.\+solver.\+Bit\+Bully.\+negamax (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int }]{alpha}{ = {\ttfamily -\/1000}, }\item[{int }]{beta}{ = {\ttfamily 1000}, }\item[{int }]{depth}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a16fa4e7115b69a1e72c75d744f4cf5fe} 
+ int bitbully.\+solver.\+Bit\+Bully.\+negamax (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int }]{alpha}{ = {\ttfamily -\/1000}, }\item[{int }]{beta}{ = {\ttfamily 1000}, }\item[{int }]{depth}{ = {\ttfamily 0}, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{int \texorpdfstring{$\vert$}{|} None }]{max\+\_\+depth}{ = {\ttfamily None}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Evaluate a position using negamax search.
 
@@ -404,6 +436,8 @@ Args:
     alpha (int): Alpha bound.
     beta (int): Beta bound.
     depth (int): Search depth in plies.
+    max_depth (int | None): Maximum search depth override.
+        ``None`` uses the instance default (``self.max_depth``).
 
 Returns:
     int: The evaluation score returned by the engine.
@@ -417,21 +451,34 @@ Example:
     score = agent.negamax(board)
     assert score == 1  # Expected score for an empty board
     ```
+
+Example:
+    Depth-limited negamax (rollout at depth 12):
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board("334411")
+    score = agent.negamax(board, max_depth=12)
+    assert isinstance(score, int)
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00367}{367}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00415}{415}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
-\Hypertarget{classbitbully_1_1solver_1_1BitBully_af02c83d244d2d01bd881a7613360eebb}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!null\_window@{null\_window}}
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a276f2725c8705ffc0cd513d03ac6a5e1}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!null\_window@{null\_window}}
 \index{null\_window@{null\_window}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
 \doxysubsubsection{\texorpdfstring{null\_window()}{null\_window()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_af02c83d244d2d01bd881a7613360eebb} 
- int bitbully.\+solver.\+Bit\+Bully.\+null\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a276f2725c8705ffc0cd513d03ac6a5e1} 
+ int bitbully.\+solver.\+Bit\+Bully.\+null\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{int \texorpdfstring{$\vert$}{|} None }]{max\+\_\+depth}{ = {\ttfamily None}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Evaluate a position using a null-window search.
 
 Args:
     board (Board): The board position to evaluate.
+    max_depth (int | None): Maximum search depth override.
+        ``None`` uses the instance default (``self.max_depth``).
 
 Returns:
     int: The evaluation score.
@@ -445,10 +492,21 @@ Example:
     score = agent.null_window(board)
     assert score == 1  # Expected score for an empty board
     ```
+
+Example:
+    Depth-limited null-window search:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board("334411")
+    score = agent.null_window(board, max_depth=12)
+    assert isinstance(score, int)
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00398}{398}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00463}{463}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a426d0dc29875659fb641316420dfa495}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!reset\_book@{reset\_book}}
 \index{reset\_book@{reset\_book}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -473,7 +531,7 @@ Example:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00503}{503}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00596}{596}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a9c6822bc9d8bfa7c1f3617911ba9b3e5}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!reset\_node\_counter@{reset\_node\_counter}}
 \index{reset\_node\_counter@{reset\_node\_counter}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -487,7 +545,7 @@ See Also: [`get_node_counter`][src.bitbully.solver.BitBully.get_node_counter] fo
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00184}{184}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00190}{190}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a4df1552079a461af7381b52674232ce0}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!reset\_transposition\_table@{reset\_transposition\_table}}
 \index{reset\_transposition\_table@{reset\_transposition\_table}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -498,18 +556,20 @@ Definition at line \mbox{\hyperlink{solver_8py_source_l00184}{184}} of file \mbo
 \begin{DoxyVerb}Clear the internal transposition table.\end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00158}{158}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00164}{164}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
-\Hypertarget{classbitbully_1_1solver_1_1BitBully_a4edb66c8feb77079f74bb89664a28248}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!score\_all\_moves@{score\_all\_moves}}
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a5e903e22e59d69e9067fcc6bd781eed5}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!score\_all\_moves@{score\_all\_moves}}
 \index{score\_all\_moves@{score\_all\_moves}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
 \doxysubsubsection{\texorpdfstring{score\_all\_moves()}{score\_all\_moves()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a4edb66c8feb77079f74bb89664a28248} 
- dict\mbox{[}int, int\mbox{]} bitbully.\+solver.\+Bit\+Bully.\+score\+\_\+all\+\_\+moves (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a5e903e22e59d69e9067fcc6bd781eed5} 
+ dict\mbox{[}int, int\mbox{]} bitbully.\+solver.\+Bit\+Bully.\+score\+\_\+all\+\_\+moves (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{int \texorpdfstring{$\vert$}{|} None }]{max\+\_\+depth}{ = {\ttfamily None}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Score all legal moves for the given board state.
 
 Args:
     board (Board): The current board state.
+    max_depth (int | None): Maximum search depth override.
+        ``None`` uses the instance default (``self.max_depth``).
 
 Returns:
     dict[int, int]:
@@ -537,16 +597,27 @@ Example:
     scores = agent.score_all_moves(board)
     assert scores == {2: 1, 4: 1, 1: 0, 5: 0, 0: -1, 6: -1}  # Column 3 is full and thus omitted
     ```
+
+Example:
+    Use depth-limited search for faster (approximate) scoring:
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    scores = agent.score_all_moves(board, max_depth=12)
+    assert len(scores) == 7  # all columns playable on an empty board
+    ```
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00224}{224}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00244}{244}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
-\Hypertarget{classbitbully_1_1solver_1_1BitBully_aec733ffd737381bf89b49c88b8e6933a}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!score\_move@{score\_move}}
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a0a7a5b79197e87b2e47054834235cd27}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!score\_move@{score\_move}}
 \index{score\_move@{score\_move}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
 \doxysubsubsection{\texorpdfstring{score\_move()}{score\_move()}}
-{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_aec733ffd737381bf89b49c88b8e6933a} 
- int bitbully.\+solver.\+Bit\+Bully.\+score\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int}]{column}{, }\item[{int }]{first\+\_\+guess}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a0a7a5b79197e87b2e47054834235cd27} 
+ int bitbully.\+solver.\+Bit\+Bully.\+score\+\_\+move (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{\mbox{\hyperlink{classbitbully_1_1board_1_1Board}{Board}}}]{board}{, }\item[{int}]{column}{, }\item[{int }]{first\+\_\+guess}{ = {\ttfamily 0}, }\item[{\texorpdfstring{$\ast$}{*}}]{}{, }\item[{int \texorpdfstring{$\vert$}{|} None }]{max\+\_\+depth}{ = {\ttfamily None}}\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Evaluate a single move for the given board state.
 
@@ -554,6 +625,8 @@ Args:
     board (Board): The current board state.
     column (int): Column index (0-6) of the move to evaluate.
     first_guess (int): Initial guess for the score (often 0).
+    max_depth (int | None): Maximum search depth override.
+        ``None`` uses the instance default (``self.max_depth``).
 
 Returns:
     int: The evaluation score of the move.
@@ -568,6 +641,17 @@ Example:
     assert score == 1  # Score for the center column on an empty board
     ```
 
+Example:
+    Score a move using depth-limited search (faster, approximate):
+    ```python
+    from bitbully import BitBully, Board
+
+    agent = BitBully()
+    board = Board()
+    score = agent.score_move(board, column=3, max_depth=12)
+    assert isinstance(score, int)
+    ```
+
 Raises:
     ValueError: If the column is outside the valid range or if the column is full.
 
@@ -577,7 +661,7 @@ Notes:
 \end{DoxyVerb}
  
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00191}{191}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00197}{197}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 
 
@@ -592,7 +676,17 @@ bitbully.\+solver.\+Bit\+Bully.\+\_\+core = bitbully\+\_\+core.\+Bit\+Bully\+Cor
 
 
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00126}{126}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00132}{132}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+
+\Hypertarget{classbitbully_1_1solver_1_1BitBully_a1d919b28f85e90eb2095ff68cefc75e9}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!max\_depth@{max\_depth}}
+\index{max\_depth@{max\_depth}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
+\doxysubsubsection{\texorpdfstring{max\_depth}{max\_depth}}
+{\footnotesize\ttfamily \label{classbitbully_1_1solver_1_1BitBully_a1d919b28f85e90eb2095ff68cefc75e9} 
+bitbully.\+solver.\+Bit\+Bully.\+max\+\_\+depth = max\+\_\+depth}
+
+
+
+Definition at line \mbox{\hyperlink{solver_8py_source_l00129}{129}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a405da3184e1947ee74c62d76dcc6b45b}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!opening\_book\_type@{opening\_book\_type}}
 \index{opening\_book\_type@{opening\_book\_type}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -602,7 +696,7 @@ Opening\+Book\+Name \texorpdfstring{$\vert$}{|} None bitbully.\+solver.\+Bit\+Bu
 
 
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00121}{121}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00126}{126}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_a9c95680271124f5bb1e3f3d92413897e}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!rng@{rng}}
 \index{rng@{rng}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -612,7 +706,7 @@ bitbully.\+solver.\+Bit\+Bully.\+rng = rng if rng is not None else random.\+Rand
 
 
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00123}{123}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00128}{128}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 \Hypertarget{classbitbully_1_1solver_1_1BitBully_af967f4fc83064a6300a276295957aee7}\index{bitbully.solver.BitBully@{bitbully.solver.BitBully}!tie\_break@{tie\_break}}
 \index{tie\_break@{tie\_break}!bitbully.solver.BitBully@{bitbully.solver.BitBully}}
@@ -622,7 +716,7 @@ str bitbully.\+solver.\+Bit\+Bully.\+tie\+\_\+break = tie\+\_\+break if tie\+\_\
 
 
 
-Definition at line \mbox{\hyperlink{solver_8py_source_l00122}{122}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
+Definition at line \mbox{\hyperlink{solver_8py_source_l00127}{127}} of file \mbox{\hyperlink{solver_8py_source}{solver.\+py}}.
 
 
 

@@ -24,29 +24,31 @@
 \DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00020}00020\ \ \ \ \ uint64\_t\ b;\ \ \textcolor{comment}{//\ TODO:\ There\ should\ be\ a\ global\ type\ TBitboard}}
 \DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00021}00021\ \ \ \ \ NodeType\ flag\{NONE\};}
 \DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{int}\ value;}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00023}00023\ \ \ \};}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00024}00024\ }
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00025}00025\ \ \ TranspositionTable(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ log\_2\_size\ =\ LOG\_2\_SIZE)\ \{}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00026}00026\ \ \ \ \ tableSize\ =\ UINT64\_C(1)\ <<\ log\_2\_size;}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00027}00027\ \ \ \ \ table\ =\ std::make\_unique<Entry[]>(tableSize);}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00028}00028\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00030}00030\ \ \ \textcolor{keyword}{inline}\ Entry*\ get(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b)\ \{}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Prefetching?:}}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ size\_t\ index\ =\ b.hash()\ \&\ (tableSize\ -\/\ 1);}}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ \_\_builtin\_prefetch(\&table[index]);\ \ //\ GCC/Clang\ prefetching}}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ return\ \&table[index];}}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00035}00035\ }
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \&table[b.hash()\ \&\ (tableSize\ -\/\ 1)];}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00037}00037\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00039}00039\ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00040}00040\ \ \ std::unique\_ptr<Entry[]>\ table;}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00041}00041\ \ \ \textcolor{keywordtype}{size\_t}\ tableSize;}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00042}00042\ \};}
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00043}00043\ }
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00044}00044\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00023}00023\ \ \ \ \ int8\_t\ searchDepth\{0\};\ \ \textcolor{comment}{//\ remaining\ search\ budget\ when\ entry\ was\ stored}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ INT8\_MAX\ =\ unlimited\ (full)\ search}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00025}00025\ \ \ \};}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00027}00027\ \ \ TranspositionTable(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ log\_2\_size\ =\ LOG\_2\_SIZE)\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00028}00028\ \ \ \ \ tableSize\ =\ UINT64\_C(1)\ <<\ log\_2\_size;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00029}00029\ \ \ \ \ table\ =\ std::make\_unique<Entry[]>(tableSize);}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00030}00030\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00032}00032\ \ \ \textcolor{keyword}{inline}\ Entry*\ get(\textcolor{keyword}{const}\ \mbox{\hyperlink{classBitBully_1_1Board}{Board}}\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Prefetching?:}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ size\_t\ index\ =\ b.hash()\ \&\ (tableSize\ -\/\ 1);}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ \_\_builtin\_prefetch(\&table[index]);\ \ //\ GCC/Clang\ prefetching}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ return\ \&table[index];}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \&table[b.hash()\ \&\ (tableSize\ -\/\ 1)];}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00039}00039\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00041}00041\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00042}00042\ \ \ std::unique\_ptr<Entry[]>\ table;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00043}00043\ \ \ \textcolor{keywordtype}{size\_t}\ tableSize;}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00044}00044\ \};}
 \DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00045}00045\ }
-\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00046}00046\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ BITBULLY\_\_TRANSPOSITIONTABLE\_H\_}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00046}00046\ \}\ \ \textcolor{comment}{//\ namespace\ BitBully}}
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{TranspositionTable_8h_source_l00048}00048\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ BITBULLY\_\_TRANSPOSITIONTABLE\_H\_}}
 
 \end{DoxyCode}

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['best_5fmove_0',['best_move',['../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#afa4f39dea58c4f354bf7a2f2785e3fc3',1,'bitbully.agent_interface.Connect4Agent.best_move()'],['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a02ae861fc33992b730e289d9e8cacf4e',1,'bitbully.solver.BitBully.best_move()']]],
+  ['best_5fmove_0',['best_move',['../d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#afa4f39dea58c4f354bf7a2f2785e3fc3',1,'bitbully.agent_interface.Connect4Agent.best_move()'],['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a399ebaed18fac71d0addb830275915a7',1,'bitbully.solver.BitBully.best_move()']]],
   ['bitbully_1',['BitBully',['../d9/d00/classBitBully_1_1BitBully.html',1,'BitBully::BitBully'],['../dc/d09/classbitbully_1_1solver_1_1BitBully.html',1,'bitbully.solver.BitBully']]],
   ['bitbully_2',['bitbully',['../d4/dde/namespacebitbully.html',1,'']]],
   ['bitbully_3a_3aagent_5finterface_3',['agent_interface',['../d2/d0a/namespacebitbully_1_1agent__interface.html',1,'bitbully']]],

@@ -114,14 +114,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e12396b723b223a7c473baed2bd4954" id="r_a1e12396b723b223a7c473baed2bd4954"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e12396b723b223a7c473baed2bd4954">isBookLoaded</a> () const</td></tr>
 <tr class="memitem:afdc857dc3db5da0cb81e4b3b9eae4543" id="r_afdc857dc3db5da0cb81e4b3b9eae4543"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdc857dc3db5da0cb81e4b3b9eae4543">resetBook</a> ()</td></tr>
 <tr class="memitem:a0c19bf3d591e248963b8bfc8fceaa6c8" id="r_a0c19bf3d591e248963b8bfc8fceaa6c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c19bf3d591e248963b8bfc8fceaa6c8">loadBook</a> (const std::filesystem::path &amp;bookPath=&quot;&quot;)</td></tr>
-<tr class="memitem:ae69036fc20f4638aa0c48a2cef76cf40" id="r_ae69036fc20f4638aa0c48a2cef76cf40"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae69036fc20f4638aa0c48a2cef76cf40">mtdf</a> (const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;b, const int firstGuess) noexcept</td></tr>
-<tr class="memitem:ae3e9358bc9a00afb337ae81a4d675b74" id="r_ae3e9358bc9a00afb337ae81a4d675b74"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3e9358bc9a00afb337ae81a4d675b74">nullWindow</a> (const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;b) noexcept</td></tr>
+<tr class="memitem:a76cec6e90a0420017774f74dd489d251" id="r_a76cec6e90a0420017774f74dd489d251"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76cec6e90a0420017774f74dd489d251">mtdf</a> (const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;b, const int firstGuess, const int maxDepth=-1) noexcept</td></tr>
+<tr class="memitem:a9c73ca66a2a7660b5125cd3c36535002" id="r_a9c73ca66a2a7660b5125cd3c36535002"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c73ca66a2a7660b5125cd3c36535002">nullWindow</a> (const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;b, const int maxDepth=-1) noexcept</td></tr>
 <tr class="memitem:a87c2b73dedea279fdae57f4a012381d7" id="r_a87c2b73dedea279fdae57f4a012381d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87c2b73dedea279fdae57f4a012381d7">resetTranspositionTable</a> ()</td></tr>
 <tr class="memitem:a9a87ef9afe101ddda6b3bb74764b3e02" id="r_a9a87ef9afe101ddda6b3bb74764b3e02"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a87ef9afe101ddda6b3bb74764b3e02">getNodeCounter</a> () const</td></tr>
 <tr class="memitem:a4d03943682b98ae771ce1b79fc8da935" id="r_a4d03943682b98ae771ce1b79fc8da935"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d03943682b98ae771ce1b79fc8da935">resetNodeCounter</a> ()</td></tr>
-<tr class="memitem:a4738fdab31621675ad328f6b4a0eafed" id="r_a4738fdab31621675ad328f6b4a0eafed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4738fdab31621675ad328f6b4a0eafed">negamax</a> (<a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> b, int alpha, int beta, const int depth) noexcept</td></tr>
-<tr class="memitem:a2f488b853b71772483fcabd7cc49226c" id="r_a2f488b853b71772483fcabd7cc49226c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f488b853b71772483fcabd7cc49226c">scoreMove</a> (const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;b, const int column, const int firstGuess)</td></tr>
-<tr class="memitem:adcc1afa34c59c7f0998bf5f6679bbc24" id="r_adcc1afa34c59c7f0998bf5f6679bbc24"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcc1afa34c59c7f0998bf5f6679bbc24">scoreMoves</a> (const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;b)</td></tr>
+<tr class="memitem:ab560bedc498b3e70e5eddfef4a32b533" id="r_ab560bedc498b3e70e5eddfef4a32b533"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab560bedc498b3e70e5eddfef4a32b533">negamax</a> (<a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> b, int alpha, int beta, const int depth, const int maxDepth=-1) noexcept</td></tr>
+<tr class="memitem:a8c405dc66e7e933d1a46b43ddd2492a8" id="r_a8c405dc66e7e933d1a46b43ddd2492a8"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c405dc66e7e933d1a46b43ddd2492a8">scoreMove</a> (const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;b, const int column, const int firstGuess, const int maxDepth=-1)</td></tr>
+<tr class="memitem:ab4c3408f62623c65181ff00f1d5d6044" id="r_ab4c3408f62623c65181ff00f1d5d6044"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4c3408f62623c65181ff00f1d5d6044">scoreMoves</a> (const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;b, const int maxDepth=-1)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aeeb900218ac6cd155adc27ff4283c904" id="r_aeeb900218ac6cd155adc27ff4283c904"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeeb900218ac6cd155adc27ff4283c904">rollout</a> (<a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> b) noexcept</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -178,7 +182,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00096">96</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00132">132</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
 
 </div>
 </div>
@@ -236,8 +240,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae69036fc20f4638aa0c48a2cef76cf40" name="ae69036fc20f4638aa0c48a2cef76cf40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae69036fc20f4638aa0c48a2cef76cf40">&#9670;&#160;</a></span>mtdf()</h2>
+<a id="a76cec6e90a0420017774f74dd489d251" name="a76cec6e90a0420017774f74dd489d251"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76cec6e90a0420017774f74dd489d251">&#9670;&#160;</a></span>mtdf()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,7 +257,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>firstGuess</em></span>&#160;)</td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>firstGuess</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>maxDepth</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -263,12 +272,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00049">49</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00084">84</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
 
 </div>
 </div>
-<a id="a4738fdab31621675ad328f6b4a0eafed" name="a4738fdab31621675ad328f6b4a0eafed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4738fdab31621675ad328f6b4a0eafed">&#9670;&#160;</a></span>negamax()</h2>
+<a id="ab560bedc498b3e70e5eddfef4a32b533" name="ab560bedc498b3e70e5eddfef4a32b533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab560bedc498b3e70e5eddfef4a32b533">&#9670;&#160;</a></span>negamax()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -294,7 +303,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>depth</em></span>&#160;)</td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>depth</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>maxDepth</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -304,12 +318,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00100">100</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00136">136</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
 
 </div>
 </div>
-<a id="ae3e9358bc9a00afb337ae81a4d675b74" name="ae3e9358bc9a00afb337ae81a4d675b74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3e9358bc9a00afb337ae81a4d675b74">&#9670;&#160;</a></span>nullWindow()</h2>
+<a id="a9c73ca66a2a7660b5125cd3c36535002" name="a9c73ca66a2a7660b5125cd3c36535002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c73ca66a2a7660b5125cd3c36535002">&#9670;&#160;</a></span>nullWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -320,8 +334,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">int BitBully::BitBully::nullWindow </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>b</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>maxDepth</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -331,7 +349,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00071">71</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00107">107</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
 
 </div>
 </div>
@@ -385,7 +403,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00098">98</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00134">134</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
 
 </div>
 </div>
@@ -412,12 +430,39 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00091">91</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00127">127</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
 
 </div>
 </div>
-<a id="a2f488b853b71772483fcabd7cc49226c" name="a2f488b853b71772483fcabd7cc49226c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f488b853b71772483fcabd7cc49226c">&#9670;&#160;</a></span>scoreMove()</h2>
+<a id="aeeb900218ac6cd155adc27ff4283c904" name="aeeb900218ac6cd155adc27ff4283c904"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeb900218ac6cd155adc27ff4283c904">&#9670;&#160;</a></span>rollout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BitBully::BitBully::rollout </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00048">48</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
+
+</div>
+</div>
+<a id="a8c405dc66e7e933d1a46b43ddd2492a8" name="a8c405dc66e7e933d1a46b43ddd2492a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c405dc66e7e933d1a46b43ddd2492a8">&#9670;&#160;</a></span>scoreMove()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -438,7 +483,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>firstGuess</em></span>&#160;)</td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>firstGuess</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>maxDepth</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -448,12 +498,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00276">276</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00324">324</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
 
 </div>
 </div>
-<a id="adcc1afa34c59c7f0998bf5f6679bbc24" name="adcc1afa34c59c7f0998bf5f6679bbc24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcc1afa34c59c7f0998bf5f6679bbc24">&#9670;&#160;</a></span>scoreMoves()</h2>
+<a id="ab4c3408f62623c65181ff00f1d5d6044" name="ab4c3408f62623c65181ff00f1d5d6044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4c3408f62623c65181ff00f1d5d6044">&#9670;&#160;</a></span>scoreMoves()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -464,8 +514,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">auto BitBully::BitBully::scoreMoves </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>b</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d9d/classBitBully_1_1Board.html">Board</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>maxDepth</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -475,7 +529,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00288">288</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d5c/BitBully_8h_source.html#l00337">337</a> of file <a class="el" href="../../d3/d5c/BitBully_8h_source.html">BitBully.h</a>.</p>
 
 </div>
 </div>
