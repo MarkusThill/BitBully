@@ -288,7 +288,7 @@ class BitBullyCore:
             import bitbully.bitbully_core as bbc
 
             board = bbc.BoardCore()
-            assert board.play("334411")
+            assert board.play("3333311115555")
 
             solver = bbc.BitBullyCore()
             score = solver.negamax(board, alpha=-1000, beta=1000, depth=0)
@@ -296,7 +296,7 @@ class BitBullyCore:
             ```
             Expected output:
             ```text
-                Negamax score: 18
+                Negamax score: -1
             ```
 
         Example:
@@ -479,6 +479,50 @@ class BitBullyCore:
             # Score is bounded by the number of remaining moves.
             bound = (board.movesLeft() + 1) // 2
             assert -bound <= score <= bound
+            ```
+        """
+
+    @staticmethod
+    def scoreToMovesLeft(score: int, board: "BoardCore") -> int:
+        """Convert a solver score to the number of moves until the game ends.
+
+        Given a score returned by the solver (e.g., from ``mtdf`` or
+        ``scoreMoves``) and the board state, returns how many moves remain
+        until the game concludes under perfect play.
+
+        Args:
+            score (int): The solver score. Positive means the current player
+                wins; negative means the current player loses; 0 means draw.
+            board (BoardCore): The board state for which the score was computed.
+
+        Returns:
+            int: Number of moves remaining until the game ends.
+
+        Example:
+            A draw uses all remaining moves:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            b = bbc.BoardCore()
+            assert bbc.BitBullyCore.scoreToMovesLeft(0, b) == 42
+            ```
+
+        Example:
+            Maximum score means the current player wins on the very next move:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            b = bbc.BoardCore()
+            assert bbc.BitBullyCore.scoreToMovesLeft(21, b) == 1
+            ```
+
+        Example:
+            Barely winning means the game goes almost to the end:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            b = bbc.BoardCore()
+            assert bbc.BitBullyCore.scoreToMovesLeft(1, b) == 41
             ```
         """
 

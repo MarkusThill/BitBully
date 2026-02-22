@@ -45,6 +45,10 @@ PYBIND11_MODULE(bitbully_core, m) {
            py::arg("board"), py::arg("max_depth") = -1)
       .def_static("rollout", &BitBully::BitBully::rollout,
                   "Perform a rollout using non-losing moves", py::arg("board"))
+      .def_static("scoreToMovesLeft", &BitBully::BitBully::scoreToMovesLeft,
+                  "Convert a solver score to the number of moves until the "
+                  "game ends.",
+                  py::arg("score"), py::arg("board"))
       .def("resetTranspositionTable",
            &BitBully::BitBully::resetTranspositionTable,
            "Reset the transposition table")

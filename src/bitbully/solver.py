@@ -531,6 +531,56 @@ class BitBully:
         effective_max_depth = max_depth if max_depth is not None else self.max_depth
         return int(self._core.mtdf(board.native, first_guess=first_guess, max_depth=effective_max_depth))
 
+    @staticmethod
+    def score_to_moves_left(score: int, board: Board) -> int:
+        """Convert a solver score to the number of moves until the game ends.
+
+        Given a score returned by the solver (e.g., from
+        :meth:`mtdf` or :meth:`score_all_moves`) and the board state,
+        returns how many moves remain until the game concludes under
+        perfect play.
+
+        Args:
+            score (int): The solver score. Positive means the current player
+                wins; negative means the current player loses; 0 means draw.
+            board (Board): The board state for which the score was computed.
+
+        Returns:
+            int: Number of moves remaining until the game ends.
+
+        Example:
+            A draw uses all remaining moves:
+            ```python
+            from bitbully import BitBully, Board
+
+            board = Board()  # empty board, 42 moves left
+            assert BitBully.score_to_moves_left(0, board) == 42
+            ```
+
+        Example:
+            Maximum score means the current player wins on the very next move:
+            ```python
+            from bitbully import BitBully, Board
+
+            board = Board()
+            assert BitBully.score_to_moves_left(21, board) == 1
+            ```
+
+        Example:
+            Combining with the solver to find how many moves until
+            the game is decided:
+            ```python
+            from bitbully import BitBully, Board
+
+            agent = BitBully()
+            board = Board()
+            score = agent.mtdf(board)
+            moves_until_end = BitBully.score_to_moves_left(score, board)
+            assert moves_until_end == 41  # yellow barely wins
+            ```
+        """
+        return int(bitbully_core.BitBullyCore.scoreToMovesLeft(score, board.native))
+
     def load_book(self, book: OpeningBookName | os.PathLike[str] | str) -> None:
         """Load an opening book from a file path.
 

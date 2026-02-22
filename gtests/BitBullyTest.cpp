@@ -575,6 +575,136 @@ TEST_F(BitBullyTest, nearWinsDepth8) {
   }
 }
 
+// ============================================================
+// scoreToMovesLeft tests
+// ============================================================
+
+TEST_F(BitBullyTest, scoreToMovesLeftDrawEmptyBoard) {
+  // Score 0 = draw: all 42 moves will be played
+  using B = BitBully::Board;
+  B b;
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(0, b), 42);
+}
+
+TEST_F(BitBullyTest, scoreToMovesLeftDrawAfterMoves) {
+  // Score 0 after some moves: all remaining moves will be played
+  using B = BitBully::Board;
+  B b;
+  ASSERT_TRUE(b.play("334411"));
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(0, b), b.movesLeft());
+}
+
+TEST_F(BitBullyTest, scoreToMovesLeftMaxWinEmptyBoard) {
+  // Maximum score on empty board: (42+1)/2 = 21 -> win in 1 move
+  using B = BitBully::Board;
+  B b;
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(21, b), 1);
+}
+
+TEST_F(BitBullyTest, scoreToMovesLeftMaxLossEmptyBoard) {
+  // Minimum score on empty board: -42/2 = -21 -> lose in 2 moves
+  using B = BitBully::Board;
+  B b;
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(-21, b), 2);
+}
+
+TEST_F(BitBullyTest, scoreToMovesLeftBarelyWinEmptyBoard) {
+  // Score 1 on empty board (yellow to move): yellow barely wins, 41 moves
+  using B = BitBully::Board;
+  B b;
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(1, b), 41);
+}
+
+TEST_F(BitBullyTest, scoreToMovesLeftBarelyLoseEmptyBoard) {
+  // Score -1 on empty board (yellow to move): yellow barely loses, 42 moves
+  using B = BitBully::Board;
+  B b;
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(-1, b), 42);
+}
+
+TEST_F(BitBullyTest, scoreToMovesLeftAfterOneMove) {
+  // After "3": 41 moves left, red to move (p=0)
+  using B = BitBully::Board;
+  B b;
+  ASSERT_TRUE(b.play(3));
+
+  // Red barely wins (score=1): game goes to the end
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(1, b), 41);
+  // Red barely loses (score=-1): 40 moves
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(-1, b), 40);
+  // Max win for red: (41+1)/2 = 21 -> win in 1 move
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(21, b), 1);
+  // Max loss for red: -41/2 = -20 -> lose in 2 moves
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(-20, b), 2);
+}
+
+TEST_F(BitBullyTest, scoreToMovesLeftSolvedEmptyBoard) {
+  // Empty board has score 1 (yellow wins); verify moves left.
+  // Use opening book since <12 tokens.
+  auto bookPath =
+      std::filesystem::path("../gtests/assets/book_12ply_distances.dat");
+  if (!exists(bookPath)) {
+    bookPath = ".." / bookPath;
+  }
+  ASSERT_TRUE(exists(bookPath));
+
+  using B = BitBully::Board;
+  BitBully::BitBully bb(bookPath);
+  ASSERT_TRUE(bb.isBookLoaded());
+
+  B b;
+  int score = bb.mtdf(b, 0);
+  ASSERT_EQ(score, 1);
+  EXPECT_EQ(BitBully::BitBully::scoreToMovesLeft(score, b), 41);
+}
+
+TEST_F(BitBullyTest, scoreToMovesLeftSolvedPositions) {
+  // Verify that scoreToMovesLeft produces valid results on solved positions.
+  // All positions have >12 tokens so no opening book is needed.
+  using B = BitBully::Board;
+  BitBully::BitBully bb;
+
+  struct TestCase {
+    std::string moveSequence;
+    int expectedMovesLeft;
+  };
+
+  // TODO: Fill in expected values for each position.
+  //       Solve with bb.mtdf(b, 0), then compute the expected moves left.
+  std::vector<TestCase> testCases = {
+      {"33224", 2},
+      {"3324556", 3},
+      {"3433033", 29},
+  };
+
+  for (const auto& tc : testCases) {
+    B b;
+    ASSERT_TRUE(b.play(tc.moveSequence));
+    auto score = bb.mtdf(b, 0);
+    auto movesLeft = BitBully::BitBully::scoreToMovesLeft(score, b);
+    EXPECT_EQ(movesLeft, tc.expectedMovesLeft)
+        << "Sequence: " << tc.moveSequence << " Score: " << score;
+  }
+}
+
+TEST_F(BitBullyTest, scoreToMovesLeftAllColumnsScored) {
+  // scoreToMovesLeft on each column's score should be in valid range
+  using B = BitBully::Board;
+  BitBully::BitBully bb;
+
+  B b;
+  ASSERT_TRUE(b.play("3333311115555"));
+  auto scores = bb.scoreMoves(b);
+
+  for (int col = 0; col < B::N_COLUMNS; col++) {
+    if (scores[col] > -100) {  // skip illegal moves
+      int ml = BitBully::BitBully::scoreToMovesLeft(scores[col], b);
+      EXPECT_GT(ml, 0) << "col=" << col << " score=" << scores[col];
+      EXPECT_LE(ml, b.movesLeft()) << "col=" << col;
+    }
+  }
+}
+
 TEST_F(BitBullyTest, nearWinsDepth16) {
   using B = BitBully::Board;
   BitBully::BitBully bb;

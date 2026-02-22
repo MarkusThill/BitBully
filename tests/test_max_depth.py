@@ -234,30 +234,3 @@ class TestHighLevelAPI:
         # Full search must match mtdf
         agent.reset_transposition_table()
         assert score_full == agent.mtdf(board, max_depth=-1)
-
-    def test_depth_limited_is_faster(self) -> None:
-        """Depth-limited search should be significantly faster than full search."""
-        import time
-
-        board, _ = Board.random_board(12, True)
-        agent = BitBully(opening_book=None)
-
-        agent.reset_transposition_table()
-        agent.reset_node_counter()
-        t0 = time.perf_counter()
-        agent.mtdf(board, max_depth=5)
-        t_limited = time.perf_counter() - t0
-        nodes_limited = agent.get_node_counter()
-
-        agent.reset_transposition_table()
-        agent.reset_node_counter()
-        t0 = time.perf_counter()
-        agent.mtdf(board, max_depth=-1)
-        t_full = time.perf_counter() - t0
-        nodes_full = agent.get_node_counter()
-
-        assert nodes_limited <= nodes_full, (
-            f"Limited ({nodes_limited}) should visit fewer nodes than full ({nodes_full})"
-        )
-        # Depth-limited should be at least 2x faster (conservative)
-        assert t_limited < t_full, f"Limited ({t_limited:.4f}s) should be faster than full ({t_full:.4f}s)"

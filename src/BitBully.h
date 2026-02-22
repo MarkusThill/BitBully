@@ -45,6 +45,23 @@ class BitBully {
     return isBookLoaded();
   }
 
+  /// Convert a solver score to the number of moves until the game ends.
+  ///
+  /// @param score The solver score (positive = current player wins,
+  ///              negative = current player loses, 0 = draw).
+  /// @param b     The board state for which the score was computed.
+  /// @return Number of moves until the game concludes under perfect play.
+  static int scoreToMovesLeft(const int score, const Board& b) noexcept {
+    if (score == 0) {
+      return b.movesLeft();
+    }
+    const int p = (b.movesLeft() + 1) % 2;  // 1 -> yellow, 0 -> red
+    const int sgnScore = score < 0 ? 1 : 0;
+    const int absScore = score < 0 ? -score : score;
+    const int mvFinalLeft = 2 * (absScore - 1) + (sgnScore ^ p);
+    return b.movesLeft() - mvFinalLeft;
+  }
+
   static int rollout(Board b) noexcept {
     // Play out the game using non-losing moves until terminal.
     // Both players use generateNonLosingMoves() to avoid immediate losses.
