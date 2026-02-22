@@ -130,8 +130,6 @@ TEST_F(BitBullyTest, comparePonsBitbullyTime) {
   GameSolver::Connect4::Solver solver;
   BitBully::BitBully bb;
 
-  srand(42);
-
   for (auto i = 0; i < 5 * 0.5; i++) {
     B b;
     GameSolver::Connect4::Position P;
@@ -287,15 +285,29 @@ TEST_F(BitBullyTest, rolloutknownSequence) {
   // Build a position where the current player can win immediately
   using B = BitBully::Board;
   B b;
-  // P1: col 3 x3 (vertical), P2: col 2 x2 + col 4
   ASSERT_TRUE(b.play("33333045555312221111505106600444404"));
   int score = BitBully::BitBully::rollout(b);
   EXPECT_EQ(score, -1);
 }
 
+TEST_F(BitBullyTest, rolloutknownSequence2) {
+  using B = BitBully::Board;
+  B b;
+  ASSERT_TRUE(b.play("33333111131555555126644426222260660"));
+  const int score = BitBully::BitBully::rollout(b);
+  EXPECT_EQ(score, -1);
+}
+
+TEST_F(BitBullyTest, rolloutknownSequence3) {
+  using B = BitBully::Board;
+  B b;
+  ASSERT_TRUE(b.play("333331111314445122446640656566500"));
+  const int score = BitBully::BitBully::rollout(b);
+  EXPECT_EQ(score, -1);
+}
+
 TEST_F(BitBullyTest, rolloutScoreInValidRange) {
   using B = BitBully::Board;
-  srand(42);
   for (int trial = 0; trial < 50; trial++) {
     auto [board, moves] = B::randomBoard(10 + trial % 30, true);
     int score = BitBully::BitBully::rollout(board);
@@ -343,7 +355,6 @@ TEST_F(BitBullyTest, maxDepthZeroIsRollout) {
 TEST_F(BitBullyTest, depthLimitedScoreInValidRange) {
   using B = BitBully::Board;
   BitBully::BitBully bb;
-  srand(123);
   for (int trial = 0; trial < 20; trial++) {
     auto [board, moves] = B::randomBoard(10, true);
     for (int maxDepth = 0; maxDepth <= 10; maxDepth += 2) {
@@ -472,7 +483,6 @@ TEST_F(BitBullyTest, ignoreOldTranspositionsForPerfectPlay) {
   using B = BitBully::Board;
   BitBully::BitBully bb;
   BitBully::BitBully bb_reference;
-  srand(42);
   for (int trial = 0; trial < 50; trial++) {
     auto [board, moves] = B::randomBoard(11 + trial % 10, true);
     for (int subTrial = 0; subTrial < 50; subTrial++) {
@@ -491,5 +501,162 @@ TEST_F(BitBullyTest, ignoreOldTranspositionsForPerfectPlay) {
     // from previous searches with smaller maxDepth.
     EXPECT_EQ(bb.scoreMoves(board, -1), bb_reference.scoreMoves(board, -1))
         << "trial=" << trial << " " << board.toString();
+  }
+}
+
+TEST_F(BitBullyTest, nearWinsDepth8) {
+  /**
+  * The positions are generated with:
+  *
+  from bitbully import Board
+  from bitbully import BitBully
+
+  n_tokens = 14
+  win_range = (4, 8)
+  n_positions = 10
+
+  bitbully_agent = BitBully(opening_book="12-ply-dist", tie_break="random")
+
+  def score_to_moves_left(score: int, b: Board) -> int:
+      p = (b.moves_left()+1) % 2 # 1 -> yellow, 0 -> red
+      sgn_score = 1 if score < 0 else 0
+      mv_final_left = 2*(abs(score)-1) +  (sgn_score ^ p) if score != 0 else 0
+      return b.moves_left() - mv_final_left
+
+  collected_positions = []
+  for i in range(n_positions):
+      while True:
+          b, mv_list_b = Board.random_board(n_tokens, forbid_direct_win=True)
+          scores = bitbully_agent.score_all_moves(b)
+          moves_left = [score_to_moves_left(score, b) for score in
+  scores.values()] if all([win_range[0] <= mv <= win_range[1] for mv in
+  moves_left]): break collected_positions.append("".join(str(mv) for mv in
+  mv_list_b)) print("Found:", collected_positions[-1], "with moves left:",
+  moves_left)
+
+  for c in collected_positions:
+      print(f'"{c}", ')
+*/
+  using B = BitBully::Board;
+  BitBully::BitBully bb;
+  BitBully::BitBully bb_reference;
+
+  // All these positions are over in 4-8 moves (perfect play), no matter which
+  // column we play
+  std::vector<std::string> allSequences(
+      {"30244635410",        "11652324303",        "3503416322",
+       "3522214424",         "2360135242",         "6603666364",
+       "1025221611",         "3314540362",         "4363052334",
+       "4421331305",         "6352450315",         "3542140443",
+       "2251043221",         "25300662346",        "14633145362",
+       "12264521531",        "43352110133",        "63344620456",
+       "56140312353",        "40445412232",        "41311645362",
+       "63341134461",        "62212054443",        "522535266132525512",
+       "133241004253036422", "441423116221360565", "311521026241406316",
+       "064121556344051054", "523155032336504341", "513163335533640611",
+       "320202600120632542", "032236321153300464", "153644315513523556",
+       "6361532055664244",   "4421346522614454",   "6201405053341662",
+       "1643661455640121",   "0560036043261454",   "0123224011522436",
+       "1400425214062530",   "4355001310215516",   "6454331026230652",
+       "5206542531132066",   "65450232415004",     "40244235426401",
+       "43635321042431",     "61323225306351",     "01420223342214",
+       "42643003001305",     "11353450114144",     "13241106645003",
+       "10212106526012",     "43303624010545"});
+
+  for (auto mvSequence : allSequences) {
+    int searchDepth = 8;
+    B b;
+    ASSERT_TRUE(b.play(mvSequence));
+
+    // The scores of the reference should be the same as for the limited-depth
+    // search
+    EXPECT_EQ(bb.scoreMoves(b, searchDepth), bb_reference.scoreMoves(b, -1))
+        << b.toString();
+  }
+}
+
+TEST_F(BitBullyTest, nearWinsDepth16) {
+  using B = BitBully::Board;
+  BitBully::BitBully bb;
+  BitBully::BitBully bb_reference;
+
+  // All these positions are over in 8-16 moves (perfect play), no matter which
+  // column we play
+  std::vector<std::string> allSequences({"36364005",
+                                         "43363541",
+                                         "31262634",
+                                         "40063635",
+                                         "26343621",
+                                         "26213634",
+                                         "36206530",
+                                         "36403106",
+                                         "30324540",
+                                         "35266030",
+                                         "425516134",
+                                         "244551425",
+                                         "622453115",
+                                         "161642435",
+                                         "303665200",
+                                         "623621266",
+                                         "364530050",
+                                         "501324512",
+                                         "141600554",
+                                         "011202251",
+                                         "1104056461",
+                                         "3665340600",
+                                         "6541513420",
+                                         "6201302026",
+                                         "0242053665",
+                                         "6540304131",
+                                         "6300166302",
+                                         "3645216215",
+                                         "1112261520",
+                                         "0502364265",
+                                         "14400246262",
+                                         "14554145135",
+                                         "36644332203",
+                                         "55161304044",
+                                         "13140044520",
+                                         "66540310032",
+                                         "02511345014",
+                                         "26214135366",
+                                         "10023123306",
+                                         "00365334403",
+                                         "63130206110026",
+                                         "404132260444412",
+                                         "5652153161226312",
+                                         "43631454140041334",
+                                         "602643526452154560",
+                                         "356663062320525125",
+                                         "2265262352520161063",
+                                         "2036355151330635305",
+                                         "1601536165523353355",
+                                         "6460104660166144015",
+                                         "4333144314115405126",
+                                         "1266326135202322605",
+                                         "0126645420502212555",
+                                         "3653563034050012556",
+                                         "0062433303143166360",
+                                         "4304603633110455215",
+                                         "66102521216113521562",
+                                         "42516563213602622662",
+                                         "64635522366562006220",
+                                         "41263340123633136562",
+                                         "43064055143334616441",
+                                         "25456164561161140120",
+                                         "34315411104344360313",
+                                         "64500006114615055045",
+                                         "00526636610226643303",
+                                         "25226341433264364364"});
+
+  for (auto mvSequence : allSequences) {
+    int searchDepth = 16;
+    B b;
+    ASSERT_TRUE(b.play(mvSequence));
+
+    // The scores of the reference should be the same as for the limited-depth
+    // search
+    EXPECT_EQ(bb.scoreMoves(b, searchDepth), bb_reference.scoreMoves(b, -1))
+        << b.toString();
   }
 }
