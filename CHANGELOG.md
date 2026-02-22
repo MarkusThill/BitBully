@@ -1,3 +1,11 @@
+## v0.0.76 (2026-02-22)
+
+### Fix
+
+- corrected a lot of mistakes of an incompetent opus-4.6
+- removed irrelevant test
+- added possibility to limit search depth
+
 ## v0.0.75 (2026-01-25)
 
 ### Fix
