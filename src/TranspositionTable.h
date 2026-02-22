@@ -20,6 +20,8 @@ class TranspositionTable {
     uint64_t b;  // TODO: There should be a global type TBitboard
     NodeType flag{NONE};
     int value;
+    int8_t searchDepth{0};  // remaining search budget when entry was stored
+                            // INT8_MAX = unlimited (full) search
   };
 
   TranspositionTable(const int log_2_size = LOG_2_SIZE) {

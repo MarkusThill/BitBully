@@ -32,17 +32,19 @@ PYBIND11_MODULE(bitbully_core, m) {
       .def(py::init<>())  // Expose the default constructor
       .def(py::init<std::filesystem::path>(), py::arg("openingBookPath"))
       .def("mtdf", &BitBully::BitBully::mtdf, "MTD(f) algorithm",
-           py::arg("board"), py::arg("first_guess"))
+           py::arg("board"), py::arg("first_guess"), py::arg("max_depth") = -1)
       .def("nullWindow", &BitBully::BitBully::nullWindow, "Null-window search",
-           py::arg("board"))
+           py::arg("board"), py::arg("max_depth") = -1)
       .def("negamax", &BitBully::BitBully::negamax, "negamax search",
            py::arg("board"), py::arg("alpha"), py::arg("beta"),
-           py::arg("depth"))
+           py::arg("depth"), py::arg("max_depth") = -1)
       .def("scoreMove", &BitBully::BitBully::scoreMove,
            "evaluate a single move", py::arg("board"), py::arg("column"),
-           py::arg("first_guess"))
+           py::arg("first_guess"), py::arg("max_depth") = -1)
       .def("scoreMoves", &BitBully::BitBully::scoreMoves, "evaluate all moves",
-           py::arg("board"))
+           py::arg("board"), py::arg("max_depth") = -1)
+      .def_static("rollout", &BitBully::BitBully::rollout,
+                  "Perform a rollout using non-losing moves", py::arg("board"))
       .def("resetTranspositionTable",
            &BitBully::BitBully::resetTranspositionTable,
            "Reset the transposition table")

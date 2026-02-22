@@ -214,12 +214,16 @@ class BitBullyCore:
             ```
         """
 
-    def mtdf(self, board: "BoardCore", first_guess: int) -> int:
+    def mtdf(self, board: "BoardCore", first_guess: int, max_depth: int = -1) -> int:
         """Evaluate a position using the MTD(f) algorithm.
 
         Args:
             board (BoardCore): Position to evaluate.
             first_guess (int): Initial guess for the score (often 0).
+            max_depth (int): Maximum search depth in plies. When reached,
+                a rollout using non-losing moves is performed instead of
+                continuing the search. ``-1`` (default) means unlimited
+                depth (full search).
 
         Returns:
             int: Evaluation score for the side to move.
@@ -244,9 +248,25 @@ class BitBullyCore:
             ```text
                 MTD(f) score: 1
             ```
+
+        Example:
+            Use depth-limited search with a rollout at depth 12:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            board = bbc.BoardCore()
+            assert board.play("334411")
+
+            solver = bbc.BitBullyCore()
+            score_approx = solver.mtdf(board, first_guess=0, max_depth=12)
+            score_exact = solver.mtdf(board, first_guess=0)  # full search
+
+            assert isinstance(score_approx, int)
+            assert isinstance(score_exact, int)
+            ```
         """
 
-    def negamax(self, board: "BoardCore", alpha: int, beta: int, depth: int) -> int:
+    def negamax(self, board: "BoardCore", alpha: int, beta: int, depth: int, max_depth: int = -1) -> int:
         """Evaluate a position using negamax (alpha-beta) search.
 
         Args:
@@ -254,6 +274,10 @@ class BitBullyCore:
             alpha (int): Alpha bound.
             beta (int): Beta bound.
             depth (int): Search depth in plies.
+            max_depth (int): Maximum search depth in plies. When reached,
+                a rollout using non-losing moves is performed instead of
+                continuing the search. ``-1`` (default) means unlimited
+                depth (full search).
 
         Returns:
             int: Evaluation score for the side to move.
@@ -274,13 +298,30 @@ class BitBullyCore:
             ```text
                 Negamax score: 18
             ```
+
+        Example:
+            Run a depth-limited negamax call (rollout at depth 12):
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            board = bbc.BoardCore()
+            assert board.play("334411")
+
+            solver = bbc.BitBullyCore()
+            score = solver.negamax(board, alpha=-1000, beta=1000, depth=0, max_depth=12)
+            assert isinstance(score, int)
+            ```
         """
 
-    def nullWindow(self, board: "BoardCore") -> int:
+    def nullWindow(self, board: "BoardCore", max_depth: int = -1) -> int:
         """Evaluate a position using a null-window search.
 
         Args:
             board (BoardCore): Position to evaluate.
+            max_depth (int): Maximum search depth in plies. When reached,
+                a rollout using non-losing moves is performed instead of
+                continuing the search. ``-1`` (default) means unlimited
+                depth (full search).
 
         Returns:
             int: Evaluation score for the side to move.
@@ -300,6 +341,19 @@ class BitBullyCore:
             Expected output:
             ```text
                 Null-window score: 18
+            ```
+
+        Example:
+            Use depth-limited null-window search:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            board = bbc.BoardCore()
+            assert board.play("334411")
+
+            solver = bbc.BitBullyCore()
+            score = solver.nullWindow(board, max_depth=12)
+            assert isinstance(score, int)
             ```
         """
 
@@ -335,13 +389,17 @@ class BitBullyCore:
             ```
         """
 
-    def scoreMove(self, board: "BoardCore", column: int, first_guess: int) -> int:
+    def scoreMove(self, board: "BoardCore", column: int, first_guess: int, max_depth: int = -1) -> int:
         """Evaluate a single move in the given position.
 
         Args:
             board (BoardCore): Current position.
             column (int): Column index (0-6) of the move to evaluate.
             first_guess (int): Initial guess for the score (often 0).
+            max_depth (int): Maximum search depth in plies. When reached,
+                a rollout using non-losing moves is performed instead of
+                continuing the search. ``-1`` (default) means unlimited
+                depth (full search).
 
         Returns:
             int: Evaluation score of playing the move in ``column``.
@@ -378,13 +436,61 @@ class BitBullyCore:
             one = solver.scoreMove(board, column=4, first_guess=0)
             assert one == scores[4] == 3
             ```
+
+        Example:
+            Score a move using depth-limited search:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            solver = bbc.BitBullyCore()
+            board = bbc.BoardCore()
+            assert board.play("334411")
+
+            score = solver.scoreMove(board, column=3, first_guess=0, max_depth=12)
+            assert isinstance(score, int)
+            ```
         """
 
-    def scoreMoves(self, board: "BoardCore") -> list[int]:
+    @staticmethod
+    def rollout(board: "BoardCore") -> int:
+        """Perform a rollout using non-losing moves until terminal.
+
+        Both players avoid losing moves (using ``generateNonLosingMoves``).
+        Among multiple non-losing moves, the center-priority heuristic is used.
+        The rollout is deterministic: the same board always produces the same score.
+
+        Args:
+            board (BoardCore): Position to start the rollout from.
+
+        Returns:
+            int: Score from the perspective of the player to move at entry.
+
+        Example:
+            Rollout from a mid-game position:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            board = bbc.BoardCore()
+            assert board.play("334411")
+
+            score = bbc.BitBullyCore.rollout(board)
+            assert isinstance(score, int)
+
+            # Score is bounded by the number of remaining moves.
+            bound = (board.movesLeft() + 1) // 2
+            assert -bound <= score <= bound
+            ```
+        """
+
+    def scoreMoves(self, board: "BoardCore", max_depth: int = -1) -> list[int]:
         """Evaluate all columns (0..6) in the given position.
 
         Args:
             board (BoardCore): Current position.
+            max_depth (int): Maximum search depth in plies. When reached,
+                a rollout using non-losing moves is performed instead of
+                continuing the search. ``-1`` (default) means unlimited
+                depth (full search).
 
         Returns:
             list[int]: A list of length 7 with per-column scores. Illegal moves
@@ -437,6 +543,20 @@ class BitBullyCore:
             # Column 3 is full here (sentinel score).
             assert board.isLegalMove(3) is False
             assert scores[3] == -1000
+            ```
+
+        Example:
+            Use depth-limited search for faster (approximate) scoring:
+            ```python
+            import bitbully.bitbully_core as bbc
+
+            solver = bbc.BitBullyCore()
+            board = bbc.BoardCore()
+            assert board.play("334411")
+
+            scores = solver.scoreMoves(board, max_depth=12)
+            assert len(scores) == 7
+            assert all(isinstance(s, int) for s in scores)
             ```
         """
 

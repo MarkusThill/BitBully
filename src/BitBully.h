@@ -45,8 +45,44 @@ class BitBully {
     return isBookLoaded();
   }
 
+  static int rollout(Board b) noexcept {
+    // Play out the game using non-losing moves until terminal.
+    // Both players use generateNonLosingMoves() to avoid immediate losses.
+    // Among multiple non-losing moves, pick the first via nextMove()
+    // (center-priority heuristic).
+    int ply = 0;
+
+    while (true) {
+      if (b.canWin()) {
+        const int score = (b.movesLeft() + 1) / 2;
+        return (ply % 2 == 0) ? score : -score;
+      }
+
+      if (!b.movesLeft()) {
+        return 0;
+      }
+
+      auto moves = b.generateNonLosingMoves();
+      if (!moves) {
+        const int score = -(b.movesLeft() / 2);
+        return (ply % 2 == 0) ? score : -score;
+      }
+
+      const auto mv = Board::nextMove(moves);
+
+      // TODO: probably faster to do the move directly on the current
+      // board instead of copying it first and then doing the move on the copy.
+      // However, this would require some changes to the Board class (e.g., a
+      // playMoveFast() method which does not check for legality of the move
+      // since we already know that it is legal).
+      b = b.playBitMaskOnCopy(mv);
+      ply++;
+    }
+  }
+
   // TODO: firstGuess is a parameter which could be tuned!
-  int mtdf(const Board& b, const int firstGuess) noexcept {
+  int mtdf(const Board& b, const int firstGuess,
+           const int maxDepth = -1) noexcept {
     // MTD(f) algorithm by Aske Plaat: Plaat, Aske; Jonathan Schaeffer; Wim
     // Pijls; Arie de Bruin (November 1996). "Best-first Fixed-depth Minimax
     // Algorithms". Artificial Intelligence. 87 (1–2): 255–293.
@@ -57,7 +93,7 @@ class BitBully {
 
     while (lowerBound < upperBound) {
       const auto beta = std::max(g, lowerBound + 1);
-      g = negamax(b, beta - 1, beta, 0);
+      g = negamax(b, beta - 1, beta, 0, maxDepth);
       if (g < beta) {
         upperBound = g;
       } else {
@@ -68,7 +104,7 @@ class BitBully {
   }
 
   // generally, appears to be slower than mtdf
-  int nullWindow(const Board& b) noexcept {
+  int nullWindow(const Board& b, const int maxDepth = -1) noexcept {
     int min = -b.movesLeft() / 2;
     int max = (b.movesLeft() + 1) / 2;
 
@@ -78,7 +114,7 @@ class BitBully {
         mid = min / 2;
       else if (mid >= 0 && max / 2 > mid)
         mid = max / 2;
-      int r = negamax(b, mid, mid + 1, 0);
+      int r = negamax(b, mid, mid + 1, 0, maxDepth);
       if (r <= mid) {
         max = r;
       } else {
@@ -97,10 +133,18 @@ class BitBully {
 
   void resetNodeCounter() { nodeCounter = 0ULL; }
 
-  int negamax(Board b, int alpha, int beta, const int depth) noexcept {
+  int negamax(Board b, int alpha, int beta, const int depth,
+              const int maxDepth = -1) noexcept {
     // In several aspects inspired by Pascal's code
     assert(alpha < beta);
     nodeCounter++;
+
+    if (maxDepth >= 0 && depth >= maxDepth) {
+      return rollout(b);
+    }
+
+    const int8_t remainingBudget =
+        (maxDepth < 0) ? INT8_MAX : static_cast<int8_t>(maxDepth - depth);
 
     if (isBookLoaded() && b.countTokens() == m_openingBook->getNPly()) {
       return m_openingBook->getBoardValue(b);
@@ -155,7 +199,8 @@ class BitBully {
     if constexpr (USE_TRANSPOSITION_TABLE) {
       if (b.movesLeft() > 6 && b.movesLeft() % 2 == 0) {
         ttEntry = transpositionTable.get(b);
-        if (ttEntry && ttEntry->b == b.uid()) {
+        if (ttEntry && ttEntry->b == b.uid() &&
+            ttEntry->searchDepth >= remainingBudget) {
           if (ttEntry->flag == TranspositionTable::Entry::EXACT) {
             return ttEntry->value;
           } else if (ttEntry->flag == TranspositionTable::Entry::LOWER) {
@@ -178,6 +223,7 @@ class BitBully {
           auto etcEntry = transpositionTable.get(bETC);
 
           if (etcEntry->b == bETC.uid() &&
+              etcEntry->searchDepth >= remainingBudget &&
               etcEntry->flag != TranspositionTable::Entry::LOWER &&
               -etcEntry->value >= beta) {
             return -etcEntry->value;
@@ -193,7 +239,8 @@ class BitBully {
       if (b.movesLeft() > 20) {
         const auto bMirror = b.mirror();
         auto ttEntryMirror = transpositionTable.get(bMirror);
-        if (ttEntryMirror && ttEntryMirror->b == bMirror.uid()) {
+        if (ttEntryMirror && ttEntryMirror->b == bMirror.uid() &&
+            ttEntryMirror->searchDepth >= remainingBudget) {
           if (ttEntryMirror->flag == TranspositionTable::Entry::EXACT) {
             return ttEntryMirror->value;
           } else if (ttEntryMirror->flag == TranspositionTable::Entry::LOWER) {
@@ -225,8 +272,8 @@ class BitBully {
       for (; mv && alpha < beta; mv = mvList.pop()) {
         // const auto mv = (threats ? b.nextMove(threats) : b.nextMove(moves));
         assert(uint64_t_popcnt(mv) == 1);
-        auto moveValue =
-            -negamax(b.playBitMaskOnCopy(mv), -beta, -alpha, depth + 1);
+        auto moveValue = -negamax(b.playBitMaskOnCopy(mv), -beta, -alpha,
+                                  depth + 1, maxDepth);
         value = std::max(value, moveValue);
         alpha = std::max(alpha, value);
       }
@@ -239,8 +286,8 @@ class BitBully {
         // auto mvList = (movesFirst ? movesFirst : moves);
         const auto mv = (threats ? b.nextMove(threats) : b.nextMove(moves));
         assert(uint64_t_popcnt(mv) == 1);
-        auto moveValue =
-            -negamax(b.playBitMaskOnCopy(mv), -beta, -alpha, depth + 1);
+        auto moveValue = -negamax(b.playBitMaskOnCopy(mv), -beta, -alpha,
+                                  depth + 1, maxDepth);
         value = std::max(value, moveValue);
         alpha = std::max(alpha, value);
         threats &= ~mv;
@@ -261,6 +308,7 @@ class BitBully {
       //    Store node result in Transposition value
       ttEntry->b = b.uid();
       ttEntry->value = value;
+      ttEntry->searchDepth = remainingBudget;
 
       if (value <= oldAlpha) {
         ttEntry->flag = TranspositionTable::Entry::UPPER;
@@ -273,19 +321,20 @@ class BitBully {
     return value;
   }
 
-  auto scoreMove(const Board& b, const int column, const int firstGuess) {
+  auto scoreMove(const Board& b, const int column, const int firstGuess,
+                 const int maxDepth = -1) {
     int score = -1000;
     if (auto afterB = b; afterB.play(column)) {
       if (afterB.hasWin()) {
         return (afterB.movesLeft()) / 2 + 1;
       }
       // TODO: Get first guess from hash table if possible
-      score = -mtdf(afterB, firstGuess);
+      score = -mtdf(afterB, firstGuess, maxDepth);
     }
     return score;
   }
 
-  auto scoreMoves(const Board& b) {
+  auto scoreMoves(const Board& b, const int maxDepth = -1) {
     std::vector scores(Board::N_COLUMNS, -1000);
     for (auto col = 0UL; col < scores.size(); col++) {
       /*
@@ -299,8 +348,8 @@ class BitBully {
       }
       */
       // TODO: Get first guess from hash table if possible
-      scores[col] =
-          scoreMove(b, static_cast<int>(col), !col ? 0 : scores.at(col - 1));
+      scores[col] = scoreMove(b, static_cast<int>(col),
+                              !col ? 0 : scores.at(col - 1), maxDepth);
     }
 
     return scores;

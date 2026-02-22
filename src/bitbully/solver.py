@@ -97,6 +97,7 @@ class BitBully:
         *,
         tie_break: TieBreakStrategy | None = None,
         rng: random.Random | None = None,
+        max_depth: int = -1,
     ) -> None:
         """Initialize the BitBully agent.
 
@@ -114,6 +115,10 @@ class BitBully:
                 If ``None``, defaults to ``"center"``.
             rng (random.Random | None):
                 Optional RNG for reproducible "random" tie-breaking.
+            max_depth (int):
+                Maximum search depth in plies. When reached, a rollout using
+                non-losing moves is performed instead of continuing the search.
+                ``-1`` (default) means unlimited depth (full search).
 
         TODO: Example for initialization with different books.
 
@@ -121,6 +126,7 @@ class BitBully:
         self.opening_book_type: OpeningBookName | None = opening_book
         self.tie_break = tie_break if tie_break is not None else "center"
         self.rng = rng if rng is not None else random.Random()
+        self.max_depth = max_depth
 
         if opening_book is None:
             self._core = bitbully_core.BitBullyCore()
@@ -188,13 +194,15 @@ class BitBully:
         """
         self._core.resetNodeCounter()
 
-    def score_move(self, board: Board, column: int, first_guess: int = 0) -> int:
+    def score_move(self, board: Board, column: int, first_guess: int = 0, *, max_depth: int | None = None) -> int:
         """Evaluate a single move for the given board state.
 
         Args:
             board (Board): The current board state.
             column (int): Column index (0-6) of the move to evaluate.
             first_guess (int): Initial guess for the score (often 0).
+            max_depth (int | None): Maximum search depth override.
+                ``None`` uses the instance default (``self.max_depth``).
 
         Returns:
             int: The evaluation score of the move.
@@ -209,6 +217,17 @@ class BitBully:
             assert score == 1  # Score for the center column on an empty board
             ```
 
+        Example:
+            Score a move using depth-limited search (faster, approximate):
+            ```python
+            from bitbully import BitBully, Board
+
+            agent = BitBully()
+            board = Board()
+            score = agent.score_move(board, column=3, max_depth=12)
+            assert isinstance(score, int)
+            ```
+
         Raises:
             ValueError: If the column is outside the valid range or if the column is full.
 
@@ -219,13 +238,16 @@ class BitBully:
         if not board.is_legal_move(column):
             raise ValueError(f"Column {column} is either full or invalid; cannot score move.")
 
-        return int(self._core.scoreMove(board.native, column, first_guess))
+        effective_max_depth = max_depth if max_depth is not None else self.max_depth
+        return int(self._core.scoreMove(board.native, column, first_guess, max_depth=effective_max_depth))
 
-    def score_all_moves(self, board: Board) -> dict[int, int]:
+    def score_all_moves(self, board: Board, *, max_depth: int | None = None) -> dict[int, int]:
         """Score all legal moves for the given board state.
 
         Args:
             board (Board): The current board state.
+            max_depth (int | None): Maximum search depth override.
+                ``None`` uses the instance default (``self.max_depth``).
 
         Returns:
             dict[int, int]:
@@ -253,8 +275,20 @@ class BitBully:
             scores = agent.score_all_moves(board)
             assert scores == {2: 1, 4: 1, 1: 0, 5: 0, 0: -1, 6: -1}  # Column 3 is full and thus omitted
             ```
+
+        Example:
+            Use depth-limited search for faster (approximate) scoring:
+            ```python
+            from bitbully import BitBully, Board
+
+            agent = BitBully()
+            board = Board()
+            scores = agent.score_all_moves(board, max_depth=12)
+            assert len(scores) == 7  # all columns playable on an empty board
+            ```
         """
-        scores = self._core.scoreMoves(board.native)
+        effective_max_depth = max_depth if max_depth is not None else self.max_depth
+        scores = self._core.scoreMoves(board.native, max_depth=effective_max_depth)
         column_values = {
             col: val for (col, val) in enumerate(scores) if val > -100
         }  # invalid moves have score less than -100
@@ -266,6 +300,7 @@ class BitBully:
         *,
         tie_break: TieBreakStrategy | None = None,
         rng: random.Random | None = None,
+        max_depth: int | None = None,
     ) -> int:
         """Return the best legal move (column index) for the current player.
 
@@ -291,6 +326,8 @@ class BitBully:
             rng (random.Random | None):
                 Random number generator used when ``tie_break="random"``.
                 If ``None``, the agent's (`self.rng`) RNG is used.
+            max_depth (int | None): Maximum search depth override.
+                ``None`` uses the instance default (``self.max_depth``).
 
         Returns:
             int: The selected column index (0-6).
@@ -334,8 +371,19 @@ class BitBully:
             _  _  _  _  _  _  _
             _  X  _  X  O  _  _
             ```
+
+        Example:
+            Use depth-limited search for a fast (approximate) best move:
+            ```python
+            from bitbully import BitBully, Board
+
+            agent = BitBully()
+            board = Board()
+            col = agent.best_move(board, max_depth=12)
+            assert 0 <= col <= 6
+            ```
         """
-        scores = self.score_all_moves(board)
+        scores = self.score_all_moves(board, max_depth=max_depth)
         if not scores:
             raise ValueError("No legal moves available (board appears to be full).")
 
@@ -364,7 +412,9 @@ class BitBully:
 
         raise ValueError(f"Unknown tie-breaking strategy: {tie_break!r}")
 
-    def negamax(self, board: Board, alpha: int = -1000, beta: int = 1000, depth: int = 0) -> int:
+    def negamax(
+        self, board: Board, alpha: int = -1000, beta: int = 1000, depth: int = 0, *, max_depth: int | None = None
+    ) -> int:
         """Evaluate a position using negamax search.
 
         Args:
@@ -372,6 +422,8 @@ class BitBully:
             alpha (int): Alpha bound.
             beta (int): Beta bound.
             depth (int): Search depth in plies.
+            max_depth (int | None): Maximum search depth override.
+                ``None`` uses the instance default (``self.max_depth``).
 
         Returns:
             int: The evaluation score returned by the engine.
@@ -385,21 +437,36 @@ class BitBully:
             score = agent.negamax(board)
             assert score == 1  # Expected score for an empty board
             ```
+
+        Example:
+            Depth-limited negamax (rollout at depth 12):
+            ```python
+            from bitbully import BitBully, Board
+
+            agent = BitBully()
+            board = Board("334411")
+            score = agent.negamax(board, max_depth=12)
+            assert isinstance(score, int)
+            ```
         """
+        effective_max_depth = max_depth if max_depth is not None else self.max_depth
         return int(
             self._core.negamax(
                 board.native,
                 alpha=alpha,
                 beta=beta,
                 depth=depth,
+                max_depth=effective_max_depth,
             )
         )
 
-    def null_window(self, board: Board) -> int:
+    def null_window(self, board: Board, *, max_depth: int | None = None) -> int:
         """Evaluate a position using a null-window search.
 
         Args:
             board (Board): The board position to evaluate.
+            max_depth (int | None): Maximum search depth override.
+                ``None`` uses the instance default (``self.max_depth``).
 
         Returns:
             int: The evaluation score.
@@ -413,15 +480,29 @@ class BitBully:
             score = agent.null_window(board)
             assert score == 1  # Expected score for an empty board
             ```
-        """
-        return int(self._core.nullWindow(board.native))
 
-    def mtdf(self, board: Board, first_guess: int = 0) -> int:
+        Example:
+            Depth-limited null-window search:
+            ```python
+            from bitbully import BitBully, Board
+
+            agent = BitBully()
+            board = Board("334411")
+            score = agent.null_window(board, max_depth=12)
+            assert isinstance(score, int)
+            ```
+        """
+        effective_max_depth = max_depth if max_depth is not None else self.max_depth
+        return int(self._core.nullWindow(board.native, max_depth=effective_max_depth))
+
+    def mtdf(self, board: Board, first_guess: int = 0, *, max_depth: int | None = None) -> int:
         """Evaluate a position using the MTD(f) algorithm.
 
         Args:
             board (Board): The board position to evaluate.
             first_guess (int): Initial guess for the score (often 0).
+            max_depth (int | None): Maximum search depth override.
+                ``None`` uses the instance default (``self.max_depth``).
 
         Returns:
             int: The evaluation score.
@@ -435,8 +516,20 @@ class BitBully:
             score = agent.mtdf(board)
             assert score == 1  # Expected score for an empty board
             ```
+
+        Example:
+            Depth-limited MTD(f) (rollout at depth 12):
+            ```python
+            from bitbully import BitBully, Board
+
+            agent = BitBully()
+            board = Board("334411")
+            score = agent.mtdf(board, max_depth=12)
+            assert isinstance(score, int)
+            ```
         """
-        return int(self._core.mtdf(board.native, first_guess=first_guess))
+        effective_max_depth = max_depth if max_depth is not None else self.max_depth
+        return int(self._core.mtdf(board.native, first_guess=first_guess, max_depth=effective_max_depth))
 
     def load_book(self, book: OpeningBookName | os.PathLike[str] | str) -> None:
         """Load an opening book from a file path.
