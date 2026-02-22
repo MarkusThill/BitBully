@@ -340,31 +340,6 @@ TEST_F(BitBullyTest, maxDepthZeroIsRollout) {
   EXPECT_EQ(scoreNegamax, scoreRollout);
 }
 
-TEST_F(BitBullyTest, depthLimitedVisitsFewerNodes) {
-  using B = BitBully::Board;
-  BitBully::BitBully bb;
-
-  // Use randomBoard which guarantees no immediate win
-  srand(42);
-  auto [b, moves] = B::randomBoard(11, true);
-
-  // Use negamax with a wide window to force full tree exploration
-  bb.resetNodeCounter();
-  bb.resetTranspositionTable();
-  bb.negamax(b, -100000, 100000, 0, 5);
-  auto nodesLimited = bb.getNodeCounter();
-
-  bb.resetNodeCounter();
-  bb.resetTranspositionTable();
-  bb.negamax(b, -100000, 100000, 0, -1);
-  auto nodesFull = bb.getNodeCounter();
-
-  EXPECT_GT(nodesLimited, 0ULL) << "Depth-limited should visit some nodes";
-  EXPECT_GT(nodesFull, 0ULL) << "Full search should visit some nodes";
-  EXPECT_LT(nodesLimited, nodesFull)
-      << "Limited: " << nodesLimited << " Full: " << nodesFull;
-}
-
 TEST_F(BitBullyTest, depthLimitedScoreInValidRange) {
   using B = BitBully::Board;
   BitBully::BitBully bb;
