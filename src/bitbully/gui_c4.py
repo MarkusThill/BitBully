@@ -806,27 +806,33 @@ class GuiC4:
             self.m_insert_buttons.append(button)
 
     def _create_column_labels(self) -> HBox:
-        """Creates a row with the column labels 'a' to 'g'.
+        """Creates a row of column number labels (0-6) displayed below the board.
 
         Returns:
-            HBox: A row of textboxes containing the columns labels 'a' to 'g'.
+            HBox: A row of labels numbered 0 to ``m_n_col - 1``.
         """
         fig_size_px = self._get_fig_size_px()
-        width = f"{-3 + (fig_size_px[0] / self.m_n_col)}px"
-        textboxes = [
+        col_width = f"{-3 + (fig_size_px[0] / self.m_n_col)}px"
+        labels = [
             widgets.Label(
-                value=chr(ord("a") + i),
-                layout=Layout(justify_content="center", align_items="center", width=width),
+                value=str(i),
+                layout=Layout(
+                    width=col_width,
+                    display="flex",
+                    justify_content="center",
+                    align_items="center",
+                ),
             )
             for i in range(self.m_n_col)
         ]
         return HBox(
-            textboxes,
+            labels,
             layout=Layout(
                 display="flex",
-                flex_flow="row wrap",  # or "column" depending on your layout needs
-                justify_content="center",  # Left alignment
-                align_items="center",  # Top alignment
+                flex_flow="row",
+                justify_content="center",
+                align_items="center",
+                margin="0px 0px 0px 0px",
             ),
         )
 
@@ -884,8 +890,7 @@ class GuiC4:
             ),
         )
 
-        # deactivate for now
-        # tb = self._create_column_labels()
+        column_label_row = self._create_column_labels()
 
         right = VBox(
             [self.move_list_row],
@@ -907,6 +912,7 @@ class GuiC4:
                         self.player_select_row,
                         insert_button_row,
                         self.output,
+                        column_label_row,
                         self.m_eval_row,
                         self.m_time_row,
                     ],
