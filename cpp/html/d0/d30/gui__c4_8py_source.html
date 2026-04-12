@@ -42,7 +42,7 @@
                 <tr id="projectrow">
                     <td id="projectlogo"><img  alt="Logo" src="../../bitbully-logo.png"/></td>
                     <td id="projectalign">
-                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.76</span>
+                        <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.77</span>
                         </div>
                     </td>
                 </tr>
@@ -945,176 +945,182 @@ $(function(){initNavTree('d0/d30/gui__c4_8py_source.html','../../',''); });
 <div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span> </div>
 <div class="foldopen" id="foldopen00808" data-start="" data-end="">
 <div class="line"><a id="l00808" name="l00808"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a3dde63ddaf5ff642f60c9c4d8da942c9">  808</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a3dde63ddaf5ff642f60c9c4d8da942c9">_create_column_labels</a>(self) -&gt; HBox:</div>
-<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>        <span class="stringliteral">&quot;&quot;&quot;Creates a row with the column labels &#39;a&#39; to &#39;g&#39;.</span></div>
+<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>        <span class="stringliteral">&quot;&quot;&quot;Creates a row of column number labels (0-6) displayed below the board.</span></div>
 <div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span><span class="stringliteral"></span> </div>
 <div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span><span class="stringliteral">            HBox: A row of textboxes containing the columns labels &#39;a&#39; to &#39;g&#39;.</span></div>
+<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span><span class="stringliteral">            HBox: A row of labels numbered 0 to ``m_n_col - 1``.</span></div>
 <div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>        fig_size_px = self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#abaa9eef7994fd1c179c901c43001f4b8">_get_fig_size_px</a>()</div>
-<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span>        width = f<span class="stringliteral">&quot;{-3 + (fig_size_px[0] / self.m_n_col)}px&quot;</span></div>
-<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span>        textboxes = [</div>
+<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span>        col_width = f<span class="stringliteral">&quot;{-3 + (fig_size_px[0] / self.m_n_col)}px&quot;</span></div>
+<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span>        labels = [</div>
 <div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span>            widgets.Label(</div>
-<div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span>                value=chr(ord(<span class="stringliteral">&quot;a&quot;</span>) + i),</div>
-<div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>                layout=Layout(justify_content=<span class="stringliteral">&quot;center&quot;</span>, align_items=<span class="stringliteral">&quot;center&quot;</span>, width=width),</div>
-<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>            )</div>
-<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>            <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a96669ed1ce877546b09f5047b212be82">m_n_col</a>)</div>
-<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>        ]</div>
-<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>        <span class="keywordflow">return</span> HBox(</div>
-<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>            textboxes,</div>
-<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>            layout=Layout(</div>
-<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
-<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span>                flex_flow=<span class="stringliteral">&quot;row wrap&quot;</span>,  <span class="comment"># or &quot;column&quot; depending on your layout needs</span></div>
-<div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span>                justify_content=<span class="stringliteral">&quot;center&quot;</span>,  <span class="comment"># Left alignment</span></div>
-<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span>                align_items=<span class="stringliteral">&quot;center&quot;</span>,  <span class="comment"># Top alignment</span></div>
-<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>            ),</div>
-<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span>        )</div>
-<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span> </div>
+<div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span>                value=str(i),</div>
+<div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>                layout=Layout(</div>
+<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>                    width=col_width,</div>
+<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>                    display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>                    justify_content=<span class="stringliteral">&quot;center&quot;</span>,</div>
+<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>                    align_items=<span class="stringliteral">&quot;center&quot;</span>,</div>
+<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>                ),</div>
+<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>            )</div>
+<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span>            <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a96669ed1ce877546b09f5047b212be82">m_n_col</a>)</div>
+<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span>        ]</div>
+<div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span>        <span class="keywordflow">return</span> HBox(</div>
+<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span>            labels,</div>
+<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>            layout=Layout(</div>
+<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>                flex_flow=<span class="stringliteral">&quot;row&quot;</span>,</div>
+<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span>                justify_content=<span class="stringliteral">&quot;center&quot;</span>,</div>
+<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span>                align_items=<span class="stringliteral">&quot;center&quot;</span>,</div>
+<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>                margin=<span class="stringliteral">&quot;0px 0px 0px 0px&quot;</span>,</div>
+<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>            ),</div>
+<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>        )</div>
+<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span> </div>
 </div>
-<div class="foldopen" id="foldopen00833" data-start="" data-end="">
-<div class="line"><a id="l00833" name="l00833"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a30c2c5e0a13e6f49762f3abeda6b056b">  833</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a30c2c5e0a13e6f49762f3abeda6b056b">_on_field_click</a>(self, event: mpl_backend_bases.Event) -&gt; <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span>        <span class="stringliteral">&quot;&quot;&quot;Based on the column where the click was detected, insert a token.</span></div>
-<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span><span class="stringliteral">        Args:</span></div>
-<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span><span class="stringliteral">            event (mpl_backend_bases.Event): A matplotlib mouse event.</span></div>
-<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>        <span class="keywordflow">if</span> self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ab2f3d8f9e8d02b1844218db5187cb8dc">_controller_for_player</a>(self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a016420d82729880e855e1851b06a354d">_current_player</a>()) != <span class="stringliteral">&quot;human&quot;</span>:</div>
-<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>            <span class="keywordflow">return</span></div>
-<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span> </div>
-<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(event, mpl_backend_bases.MouseEvent):</div>
-<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>            <span class="keywordflow">return</span></div>
-<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>        <span class="keywordflow">if</span> event.inaxes <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">or</span> event.xdata <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span>            <span class="keywordflow">return</span></div>
-<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span>        <span class="keywordflow">if</span> isinstance(event, mpl_backend_bases.MouseEvent):</div>
-<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span>            ix, iy = event.xdata, event.ydata</div>
-<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a2c68b59f16ec0d35d94902764640f5a3">m_logger</a>.debug(<span class="stringliteral">&quot;click (x,y): %d, %d&quot;</span>, ix, iy)</div>
-<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>            idx = np.where(self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9c8311e1af38e99e0ce68e0934d8dc57">m_axs</a> == event.inaxes)[0][0] % self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a96669ed1ce877546b09f5047b212be82">m_n_col</a></div>
-<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>            self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a5a000fd1b68de07c029f462067ba2e35">_insert_token</a>(idx)</div>
-<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span> </div>
+<div class="foldopen" id="foldopen00839" data-start="" data-end="">
+<div class="line"><a id="l00839" name="l00839"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a30c2c5e0a13e6f49762f3abeda6b056b">  839</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a30c2c5e0a13e6f49762f3abeda6b056b">_on_field_click</a>(self, event: mpl_backend_bases.Event) -&gt; <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>        <span class="stringliteral">&quot;&quot;&quot;Based on the column where the click was detected, insert a token.</span></div>
+<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span><span class="stringliteral">        Args:</span></div>
+<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span><span class="stringliteral">            event (mpl_backend_bases.Event): A matplotlib mouse event.</span></div>
+<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span>        <span class="keywordflow">if</span> self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ab2f3d8f9e8d02b1844218db5187cb8dc">_controller_for_player</a>(self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a016420d82729880e855e1851b06a354d">_current_player</a>()) != <span class="stringliteral">&quot;human&quot;</span>:</div>
+<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span>            <span class="keywordflow">return</span></div>
+<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span> </div>
+<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> isinstance(event, mpl_backend_bases.MouseEvent):</div>
+<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>            <span class="keywordflow">return</span></div>
+<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>        <span class="keywordflow">if</span> event.inaxes <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">or</span> event.xdata <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>            <span class="keywordflow">return</span></div>
+<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span>        <span class="keywordflow">if</span> isinstance(event, mpl_backend_bases.MouseEvent):</div>
+<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>            ix, iy = event.xdata, event.ydata</div>
+<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a2c68b59f16ec0d35d94902764640f5a3">m_logger</a>.debug(<span class="stringliteral">&quot;click (x,y): %d, %d&quot;</span>, ix, iy)</div>
+<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>            idx = np.where(self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9c8311e1af38e99e0ce68e0934d8dc57">m_axs</a> == event.inaxes)[0][0] % self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a96669ed1ce877546b09f5047b212be82">m_n_col</a></div>
+<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>            self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a5a000fd1b68de07c029f462067ba2e35">_insert_token</a>(idx)</div>
+<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span> </div>
 </div>
-<div class="foldopen" id="foldopen00852" data-start="" data-end="">
-<div class="line"><a id="l00852" name="l00852"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1334fcc19604c05bd712359811a7f8d">  852</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1334fcc19604c05bd712359811a7f8d">get_widget</a>(self) -&gt; AppLayout:</div>
-<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>        <span class="stringliteral">&quot;&quot;&quot;Get the widget.</span></div>
-<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span><span class="stringliteral">        Examples:</span></div>
-<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span><span class="stringliteral">            Generally, you should this method to retreive and display the widget.</span></div>
-<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span><span class="stringliteral">            ```pycon</span></div>
-<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span><span class="stringliteral">            &gt;&gt;&gt; %matplotlib ipympl</span></div>
-<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span><span class="stringliteral">            &gt;&gt;&gt; c4gui = GuiC4()</span></div>
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span><span class="stringliteral">            &gt;&gt;&gt; display(c4gui.get_widget())</span></div>
-<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span><span class="stringliteral">            ```</span></div>
+<div class="foldopen" id="foldopen00858" data-start="" data-end="">
+<div class="line"><a id="l00858" name="l00858"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1334fcc19604c05bd712359811a7f8d">  858</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1334fcc19604c05bd712359811a7f8d">get_widget</a>(self) -&gt; AppLayout:</div>
+<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>        <span class="stringliteral">&quot;&quot;&quot;Get the widget.</span></div>
+<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span><span class="stringliteral">        Examples:</span></div>
+<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span><span class="stringliteral">            Generally, you should this method to retreive and display the widget.</span></div>
 <div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span><span class="stringliteral">        Returns:</span></div>
-<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span><span class="stringliteral">            AppLayout: the widget.</span></div>
-<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>        <span class="comment"># Arrange buttons in a row</span></div>
-<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>        insert_button_row = HBox(</div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span>            [VBox(layout=Layout(padding=<span class="stringliteral">&quot;0px 0px 0px 6px&quot;</span>)), *self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae53e314f0aa64014e77d869bbc0b3e41">m_insert_buttons</a>],</div>
-<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>            layout=Layout(</div>
-<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
-<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span>                flex_flow=<span class="stringliteral">&quot;row wrap&quot;</span>,  <span class="comment"># or &quot;column&quot; depending on your layout needs</span></div>
-<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>                justify_content=<span class="stringliteral">&quot;center&quot;</span>,  <span class="comment"># Left alignment</span></div>
-<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>                align_items=<span class="stringliteral">&quot;center&quot;</span>,  <span class="comment"># Top alignment</span></div>
-<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>            ),</div>
-<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>        )</div>
-<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>        control_buttons_col = HBox(</div>
-<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>            [VBox(list(self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#aa0cab8ed9fc3fc3828743e8140a4d2b9">m_control_buttons</a>.values()))],</div>
-<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>            layout=Layout(</div>
-<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
-<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span>                flex_flow=<span class="stringliteral">&quot;row wrap&quot;</span>,  <span class="comment"># or &quot;column&quot; depending on your layout needs</span></div>
-<div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>                justify_content=<span class="stringliteral">&quot;flex-end&quot;</span>,</div>
-<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>                align_items=<span class="stringliteral">&quot;center&quot;</span>,  <span class="comment"># bottom alignment</span></div>
-<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span>            ),</div>
-<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>        )</div>
-<div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span> </div>
-<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>        <span class="comment"># deactivate for now</span></div>
-<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>        <span class="comment"># tb = self._create_column_labels()</span></div>
-<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span> </div>
-<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>        right = VBox(</div>
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>            [self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a10208223f8724e92e690d6ccbb47eb29">move_list_row</a>],</div>
-<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>            layout=Layout(</div>
-<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
-<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>                flex_flow=<span class="stringliteral">&quot;column&quot;</span>,</div>
-<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>                justify_content=<span class="stringliteral">&quot;flex-start&quot;</span>,</div>
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>                align_items=<span class="stringliteral">&quot;stretch&quot;</span>,</div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>                width=<span class="stringliteral">&quot;200px&quot;</span>,</div>
-<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>                height=<span class="stringliteral">&quot;90%&quot;</span>,  <span class="comment"># NEW: fill AppLayout height</span></div>
-<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>                flex=<span class="stringliteral">&quot;1 1 auto&quot;</span>,  <span class="comment"># NEW: allow it to grow</span></div>
-<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>            ),</div>
-<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>        )</div>
-<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span> </div>
-<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>        main = HBox(</div>
-<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>            [</div>
-<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>                VBox(</div>
-<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>                    [</div>
-<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>                        self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a0a28d832baa43e2db2da75eab2267cdd">player_select_row</a>,</div>
-<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>                        insert_button_row,</div>
-<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>                        self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a42896183c3c87b7718a79b1d4db4d166">output</a>,</div>
-<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>                        self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a944e115887b98814802456597a1c78c2">m_eval_row</a>,</div>
-<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>                        self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1b178f4e5ed20a64ae997c65075ec3e">m_time_row</a>,</div>
-<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>                    ],</div>
-<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span>                    layout=Layout(</div>
-<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>                        display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
-<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>                        flex_flow=<span class="stringliteral">&quot;column&quot;</span>,</div>
-<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>                        align_items=<span class="stringliteral">&quot;flex-start&quot;</span>,</div>
-<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>                    ),</div>
-<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>                ),</div>
-<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>                right,</div>
-<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>            ],</div>
-<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>            layout=Layout(</div>
-<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
-<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>                flex_flow=<span class="stringliteral">&quot;row&quot;</span>,</div>
-<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>                align_items=<span class="stringliteral">&quot;flex-start&quot;</span>,</div>
-<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>                justify_content=<span class="stringliteral">&quot;flex-start&quot;</span>,</div>
-<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>                gap=<span class="stringliteral">&quot;5px&quot;</span>,  <span class="comment"># space between board and sidebar</span></div>
-<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>                width=<span class="stringliteral">&quot;100%&quot;</span>,</div>
-<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>            ),</div>
-<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>        )</div>
-<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span> </div>
-<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>        <span class="keywordflow">return</span> AppLayout(</div>
-<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>            header=<span class="keywordtype">None</span>,</div>
-<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span>            left_sidebar=control_buttons_col,</div>
-<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>            center=main,</div>
-<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>            right_sidebar=<span class="keywordtype">None</span>,  <span class="comment"># &lt;= important</span></div>
-<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span>            footer=<span class="keywordtype">None</span>,</div>
-<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>            layout=Layout(grid_gap=<span class="stringliteral">&quot;0px&quot;</span>),</div>
-<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>        )</div>
-<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span> </div>
+<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span><span class="stringliteral">            ```pycon</span></div>
+<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span><span class="stringliteral">            &gt;&gt;&gt; %matplotlib ipympl</span></div>
+<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span><span class="stringliteral">            &gt;&gt;&gt; c4gui = GuiC4()</span></div>
+<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span><span class="stringliteral">            &gt;&gt;&gt; display(c4gui.get_widget())</span></div>
+<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span><span class="stringliteral">            ```</span></div>
+<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span><span class="stringliteral">        Returns:</span></div>
+<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span><span class="stringliteral">            AppLayout: the widget.</span></div>
+<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>        <span class="comment"># Arrange buttons in a row</span></div>
+<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>        insert_button_row = HBox(</div>
+<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>            [VBox(layout=Layout(padding=<span class="stringliteral">&quot;0px 0px 0px 6px&quot;</span>)), *self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae53e314f0aa64014e77d869bbc0b3e41">m_insert_buttons</a>],</div>
+<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>            layout=Layout(</div>
+<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>                flex_flow=<span class="stringliteral">&quot;row wrap&quot;</span>,  <span class="comment"># or &quot;column&quot; depending on your layout needs</span></div>
+<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>                justify_content=<span class="stringliteral">&quot;center&quot;</span>,  <span class="comment"># Left alignment</span></div>
+<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>                align_items=<span class="stringliteral">&quot;center&quot;</span>,  <span class="comment"># Top alignment</span></div>
+<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span>            ),</div>
+<div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>        )</div>
+<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>        control_buttons_col = HBox(</div>
+<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span>            [VBox(list(self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#aa0cab8ed9fc3fc3828743e8140a4d2b9">m_control_buttons</a>.values()))],</div>
+<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>            layout=Layout(</div>
+<div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>                flex_flow=<span class="stringliteral">&quot;row wrap&quot;</span>,  <span class="comment"># or &quot;column&quot; depending on your layout needs</span></div>
+<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>                justify_content=<span class="stringliteral">&quot;flex-end&quot;</span>,</div>
+<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>                align_items=<span class="stringliteral">&quot;center&quot;</span>,  <span class="comment"># bottom alignment</span></div>
+<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>            ),</div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>        )</div>
+<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span> </div>
+<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>        column_label_row = self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a3dde63ddaf5ff642f60c9c4d8da942c9">_create_column_labels</a>()</div>
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span> </div>
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>        right = VBox(</div>
+<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>            [self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a10208223f8724e92e690d6ccbb47eb29">move_list_row</a>],</div>
+<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>            layout=Layout(</div>
+<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>                flex_flow=<span class="stringliteral">&quot;column&quot;</span>,</div>
+<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>                justify_content=<span class="stringliteral">&quot;flex-start&quot;</span>,</div>
+<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>                align_items=<span class="stringliteral">&quot;stretch&quot;</span>,</div>
+<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>                width=<span class="stringliteral">&quot;200px&quot;</span>,</div>
+<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>                height=<span class="stringliteral">&quot;90%&quot;</span>,  <span class="comment"># NEW: fill AppLayout height</span></div>
+<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>                flex=<span class="stringliteral">&quot;1 1 auto&quot;</span>,  <span class="comment"># NEW: allow it to grow</span></div>
+<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>            ),</div>
+<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>        )</div>
+<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span> </div>
+<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>        main = HBox(</div>
+<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>            [</div>
+<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>                VBox(</div>
+<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>                    [</div>
+<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>                        self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a0a28d832baa43e2db2da75eab2267cdd">player_select_row</a>,</div>
+<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span>                        insert_button_row,</div>
+<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>                        self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a42896183c3c87b7718a79b1d4db4d166">output</a>,</div>
+<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>                        column_label_row,</div>
+<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>                        self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a944e115887b98814802456597a1c78c2">m_eval_row</a>,</div>
+<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>                        self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1b178f4e5ed20a64ae997c65075ec3e">m_time_row</a>,</div>
+<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>                    ],</div>
+<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>                    layout=Layout(</div>
+<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>                        display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>                        flex_flow=<span class="stringliteral">&quot;column&quot;</span>,</div>
+<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>                        align_items=<span class="stringliteral">&quot;flex-start&quot;</span>,</div>
+<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>                    ),</div>
+<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>                ),</div>
+<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>                right,</div>
+<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>            ],</div>
+<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>            layout=Layout(</div>
+<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>                display=<span class="stringliteral">&quot;flex&quot;</span>,</div>
+<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>                flex_flow=<span class="stringliteral">&quot;row&quot;</span>,</div>
+<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>                align_items=<span class="stringliteral">&quot;flex-start&quot;</span>,</div>
+<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>                justify_content=<span class="stringliteral">&quot;flex-start&quot;</span>,</div>
+<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>                gap=<span class="stringliteral">&quot;5px&quot;</span>,  <span class="comment"># space between board and sidebar</span></div>
+<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span>                width=<span class="stringliteral">&quot;100%&quot;</span>,</div>
+<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>            ),</div>
+<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>        )</div>
+<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span> </div>
+<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>        <span class="keywordflow">return</span> AppLayout(</div>
+<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>            header=<span class="keywordtype">None</span>,</div>
+<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>            left_sidebar=control_buttons_col,</div>
+<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>            center=main,</div>
+<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>            right_sidebar=<span class="keywordtype">None</span>,  <span class="comment"># &lt;= important</span></div>
+<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>            footer=<span class="keywordtype">None</span>,</div>
+<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>            layout=Layout(grid_gap=<span class="stringliteral">&quot;0px&quot;</span>),</div>
+<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>        )</div>
+<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span> </div>
 </div>
-<div class="foldopen" id="foldopen00940" data-start="" data-end="">
-<div class="line"><a id="l00940" name="l00940"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae492ec0d0f83bed0f261856555133cce">  940</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae492ec0d0f83bed0f261856555133cce">_maybe_autoplay</a>(self) -&gt; None:</div>
-<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>        <span class="stringliteral">&quot;&quot;&quot;If it&#39;s an agent-controlled turn, immediately play its move.&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>        <span class="keywordflow">if</span> self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#adb1b32213f759d595d0b471e4a28f2be">is_busy</a> <span class="keywordflow">or</span> self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#acb21a3ea47f98bb5e7342578a687283c">m_gameover</a>:</div>
-<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>            <span class="keywordflow">return</span></div>
-<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>        <span class="keywordflow">if</span> self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9f46e5a8b98895725d82a7d011cf5c42">_agent_for_player</a>(self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a016420d82729880e855e1851b06a354d">_current_player</a>()) <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span>            <span class="keywordflow">return</span></div>
-<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>        self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ab8355f95b9b352f205abca15d2f25a3d">_computer_move</a>()</div>
-<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span> </div>
+<div class="foldopen" id="foldopen00946" data-start="" data-end="">
+<div class="line"><a id="l00946" name="l00946"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae492ec0d0f83bed0f261856555133cce">  946</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae492ec0d0f83bed0f261856555133cce">_maybe_autoplay</a>(self) -&gt; None:</div>
+<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>        <span class="stringliteral">&quot;&quot;&quot;If it&#39;s an agent-controlled turn, immediately play its move.&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span>        <span class="keywordflow">if</span> self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#adb1b32213f759d595d0b471e4a28f2be">is_busy</a> <span class="keywordflow">or</span> self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#acb21a3ea47f98bb5e7342578a687283c">m_gameover</a>:</div>
+<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>            <span class="keywordflow">return</span></div>
+<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>        <span class="keywordflow">if</span> self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9f46e5a8b98895725d82a7d011cf5c42">_agent_for_player</a>(self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a016420d82729880e855e1851b06a354d">_current_player</a>()) <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>            <span class="keywordflow">return</span></div>
+<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>        self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ab8355f95b9b352f205abca15d2f25a3d">_computer_move</a>()</div>
+<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span> </div>
 </div>
-<div class="foldopen" id="foldopen00948" data-start="" data-end="">
-<div class="line"><a id="l00948" name="l00948"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#addeb5675aa795bbbf75d18290b4f9e47">  948</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#addeb5675aa795bbbf75d18290b4f9e47">_check_winner</a>(self, board: Board) -&gt; <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>        <span class="stringliteral">&quot;&quot;&quot;Check for Win or draw.&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>        <span class="keywordflow">if</span> board.has_win():</div>
-<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>            winner = <span class="stringliteral">&quot;Yellow (🟡)&quot;</span> <span class="keywordflow">if</span> board.winner() == 1 <span class="keywordflow">else</span> <span class="stringliteral">&quot;Red (🔴)&quot;</span></div>
-<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>            msg = f<span class="stringliteral">&quot;🏆 Game over! {winner} wins!&quot;</span></div>
-<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9414c387e67e8c2f13638baf135a5572">m_status_label</a>.value = msg</div>
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>            self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a8066373c4f57497c4625040894034a3d">_popup</a>(msg)</div>
-<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#acb21a3ea47f98bb5e7342578a687283c">m_gameover</a> = <span class="keyword">True</span></div>
-<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>        <span class="keywordflow">elif</span> board.is_full():</div>
-<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>            msg = <span class="stringliteral">&quot;🤝 Game over! It&#39;s a draw!&quot;</span></div>
-<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9414c387e67e8c2f13638baf135a5572">m_status_label</a>.value = msg</div>
-<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>            self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a8066373c4f57497c4625040894034a3d">_popup</a>(msg)</div>
-<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#acb21a3ea47f98bb5e7342578a687283c">m_gameover</a> = <span class="keyword">True</span></div>
-<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span> </div>
+<div class="foldopen" id="foldopen00954" data-start="" data-end="">
+<div class="line"><a id="l00954" name="l00954"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#addeb5675aa795bbbf75d18290b4f9e47">  954</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#addeb5675aa795bbbf75d18290b4f9e47">_check_winner</a>(self, board: Board) -&gt; <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>        <span class="stringliteral">&quot;&quot;&quot;Check for Win or draw.&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>        <span class="keywordflow">if</span> board.has_win():</div>
+<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>            winner = <span class="stringliteral">&quot;Yellow (🟡)&quot;</span> <span class="keywordflow">if</span> board.winner() == 1 <span class="keywordflow">else</span> <span class="stringliteral">&quot;Red (🔴)&quot;</span></div>
+<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>            msg = f<span class="stringliteral">&quot;🏆 Game over! {winner} wins!&quot;</span></div>
+<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9414c387e67e8c2f13638baf135a5572">m_status_label</a>.value = msg</div>
+<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>            self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a8066373c4f57497c4625040894034a3d">_popup</a>(msg)</div>
+<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#acb21a3ea47f98bb5e7342578a687283c">m_gameover</a> = <span class="keyword">True</span></div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>        <span class="keywordflow">elif</span> board.is_full():</div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>            msg = <span class="stringliteral">&quot;🤝 Game over! It&#39;s a draw!&quot;</span></div>
+<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9414c387e67e8c2f13638baf135a5572">m_status_label</a>.value = msg</div>
+<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>            self.<a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a8066373c4f57497c4625040894034a3d">_popup</a>(msg)</div>
+<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>            self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#acb21a3ea47f98bb5e7342578a687283c">m_gameover</a> = <span class="keyword">True</span></div>
+<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span> </div>
 </div>
-<div class="foldopen" id="foldopen00962" data-start="" data-end="">
-<div class="line"><a id="l00962" name="l00962"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e">  962</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e">destroy</a>(self) -&gt; None:</div>
-<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>        <span class="stringliteral">&quot;&quot;&quot;Destroy and release the acquired resources.&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>        plt.close(self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a21e3e8f1ae0f1553400b5f2725bd7cd8">m_fig</a>)</div>
-<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>        del self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a4d90c29ba040d23093054e4fdb6570bd">agents</a></div>
-<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>        del self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9c8311e1af38e99e0ce68e0934d8dc57">m_axs</a></div>
-<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>        del self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a21e3e8f1ae0f1553400b5f2725bd7cd8">m_fig</a></div>
-<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>        del self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a42896183c3c87b7718a79b1d4db4d166">output</a></div>
+<div class="foldopen" id="foldopen00968" data-start="" data-end="">
+<div class="line"><a id="l00968" name="l00968"></a><span class="lineno"><a class="line" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e">  968</a></span>    <span class="keyword">def </span><a class="code hl_function" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e">destroy</a>(self) -&gt; None:</div>
+<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>        <span class="stringliteral">&quot;&quot;&quot;Destroy and release the acquired resources.&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>        plt.close(self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a21e3e8f1ae0f1553400b5f2725bd7cd8">m_fig</a>)</div>
+<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>        del self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a4d90c29ba040d23093054e4fdb6570bd">agents</a></div>
+<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>        del self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9c8311e1af38e99e0ce68e0934d8dc57">m_axs</a></div>
+<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span>        del self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a21e3e8f1ae0f1553400b5f2725bd7cd8">m_fig</a></div>
+<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>        del self.<a class="code hl_variable" href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a42896183c3c87b7718a79b1d4db4d166">output</a></div>
 </div>
 </div>
 <div class="ttc" id="aclassbitbully_1_1board_1_1Board_html"><div class="ttname"><a href="../../d9/d83/classbitbully_1_1board_1_1Board.html">bitbully.board.Board</a></div><div class="ttdef"><b>Definition</b> <a href="../../df/d85/board_8py_source.html#l00012">board.py:12</a></div></div>
@@ -1128,10 +1134,10 @@ $(function(){initNavTree('d0/d30/gui__c4_8py_source.html','../../',''); });
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a2319b4057f32f99fc494af03ac64ef3e"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a2319b4057f32f99fc494af03ac64ef3e">bitbully.gui_c4.GuiC4._copy_position_string</a></div><div class="ttdeci">None _copy_position_string(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00362">gui_c4.py:362</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a252f80f807d5600507ea0c968fdede75"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a252f80f807d5600507ea0c968fdede75">bitbully.gui_c4.GuiC4.m_eval_labels</a></div><div class="ttdeci">list m_eval_labels</div><div class="ttdef"><b>Definition</b> <a href="#l00465">gui_c4.py:465</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a263bd699bb06be6129a9d6506d116656"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a263bd699bb06be6129a9d6506d116656">bitbully.gui_c4.GuiC4.m_height</a></div><div class="ttdeci">m_height</div><div class="ttdef"><b>Definition</b> <a href="#l00097">gui_c4.py:97</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a276722dae16ec33e096afb8f28d9721e"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e">bitbully.gui_c4.GuiC4.destroy</a></div><div class="ttdeci">None destroy(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00962">gui_c4.py:962</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a276722dae16ec33e096afb8f28d9721e"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e">bitbully.gui_c4.GuiC4.destroy</a></div><div class="ttdeci">None destroy(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00968">gui_c4.py:968</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a2c68b59f16ec0d35d94902764640f5a3"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a2c68b59f16ec0d35d94902764640f5a3">bitbully.gui_c4.GuiC4.m_logger</a></div><div class="ttdeci">m_logger</div><div class="ttdef"><b>Definition</b> <a href="#l00063">gui_c4.py:63</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a2e98a89dcf771e32dd38e65bdd87aaad"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a2e98a89dcf771e32dd38e65bdd87aaad">bitbully.gui_c4.GuiC4._copy_moves_ag</a></div><div class="ttdeci">None _copy_moves_ag(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00366">gui_c4.py:366</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a30c2c5e0a13e6f49762f3abeda6b056b"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a30c2c5e0a13e6f49762f3abeda6b056b">bitbully.gui_c4.GuiC4._on_field_click</a></div><div class="ttdeci">None _on_field_click(self, mpl_backend_bases.Event event)</div><div class="ttdef"><b>Definition</b> <a href="#l00833">gui_c4.py:833</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a30c2c5e0a13e6f49762f3abeda6b056b"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a30c2c5e0a13e6f49762f3abeda6b056b">bitbully.gui_c4.GuiC4._on_field_click</a></div><div class="ttdeci">None _on_field_click(self, mpl_backend_bases.Event event)</div><div class="ttdef"><b>Definition</b> <a href="#l00839">gui_c4.py:839</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a368e0ca3bf680eb49b13ec71a05a3893"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a368e0ca3bf680eb49b13ec71a05a3893">bitbully.gui_c4.GuiC4._moves_ag_string</a></div><div class="ttdeci">str _moves_ag_string(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00318">gui_c4.py:318</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a3d4e2c4a6ccbfbd8152831162fe89753"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a3d4e2c4a6ccbfbd8152831162fe89753">bitbully.gui_c4.GuiC4.dd_red</a></div><div class="ttdeci">dd_red</div><div class="ttdef"><b>Definition</b> <a href="#l00171">gui_c4.py:171</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_a3dde63ddaf5ff642f60c9c4d8da942c9"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a3dde63ddaf5ff642f60c9c4d8da942c9">bitbully.gui_c4.GuiC4._create_column_labels</a></div><div class="ttdeci">HBox _create_column_labels(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00808">gui_c4.py:808</a></div></div>
@@ -1181,11 +1187,11 @@ $(function(){initNavTree('d0/d30/gui__c4_8py_source.html','../../',''); });
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_adb1b32213f759d595d0b471e4a28f2be"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#adb1b32213f759d595d0b471e4a28f2be">bitbully.gui_c4.GuiC4.is_busy</a></div><div class="ttdeci">bool is_busy</div><div class="ttdef"><b>Definition</b> <a href="#l00101">gui_c4.py:101</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_adba205cc0228d95ab13b6ebaae7d7b6b"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#adba205cc0228d95ab13b6ebaae7d7b6b">bitbully.gui_c4.GuiC4._get_img_idx</a></div><div class="ttdeci">int _get_img_idx(self, int col, int row)</div><div class="ttdef"><b>Definition</b> <a href="#l00743">gui_c4.py:743</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_addd687076c5ff95ffcd82f74f50423eb"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#addd687076c5ff95ffcd82f74f50423eb">bitbully.gui_c4.GuiC4.m_board_size</a></div><div class="ttdeci">float m_board_size</div><div class="ttdef"><b>Definition</b> <a href="#l00099">gui_c4.py:99</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_addeb5675aa795bbbf75d18290b4f9e47"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#addeb5675aa795bbbf75d18290b4f9e47">bitbully.gui_c4.GuiC4._check_winner</a></div><div class="ttdeci">None _check_winner(self, Board board)</div><div class="ttdef"><b>Definition</b> <a href="#l00948">gui_c4.py:948</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_ae1334fcc19604c05bd712359811a7f8d"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1334fcc19604c05bd712359811a7f8d">bitbully.gui_c4.GuiC4.get_widget</a></div><div class="ttdeci">AppLayout get_widget(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00852">gui_c4.py:852</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_addeb5675aa795bbbf75d18290b4f9e47"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#addeb5675aa795bbbf75d18290b4f9e47">bitbully.gui_c4.GuiC4._check_winner</a></div><div class="ttdeci">None _check_winner(self, Board board)</div><div class="ttdef"><b>Definition</b> <a href="#l00954">gui_c4.py:954</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_ae1334fcc19604c05bd712359811a7f8d"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1334fcc19604c05bd712359811a7f8d">bitbully.gui_c4.GuiC4.get_widget</a></div><div class="ttdeci">AppLayout get_widget(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00858">gui_c4.py:858</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_ae1b178f4e5ed20a64ae997c65075ec3e"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1b178f4e5ed20a64ae997c65075ec3e">bitbully.gui_c4.GuiC4.m_time_row</a></div><div class="ttdeci">m_time_row</div><div class="ttdef"><b>Definition</b> <a href="#l00255">gui_c4.py:255</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_ae2449ffc90e2da958e60342acd5f3544"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae2449ffc90e2da958e60342acd5f3544">bitbully.gui_c4.GuiC4.m_redolist</a></div><div class="ttdeci">list m_redolist</div><div class="ttdef"><b>Definition</b> <a href="#l00150">gui_c4.py:150</a></div></div>
-<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_ae492ec0d0f83bed0f261856555133cce"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae492ec0d0f83bed0f261856555133cce">bitbully.gui_c4.GuiC4._maybe_autoplay</a></div><div class="ttdeci">None _maybe_autoplay(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00940">gui_c4.py:940</a></div></div>
+<div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_ae492ec0d0f83bed0f261856555133cce"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae492ec0d0f83bed0f261856555133cce">bitbully.gui_c4.GuiC4._maybe_autoplay</a></div><div class="ttdeci">None _maybe_autoplay(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00946">gui_c4.py:946</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_ae5127e49ba6a3b0066a296abcb3d0c9b"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae5127e49ba6a3b0066a296abcb3d0c9b">bitbully.gui_c4.GuiC4._create_buttons</a></div><div class="ttdeci">None _create_buttons(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00793">gui_c4.py:793</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_ae53e314f0aa64014e77d869bbc0b3e41"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae53e314f0aa64014e77d869bbc0b3e41">bitbully.gui_c4.GuiC4.m_insert_buttons</a></div><div class="ttdeci">list m_insert_buttons</div><div class="ttdef"><b>Definition</b> <a href="#l00623">gui_c4.py:623</a></div></div>
 <div class="ttc" id="aclassbitbully_1_1gui__c4_1_1GuiC4_html_af0a79f8bd3d42d0c072be6f227faf6e2"><div class="ttname"><a href="../../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#af0a79f8bd3d42d0c072be6f227faf6e2">bitbully.gui_c4.GuiC4._create_control_buttons</a></div><div class="ttdeci">None _create_control_buttons(self)</div><div class="ttdef"><b>Definition</b> <a href="#l00426">gui_c4.py:426</a></div></div>
