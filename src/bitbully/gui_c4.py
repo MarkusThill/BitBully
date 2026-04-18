@@ -791,16 +791,19 @@ class GuiC4:
         self.m_fig.canvas.flush_events()
 
     def _create_buttons(self) -> None:
-        # Create buttons for each column
-        self.m_logger.debug("Figure size: %s", self._get_fig_size_px())
-
-        fig_size_px = self._get_fig_size_px()
+        # Remove pixel-based width calculation; let flexbox distribute evenly
+        # self.m_logger.debug("Figure size: %s", self._get_fig_size_px())
+        # fig_size_px = self._get_fig_size_px()
 
         self.m_insert_buttons = []
         for col in range(self.m_n_col):
             button = Button(
                 description="⏬",
-                layout=Layout(width=f"{-4 + (fig_size_px[0] / self.m_n_col)}px", height="50px"),
+                layout=Layout(
+                    width="auto",  # let flexbox control width
+                    flex="1 1 0",  # all 7 buttons share row evenly
+                    height="50px",
+                ),
             )
             button.on_click(lambda b, col=col: self._insert_token(col))
             self.m_insert_buttons.append(button)
@@ -811,13 +814,12 @@ class GuiC4:
         Returns:
             HBox: A row of labels numbered 0 to ``m_n_col - 1``.
         """
-        fig_size_px = self._get_fig_size_px()
-        col_width = f"{-3 + (fig_size_px[0] / self.m_n_col)}px"
         labels = [
             widgets.Label(
                 value=str(i),
                 layout=Layout(
-                    width=col_width,
+                    width="auto",
+                    flex="1 1 0",
                     display="flex",
                     justify_content="center",
                     align_items="center",
@@ -830,9 +832,11 @@ class GuiC4:
             layout=Layout(
                 display="flex",
                 flex_flow="row",
-                justify_content="center",
+                justify_content="space-between",
                 align_items="center",
-                margin="0px 0px 0px 0px",
+                width="100%",
+                padding="0px 6px 0px 6px",  # NEW: match buttons/figure padding
+                margin="0px",
             ),
         )
 
@@ -872,25 +876,53 @@ class GuiC4:
         """
         # Arrange buttons in a row
         insert_button_row = HBox(
-            [VBox(layout=Layout(padding="0px 0px 0px 6px")), *self.m_insert_buttons],
+            self.m_insert_buttons,
             layout=Layout(
                 display="flex",
-                flex_flow="row wrap",  # or "column" depending on your layout needs
-                justify_content="center",  # Left alignment
-                align_items="center",  # Top alignment
-            ),
-        )
-        control_buttons_col = HBox(
-            [VBox(list(self.m_control_buttons.values()))],
-            layout=Layout(
-                display="flex",
-                flex_flow="row wrap",  # or "column" depending on your layout needs
-                justify_content="flex-end",
-                align_items="center",  # bottom alignment
+                flex_flow="row",
+                justify_content="space-between",
+                align_items="center",
+                width="100%",
+                padding="0px 5px 0px 5px",  # CHANGED: more left than right
             ),
         )
 
         column_label_row = self._create_column_labels()
+
+        board_figure_row = HBox(
+            [self.output],
+            layout=Layout(
+                width="100%",
+                padding="0px 0px 0px 0px",  # CHANGED: match buttons
+            ),
+        )
+
+        board_container = VBox(
+            [
+                self.player_select_row,
+                insert_button_row,
+                board_figure_row,
+                column_label_row,
+                self.m_eval_row,
+                self.m_time_row,
+            ],
+            layout=Layout(
+                display="flex",
+                flex_flow="column",
+                align_items="stretch",
+                width="420px",
+            ),
+        )
+
+        control_buttons_col = HBox(
+            [VBox(list(self.m_control_buttons.values()))],
+            layout=Layout(
+                display="flex",
+                flex_flow="row wrap",
+                justify_content="flex-end",
+                align_items="center",
+            ),
+        )
 
         right = VBox(
             [self.move_list_row],
@@ -900,28 +932,14 @@ class GuiC4:
                 justify_content="flex-start",
                 align_items="stretch",
                 width="200px",
-                height="90%",  # NEW: fill AppLayout height
-                flex="1 1 auto",  # NEW: allow it to grow
+                height="90%",
+                flex="1 1 auto",
             ),
         )
 
         main = HBox(
             [
-                VBox(
-                    [
-                        self.player_select_row,
-                        insert_button_row,
-                        self.output,
-                        column_label_row,
-                        self.m_eval_row,
-                        self.m_time_row,
-                    ],
-                    layout=Layout(
-                        display="flex",
-                        flex_flow="column",
-                        align_items="flex-start",
-                    ),
-                ),
+                board_container,
                 right,
             ],
             layout=Layout(
@@ -929,7 +947,7 @@ class GuiC4:
                 flex_flow="row",
                 align_items="flex-start",
                 justify_content="flex-start",
-                gap="5px",  # space between board and sidebar
+                gap="5px",
                 width="100%",
             ),
         )
@@ -938,7 +956,7 @@ class GuiC4:
             header=None,
             left_sidebar=control_buttons_col,
             center=main,
-            right_sidebar=None,  # <= important
+            right_sidebar=None,
             footer=None,
             layout=Layout(grid_gap="0px"),
         )

@@ -124,7 +124,7 @@ class BitBully:
 
         """
         self.opening_book_type: OpeningBookName | None = opening_book
-        self.tie_break = tie_break if tie_break is not None else "center"
+        self.tie_break: TieBreakStrategy = tie_break if tie_break is not None else "center"
         self.rng = rng if rng is not None else random.Random()
         self.max_depth = max_depth
 
