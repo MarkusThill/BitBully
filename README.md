@@ -28,8 +28,8 @@
 > - **Perfect play** for Connect Four
 > - **Fast C++ core** with Python bindings via `pybind11`
 > - **Optimized bitboards**, transposition tables, threat detection, and advanced search
-> - **Opening-book support** for constant-time early-game lookups
-> - **Benchmarked** to solve the empty board in **under 200 seconds** on modest hardware
+> - **Opening-book support** for constant-time early-game lookups in milliseconds
+> - **Benchmarked** to solve the empty board in **under 200 seconds** on modest hardware (with no opening books)
 
 <p align="center">
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-1-1400.webp"
