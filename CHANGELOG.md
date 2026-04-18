@@ -1,3 +1,9 @@
+## v0.0.78 (2026-04-18)
+
+### Fix
+
+- addressed issues with too large buttons in gui
+
 ## v0.0.77 (2026-04-12)
 
 ### Fix
