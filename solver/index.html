@@ -1989,6 +1989,28 @@
 
 
   <div class="doc doc-backlinks">
+        <b class="doc doc-backlink-type">Returned by:</b>
+          <ul class="doc doc-backlink-list">
+      <li class="doc doc-backlink">
+            <span class="doc doc-backlink-crumb">
+      <span>BitBully API Reference</span>
+  </span>
+
+            <span class="doc doc-backlink-crumb">
+      <a href="#src.bitbully.solver"><code class="doc-symbol doc-symbol-toc doc-symbol-module"></code>&nbsp;solver</a>
+  </span>
+
+            <span class="doc doc-backlink-crumb">
+      <a href="#src.bitbully.solver.BitBully"><code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;BitBully</a>
+  </span>
+
+            <span class="doc doc-backlink-crumb last">
+      <a href="#src.bitbully.solver.BitBully.tie_break"><code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;tie_break</a>
+  </span>
+
+      </li>
+  </ul>
+
         <b class="doc doc-backlink-type">Used by:</b>
           <ul class="doc doc-backlink-list">
       <li class="doc doc-backlink">
@@ -2000,8 +2022,12 @@
       <a href="#src.bitbully.solver"><code class="doc-symbol doc-symbol-toc doc-symbol-module"></code>&nbsp;solver</a>
   </span>
 
-            <span class="doc doc-backlink-crumb last">
+            <span class="doc doc-backlink-crumb">
       <a href="#src.bitbully.solver.BitBully"><code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;BitBully</a>
+  </span>
+
+            <span class="doc doc-backlink-crumb last">
+      <a href="#src.bitbully.solver.BitBully.best_move"><code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;best_move</a>
   </span>
 
       </li>
@@ -2418,6 +2444,12 @@ non-losing moves is performed instead of continuing the search.
       instance-attribute
    (src.bitbully.solver.BitBully.tie_break)" href="#src.bitbully.solver.BitBully.tie_break">tie_break</a></code></td>
             <td>
+                  <code><a class="autorefs autorefs-internal" title="            TieBreakStrategy
+
+
+  
+      module-attribute
+   (src.bitbully.solver.TieBreakStrategy)" href="#src.bitbully.solver.TieBreakStrategy">TieBreakStrategy</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2507,7 +2539,7 @@ non-losing moves is performed instead of continuing the search.
 </span><span id="__span-0-124"><a id="__codelineno-0-124" name="__codelineno-0-124"></a>
 </span><span id="__span-0-125"><a id="__codelineno-0-125" name="__codelineno-0-125"></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="__span-0-126"><a id="__codelineno-0-126" name="__codelineno-0-126"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">opening_book_type</span><span class="p">:</span> <span class="n">OpeningBookName</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">opening_book</span>
-</span><span id="__span-0-127"><a id="__codelineno-0-127" name="__codelineno-0-127"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">tie_break</span> <span class="o">=</span> <span class="n">tie_break</span> <span class="k">if</span> <span class="n">tie_break</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;center&quot;</span>
+</span><span id="__span-0-127"><a id="__codelineno-0-127" name="__codelineno-0-127"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">tie_break</span><span class="p">:</span> <span class="n">TieBreakStrategy</span> <span class="o">=</span> <span class="n">tie_break</span> <span class="k">if</span> <span class="n">tie_break</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;center&quot;</span>
 </span><span id="__span-0-128"><a id="__codelineno-0-128" name="__codelineno-0-128"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">rng</span> <span class="o">=</span> <span class="n">rng</span> <span class="k">if</span> <span class="n">rng</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">()</span>
 </span><span id="__span-0-129"><a id="__codelineno-0-129" name="__codelineno-0-129"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span>
 </span><span id="__span-0-130"><a id="__codelineno-0-130" name="__codelineno-0-130"></a>
@@ -2619,7 +2651,12 @@ non-losing moves is performed instead of continuing the search.
   </span>
 
 </h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">tie_break</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="tie_break (src.bitbully.solver.BitBully(tie_break))" href="#src.bitbully.solver.BitBully(tie_break)">tie_break</a></span> <span class="k">if</span> <span class="n"><a class="autorefs autorefs-internal" title="tie_break (src.bitbully.solver.BitBully(tie_break))" href="#src.bitbully.solver.BitBully(tie_break)">tie_break</a></span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;center&#39;</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">tie_break</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            TieBreakStrategy
+
+
+  
+      module-attribute
+   (src.bitbully.solver.TieBreakStrategy)" href="#src.bitbully.solver.TieBreakStrategy">TieBreakStrategy</a></span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="tie_break (src.bitbully.solver.BitBully(tie_break))" href="#src.bitbully.solver.BitBully(tie_break)">tie_break</a></span> <span class="k">if</span> <span class="n"><a class="autorefs autorefs-internal" title="tie_break (src.bitbully.solver.BitBully(tie_break))" href="#src.bitbully.solver.BitBully(tie_break)">tie_break</a></span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;center&#39;</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
