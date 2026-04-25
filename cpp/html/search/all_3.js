@@ -12,7 +12,7 @@ var searchData=
   ['column_5fbit_5foffset_9',['COLUMN_BIT_OFFSET',['../classBitBully_1_1Board.html#aface955fc064371e8b19d7dda9946bb3',1,'BitBully::Board']]],
   ['configure_20build_10',['Configure &amp;amp; build',['../build_and_test.html#autotoc_md6',1,'']]],
   ['connect_204_20engine_11',['BitBully — Connect-4 Engine',['../index.html',1,'']]],
-  ['connect_204_20game_20solver_12',['Connect 4 Game Solver',['..//home/runner/work/BitBully/BitBully/thirdParty/connect4/README.md#autotoc_md0',1,'']]],
+  ['connect_204_20game_20solver_12',['Connect 4 Game Solver',['../dir_9104d72bed8434ec2cfb86b9210bb1bb.html#autotoc_md0',1,'']]],
   ['convention_13',['Score convention',['../architecture.html#autotoc_md4',1,'']]],
   ['convertvalue_14',['convertValue',['../classBitBully_1_1OpeningBook.html#a8d285671ab0cbd1e0625ac219d8dbcf0',1,'BitBully::OpeningBook']]],
   ['copy_15',['copy',['../classBitBully_1_1Board.html#a55efa3bbf52314250a60c7b0ece0dc90',1,'BitBully::Board']]],

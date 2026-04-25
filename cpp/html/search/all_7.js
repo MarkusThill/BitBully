@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['game_20solver_0',['Connect 4 Game Solver',['..//home/runner/work/BitBully/BitBully/thirdParty/connect4/README.md#autotoc_md0',1,'']]],
+  ['game_20solver_0',['Connect 4 Game Solver',['../dir_9104d72bed8434ec2cfb86b9210bb1bb.html#autotoc_md0',1,'']]],
   ['generatenonlosingmoves_1',['generateNonLosingMoves',['../classBitBully_1_1Board.html#a952c36a7a0faafbc49ab18f393ff6f6c',1,'BitBully::Board']]],
   ['get_2',['get',['../classBitBully_1_1TranspositionTable.html#a8fa5ea26f9517402b084d8f604245a73',1,'BitBully::TranspositionTable::get()'],['../classGameSolver_1_1Connect4_1_1TranspositionTable.html#a7e05429233ef4d5c5d8fbc9b3d7467bc',1,'GameSolver::Connect4::TranspositionTable::get()']]],
   ['getboardvalue_3',['getBoardValue',['../classBitBully_1_1OpeningBook.html#ae1ebbea6e8f17a91990556d077c8d7a4',1,'BitBully::OpeningBook']]],

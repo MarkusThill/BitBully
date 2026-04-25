@@ -10,10 +10,10 @@ var hierarchy =
     [ "GameSolver::Connect4::Position", "classGameSolver_1_1Connect4_1_1Position.html", null ],
     [ "BitBully::Board::RawState", "structBitBully_1_1Board_1_1RawState.html", null ],
     [ "GameSolver::Connect4::Solver", "classGameSolver_1_1Connect4_1_1Solver.html", null ],
-    [ "GameSolver::Connect4::TableGetter< key_t, value_t >", "classGameSolver_1_1Connect4_1_1TableGetter.html", [
+    [ "GameSolver::Connect4::TableGetter&lt; key_t, value_t &gt;", "classGameSolver_1_1Connect4_1_1TableGetter.html", [
       [ "GameSolver::Connect4::TranspositionTable< partial_key_t, key_t, value_t, log_size >", "classGameSolver_1_1Connect4_1_1TranspositionTable.html", null ]
     ] ],
-    [ "GameSolver::Connect4::TableGetter< Position::position_t, uint8_t >", "classGameSolver_1_1Connect4_1_1TableGetter.html", [
+    [ "GameSolver::Connect4::TableGetter&lt; Position::position_t, uint8_t &gt;", "classGameSolver_1_1Connect4_1_1TableGetter.html", [
       [ "GameSolver::Connect4::TranspositionTable< uint_t< Position::WIDTH *(Position::HEIGHT+1) - TABLE_SIZE >, Position::position_t, uint8_t, TABLE_SIZE >", "classGameSolver_1_1Connect4_1_1TranspositionTable.html", null ]
     ] ],
     [ "BitBully::TranspositionTable", "classBitBully_1_1TranspositionTable.html", null ]
