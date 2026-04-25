@@ -198,6 +198,8 @@ static constexpr uint64_t illegalBitMask() {
  * ```
  *
  * Bit indices for a column @c c and row @c r are @c c * 9 + r.
+ *
+ * @ingroup board
  */
 class Board {
   friend class BoardTest;

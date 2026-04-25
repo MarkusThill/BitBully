@@ -34,6 +34,8 @@ namespace BitBully {
  * Lookups use binary search over @ref Board::toHuffman() keys. Lookups
  * automatically check the mirrored variant if the original key is not in
  * the book, since only one of the two symmetric positions is stored on disk.
+ *
+ * @ingroup endgame
  */
 // TODO: guess database type from size of file!
 class OpeningBook {

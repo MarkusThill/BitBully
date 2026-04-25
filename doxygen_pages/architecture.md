@@ -7,28 +7,34 @@ specific function signatures, jump straight to the class index instead.
 
 ## High-level layering
 
-```
-+------------------------------+
-|        Python bindings        |   bitbully_core.cpp (pybind11)
-+--------------+---------------+
-               |
-               v
-+------------------------------+
-|       BitBully::BitBully      |   negamax + MTD(f) driver
-+--------------+---------------+
-               |
-       +-------+-------+
-       v               v
-+--------------+ +-------------------+
-|  Board       | | TranspositionTable|
-|  (bitboards) | | (direct-mapped)   |
-+--------------+ +-------------------+
-       |
-       v
-+------------------------------+
-|       OpeningBook             |   8-/12-ply pre-computed answers
-+------------------------------+
-```
+\dot
+digraph BitBullyArch {
+  rankdir=TB;
+  bgcolor="transparent";
+  node [shape=box, style="rounded,filled", fontname="Helvetica",
+        fillcolor="#fbf1d9", color="#a5781f"];
+  edge [color="#a5781f"];
+
+  py    [label="Python package\nbitbully.solver / bitbully.board",
+         fillcolor="#fdf9ee"];
+  core  [label="bitbully_core (pybind11)\nBoardCore / BitBullyCore / OpeningBookCore"];
+  bb    [label="BitBully::BitBully\nnegamax + MTD(f) driver",
+         URL="\ref BitBully::BitBully"];
+  board [label="BitBully::Board\nbitboards + move generation",
+         URL="\ref BitBully::Board"];
+  tt    [label="TranspositionTable\ndirect-mapped score cache",
+         URL="\ref BitBully::TranspositionTable"];
+  book  [label="OpeningBook\n8-/12-ply pre-computed answers",
+         URL="\ref BitBully::OpeningBook"];
+
+  py    -> core;
+  core  -> bb;
+  bb    -> board;
+  bb    -> tt;
+  bb    -> book;
+  board -> book [style=dashed, label="Huffman key"];
+}
+\enddot
 
 ## Bitboard layout
 

@@ -39,6 +39,8 @@ namespace BitBully {
  *
  * The helper @c scoreToMovesLeft converts these compact scores back into
  * the actual number of plies remaining.
+ *
+ * @ingroup search
  */
 class BitBully {
  private:
@@ -99,6 +101,17 @@ class BitBully {
   ///              negative = current player loses, 0 = draw).
   /// @param b     The board state for which the score was computed.
   /// @return Number of moves until the game concludes under perfect play.
+  ///
+  /// The encoding maps the absolute score to a final-ply count:
+  /// \f[
+  ///   \text{plies\_left}(s, b) =
+  ///     \begin{cases}
+  ///       \text{movesLeft}(b) & s = 0 \\
+  ///       \text{movesLeft}(b) - \bigl(2(|s| - 1) + \delta\bigr) & s \ne 0
+  ///     \end{cases}
+  /// \f]
+  /// where \f$\delta \in \{0, 1\}\f$ accounts for the parity of the side to
+  /// move (winning move falls on an even or odd ply).
   static int scoreToMovesLeft(const int score, const Board& b) noexcept {
     if (score == 0) {
       return b.movesLeft();
@@ -170,9 +183,7 @@ class BitBully {
    * @return Exact score of @p b (or a depth-limited approximation when
    *         @p maxDepth &ge; 0).
    *
-   * @par Reference
-   * Plaat, Schaeffer, Pijls and de Bruin, "Best-first Fixed-depth Minimax
-   * Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293.
+   * @sa @cite plaat96
    */
   int mtdf(const Board& b, const int firstGuess,
            const int maxDepth = -1) noexcept {

@@ -7,6 +7,8 @@
  * @ref BitBully::OpeningBook &mdash; as the Python types `BoardCore`,
  * `BitBullyCore` and `OpeningBookCore`. The Python package adds higher-level
  * conveniences on top of these primitives.
+ *
+ * @ingroup bindings
  */
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>

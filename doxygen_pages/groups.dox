@@ -1,0 +1,52 @@
+/**
+ * @file groups.dox
+ * @brief Doxygen module ("group") declarations for BitBully.
+ *
+ * The groups defined here populate the @em Modules navigation page,
+ * giving readers a topical entry point alongside the file/class hierarchy.
+ * Members are tagged into a group with `@ingroup <id>`.
+ */
+
+/**
+ * @defgroup board Board representation
+ * @brief Bitboard layout, move generation, threats, and serialization.
+ *
+ * Everything required to encode, mutate, and inspect a Connect-4 position.
+ * The bitboard packs the 7x6 grid into a single 64-bit integer with
+ * column-aligned guard bits; see @ref BitBully::Board for the full layout.
+ */
+
+/**
+ * @defgroup search Search engine
+ * @brief Negamax / alpha-beta / MTD(f) drivers and helpers.
+ *
+ * The solver is built around a fail-hard negamax with a transposition table,
+ * symmetry pruning, and Enhanced Transposition Cutoff (ETC). MTD(f) drives
+ * iterative null-window calls into negamax to converge on the exact score.
+ */
+
+/**
+ * @defgroup endgame Opening book and endgame tables
+ * @brief Pre-computed score lookups consulted before the search.
+ *
+ * Loaded once at startup, the opening book lets the solver short-circuit
+ * positions whose verdict is already known. Two formats are supported
+ * (8-ply / 12-ply, with or without distance-to-mate).
+ */
+
+/**
+ * @defgroup util Utilities
+ * @brief Small helpers used by the rest of the engine.
+ *
+ * Move ordering containers, score-encoding helpers, and other plumbing
+ * that does not belong to the board, search, or endgame layers.
+ */
+
+/**
+ * @defgroup bindings Python bindings
+ * @brief pybind11 layer exposing the engine to Python.
+ *
+ * Defines the @c bitbully_core extension module which becomes
+ * @c BoardCore / @c BitBullyCore / @c OpeningBookCore on the Python side.
+ * Higher-level conveniences live in the @c bitbully Python package.
+ */

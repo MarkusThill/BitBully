@@ -18,6 +18,8 @@ namespace BitBully {
  * ascending score so that @ref pop() can return the highest-scoring entry in
  * @c O(1). When two entries share the same score the FIFO order of insertion
  * is preserved.
+ *
+ * @ingroup util
  */
 class MoveList {
  public:

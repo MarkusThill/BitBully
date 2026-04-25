@@ -20,6 +20,8 @@ namespace BitBully {
  * to a single masking operation. A single slot is reserved per index;
  * collisions are simply overwritten. Each slot stores the Board's
  * @ref Board::uid() so that callers can recognise hash collisions.
+ *
+ * @ingroup search
  */
 class TranspositionTable {
  public:
