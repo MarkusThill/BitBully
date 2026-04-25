@@ -1,0 +1,5 @@
+<map id="src/MoveList.h" name="src/MoveList.h">
+<area shape="rect" id="Node000001" title="Tiny priority queue used by the engine for move ordering." alt="" coords="5,5,121,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="30,79,97,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,31,66,65,61,65,61,31"/>
+</map>

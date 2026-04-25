@@ -1,34 +1,20 @@
 var annotated_dup =
 [
-    [ "BitBully", null, [
-      [ "BitBully", "d9/d00/classBitBully_1_1BitBully.html", null ],
-      [ "Board", "d1/d9d/classBitBully_1_1Board.html", "d1/d9d/classBitBully_1_1Board" ],
-      [ "MoveList", "d7/d3c/classBitBully_1_1MoveList.html", null ],
-      [ "OpeningBook", "d2/d9f/classBitBully_1_1OpeningBook.html", null ],
-      [ "TranspositionTable", "db/dc6/classBitBully_1_1TranspositionTable.html", "db/dc6/classBitBully_1_1TranspositionTable" ]
-    ] ],
-    [ "bitbully", "d4/dde/namespacebitbully.html", [
-      [ "agent_interface", "d2/d0a/namespacebitbully_1_1agent__interface.html", [
-        [ "Connect4Agent", "d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html", "d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent" ]
-      ] ],
-      [ "board", "d5/d0e/namespacebitbully_1_1board.html", [
-        [ "Board", "d9/d83/classbitbully_1_1board_1_1Board.html", "d9/d83/classbitbully_1_1board_1_1Board" ]
-      ] ],
-      [ "gui_c4", "d5/d32/namespacebitbully_1_1gui__c4.html", [
-        [ "GuiC4", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html", "df/d22/classbitbully_1_1gui__c4_1_1GuiC4" ]
-      ] ],
-      [ "solver", "d4/d55/namespacebitbully_1_1solver.html", [
-        [ "BitBully", "dc/d09/classbitbully_1_1solver_1_1BitBully.html", "dc/d09/classbitbully_1_1solver_1_1BitBully" ]
-      ] ]
+    [ "BitBully", "namespaceBitBully.html", [
+      [ "BitBully", "classBitBully_1_1BitBully.html", "classBitBully_1_1BitBully" ],
+      [ "Board", "classBitBully_1_1Board.html", "classBitBully_1_1Board" ],
+      [ "MoveList", "classBitBully_1_1MoveList.html", "classBitBully_1_1MoveList" ],
+      [ "OpeningBook", "classBitBully_1_1OpeningBook.html", "classBitBully_1_1OpeningBook" ],
+      [ "TranspositionTable", "classBitBully_1_1TranspositionTable.html", "classBitBully_1_1TranspositionTable" ]
     ] ],
     [ "GameSolver", null, [
       [ "Connect4", null, [
-        [ "MoveSorter", "d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html", "d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter" ],
-        [ "OpeningBook", "d3/d78/classGameSolver_1_1Connect4_1_1OpeningBook.html", "d3/d78/classGameSolver_1_1Connect4_1_1OpeningBook" ],
-        [ "Position", "d4/d9b/classGameSolver_1_1Connect4_1_1Position.html", "d4/d9b/classGameSolver_1_1Connect4_1_1Position" ],
-        [ "Solver", "d3/dcd/classGameSolver_1_1Connect4_1_1Solver.html", null ],
-        [ "TableGetter", "d7/ddf/classGameSolver_1_1Connect4_1_1TableGetter.html", null ],
-        [ "TranspositionTable", "d2/d52/classGameSolver_1_1Connect4_1_1TranspositionTable.html", "d2/d52/classGameSolver_1_1Connect4_1_1TranspositionTable" ]
+        [ "MoveSorter", "classGameSolver_1_1Connect4_1_1MoveSorter.html", "classGameSolver_1_1Connect4_1_1MoveSorter" ],
+        [ "OpeningBook", "classGameSolver_1_1Connect4_1_1OpeningBook.html", "classGameSolver_1_1Connect4_1_1OpeningBook" ],
+        [ "Position", "classGameSolver_1_1Connect4_1_1Position.html", "classGameSolver_1_1Connect4_1_1Position" ],
+        [ "Solver", "classGameSolver_1_1Connect4_1_1Solver.html", null ],
+        [ "TableGetter", "classGameSolver_1_1Connect4_1_1TableGetter.html", null ],
+        [ "TranspositionTable", "classGameSolver_1_1Connect4_1_1TranspositionTable.html", "classGameSolver_1_1Connect4_1_1TranspositionTable" ]
       ] ]
     ] ]
 ];

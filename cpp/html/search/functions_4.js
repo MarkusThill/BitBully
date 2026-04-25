@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['destroy_0',['destroy',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e',1,'bitbully::gui_c4::GuiC4']]]
+  ['findoddthreats_0',['findOddThreats',['../classBitBully_1_1Board.html#a1cb7eb6673dabac4feb0d25af9d6580a',1,'BitBully::Board']]],
+  ['findthreats_1',['findThreats',['../classBitBully_1_1Board.html#aa1a6fa84e11fe0fc5a7abb64ee713cf6',1,'BitBully::Board']]]
 ];

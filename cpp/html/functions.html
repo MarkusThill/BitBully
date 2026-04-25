@@ -19,6 +19,9 @@
     <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
     <link href="doxygen.css" rel="stylesheet" type="text/css"/>
     <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
@@ -33,6 +36,21 @@
     <script type="text/javascript">
         DoxygenAwesomeFragmentCopyButton.init()
     </script>
+    <!-- ... doxygen-awesome paragraph anchor links ... -->
+    <script src="doxygen-awesome-paragraph-link.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DoxygenAwesomeParagraphLink.init()
+    </script>
+    <!-- ... doxygen-awesome interactive table of contents ... -->
+    <script src="doxygen-awesome-interactive-toc.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DoxygenAwesomeInteractiveToc.init()
+    </script>
+    <!-- ... doxygen-awesome tabs ... -->
+    <script src="doxygen-awesome-tabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DoxygenAwesomeTabs.init()
+    </script>
 </head>
 <body>
     <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -44,7 +62,22 @@
                     <td id="projectalign">
                         <div id="projectname">BitBully<span id="projectnumber">&#160;0.0.78</span>
                         </div>
+                        <div id="projectbrief">A fast, perfect-play Connect-4 engine in modern C++</div>
                     </td>
+                </tr>
+                <tr>
+                    <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td>
                 </tr>
                 </tbody>
             </table>
@@ -57,17 +90,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 $(function() { codefold.init(); });
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search',true);
-  $(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
     <div id="nav-tree-contents">
       <div id="nav-sync" class="sync"></div>
@@ -80,8 +103,15 @@ $(function() {
 <script type="text/javascript">
 $(function(){initNavTree('functions.html','',''); });
 </script>
-<div id="container">
-<div id="doc-content">
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','Search',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -106,162 +136,194 @@ $(function(){initNavTree('functions.html','',''); });
 <div class="contents">
 <div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
-<h3 class="doxsection"><a id="index__5F" name="index__5F"></a>- _ -</h3><ul>
-<li>__eq__()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d">bitbully.board.Board</a></li>
-<li>__hash__()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#aa56a2afaa85ded51091e20ae61b872ec">bitbully.board.Board</a></li>
-<li>__init__()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a26f6bb8016db04d0ed10a8c05cfb87e6">bitbully.board.Board</a>, <a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9da3ed8ec455e51efe1689fe34befef8">bitbully.gui_c4.GuiC4</a>, <a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#ab19dccf0ff53c09689e50e3ac6544c05">bitbully.solver.BitBully</a></li>
-<li>__ne__()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#af95a367c9b9e977c07ee89189f1e6087">bitbully.board.Board</a></li>
-<li>__repr__()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a685b273338fc40f86ce851d01632aeaf">bitbully.board.Board</a>, <a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#adab7e8da4f9dcf12f10e2f1a13877d6e">bitbully.solver.BitBully</a></li>
-<li>__str__()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#ad9a2dd40b4217e8d4f3aac392444f79e">bitbully.board.Board</a></li>
-<li>_agent_for_evaluation()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a5d782a996a35242fd8df74604ce5157f">bitbully.gui_c4.GuiC4</a></li>
-<li>_check_winner()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#addeb5675aa795bbbf75d18290b4f9e47">bitbully.gui_c4.GuiC4</a></li>
-<li>_clear_eval_row()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a4304feb1dbdf70b4fea5f271be439be8">bitbully.gui_c4.GuiC4</a></li>
-<li>_copy_to_clipboard()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#aad05e2e3a7f7a8d220db014f852acc92">bitbully.gui_c4.GuiC4</a></li>
-<li>_create_column_labels()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a3dde63ddaf5ff642f60c9c4d8da942c9">bitbully.gui_c4.GuiC4</a></li>
-<li>_create_eval_row()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a47417d16b1f7c349a56f23bd28210ab7">bitbully.gui_c4.GuiC4</a></li>
-<li>_create_move_list_ui()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9115591967f83a0187615e7850b67059">bitbully.gui_c4.GuiC4</a></li>
-<li>_create_player_selectors()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a8b812134478ceb20ccd4d8e8136990ba">bitbully.gui_c4.GuiC4</a></li>
-<li>_create_status_bar()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ad49f96070c2eedf9e89d8ee71047142b">bitbully.gui_c4.GuiC4</a></li>
-<li>_current_player()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a016420d82729880e855e1851b06a354d">bitbully.gui_c4.GuiC4</a></li>
-<li>_evaluate_board()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a0d631e28f1275b46324c0de5be713547">bitbully.gui_c4.GuiC4</a></li>
-<li>_get_img_idx()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#adba205cc0228d95ab13b6ebaae7d7b6b">bitbully.gui_c4.GuiC4</a></li>
-<li>_maybe_autoplay()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae492ec0d0f83bed0f261856555133cce">bitbully.gui_c4.GuiC4</a></li>
-<li>_moves_ag_string()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a368e0ca3bf680eb49b13ec71a05a3893">bitbully.gui_c4.GuiC4</a></li>
-<li>_on_field_click()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a30c2c5e0a13e6f49762f3abeda6b056b">bitbully.gui_c4.GuiC4</a></li>
-<li>_position_string()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#aa07e8a4e8e5f42dc9a5b36c01b1fce1e">bitbully.gui_c4.GuiC4</a></li>
-<li>_update_move_list_ui()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ab334f89d9e63d079469288d0e45be42c">bitbully.gui_c4.GuiC4</a></li>
-</ul>
-
-
 <h3 class="doxsection"><a id="index_a" name="index_a"></a>- a -</h3><ul>
-<li>add()&#160;:&#160;<a class="el" href="d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html#a1db567c5fd4d9d248461f0f8f6444d11">GameSolver::Connect4::MoveSorter</a></li>
-<li>all_positions()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a42903f41f41e423c133fd9ed842d2ed8">bitbully.board.Board</a></li>
-<li>available_opening_books()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#ae2e3f241a045aa7ead284c101845b032">bitbully.solver.BitBully</a></li>
+<li>active_tokens&#160;:&#160;<a class="el" href="structBitBully_1_1Board_1_1RawState.html#a6abf50edddeb8c06d42ff690a8640cdd">BitBully::Board::RawState</a></li>
+<li>add()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1MoveSorter.html#a1db567c5fd4d9d248461f0f8f6444d11">GameSolver::Connect4::MoveSorter</a></li>
+<li>all_tokens&#160;:&#160;<a class="el" href="structBitBully_1_1Board_1_1RawState.html#a5a45ac8c21f4d7565f892c08e2a7cfd9">BitBully::Board::RawState</a></li>
+<li>allPositions()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#acfc579a8c01d89956adc69dc23006714">BitBully::Board</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_b" name="index_b"></a>- b -</h3><ul>
-<li>best_move()&#160;:&#160;<a class="el" href="d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#afa4f39dea58c4f354bf7a2f2785e3fc3">bitbully.agent_interface.Connect4Agent</a>, <a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a399ebaed18fac71d0addb830275915a7">bitbully.solver.BitBully</a></li>
+<li>b&#160;:&#160;<a class="el" href="structBitBully_1_1TranspositionTable_1_1Entry.html#a9a3daf13dd97cb4ef7286ca30dc54626">BitBully::TranspositionTable::Entry</a></li>
+<li>BitBully()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#ab060d0975ab4cd7bc91e14c24ec807fe">BitBully::BitBully</a></li>
+<li>Board()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a15103f528a6674a3c6a78defe7e91a7b">BitBully::Board</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_c" name="index_c"></a>- c -</h3><ul>
-<li>can_win_next()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a9514b7e3caa5c5d7c3bedd0268865fc1">bitbully.board.Board</a></li>
-<li>canPlay()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a370217c553a85bf306a30dd6ec517816">GameSolver::Connect4::Position</a></li>
-<li>canWinNext()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#afb530371990f81666f5989bce6340d92">GameSolver::Connect4::Position</a></li>
-<li>copy()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a0babec5f817efa063b5e89e035d79b4e">bitbully.board.Board</a></li>
-<li>count_tokens()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a357ea549197e657a8ea52dcca863b039">bitbully.board.Board</a></li>
-<li>current_player()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a034cd0819f00709bcaa40520c0972098">bitbully.board.Board</a></li>
+<li>canPlay()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#a370217c553a85bf306a30dd6ec517816">GameSolver::Connect4::Position</a></li>
+<li>canWin()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a31d1327bf9b59e6fff94d80443c7699e">BitBully::Board</a></li>
+<li>canWinNext()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#afb530371990f81666f5989bce6340d92">GameSolver::Connect4::Position</a></li>
+<li>COLUMN_BIT_OFFSET&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#aface955fc064371e8b19d7dda9946bb3">BitBully::Board</a></li>
+<li>convertValue()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#a8d285671ab0cbd1e0625ac219d8dbcf0">BitBully::OpeningBook</a></li>
+<li>copy()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a55efa3bbf52314250a60c7b0ece0dc90">BitBully::Board</a></li>
+<li>countTokens()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a2041fa032b47cab0dba8639a2de17090">BitBully::Board</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_d" name="index_d"></a>- d -</h3><ul>
-<li>destroy()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a276722dae16ec33e096afb8f28d9721e">bitbully.gui_c4.GuiC4</a></li>
+<li>doubleThreat()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a27969eddcd49d5644c812339aec41ae8">BitBully::Board</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_e" name="index_e"></a>- e -</h3><ul>
+<li>EXACT&#160;:&#160;<a class="el" href="structBitBully_1_1TranspositionTable_1_1Entry.html#aed746a877db7866ebe7a284744875d9aabbd2326a3b5be7bf7da91f0b3eaa92d0">BitBully::TranspositionTable::Entry</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_f" name="index_f"></a>- f -</h3><ul>
-<li>from_array()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a04cf3920d1f460872b42d77c538a3423">bitbully.board.Board</a></li>
-<li>from_moves()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a9b97a7ced0bf0ed804d120478f57f257">bitbully.board.Board</a></li>
+<li>findOddThreats()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a1cb7eb6673dabac4feb0d25af9d6580a">BitBully::Board</a></li>
+<li>findThreats()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#aa1a6fa84e11fe0fc5a7abb64ee713cf6">BitBully::Board</a></li>
+<li>flag&#160;:&#160;<a class="el" href="structBitBully_1_1TranspositionTable_1_1Entry.html#a7d633d39dc0d2fb411d45ed49b8c06f4">BitBully::TranspositionTable::Entry</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_g" name="index_g"></a>- g -</h3><ul>
-<li>get()&#160;:&#160;<a class="el" href="d2/d52/classGameSolver_1_1Connect4_1_1TranspositionTable.html#a7e05429233ef4d5c5d8fbc9b3d7467bc">GameSolver::Connect4::TranspositionTable&lt; partial_key_t, key_t, value_t, log_size &gt;</a></li>
-<li>get_column_height()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#ae520d2fda88cce17ace16b45f314246e">bitbully.board.Board</a></li>
-<li>get_column_heights()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a12790d340058ad7cade8c2491cc60a0f">bitbully.board.Board</a></li>
-<li>get_node_counter()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a8d480388ce2e289229862cffc07e2499">bitbully.solver.BitBully</a></li>
-<li>get_widget()&#160;:&#160;<a class="el" href="df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae1334fcc19604c05bd712359811a7f8d">bitbully.gui_c4.GuiC4</a></li>
-<li>getNext()&#160;:&#160;<a class="el" href="d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html#a9883697b9438a7dacc05b050fc81291f">GameSolver::Connect4::MoveSorter</a></li>
+<li>generateNonLosingMoves()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a952c36a7a0faafbc49ab18f393ff6f6c">BitBully::Board</a></li>
+<li>get()&#160;:&#160;<a class="el" href="classBitBully_1_1TranspositionTable.html#a8fa5ea26f9517402b084d8f604245a73">BitBully::TranspositionTable</a>, <a class="el" href="classGameSolver_1_1Connect4_1_1TranspositionTable.html#a7e05429233ef4d5c5d8fbc9b3d7467bc">GameSolver::Connect4::TranspositionTable&lt; partial_key_t, key_t, value_t, log_size &gt;</a></li>
+<li>getBoardValue()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#ae1ebbea6e8f17a91990556d077c8d7a4">BitBully::OpeningBook</a></li>
+<li>getBook()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#a572d9d8fb625cab5423efa17759dea0a">BitBully::OpeningBook</a></li>
+<li>getBookSize()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#a5f089deddc734f0a83263d026b3d6c12">BitBully::OpeningBook</a></li>
+<li>getColumnHeight()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a06a24457ec44b3866449e6090b45353f">BitBully::Board</a></li>
+<li>getEntry()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#abf4b509b981991b67b8ef19321a2b034">BitBully::OpeningBook</a></li>
+<li>getNext()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1MoveSorter.html#a9883697b9438a7dacc05b050fc81291f">GameSolver::Connect4::MoveSorter</a></li>
+<li>getNodeCounter()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#a9a87ef9afe101ddda6b3bb74764b3e02">BitBully::BitBully</a></li>
+<li>getNPly()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#a07dfc5d82c5108918a438d7afaf78136">BitBully::OpeningBook</a></li>
+<li>getSize()&#160;:&#160;<a class="el" href="classBitBully_1_1MoveList.html#a362e36326bc542ea3c42c56c27802253">BitBully::MoveList</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_h" name="index_h"></a>- h -</h3><ul>
-<li>has_win()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#ae50b3749d5857b53f6d8d7fed35b3bf7">bitbully.board.Board</a></li>
+<li>hash()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a304529c6848a6b38c552041d117a4924">BitBully::Board</a></li>
+<li>hasWin()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a70a65d60487f33b5baf8d363f7ea3cb6">BitBully::Board</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_i" name="index_i"></a>- i -</h3><ul>
-<li>is_book_loaded()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a1bba87f872323b9ebf53476f68ff9f50">bitbully.solver.BitBully</a></li>
-<li>is_full()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a1f0472df8447db26820d7dd99ffe2bab">bitbully.board.Board</a></li>
-<li>is_game_over()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#aad6d6426114ac320acf00f17f8291d0d">bitbully.board.Board</a></li>
-<li>is_legal_move()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#af0547d9a280ddeaebe6bf563c8a0617a">bitbully.board.Board</a></li>
-<li>isWinningMove()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a41e50e20178f9123493b7ec043a1807e">GameSolver::Connect4::Position</a></li>
+<li>init()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#ad5c80588e45a33ab50690392a764a64f">BitBully::OpeningBook</a></li>
+<li>insert()&#160;:&#160;<a class="el" href="classBitBully_1_1MoveList.html#a6f8c35f7aad683ec4e1458aa235c7810">BitBully::MoveList</a></li>
+<li>isBookLoaded()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#a1e12396b723b223a7c473baed2bd4954">BitBully::BitBully</a></li>
+<li>isInBook()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#ad7a4064632b3c7d9b0ff0be106d0a10c">BitBully::OpeningBook</a></li>
+<li>isLegalMove()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a1c11e3f18b58c4b4d342d2738e03be17">BitBully::Board</a></li>
+<li>isValid()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a7d31a984b12cb086701c027cdf7eb922">BitBully::Board</a></li>
+<li>isWinningMove()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#a41e50e20178f9123493b7ec043a1807e">GameSolver::Connect4::Position</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_k" name="index_k"></a>- k -</h3><ul>
-<li>key()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a25ac95ae8ab8aa9322f6174cf42c1a9f">GameSolver::Connect4::Position</a></li>
-<li>key3()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a91b0b3336eef6036ec24578cfea8f235">GameSolver::Connect4::Position</a></li>
+<li>key()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#a25ac95ae8ab8aa9322f6174cf42c1a9f">GameSolver::Connect4::Position</a></li>
+<li>key3()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#a91b0b3336eef6036ec24578cfea8f235">GameSolver::Connect4::Position</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_l" name="index_l"></a>- l -</h3><ul>
-<li>legal_moves()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#afe754d7343ddc9c2b4596ec2c5eea43a">bitbully.board.Board</a></li>
-<li>load()&#160;:&#160;<a class="el" href="d3/d78/classGameSolver_1_1Connect4_1_1OpeningBook.html#abfb2e1be9ff994f402a28e3a0f96fed6">GameSolver::Connect4::OpeningBook</a></li>
-<li>load_book()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a83419e0054f2ad2c6d83b6edfaa0c7b6">bitbully.solver.BitBully</a></li>
+<li>legalMoves()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#aa63dc39fb8fa32b131ff498a98c876b9">BitBully::Board</a></li>
+<li>legalMovesMask()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a1935dee0e691ee8b048c1203f6144ce7">BitBully::Board</a></li>
+<li>load()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1OpeningBook.html#abfb2e1be9ff994f402a28e3a0f96fed6">GameSolver::Connect4::OpeningBook</a></li>
+<li>loadBook()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#a0c19bf3d591e248963b8bfc8fceaa6c8">BitBully::BitBully</a></li>
+<li>LOG_2_SIZE&#160;:&#160;<a class="el" href="classBitBully_1_1TranspositionTable.html#a538182a0024380b5e3b0f3227f5e8ee0">BitBully::TranspositionTable</a></li>
+<li>LOWER&#160;:&#160;<a class="el" href="structBitBully_1_1TranspositionTable_1_1Entry.html#aed746a877db7866ebe7a284744875d9aa8ab3ce11b0b88d72046d5fc16da7f703">BitBully::TranspositionTable::Entry</a></li>
+<li>lsb()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#ab27e5321cdbbf9ffec1abe4897ce6ad1">BitBully::Board</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_m" name="index_m"></a>- m -</h3><ul>
-<li>mirror()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e">bitbully.board.Board</a></li>
-<li>moves_left()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d">bitbully.board.Board</a></li>
-<li>moveScore()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#ad2feea243d7d6ce71e6a7318336dcf6d">GameSolver::Connect4::Position</a></li>
-<li>MoveSorter()&#160;:&#160;<a class="el" href="d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html#ad41bb041bfc4f52ad8996a3cea049c08">GameSolver::Connect4::MoveSorter</a></li>
-<li>mtdf()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#af3c70d5aad94be8f3b4a0750dabaa409">bitbully.solver.BitBully</a></li>
+<li>mirror()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a97357373ac0844cd2a7c07c87361131d">BitBully::Board</a></li>
+<li>move&#160;:&#160;<a class="el" href="classBitBully_1_1MoveList.html#a35186e0eecb46aa3de91eae945d9684c">BitBully::MoveList</a></li>
+<li>MoveList()&#160;:&#160;<a class="el" href="classBitBully_1_1MoveList.html#a44e412f9271d0b49ff1b3b6cb978e419">BitBully::MoveList</a></li>
+<li>moves_left&#160;:&#160;<a class="el" href="structBitBully_1_1Board_1_1RawState.html#abb43fc1c503387a5b4baf513195a8f88">BitBully::Board::RawState</a></li>
+<li>moveScore()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#ad2feea243d7d6ce71e6a7318336dcf6d">GameSolver::Connect4::Position</a></li>
+<li>movesLeft()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#ab78567ab55b360e6680412a1df03eada">BitBully::Board</a></li>
+<li>MoveSorter()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1MoveSorter.html#ad41bb041bfc4f52ad8996a3cea049c08">GameSolver::Connect4::MoveSorter</a></li>
+<li>mtdf()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#a76cec6e90a0420017774f74dd489d251">BitBully::BitBully</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_n" name="index_n"></a>- n -</h3><ul>
-<li>native()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#ae2f018bdfa396d7e35145911fb1466c9">bitbully.board.Board</a></li>
-<li>nbMoves()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a54cbadf5b92b5eb819a6c3e6c4b2efa0">GameSolver::Connect4::Position</a></li>
-<li>negamax()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a16fa4e7115b69a1e72c75d744f4cf5fe">bitbully.solver.BitBully</a></li>
-<li>null_window()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a276f2725c8705ffc0cd513d03ac6a5e1">bitbully.solver.BitBully</a></li>
+<li>N_COLUMNS&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a683e25a3ef9286422b0d0647996b279a">BitBully::Board</a>, <a class="el" href="classBitBully_1_1MoveList.html#a914f463be6403bda310b0d38991d4f17">BitBully::MoveList</a></li>
+<li>N_ROWS&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a174b047abbaa22a8e2a8c012ab3ae140">BitBully::Board</a></li>
+<li>N_VALID_BOARD_VALUES&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a27ea89293b482f73b50e45980de1fa00">BitBully::Board</a></li>
+<li>nbMoves()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#a54cbadf5b92b5eb819a6c3e6c4b2efa0">GameSolver::Connect4::Position</a></li>
+<li>negamax()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#ab560bedc498b3e70e5eddfef4a32b533">BitBully::BitBully</a></li>
+<li>nextMove()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a6ae4995235ad5092e1d7c38fcc990073">BitBully::Board</a></li>
+<li>NodeType&#160;:&#160;<a class="el" href="structBitBully_1_1TranspositionTable_1_1Entry.html#aed746a877db7866ebe7a284744875d9a">BitBully::TranspositionTable::Entry</a></li>
+<li>NONE&#160;:&#160;<a class="el" href="structBitBully_1_1TranspositionTable_1_1Entry.html#aed746a877db7866ebe7a284744875d9aa6b69ec0400b94f5c56196c1cd435139b">BitBully::TranspositionTable::Entry</a></li>
+<li>NONE_VALUE&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#ac963c6db2a24b98dca8a0d39b2e445df">BitBully::OpeningBook</a></li>
+<li>nullWindow()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#a9c73ca66a2a7660b5125cd3c36535002">BitBully::BitBully</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>OpeningBook()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#afb6ac02ccf35560761a0df2a3d01a12b">BitBully::OpeningBook</a></li>
+<li>operator!=()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a0460d3d7ed1cf5e2c5959153c76fb00d">BitBully::Board</a></li>
+<li>operator==()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a7fb22603ae5f3847c6f0101418dab501">BitBully::Board</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_p" name="index_p"></a>- p -</h3><ul>
-<li>play()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#ac703e9fec40c4d9c60c314b33eb44bbd">bitbully.board.Board</a>, <a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a57dadc2f70eb02ff6237166f02a341fa">GameSolver::Connect4::Position</a></li>
-<li>play_on_copy()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a0c4555d1cb4a50484294b8452b4f02a9">bitbully.board.Board</a></li>
-<li>playCol()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a32b2aeb205f3e6bc2c1dd6d5e2d8efe6">GameSolver::Connect4::Position</a></li>
-<li>Position()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a40224933c03ae7866641bc09e2a67444">GameSolver::Connect4::Position</a></li>
-<li>possibleNonLosingMoves()&#160;:&#160;<a class="el" href="d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#a65529ce1a2f62d5732ecd69eef303cbb">GameSolver::Connect4::Position</a></li>
-<li>put()&#160;:&#160;<a class="el" href="d2/d52/classGameSolver_1_1Connect4_1_1TranspositionTable.html#ae19ada6599df2c509e38e689883b19ae">GameSolver::Connect4::TranspositionTable&lt; partial_key_t, key_t, value_t, log_size &gt;</a></li>
+<li>P_EMPTY&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a51de95ec0b58e477cb87831872b2d9acab1a1b3ad14d101f43556d96a7abbb786">BitBully::Board</a></li>
+<li>P_RED&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a51de95ec0b58e477cb87831872b2d9acac6fb24be2df8c5aad66997442663948b">BitBully::Board</a></li>
+<li>P_YELLOW&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a51de95ec0b58e477cb87831872b2d9acadc7cf9ec60fbef316c8fc1e48234dcb9">BitBully::Board</a></li>
+<li>play()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a4e2be92545e14189714535aa5c5a6745">BitBully::Board</a>, <a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#a57dadc2f70eb02ff6237166f02a341fa">GameSolver::Connect4::Position</a></li>
+<li>playBitMaskOnCopy()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a651aab94f4519f46a473d895a93736fe">BitBully::Board</a></li>
+<li>playCol()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#a32b2aeb205f3e6bc2c1dd6d5e2d8efe6">GameSolver::Connect4::Position</a></li>
+<li>Player&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a51de95ec0b58e477cb87831872b2d9ac">BitBully::Board</a></li>
+<li>playMoveOnCopy()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#aa97d678ff348e390ff66a66a6bd7f034">BitBully::Board</a></li>
+<li>pop()&#160;:&#160;<a class="el" href="classBitBully_1_1MoveList.html#a55c8ef61ddcc488a4bac162d07223489">BitBully::MoveList</a></li>
+<li>popCountBoard()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#aa06de3e9e8e077b5e0c6cf75c5a0bd81">BitBully::Board</a></li>
+<li>Position()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#a40224933c03ae7866641bc09e2a67444">GameSolver::Connect4::Position</a></li>
+<li>possibleNonLosingMoves()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1Position.html#a65529ce1a2f62d5732ecd69eef303cbb">GameSolver::Connect4::Position</a></li>
+<li>put()&#160;:&#160;<a class="el" href="classGameSolver_1_1Connect4_1_1TranspositionTable.html#ae19ada6599df2c509e38e689883b19ae">GameSolver::Connect4::TranspositionTable&lt; partial_key_t, key_t, value_t, log_size &gt;</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_r" name="index_r"></a>- r -</h3><ul>
-<li>random_board()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#ad2a69d01c5b7e9f77041180f58355ae8">bitbully.board.Board</a></li>
-<li>reset()&#160;:&#160;<a class="el" href="d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html#a662bb710ea45ac02246b55bc07c911e2">GameSolver::Connect4::MoveSorter</a>, <a class="el" href="d2/d52/classGameSolver_1_1Connect4_1_1TranspositionTable.html#a196afbb8f16ce7e5cf3e225cbc31791f">GameSolver::Connect4::TranspositionTable&lt; partial_key_t, key_t, value_t, log_size &gt;</a></li>
-<li>reset_board()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a3ec7505932466440fce1a9fbbd54355a">bitbully.board.Board</a></li>
-<li>reset_book()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a426d0dc29875659fb641316420dfa495">bitbully.solver.BitBully</a></li>
-<li>reset_node_counter()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a9c6822bc9d8bfa7c1f3617911ba9b3e5">bitbully.solver.BitBully</a></li>
-<li>reset_transposition_table()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a4df1552079a461af7381b52674232ce0">bitbully.solver.BitBully</a></li>
+<li>randomBoard()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#abf80eeae5659a6a93574573ad5ae41ed">BitBully::Board</a></li>
+<li>rawState()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#acc57d99498f8bf1f2647cc46013d4704">BitBully::Board</a></li>
+<li>readBook()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#a4c4d2b0a00e03a84c9a54fae6b9234dc">BitBully::OpeningBook</a></li>
+<li>readline()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#a37db8640da53e0f0bfbb55a116a84931">BitBully::OpeningBook</a></li>
+<li>reset()&#160;:&#160;<a class="el" href="classBitBully_1_1MoveList.html#a2e7657dbb3f9197cd40dcd824d4b6efa">BitBully::MoveList</a>, <a class="el" href="classGameSolver_1_1Connect4_1_1MoveSorter.html#a662bb710ea45ac02246b55bc07c911e2">GameSolver::Connect4::MoveSorter</a>, <a class="el" href="classGameSolver_1_1Connect4_1_1TranspositionTable.html#a196afbb8f16ce7e5cf3e225cbc31791f">GameSolver::Connect4::TranspositionTable&lt; partial_key_t, key_t, value_t, log_size &gt;</a></li>
+<li>resetBook()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#afdc857dc3db5da0cb81e4b3b9eae4543">BitBully::BitBully</a></li>
+<li>resetNodeCounter()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#a4d03943682b98ae771ce1b79fc8da935">BitBully::BitBully</a></li>
+<li>resetTranspositionTable()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#a87c2b73dedea279fdae57f4a012381d7">BitBully::BitBully</a></li>
+<li>rollout()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#aeeb900218ac6cd155adc27ff4283c904">BitBully::BitBully</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_s" name="index_s"></a>- s -</h3><ul>
-<li>score_all_moves()&#160;:&#160;<a class="el" href="d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#ac2b74bd9092a56a8e08d5c0726c9f3c3">bitbully.agent_interface.Connect4Agent</a>, <a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a5e903e22e59d69e9067fcc6bd781eed5">bitbully.solver.BitBully</a></li>
-<li>score_move()&#160;:&#160;<a class="el" href="d0/d3b/classbitbully_1_1agent__interface_1_1Connect4Agent.html#aae72966d4929d407416107d22e988dec">bitbully.agent_interface.Connect4Agent</a>, <a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a0a7a5b79197e87b2e47054834235cd27">bitbully.solver.BitBully</a></li>
-<li>score_to_moves_left()&#160;:&#160;<a class="el" href="dc/d09/classbitbully_1_1solver_1_1BitBully.html#a1f8d0858dba82ddc4dd8bdb14ab21337">bitbully.solver.BitBully</a></li>
-<li>scoreToMovesLeft()&#160;:&#160;<a class="el" href="d9/d00/classBitBully_1_1BitBully.html#a5c568bf905c59bfe05913b25052cf44c">BitBully::BitBully</a></li>
+<li>score&#160;:&#160;<a class="el" href="classBitBully_1_1MoveList.html#ac058b6ac5a5ba0d2f136cead57f29447">BitBully::MoveList</a></li>
+<li>scoreMove()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#a8c405dc66e7e933d1a46b43ddd2492a8">BitBully::BitBully</a></li>
+<li>scoreMoves()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#ab4c3408f62623c65181ff00f1d5d6044">BitBully::BitBully</a></li>
+<li>scoreToMovesLeft()&#160;:&#160;<a class="el" href="classBitBully_1_1BitBully.html#a5c568bf905c59bfe05913b25052cf44c">BitBully::BitBully</a></li>
+<li>searchDepth&#160;:&#160;<a class="el" href="structBitBully_1_1TranspositionTable_1_1Entry.html#a96b326c4e0f22a7fda15b2ef83135125">BitBully::TranspositionTable::Entry</a></li>
+<li>setBoard()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a84173ebdfe1b8e57961522b464983941">BitBully::Board</a></li>
+<li>setRawState()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a1502e21f58934185d678ae641ced3e30">BitBully::Board</a></li>
+<li>sign()&#160;:&#160;<a class="el" href="classBitBully_1_1OpeningBook.html#acf4c1f16463aab37e5f31eba5d299ad4">BitBully::OpeningBook</a></li>
+<li>sortMoves()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a0d3c307cd8aa9aa2654254b6e801db6b">BitBully::Board</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_t" name="index_t"></a>- t -</h3><ul>
-<li>to_array()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a936a2a08230396f27c72a75d53103282">bitbully.board.Board</a></li>
-<li>to_huffman()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a0631f7c4d3734f0bb0993501f67f617c">bitbully.board.Board</a></li>
-<li>to_string()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#a3db1df514e7c6d510f2188ceb7419aca">bitbully.board.Board</a></li>
+<li>TBitBoard&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a187f80a1d16ee08f1f179f9dafee955f">BitBully::Board</a>, <a class="el" href="classBitBully_1_1MoveList.html#a703f69875c200e6cb1a1be3a1c11c5d4">BitBully::MoveList</a></li>
+<li>TBoardArray&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#ac2932230b62c41f5001d41012a0ff728">BitBully::Board</a></li>
+<li>TBoardArrayT&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#ad327c2b8069cc9b0b7ce00383a7c9bb8">BitBully::Board</a></li>
+<li>TMovesCounter&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a3fc8a2e550662597d0daefbff17b9f8c">BitBully::Board</a></li>
+<li>toArray()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#afb39e5b79ce7bf06128e20b5a46161bf">BitBully::Board</a></li>
+<li>toHuffman()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#adcabaf7694d4fb3ff607068be70c377f">BitBully::Board</a></li>
+<li>toString()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#a99cd68cb2bb31588728ba7fa5fff3282">BitBully::Board</a></li>
+<li>TranspositionTable()&#160;:&#160;<a class="el" href="classBitBully_1_1TranspositionTable.html#ae80bc1834054469b007502ef5378e297">BitBully::TranspositionTable</a></li>
 </ul>
 
 
 <h3 class="doxsection"><a id="index_u" name="index_u"></a>- u -</h3><ul>
-<li>uid()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#ad06cd5ac21f137de6b80c9b4f8f89d3b">bitbully.board.Board</a></li>
+<li>uid()&#160;:&#160;<a class="el" href="classBitBully_1_1Board.html#ad159897f318e91a46e1c229c08f7b52e">BitBully::Board</a></li>
+<li>UPPER&#160;:&#160;<a class="el" href="structBitBully_1_1TranspositionTable_1_1Entry.html#aed746a877db7866ebe7a284744875d9aaa1087f99991038298061643c540cdbe4">BitBully::TranspositionTable::Entry</a></li>
 </ul>
 
 
-<h3 class="doxsection"><a id="index_w" name="index_w"></a>- w -</h3><ul>
-<li>winner()&#160;:&#160;<a class="el" href="d9/d83/classbitbully_1_1board_1_1Board.html#aa46e665bb5d315b9be74324bdeb36c3f">bitbully.board.Board</a></li>
+<h3 class="doxsection"><a id="index_v" name="index_v"></a>- v -</h3><ul>
+<li>value&#160;:&#160;<a class="el" href="structBitBully_1_1TranspositionTable_1_1Entry.html#a3593466452761d71527c603522fc214f">BitBully::TranspositionTable::Entry</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uid_0',['uid',['../d9/d83/classbitbully_1_1board_1_1Board.html#ad06cd5ac21f137de6b80c9b4f8f89d3b',1,'bitbully::board::Board']]]
+  ['uid_0',['uid',['../classBitBully_1_1Board.html#ad159897f318e91a46e1c229c08f7b52e',1,'BitBully::Board']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['entry_0',['Entry',['../d9/df8/structBitBully_1_1TranspositionTable_1_1Entry.html',1,'BitBully::TranspositionTable']]]
+  ['movelist_0',['MoveList',['../classBitBully_1_1MoveList.html',1,'BitBully']]],
+  ['movesorter_1',['MoveSorter',['../classGameSolver_1_1Connect4_1_1MoveSorter.html',1,'GameSolver::Connect4']]]
 ];

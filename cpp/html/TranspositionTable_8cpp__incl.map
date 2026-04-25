@@ -1,0 +1,30 @@
+<map id="src/TranspositionTable.cpp" name="src/TranspositionTable.cpp">
+<area shape="rect" id="Node000001" title="Translation&#45;unit anchor for BitBully::TranspositionTable." alt="" coords="264,5,456,31"/>
+<area shape="rect" id="Node000002" href="$TranspositionTable_8h.html" title="Direct&#45;mapped, replacement&#45;free transposition table used by the solver." alt="" coords="283,79,437,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="363,31,363,65,357,65,357,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="272,152,349,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="354,106,329,142,324,139,350,103"/>
+<area shape="rect" id="Node000004" href="$Board_8h.html" title="Bitboard&#45;based representation of a Connect&#45;4 position." alt="" coords="373,152,445,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="370,103,396,139,391,142,366,106"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,225,61,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="374,177,362,180,220,203,156,212,75,228,74,223,156,207,219,197,361,175,373,172"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="85,225,155,251"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="374,177,168,228,167,222,373,172"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="179,225,250,251"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="379,180,260,223,258,218,377,175"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="527,299,593,324"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="379,180,351,193,325,210,311,229,310,239,315,249,328,259,347,269,399,284,513,303,513,308,398,290,345,274,325,264,311,252,305,240,306,228,321,206,348,189,377,175"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="325,225,405,251"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="404,179,382,215,377,212,400,176"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="429,225,480,251"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="419,176,442,212,438,215,415,179"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="504,225,576,251"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="432,175,508,216,506,221,429,180"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="600,225,675,251"/>
+<area shape="poly" id="edge11_Node000004_Node000012" title=" " alt="" coords="446,175,588,219,587,224,445,180"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="699,225,762,251"/>
+<area shape="poly" id="edge12_Node000004_Node000013" title=" " alt="" coords="446,171,686,223,685,228,445,176"/>
+<area shape="rect" id="Node000014" href="$MoveList_8h.html" title="Tiny priority queue used by the engine for move ordering." alt="" coords="787,225,880,251"/>
+<area shape="poly" id="edge13_Node000004_Node000014" title=" " alt="" coords="446,169,774,223,773,228,445,174"/>
+<area shape="poly" id="edge14_Node000014_Node000008" title=" " alt="" coords="790,253,607,301,606,295,789,248"/>
+</map>

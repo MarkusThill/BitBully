@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['bitbully_0',['BitBully',['../d9/d00/classBitBully_1_1BitBully.html',1,'BitBully::BitBully'],['../dc/d09/classbitbully_1_1solver_1_1BitBully.html',1,'bitbully.solver.BitBully']]],
-  ['board_1',['Board',['../d1/d9d/classBitBully_1_1Board.html',1,'BitBully::Board'],['../d9/d83/classbitbully_1_1board_1_1Board.html',1,'bitbully.board.Board']]]
+  ['bitbully_0',['BitBully',['../classBitBully_1_1BitBully.html',1,'BitBully']]],
+  ['board_1',['Board',['../classBitBully_1_1Board.html',1,'BitBully']]]
 ];

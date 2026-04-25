@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['mirror_0',['mirror',['../d9/d83/classbitbully_1_1board_1_1Board.html#aa90638e1d8ff88b5eaedef40b6a6e30e',1,'bitbully::board::Board']]],
-  ['movelist_1',['MoveList',['../d7/d3c/classBitBully_1_1MoveList.html',1,'BitBully']]],
-  ['moves_5fleft_2',['moves_left',['../d9/d83/classbitbully_1_1board_1_1Board.html#aed729a7efcbf07f00e2a8773b875291d',1,'bitbully::board::Board']]],
-  ['movescore_3',['moveScore',['../d4/d9b/classGameSolver_1_1Connect4_1_1Position.html#ad2feea243d7d6ce71e6a7318336dcf6d',1,'GameSolver::Connect4::Position']]],
-  ['movesorter_4',['MoveSorter',['../d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html',1,'GameSolver::Connect4::MoveSorter'],['../d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html#ad41bb041bfc4f52ad8996a3cea049c08',1,'GameSolver::Connect4::MoveSorter::MoveSorter()']]],
-  ['mtdf_5',['mtdf',['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#af3c70d5aad94be8f3b4a0750dabaa409',1,'bitbully::solver::BitBully']]]
+  ['n_5fcolumns_0',['N_COLUMNS',['../classBitBully_1_1Board.html#a683e25a3ef9286422b0d0647996b279a',1,'BitBully::Board::N_COLUMNS'],['../classBitBully_1_1MoveList.html#a914f463be6403bda310b0d38991d4f17',1,'BitBully::MoveList::N_COLUMNS']]],
+  ['n_5frows_1',['N_ROWS',['../classBitBully_1_1Board.html#a174b047abbaa22a8e2a8c012ab3ae140',1,'BitBully::Board']]],
+  ['n_5fvalid_5fboard_5fvalues_2',['N_VALID_BOARD_VALUES',['../classBitBully_1_1Board.html#a27ea89293b482f73b50e45980de1fa00',1,'BitBully::Board']]],
+  ['nbmoves_3',['nbMoves',['../classGameSolver_1_1Connect4_1_1Position.html#a54cbadf5b92b5eb819a6c3e6c4b2efa0',1,'GameSolver::Connect4::Position']]],
+  ['negamax_4',['negamax',['../classBitBully_1_1BitBully.html#ab560bedc498b3e70e5eddfef4a32b533',1,'BitBully::BitBully']]],
+  ['next_5',['Where to go next',['../index.html#autotoc_md14',1,'']]],
+  ['nextmove_6',['nextMove',['../classBitBully_1_1Board.html#a6ae4995235ad5092e1d7c38fcc990073',1,'BitBully::Board']]],
+  ['nodetype_7',['NodeType',['../structBitBully_1_1TranspositionTable_1_1Entry.html#aed746a877db7866ebe7a284744875d9a',1,'BitBully::TranspositionTable::Entry']]],
+  ['none_8',['NONE',['../structBitBully_1_1TranspositionTable_1_1Entry.html#aed746a877db7866ebe7a284744875d9aa6b69ec0400b94f5c56196c1cd435139b',1,'BitBully::TranspositionTable::Entry']]],
+  ['none_5fvalue_9',['NONE_VALUE',['../classBitBully_1_1OpeningBook.html#ac963c6db2a24b98dca8a0d39b2e445df',1,'BitBully::OpeningBook']]],
+  ['nullwindow_10',['nullWindow',['../classBitBully_1_1BitBully.html#a9c73ca66a2a7660b5125cd3c36535002',1,'BitBully::BitBully']]]
 ];

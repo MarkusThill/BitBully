@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['winner_0',['winner',['../d9/d83/classbitbully_1_1board_1_1Board.html#aa46e665bb5d315b9be74324bdeb36c3f',1,'bitbully::board::Board']]]
+  ['value_0',['value',['../structBitBully_1_1TranspositionTable_1_1Entry.html#a3593466452761d71527c603522fc214f',1,'BitBully::TranspositionTable::Entry']]],
+  ['version_2eh_1',['version.h',['../version_8h.html',1,'']]]
 ];

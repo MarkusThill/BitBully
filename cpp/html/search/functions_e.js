@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['random_5fboard_0',['random_board',['../d9/d83/classbitbully_1_1board_1_1Board.html#ad2a69d01c5b7e9f77041180f58355ae8',1,'bitbully::board::Board']]],
-  ['reset_1',['reset',['../d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html#a662bb710ea45ac02246b55bc07c911e2',1,'GameSolver::Connect4::MoveSorter::reset()'],['../d2/d52/classGameSolver_1_1Connect4_1_1TranspositionTable.html#a196afbb8f16ce7e5cf3e225cbc31791f',1,'GameSolver::Connect4::TranspositionTable::reset()']]],
-  ['reset_5fboard_2',['reset_board',['../d9/d83/classbitbully_1_1board_1_1Board.html#a3ec7505932466440fce1a9fbbd54355a',1,'bitbully::board::Board']]],
-  ['reset_5fbook_3',['reset_book',['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a426d0dc29875659fb641316420dfa495',1,'bitbully::solver::BitBully']]],
-  ['reset_5fnode_5fcounter_4',['reset_node_counter',['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a9c6822bc9d8bfa7c1f3617911ba9b3e5',1,'bitbully::solver::BitBully']]],
-  ['reset_5ftransposition_5ftable_5',['reset_transposition_table',['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#a4df1552079a461af7381b52674232ce0',1,'bitbully::solver::BitBully']]]
+  ['randomboard_0',['randomBoard',['../classBitBully_1_1Board.html#abf80eeae5659a6a93574573ad5ae41ed',1,'BitBully::Board']]],
+  ['rawstate_1',['rawState',['../classBitBully_1_1Board.html#acc57d99498f8bf1f2647cc46013d4704',1,'BitBully::Board']]],
+  ['readbook_2',['readBook',['../classBitBully_1_1OpeningBook.html#a4c4d2b0a00e03a84c9a54fae6b9234dc',1,'BitBully::OpeningBook']]],
+  ['readline_3',['readline',['../classBitBully_1_1OpeningBook.html#a37db8640da53e0f0bfbb55a116a84931',1,'BitBully::OpeningBook']]],
+  ['reset_4',['reset',['../classBitBully_1_1MoveList.html#a2e7657dbb3f9197cd40dcd824d4b6efa',1,'BitBully::MoveList::reset()'],['../classGameSolver_1_1Connect4_1_1MoveSorter.html#a662bb710ea45ac02246b55bc07c911e2',1,'GameSolver::Connect4::MoveSorter::reset()'],['../classGameSolver_1_1Connect4_1_1TranspositionTable.html#a196afbb8f16ce7e5cf3e225cbc31791f',1,'GameSolver::Connect4::TranspositionTable::reset()']]],
+  ['resetbook_5',['resetBook',['../classBitBully_1_1BitBully.html#afdc857dc3db5da0cb81e4b3b9eae4543',1,'BitBully::BitBully']]],
+  ['resetnodecounter_6',['resetNodeCounter',['../classBitBully_1_1BitBully.html#a4d03943682b98ae771ce1b79fc8da935',1,'BitBully::BitBully']]],
+  ['resettranspositiontable_7',['resetTranspositionTable',['../classBitBully_1_1BitBully.html#a87c2b73dedea279fdae57f4a012381d7',1,'BitBully::BitBully']]],
+  ['rollout_8',['rollout',['../classBitBully_1_1BitBully.html#aeeb900218ac6cd155adc27ff4283c904',1,'BitBully::BitBully']]]
 ];

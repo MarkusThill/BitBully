@@ -25,8 +25,19 @@
 var NAVTREE =
 [
   [ "BitBully", "index.html", [
+    [ "BitBully — Connect-4 Engine", "index.html", "index" ],
+    [ "Usage Examples", "usage_examples.html", [
+      [ "Evaluating a position", "usage_examples.html#ex_solve", null ],
+      [ "Ranking all candidate moves", "usage_examples.html#ex_score_moves", null ],
+      [ "Loading an opening book", "usage_examples.html#ex_book", null ],
+      [ "Calling the engine from Python", "usage_examples.html#ex_python", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -34,18 +45,29 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"BitBully_8cpp.html",
+"index.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

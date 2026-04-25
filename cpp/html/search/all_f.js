@@ -1,4 +1,26 @@
 var searchData=
 [
-  ['openingbook_0',['OpeningBook',['../d2/d9f/classBitBully_1_1OpeningBook.html',1,'BitBully::OpeningBook'],['../d3/d78/classGameSolver_1_1Connect4_1_1OpeningBook.html',1,'GameSolver::Connect4::OpeningBook']]]
+  ['p_5fempty_0',['P_EMPTY',['../classBitBully_1_1Board.html#a51de95ec0b58e477cb87831872b2d9acab1a1b3ad14d101f43556d96a7abbb786',1,'BitBully::Board']]],
+  ['p_5fred_1',['P_RED',['../classBitBully_1_1Board.html#a51de95ec0b58e477cb87831872b2d9acac6fb24be2df8c5aad66997442663948b',1,'BitBully::Board']]],
+  ['p_5fyellow_2',['P_YELLOW',['../classBitBully_1_1Board.html#a51de95ec0b58e477cb87831872b2d9acadc7cf9ec60fbef316c8fc1e48234dcb9',1,'BitBully::Board']]],
+  ['papers_3',['Foundational papers',['../references.html#autotoc_md15',1,'']]],
+  ['parseargs_4',['parseArgs',['../src_2main_8cpp.html#ab01448f2169d2124cf18e602a105765d',1,'main.cpp']]],
+  ['play_5',['play',['../classBitBully_1_1Board.html#a4e2be92545e14189714535aa5c5a6745',1,'BitBully::Board::play(int column)'],['../classBitBully_1_1Board.html#aa96ec2fe5bd7d067759e115861c8504a',1,'BitBully::Board::play(const std::vector&lt; int &gt; &amp;moveSequence)'],['../classBitBully_1_1Board.html#a31ef16bb12244f6b16b6329813a57dbf',1,'BitBully::Board::play(const std::string &amp;moveSequence)'],['../classGameSolver_1_1Connect4_1_1Position.html#a57dadc2f70eb02ff6237166f02a341fa',1,'GameSolver::Connect4::Position::play()']]],
+  ['playbitmaskoncopy_6',['playBitMaskOnCopy',['../classBitBully_1_1Board.html#a651aab94f4519f46a473d895a93736fe',1,'BitBully::Board']]],
+  ['playcol_7',['playCol',['../classGameSolver_1_1Connect4_1_1Position.html#a32b2aeb205f3e6bc2c1dd6d5e2d8efe6',1,'GameSolver::Connect4::Position']]],
+  ['player_8',['Player',['../classBitBully_1_1Board.html#a51de95ec0b58e477cb87831872b2d9ac',1,'BitBully::Board']]],
+  ['playmoveoncopy_9',['playMoveOnCopy',['../classBitBully_1_1Board.html#aa97d678ff348e390ff66a66a6bd7f034',1,'BitBully::Board']]],
+  ['pop_10',['pop',['../classBitBully_1_1MoveList.html#a55c8ef61ddcc488a4bac162d07223489',1,'BitBully::MoveList']]],
+  ['popcountboard_11',['popCountBoard',['../classBitBully_1_1Board.html#aa06de3e9e8e077b5e0c6cf75c5a0bd81',1,'BitBully::Board::popCountBoard(uint64_t x)'],['../classBitBully_1_1Board.html#a969f5f46a7727f9ade2e9ea31ba11399',1,'BitBully::Board::popCountBoard() const']]],
+  ['position_12',['Position',['../classGameSolver_1_1Connect4_1_1Position.html',1,'GameSolver::Connect4::Position'],['../classGameSolver_1_1Connect4_1_1Position.html#a40224933c03ae7866641bc09e2a67444',1,'GameSolver::Connect4::Position::Position()']]],
+  ['position_13',['Evaluating a position',['../usage_examples.html#ex_solve',1,'']]],
+  ['possiblenonlosingmoves_14',['possibleNonLosingMoves',['../classGameSolver_1_1Connect4_1_1Position.html#a65529ce1a2f62d5732ecd69eef303cbb',1,'GameSolver::Connect4::Position']]],
+  ['prerequisites_15',['Prerequisites',['../build_and_test.html#autotoc_md5',1,'']]],
+  ['project_5fmajor_5fversion_16',['PROJECT_MAJOR_VERSION',['../version_8h.html#a132f8d572f3e2bfcf4cab8d9cb78f4a3',1,'version.h']]],
+  ['project_5fminor_5fversion_17',['PROJECT_MINOR_VERSION',['../version_8h.html#a37365638f361e7508c958913f39c2a24',1,'version.h']]],
+  ['project_5fpatch_5fversion_18',['PROJECT_PATCH_VERSION',['../version_8h.html#afb3383431adb189fa27166f0445182be',1,'version.h']]],
+  ['project_5fversion_19',['PROJECT_VERSION',['../version_8h.html#a4a776fa6ea8b7bdf8dfa04ad42b46407',1,'version.h']]],
+  ['put_20',['put',['../classGameSolver_1_1Connect4_1_1TranspositionTable.html#ae19ada6599df2c509e38e689883b19ae',1,'GameSolver::Connect4::TranspositionTable']]],
+  ['pybind11_5fmodule_21',['PYBIND11_MODULE',['../bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2',1,'bitbully_core.cpp']]],
+  ['python_22',['Calling the engine from Python',['../usage_examples.html#ex_python',1,'']]]
 ];

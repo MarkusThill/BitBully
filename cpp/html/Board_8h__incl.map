@@ -1,0 +1,24 @@
+<map id="src/Board.h" name="src/Board.h">
+<area shape="rect" id="Node000001" title="Bitboard&#45;based representation of a Connect&#45;4 position." alt="" coords="362,5,457,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,61,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="362,29,236,49,75,81,74,76,235,44,361,24"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="85,79,155,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="363,33,169,81,167,76,362,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="179,79,250,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="379,33,260,76,258,71,377,28"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="527,152,593,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="379,33,351,47,325,64,311,83,310,92,315,102,328,113,347,122,399,138,513,156,513,161,398,143,345,127,325,117,311,106,305,93,306,81,321,60,348,42,377,28"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="325,79,405,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="404,32,382,68,377,66,400,30"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="429,79,480,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="419,30,442,66,438,69,415,32"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="504,79,576,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="432,28,508,70,506,74,429,33"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="600,79,675,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="447,28,588,72,586,77,445,33"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="699,79,762,104"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="458,26,687,76,685,81,457,32"/>
+<area shape="rect" id="Node000011" href="$MoveList_8h.html" title="Tiny priority queue used by the engine for move ordering." alt="" coords="787,79,880,104"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="457,24,774,76,773,81,456,29"/>
+<area shape="poly" id="edge11_Node000011_Node000005" title=" " alt="" coords="790,107,607,154,606,149,789,101"/>
+</map>

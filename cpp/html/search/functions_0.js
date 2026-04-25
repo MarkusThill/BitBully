@@ -1,26 +1,5 @@
 var searchData=
 [
-  ['_5f_5feq_5f_5f_0',['__eq__',['../d9/d83/classbitbully_1_1board_1_1Board.html#a14e3593ac443efa0acedf090e3671a7d',1,'bitbully::board::Board']]],
-  ['_5f_5fhash_5f_5f_1',['__hash__',['../d9/d83/classbitbully_1_1board_1_1Board.html#aa56a2afaa85ded51091e20ae61b872ec',1,'bitbully::board::Board']]],
-  ['_5f_5finit_5f_5f_2',['__init__',['../d9/d83/classbitbully_1_1board_1_1Board.html#a26f6bb8016db04d0ed10a8c05cfb87e6',1,'bitbully.board.Board.__init__()'],['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9da3ed8ec455e51efe1689fe34befef8',1,'bitbully.gui_c4.GuiC4.__init__()'],['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ab19dccf0ff53c09689e50e3ac6544c05',1,'bitbully.solver.BitBully.__init__()']]],
-  ['_5f_5fne_5f_5f_3',['__ne__',['../d9/d83/classbitbully_1_1board_1_1Board.html#af95a367c9b9e977c07ee89189f1e6087',1,'bitbully::board::Board']]],
-  ['_5f_5frepr_5f_5f_4',['__repr__',['../d9/d83/classbitbully_1_1board_1_1Board.html#a685b273338fc40f86ce851d01632aeaf',1,'bitbully.board.Board.__repr__()'],['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#adab7e8da4f9dcf12f10e2f1a13877d6e',1,'bitbully.solver.BitBully.__repr__()']]],
-  ['_5f_5fstr_5f_5f_5',['__str__',['../d9/d83/classbitbully_1_1board_1_1Board.html#ad9a2dd40b4217e8d4f3aac392444f79e',1,'bitbully::board::Board']]],
-  ['_5fagent_5ffor_5fevaluation_6',['_agent_for_evaluation',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a5d782a996a35242fd8df74604ce5157f',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fcheck_5fwinner_7',['_check_winner',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#addeb5675aa795bbbf75d18290b4f9e47',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fclear_5feval_5frow_8',['_clear_eval_row',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a4304feb1dbdf70b4fea5f271be439be8',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fcopy_5fto_5fclipboard_9',['_copy_to_clipboard',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#aad05e2e3a7f7a8d220db014f852acc92',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fcreate_5fcolumn_5flabels_10',['_create_column_labels',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a3dde63ddaf5ff642f60c9c4d8da942c9',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fcreate_5feval_5frow_11',['_create_eval_row',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a47417d16b1f7c349a56f23bd28210ab7',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fcreate_5fmove_5flist_5fui_12',['_create_move_list_ui',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a9115591967f83a0187615e7850b67059',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fcreate_5fplayer_5fselectors_13',['_create_player_selectors',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a8b812134478ceb20ccd4d8e8136990ba',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fcreate_5fstatus_5fbar_14',['_create_status_bar',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ad49f96070c2eedf9e89d8ee71047142b',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fcurrent_5fplayer_15',['_current_player',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a016420d82729880e855e1851b06a354d',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fevaluate_5fboard_16',['_evaluate_board',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a0d631e28f1275b46324c0de5be713547',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fget_5fimg_5fidx_17',['_get_img_idx',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#adba205cc0228d95ab13b6ebaae7d7b6b',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fmaybe_5fautoplay_18',['_maybe_autoplay',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ae492ec0d0f83bed0f261856555133cce',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fmoves_5fag_5fstring_19',['_moves_ag_string',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a368e0ca3bf680eb49b13ec71a05a3893',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fon_5ffield_5fclick_20',['_on_field_click',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#a30c2c5e0a13e6f49762f3abeda6b056b',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fposition_5fstring_21',['_position_string',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#aa07e8a4e8e5f42dc9a5b36c01b1fce1e',1,'bitbully::gui_c4::GuiC4']]],
-  ['_5fupdate_5fmove_5flist_5fui_22',['_update_move_list_ui',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html#ab334f89d9e63d079469288d0e45be42c',1,'bitbully::gui_c4::GuiC4']]]
+  ['add_0',['add',['../classGameSolver_1_1Connect4_1_1MoveSorter.html#a1db567c5fd4d9d248461f0f8f6444d11',1,'GameSolver::Connect4::MoveSorter']]],
+  ['allpositions_1',['allPositions',['../classBitBully_1_1Board.html#acfc579a8c01d89956adc69dc23006714',1,'BitBully::Board']]]
 ];

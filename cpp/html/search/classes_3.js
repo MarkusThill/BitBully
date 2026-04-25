@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['guic4_0',['GuiC4',['../df/d22/classbitbully_1_1gui__c4_1_1GuiC4.html',1,'bitbully::gui_c4']]]
+  ['openingbook_0',['OpeningBook',['../classBitBully_1_1OpeningBook.html',1,'BitBully::OpeningBook'],['../classGameSolver_1_1Connect4_1_1OpeningBook.html',1,'GameSolver::Connect4::OpeningBook']]]
 ];

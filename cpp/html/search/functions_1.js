@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['add_0',['add',['../d1/dfa/classGameSolver_1_1Connect4_1_1MoveSorter.html#a1db567c5fd4d9d248461f0f8f6444d11',1,'GameSolver::Connect4::MoveSorter']]],
-  ['all_5fpositions_1',['all_positions',['../d9/d83/classbitbully_1_1board_1_1Board.html#a42903f41f41e423c133fd9ed842d2ed8',1,'bitbully::board::Board']]],
-  ['available_5fopening_5fbooks_2',['available_opening_books',['../dc/d09/classbitbully_1_1solver_1_1BitBully.html#ae2e3f241a045aa7ead284c101845b032',1,'bitbully::solver::BitBully']]]
+  ['bitbully_0',['BitBully',['../classBitBully_1_1BitBully.html#ab060d0975ab4cd7bc91e14c24ec807fe',1,'BitBully::BitBully']]],
+  ['bits_5fset_1',['bits_set',['../Board_8h.html#a4b3dcacd84e618e8c3cfb7c4f9a310c2',1,'Board.h']]],
+  ['board_2',['Board',['../classBitBully_1_1Board.html#a15103f528a6674a3c6a78defe7e91a7b',1,'BitBully::Board']]]
 ];
