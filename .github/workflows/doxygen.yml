@@ -20,31 +20,26 @@ jobs:
     steps:
       # Step 1: Check out the repository
       - name: Check out the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: recursive
 
       # Step 2: Set up Python
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
       # Step 3: Set up Doxygen
       - name: Install Doxygen
         run: |
-          export DOXY_VERSION=1.14.0
-          echo "Installing doxgen v$DOXY_VERSION"
+          DOXY_VERSION=1.16.1
+          echo "Installing doxygen v$DOXY_VERSION"
           sudo apt-get update && sudo apt-get install -y graphviz
-          mkdir doxygen-installer
-          wget "https://www.doxygen.nl/files/doxygen-${DOXY_VERSION}.linux.bin.tar.gz"
-          mv "doxygen-${DOXY_VERSION}.linux.bin.tar.gz" doxygen-installer
-          cd doxygen-installer
-          gunzip "doxygen-${DOXY_VERSION}.linux.bin.tar.gz"
-          tar xf "doxygen-${DOXY_VERSION}.linux.bin.tar"
-          cd "doxygen-${DOXY_VERSION}"
-          ls -laht
-          sudo make install
+          wget -q "https://github.com/doxygen/doxygen/releases/download/Release_${DOXY_VERSION//./_}/doxygen-${DOXY_VERSION}.linux.bin.tar.gz"
+          tar xzf "doxygen-${DOXY_VERSION}.linux.bin.tar.gz"
+          sudo make -C "doxygen-${DOXY_VERSION}" install
+          doxygen --version
 
       # Step 4: Generate Documentation
       - name: Generate Doxygen Documentation
