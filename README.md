@@ -1,56 +1,51 @@
-# BitBully: A fast and perfect-playing Connect-4 Agent for Python 3 & C/C++
+# BitBully — Fast Perfect-Play Connect Four Solver for Python & C++
 
-<h1 align="center">
-<img src="https://markusthill.github.io/assets/img/project_bitbully/bitbully-logo-full-800.webp" alt="bitbully-logo-full" width="400" >
-</h1><br>
+<p align="center">
+  <img src="https://markusthill.github.io/assets/img/project_bitbully/bitbully-logo-full-800.webp" alt="BitBully logo" width="400">
+</p>
 
-![GitHub Repo stars](https://img.shields.io/github/stars/MarkusThill/BitBully)
-![GitHub forks](https://img.shields.io/github/forks/MarkusThill/BitBully)
-![Python](https://img.shields.io/badge/language-Python-blue.svg)
-![Python](https://img.shields.io/badge/language-C++-yellow.svg)
-[![Python](https://img.shields.io/pypi/pyversions/bitbully.svg)](https://badge.fury.io/py/bitbully)
-![Docs](https://img.shields.io/badge/docs-online-brightgreen)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
-![PyPI - Version](https://img.shields.io/pypi/v/bitbully)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/bitbully)
-![PyPI - License](https://img.shields.io/pypi/l/bitbully)
-[![Coverage Status](https://coveralls.io/repos/github/MarkusThill/BitBully/badge.svg?branch=master)](https://coveralls.io/github/MarkusThill/BitBully?branch=master)
-![Wheels](https://github.com/MarkusThill/BitBully/actions/workflows/wheels.yml/badge.svg)
-![Doxygen](https://github.com/MarkusThill/BitBully/actions/workflows/doxygen.yml/badge.svg)
-![CMake Build](https://github.com/MarkusThill/BitBully/actions/workflows/cmake-multi-platform.yml/badge.svg)
-![Buy Me a Coffee](https://img.shields.io/badge/support-Buy_Me_A_Coffee-orange)
+<p align="center">
+  <strong>A high-performance Connect Four solver with Python bindings, optimized bitboards, opening books, and perfect play.</strong>
+</p>
 
-**BitBully** is a high-performance Connect-4 solver implemented in C++ with Python bindings, built around advanced search algorithms and highly optimized bitboard operations. It is designed for efficient game solving and analysis, targeting both developers interested in performance-critical implementations and researchers working on game-tree search.
+<p align="center">
+  Built in C++ for speed, with a clean Python API for analysis, benchmarking, research, and interactive use.
+</p>
 
-> BitBully evaluates millions of positions per second in pure C++ and supports
-> constant-time opening-book lookups for early-game positions. Even without
-> opening databases, it can solve the entire game in under 200 seconds on
-> relatively modest hardware.
+<p align="center">
+  <a href="https://pypi.org/project/bitbully/"><img src="https://img.shields.io/pypi/v/bitbully" alt="PyPI"></a>
+  <a href="https://pypi.org/project/bitbully/"><img src="https://img.shields.io/pypi/pyversions/bitbully.svg" alt="Python versions"></a>
+  <img src="https://img.shields.io/github/stars/MarkusThill/BitBully" alt="GitHub stars">
+  <img src="https://img.shields.io/github/forks/MarkusThill/BitBully" alt="GitHub forks">
+  <img src="https://img.shields.io/pypi/dm/bitbully" alt="PyPI downloads">
+  <img src="https://img.shields.io/pypi/l/bitbully" alt="License">
+  <img src="https://github.com/MarkusThill/BitBully/actions/workflows/wheels.yml/badge.svg" alt="Wheels">
+  <img src="https://github.com/MarkusThill/BitBully/actions/workflows/cmake-multi-platform.yml/badge.svg" alt="CMake Build">
+</p>
 
-
+> **Why BitBully?**
+>
+> - **Perfect play** for Connect Four
+> - **Fast C++ core** with Python bindings via `pybind11`
+> - **Optimized bitboards**, transposition tables, threat detection, and advanced search
+> - **Opening-book support** for constant-time early-game lookups in milliseconds
+> - **Benchmarked** to solve the empty board in **under 200 seconds** on modest hardware (with no opening books)
 
 <p align="center">
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-1-1400.webp"
-       alt="Connect4 opening"
-       width="25%"
-       style="margin: 0 75px;">
+       alt="Connect Four opening"
+       width="25%">
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-2-1400.webp"
-       alt="Connect4 mid-game"
-       width="25%"
-       style="margin: 0 75px;">
+       alt="Connect Four middlegame"
+       width="25%">
   <img src="https://markusthill.github.io/assets/img/project_bitbully/c4-3-1400.webp"
-       alt="Connect4 victory"
-       width="25%"
-       style="margin: 0 75px;">
+       alt="Connect Four winning position"
+       width="25%">
 </p>
 
 <p align="center">
-  <em>
-    From opening to victory: three key stages of a Connect&nbsp;4 match — early game,
-    mid-game tension, and the final winning position.
-  </em>
+  <em>From opening to victory: BitBully can analyze and solve positions across all stages of the game.</em>
 </p>
-
 
 ## Quickstart
 
