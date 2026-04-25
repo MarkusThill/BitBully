@@ -23,10 +23,20 @@
 <script type="text/javascript">
   $(function() { init_search(); });
 </script>
+    <script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <link href="doxygen.css" rel="stylesheet" type="text/css"/>
     <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
     <!-- ... other metadata & script includes ... -->
     <script src="doxygen-awesome-darkmode-toggle.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -136,7 +146,7 @@ $(function() {
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">BitBully::TranspositionTable Class Reference</div></div>
+  <div class="headertitle"><div class="title">BitBully::TranspositionTable Class Reference<div class="ingroups"><a class="el" href="group__search.html">Search engine</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -166,7 +176,7 @@ Static Public Attributes</h2></td></tr>
 <div class="textblock"><p>Power-of-two-sized direct-mapped cache for negamax search results. </p>
 <p>The table is indexed by <span class="tt"><a class="el" href="classBitBully_1_1Board.html#a304529c6848a6b38c552041d117a4924" title="Splittable-mix-style hash for a 64-bit integer.">Board::hash()</a> &amp; (size - 1)</span>, which compiles down to a single masking operation. A single slot is reserved per index; collisions are simply overwritten. Each slot stores the <a class="el" href="classBitBully_1_1Board.html" title="Connect-4 position represented as a pair of 64-bit bitboards.">Board</a>'s <a class="el" href="classBitBully_1_1Board.html#ad159897f318e91a46e1c229c08f7b52e" title="Board::uid()">Board::uid()</a> so that callers can recognise hash collisions. </p>
 
-<p class="definition">Definition at line <a class="el" href="TranspositionTable_8h_source.html#l00024">24</a> of file <a class="el" href="TranspositionTable_8h_source.html">TranspositionTable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TranspositionTable_8h_source.html#l00026">26</a> of file <a class="el" href="TranspositionTable_8h_source.html">TranspositionTable.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae80bc1834054469b007502ef5378e297" name="ae80bc1834054469b007502ef5378e297"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae80bc1834054469b007502ef5378e297">&#9670;&#160;</a></span>TranspositionTable()</h2>
@@ -199,7 +209,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="TranspositionTable_8h_source.html#l00062">62</a> of file <a class="el" href="TranspositionTable_8h_source.html">TranspositionTable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TranspositionTable_8h_source.html#l00064">64</a> of file <a class="el" href="TranspositionTable_8h_source.html">TranspositionTable.h</a>.</p>
 
 </div>
 </div>
@@ -237,7 +247,12 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the slot. Always non-null and valid for the lifetime of the <code><a class="el" href="classBitBully_1_1TranspositionTable.html" title="Power-of-two-sized direct-mapped cache for negamax search results.">TranspositionTable</a></code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="TranspositionTable_8h_source.html#l00077">77</a> of file <a class="el" href="TranspositionTable_8h_source.html">TranspositionTable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TranspositionTable_8h_source.html#l00079">79</a> of file <a class="el" href="TranspositionTable_8h_source.html">TranspositionTable.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1TranspositionTable_a8fa5ea26f9517402b084d8f604245a73_cgraph.svg" width="446" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -264,7 +279,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>Default <span class="tt">log2</span> of the number of entries. </p>
 
-<p class="definition">Definition at line <a class="el" href="TranspositionTable_8h_source.html#l00031">31</a> of file <a class="el" href="TranspositionTable_8h_source.html">TranspositionTable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TranspositionTable_8h_source.html#l00033">33</a> of file <a class="el" href="TranspositionTable_8h_source.html">TranspositionTable.h</a>.</p>
 
 </div>
 </div>

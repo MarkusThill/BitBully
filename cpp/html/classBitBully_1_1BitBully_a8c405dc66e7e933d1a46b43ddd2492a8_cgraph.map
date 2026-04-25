@@ -1,0 +1,55 @@
+<map id="BitBully::BitBully::scoreMove" name="BitBully::BitBully::scoreMove">
+<area shape="rect" id="Node000001" title="Evaluate the move that drops a stone in column." alt="" coords="5,431,136,471"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1BitBully.html#a76cec6e90a0420017774f74dd489d251" title="Solve a position using the MTD(f) driver." alt="" coords="196,402,327,442"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,439,182,432,183,437,137,444"/>
+<area shape="rect" id="Node000023" href="$classBitBully_1_1Board.html#a4e2be92545e14189714535aa5c5a6745" title="Drop a stone of the player to move into column." alt="" coords="184,467,339,492"/>
+<area shape="poly" id="edge28_Node000001_Node000023" title=" " alt="" coords="137,458,171,463,170,469,136,464"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1BitBully.html#ab560bedc498b3e70e5eddfef4a32b533" title="Negamax search with alpha&#45;beta pruning, transposition table and opening book consultation." alt="" coords="425,402,556,442"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="327,419,412,419,412,425,327,425"/>
+<area shape="poly" id="edge15_Node000003_Node000003" title=" " alt="" coords="448,402,445,392,452,383,467,377,491,375,517,378,532,385,530,390,516,383,491,381,469,383,455,387,450,393,453,401"/>
+<area shape="rect" id="Node000004" href="$classBitBully_1_1Board.html#a31d1327bf9b59e6fff94d80443c7699e" title="Does the player to move have an immediately winning move?" alt="" coords="661,5,836,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="491,401,501,332,525,234,544,181,570,129,602,81,641,40,648,35,651,39,644,44,606,85,574,132,549,183,530,236,506,333,496,402"/>
+<area shape="rect" id="Node000005" href="$classBitBully_1_1Board.html#a2041fa032b47cab0dba8639a2de17090" title="Number of stones currently placed on the board." alt="" coords="645,55,852,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="492,401,505,340,531,255,551,210,575,166,605,125,641,89,648,84,651,89,644,93,609,128,580,168,556,212,536,257,510,341,498,402"/>
+<area shape="rect" id="Node000006" href="$classBitBully_1_1Board.html#a27969eddcd49d5644c812339aec41ae8" title="Identify moves that create a &quot;double threat&quot; (forced win)." alt="" coords="643,104,855,129"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="495,401,512,350,541,281,584,209,610,176,641,147,664,132,667,137,644,151,614,179,588,212,546,284,517,352,500,403"/>
+<area shape="rect" id="Node000007" href="$classBitBully_1_1Board.html#aa1a6fa84e11fe0fc5a7abb64ee713cf6" title="Identify candidate moves that yield a tactical advantage." alt="" coords="921,172,1120,197"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="496,401,513,355,542,296,562,265,585,237,611,211,641,190,680,173,722,161,764,154,807,152,889,156,957,167,956,172,888,161,807,157,765,160,723,166,682,178,644,195,615,215,589,240,566,269,547,299,518,357,501,403"/>
+<area shape="rect" id="Node000009" href="$classBitBully_1_1Board.html#a952c36a7a0faafbc49ab18f393ff6f6c" title="Compute moves that do not lose immediately." alt="" coords="657,205,841,245"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="504,400,560,333,598,295,641,261,665,248,668,253,644,266,602,299,564,336,508,403"/>
+<area shape="rect" id="Node000010" href="$classBitBully_1_1Board.html#a1935dee0e691ee8b048c1203f6144ce7" title="Bitboard whose set bits mark the next reachable cell of every non&#45;full column." alt="" coords="903,253,1139,279"/>
+<area shape="poly" id="edge11_Node000003_Node000010" title=" " alt="" coords="509,400,565,350,602,325,642,305,703,285,767,272,830,264,889,261,889,266,830,270,767,277,704,290,644,310,605,330,568,355,513,404"/>
+<area shape="rect" id="Node000011" href="$classBitBully_1_1BitBully.html#a1e12396b723b223a7c473baed2bd4954" title="Was an opening book successfully loaded?" alt="" coords="683,319,814,359"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="552,399,642,370,670,361,672,366,643,375,554,404"/>
+<area shape="rect" id="Node000012" href="$classBitBully_1_1Board.html#a97357373ac0844cd2a7c07c87361131d" title="Mirror the board around its central column." alt="" coords="665,384,832,409"/>
+<area shape="poly" id="edge12_Node000003_Node000012" title=" " alt="" coords="556,413,651,404,652,409,557,418"/>
+<area shape="rect" id="Node000014" href="$classBitBully_1_1Board.html#ab78567ab55b360e6680412a1df03eada" title="Number of plies remaining until the board is full." alt="" coords="651,433,846,459"/>
+<area shape="poly" id="edge14_Node000003_Node000014" title=" " alt="" coords="557,425,638,433,637,438,556,431"/>
+<area shape="rect" id="Node000015" href="$classBitBully_1_1Board.html#a6ae4995235ad5092e1d7c38fcc990073" title="Pick the best&#45;ranked move from a candidate set using a fixed priority order." alt="" coords="925,633,1116,659"/>
+<area shape="poly" id="edge16_Node000003_Node000015" title=" " alt="" coords="558,433,596,453,613,474,621,495,628,515,644,533,672,551,696,561,743,570,794,573,855,585,975,626,973,631,854,590,793,578,743,575,695,566,669,555,641,537,623,517,616,497,609,477,593,457,555,437"/>
+<area shape="rect" id="Node000016" href="$classBitBully_1_1Board.html#a651aab94f4519f46a473d895a93736fe" title="Apply a move (already encoded as a single&#45;bit mask) on a copy of this board." alt="" coords="663,483,835,523"/>
+<area shape="poly" id="edge18_Node000003_Node000016" title=" " alt="" coords="555,439,596,453,643,469,668,477,667,482,642,474,594,458,553,445"/>
+<area shape="rect" id="Node000017" href="$classBitBully_1_1MoveList.html#a55c8ef61ddcc488a4bac162d07223489" title="Remove and return the highest&#45;priority move." alt="" coords="663,599,834,624"/>
+<area shape="poly" id="edge20_Node000003_Node000017" title=" " alt="" coords="558,431,578,440,596,453,610,469,617,485,621,517,626,548,632,563,644,577,664,591,661,595,641,581,628,566,620,549,616,518,612,487,605,472,593,457,575,445,555,436"/>
+<area shape="rect" id="Node000018" href="$classBitBully_1_1Board.html#aa06de3e9e8e077b5e0c6cf75c5a0bd81" title="Software popcount fallback used when no intrinsic is available." alt="" coords="655,649,843,689"/>
+<area shape="poly" id="edge21_Node000003_Node000018" title=" " alt="" coords="557,430,578,439,597,453,613,477,621,500,621,546,621,591,629,613,645,635,648,638,645,642,641,638,624,615,616,592,616,546,616,501,608,479,593,457,576,444,555,435"/>
+<area shape="rect" id="Node000019" href="$classBitBully_1_1BitBully.html#aeeb900218ac6cd155adc27ff4283c904" title="Cheap evaluation: play out the game using safe heuristic moves." alt="" coords="683,713,814,753"/>
+<area shape="poly" id="edge22_Node000003_Node000019" title=" " alt="" coords="557,429,578,439,597,454,617,485,625,517,625,548,621,579,617,609,617,639,625,669,645,699,672,718,669,722,641,703,620,671,611,640,612,609,616,578,620,548,620,517,612,487,593,457,576,443,555,434"/>
+<area shape="rect" id="Node000020" href="$classBitBully_1_1Board.html#a0d3c307cd8aa9aa2654254b6e801db6b" title="Sort candidate moves into a MoveList using a threat&#45;based heuristic." alt="" coords="651,777,846,803"/>
+<area shape="poly" id="edge24_Node000003_Node000020" title=" " alt="" coords="557,429,578,438,597,454,611,474,621,494,630,534,627,573,620,612,613,650,611,688,620,725,630,744,645,763,650,768,646,772,641,766,625,747,615,727,605,688,607,649,615,611,622,572,624,534,616,496,607,477,593,457,576,443,555,433"/>
+<area shape="rect" id="Node000022" href="$classBitBully_1_1Board.html#ad159897f318e91a46e1c229c08f7b52e" title="Unique 64&#45;bit identifier of the position." alt="" coords="675,827,822,852"/>
+<area shape="poly" id="edge27_Node000003_Node000022" title=" " alt="" coords="557,428,579,438,597,454,613,477,624,501,631,524,633,547,629,593,619,638,610,682,606,726,609,748,616,770,628,792,645,813,664,828,661,832,641,817,623,794,611,772,604,749,601,726,604,681,614,637,624,592,628,547,626,525,619,502,609,480,593,457,576,443,555,433"/>
+<area shape="rect" id="Node000008" href="$classBitBully_1_1Board.html#ab27e5321cdbbf9ffec1abe4897ce6ad1" title="Isolate the least significant set bit of a bitboard." alt="" coords="1187,411,1332,436"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1062,195,1102,213,1140,239,1177,277,1208,321,1249,397,1245,399,1203,324,1173,281,1137,243,1099,217,1060,200"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="841,236,924,249,923,254,840,241"/>
+<area shape="rect" id="Node000013" href="$classBitBully_1_1Board.html#a15103f528a6674a3c6a78defe7e91a7b" title="Construct an empty board with player Yellow to move." alt="" coords="939,437,1103,463"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="815,407,942,432,941,437,814,412"/>
+<area shape="poly" id="edge17_Node000015_Node000008" title=" " alt="" coords="1034,631,1232,444,1236,448,1038,635"/>
+<area shape="poly" id="edge19_Node000016_Node000013" title=" " alt="" coords="834,484,941,463,942,468,835,489"/>
+<area shape="poly" id="edge23_Node000019_Node000015" title=" " alt="" coords="813,711,854,698,968,661,970,666,855,703,815,716"/>
+<area shape="poly" id="edge26_Node000020_Node000015" title=" " alt="" coords="819,775,854,762,894,740,933,715,994,666,997,670,936,719,897,745,856,767,820,780"/>
+<area shape="rect" id="Node000021" href="$classBitBully_1_1MoveList.html#a6f8c35f7aad683ec4e1458aa235c7810" title="Insert a (move, score) pair while keeping the queue sorted." alt="" coords="951,770,1090,810"/>
+<area shape="poly" id="edge25_Node000020_Node000021" title=" " alt="" coords="846,787,938,787,938,793,846,793"/>
+<area shape="rect" id="Node000024" href="$classBitBully_1_1Board.html#a1c11e3f18b58c4b4d342d2738e03be17" title="Check whether dropping a stone in column is legal." alt="" coords="387,467,595,492"/>
+<area shape="poly" id="edge29_Node000023_Node000024" title=" " alt="" coords="339,477,373,477,373,482,339,482"/>
+</map>

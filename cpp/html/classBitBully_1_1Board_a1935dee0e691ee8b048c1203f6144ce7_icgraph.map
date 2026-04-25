@@ -1,0 +1,31 @@
+<map id="BitBully::Board::legalMovesMask" name="BitBully::Board::legalMovesMask">
+<area shape="rect" id="Node000001" title="Bitboard whose set bits mark the next reachable cell of every non&#45;full column." alt="" coords="1221,128,1457,153"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#a952c36a7a0faafbc49ab18f393ff6f6c" title="Compute moves that do not lose immediately." alt="" coords="989,83,1173,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1237,129,1173,119,1174,114,1238,123"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1Board.html#aa63dc39fb8fa32b131ff498a98c876b9" title="Enumerate legal moves as column indices." alt="" coords="740,27,941,52"/>
+<area shape="poly" id="edge17_Node000001_Node000003" title=" " alt="" coords="1301,124,1242,97,1173,74,1114,61,1053,53,941,44,942,38,1054,47,1115,56,1174,69,1244,92,1303,119"/>
+<area shape="rect" id="Node000004" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,204,156,229"/>
+<area shape="poly" id="edge19_Node000001_Node000004" title=" " alt="" coords="1319,165,1247,234,1195,276,1135,319,1068,359,996,392,920,415,881,421,842,423,447,423,376,427,320,431,293,430,265,425,236,415,203,397,179,380,157,359,122,311,98,265,84,230,89,228,103,263,127,309,161,356,182,376,205,393,238,410,267,420,293,425,320,426,376,422,447,418,842,418,881,416,919,410,994,387,1066,354,1132,315,1192,272,1243,230,1315,161"/>
+<area shape="rect" id="Node000005" href="$classBitBully_1_1BitBully.html#ab560bedc498b3e70e5eddfef4a32b533" title="Negamax search with alpha&#45;beta pruning, transposition table and opening book consultation." alt="" coords="775,151,906,191"/>
+<area shape="poly" id="edge18_Node000001_Node000005" title=" " alt="" coords="1208,151,906,170,906,165,1207,146"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="992,82,889,55,890,49,993,77"/>
+<area shape="poly" id="edge16_Node000002_Node000004" title=" " alt="" coords="975,101,812,95,628,93,447,93,395,96,343,106,293,120,245,137,161,175,104,206,102,201,159,170,243,132,291,115,342,101,394,91,447,87,628,87,812,90,975,96"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="998,130,907,155,906,150,996,124"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="762,27,648,13,579,9,505,9,428,14,351,25,276,45,205,74,165,102,131,139,106,176,90,205,86,203,102,173,127,136,161,98,203,69,275,40,350,20,428,8,505,3,579,4,648,8,763,22"/>
+<area shape="poly" id="edge15_Node000005_Node000004" title=" " alt="" coords="761,174,513,179,359,187,204,199,151,207,150,201,204,194,359,181,513,174,761,169"/>
+<area shape="poly" id="edge12_Node000005_Node000005" title=" " alt="" coords="877,139,864,133,841,130,820,132,808,137,803,143,806,150,801,152,798,142,805,132,819,127,841,125,866,127,879,135"/>
+<area shape="rect" id="Node000006" href="$classBitBully_1_1BitBully.html#a76cec6e90a0420017774f74dd489d251" title="Solve a position using the MTD(f) driver." alt="" coords="561,201,692,241"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="762,192,693,208,692,203,761,187"/>
+<area shape="rect" id="Node000010" href="$classBitBully_1_1BitBully.html#a9c73ca66a2a7660b5125cd3c36535002" title="Alternative driver based on a binary search of zero&#45;width windows." alt="" coords="204,343,335,383"/>
+<area shape="poly" id="edge13_Node000005_Node000010" title=" " alt="" coords="794,201,693,255,606,300,566,317,514,334,421,353,335,362,335,357,420,348,513,329,565,312,604,295,691,250,792,196"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="547,221,513,221,156,219,156,214,513,215,547,216"/>
+<area shape="rect" id="Node000007" href="$src_2main_8cpp.html#aee608aedd5b0b58f2966c2ff15101925" title="Entry point of the benchmark binary." alt="" coords="421,229,475,255"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="548,233,476,241,475,236,548,227"/>
+<area shape="rect" id="Node000008" href="$classBitBully_1_1BitBully.html#a8c405dc66e7e933d1a46b43ddd2492a8" title="Evaluate the move that drops a stone in column." alt="" coords="383,279,513,319"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="569,249,495,282,493,277,567,244"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="369,279,334,270,153,232,154,227,335,265,370,274"/>
+<area shape="rect" id="Node000009" href="$classBitBully_1_1BitBully.html#ab4c3408f62623c65181ff00f1d5d6044" title="Evaluate every column move from b." alt="" coords="204,279,335,319"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="369,302,335,302,335,297,369,297"/>
+<area shape="poly" id="edge11_Node000009_Node000004" title=" " alt="" coords="210,276,110,232,112,227,212,271"/>
+<area shape="poly" id="edge14_Node000010_Node000004" title=" " alt="" coords="210,339,202,333,138,279,92,231,95,228,141,275,206,329,213,334"/>
+</map>

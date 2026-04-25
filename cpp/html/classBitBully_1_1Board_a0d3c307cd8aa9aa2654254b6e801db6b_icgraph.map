@@ -1,0 +1,22 @@
+<map id="BitBully::Board::sortMoves" name="BitBully::Board::sortMoves">
+<area shape="rect" id="Node000001" title="Sort candidate moves into a MoveList using a threat&#45;based heuristic." alt="" coords="919,221,1113,247"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1BitBully.html#ab560bedc498b3e70e5eddfef4a32b533" title="Negamax search with alpha&#45;beta pruning, transposition table and opening book consultation." alt="" coords="740,214,871,254"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="905,237,871,237,871,231,905,231"/>
+<area shape="poly" id="edge9_Node000002_Node000002" title=" " alt="" coords="835,202,825,195,805,193,788,195,778,199,775,205,777,213,771,214,769,204,775,195,787,189,805,187,827,190,838,198"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1BitBully.html#a76cec6e90a0420017774f74dd489d251" title="Solve a position using the MTD(f) driver." alt="" coords="561,78,692,118"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="766,208,652,120,656,116,769,203"/>
+<area shape="rect" id="Node000005" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,164,156,189"/>
+<area shape="poly" id="edge12_Node000002_Node000005" title=" " alt="" coords="726,239,492,236,348,228,204,211,121,192,122,187,204,206,348,222,492,231,726,233"/>
+<area shape="rect" id="Node000008" href="$classBitBully_1_1BitBully.html#a9c73ca66a2a7660b5125cd3c36535002" title="Alternative driver based on a binary search of zero&#45;width windows." alt="" coords="204,271,335,311"/>
+<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="727,250,692,255,497,276,335,290,334,284,497,271,692,250,726,245"/>
+<area shape="rect" id="Node000004" href="$src_2main_8cpp.html#aee608aedd5b0b58f2966c2ff15101925" title="Entry point of the benchmark binary." alt="" coords="421,5,475,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="567,75,475,32,477,28,570,70"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="547,94,474,91,387,93,295,102,205,122,150,143,105,166,103,161,148,138,203,117,294,97,387,88,474,86,548,88"/>
+<area shape="rect" id="Node000006" href="$classBitBully_1_1BitBully.html#a8c405dc66e7e933d1a46b43ddd2492a8" title="Evaluate the move that drops a stone in column." alt="" coords="383,106,513,146"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="548,113,514,118,513,113,548,108"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="369,131,289,137,204,147,123,167,122,161,204,142,289,131,369,126"/>
+<area shape="rect" id="Node000007" href="$classBitBully_1_1BitBully.html#ab4c3408f62623c65181ff00f1d5d6044" title="Evaluate every column move from b." alt="" coords="204,157,335,197"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="370,151,336,161,334,156,369,146"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="190,179,156,179,156,174,190,174"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="221,266,203,255,101,192,104,187,205,250,224,262"/>
+</map>

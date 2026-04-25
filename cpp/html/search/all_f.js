@@ -22,5 +22,6 @@ var searchData=
   ['project_5fversion_19',['PROJECT_VERSION',['../version_8h.html#a4a776fa6ea8b7bdf8dfa04ad42b46407',1,'version.h']]],
   ['put_20',['put',['../classGameSolver_1_1Connect4_1_1TranspositionTable.html#ae19ada6599df2c509e38e689883b19ae',1,'GameSolver::Connect4::TranspositionTable']]],
   ['pybind11_5fmodule_21',['PYBIND11_MODULE',['../bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2',1,'bitbully_core.cpp']]],
-  ['python_22',['Calling the engine from Python',['../usage_examples.html#ex_python',1,'']]]
+  ['python_22',['Calling the engine from Python',['../usage_examples.html#ex_python',1,'']]],
+  ['python_20bindings_23',['Python bindings',['../group__bindings.html',1,'']]]
 ];

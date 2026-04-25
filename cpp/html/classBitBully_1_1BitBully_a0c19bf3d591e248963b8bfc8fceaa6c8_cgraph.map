@@ -1,0 +1,5 @@
+<map id="BitBully::BitBully::loadBook" name="BitBully::BitBully::loadBook">
+<area shape="rect" id="Node000001" title="Load an opening book from disk." alt="" coords="5,5,136,45"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1BitBully.html#a1e12396b723b223a7c473baed2bd4954" title="Was an opening book successfully loaded?" alt="" coords="184,5,315,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,23,170,23,170,28,136,28"/>
+</map>

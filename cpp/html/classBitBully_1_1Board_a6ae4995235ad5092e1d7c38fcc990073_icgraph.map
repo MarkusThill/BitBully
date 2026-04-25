@@ -1,0 +1,29 @@
+<map id="BitBully::Board::nextMove" name="BitBully::Board::nextMove">
+<area shape="rect" id="Node000001" title="Pick the best&#45;ranked move from a candidate set using a fixed priority order." alt="" coords="1161,279,1352,304"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1BitBully.html#ab560bedc498b3e70e5eddfef4a32b533" title="Negamax search with alpha&#45;beta pruning, transposition table and opening book consultation." alt="" coords="740,246,871,286"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1184,279,1113,269,984,263,871,265,871,260,984,258,1114,263,1184,273"/>
+<area shape="rect" id="Node000009" href="$classBitBully_1_1BitBully.html#aeeb900218ac6cd155adc27ff4283c904" title="Cheap evaluation: play out the game using safe heuristic moves." alt="" coords="951,329,1081,369"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="1190,310,1082,336,1081,331,1189,305"/>
+<area shape="rect" id="Node000010" href="$classBitBully_1_1Board.html#a0d3c307cd8aa9aa2654254b6e801db6b" title="Sort candidate moves into a MoveList using a threat&#45;based heuristic." alt="" coords="919,279,1113,304"/>
+<area shape="poly" id="edge16_Node000001_Node000010" title=" " alt="" coords="1148,294,1113,294,1113,289,1148,289"/>
+<area shape="poly" id="edge9_Node000002_Node000002" title=" " alt="" coords="835,234,825,227,805,225,788,227,778,231,775,237,777,245,771,246,769,236,775,227,787,221,805,219,827,222,838,230"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1BitBully.html#a76cec6e90a0420017774f74dd489d251" title="Solve a position using the MTD(f) driver." alt="" coords="561,78,692,118"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="771,238,647,120,651,116,775,234"/>
+<area shape="rect" id="Node000005" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,193,156,219"/>
+<area shape="poly" id="edge12_Node000002_Node000005" title=" " alt="" coords="726,262,692,259,156,215,156,209,692,254,726,257"/>
+<area shape="rect" id="Node000008" href="$classBitBully_1_1BitBully.html#a9c73ca66a2a7660b5125cd3c36535002" title="Alternative driver based on a binary search of zero&#45;width windows." alt="" coords="204,271,335,311"/>
+<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="726,272,335,291,335,286,726,267"/>
+<area shape="rect" id="Node000004" href="$src_2main_8cpp.html#aee608aedd5b0b58f2966c2ff15101925" title="Entry point of the benchmark binary." alt="" coords="421,5,475,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="567,75,475,32,477,28,570,70"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="548,89,473,84,386,84,294,94,248,105,205,119,172,136,142,156,97,195,93,191,139,152,170,131,203,114,247,99,293,89,385,79,473,78,548,84"/>
+<area shape="rect" id="Node000006" href="$classBitBully_1_1BitBully.html#a8c405dc66e7e933d1a46b43ddd2492a8" title="Evaluate the move that drops a stone in column." alt="" coords="383,106,513,146"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="548,113,514,118,513,113,548,108"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="369,127,289,132,205,147,148,170,103,196,100,191,146,165,203,142,288,127,369,122"/>
+<area shape="rect" id="Node000007" href="$classBitBully_1_1BitBully.html#ab4c3408f62623c65181ff00f1d5d6044" title="Evaluate every column move from b." alt="" coords="204,157,335,197"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="370,151,336,161,334,156,369,146"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="191,191,157,197,156,192,190,186"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="211,268,109,221,111,216,213,263"/>
+<area shape="poly" id="edge14_Node000009_Node000002" title=" " alt="" coords="941,326,918,318,849,288,851,284,920,313,942,321"/>
+<area shape="poly" id="edge15_Node000009_Node000005" title=" " alt="" coords="937,351,628,351,447,351,321,356,268,349,203,326,165,302,133,273,89,220,93,217,136,270,168,298,205,321,269,344,322,350,447,346,628,346,937,346"/>
+<area shape="poly" id="edge17_Node000010_Node000002" title=" " alt="" coords="905,281,871,276,871,271,906,275"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="BitBully::OpeningBook::init" name="BitBully::OpeningBook::init">
+<area shape="rect" id="Node000001" title="Re&#45;initialise the book in place." alt="" coords="220,69,387,109"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1OpeningBook.html#aa3362b0f56d734786c670230dfcccb43" title="Load an opening book and auto&#45;detect its flavour." alt="" coords="5,5,172,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,68,155,48,157,43,223,63"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1OpeningBook.html#afb6ac02ccf35560761a0df2a3d01a12b" title="Load an opening book with explicit flavour selection." alt="" coords="5,69,172,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,92,172,92,172,87,206,87"/>
+<area shape="rect" id="Node000004" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="13,134,164,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="216,115,138,136,137,131,214,110"/>
+</map>

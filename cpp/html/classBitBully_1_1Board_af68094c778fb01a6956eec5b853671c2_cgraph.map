@@ -1,0 +1,9 @@
+<map id="BitBully::Board::setBoard" name="BitBully::Board::setBoard">
+<area shape="rect" id="Node000001" title="String&#45;based variant of setBoard(const std::vector&lt;int&gt;&amp;)." alt="" coords="5,31,189,56"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#a15103f528a6674a3c6a78defe7e91a7b" title="Construct an empty board with player Yellow to move." alt="" coords="237,5,401,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,30,223,26,224,32,190,35"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1Board.html#a4e2be92545e14189714535aa5c5a6745" title="Drop a stone of the player to move into column." alt="" coords="242,55,397,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="190,51,229,55,228,60,189,56"/>
+<area shape="rect" id="Node000004" href="$classBitBully_1_1Board.html#a1c11e3f18b58c4b4d342d2738e03be17" title="Check whether dropping a stone in column is legal." alt="" coords="449,55,657,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="397,65,436,65,436,70,397,70"/>
+</map>

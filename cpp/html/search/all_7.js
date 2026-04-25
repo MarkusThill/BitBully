@@ -13,5 +13,6 @@ var searchData=
   ['getnply_10',['getNPly',['../classBitBully_1_1OpeningBook.html#a07dfc5d82c5108918a438d7afaf78136',1,'BitBully::OpeningBook']]],
   ['getsize_11',['getSize',['../classBitBully_1_1MoveList.html#a362e36326bc542ea3c42c56c27802253',1,'BitBully::MoveList']]],
   ['glance_12',['Library at a glance',['../index.html#autotoc_md10',1,'']]],
-  ['go_20next_13',['Where to go next',['../index.html#autotoc_md14',1,'']]]
+  ['go_20next_13',['Where to go next',['../index.html#autotoc_md14',1,'']]],
+  ['groups_2edox_14',['groups.dox',['../groups_8dox.html',1,'']]]
 ];

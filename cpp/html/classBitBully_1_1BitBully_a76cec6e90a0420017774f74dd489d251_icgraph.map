@@ -1,0 +1,13 @@
+<map id="BitBully::BitBully::mtdf" name="BitBully::BitBully::mtdf">
+<area shape="rect" id="Node000001" title="Solve a position using the MTD(f) driver." alt="" coords="561,49,692,89"/>
+<area shape="rect" id="Node000002" href="$src_2main_8cpp.html#aee608aedd5b0b58f2966c2ff15101925" title="Entry point of the benchmark binary." alt="" coords="421,5,475,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="547,49,475,28,476,23,549,44"/>
+<area shape="rect" id="Node000003" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,107,156,132"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="548,77,204,106,156,112,156,106,204,101,547,71"/>
+<area shape="rect" id="Node000004" href="$classBitBully_1_1BitBully.html#a8c405dc66e7e933d1a46b43ddd2492a8" title="Evaluate the move that drops a stone in column." alt="" coords="383,106,513,146"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="552,95,512,108,510,103,550,90"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="369,127,156,123,156,118,369,122"/>
+<area shape="rect" id="Node000005" href="$classBitBully_1_1BitBully.html#ab4c3408f62623c65181ff00f1d5d6044" title="Evaluate every column move from b." alt="" coords="204,157,335,197"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="370,151,336,161,334,156,369,146"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="190,155,123,135,124,130,191,150"/>
+</map>

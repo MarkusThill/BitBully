@@ -1,31 +1,37 @@
 <map id="src/MoveList.h" name="src/MoveList.h">
-<area shape="rect" id="Node000001" title="Tiny priority queue used by the engine for move ordering." alt="" coords="658,5,774,31"/>
-<area shape="rect" id="Node000002" href="$BitBully_8h.html" title="Connect&#45;4 search engine that operates on BitBully::Board." alt="" coords="472,225,579,251"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="712,45,688,110,668,146,642,179,603,208,562,228,560,223,600,204,638,175,663,143,683,108,707,43"/>
-<area shape="rect" id="Node000006" href="$Board_8h.html" title="Bitboard&#45;based representation of a Connect&#45;4 position." alt="" coords="432,79,526,104"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="666,37,518,81,517,76,664,32"/>
-<area shape="rect" id="Node000012" href="$MoveList_8cpp.html" title="Translation unit anchor for BitBully::MoveList." alt="" coords="754,79,884,104"/>
-<area shape="poly" id="edge17_Node000001_Node000012" title=" " alt="" coords="746,36,804,76,801,81,743,41"/>
-<area shape="rect" id="Node000003" href="$BitBully_8cpp.html" title="Translation&#45;unit anchor for the BitBully::BitBully solver." alt="" coords="465,299,586,324"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="528,264,528,299,523,299,523,264"/>
-<area shape="rect" id="Node000004" href="$bitbully__core_8cpp.html" title="pybind11 bindings exposing the C++ engine to Python." alt="" coords="141,299,297,324"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="464,256,269,301,268,296,462,251"/>
-<area shape="rect" id="Node000005" href="$src_2main_8cpp.html" title="Benchmark driver comparing BitBully against Pascal Pons&#39; Connect&#45;4 solver." alt="" coords="612,299,717,324"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="561,254,643,296,640,301,559,259"/>
-<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="489,116,508,177,524,224,519,226,503,178,484,118"/>
-<area shape="poly" id="edge15_Node000006_Node000004" title=" " alt="" coords="418,100,236,119,147,135,84,154,58,168,39,182,25,200,12,226,8,245,13,260,24,273,41,283,88,298,141,305,140,310,87,303,39,288,21,277,8,263,3,245,7,224,20,197,36,179,55,164,82,150,145,130,236,114,418,94"/>
-<area shape="poly" id="edge16_Node000006_Node000005" title=" " alt="" coords="540,97,595,115,621,130,642,150,654,168,662,189,671,231,671,270,669,299,663,298,666,270,665,231,657,190,649,171,638,154,617,134,593,120,539,102"/>
-<area shape="rect" id="Node000007" href="$Board_8cpp.html" title="Implementation of the BitBully::Board bitboard primitives." alt="" coords="517,152,628,177"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="506,110,559,150,555,154,503,114"/>
-<area shape="rect" id="Node000008" href="$OpeningBook_8h.html" title="Read&#45;only access to BitBully&#39;s pre&#45;computed Connect&#45;4 opening books." alt="" coords="95,152,239,177"/>
-<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="419,109,218,155,217,149,418,104"/>
-<area shape="rect" id="Node000010" href="$TranspositionTable_8h.html" title="Direct&#45;mapped, replacement&#45;free transposition table used by the solver." alt="" coords="264,152,441,177"/>
-<area shape="poly" id="edge12_Node000006_Node000010" title=" " alt="" coords="448,113,374,154,372,149,445,108"/>
-<area shape="poly" id="edge9_Node000008_Node000002" title=" " alt="" coords="238,177,473,224,472,229,237,183"/>
-<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="180,189,195,224,218,298,213,299,190,226,175,191"/>
-<area shape="rect" id="Node000009" href="$OpeningBook_8cpp.html" title="Translation&#45;unit anchor for BitBully::OpeningBook." alt="" coords="22,225,181,251"/>
-<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="149,189,114,227,110,223,145,186"/>
-<area shape="poly" id="edge13_Node000010_Node000002" title=" " alt="" coords="394,180,498,223,496,228,392,185"/>
-<area shape="rect" id="Node000011" href="$TranspositionTable_8cpp.html" title="Translation&#45;unit anchor for BitBully::TranspositionTable." alt="" coords="256,225,448,251"/>
-<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="355,191,355,225,350,225,350,191"/>
+<area shape="rect" id="Node000001" title="Tiny priority queue used by the engine for move ordering." alt="" coords="699,5,815,31"/>
+<area shape="rect" id="Node000002" href="$BitBully_8h.html" title="Connect&#45;4 search engine that operates on BitBully::Board." alt="" coords="563,225,670,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="762,44,762,74,759,109,751,145,734,179,718,196,699,209,660,228,658,223,697,205,714,192,729,176,746,144,754,108,757,74,757,44"/>
+<area shape="rect" id="Node000009" href="$Board_8h.html" title="Bitboard&#45;based representation of a Connect&#45;4 position." alt="" coords="523,79,617,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="715,38,601,81,600,76,713,33"/>
+<area shape="rect" id="Node000015" href="$MoveList_8cpp.html" title="Translation unit anchor for BitBully::MoveList." alt="" coords="794,79,925,104"/>
+<area shape="poly" id="edge20_Node000001_Node000015" title=" " alt="" coords="786,36,844,76,841,81,783,41"/>
+<area shape="rect" id="Node000003" href="$quick__solve_8cpp_source.html" title=" " alt="" coords="883,299,1075,339"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="683,251,893,296,892,301,682,256"/>
+<area shape="rect" id="Node000004" href="$score__all__moves_8cpp_source.html" title=" " alt="" coords="305,299,497,339"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="574,258,454,301,452,296,572,253"/>
+<area shape="rect" id="Node000005" href="$with__opening__book_8cpp_source.html" title=" " alt="" coords="521,299,713,339"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="619,264,619,299,614,299,614,264"/>
+<area shape="rect" id="Node000006" href="$BitBully_8cpp.html" title="Translation&#45;unit anchor for the BitBully::BitBully solver." alt="" coords="737,306,859,331"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="657,254,773,304,771,308,655,259"/>
+<area shape="rect" id="Node000007" href="$bitbully__core_8cpp.html" title="pybind11 bindings exposing the C++ engine to Python." alt="" coords="124,306,280,331"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="550,254,293,301,257,309,256,303,292,296,549,249"/>
+<area shape="rect" id="Node000008" href="$src_2main_8cpp.html" title="Benchmark driver comparing BitBully against Pascal Pons&#39; Connect&#45;4 solver." alt="" coords="1100,306,1205,331"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="684,242,867,261,977,276,1088,296,1117,303,1116,309,1087,301,977,282,866,266,683,247"/>
+<area shape="poly" id="edge9_Node000009_Node000002" title=" " alt="" coords="580,116,599,177,615,224,610,226,594,178,575,118"/>
+<area shape="poly" id="edge18_Node000009_Node000007" title=" " alt="" coords="509,101,427,118,384,134,343,154,298,191,259,235,230,276,211,307,206,304,225,273,255,231,294,187,341,150,382,129,426,113,508,96"/>
+<area shape="poly" id="edge19_Node000009_Node000008" title=" " alt="" coords="615,106,732,150,1125,303,1123,308,730,154,613,111"/>
+<area shape="rect" id="Node000010" href="$Board_8cpp.html" title="Implementation of the BitBully::Board bitboard primitives." alt="" coords="608,152,719,177"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="597,110,650,150,646,154,594,114"/>
+<area shape="rect" id="Node000011" href="$OpeningBook_8h.html" title="Read&#45;only access to BitBully&#39;s pre&#45;computed Connect&#45;4 opening books." alt="" coords="129,152,273,177"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="510,107,261,155,260,149,509,102"/>
+<area shape="rect" id="Node000013" href="$TranspositionTable_8h.html" title="Direct&#45;mapped, replacement&#45;free transposition table used by the solver." alt="" coords="355,152,532,177"/>
+<area shape="poly" id="edge15_Node000009_Node000013" title=" " alt="" coords="539,113,465,154,463,149,536,108"/>
+<area shape="poly" id="edge12_Node000011_Node000002" title=" " alt="" coords="282,177,552,223,564,225,563,230,551,228,281,182"/>
+<area shape="poly" id="edge14_Node000011_Node000007" title=" " alt="" coords="204,191,205,306,199,306,198,191"/>
+<area shape="rect" id="Node000012" href="$OpeningBook_8cpp.html" title="Translation&#45;unit anchor for BitBully::OpeningBook." alt="" coords="5,225,164,251"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="172,187,105,227,102,223,169,182"/>
+<area shape="poly" id="edge16_Node000013_Node000002" title=" " alt="" coords="485,180,589,223,587,228,483,185"/>
+<area shape="rect" id="Node000014" href="$TranspositionTable_8cpp.html" title="Translation&#45;unit anchor for BitBully::TranspositionTable." alt="" coords="347,225,539,251"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="446,191,446,225,441,225,441,191"/>
 </map>

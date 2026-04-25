@@ -1,13 +1,19 @@
 <map id="src/TranspositionTable.h" name="src/TranspositionTable.h">
-<area shape="rect" id="Node000001" title="Direct&#45;mapped, replacement&#45;free transposition table used by the solver." alt="" coords="227,5,404,31"/>
-<area shape="rect" id="Node000002" href="$BitBully_8h.html" title="Connect&#45;4 search engine that operates on BitBully::Board." alt="" coords="175,79,282,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,41,245,81,241,76,289,37"/>
-<area shape="rect" id="Node000006" href="$TranspositionTable_8cpp.html" title="Translation&#45;unit anchor for BitBully::TranspositionTable." alt="" coords="306,79,498,104"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="341,37,390,76,386,81,338,41"/>
-<area shape="rect" id="Node000003" href="$BitBully_8cpp.html" title="Translation&#45;unit anchor for the BitBully::BitBully solver." alt="" coords="5,152,127,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="191,112,94,154,92,149,189,107"/>
-<area shape="rect" id="Node000004" href="$bitbully__core_8cpp.html" title="pybind11 bindings exposing the C++ engine to Python." alt="" coords="151,152,307,177"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="231,118,231,152,226,152,226,118"/>
-<area shape="rect" id="Node000005" href="$src_2main_8cpp.html" title="Benchmark driver comparing BitBully against Pascal Pons&#39; Connect&#45;4 solver." alt="" coords="331,152,436,177"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="267,107,359,149,357,154,265,112"/>
+<area shape="rect" id="Node000001" title="Direct&#45;mapped, replacement&#45;free transposition table used by the solver." alt="" coords="622,5,799,31"/>
+<area shape="rect" id="Node000002" href="$BitBully_8h.html" title="Connect&#45;4 search engine that operates on BitBully::Board." alt="" coords="571,79,677,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="688,41,640,81,636,76,685,37"/>
+<area shape="rect" id="Node000009" href="$TranspositionTable_8cpp.html" title="Translation&#45;unit anchor for BitBully::TranspositionTable." alt="" coords="701,79,893,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="737,37,785,76,781,81,733,41"/>
+<area shape="rect" id="Node000003" href="$quick__solve_8cpp_source.html" title=" " alt="" coords="5,152,197,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="557,104,210,155,198,156,197,151,209,149,556,99"/>
+<area shape="rect" id="Node000004" href="$score__all__moves_8cpp_source.html" title=" " alt="" coords="221,152,413,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="567,110,392,154,390,149,565,105"/>
+<area shape="rect" id="Node000005" href="$with__opening__book_8cpp_source.html" title=" " alt="" coords="437,152,629,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="602,115,557,154,553,150,599,111"/>
+<area shape="rect" id="Node000006" href="$BitBully_8cpp.html" title="Translation&#45;unit anchor for the BitBully::BitBully solver." alt="" coords="654,159,775,185"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="649,111,703,157,699,161,646,115"/>
+<area shape="rect" id="Node000007" href="$bitbully__core_8cpp.html" title="pybind11 bindings exposing the C++ engine to Python." alt="" coords="799,159,955,185"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="675,106,841,157,840,162,673,111"/>
+<area shape="rect" id="Node000008" href="$src_2main_8cpp.html" title="Benchmark driver comparing BitBully against Pascal Pons&#39; Connect&#45;4 solver." alt="" coords="979,159,1085,185"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="691,102,832,123,969,149,996,157,995,162,967,155,831,128,690,107"/>
 </map>

@@ -1,0 +1,8 @@
+<map id="BitBully::OpeningBook::convertValue" name="BitBully::OpeningBook::convertValue">
+<area shape="rect" id="Node000001" title="Translate a raw book value into the engine&#39;s score convention." alt="" coords="419,35,585,75"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1OpeningBook.html#ae1ebbea6e8f17a91990556d077c8d7a4" title="Retrieve the engine score for a position covered by the book." alt="" coords="204,5,371,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="404,44,371,39,371,34,405,39"/>
+<area shape="rect" id="Node000003" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,42,156,67"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="405,60,371,60,204,60,156,59,156,54,204,55,371,55,405,54"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="191,42,157,47,156,41,190,36"/>
+</map>

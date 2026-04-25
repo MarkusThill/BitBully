@@ -1,0 +1,5 @@
+<map id="BitBully::Board::generateNonLosingMoves" name="BitBully::Board::generateNonLosingMoves">
+<area shape="rect" id="Node000001" title="Compute moves that do not lose immediately." alt="" coords="5,5,189,45"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#a1935dee0e691ee8b048c1203f6144ce7" title="Bitboard whose set bits mark the next reachable cell of every non&#45;full column." alt="" coords="237,13,473,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,23,224,23,224,28,189,28"/>
+</map>

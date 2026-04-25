@@ -23,10 +23,20 @@
 <script type="text/javascript">
   $(function() { init_search(); });
 </script>
+    <script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <link href="doxygen.css" rel="stylesheet" type="text/css"/>
     <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
     <!-- ... other metadata & script includes ... -->
     <script src="doxygen-awesome-darkmode-toggle.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -185,9 +195,9 @@ Quick example</h1>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aBitBully_8h_html"><div class="ttname"><a href="BitBully_8h.html">BitBully.h</a></div><div class="ttdoc">Connect-4 search engine that operates on BitBully::Board.</div></div>
-<div class="ttc" id="aclassBitBully_1_1BitBully_html"><div class="ttname"><a href="classBitBully_1_1BitBully.html">BitBully::BitBully</a></div><div class="ttdoc">Perfect-play Connect-4 solver.</div><div class="ttdef"><b>Definition</b> <a href="BitBully_8h_source.html#l00043">BitBully.h:43</a></div></div>
-<div class="ttc" id="aclassBitBully_1_1BitBully_html_a76cec6e90a0420017774f74dd489d251"><div class="ttname"><a href="classBitBully_1_1BitBully.html#a76cec6e90a0420017774f74dd489d251">BitBully::BitBully::mtdf</a></div><div class="ttdeci">int mtdf(const Board &amp;b, const int firstGuess, const int maxDepth=-1) noexcept</div><div class="ttdoc">Solve a position using the MTD(f) driver.</div><div class="ttdef"><b>Definition</b> <a href="BitBully_8h_source.html#l00177">BitBully.h:177</a></div></div>
-<div class="ttc" id="aclassBitBully_1_1Board_html"><div class="ttname"><a href="classBitBully_1_1Board.html">BitBully::Board</a></div><div class="ttdoc">Connect-4 position represented as a pair of 64-bit bitboards.</div><div class="ttdef"><b>Definition</b> <a href="Board_8h_source.html#l00202">Board.h:202</a></div></div>
+<div class="ttc" id="aclassBitBully_1_1BitBully_html"><div class="ttname"><a href="classBitBully_1_1BitBully.html">BitBully::BitBully</a></div><div class="ttdoc">Perfect-play Connect-4 solver.</div><div class="ttdef"><b>Definition</b> <a href="BitBully_8h_source.html#l00045">BitBully.h:45</a></div></div>
+<div class="ttc" id="aclassBitBully_1_1BitBully_html_a76cec6e90a0420017774f74dd489d251"><div class="ttname"><a href="classBitBully_1_1BitBully.html#a76cec6e90a0420017774f74dd489d251">BitBully::BitBully::mtdf</a></div><div class="ttdeci">int mtdf(const Board &amp;b, const int firstGuess, const int maxDepth=-1) noexcept</div><div class="ttdoc">Solve a position using the MTD(f) driver.</div><div class="ttdef"><b>Definition</b> <a href="BitBully_8h_source.html#l00188">BitBully.h:188</a></div></div>
+<div class="ttc" id="aclassBitBully_1_1Board_html"><div class="ttname"><a href="classBitBully_1_1Board.html">BitBully::Board</a></div><div class="ttdoc">Connect-4 position represented as a pair of 64-bit bitboards.</div><div class="ttdef"><b>Definition</b> <a href="Board_8h_source.html#l00204">Board.h:204</a></div></div>
 <div class="ttc" id="aclassBitBully_1_1Board_html_a4e2be92545e14189714535aa5c5a6745"><div class="ttname"><a href="classBitBully_1_1Board.html#a4e2be92545e14189714535aa5c5a6745">BitBully::Board::play</a></div><div class="ttdeci">bool play(int column)</div><div class="ttdoc">Drop a stone of the player to move into column.</div><div class="ttdef"><b>Definition</b> <a href="Board_8cpp_source.html#l00137">Board.cpp:137</a></div></div>
 <div class="ttc" id="aclassBitBully_1_1Board_html_a99cd68cb2bb31588728ba7fa5fff3282"><div class="ttname"><a href="classBitBully_1_1Board.html#a99cd68cb2bb31588728ba7fa5fff3282">BitBully::Board::toString</a></div><div class="ttdeci">std::string toString() const</div><div class="ttdoc">Pretty-printed ASCII representation of the board.</div><div class="ttdef"><b>Definition</b> <a href="Board_8cpp_source.html#l00481">Board.cpp:481</a></div></div>
 <div class="ttc" id="asrc_2main_8cpp_html_aee608aedd5b0b58f2966c2ff15101925"><div class="ttname"><a href="src_2main_8cpp.html#aee608aedd5b0b58f2966c2ff15101925">main</a></div><div class="ttdeci">int main(const int argc, const char *const argv[])</div><div class="ttdoc">Entry point of the benchmark binary.</div><div class="ttdef"><b>Definition</b> <a href="src_2main_8cpp_source.html#l00108">main.cpp:108</a></div></div>

@@ -1,0 +1,5 @@
+<map id="BitBully::Board::allPositions" name="BitBully::Board::allPositions">
+<area shape="rect" id="Node000001" title="Enumerate every reachable position from this board within a depth." alt="" coords="204,5,405,31"/>
+<area shape="rect" id="Node000002" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,5,156,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,21,157,21,157,15,190,15"/>
+</map>

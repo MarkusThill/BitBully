@@ -23,10 +23,20 @@
 <script type="text/javascript">
   $(function() { init_search(); });
 </script>
+    <script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <link href="doxygen.css" rel="stylesheet" type="text/css"/>
     <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
     <!-- ... other metadata & script includes ... -->
     <script src="doxygen-awesome-darkmode-toggle.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -136,7 +146,7 @@ $(function() {
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">BitBully::Board Class Reference</div></div>
+  <div class="headertitle"><div class="title">BitBully::Board Class Reference<div class="ingroups"><a class="el" href="group__board.html">Board representation</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -162,9 +172,9 @@ Public Types</h2></td></tr>
 <tr class="memitem:a3fc8a2e550662597d0daefbff17b9f8c" id="r_a3fc8a2e550662597d0daefbff17b9f8c"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a3fc8a2e550662597d0daefbff17b9f8c">TMovesCounter</a> = int</td></tr>
 <tr class="memdesc:a3fc8a2e550662597d0daefbff17b9f8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type used to count remaining moves on a position.  <br /></td></tr>
 <tr class="memitem:ac2932230b62c41f5001d41012a0ff728" id="r_ac2932230b62c41f5001d41012a0ff728"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#ac2932230b62c41f5001d41012a0ff728">TBoardArray</a> = std::array&lt;std::array&lt;int32_t, <a class="el" href="#a174b047abbaa22a8e2a8c012ab3ae140">N_ROWS</a>&gt;, <a class="el" href="#a683e25a3ef9286422b0d0647996b279a">N_COLUMNS</a>&gt;</td></tr>
-<tr class="memdesc:ac2932230b62c41f5001d41012a0ff728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column-major 2D representation of the board (<span class="tt">board[col][row]</span>).  <br /></td></tr>
+<tr class="memdesc:ac2932230b62c41f5001d41012a0ff728"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column-major 2D representation of the board (<span class="tt"><a class="el" href="group__board.html" title="Bitboard layout, move generation, threats, and serialization.">Board representation</a>[col][row]</span>).  <br /></td></tr>
 <tr class="memitem:ad327c2b8069cc9b0b7ce00383a7c9bb8" id="r_ad327c2b8069cc9b0b7ce00383a7c9bb8"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#ad327c2b8069cc9b0b7ce00383a7c9bb8">TBoardArrayT</a> = std::array&lt;std::array&lt;int32_t, <a class="el" href="#a683e25a3ef9286422b0d0647996b279a">N_COLUMNS</a>&gt;, <a class="el" href="#a174b047abbaa22a8e2a8c012ab3ae140">N_ROWS</a>&gt;</td></tr>
-<tr class="memdesc:ad327c2b8069cc9b0b7ce00383a7c9bb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row-major 2D representation of the board (<span class="tt">board[row][col]</span>).  <br /></td></tr>
+<tr class="memdesc:ad327c2b8069cc9b0b7ce00383a7c9bb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row-major 2D representation of the board (<span class="tt"><a class="el" href="group__board.html" title="Bitboard layout, move generation, threats, and serialization.">Board representation</a>[row][col]</span>).  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -291,8 +301,10 @@ Friends</h2></td></tr>
 <div class="line">[ 1, 10, 19, 28, 37, 46, 55]</div>
 <div class="line">[ 0,  9, 18, 27, 36, 45, 54]   &lt;- bottom row</div>
 </div><!-- fragment --><p>Bit indices for a column <code>c</code> and row <code>r</code> are <code>c</code> * 9 + r. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="quick_solve_8cpp-example.html#_a1">quick_solve.cpp</a>, <a class="el" href="score_all_moves_8cpp-example.html#_a1">score_all_moves.cpp</a>, and <a class="el" href="with_opening_book_8cpp-example.html#_a3">with_opening_book.cpp</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00202">202</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00204">204</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
 <a id="a187f80a1d16ee08f1f179f9dafee955f" name="a187f80a1d16ee08f1f179f9dafee955f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a187f80a1d16ee08f1f179f9dafee955f">&#9670;&#160;</a></span>TBitBoard</h2>
@@ -308,7 +320,7 @@ Friends</h2></td></tr>
 
 <p>64-bit type used for any bitboard value. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00228">228</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00230">230</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -324,9 +336,9 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Column-major 2D representation of the board (<span class="tt">board[col][row]</span>). </p>
+<p>Column-major 2D representation of the board (<span class="tt"><a class="el" href="group__board.html" title="Bitboard layout, move generation, threats, and serialization.">Board representation</a>[col][row]</span>). </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00232">232</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00234">234</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -342,9 +354,9 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Row-major 2D representation of the board (<span class="tt">board[row][col]</span>). </p>
+<p>Row-major 2D representation of the board (<span class="tt"><a class="el" href="group__board.html" title="Bitboard layout, move generation, threats, and serialization.">Board representation</a>[row][col]</span>). </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00234">234</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00236">236</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -362,7 +374,7 @@ Friends</h2></td></tr>
 
 <p>Type used to count remaining moves on a position. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00230">230</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00232">232</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -389,7 +401,7 @@ Friends</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00220">220</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00222">222</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -412,6 +424,11 @@ Friends</h2></td></tr>
 <p>Construct an empty board with player Yellow to move. </p>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00018">18</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a15103f528a6674a3c6a78defe7e91a7b_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -455,7 +472,17 @@ Friends</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Vector of distinct boards.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://oeis.org/A212693">https://oeis.org/A212693</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00717">717</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00719">719</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_acfc579a8c01d89956adc69dc23006714_cgraph.svg" width="407" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_acfc579a8c01d89956adc69dc23006714_icgraph.svg" width="411" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -485,6 +512,11 @@ Friends</h2></td></tr>
 <p>Does the player to move have an immediately winning move? </p>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00407">407</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a31d1327bf9b59e6fff94d80443c7699e_icgraph.svg" width="100%" height="569"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -521,6 +553,11 @@ Friends</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if dropping the next stone in <code class="param">column</code> wins immediately. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00412">412</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a3e2fea1658610424d88db178feacf4cb_cgraph.svg" width="442" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -549,7 +586,17 @@ Friends</h2></td></tr>
 
 <p>Return a deep copy of this board. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00263">263</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00265">265</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a55efa3bbf52314250a60c7b0ece0dc90_cgraph.svg" width="380" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a55efa3bbf52314250a60c7b0ece0dc90_icgraph.svg" width="367" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -578,7 +625,12 @@ Friends</h2></td></tr>
 
 <p>Number of stones currently placed on the board. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00504">504</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00506">506</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a2041fa032b47cab0dba8639a2de17090_icgraph.svg" width="100%" height="575"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -615,7 +667,12 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Sub-set of <code class="param">moves</code> whose execution yields a double threat. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00617">617</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00619">619</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a27969eddcd49d5644c812339aec41ae8_icgraph.svg" width="100%" height="569"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -653,6 +710,11 @@ Friends</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Sub-set of <code class="param">moves</code> that increase the number of odd threats. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00344">344</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a1cb7eb6673dabac4feb0d25af9d6580a_cgraph.svg" width="380" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -685,6 +747,16 @@ Friends</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Selected sub-set of <code class="param">moves</code>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00313">313</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa1a6fa84e11fe0fc5a7abb64ee713cf6_cgraph.svg" width="403" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa1a6fa84e11fe0fc5a7abb64ee713cf6_icgraph.svg" width="100%" height="569"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -718,7 +790,17 @@ Friends</h2></td></tr>
 Direct winning moves are <b>not</b> included when the opponent has a double threat; callers that need them should add the result of <code>winningPositions()</code> explicitly.</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Bitboard of safe moves. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00589">589</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00591">591</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a952c36a7a0faafbc49ab18f393ff6f6c_cgraph.svg" width="479" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a952c36a7a0faafbc49ab18f393ff6f6c_icgraph.svg" width="100%" height="567"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -755,6 +837,11 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <dl class="section return"><dt>Returns</dt><dd>Stack height between 0 and <code>N_ROWS</code>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00512">512</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a06a24457ec44b3866449e6090b45353f_icgraph.svg" width="407" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -784,7 +871,17 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>64-bit hash of the position derived from <a class="el" href="#ad159897f318e91a46e1c229c08f7b52e" title="uid()">uid()</a>. </p>
 <p>Equivalent positions (same <code>m_bAllTokens</code> and <code>m_bActivePTokens</code>) map to the same hash value; mirror-symmetric positions do <b>not</b>. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00356">356</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00358">358</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa8fc65795d846bad582bdc26e2ad8768_cgraph.svg" width="168" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa8fc65795d846bad582bdc26e2ad8768_icgraph.svg" width="168" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -821,7 +918,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Avalanche-mixed 64-bit hash of <code class="param">x</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00332">332</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00334">334</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a304529c6848a6b38c552041d117a4924_icgraph.svg" width="446" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -852,6 +954,11 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if the position is a win for the player who is currently <b>not</b> to move. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00254">254</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a70a65d60487f33b5baf8d363f7ea3cb6_icgraph.svg" width="384" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -886,8 +993,15 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code class="param">column</code> is in range and not yet full. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="score_all_moves_8cpp-example.html#a6">score_all_moves.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00170">170</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a1c11e3f18b58c4b4d342d2738e03be17_icgraph.svg" width="100%" height="589"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -918,13 +1032,18 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>Checks that all cells contain a known value, that gravity is respected, and that the stone count satisfies <span class="tt">0 &lt;= yellow - red &lt;= 1</span>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>Column-major array to validate. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__board.html" title="Bitboard layout, move generation, threats, and serialization.">Board representation</a></td><td>Column-major array to validate. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code class="param">board</code> could appear in a real game. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00097">97</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a7d31a984b12cb086701c027cdf7eb922_icgraph.svg" width="644" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -966,6 +1085,16 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <dl class="section return"><dt>Returns</dt><dd>Vector of column indices (0&hellip;<code>N_COLUMNS-1</code>). </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00448">448</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa63dc39fb8fa32b131ff498a98c876b9_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa63dc39fb8fa32b131ff498a98c876b9_icgraph.svg" width="411" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -996,6 +1125,11 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>For each column the lowest empty cell receives a 1-bit, all other bits are zero. The result has between 0 and <code>N_COLUMNS</code> bits set. </p>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00418">418</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a1935dee0e691ee8b048c1203f6144ce7_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1031,7 +1165,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code class="param">x</code> with all bits cleared except for its lowest set bit. If <code class="param">x</code> is zero, the result is zero as well. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00568">568</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00570">570</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_ab27e5321cdbbf9ffec1abe4897ce6ad1_icgraph.svg" width="100%" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1062,6 +1201,16 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>Useful for transposition lookups: a position and its mirror image have identical theoretical value, so storing only one of them roughly halves the effective table size. </p>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00501">501</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a97357373ac0844cd2a7c07c87361131d_cgraph.svg" width="390" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a97357373ac0844cd2a7c07c87361131d_icgraph.svg" width="100%" height="575"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1090,7 +1239,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 
 <p>Number of plies remaining until the board is full. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00501">501</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00503">503</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_ab78567ab55b360e6680412a1df03eada_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1127,7 +1281,17 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Bitboard with exactly one bit set selecting the chosen move, or <code>0</code> if <code class="param">allMoves</code> is empty. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00374">374</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00376">376</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a6ae4995235ad5092e1d7c38fcc990073_cgraph.svg" width="395" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a6ae4995235ad5092e1d7c38fcc990073_icgraph.svg" width="100%" height="581"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1156,7 +1320,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 
 <p>Inequality counterpart of <code>operator==</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00395">395</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00397">397</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a0460d3d7ed1cf5e2c5959153c76fb00d_cgraph.svg" width="420" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1185,7 +1354,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 
 <p>Compare two positions for equality (same stones, same side to move). </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00385">385</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00387">387</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a7fb22603ae5f3847c6f0101418dab501_cgraph.svg" width="426" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1223,6 +1397,11 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, <code>false</code> on the first illegal move; on failure the board is left unchanged. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00156">156</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a31ef16bb12244f6b16b6329813a57dbf_cgraph.svg" width="624" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1259,6 +1438,11 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if every move was legal, <code>false</code> otherwise; on failure the board is left unchanged. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00146">146</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa96ec2fe5bd7d067759e115861c8504a_cgraph.svg" width="634" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1285,8 +1469,20 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if the move was legal and applied, <code>false</code> otherwise. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="quick_solve_8cpp-example.html#a2">quick_solve.cpp</a>, and <a class="el" href="score_all_moves_8cpp-example.html#a2">score_all_moves.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00137">137</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a4e2be92545e14189714535aa5c5a6745_cgraph.svg" width="422" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a4e2be92545e14189714535aa5c5a6745_icgraph.svg" width="100%" height="563"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1322,7 +1518,17 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The new board after the move was played. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00243">243</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00245">245</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a651aab94f4519f46a473d895a93736fe_cgraph.svg" width="395" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a651aab94f4519f46a473d895a93736fe_icgraph.svg" width="100%" height="538"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1358,7 +1564,17 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new <code><a class="el" href="classBitBully_1_1Board.html" title="Connect-4 position represented as a pair of 64-bit bitboards.">Board</a></code> with the move applied. If <code class="param">mv</code> is illegal a freshly-constructed empty board is returned instead. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00256">256</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00258">258</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa97d678ff348e390ff66a66a6bd7f034_cgraph.svg" width="100%" height="364"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa97d678ff348e390ff66a66a6bd7f034_icgraph.svg" width="400" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1388,7 +1604,7 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>Number of stones currently on the board. </p>
 <p>Equivalent to <code><a class="el" href="#a2041fa032b47cab0dba8639a2de17090" title="Number of stones currently placed on the board.">countTokens()</a></code> but exposes the raw popcount of the internal bitboard. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00311">311</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00313">313</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -1424,7 +1640,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of set bits in <code class="param">x</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00296">296</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00298">298</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_aa06de3e9e8e077b5e0c6cf75c5a0bd81_icgraph.svg" width="100%" height="569"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1466,7 +1687,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pair of the generated board and the move sequence used to reach it. Returns an empty pair if <code class="param">nPly</code> is out of range. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00687">687</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00689">689</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_abf80eeae5659a6a93574573ad5ae41ed_icgraph.svg" width="424" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1495,7 +1721,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 
 <p>Snapshot the internal state. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00747">747</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00749">749</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_acc57d99498f8bf1f2647cc46013d4704_icgraph.svg" width="394" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1525,6 +1756,11 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>String-based variant of <a class="el" href="#a9a71192a965bd34a2046d202c2d4f80e" title="setBoard(const std::vector&lt;int&gt;&amp;)">setBoard(const std::vector&lt;int&gt;&amp;)</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00041">41</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_af68094c778fb01a6956eec5b853671c2_cgraph.svg" width="663" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1561,6 +1797,11 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, <code>false</code> if the sequence contains an illegal move; the object is unchanged on failure. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00030">30</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a9a71192a965bd34a2046d202c2d4f80e_cgraph.svg" width="663" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1590,13 +1831,23 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>Replace the current position with the one described by <code class="param">board</code>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>Column-major array using <code>P_EMPTY</code> / <code>P_YELLOW</code> / <code>P_RED</code> values. Stones must respect gravity (no floating cells). </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__board.html" title="Bitboard layout, move generation, threats, and serialization.">Board representation</a></td><td>Column-major array using <code>P_EMPTY</code> / <code>P_YELLOW</code> / <code>P_RED</code> values. Stones must respect gravity (no floating cells). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, <code>false</code> if <code class="param">board</code> is malformed; the object is unchanged on failure. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00067">67</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a84173ebdfe1b8e57961522b464983941_cgraph.svg" width="412" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a84173ebdfe1b8e57961522b464983941_icgraph.svg" width="427" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1626,6 +1877,11 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>Row-major variant of <code><a class="el" href="#a84173ebdfe1b8e57961522b464983941" title="Replace the current position with the one described by board.">setBoard(const TBoardArray&amp;)</a></code>. </p>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00062">62</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_ab568cd8d26d7b86e6b9de74cad269e84_cgraph.svg" width="644" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1655,7 +1911,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>Restore an internal state previously captured with <a class="el" href="#acc57d99498f8bf1f2647cc46013d4704" title="rawState()">rawState()</a>. </p>
 <dl class="section warning"><dt>Warning</dt><dd>No validity checks are performed. Callers must ensure that the provided state corresponds to a real Connect-4 position; otherwise subsequent operations on the board are undefined. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00758">758</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00760">760</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a1502e21f58934185d678ae641ced3e30_icgraph.svg" width="418" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1693,6 +1954,16 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <dl class="section return"><dt>Returns</dt><dd>Priority queue ordered from best to worst. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00285">285</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a0d3c307cd8aa9aa2654254b6e801db6b_cgraph.svg" width="638" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a0d3c307cd8aa9aa2654254b6e801db6b_icgraph.svg" width="100%" height="538"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1723,6 +1994,11 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <dl class="section return"><dt>Returns</dt><dd>2D array of <code>P_EMPTY</code> / <code>P_YELLOW</code> / <code>P_RED</code> values. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00463">463</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_afb39e5b79ce7bf06128e20b5a46161bf_icgraph.svg" width="610" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1754,7 +2030,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>Each column is encoded by walking from the bottom up: every stone contributes two bits (<span class="tt">10</span> for the active player, <span class="tt">11</span> for the opponent), and the stack is terminated by a single <span class="tt">0</span> bit.</p>
 <dl class="section return"><dt>Returns</dt><dd>Huffman-encoded position, or <code>0</code> if the position does not qualify for encoding. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00648">648</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00650">650</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_adcabaf7694d4fb3ff607068be70c377f_icgraph.svg" width="619" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1783,8 +2064,20 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 
 <p>Pretty-printed ASCII representation of the board. </p>
 <p>Yellow stones are rendered as <span class="tt">X</span>, Red stones as <span class="tt">O</span>, and empty cells as <span class="tt">_</span>. Rows are printed from top to bottom. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="quick_solve_8cpp-example.html#a6">quick_solve.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="Board_8cpp_source.html#l00481">481</a> of file <a class="el" href="Board_8cpp_source.html">Board.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a99cd68cb2bb31588728ba7fa5fff3282_cgraph.svg" width="411" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_a99cd68cb2bb31588728ba7fa5fff3282_icgraph.svg" width="387" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1815,7 +2108,12 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>Combines the "all tokens" bitboard with the "active player" bitboard in a way that ensures every legal Connect-4 position maps to a distinct value. Suitable as a key for transposition tables.</p>
 <dl class="section return"><dt>Returns</dt><dd>Unique identifier of the current position. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00348">348</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00350">350</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1Board_ad159897f318e91a46e1c229c08f7b52e_icgraph.svg" width="100%" height="567"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -1840,7 +2138,7 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00203">203</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00205">205</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -1868,7 +2166,7 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 <p>Bit-offset between two columns inside the 64-bit board representation. </p>
 <p>Each column gets one extra "guard" bit on top of the playable rows so that operations such as <span class="tt">m_bAllTokens + BB_BOTTOM_ROW</span> cannot leak from one column into the next. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00217">217</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00219">219</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -1893,8 +2191,10 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 </div><div class="memdoc">
 
 <p>Number of columns in a Connect-4 grid. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="score_all_moves_8cpp-example.html#_a5">score_all_moves.cpp</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00209">209</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00211">211</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -1920,7 +2220,7 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 
 <p>Number of rows in a Connect-4 grid. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00211">211</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00213">213</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>
@@ -1946,7 +2246,7 @@ Direct winning moves are <b>not</b> included when the opponent has a double thre
 
 <p>Number of distinct cell values: empty, yellow, red. </p>
 
-<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00226">226</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Board_8h_source.html#l00228">228</a> of file <a class="el" href="Board_8h_source.html">Board.h</a>.</p>
 
 </div>
 </div>

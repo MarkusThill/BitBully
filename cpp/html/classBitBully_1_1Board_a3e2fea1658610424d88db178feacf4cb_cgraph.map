@@ -1,0 +1,5 @@
+<map id="BitBully::Board::canWin" name="BitBully::Board::canWin">
+<area shape="rect" id="Node000001" title="Variant of canWin() restricted to a particular column." alt="" coords="5,5,180,31"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#a1c11e3f18b58c4b4d342d2738e03be17" title="Check whether dropping a stone in column is legal." alt="" coords="228,5,436,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,15,214,15,214,21,180,21"/>
+</map>

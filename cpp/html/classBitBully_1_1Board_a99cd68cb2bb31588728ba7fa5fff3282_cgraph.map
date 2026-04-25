@@ -1,0 +1,5 @@
+<map id="BitBully::Board::toString" name="BitBully::Board::toString">
+<area shape="rect" id="Node000001" title="Pretty&#45;printed ASCII representation of the board." alt="" coords="5,5,183,31"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#afb39e5b79ce7bf06128e20b5a46161bf" title="Convert the bitboard representation into a column&#45;major array." alt="" coords="231,5,405,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,15,217,15,217,21,183,21"/>
+</map>

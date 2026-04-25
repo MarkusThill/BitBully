@@ -1,14 +1,20 @@
 <map id="src/OpeningBook.h" name="src/OpeningBook.h">
-<area shape="rect" id="Node000001" title="Read&#45;only access to BitBully&#39;s pre&#45;computed Connect&#45;4 opening books." alt="" coords="270,5,414,31"/>
-<area shape="rect" id="Node000002" href="$BitBully_8h.html" title="Connect&#45;4 search engine that operates on BitBully::Board." alt="" coords="182,79,289,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="315,40,254,81,251,76,312,36"/>
-<area shape="rect" id="Node000004" href="$bitbully__core_8cpp.html" title="pybind11 bindings exposing the C++ engine to Python." alt="" coords="280,152,436,177"/>
-<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="347,44,359,151,354,152,342,45"/>
-<area shape="rect" id="Node000006" href="$OpeningBook_8cpp.html" title="Translation&#45;unit anchor for BitBully::OpeningBook." alt="" coords="380,79,539,104"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="374,35,442,76,439,81,371,40"/>
-<area shape="rect" id="Node000003" href="$BitBully_8cpp.html" title="Translation&#45;unit anchor for the BitBully::BitBully solver." alt="" coords="5,152,127,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="197,112,95,154,93,149,194,107"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="268,108,339,149,337,154,265,113"/>
-<area shape="rect" id="Node000005" href="$src_2main_8cpp.html" title="Benchmark driver comparing BitBully against Pascal Pons&#39; Connect&#45;4 solver." alt="" coords="151,152,256,177"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="227,118,211,153,206,151,222,116"/>
+<area shape="rect" id="Node000001" title="Read&#45;only access to BitBully&#39;s pre&#45;computed Connect&#45;4 opening books." alt="" coords="833,5,977,31"/>
+<area shape="rect" id="Node000002" href="$BitBully_8h.html" title="Connect&#45;4 search engine that operates on BitBully::Board." alt="" coords="661,79,768,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="863,38,747,81,745,76,861,33"/>
+<area shape="rect" id="Node000007" href="$bitbully__core_8cpp.html" title="pybind11 bindings exposing the C++ engine to Python." alt="" coords="929,159,1085,185"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="912,44,920,73,934,103,961,134,990,157,987,161,958,138,930,105,915,75,907,45"/>
+<area shape="rect" id="Node000009" href="$OpeningBook_8cpp.html" title="Translation&#45;unit anchor for BitBully::OpeningBook." alt="" coords="943,79,1102,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="937,35,1005,76,1002,81,935,40"/>
+<area shape="rect" id="Node000003" href="$quick__solve_8cpp_source.html" title=" " alt="" coords="5,152,197,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="648,102,451,124,210,155,198,156,197,151,209,149,450,118,647,97"/>
+<area shape="rect" id="Node000004" href="$score__all__moves_8cpp_source.html" title=" " alt="" coords="221,152,413,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="648,108,413,155,412,149,647,103"/>
+<area shape="rect" id="Node000005" href="$with__opening__book_8cpp_source.html" title=" " alt="" coords="437,152,629,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="677,112,578,154,576,149,675,107"/>
+<area shape="rect" id="Node000006" href="$BitBully_8cpp.html" title="Translation&#45;unit anchor for the BitBully::BitBully solver." alt="" coords="654,159,775,185"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="717,118,717,159,712,159,712,118"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="771,105,965,157,963,162,769,110"/>
+<area shape="rect" id="Node000008" href="$src_2main_8cpp.html" title="Benchmark driver comparing BitBully against Pascal Pons&#39; Connect&#45;4 solver." alt="" coords="799,159,905,185"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="748,108,833,157,830,161,745,113"/>
 </map>

@@ -1,0 +1,7 @@
+<map id="BitBully::OpeningBook::convertValue" name="BitBully::OpeningBook::convertValue">
+<area shape="rect" id="Node000001" title="Translate a raw book value into the engine&#39;s score convention." alt="" coords="5,27,172,67"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#ab78567ab55b360e6680412a1df03eada" title="Number of plies remaining until the board is full." alt="" coords="220,5,415,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,34,206,30,207,35,173,39"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1OpeningBook.html#acf4c1f16463aab37e5f31eba5d299ad4" title="Numerical sign function returning &#45;1, 0 or +1." alt="" coords="234,55,401,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,55,221,61,220,66,172,60"/>
+</map>

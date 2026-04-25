@@ -1,0 +1,7 @@
+<map id="GameSolver::Connect4::Position::play" name="GameSolver::Connect4::Position::play">
+<area shape="rect" id="Node000001" title="Plays a possible move given by its bitmap representation." alt="" coords="224,27,395,67"/>
+<area shape="rect" id="Node000002" href="$src_2main_8cpp.html#aee608aedd5b0b58f2966c2ff15101925" title="Entry point of the benchmark binary." alt="" coords="63,5,118,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,37,118,24,119,19,211,31"/>
+<area shape="rect" id="Node000003" href="$classGameSolver_1_1Connect4_1_1Position.html#a32b2aeb205f3e6bc2c1dd6d5e2d8efe6" title="Plays a playable column." alt="" coords="5,55,176,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,63,177,67,176,62,210,57"/>
+</map>

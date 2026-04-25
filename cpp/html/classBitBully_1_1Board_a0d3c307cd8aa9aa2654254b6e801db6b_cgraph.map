@@ -1,0 +1,9 @@
+<map id="BitBully::Board::sortMoves" name="BitBully::Board::sortMoves">
+<area shape="rect" id="Node000001" title="Sort candidate moves into a MoveList using a threat&#45;based heuristic." alt="" coords="5,42,200,67"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1MoveList.html#a6f8c35f7aad683ec4e1458aa235c7810" title="Insert a (move, score) pair while keeping the queue sorted." alt="" coords="274,5,413,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,40,260,33,260,38,200,45"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1Board.html#a6ae4995235ad5092e1d7c38fcc990073" title="Pick the best&#45;ranked move from a candidate set using a fixed priority order." alt="" coords="248,70,439,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,63,235,67,234,73,200,69"/>
+<area shape="rect" id="Node000004" href="$classBitBully_1_1Board.html#ab27e5321cdbbf9ffec1abe4897ce6ad1" title="Isolate the least significant set bit of a bitboard." alt="" coords="487,70,632,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="439,80,473,80,473,85,439,85"/>
+</map>

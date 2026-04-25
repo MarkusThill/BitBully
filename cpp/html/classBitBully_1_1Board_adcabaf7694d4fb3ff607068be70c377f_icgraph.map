@@ -1,0 +1,11 @@
+<map id="BitBully::Board::toHuffman" name="BitBully::Board::toHuffman">
+<area shape="rect" id="Node000001" title="Encode the position as a compact Huffman&#45;like integer." alt="" coords="419,70,613,95"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1OpeningBook.html#ae1ebbea6e8f17a91990556d077c8d7a4" title="Retrieve the engine score for a position covered by the book." alt="" coords="204,5,371,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="451,69,367,48,368,43,452,64"/>
+<area shape="rect" id="Node000003" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,70,156,95"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="405,85,156,85,156,80,405,80"/>
+<area shape="rect" id="Node000004" href="$classBitBully_1_1OpeningBook.html#ad7a4064632b3c7d9b0ff0be106d0a10c" title="Test whether the exact (non&#45;mirrored) position is in the book." alt="" coords="204,120,371,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="452,101,368,123,367,117,451,96"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="202,52,128,72,127,67,201,47"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="201,119,127,98,128,93,202,114"/>
+</map>

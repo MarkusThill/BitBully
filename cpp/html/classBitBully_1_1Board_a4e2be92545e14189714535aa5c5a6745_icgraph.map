@@ -1,0 +1,22 @@
+<map id="BitBully::Board::play" name="BitBully::Board::play">
+<area shape="rect" id="Node000001" title="Drop a stone of the player to move into column." alt="" coords="675,156,829,181"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#a31ef16bb12244f6b16b6329813a57dbf" title="Apply a sequence of moves encoded as digit characters." alt="" coords="457,5,612,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="732,146,687,94,658,67,625,44,601,33,603,28,628,40,661,63,691,91,736,143"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1Board.html#aa96ec2fe5bd7d067759e115861c8504a" title="Apply a sequence of column&#45;index moves." alt="" coords="457,55,612,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="717,151,626,102,576,83,578,78,628,97,720,146"/>
+<area shape="rect" id="Node000004" href="$classBitBully_1_1Board.html#aa97d678ff348e390ff66a66a6bd7f034" title="Apply a move given by column index on a copy of this board." alt="" coords="204,91,395,131"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="661,157,626,153,395,124,395,119,627,147,662,152"/>
+<area shape="rect" id="Node000005" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,181,156,207"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="661,175,157,194,156,189,661,169"/>
+<area shape="rect" id="Node000006" href="$classBitBully_1_1BitBully.html#a8c405dc66e7e933d1a46b43ddd2492a8" title="Evaluate the move that drops a stone in column." alt="" coords="469,206,600,246"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="691,187,601,211,600,206,689,182"/>
+<area shape="rect" id="Node000008" href="$classBitBully_1_1Board.html#af68094c778fb01a6956eec5b853671c2" title="String&#45;based variant of setBoard(const std::vector&lt;int&gt;&amp;)." alt="" coords="443,271,627,296"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="728,193,683,227,628,260,594,273,592,268,626,256,680,223,724,188"/>
+<area shape="rect" id="Node000009" href="$classBitBully_1_1Board.html#a9a71192a965bd34a2046d202c2d4f80e" title="Replay a move sequence onto a fresh board and copy the result." alt="" coords="443,320,627,345"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="738,195,694,253,663,284,628,311,604,322,602,317,625,306,659,280,690,250,734,191"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="234,139,117,184,115,179,232,134"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="455,223,156,202,156,197,456,218"/>
+<area shape="rect" id="Node000007" href="$classBitBully_1_1BitBully.html#ab4c3408f62623c65181ff00f1d5d6044" title="Evaluate every column move from b." alt="" coords="234,257,365,297"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="456,245,366,265,364,260,455,240"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="232,254,115,209,117,204,234,249"/>
+</map>

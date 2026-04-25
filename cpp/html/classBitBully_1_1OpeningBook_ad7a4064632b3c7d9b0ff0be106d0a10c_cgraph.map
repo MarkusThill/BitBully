@@ -1,0 +1,5 @@
+<map id="BitBully::OpeningBook::isInBook" name="BitBully::OpeningBook::isInBook">
+<area shape="rect" id="Node000001" title="Test whether the exact (non&#45;mirrored) position is in the book." alt="" coords="5,5,172,45"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#adcabaf7694d4fb3ff607068be70c377f" title="Encode the position as a compact Huffman&#45;like integer." alt="" coords="220,13,415,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,23,206,23,206,28,172,28"/>
+</map>

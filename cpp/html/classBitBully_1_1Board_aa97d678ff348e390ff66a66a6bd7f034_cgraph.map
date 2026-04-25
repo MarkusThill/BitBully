@@ -1,0 +1,9 @@
+<map id="BitBully::Board::playMoveOnCopy" name="BitBully::Board::playMoveOnCopy">
+<area shape="rect" id="Node000001" title="Apply a move given by column index on a copy of this board." alt="" coords="5,23,196,63"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#a15103f528a6674a3c6a78defe7e91a7b" title="Construct an empty board with player Yellow to move." alt="" coords="244,5,408,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,30,230,26,231,31,197,35"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1Board.html#a4e2be92545e14189714535aa5c5a6745" title="Drop a stone of the player to move into column." alt="" coords="249,55,403,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,51,235,55,235,60,196,56"/>
+<area shape="rect" id="Node000004" href="$classBitBully_1_1Board.html#a1c11e3f18b58c4b4d342d2738e03be17" title="Check whether dropping a stone in column is legal." alt="" coords="456,55,664,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="404,65,442,65,442,70,404,70"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ctz_u64" name="ctz_u64">
+<area shape="rect" id="Node000001" title="Count trailing zero bits of a 64&#45;bit integer." alt="" coords="127,5,199,31"/>
+<area shape="rect" id="Node000002" href="$Board_8h.html#a4b3dcacd84e618e8c3cfb7c4f9a310c2" title="Decompose a bitboard into the indices of its set bits." alt="" coords="5,5,79,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,21,79,21,79,15,113,15"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="GameSolver::Connect4::Position::possibleNonLosingMoves" name="GameSolver::Connect4::Position::possibleNonLosingMoves">
+<area shape="rect" id="Node000001" title="Return a bitmap of all the possible next moves the do not lose in one turn." alt="" coords="5,5,217,60"/>
+<area shape="rect" id="Node000002" href="$classGameSolver_1_1Connect4_1_1Position.html#afb530371990f81666f5989bce6340d92" title="return true if current player can win next move" alt="" coords="265,13,436,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,30,252,30,252,35,218,35"/>
+</map>

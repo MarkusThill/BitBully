@@ -1,0 +1,7 @@
+<map id="BitBully::Board::play" name="BitBully::Board::play">
+<area shape="rect" id="Node000001" title="Apply a sequence of moves encoded as digit characters." alt="" coords="5,5,160,31"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#a4e2be92545e14189714535aa5c5a6745" title="Drop a stone of the player to move into column." alt="" coords="208,5,363,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,15,194,15,194,21,160,21"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1Board.html#a1c11e3f18b58c4b4d342d2738e03be17" title="Check whether dropping a stone in column is legal." alt="" coords="411,5,619,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,15,397,15,397,21,363,21"/>
+</map>

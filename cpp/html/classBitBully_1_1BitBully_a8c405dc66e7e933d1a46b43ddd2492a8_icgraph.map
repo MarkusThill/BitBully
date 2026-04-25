@@ -1,0 +1,8 @@
+<map id="BitBully::BitBully::scoreMove" name="BitBully::BitBully::scoreMove">
+<area shape="rect" id="Node000001" title="Evaluate the move that drops a stone in column." alt="" coords="383,5,513,45"/>
+<area shape="rect" id="Node000002" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,13,156,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="368,25,335,24,204,24,156,25,156,20,204,19,335,19,369,20"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1BitBully.html#ab4c3408f62623c65181ff00f1d5d6044" title="Evaluate every column move from b." alt="" coords="204,33,335,73"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="370,40,335,46,335,40,369,35"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="190,44,156,39,157,34,191,39"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="BitBully::Board::nextMove" name="BitBully::Board::nextMove">
+<area shape="rect" id="Node000001" title="Pick the best&#45;ranked move from a candidate set using a fixed priority order." alt="" coords="5,5,196,31"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#ab27e5321cdbbf9ffec1abe4897ce6ad1" title="Isolate the least significant set bit of a bitboard." alt="" coords="244,5,389,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,15,230,15,230,21,196,21"/>
+</map>

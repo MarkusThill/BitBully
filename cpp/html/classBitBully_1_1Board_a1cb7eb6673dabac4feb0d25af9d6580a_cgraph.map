@@ -1,0 +1,5 @@
+<map id="BitBully::Board::findOddThreats" name="BitBully::Board::findOddThreats">
+<area shape="rect" id="Node000001" title="Identify candidate moves that introduce a new &quot;odd&quot; threat." alt="" coords="5,5,181,45"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#ab27e5321cdbbf9ffec1abe4897ce6ad1" title="Isolate the least significant set bit of a bitboard." alt="" coords="229,13,375,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,23,215,23,215,28,181,28"/>
+</map>

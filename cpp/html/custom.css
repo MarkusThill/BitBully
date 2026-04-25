@@ -1,0 +1,59 @@
+/*
+ * BitBully Doxygen overrides.
+ * Loaded after doxygen-awesome-css; tweaks brand colours, sidebar layout,
+ * and a few minor typographic details. Variables are documented at
+ * https://jothepro.github.io/doxygen-awesome-css/.
+ */
+
+html {
+    /* BitBully-yellow as the primary accent. */
+    --primary-color: #d8a534;
+    --primary-dark-color: #a5781f;
+    --primary-light-color: #f0c875;
+    --primary-lighter-color: #fbf1d9;
+    --primary-lightest-color: #fdf9ee;
+
+    /* The square logo + project name + brief + searchbox just barely fits in
+     * 335 px; bump it a hair so the brief never wraps awkwardly. */
+    --side-nav-fixed-width: 360px;
+
+    /* Slightly tighter title typography so the 120 px banner does not feel
+     * empty next to a small (44 px) logo. */
+    --title-font-size: 24px;
+    --content-maxwidth: 1100px;
+}
+
+html.dark-mode {
+    --primary-color: #f0c875;
+    --primary-dark-color: #fbf1d9;
+    --primary-light-color: #d8a534;
+}
+
+/* The project brief is wordy ("A fast, perfect-play Connect-4 engine in
+ * modern C++"); shrink it a notch so it fits on one line in the sidebar. */
+#projectbrief {
+    font-size: 12px;
+    opacity: 0.85;
+    line-height: 1.3em;
+}
+
+/* Cap the logo a bit tighter than the theme default (which is 2x title font);
+ * keeps banner height stable across viewports. */
+#projectlogo img {
+    max-height: 56px;
+    max-width: 56px;
+}
+
+/* Make the at-a-glance table on the main page breathe. */
+table.markdownTable {
+    margin-top: 0.4em;
+    margin-bottom: 1.2em;
+}
+
+/* Subtle frame around inline @dot diagrams. */
+.dotgraph, .mscgraph {
+    border: 1px solid var(--separator-color);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-medium);
+    background: var(--code-background);
+}

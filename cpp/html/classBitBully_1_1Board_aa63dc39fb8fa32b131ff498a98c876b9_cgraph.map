@@ -1,0 +1,8 @@
+<map id="BitBully::Board::legalMoves" name="BitBully::Board::legalMoves">
+<area shape="rect" id="Node000001" title="Enumerate legal moves as column indices." alt="" coords="5,42,207,67"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#a952c36a7a0faafbc49ab18f393ff6f6c" title="Compute moves that do not lose immediately." alt="" coords="255,5,439,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,40,241,36,242,41,207,45"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1Board.html#a1935dee0e691ee8b048c1203f6144ce7" title="Bitboard whose set bits mark the next reachable cell of every non&#45;full column." alt="" coords="487,42,723,67"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="207,54,255,55,439,55,473,54,473,60,439,60,255,60,207,59"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="439,33,479,38,479,43,438,38"/>
+</map>

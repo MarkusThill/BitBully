@@ -23,10 +23,20 @@
 <script type="text/javascript">
   $(function() { init_search(); });
 </script>
+    <script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <link href="doxygen.css" rel="stylesheet" type="text/css"/>
     <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
     <!-- ... other metadata & script includes ... -->
     <script src="doxygen-awesome-darkmode-toggle.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -136,7 +146,7 @@ $(function() {
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">BitBully::BitBully Class Reference</div></div>
+  <div class="headertitle"><div class="title">BitBully::BitBully Class Reference<div class="ingroups"><a class="el" href="group__search.html">Search engine</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -188,8 +198,10 @@ Static Public Member Functions</h2></td></tr>
 <li>a score of <code>0</code> indicates a draw.</li>
 </ul>
 <p>The helper <code>scoreToMovesLeft</code> converts these compact scores back into the actual number of plies remaining. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="quick_solve_8cpp-example.html#_a3">quick_solve.cpp</a>, <a class="el" href="score_all_moves_8cpp-example.html#_a3">score_all_moves.cpp</a>, and <a class="el" href="with_opening_book_8cpp-example.html#_a1">with_opening_book.cpp</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00043">43</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00045">45</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab060d0975ab4cd7bc91e14c24ec807fe" name="ab060d0975ab4cd7bc91e14c24ec807fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab060d0975ab4cd7bc91e14c24ec807fe">&#9670;&#160;</a></span>BitBully()</h2>
@@ -222,7 +234,12 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00062">62</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00064">64</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_ab060d0975ab4cd7bc91e14c24ec807fe_cgraph.svg" width="499" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -252,7 +269,12 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Number of nodes visited since <a class="el" href="#a4d03943682b98ae771ce1b79fc8da935" title="resetNodeCounter()">resetNodeCounter()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00237">237</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00248">248</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a9a87ef9afe101ddda6b3bb74764b3e02_icgraph.svg" width="346" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -280,8 +302,15 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Was an opening book successfully loaded? </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="with_opening_book_8cpp-example.html#a2">with_opening_book.cpp</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00070">70</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00072">72</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a1e12396b723b223a7c473baed2bd4954_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -318,7 +347,17 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if a new book is now loaded; <code>false</code> if a book was already loaded or <code class="param">bookPath</code> is empty. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00085">85</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00087">87</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a0c19bf3d591e248963b8bfc8fceaa6c8_cgraph.svg" width="320" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a0c19bf3d591e248963b8bfc8fceaa6c8_icgraph.svg" width="340" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -365,10 +404,21 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Exact score of <code class="param">b</code> (or a depth-limited approximation when <code class="param">maxDepth</code> &ge; 0).</dd></dl>
-<dl class="section user"><dt>Reference</dt><dd>Plaat, Schaeffer, Pijls and de Bruin, "Best-first Fixed-depth Minimax
-Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><b>[plaat96]</b> </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="quick_solve_8cpp-example.html#a4">quick_solve.cpp</a>, and <a class="el" href="with_opening_book_8cpp-example.html#a4">with_opening_book.cpp</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00177">177</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00188">188</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a76cec6e90a0420017774f74dd489d251_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a76cec6e90a0420017774f74dd489d251_icgraph.svg" width="100%" height="452"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -435,7 +485,17 @@ Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Score of <code class="param">b</code> in the active player's perspective. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00263">263</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00274">274</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_ab560bedc498b3e70e5eddfef4a32b533_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_ab560bedc498b3e70e5eddfef4a32b533_icgraph.svg" width="100%" height="538"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -477,7 +537,17 @@ Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Exact score of <code class="param">b</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00210">210</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00221">221</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a9c73ca66a2a7660b5125cd3c36535002_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a9c73ca66a2a7660b5125cd3c36535002_icgraph.svg" width="340" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -506,7 +576,12 @@ Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
 
 <p>Discard the currently loaded opening book (if any). </p>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00073">73</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00075">75</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_afdc857dc3db5da0cb81e4b3b9eae4543_icgraph.svg" width="340" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -535,7 +610,12 @@ Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
 
 <p>Reset the visited-node counter to zero. </p>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00240">240</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00251">251</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a4d03943682b98ae771ce1b79fc8da935_icgraph.svg" width="358" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -564,7 +644,12 @@ Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
 
 <p>Discard the contents of the transposition table. </p>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00231">231</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00242">242</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a87c2b73dedea279fdae57f4a012381d7_icgraph.svg" width="392" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -601,7 +686,17 @@ Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Solver score from the perspective of the side to move in <code class="param">b</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00126">126</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00139">139</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_aeeb900218ac6cd155adc27ff4283c904_cgraph.svg" width="574" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_aeeb900218ac6cd155adc27ff4283c904_icgraph.svg" width="100%" height="569"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -655,7 +750,17 @@ Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Score of the resulting position, or <code>-1000</code> if <code class="param">column</code> is not a legal move. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00465">465</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00476">476</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a8c405dc66e7e933d1a46b43ddd2492a8_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a8c405dc66e7e933d1a46b43ddd2492a8_icgraph.svg" width="519" height="79"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -696,8 +801,20 @@ Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Per-column scores indexed by column number. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="score_all_moves_8cpp-example.html#a4">score_all_moves.cpp</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00488">488</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00499">499</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_ab4c3408f62623c65181ff00f1d5d6044_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_ab4c3408f62623c65181ff00f1d5d6044_icgraph.svg" width="340" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -736,9 +853,25 @@ Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293. </dd></dl>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of moves until the game concludes under perfect play. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of moves until the game concludes under perfect play.</dd></dl>
+<p>The encoding maps the absolute score to a final-ply count:       </p><p class="formulaDsp">
+\[  \text{plies\_left}(s, b) =
+    \begin{cases}
+      \text{movesLeft}(b) &amp; s = 0 \\
+      \text{movesLeft}(b) - \bigl(2(|s| - 1) + \delta\bigr) &amp; s \ne 0
+    \end{cases}
+\]
+</p>
+<p> where \(\delta \in \{0, 1\}\) accounts for the parity of the side to move (winning move falls on an even or odd ply). </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="quick_solve_8cpp-example.html#a5">quick_solve.cpp</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00102">102</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="BitBully_8h_source.html#l00115">115</a> of file <a class="el" href="BitBully_8h_source.html">BitBully.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classBitBully_1_1BitBully_a5c568bf905c59bfe05913b25052cf44c_icgraph.svg" width="356" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>

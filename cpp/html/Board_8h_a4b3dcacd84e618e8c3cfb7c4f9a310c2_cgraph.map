@@ -1,0 +1,5 @@
+<map id="bits_set" name="bits_set">
+<area shape="rect" id="Node000001" title="Decompose a bitboard into the indices of its set bits." alt="" coords="5,5,79,31"/>
+<area shape="rect" id="Node000002" href="$Board_8h.html#a7e77f1145f9bba1ec25679ad9a0e2f23" title="Count trailing zero bits of a 64&#45;bit integer." alt="" coords="127,5,199,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,15,113,15,113,21,79,21"/>
+</map>

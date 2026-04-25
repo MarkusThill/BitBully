@@ -1,0 +1,5 @@
+<map id="BitBully::Board::mirror" name="BitBully::Board::mirror">
+<area shape="rect" id="Node000001" title="Mirror the board around its central column." alt="" coords="5,5,172,31"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#a15103f528a6674a3c6a78defe7e91a7b" title="Construct an empty board with player Yellow to move." alt="" coords="220,5,384,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,15,207,15,207,21,172,21"/>
+</map>

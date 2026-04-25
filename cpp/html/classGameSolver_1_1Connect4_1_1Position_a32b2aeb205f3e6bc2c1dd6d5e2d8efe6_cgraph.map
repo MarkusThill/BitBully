@@ -1,0 +1,5 @@
+<map id="GameSolver::Connect4::Position::playCol" name="GameSolver::Connect4::Position::playCol">
+<area shape="rect" id="Node000001" title="Plays a playable column." alt="" coords="5,5,176,45"/>
+<area shape="rect" id="Node000002" href="$classGameSolver_1_1Connect4_1_1Position.html#a57dadc2f70eb02ff6237166f02a341fa" title="Plays a possible move given by its bitmap representation." alt="" coords="224,5,395,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,23,210,23,210,28,176,28"/>
+</map>

@@ -32,6 +32,8 @@ var NAVTREE =
       [ "Loading an opening book", "usage_examples.html#ex_book", null ],
       [ "Calling the engine from Python", "usage_examples.html#ex_python", null ]
     ] ],
+    [ "Bibliography", "citelist.html", null ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -60,14 +62,14 @@ var NAVTREE =
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"BitBully_8cpp.html",
-"index.html"
+"BitBully_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

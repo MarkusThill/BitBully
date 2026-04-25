@@ -1,0 +1,7 @@
+<map id="BitBully::Board::hash" name="BitBully::Board::hash">
+<area shape="rect" id="Node000001" title="Splittable&#45;mix&#45;style hash for a 64&#45;bit integer." alt="" coords="283,31,440,56"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1TranspositionTable.html#a8fa5ea26f9517402b084d8f604245a73" title="Get the slot associated with b." alt="" coords="5,5,235,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="269,36,235,33,235,27,269,31"/>
+<area shape="rect" id="Node000003" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="45,55,195,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,55,196,63,195,57,269,50"/>
+</map>

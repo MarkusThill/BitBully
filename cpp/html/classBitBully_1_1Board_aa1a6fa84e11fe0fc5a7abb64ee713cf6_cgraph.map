@@ -1,0 +1,5 @@
+<map id="BitBully::Board::findThreats" name="BitBully::Board::findThreats">
+<area shape="rect" id="Node000001" title="Identify candidate moves that yield a tactical advantage." alt="" coords="5,5,204,31"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1Board.html#ab27e5321cdbbf9ffec1abe4897ce6ad1" title="Isolate the least significant set bit of a bitboard." alt="" coords="252,5,397,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,15,238,15,238,21,204,21"/>
+</map>

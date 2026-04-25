@@ -1,0 +1,10 @@
+<map id="BitBully::Board::isValid" name="BitBully::Board::isValid">
+<area shape="rect" id="Node000001" title="Validate a board layout." alt="" coords="469,29,639,55"/>
+<area shape="rect" id="Node000002" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="22,5,173,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="455,40,173,25,173,19,455,34"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1Board.html#a84173ebdfe1b8e57961522b464983941" title="Replace the current position with the one described by board." alt="" coords="237,55,421,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="455,56,422,60,421,54,455,50"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="255,54,157,33,158,28,256,49"/>
+<area shape="rect" id="Node000004" href="$classBitBully_1_1Board.html#ab568cd8d26d7b86e6b9de74cad269e84" title="Row&#45;major variant of setBoard(const TBoardArray&amp;)." alt="" coords="5,55,189,80"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="223,70,190,70,190,65,223,65"/>
+</map>

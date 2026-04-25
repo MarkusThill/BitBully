@@ -1,0 +1,8 @@
+<map id="BitBully::Board::toArray" name="BitBully::Board::toArray">
+<area shape="rect" id="Node000001" title="Convert the bitboard representation into a column&#45;major array." alt="" coords="429,5,604,31"/>
+<area shape="rect" id="Node000002" href="$bitbully__core_8cpp.html#af5c1df2ff1f6f9a528f149e1c65f6ad2" title="Define the bitbully_core extension module." alt="" coords="5,5,156,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="416,21,156,21,156,15,416,15"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1Board.html#a99cd68cb2bb31588728ba7fa5fff3282" title="Pretty&#45;printed ASCII representation of the board." alt="" coords="204,31,381,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="416,32,382,36,381,31,415,27"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="190,34,156,30,157,24,191,28"/>
+</map>

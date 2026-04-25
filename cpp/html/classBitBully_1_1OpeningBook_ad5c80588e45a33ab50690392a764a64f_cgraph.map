@@ -1,0 +1,7 @@
+<map id="BitBully::OpeningBook::init" name="BitBully::OpeningBook::init">
+<area shape="rect" id="Node000001" title="Re&#45;initialise the book in place." alt="" coords="5,5,172,45"/>
+<area shape="rect" id="Node000002" href="$classBitBully_1_1OpeningBook.html#a4c4d2b0a00e03a84c9a54fae6b9234dc" title="Slurp an entire opening book file into memory." alt="" coords="220,5,387,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,23,206,23,206,28,173,28"/>
+<area shape="rect" id="Node000003" href="$classBitBully_1_1OpeningBook.html#a37db8640da53e0f0bfbb55a116a84931" title="Read a single entry from a binary book stream." alt="" coords="435,5,601,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="387,23,421,23,421,28,387,28"/>
+</map>
