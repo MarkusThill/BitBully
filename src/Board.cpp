@@ -1,3 +1,12 @@
+/**
+ * @file Board.cpp
+ * @brief Implementation of the @ref BitBully::Board bitboard primitives.
+ *
+ * Most of the logic in here is mechanical bit manipulation derived from the
+ * encoding documented in Board.h. The win-detection routines are inspired by
+ * John Tromp's @c Game.c
+ * (https://github.com/gamesolver/fhourstones/blob/master/Game.c).
+ */
 #include "Board.h"
 
 #include <algorithm>

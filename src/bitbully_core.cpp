@@ -1,3 +1,13 @@
+/**
+ * @file bitbully_core.cpp
+ * @brief pybind11 bindings exposing the C++ engine to Python.
+ *
+ * Defines the @c bitbully_core extension module which wraps the three core
+ * C++ classes &mdash; @ref BitBully::Board, @ref BitBully::BitBully and
+ * @ref BitBully::OpeningBook &mdash; as the Python types `BoardCore`,
+ * `BitBullyCore` and `OpeningBookCore`. The Python package adds higher-level
+ * conveniences on top of these primitives.
+ */
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl/filesystem.h>
@@ -11,8 +21,17 @@
 #include "OpeningBook.h"
 
 namespace py = pybind11;
+/// Short-hand alias used throughout the binding definitions.
 using B = BitBully::Board;
 
+/**
+ * @brief Define the @c bitbully_core extension module.
+ *
+ * Exposes @ref BitBully::Board, @ref BitBully::BitBully and
+ * @ref BitBully::OpeningBook to Python under the names @c BoardCore,
+ * @c BitBullyCore and @c OpeningBookCore. The module is loaded by
+ * `import bitbully_core` from the Python package.
+ */
 PYBIND11_MODULE(bitbully_core, m) {
   m.doc() =
       "Bitbully is a fast Connect-4 solver.";  // optional module docstring

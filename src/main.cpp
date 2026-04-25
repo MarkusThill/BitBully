@@ -1,3 +1,19 @@
+/**
+ * @file main.cpp
+ * @brief Benchmark driver comparing BitBully against Pascal Pons' Connect-4
+ *        solver.
+ *
+ * Generates a stream of random positions, asks both solvers to evaluate them
+ * with full perfect-play depth and compares the resulting scores. Per-call
+ * solve times are dumped to a CSV for offline analysis.
+ *
+ * Command-line flags:
+ *  - `--nply N`        : number of stones in each generated position (default
+ * 8)
+ *  - `--nrepeats N`    : number of positions to evaluate (default 1000)
+ *  - `--filename PATH` : output CSV file
+ *  - `--reset_tt N`    : reset both transposition tables every @c N positions
+ */
 #include <chrono>
 #include <fstream>
 #include <iomanip>  // For setting precision
@@ -13,13 +29,28 @@
 #include "BitBully.h"
 #include "Board.h"
 
-#ifdef _WIN32  // Check if we're on a Windows platform
-using Clock = std::chrono::steady_clock;  // Use steady_clock on Windows
+/**
+ * @brief Wall-clock used for the per-call timing measurements.
+ *
+ * Resolves to `std::chrono::steady_clock` on Windows (because
+ * `high_resolution_clock` is not actually high-resolution there) and to
+ * `std::chrono::high_resolution_clock` everywhere else.
+ */
+#ifdef _WIN32
+using Clock = std::chrono::steady_clock;
 #else
-using Clock = std::chrono::high_resolution_clock;  // Use high_resolution_clock
-                                                   // on other platforms
+using Clock = std::chrono::high_resolution_clock;
 #endif
 
+/**
+ * @brief Persist per-position timing pairs to a CSV file.
+ *
+ * The file is written with header `Bitbully,Pons-C4` and one row per
+ * (BitBully, Pons-C4) timing tuple, with five-digit fixed precision.
+ *
+ * @param data     Pairs of `(time_bitbully, time_pons_c4)` in seconds.
+ * @param filename Destination CSV path.
+ */
 void writeToCSV(const std::vector<std::tuple<float, float>>& data,
                 const std::string& filename) {
   std::ofstream file(filename);  // Open file for writing
@@ -41,6 +72,15 @@ void writeToCSV(const std::vector<std::tuple<float, float>>& data,
   std::cout << "Data successfully written to " << filename << std::endl;
 }
 
+/**
+ * @brief Parse `--key value` pairs from the program command line.
+ *
+ * Exits with `EXIT_FAILURE` if a key is missing its value.
+ *
+ * @param argc Number of CLI tokens (as received by @c main).
+ * @param argv CLI tokens.
+ * @return Map from each `--key` token to its associated value.
+ */
 std::unordered_map<std::string, std::string> parseArgs(
     const int argc, const char* const argv[]) {
   std::unordered_map<std::string, std::string> args;
@@ -57,6 +97,14 @@ std::unordered_map<std::string, std::string> parseArgs(
   return args;
 }
 
+/**
+ * @brief Entry point of the benchmark binary.
+ *
+ * @param argc Number of CLI arguments (as forwarded by the OS).
+ * @param argv CLI arguments.
+ * @return @c 0 on success, @c EXIT_FAILURE if the two solvers disagree on
+ *         any position or on argument-parsing errors.
+ */
 int main(const int argc, const char* const argv[]) {
   // Default values
   int nPly = 8;

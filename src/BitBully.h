@@ -1,3 +1,16 @@
+/**
+ * @file BitBully.h
+ * @brief Connect-4 search engine that operates on @ref BitBully::Board.
+ *
+ * Provides @ref BitBully::BitBully, a perfect-play solver built around an
+ * alpha-beta negamax. Notable features:
+ *  - move ordering via @ref BitBully::Board::sortMoves(),
+ *  - a transposition table with EXACT / LOWER / UPPER bounds and an
+ *    Enhanced-Transposition-Cutoff (ETC) variant,
+ *  - mirror-symmetry lookups,
+ *  - optional opening-book consultation (8-ply or 12-ply),
+ *  - MTD(f) and binary-search (null-window) drivers on top of the negamax.
+ */
 #ifndef BITBULLY__BITBULLY_H_
 #define BITBULLY__BITBULLY_H_
 
@@ -11,18 +24,41 @@
 #include "TranspositionTable.h"
 
 namespace BitBully {
+/**
+ * @brief Perfect-play Connect-4 solver.
+ *
+ * Maintains a transposition table and (optionally) an opening book between
+ * searches so that subsequent calls reuse previously computed information.
+ * Scores returned by the engine follow the convention introduced by Pascal
+ * Pons:
+ *
+ *  - a positive score @c s means the player to move wins on ply
+ *    `2 * s - 1` from the current position,
+ *  - a negative score @c s means the player to move loses on ply `2 * |s|`,
+ *  - a score of @c 0 indicates a draw.
+ *
+ * The helper @c scoreToMovesLeft converts these compact scores back into
+ * the actual number of plies remaining.
+ */
 class BitBully {
  private:
-  unsigned long long int nodeCounter;
+  unsigned long long int nodeCounter;  ///< Number of nodes visited.
+  /// Compile-time switch enabling the transposition table.
   static bool constexpr USE_TRANSPOSITION_TABLE = true;
+  /// Default size of the transposition table, expressed as `log2(entries)`.
   static auto constexpr DEFAULT_LOG_TRANSPOSITION_SIZE = 22;
 
-  TranspositionTable transpositionTable;
-  std::unique_ptr<OpeningBook> m_openingBook;
+  TranspositionTable transpositionTable;       ///< Backing transposition table.
+  std::unique_ptr<OpeningBook> m_openingBook;  ///< Optional opening book.
 
  public:
   // MoveList sortMoves(Board::TBitBoard moves); // implemented in Board.cpp
 
+  /**
+   * @brief Construct a solver, optionally loading an opening book.
+   * @param bookPath Path to a binary opening-book file. If empty, no book is
+   *                 loaded and @ref isBookLoaded() returns @c false.
+   */
   explicit BitBully(const std::filesystem::path& bookPath = "")
       : nodeCounter{0},
         transpositionTable{
@@ -30,10 +66,22 @@ class BitBully {
     loadBook(bookPath);  // will not do anything if path is empty
   };
 
+  /// @brief Was an opening book successfully loaded?
   inline bool isBookLoaded() const { return m_openingBook != nullptr; }
 
+  /// @brief Discard the currently loaded opening book (if any).
   inline void resetBook() { m_openingBook.reset(); }
 
+  /**
+   * @brief Load an opening book from disk.
+   *
+   * The database type (8-ply vs.\ 12-ply, with or without distance
+   * information) is inferred from the file size.
+   *
+   * @param bookPath Path to the book file. Empty paths are a no-op.
+   * @return @c true if a new book is now loaded; @c false if a book was
+   *         already loaded or @p bookPath is empty.
+   */
   inline bool loadBook(const std::filesystem::path& bookPath = "") {
     if (isBookLoaded()) {
       return false;
@@ -62,11 +110,20 @@ class BitBully {
     return b.movesLeft() - mvFinalLeft;
   }
 
+  /**
+   * @brief Cheap evaluation: play out the game using safe heuristic moves.
+   *
+   * Both players use @ref Board::generateNonLosingMoves() to avoid immediate
+   * losses; among multiple non-losing moves the centre-priority heuristic
+   * @ref Board::nextMove() picks the next ply. The function terminates as
+   * soon as a side reaches a winning position or runs out of non-losing
+   * replies.
+   *
+   * @param b Position to evaluate. Passed by value because the rollout
+   *          mutates a local copy.
+   * @return Solver score from the perspective of the side to move in @p b.
+   */
   static int rollout(Board b) noexcept {
-    // Play out the game using non-losing moves until terminal.
-    // Both players use generateNonLosingMoves() to avoid immediate losses.
-    // Among multiple non-losing moves, pick the first via nextMove()
-    // (center-priority heuristic).
     int ply = 0;
 
     while (true) {
@@ -97,7 +154,26 @@ class BitBully {
     }
   }
 
-  // TODO: firstGuess is a parameter which could be tuned!
+  /**
+   * @brief Solve a position using the MTD(f) driver.
+   *
+   * MTD(f) repeatedly invokes @ref negamax() with zero-width
+   * (`[beta-1, beta]`) windows, tightening the upper and lower bounds until
+   * they meet. The @p firstGuess parameter seeds the initial test value: a
+   * good guess (e.g.\ from a previous shallow search) drastically reduces
+   * the number of re-searches.
+   *
+   * @param b          Position to evaluate.
+   * @param firstGuess Initial guess for the position's score.
+   * @param maxDepth   Maximum search depth in plies, or @c -1 for unlimited
+   *                   search (full perfect-play resolution).
+   * @return Exact score of @p b (or a depth-limited approximation when
+   *         @p maxDepth &ge; 0).
+   *
+   * @par Reference
+   * Plaat, Schaeffer, Pijls and de Bruin, "Best-first Fixed-depth Minimax
+   * Algorithms", Artificial Intelligence 87 (1996), 255&ndash;293.
+   */
   int mtdf(const Board& b, const int firstGuess,
            const int maxDepth = -1) noexcept {
     // MTD(f) algorithm by Aske Plaat: Plaat, Aske; Jonathan Schaeffer; Wim
@@ -120,7 +196,17 @@ class BitBully {
     return g;
   }
 
-  // generally, appears to be slower than mtdf
+  /**
+   * @brief Alternative driver based on a binary search of zero-width windows.
+   *
+   * Empirically slower than @ref mtdf() in this codebase but useful for
+   * cross-checking results.
+   *
+   * @param b        Position to evaluate.
+   * @param maxDepth Maximum search depth in plies, or @c -1 for unlimited
+   *                 search.
+   * @return Exact score of @p b.
+   */
   int nullWindow(const Board& b, const int maxDepth = -1) noexcept {
     int min = -b.movesLeft() / 2;
     int max = (b.movesLeft() + 1) / 2;
@@ -141,15 +227,39 @@ class BitBully {
     return min;
   }
 
+  /// @brief Discard the contents of the transposition table.
   void resetTranspositionTable() {
     transpositionTable = TranspositionTable{
         USE_TRANSPOSITION_TABLE ? DEFAULT_LOG_TRANSPOSITION_SIZE : 0};
   }
 
+  /// @brief Number of nodes visited since @ref resetNodeCounter().
   [[nodiscard]] auto getNodeCounter() const { return nodeCounter; }
 
+  /// @brief Reset the visited-node counter to zero.
   void resetNodeCounter() { nodeCounter = 0ULL; }
 
+  /**
+   * @brief Negamax search with alpha-beta pruning, transposition table and
+   *        opening book consultation.
+   *
+   * The function combines several enhancements:
+   *  - move ordering through @ref Board::sortMoves(),
+   *  - transposition cutoffs (EXACT / LOWER / UPPER) keyed on the position's
+   *    @ref Board::uid(),
+   *  - Enhanced Transposition Cutoffs (ETC) at low depths,
+   *  - mirror-symmetry lookups,
+   *  - opening-book consultation when the configured ply depth is reached,
+   *  - depth-limited rollouts via @ref rollout() once @p maxDepth is hit.
+   *
+   * @param b        Position to evaluate (passed by value &mdash; recursion
+   *                 mutates a local copy).
+   * @param alpha    Current lower bound of the search window.
+   * @param beta     Current upper bound of the search window.
+   * @param depth    Plies played from the search root.
+   * @param maxDepth Maximum total search depth, or @c -1 for unlimited.
+   * @return Score of @p b in the active player's perspective.
+   */
   int negamax(Board b, int alpha, int beta, const int depth,
               const int maxDepth = -1) noexcept {
     // In several aspects inspired by Pascal's code
@@ -338,6 +448,20 @@ class BitBully {
     return value;
   }
 
+  /**
+   * @brief Evaluate the move that drops a stone in @p column.
+   *
+   * Plays the move on a copy of @p b and runs @ref mtdf() on the resulting
+   * position, then negates the score so that it is reported from the
+   * perspective of the player to move in @p b.
+   *
+   * @param b          Current position.
+   * @param column     Column index of the move to evaluate.
+   * @param firstGuess Seed value for MTD(f).
+   * @param maxDepth   Search depth limit, or @c -1 for unlimited search.
+   * @return Score of the resulting position, or @c -1000 if @p column is
+   *         not a legal move.
+   */
   auto scoreMove(const Board& b, const int column, const int firstGuess,
                  const int maxDepth = -1) {
     int score = -1000;
@@ -351,6 +475,16 @@ class BitBully {
     return score;
   }
 
+  /**
+   * @brief Evaluate every column move from @p b.
+   *
+   * Calls @ref scoreMove() for each of the @c N_COLUMNS columns. Illegal
+   * moves are reported with the sentinel score @c -1000.
+   *
+   * @param b        Current position.
+   * @param maxDepth Search depth limit, or @c -1 for unlimited search.
+   * @return Per-column scores indexed by column number.
+   */
   auto scoreMoves(const Board& b, const int maxDepth = -1) {
     std::vector scores(Board::N_COLUMNS, -1000);
     for (auto col = 0UL; col < scores.size(); col++) {

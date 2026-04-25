@@ -1,0 +1,58 @@
+/**
+ * @page usage_examples Usage Examples
+ * @brief A handful of recipes for the most common solver tasks.
+ *
+ * @tableofcontents
+ *
+ * @section ex_solve Evaluating a position
+ *
+ * @code{.cpp}
+ * #include "BitBully.h"
+ *
+ * BitBully::Board b;
+ * (void)b.play("4435");           // 1-based column indices encoded as digits
+ *
+ * BitBully::BitBully solver;
+ * const int score = solver.mtdf(b, 0);
+ * std::cout << "score = " << score
+ *           << ", plies left = "
+ *           << BitBully::BitBully::scoreToMovesLeft(score, b) << '\n';
+ * @endcode
+ *
+ * @section ex_score_moves Ranking all candidate moves
+ *
+ * @code{.cpp}
+ * BitBully::BitBully solver;
+ * BitBully::Board b;            // any position
+ *
+ * const auto scores = solver.scoreMoves(b);
+ * for (int c = 0; c < BitBully::Board::N_COLUMNS; ++c) {
+ *   std::cout << "column " << c << ": " << scores[c] << '\n';
+ * }
+ * @endcode
+ *
+ * Illegal moves receive the sentinel score `-1000`.
+ *
+ * @section ex_book Loading an opening book
+ *
+ * @code{.cpp}
+ * BitBully::BitBully solver{"books/12ply.book"};
+ * if (!solver.isBookLoaded()) {
+ *   std::cerr << "could not load book\n";
+ * }
+ * @endcode
+ *
+ * BitBully infers the book flavour (8-/12-ply, with or without
+ * distance-to-mate) from the file size.
+ *
+ * @section ex_python Calling the engine from Python
+ *
+ * @code{.py}
+ * from bitbully import BitBully, Board
+ *
+ * b = Board()
+ * b.play("4435")
+ * solver = BitBully()
+ * print(solver.mtdf(b, 0))
+ * @endcode
+ */
