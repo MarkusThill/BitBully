@@ -8,13 +8,13 @@
 #ifndef BITBULLY_VERSION_H
 #define BITBULLY_VERSION_H
 
-/// @brief Full semver version string (e.g.\ "0.0.78").
-#define PROJECT_VERSION "0.0.78"
+/// @brief Full semver version string (e.g.\ "0.0.79").
+#define PROJECT_VERSION "0.0.79"
 /// @brief Major version component as a string.
 #define PROJECT_MAJOR_VERSION "0"
 /// @brief Minor version component as a string.
 #define PROJECT_MINOR_VERSION "0"
 /// @brief Patch version component as a string.
-#define PROJECT_PATCH_VERSION "78"
+#define PROJECT_PATCH_VERSION "79"
 
 #endif  // BITBULLY_VERSION_H

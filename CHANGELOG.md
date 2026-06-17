@@ -1,3 +1,9 @@
+## v0.0.79 (2026-06-17)
+
+### Fix
+
+- Switch pybind11 submodule URL to HTTPS
+
 ## v0.0.78 (2026-04-18)
 
 ### Fix
