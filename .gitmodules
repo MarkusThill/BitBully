@@ -6,7 +6,7 @@
 	url = https://github.com/MarkusThill/connect4.git
 [submodule "thirdParty/pybind11"]
 	path = thirdParty/pybind11
-	url = git@github.com:pybind/pybind11.git
+	url = https://github.com/pybind/pybind11.git
 	branch = stable
 [submodule "thirdParty/doxygen-awesome-css"]
 	path = thirdParty/doxygen-awesome-css
