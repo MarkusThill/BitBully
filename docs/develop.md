@@ -198,7 +198,7 @@ cz bump --prerelease rc
 cz bump --prerelease rc --increment minor # To bump the minor version and start a pre-release
 ```
 
-In this case, after pushing to the repository, only a small build for Python3.11 is performed and the results wheels are pushed to Test-PyPI instead of the real PyPi.
+In this case, after pushing to the repository, only a small build for Python 3.15 (Linux and Windows) is performed and the resulting wheels are pushed to Test-PyPI instead of the real PyPi.
 
 ### Generating Python Type Stubs for Pybind11 Modules
 

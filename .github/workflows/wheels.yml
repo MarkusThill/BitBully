@@ -32,16 +32,16 @@ jobs:
 
       - name: Install cibuildwheel
         run: |
-          python -m pip install build cibuildwheel==3.3.0
+          python -m pip install build cibuildwheel==4.3.3
 
-      # 👇 Pre-release build (only cp312-*)
+      # 👇 Pre-release build (only cp315-*)
       - name: Build wheels (for pre-release)
         # 👇 Only run for tags like v1.0.0-rc1, v1.0.0-a2, etc. Also, only build for ubuntu and windows
         if: contains(github.ref, '-') && (matrix.os == 'ubuntu-latest' || matrix.os == 'windows-latest')
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           MACOSX_DEPLOYMENT_TARGET: "10.15"
-          CIBW_BUILD: cp312-*
+          CIBW_BUILD: cp315-*
 
       # 👇 Stable release build (use pyproject.toml)
       - name: Build wheels (regular)
